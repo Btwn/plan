@@ -17,3 +17,9 @@ CREATE NONCLUSTERED INDEX IND_UsuarioMovsConsulta_Usuario_item
 ON [dbo].UsuarioMovsConsulta ([Usuario],[item])
 
 GO
+
+
+CREATE NONCLUSTERED INDEX IND_UsuarioMovsEdicion_Usuario_item
+ON [dbo].UsuarioMovsEdicion ([Usuario],[item])
+
+GO
