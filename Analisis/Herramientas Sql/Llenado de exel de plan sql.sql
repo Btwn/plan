@@ -4,9 +4,15 @@ SELECT Objeto = CASE
 	WHEN ClaveTipo IN('FN','TF') THEN 'dbo.'+Objeto+'.UserDefinedFunction.sql'
 	WHEN ClaveTipo='P' THEN 'dbo.'+Objeto+'.StoredProcedure.sql'
 	ELSE NULL END,
-	avance=IIF(Responsable IS NOT NULL,'ok',''),
-	Responsable
-FROM mg.CambiosSql
+	Tipo,
+	Revisado=IIF(Analizado IS NOT NULL,'ok',''),
+	Riesgo=ISNULL(NivelCambio,''),'',''
+	,Estatus=CASE
+		WHEN NivelCambio IN('Nulo','Bajo') THEN 'Terminado'
+		WHEN NivelCambio IN('Medio','Alto') THEN '2da. Fase'
+		ELSE '' END
+	,Responsable,Descripcion=ISNULL(DescripcionCambio,'')
+FROM mg.CambiosSql WITH(NOLOCK)
 WHERE Estatus='Diferente'
 ORDER BY CASE
 	WHEN ClaveTipo='U' THEN 1
@@ -14,7 +20,9 @@ ORDER BY CASE
 	WHEN ClaveTipo IN('FN','TF') THEN 3
 	WHEN ClaveTipo='P' THEN 4
 	ELSE NULL END,1
-    
+
+
+
 SELECT DISTINCT ClaveTipo,Tipo
 FROM mg.CambiosSql
 WHERE Analizado IS NULL

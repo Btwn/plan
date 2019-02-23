@@ -1,0 +1,76 @@
+[Tabla]
+CamposBusquedaRapida=Campo1
+---------
+CamposBusquedaRapida=(Lista)
+---------
+[Tabla.CamposBusquedaRapida]
+(Inicio)=Campo1
+Campo1=Campo2
+Campo2=(Fin)
+
+CamposProrrateo=\(Lista\)       [Forma.CamposProrrateo]
+ExcelColumnas=\(Lista\)         [Forma.ExcelColumnas]
+ListaCarpetas=\(Lista\)         [Forma.ListaCarpetas] Formas
+MovimientosValidos=\(Lista\)    [Forma.MovimientosValidos]
+PlantillasExcepciones=\(Lista\) [Forma.PlantillasExcepciones]
+ResumenCampos=\(Lista\)         [Forma.ResumenCampos]
+MenuPrincipal=\(Lista\)         [Forma.MenuPrincipal] Formas
+Modulos=\(Lista\)               [Forma.Modulos]
+ListaAcciones=\(Lista\)         [Forma.ListaAcciones]
+LlaveMaestra=\(Lista\)          [Carpeta.LlaveMaestra] Formas
+LlaveLocal=\(Lista\)            [Carpeta.LlaveLocal] Formas
+ListaOrden=\(Lista\)            [Carpeta.ListaOrden] Forma
+FiltroListaEstatus=\(Lista\)    [Carpeta.FiltroListaEstatus]
+ListaAccionesBB=\(Lista\)       [Carpeta.ListaAccionesBB]--Solo en la version 5000
+ListaCamposAValidar=\(Lista\)   [Carpeta.ListaCamposAValidar] Forma
+ListaEnCaptura=\(Lista\)        [Carpeta.ListaEnCaptura] Formas
+ListaAccionesMultiples=\(Lista\)[Acciones.NombreAccion.ListaAccionesMultiples]
+
+
+Modulos=\(Lista\)               [Dialogo.Modulos]
+MenuPrincipal=\(Lista\)         [Dialogo.MenuPrincipal] En dialogos cuando TipoDialogo=Menú Principal
+ListaAcciones=\(Lista\)         [Dialogo.ListaAcciones]
+ListaAccionesMultiples=\(Lista\)[Acciones.NombreAccion.ListaAccionesMultiples]
+
+
+ListaAcciones=\(Lista\)         [Reporte.ListaAcciones]
+ListaAccionesMultiples=\(Lista\)[Acciones.NombreAccion.ListaAccionesMultiples]
+
+
+Modulos=\(Lista\)               [Tabla.Modulos]
+ValidacionTablas=\(Lista\)      [Tabla.ValidacionTablas]
+LlaveLocal=\(Lista\)            [Relaciones.OtraTabla.LlaveLocal] Tablas
+CamposBusquedaRapida=\(Lista\)  [Tabla.CamposBusquedaRapida]
+ListaCampos=\(Lista\)           [Tabla.ListaCampos] Tablas
+SQL=\(Lista\)                   [Tabla.SQL] Tablas
+ListaRelaciones=\(Lista\)       [Tabla.ListaRelaciones]
+LlavePrimaria=\(Lista\)         [Tabla.ListaRelaciones]
+LlaveRemota=\(Lista\)           [Tabla.ListaRelaciones]
+ListaOpciones=\(Lista\)         [NombreCampo.ListaOpciones] Tabla
+ListaRefrescar=\(Lista\)        [NombreCampo.ListaRefrescar] Tabla
+ListaRefrescarCondiciones=\(Lista\) [NombreCampo.ListaRefrescarCondiciones] Tabla
+
+
+
+
+Modulos=\(Lista\)               [Vista.Modulos]
+CamposPropiedades=\(Lista\)     [Vista.CamposBusquedaRapida]
+ListaCalculados=\(Lista\)       [Vista.ListaCalculados] Vistas y reportes
+ListaTablas=\(Lista\)           [Vista.ListaTablas] vistas y reportes
+LlaveLocal=\(Lista\)            [Relaciones.NombreVista.NombreOtraTabla.LlaveLocal] Vistas y reportes
+CamposBusquedaRapida=\(Lista\)  [Vista.CamposBusquedaRapida]
+ListaCampos=\(Lista\)           [Vista.ListaCampos] Vistas y reportes
+SQL=\(Lista\)                   [Vista.SQL] Vistas y reportes
+ListaRelaciones=\(Lista\)       [Vista.ListaRelaciones]
+LlavePrimaria=\(Lista\)         [Vista.ListaRelaciones] Vistas y reportes
+LlaveRemota=\(Lista\)           [Vista.ListaRelaciones] Vistas y reportes
+ListaOpciones=\(Lista\)         [NombreTabla.NombreCampo.ListaOpciones] vista -- [NombreCampo.ListaOpciones] vista con VistaIndependiente=S
+ListaRefrescar=\(Lista\)        [NombreTabla.NombreCampo.ListaRefrescar] reportes, vista -- [NombreCampo.ListaRefrescar] (Vistas y reportes VistaIndependiente=S)
+ListaRefrescarCondiciones=\(Lista\) [NombreTabla.NombreCampo.ListaRefrescarCondiciones] reportes, vista -- [NombreCampo.ListaRefrescarCondiciones] (Vistas y reportes VistaIndependiente=S)
+
+
+
+                                
+
+
+
