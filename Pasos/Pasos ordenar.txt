@@ -1,0 +1,2 @@
+spValidarCamposCFDFlex cambiar el nombre de la FNSplit
+Replace4XML FEscalar cambiar de fnsplittabla a fnsplit
