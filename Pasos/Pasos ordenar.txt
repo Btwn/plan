@@ -1,2 +1,22 @@
+Cambiar la ruta de gauardado de la carpeta anexo 
+SELECT *
+FROM TablaStD
+WHERE Nombre LIKE '%V:%'
+OR Valor LIKE '%V:%'
+
+UPDATE TablaStD
+SET Nombre = 'V:\Versiones\5000Capacitacion\Anexos\'
+WHERE TablaSt = 'RUTA REPORTE UNIFICADO PARA MACRO'
+
+UPDATE TablaStD
+SET Valor = 'V:\Versiones\5000Capacitacion\Anexos\'
+WHERE TablaSt = 'RUTAS REPORTES BURO Y CARTERA'
+AND Nombre = 'CARTERA'
+
+UPDATE TablaStD
+SET Valor = 'V:\Versiones\5000Capacitacion\Anexos\Buro\'
+WHERE TablaSt = 'RUTAS REPORTES BURO Y CARTERA'
+AND Nombre = 'BURO'
+
 spValidarCamposCFDFlex cambiar el nombre de la FNSplit
 Replace4XML FEscalar cambiar de fnsplittabla a fnsplit
