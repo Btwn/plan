@@ -1,0 +1,5 @@
+Exepciones:
+
+ArtConDisponible_Anexo_Mavi.esp
+mis_ContAux_REP_MAVI.esp
+VentaT_Mayor12Meses.esp
