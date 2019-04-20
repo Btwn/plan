@@ -1,0 +1,596 @@
+[Art.tbl/Tabla]
+ListaCampos=(Lista)
+SQL=(Lista)
+
+[Art.tbl/EspaciosEspecificos]
+Clave=EspaciosEspecificos
+Nombre=Catálogo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+RefrescarTodoCondiciones=
+CondicionEdicion=
+CondicionDespliege=
+
+[Art.tbl/Espacios]
+Clave=Espacios
+Nombre=Revistón
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+RefrescarTodoCondiciones=S
+ConRefrescarCondiciones=S
+CondicionEdicion=
+CondicionDespliege=
+
+
+[Art.tbl/Categoria]
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+CondicionEdicion=Vacio(SQL(<T>SELECT CATEGORIA FROM  DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo = (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))
+ValorPorOmision=SQL(<T>SELECT CATEGORIA FROM  DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo = (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>)
+ValidacionConCondiciones=S
+Requerido=S
+
+
+[Art.tbl/Capital]
+Clave=Capital
+Nombre=Monto Capital
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+AyudaEnCaptura=Calculadora
+
+
+[Art.tbl/UltimoMov]
+Clave=UltimoMov
+Nombre=Ultimo Mov
+Visible=S
+TamanoValidacion=100
+Tamano=100
+
+
+[Art.tbl/FechaUltimoMov]
+Clave=FechaUltimoMov
+Nombre=Fecha Ultimo Mov
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa
+
+
+[Art.tbl/NivelAcceso]
+CondicionEdicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+
+[Art.tbl/Articulo]
+;CondicionEdicion=no TieneMovimientos  y
+ SQL(<T>SELECT CASE WHEN
+ (SELECT CASE WHEN CATEGORIA=<T>+comillas(<T> <T>)+<T> THEN <T>+comillas(<T><T>)+<T> ELSE CATEGORIA END
+FROM DM0144ArtPerfilesXAgrupador WHERE ID =
+(SELECT ARTD.ID FROM DM0144ArtDPerfilesXAgrupador ARTD
+WHERE ARTD.GRUPOTRABAJO =
+(SELECT U.GRUPOTRABAJO FROM USUARIO U WHERE U.USUARIO = <T>+comillas(usuario)+<T>)))=<T>+comillas(<T>ADJUDICACION<T>)+<T>
+AND
+(SELECT CASE WHEN GRUPO=<T>+comillas(<T> <T>)+<T> THEN <T>+comillas(<T><T>)+<T> ELSE GRUPO END
+FROM DM0144ArtPerfilesXAgrupador WHERE ID =
+(SELECT ARTD.ID FROM DM0144ArtDPerfilesXAgrupador ARTD
+WHERE ARTD.GRUPOTRABAJO =
+(SELECT U.GRUPOTRABAJO FROM USUARIO U WHERE U.USUARIO = <T>+comillas(usuario)+<T>)))=<T>+comillas(<T>MERCANCIA ESPECIAL<T>)+<T>
+ THEN 0 ELSE 1 END<T>)=1
+;*****CQ DM0144 Se modifico la condicion para la edicion del campo (23/08/2011)
+;CondicionEdicion=vacio(SQL(<T>SELECT CATEGORIA  FROM  DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo = (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))
+;*****CQ DM0144 Se modifica la condición de edición del campo (25/08/2011)
+;CondicionEdicion=(((SQL(<T>SELECT CATEGORIA FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =
+  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>ADJUDICACION<T>) Y
+  ((SQL(<T>SELECT GRUPO FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =
+  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>MERCANCIA ESPECIAL<T>))
+;CondicionEdicion002=<CONTINUA>JUDICACION<T>)
+
+  Informacion
+  ((SQL(<T>SELECT GRUPO FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =
+  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>MERCANCIA ESPECIAL<T>)
+
+  Informacion
+  ((SQL(<T>SELECT CATEGORIA FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =
+  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>ADJUDICACION<T>) Y
+  ((SQL(<T>SELECT GRUPO FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =
+  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>MERCANCIA ESP<CONTINUA>
+;CondicionEdicion003=<CONTINUA>ECIAL<T>)
+;CondicionEdicion=Izquierda(SQL(<T>SELECT Usuario FROM dbo.Usuario WHERE Usuario =:tUsu<T>,Usuario),5)  = <T>GERAD<T>
+CondicionEdicion=SI SQL(<T>SELECT COUNT(Articulo) FROM dbo.Art WHERE Articulo=:tArt<T>,Articulo)=1<BR>ENTONCES<BR>    SI<BR> Izquierda(SQL(<T>SELECT Usuario FROM dbo.Usuario WHERE Usuario =:tUsu<T>,Usuario),5)  = <T>GERAD<T><BR>    ENTONCES<BR>        VERDADERO<BR>    SINO<BR>        FALSO<BR>    FIN<BR>    SINO<BR>    VERDADERO<BR>    FIN
+
+
+
+;**** Integracion de campo Grupo para desarrollo DM0144 Catalogo Articulos dentro del paquete DM0144_30082011. JR 31-Ago-2011. ****
+[Art.tbl/Grupo]
+;***** JAVT DM0144 08/08/2011 Se condiciono campo
+;CondicionEdicion=vacio(Grupo)
+;*****CQ DM0144 Se condiciono el campo, se dio valor por omisión y es requerido oblogatoriamente (18/08/2011)
+CondicionEdicion=Vacio(SQL(<T>SELECT GRUPO FROM  DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo = (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))
+ValorPorOmision=SQL(<T>SELECT GRUPO FROM  DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo = (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>)
+ValidacionConCondiciones=S
+;*****CQ DM0144 Se abligan los campos a ser capturados (25/08/2011)
+Requerido=S
+
+
+;**** Integracion de campo Familia para desarrollo DM0144 Catalogo Articulos dentro del paquete DM0144_30082011. JR 31-Ago-2011. ****
+[Art.tbl/Familia]
+;***** JAVT DM0144 08/08/2011 Se condiciono campo
+;CondicionEdicion=vacio(Familia)
+;*****CQ DM0144 Se condiciono el campo, se dio valor por omisión y es requerido oblogatoriamente (18/08/2011)
+CondicionEdicion=Vacio(SQL(<T>SELECT FAMILIA FROM  DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo = (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))
+ValorPorOmision=SQL(<T>SELECT FAMILIA FROM  DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo = (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>)
+ValidacionConCondiciones=S
+;*****CQ DM0144 Se abligan los campos a ser capturados (25/08/2011)
+Requerido=S
+
+
+; **** Integracion de modificacion a CondicionEdicion para el desarrollo DM0144 Catalogo Articulos dentro del paquete DM0144_02062012. JR 05-Jun-2012. ****
+; **** Integracion de modificacion a CondicionEdicion para el desarrollo DM0144 Catalogo Articulos dentro del paquete DM0144_06062012. JR 07-Jun-2012. ****
+[Art.tbl/Descripcion1]
+;CondicionEdicion=Izquierda(SQL(<T>SELECT Usuario FROM dbo.Usuario WHERE Usuario =:tUsu<T>,Usuario),5)  = <T>GERAD<T>
+CondicionEdicion=SI SQL(<T>SELECT COUNT(Descripcion1) FROM dbo.Art WHERE Descripcion1=:tArt<T>,Descripcion1)=1<BR>ENTONCES<BR>    SI Izquierda(SQL(<T>SELECT Usuario FROM dbo.Usuario WHERE Usuario =:tUsu<T>,Usuario),5)  = <T>GERAD<T><BR>      ENTONCES <BR>        VERDADERO<BR>    SINO<BR>        FALSO                     <BR>    FIN<BR>    SINO<BR>    VERDADERO<BR>    FIN
+
+;integracion del paquete DM0270 campos nuevos para ecommerce fernando romero 25/05/2016
+[Art.tbl/MarcaE]
+Clave=MarcaE
+Nombre=Marca
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaMemOpc=Unicamente opciones listadas
+AyudaMemEnBlanco=S
+Mayusculas=S
+AyudaForma=DM0270MarcasFrm
+AyudaVista=DM0270MarcasVis
+AyudaCampo=Marca
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>select count(Marca) From DM0270CatalogoMarcas Where Marca=:tmar<T>,Art:Art.MarcaE) > 0
+ValidacionMensajeError=<T>no existe esa marca en el catalogo<T>
+
+[Art.tbl/ModeloE]
+Clave=ModeloE
+Nombre=Modelo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+
+[Art.tbl/LineaE]
+Clave=LineaE
+Nombre=Tipo Ecommerce
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaMemOpc=Unicamente opciones listadas
+AyudaMemEnBlanco=S
+Mayusculas=S
+AyudaForma=DM0270tipoFrm
+AyudaVista=DM0270tipovis
+AyudaCampo=Tipo
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>select Count(Tipo) from DM0270CatalogoTipo Where Tipo=:tti<T>,Art:Art.lineaE) > 0
+ValidacionMensajeError=<T>Este tipo no existe en el catalgo<T>
+
+
+[Art.tbl/NombreCorto]
+Nombre=Nombre Ecommerce
+TamanoValidacion=255
+Tamano=255
+CondicionEdicion=1=0
+
+[Art.tbl/Linea]
+Requerido=S
+
+[Art.tbl/CtaCliente]
+Clave=CtaCliente
+Nombre=CtaCliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=9
+TipoDatos=Texto
+Tamano=9
+
+[Art.tbl/TipoEntradaMavi]
+Clave=TipoEntradaMavi
+Nombre=TipoEntradaMavi
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+
+[Art.tbl/codigopadre]
+Clave=codigopadre
+Nombre=codigopadre
+Visible=S
+TamanoValidacion=11
+Tamano=11
+
+[Art.tbl/espadre]
+Clave=espadre
+Nombre=espadre
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+[Art.tbl/FechaLanzamiento]
+Clave=FechaLanzamiento
+Nombre=Fecha Lanzamiento
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+
+[Art.tbl/FechaVigencia]
+Clave=FechaVigencia
+Nombre=Fecha Vigencia
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+
+[Art.tbl/CamasTarima]
+Clave=CamasTarima
+Nombre=Camas por tarima
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=CantidadTarima
+CondicionDespliege=Tipo<><T>Serie<T>
+
+[Art.tbl/EsFactory]
+Clave=EsFactory
+Nombre=Es Artículo Factory
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+RefrescarTodo=S
+CondicionDespliege=General.ProdInterfazINFOR
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+
+[Art.tbl/NivelToleranciaCosto]
+Clave=NivelToleranciaCosto
+Nombre=Nivel Tolerancia Costo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=<T>(Empresa)<T>
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=(Lista)
+ListaOpciones=(Lista)
+TipoDatos=Texto
+
+[Art.tbl/TipoImpuesto1]
+Clave=TipoImpuesto1
+Nombre=Tipo Impuesto 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+AyudaEnCaptura=Vista
+AyudaMemTabla=TipoImpuesto1
+AyudaMemRenglones=12
+AyudaMemOpc=Unicamente opciones listadas
+AyudaForma=TipoImpuesto1Lista
+AyudaVista=TipoImpuesto1
+AyudaCampo=TipoImpuesto1.TipoImpuesto
+ValorMinimo=SQL(<T>SELECT MIN(TipoImpuesto) FROM TipoImpuesto1<T>)
+ValorMaximo=SQL(<T>SELECT MAX(TipoImpuesto) FROM TipoImpuesto1<T>)
+
+[Art.tbl/ToleranciaCosto]
+Clave=ToleranciaCosto
+Nombre=% Tolerancia Costo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+AyudaEnCaptura=Calculadora
+ValorMinimo=0
+CondicionDespliege=NivelToleranciaCosto = <T>Articulo<T>
+
+[Art.tbl/Tabla.ListaCampos]
+(Inicio)=Articulo
+Articulo=Rama
+Rama=Descripcion1
+Descripcion1=Descripcion2
+Descripcion2=NombreCorto
+NombreCorto=Grupo
+Grupo=Categoria
+Categoria=CategoriaActivoFijo
+CategoriaActivoFijo=Familia
+Familia=Fabricante
+Fabricante=Linea
+Linea=ClaveFabricante
+ClaveFabricante=Impuesto1
+Impuesto1=Impuesto2
+Impuesto2=Impuesto3
+Impuesto3=Factor
+Factor=Unidad
+Unidad=UnidadCompra
+UnidadCompra=UnidadTraspaso
+UnidadTraspaso=UnidadCantidad
+UnidadCantidad=TipoCosteo
+TipoCosteo=Peso
+Peso=Tara
+Tara=Volumen
+Volumen=Tipo
+Tipo=TipoOpcion
+TipoOpcion=Accesorios
+Accesorios=Refacciones
+Refacciones=Servicios
+Servicios=Consumibles
+Consumibles=MonedaCosto
+MonedaCosto=MonedaPrecio
+MonedaPrecio=MargenMinimo
+MargenMinimo=PrecioMinimo
+PrecioMinimo=DescuentoCompra
+DescuentoCompra=PrecioLista
+PrecioLista=FactorAlterno
+FactorAlterno=PrecioAnterior
+PrecioAnterior=Utilidad
+Utilidad=Comision
+Comision=Arancel
+Arancel=ABC
+ABC=Clase
+Clase=Estatus
+Estatus=EstatusPrecio
+EstatusPrecio=UltimoCambio
+UltimoCambio=Sustitutos
+Sustitutos=Alta
+Alta=Conciliar
+Conciliar=Mensaje
+Mensaje=Precio2
+Precio2=Precio3
+Precio3=Precio4
+Precio4=Precio5
+Precio5=Precio6
+Precio6=Precio7
+Precio7=Precio8
+Precio8=Precio9
+Precio9=Precio10
+Precio10=Refrigeracion
+Refrigeracion=TieneCaducidad
+TieneCaducidad=ProdCantidad
+ProdCantidad=ProdUsuario
+ProdUsuario=CategoriaProd
+CategoriaProd=ProdPasoTotal
+ProdPasoTotal=ProdMov
+ProdMov=ProdMovGrupo
+ProdMovGrupo=ProdOpciones
+ProdOpciones=ProdEstacion
+ProdEstacion=wMostrar
+wMostrar=TiempoEntrega
+TiempoEntrega=TiempoEntregaUnidad
+TiempoEntregaUnidad=TiempoEntregaSeg
+TiempoEntregaSeg=TiempoEntregaSegUnidad
+TiempoEntregaSegUnidad=Merma
+Merma=Desperdicio
+Desperdicio=Usuario
+Usuario=ProdRuta
+ProdRuta=InvSeguridad
+InvSeguridad=SeVende
+SeVende=SeCompra
+SeCompra=SeProduce
+SeProduce=EsFormula
+EsFormula=LoteOrdenar
+LoteOrdenar=CantidadOrdenar
+CantidadOrdenar=MultiplosOrdenar
+MultiplosOrdenar=AlmacenROP
+AlmacenROP=ProdVerCostoAcumulado
+ProdVerCostoAcumulado=ProdVerMerma
+ProdVerMerma=ProdVerDesperdicio
+ProdVerDesperdicio=ProdVerConcentracion
+ProdVerConcentracion=RevisionUsuario
+RevisionUsuario=RevisionUltima
+RevisionUltima=RevisionFrecuencia
+RevisionFrecuencia=RevisionFrecuenciaUnidad
+RevisionFrecuenciaUnidad=RevisionSiguiente
+RevisionSiguiente=Situacion
+Situacion=SituacionFecha
+SituacionFecha=SituacionUsuario
+SituacionUsuario=SituacionNota
+SituacionNota=TipoCompra
+TipoCompra=TieneMovimientos
+TieneMovimientos=Registro1
+Registro1=Registro1Vencimiento
+Registro1Vencimiento=AlmacenEspecificoVenta
+AlmacenEspecificoVenta=AlmacenEspecificoVentaMov
+AlmacenEspecificoVentaMov=CostoEstandar
+CostoEstandar=CostoReposicion
+CostoReposicion=EstatusCosto
+EstatusCosto=Margen
+Margen=RutaDistribucion
+RutaDistribucion=Proveedor
+Proveedor=NivelAcceso
+NivelAcceso=ProdVerPorcentaje
+ProdVerPorcentaje=Temporada
+Temporada=SolicitarPrecios
+SolicitarPrecios=AutoRecaudacion
+AutoRecaudacion=Concepto
+Concepto=Cuenta
+Cuenta=Espacios
+Espacios=EspaciosEspecificos
+EspaciosEspecificos=EspaciosSobreventa
+EspaciosSobreventa=EspaciosNivel
+EspaciosNivel=EspaciosBloquearAnteriores
+EspaciosBloquearAnteriores=EspaciosHoraD
+EspaciosHoraD=EspaciosHoraA
+EspaciosHoraA=EspaciosMinutos
+EspaciosMinutos=Retencion1
+Retencion1=Retencion2
+Retencion2=Retencion3
+Retencion3=BasculaPesar
+BasculaPesar=SerieLoteInfo
+SerieLoteInfo=CantidadMinimaVenta
+CantidadMinimaVenta=CantidadMaximaVenta
+CantidadMaximaVenta=EstimuloFiscal
+EstimuloFiscal=OrigenPais
+OrigenPais=OrigenLocalidad
+OrigenLocalidad=Incentivo
+Incentivo=FactorCompra
+FactorCompra=Horas
+Horas=ISAN
+ISAN=ExcluirDescFormaPago
+ExcluirDescFormaPago=EsDeducible
+EsDeducible=Peaje
+Peaje=CodigoAlterno
+CodigoAlterno=TipoCatalogo
+TipoCatalogo=AnexosAlFacturar
+AnexosAlFacturar=CaducidadMinima
+CaducidadMinima=Actividades
+Actividades=ValidarPresupuestoCompra
+ValidarPresupuestoCompra=SeriesLotesAutoOrden
+SeriesLotesAutoOrden=LotesFijos
+LotesFijos=LotesAuto
+LotesAuto=Consecutivo
+Consecutivo=TipoEmpaque
+TipoEmpaque=Modelo
+Modelo=Version
+Version=TieneDireccion
+TieneDireccion=Direccion
+Direccion=DireccionNumero
+DireccionNumero=DireccionNumeroInt
+DireccionNumeroInt=EntreCalles
+EntreCalles=Plano
+Plano=Observaciones
+Observaciones=Colonia
+Colonia=Poblacion
+Poblacion=Estado
+Estado=Pais
+Pais=CodigoPostal
+CodigoPostal=Delegacion
+Delegacion=Ruta
+Ruta=Codigo
+Codigo=ClaveVehicular
+ClaveVehicular=TipoVehiculo
+TipoVehiculo=DiasLibresIntereses
+DiasLibresIntereses=PrecioLiberado
+PrecioLiberado=ValidarCodigo
+ValidarCodigo=Presentacion
+Presentacion=GarantiaPlazo
+GarantiaPlazo=CostoIdentificado
+CostoIdentificado=CantidadTarima
+CantidadTarima=UnidadTarima
+UnidadTarima=DepartamentoDetallista
+DepartamentoDetallista=TratadoComercial
+TratadoComercial=CuentaPresupuesto
+CuentaPresupuesto=ProgramaSectorial
+ProgramaSectorial=ArancelDesperdicio
+ArancelDesperdicio=PedimentoClave
+PedimentoClave=PedimentoRegimen
+PedimentoRegimen=Permiso
+Permiso=PermisoRenglon
+PermisoRenglon=MinimoTarima
+MinimoTarima=Cuenta2
+Cuenta2=Cuenta3
+Cuenta3=Impuesto1Excento
+Impuesto1Excento=InflacionPresupuesto
+InflacionPresupuesto=CalcularPresupuesto
+CalcularPresupuesto=Excento2
+Excento2=Excento3
+Excento3=Capital
+Capital=UltimoMov
+UltimoMov=FechaUltimoMov
+FechaUltimoMov=MarcaE
+MarcaE=ModeloE
+ModeloE=LineaE
+LineaE=CtaCliente
+CtaCliente=TipoEntradaMavi
+TipoEntradaMavi=codigopadre
+codigopadre=espadre
+espadre=FechaLanzamiento
+FechaLanzamiento=FechaVigencia
+FechaVigencia=CamasTarima
+CamasTarima=EsFactory
+EsFactory=NivelToleranciaCosto
+NivelToleranciaCosto=TipoImpuesto1
+TipoImpuesto1=ToleranciaCosto
+ToleranciaCosto=ContUso
+ContUso=ContUso2
+ContUso2=ContUso3
+ContUso3=ToleranciaCostoInferior
+ToleranciaCostoInferior=ObjetoGasto
+ObjetoGasto=ObjetoGastoRef
+ObjetoGastoRef=Estructura
+Estructura=ClavePresupuestalImpuesto1
+ClavePresupuestalImpuesto1=ClavePresupuestalRetencion1
+ClavePresupuestalRetencion1=TipoImpuesto2
+TipoImpuesto2=TipoImpuesto3
+TipoImpuesto3=TipoImpuesto4
+TipoImpuesto4=TipoRetencion1
+TipoRetencion1=TipoRetencion2
+TipoRetencion2=TipoRetencion3
+TipoRetencion3=TipoImpuesto5
+TipoImpuesto5=ISBN
+ISBN=SAUX
+SAUX=TipoArticulo
+TipoArticulo=INFORClavePrincipal
+INFORClavePrincipal=INFORStockMinimo
+INFORStockMinimo=INFORStockMaximo
+INFORStockMaximo=INFORPrefijo
+INFORPrefijo=INFORSufijo
+INFORSufijo=CodigoEstructura
+CodigoEstructura=INFORTipo
+INFORTipo=INFORCuarentena
+INFORCuarentena=INFORClavePlanta
+INFORClavePlanta=INFORTrazabilidad
+INFORTrazabilidad=INFORLotificacionPropia
+INFORLotificacionPropia=INFORUltimoNumeroLote
+INFORUltimoNumeroLote=INFORUnidadesMaximaLote
+INFORUnidadesMaximaLote=INFORTieneNoSerie
+INFORTieneNoSerie=INFORSMR
+INFORSMR=INFORTipoDeAsignacion
+INFORTipoDeAsignacion=INFORNoSerie
+INFORNoSerie=INFORFormato
+INFORFormato=INFORAlmacenProd
+INFORAlmacenProd=ReferenciaIntelisisService
+ReferenciaIntelisisService=TipoVariante
+TipoVariante=AltoTarima
+AltoTarima=LargoTarima
+LargoTarima=AnchoTarima
+AnchoTarima=TaraTarima
+TaraTarima=VolumenTarima
+VolumenTarima=PesoTarima
+PesoTarima=CantidadCamaTarima
+CantidadCamaTarima=EstibaMaxima
+EstibaMaxima=ControlArticulo
+ControlArticulo=DiasControlCaducidad
+DiasControlCaducidad=EstibaMismaFecha
+EstibaMismaFecha=TipoRotacion
+TipoRotacion=PermiteEstibar
+PermiteEstibar=EmidaRecargaTelefonica
+EmidaRecargaTelefonica=EmidaTiempoAire
+EmidaTiempoAire=POSForma
+POSForma=LDI
+LDI=LDIServicio
+LDIServicio=TarimasReacomodar
+TarimasReacomodar=Calificacion
+Calificacion=MFATipoDeducibilidad
+MFATipoDeducibilidad=ArticuloWeb
+ArticuloWeb=CantidadPresentacion
+CantidadPresentacion=POSAgenteDetalle
+POSAgenteDetalle=MaterialPeligroso
+MaterialPeligroso=SMR
+SMR=AlmMesComs
+AlmMesComs=MinimoCompra
+MinimoCompra=StockMinimo
+StockMinimo=StockMaximo
+StockMaximo=(Fin)
+

@@ -18,5 +18,20 @@ SET Valor = 'V:\Versiones\5000Capacitacion\Anexos\Buro\'
 WHERE TablaSt = 'RUTAS REPORTES BURO Y CARTERA'
 AND Nombre = 'BURO'
 
+
+----------------------------------------------------------
+
 spValidarCamposCFDFlex cambiar el nombre de la FNSplit
 Replace4XML FEscalar cambiar de fnsplittabla a fnsplit
+
+
+----------------------------------------------------------
+
+Dar de alta los usuarios faltantes en UsuarioD
+
+INSERT INTO UsuarioD
+SELECT U.Usuario,'MAVI'
+FROM Usuario U
+LEFT JOIN UsuarioD D ON U.Usuario=D.Usuario
+WHERE U.Estatus='ALTA'
+AND D.Usuario IS NULL

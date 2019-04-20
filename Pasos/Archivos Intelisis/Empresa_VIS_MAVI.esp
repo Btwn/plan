@@ -1,0 +1,12 @@
+
+
+[Empresa.vis/Empresa.FiscalRegimen]
+Nombre=FiscalRegimen
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista(<T>SELECT FiscalRegimen FROM FiscalRegimen<T>)
+
+

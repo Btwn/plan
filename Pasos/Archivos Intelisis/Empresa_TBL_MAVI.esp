@@ -1,0 +1,15 @@
+
+
+
+[Empresa.tbl/FiscalRegimen]
+Nombre=FiscalRegimen
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>SELECT FiscalRegimen FROM FiscalRegimen<T>)
+
+
+
+
+

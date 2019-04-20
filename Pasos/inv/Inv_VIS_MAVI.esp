@@ -1,0 +1,42 @@
+
+
+;**** Ultima modificación:23-Jun-08
+;**** Modifico:Arly Rubio
+;**** Se modifico: Se agrego un nuevo campo a la vista: ContUsoMAVI
+
+
+
+;***** Se agregaron nuevos campos: ContUsoMAVI *****
+[Inv.vis/Vista.ListaCampos]
+Inv.Actividad=Inv.ContUsoMAVI
+Inv.ContUsoMAVI=Inv.PedimentoExtraccion
+
+[Inv.vis/Vista.SQL]
+Inv.Actividad,=Inv.ContUsoMAVI,
+Inv.ContUsoMAVI,=Inv.PedimentoExtraccion,
+
+
+
+
+
+;**** Nuevo Campo Agregado *****
+[Inv.vis/Inv.ContUsoMAVI]
+Clave=Inv.ContUsoMAVI
+Nombre=Centro de Costos
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=CentroCostosLista
+AyudaVista=CentroCostosLista
+AyudaCampo=CentroCostosLista.CentroCostos
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>Select Count(CentroCostos) From CentroCostos where CentroCostos=:tCC<T>,Inv.ContUsoMAVI)
+ValidacionMensajeError=<T>Seleccione un Centro de Costos correcto<T>
+LigaTabla=Inv
+LigaCampo=ContUsoMAVI
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=ContUsoMAVI
+
