@@ -1,0 +1,14 @@
+@ECHO OFF
+SET SERVER_NAME=VMINTELISISTMP1
+SET DB_NAME=IntelisisTmp
+SET USER_SQL=cadiaz
+SET PASS_SQL=
+SET OUTPUT_FILE=C:\cadiaz\mavi\intelisis\Encriptados\ejecucion_scripts.txt
+SET FILE_SCRIPTS=C:\cadiaz\mavi\intelisis\Encriptados\listaOrden.txt
+SET PATH_PARENT_FOLDER_SCRIPTS=C:\cadiaz\mavi\intelisis\Encriptados\DBForceDesencriptados
+ECHO "%PATH_PARENT_FOLDER_SCRIPTS%\%%i"
+::FOR /F "tokens=*" %%i IN ("%FILE_SCRIPTS%") DO sqlcmd -S %SERVER_NAME% -d %DB_NAME% -U %USER_SQL% -P %PASS_SQL% -o "%OUTPUT_FILE%" -i "%PATH_PARENT_FOLDER_SCRIPTS%\%%i"
+FOR /F "tokens=*" %%i IN (%FILE_SCRIPTS%) DO sqlcmd -S %SERVER_NAME% -d %DB_NAME% -U %USER_SQL% -P %PASS_SQL% -o "%OUTPUT_FILE%" -i "%PATH_PARENT_FOLDER_SCRIPTS%\%%i"
+::FOR /F "tokens=*" %%i IN ("%FILE_SCRIPTS%")
+::ECHO "%PATH_PARENT_FOLDER_SCRIPTS%\%%i"
+pause
