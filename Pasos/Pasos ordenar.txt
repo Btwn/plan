@@ -19,6 +19,10 @@ WHERE TablaSt = 'RUTAS REPORTES BURO Y CARTERA'
 AND Nombre = 'BURO'
 
 
+Poner una nomina concluida en su estatus
+
+
+
 ----------------------------------------------------------
 
 spValidarCamposCFDFlex cambiar el nombre de la FNSplit

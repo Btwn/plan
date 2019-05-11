@@ -1,0 +1,17 @@
+DM0175VTASSucursalesFrm.frm
+DM0211GenPagosMovFrm.frm
+DM0224FiltroSucursalFrm.frm
+RM0042AnnoFiltroFrm.frm
+RM0042DiasFiltroFrm.frm
+RM0074EstatusFrm.frm
+RM1042FamiliaFiltroFrm.frm
+RM1042IdEmbFiltroFrm.frm
+RM1042ListadoOrdTraspFrm.frm
+RM1042TipoEmbFiltroFrm.frm
+RM1113NominasFrm.frm
+RM1143ExploradorSucursalesFrm.frm
+
+
+Solucion:
+Si la carpeta tiene: Estilo=Iconos y BusquedaLocal=S
+Cambiar a BusquedaEnLinea=S

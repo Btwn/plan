@@ -1,0 +1,131 @@
+[Vista]
+Icono=0
+Clave=DM0230RecuperacionCtesVis
+Modulos=(Todos)
+ListaTablas=DM0230RecuperacionCtesTbl
+TablaPrincipal=DM0230RecuperacionCtesTbl
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=(Lista)
+ListaCampos002=<CONTINUA>230RecuperacionCtesTbl.SubCalificacion
+CamposBusquedaRapida=(Lista)
+SQL=(Lista)
+[DM0230RecuperacionCtesTbl.Fecha]
+Clave=DM0230RecuperacionCtesTbl.Fecha
+LigaTabla=DM0230RecuperacionCtesTbl
+LigaCampo=Fecha
+TipoDatos=FechaHora
+ClaveBDE=Fecha
+TamanoValidacion=10
+Alineacion=por Omisión
+BloqueaEdicion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorRefrescar=TextoEnNum( DM0230RecuperacionCtesTbl.Fecha )
+[DM0230RecuperacionCtesTbl.Clave]
+Clave=DM0230RecuperacionCtesTbl.Clave
+LigaTabla=DM0230RecuperacionCtesTbl
+LigaCampo=Clave
+Tamano=100
+ClaveBDE=Clave
+TamanoValidacion=10
+Alineacion=por Omisión
+BloqueaEdicion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+TipoDatos=Texto
+[DM0230RecuperacionCtesTbl.Telefono]
+Clave=DM0230RecuperacionCtesTbl.Telefono
+LigaTabla=DM0230RecuperacionCtesTbl
+LigaCampo=Telefono
+Tamano=0
+ClaveBDE=Telefono
+TamanoValidacion=10
+Alineacion=por Omisión
+BloqueaEdicion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+[DM0230RecuperacionCtesTbl.Calificacion]
+Clave=DM0230RecuperacionCtesTbl.Calificacion
+LigaTabla=DM0230RecuperacionCtesTbl
+LigaCampo=Calificacion
+Tamano=100
+ClaveBDE=Calificacion
+TamanoValidacion=10
+Alineacion=por Omisión
+BloqueaEdicion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+TipoDatos=Texto
+[DM0230RecuperacionCtesTbl.Login]
+Clave=DM0230RecuperacionCtesTbl.Login
+LigaTabla=DM0230RecuperacionCtesTbl
+LigaCampo=Login
+Tamano=100
+ClaveBDE=Login
+TamanoValidacion=10
+Alineacion=por Omisión
+BloqueaEdicion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+TipoDatos=Texto
+[DM0230RecuperacionCtesTbl.Agente]
+Clave=DM0230RecuperacionCtesTbl.Agente
+LigaTabla=DM0230RecuperacionCtesTbl
+LigaCampo=Agente
+Tamano=100
+ClaveBDE=Agente
+TamanoValidacion=10
+Alineacion=por Omisión
+BloqueaEdicion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+TipoDatos=Texto
+
+
+
+
+[DM0230RecuperacionCtesTbl.Error]
+Clave=DM0230RecuperacionCtesTbl.Error
+LigaTabla=DM0230RecuperacionCtesTbl
+LigaCampo=Error
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Error
+
+[Vista.ListaCampos]
+(Inicio)=DM0230RecuperacionCtesTbl.Fecha
+DM0230RecuperacionCtesTbl.Fecha=DM0230RecuperacionCtesTbl.Clave
+DM0230RecuperacionCtesTbl.Clave=DM0230RecuperacionCtesTbl.Telefono
+DM0230RecuperacionCtesTbl.Telefono=DM0230RecuperacionCtesTbl.Calificacion
+DM0230RecuperacionCtesTbl.Calificacion=DM0230RecuperacionCtesTbl.Login
+DM0230RecuperacionCtesTbl.Login=DM0230RecuperacionCtesTbl.Agente
+DM0230RecuperacionCtesTbl.Agente=DM0230RecuperacionCtesTbl.Error
+DM0230RecuperacionCtesTbl.Error=(Fin)
+
+[Vista.SQL]
+(Inicio)=SELECT
+SELECT=DM0230RecuperacionCtesTbl.Fecha,
+DM0230RecuperacionCtesTbl.Fecha,=DM0230RecuperacionCtesTbl.Clave,
+DM0230RecuperacionCtesTbl.Clave,=DM0230RecuperacionCtesTbl.Telefono,
+DM0230RecuperacionCtesTbl.Telefono,=DM0230RecuperacionCtesTbl.Calificacion,
+DM0230RecuperacionCtesTbl.Calificacion,=DM0230RecuperacionCtesTbl.Login,
+DM0230RecuperacionCtesTbl.Login,=DM0230RecuperacionCtesTbl.Agente,
+DM0230RecuperacionCtesTbl.Agente,=DM0230RecuperacionCtesTbl.Error
+DM0230RecuperacionCtesTbl.Error=FROM DM0230RecuperacionCtesTbl
+FROM DM0230RecuperacionCtesTbl=(Fin)
+
+[Vista.CamposBusquedaRapida]
+(Inicio)=DM0230RecuperacionCtesTbl.Fecha
+DM0230RecuperacionCtesTbl.Fecha=DM0230RecuperacionCtesTbl.Clave
+DM0230RecuperacionCtesTbl.Clave=DM0230RecuperacionCtesTbl.Agente
+DM0230RecuperacionCtesTbl.Agente=(Fin)

@@ -1,0 +1,8 @@
+DM0221SucursalLiberaFrm.frm
+
+Error:
+	[Sucursal]
+	BusquedaLocal=S
+Solucion:
+	[Sucursal]
+	BusquedaEnLinea=S

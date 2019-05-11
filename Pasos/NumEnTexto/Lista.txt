@@ -1,0 +1,7 @@
+DM0500BCuotasResumenRep.rep
+
+Error:
+	Expresion=NumEnTexto( GAREQUERIDO,<T>$##,###,###<T>)
+
+Solucion
+	Expresion=<T>$<T>+NumEnTexto( GAREQUERIDO,<T>##,###,###<T>)
