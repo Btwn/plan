@@ -1,0 +1,8 @@
+RM0949CxcCtrlEnvCobInstFrm.frm
+
+Error:
+	No actualiza
+
+Solucion
+	Poner en Modo exclusivo VentanaExclusiva=S
+	y VentanaRepetir=S ventana repetir forma
