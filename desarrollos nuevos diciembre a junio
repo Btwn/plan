@@ -1,0 +1,302 @@
+[MenuPrincipal.dlg/Acciones.Config.MonederoXBienvenida]
+Nombre=Config.MonederoXBienvenida
+Boton=0
+Menu=C&onfigurar
+NombreDesplegar=Párametros Bono Cliente DIMA
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0350MonederoXBienvenidaFrm
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.CotizadorCOMSImportacion]
+Nombre=Herramienta.CotizadorCOMSImportacion
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=DM0348 Tabla De Parametros Cotizador Compras
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0348COMSAutenticacionFrm
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.DM0336VTASGestionarPedidosDeMagentoPrincipalFrm]
+Nombre=Herramienta.DM0336VTASGestionarPedidosDeMagentoPrincipalFrm
+Boton=0
+NombreDesplegar=DM0336 Cambio De Estatus Y Asignacion De Tracking Number
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0336VTASGestionarPedidosDeMagentoPrincipalFrm
+Activo=S
+Visible=S
+Menu=&Herramientas
+
+[MenuPrincipal.dlg/Acciones.Herramienta.DashboardAfiliacionDima]
+Nombre=Herramienta.DashboardAfiliacionDima
+Boton=0
+NombreDesplegar=Dashboard Afiliacion Dima
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\DashboardAfiliacionDima\DashboardAfiliacionDima.exe)
+
+[MenuPrincipal.dlg/Acciones.EXPCobrosGestores]
+Nombre=EXPCobrosGestores
+Boton=0
+NombreDesplegar=Cobros Gestores Cobranza
+EnMenu=S
+Activo=S
+Visible=S
+Menu=E&xploradores Mavi
+TipoAccion=Expresion
+Expresion=Ejecutar(<T>PlugIns\CobrosGestoresCobranza\CobrosGestoresCobranza.exe <T>+usuario+<T> <T>+Comillas(Sucursal)+<T> <T>+EstacionTrabajo)
+
+[MenuPrincipal.dlg/Acciones.Herramienta.EstadoCuentaBancomer]
+Nombre=Herramienta.EstadoCuentaBancomer
+Boton=0
+NombreDesplegar=Estado de Cuenta Bancomer
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\EstadoCuentaBancomer\EstadoCuentaBancomerH2H.exe <T>+<T>ESTADOC<T>)
+
+[MenuPrincipal.dlg/Acciones.Herramienta.Macros]
+Nombre=Herramienta.Macros
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=Configuracion Reporte Macros
+EnMenu=S
+TipoAccion=Dialogos
+ClaveAccion=Mavi.DM0341MenuMacrosDlg
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.ReduccionAsignacionDistribucion]
+Nombre=Herramienta.ReduccionAsignacionDistribucion
+Boton=0
+NombreDesplegar=Reducción Automática Asignación Distribución
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\ReduccionAsignacionDistribucion\ReduccionAsignacionDistribucion.exe <T>+Usuario)
+
+; Accion para preliminar c#
+[MenuPrincipal.dlg/Acciones.EXPPrelCobroNet]
+Nombre=EXPPrelCobroNet
+Boton=0
+NombreDesplegar=Preliminar de Cobro Net
+EnMenu=S
+Activo=S
+Visible=S
+Menu=E&xploradores Mavi
+TipoAccion=Expresion
+Expresion=Ejecutar(<T>PlugIns\PreliminardeCobro\PreliminarCobro.exe <T>+Comillas(usuario)+<T> <T>+Comillas(basedatos))
+
+[MenuPrincipal.dlg/Acciones.Herramienta.TarjetaDepartamental]
+Nombre=Herramienta.TarjetaDepartamental
+Boton=0
+NombreDesplegar=Tarjeta Departamental
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\TarjetaDepartamental\tarjetaDepartamental.exe  <T>+2+<T> <T>+Usuario+<T> <T>+Sucursal)
+
+[MenuPrincipal.dlg/Acciones.Herramienta.TarjetaPorSucursal]
+Nombre=Herramienta.TarjetaPorSucursal
+Boton=0
+NombreDesplegar=Tarjeta Por Sucursal
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\TarjetaPorSucursal\TarjetasPorSucursal.exe)
+
+[MenuPrincipal.dlg/Acciones.Herramienta.TableroDeControlDima]
+Nombre=Herramienta.TableroDeControlDima
+Boton=0
+NombreDesplegar=Tablero De Control Dima
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\TableroControlDima\TableroDeControlDima.exe <T>+Usuario)
+
+[MenuPrincipal.dlg/Acciones.Herramienta.ACD0041CoordinadoresDima]
+Nombre=Herramienta.ACD0041CoordinadoresDima
+Boton=0
+NombreDesplegar=Configuracion de la App Coordinadores DIMA
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\AppCoordinadoresDIMA\DIMASubgerentes.exe  <T>)
+
+[MenuPrincipal.dlg/Acciones.Config.DM0264Excepciones]
+Nombre=Config.DM0264Excepciones
+Boton=0
+Menu=C&onfigurar
+NombreDesplegar=DM0264 Excepciones Monedero Red DIMA
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0264ExcepcionesFrm
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Config.DisminucionCreditoBF]
+Nombre=Config.DisminucionCreditoBF
+Boton=0
+Menu=C&onfigurar
+NombreDesplegar=Disminución Linea de Crédito BF
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0351DisminucionLineaCreditoBFFrm
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.MetodosPagoMagento]
+Nombre=Herramienta.MetodosPagoMagento
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=Metodos de Pago de Magento
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0336VTAScMetodosPagoMagentoFrm
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.ProvisionDeFlujos]
+Nombre=Herramienta.ProvisionDeFlujos
+Boton=0
+NombreDesplegar=ProvisionDeFlujos
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\ProvisionDeFlujos\ProvisionDeFlujos.exe <T>+Usuario)
+
+
+[MenuPrincipal.dlg/Acciones.Herramienta.DepRefBancomer]
+Nombre=Herramienta.DepRefBancomer
+Boton=0
+NombreDesplegar=Depositos Referenciados Bancomer
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\DepositosBancomer\DepositosReferenciadosBancomer.exe<T>)
+
+[MenuPrincipal.dlg/Acciones.Herramienta.DropshippingMinoristas]
+Nombre=Herramienta.DropshippingMinoristas
+Boton=0
+NombreDesplegar=DropshippingMinoristas
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=&Herramientas
+Expresion=Ejecutar(<T>PlugIns\DropshippingMinoristas\Dropshipping.exe <T>+Usuario)
+
+[MenuPrincipal.dlg/Acciones.Config.EvtVentaCruzada]
+Nombre=Config.EvtVentaCruzada
+Boton=0
+Menu=C&onfigurar
+NombreDesplegar=Eventos Venta Cruzada
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=AEA00010EvtVentaCruzadaFrm
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.PolContDevMasiv]
+Nombre=Herramienta.PolContDevMasiv
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=Pólizas Contables a Devoluciones Masivas
+EnMenu=S
+TipoAccion=Dialogos
+ClaveAccion=PolContDevMasiv
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.ReporteDescuento]
+Nombre=Herramienta.ReporteDescuento
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=Reporte descuento
+EnMenu=S
+TipoAccion=Expresion
+ClaveAccion=Herramienta.ReporteDescuento
+Expresion=Ejecutar(<T>PlugIns\ReporteDescuento\ReporteDescuento.exe <T>+Usuario)
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.PlantillaAltaArticulo]
+Nombre=Herramienta.PlantillaAltaArticulo
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=Plantilla Alta de Articulo
+EnMenu=S
+TipoAccion=Expresion
+ClaveAccion=Herramienta.PlantillaAltaArticulo
+Expresion=Ejecutar(<T>PlugIns\PlantillaAltaArticulo\PlantillaAltaArticulo.exe <T>+Usuario)
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.RM1206RepEntDiv]
+Nombre=Herramienta.RM1206RepEntDiv
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=Reporte Entradas Diversas Articulos Espe 0 Nvo+
+EnMenu=S
+EspacioPrevio=S
+TipoAccion=Formas
+ClaveAccion=RM1206CalculoFrm
+Activo=S
+Visible=S
+
+[MenuPrincipal.dlg/Acciones.Herramienta.CambioSuc]
+Nombre=CambioSuc
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=&Cambios de Sucursal
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0254AutomatizacionCajerosyGerentesRotativosFRM
+Activo=S
+VisibleCondicion=asigna(Info.Mensaje,<T>%<T>+sql(<T>Select Acceso From Usuario whit(nolock) Where Usuario = :tUsuario <T>,Usuario)+<T>%<T>)<BR>si (sql(<T>Select count(nombre) From tablaStD Where tablast = :tAMU AND valor like :tAcc<T>,<T>ACCESO MENU USUARIOS<T>,Info.Mensaje)) > 0<BR>Entonces<BR>Verdadero<BR>sino<BR>falso<BR>fin
+
+
+
+;;;;;;REPORTES
+
+DM0336RegistroDePedidoEliminadoDeEcommerceRep
+DM0336VTASTiendasVirtualesPrincipalRep
+DM0341COMSReporteUnificadoMacrosRep
+DM0350MonederoXBienvenidaRep
+DM0351DisminucionLineaBeneficiarioFinalRep
+RM0239VTASPrincipalRep
+RM1149CertHuellasPorLoteRep
+RM1167CostoMonederoDimasPisosRep
+RM1193CREDIRepFacturadosVSAceptadosRep
+RM1196AuditoriaPrevRep
+RM1197COMSPrincipalRep
+RM1198COMSPrincipalRep
+RM1199TiempoVidaArtRep
+RM1200SancionesPrev
+RM1201FinalesXAgenteRep
+RM1201FinalesXAgenteRepImp
+RM1202CxcAquienLocalizarRep
+RM1203CREDIRepPCDNRep
