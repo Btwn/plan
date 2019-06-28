@@ -1,0 +1,6 @@
+
+Solucion
+usar el wizard de la version 3100
+
+[ActivoFijo.frm/Acciones.Situacion]
+Expresion=Si  fnMovSituacionTipoFlujo(Empresa, <T>AF<T>, ActivoFijo:ActivoFijo.Mov, ActivoFijo:ActivoFijo.Estatus) = <T>Condicional<T><BR>Entonces<BR>  Forma(<T>MovSituacionBinariaSiguiente<T>)<BR>  ActualizarVista<BR>Sino<BR>ActualizarVista<BR>  Forma.Accion(<T>WizardSituaciones<T>)<BR>Fin
