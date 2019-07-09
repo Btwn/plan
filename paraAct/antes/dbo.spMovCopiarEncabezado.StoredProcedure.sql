@@ -1,0 +1,171 @@
+create procedure [dbo].[spmovcopiarencabezado]
+@sucursal int,
+@modulo char(5),
+@id int,
+@empresa char(5),
+@mov char(20),
+@movid varchar(20),
+@usuario char(10),
+@fechaemision datetime,
+@estatus char(15),
+@moneda char(10),
+@tipocambio float,
+@almacen char(10),
+@almacendestino char(10),
+@generardirecto bit,
+@generarmov char(20),
+@generarmovid varchar(20),
+@generarid int output,
+@ok int output,
+@copiarbitacora bit = 0,
+@copiarsucursaldestino bit = 0
+as begin
+declare
+@contacto char(10),
+@condicion varchar(50),
+@vencimiento datetime,
+@origentipo char(10),
+@origen char(20),
+@origenid varchar(20),
+@usarsucursalmovorigen bit,
+@ac bit,
+@cfgtipocambio varchar(20)
+exec spextraerfecha @fechaemision output
+select @cfgtipocambio = tipocambio from empresacfgmodulo with (nolock) where empresa = @empresa and modulo = @modulo
+if @cfgtipocambio = 'venta' select @tipocambio = tipocambioventa from mon with (nolock) where moneda = @moneda else
+if @cfgtipocambio = 'compra' select @tipocambio = tipocambiocompra from mon with (nolock) where moneda = @moneda
+select @usarsucursalmovorigen = usarsucursalmovorigen, @ac = ac
+from empresagral with (nolock)
+where empresa = @empresa
+if @usarsucursalmovorigen = 0
+select @sucursal = sucursal from usuariosucursal with (nolock) where usuario = @usuario
+if @mov is not null and @movid is not null
+select @origentipo = @modulo, @origen = @mov, @origenid = @movid
+if @modulo = 'cont'
+insert cont (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, fechacontable, concepto, proyecto, uen, intercompania, moneda, tipocambio, referencia, observaciones, afectarpresupuesto)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, @fechaemision, concepto, proyecto, uen, intercompania, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, afectarpresupuesto
+from cont with (nolock) where id = @id else if @modulo = 'vtas'
+insert venta (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, directo, almacen, almacendestino, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, prioridad, codi, cliente, enviara, agente, agenteservicio, formaenvio, fecharequerida, horarequerida, fechaoriginal, fechaordencompra, referenciaordencompra, ordencompra, condicion, vencimiento, ctadinero, descuento, descuentoglobal, serviciotipo, servicioarticulo, servicioserie, serviciocontrato, serviciocontratoid, serviciocontratotipo, serviciogarantia, serviciodescripcion, servicioflotilla, serviciorampa, servicioidentificador, serviciofecha, servicioplacas, serviciokms, serviciosiniestro, atencion, departamento, zonaimpuesto, listapreciosesp, generarop, desglosarimpuestos, desglosarimpuesto2, excluirplaneacion, convigencia, vigenciadesde, vigenciahasta, bonificacion, causa, periodicidad, submodulo, contuso, espacio, autocorrida, autocorridahora, autocorridaservicio, autocorridarol, autocorridaorigen, autocorridadestino, autocorridakms, autocorridalts, autocorridaruta, autoboleto, autokms, autokmsactuales, autobomba, autobombacontador, gastoacreedor, gastoconcepto, comentarios, serviciotipoorden, serviciotipooperacion, servicioexpress, serviciodemerito, serviciodeducible, serviciodeducibleimporte, servicionumero, servicionumeroeconomico, servicioaseguradora, sucursalventa, renglonid, af, afarticulo, afserie, contratotipo, contratodescripcion, contratoserie, contratovalor, contratovalormoneda, contratoseguro, contratovencimiento, contratoresponsable, clase, subclase, endosara, lineacredito, tipoamortizacion, tipotasa, tienetasaesp, tasaesp, comisiones, comisionesiva, agentecomision, serviciopoliza, formapatipo, sobreprecio, afectacomisionmavi, formacobro, noctapa,ctefinal,idecommerce)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, @generardirecto, @almacen, @almacendestino, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, prioridad, codi, cliente, enviara, agente, agenteservicio, formaenvio, fecharequerida, horarequerida, fechaoriginal, fechaordencompra, referenciaordencompra, ordencompra, condicion, vencimiento, ctadinero, descuento, descuentoglobal, serviciotipo, servicioarticulo, servicioserie, serviciocontrato, serviciocontratoid, serviciocontratotipo, serviciogarantia, serviciodescripcion, servicioflotilla, serviciorampa, servicioidentificador, serviciofecha, servicioplacas, serviciokms, serviciosiniestro, atencion, departamento, zonaimpuesto, listapreciosesp, generarop, desglosarimpuestos, desglosarimpuesto2, excluirplaneacion, convigencia, vigenciadesde, vigenciahasta, bonificacion, causa, periodicidad, submodulo, contuso, espacio, autocorrida, autocorridahora, autocorridaservicio, autocorridarol, autocorridaorigen, autocorridadestino, autocorridakms, autocorridalts, autocorridaruta, autoboleto, autokms, autokmsactuales, autobomba, autobombacontador, gastoacreedor, gastoconcepto, comentarios, serviciotipoorden, serviciotipooperacion, servicioexpress, serviciodemerito, serviciodeducible, serviciodeducibleimporte, servicionumero, servicionumeroeconomico, servicioaseguradora, sucursalventa, renglonid, af, afarticulo, afserie, contratotipo, contratodescripcion, contratoserie, contratovalor, contratovalormoneda, contratoseguro, contratovencimiento, contratoresponsable, clase, subclase, endosara, lineacredito, tipoamortizacion, tipotasa, tienetasaesp, tasaesp, comisiones, comisionesiva, agentecomision, serviciopoliza, formapatipo, sobreprecio, afectacomisionmavi, formacobro, noctapa, ctefinal, idecommerce
+from venta with (nolock) where id = @id else
+if @modulo = 'prod'
+insert prod (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, directo, almacen, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, prioridad, autoreservar, verdestino, fechainicio, fechaentrega, renglonid)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, @generardirecto, @almacen, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, prioridad, autoreservar, verdestino, fechainicio, fechaentrega, renglonid
+from prod with (nolock) where id = @id else
+if @modulo = 'coms'
+insert compra (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, directo, almacen, concepto, proyecto, actividad, uen, moneda, tipocambio, referencia, observaciones, prioridad, proveedor, formaenvio, fechaentrega, fecharequerida, condicion, vencimiento, instruccion, agente, descuento, descuentoglobal, atencion, zonaimpuesto, idioma, listapreciosesp, renglonid, formaentrega, cancelarpendiente, lineacredito, tipoamortizacion, tipotasa, tienetasaesp, tasaesp, comisiones, comisionesiva, autocars, cliente)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, @generardirecto, @almacen, concepto, proyecto, actividad, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, prioridad, proveedor, formaenvio, fechaentrega, fecharequerida, condicion, vencimiento, instruccion, agente, descuento, descuentoglobal, atencion, zonaimpuesto, idioma, listapreciosesp, renglonid, formaentrega, cancelarpendiente, lineacredito, tipoamortizacion, tipotasa, tienetasaesp, tasaesp, comisiones, comisionesiva, autocars, cliente
+from compra with (nolock) where id = @id else
+if @modulo = 'inv'
+insert inv (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, directo, almacen, almacendestino, concepto, proyecto, actividad, uen, moneda, tipocambio, referencia, observaciones, almacentransito, lar, condicion, vencimiento, formaenvio, verlote, verdestino, renglonid, agente, personal, contusomavi,idordtrasmavi)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, @generardirecto, @almacen, @almacendestino, concepto, proyecto, actividad, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, almacentransito, lar, condicion, vencimiento, formaenvio, verlote, verdestino, renglonid, agente, personal, contusomavi, idordtrasmavi
+from inv with (nolock) where id = @id else
+if @modulo = 'din'
+insert dinero (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, directo, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, beneficiarionombre, leyendacheque, beneficiario, ctadinero, ctadinerodestino, condesglose, importe, comisiones, impuestos, formapa, fechaprogramada, cajero, contacto, contactotipo, tipocambiodestino, proveedorautoendoso, carbancario, carbancarioiva, prioridad, comentarios, nota, fechaorigen, vencimiento, tasa, tasadias, tasaretencion, retencion, contuso, cliente, clienteenviara, proveedor, interestipo, titulo, titulovalor, valororigen)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then d.sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, @generardirecto, d.concepto, d.proyecto, d.uen, @moneda, isnull(@tipocambio, d.tipocambio), d.referencia, d.observaciones, d.beneficiarionombre, d.leyendacheque, d.beneficiario, d.ctadinero, d.ctadinerodestino, d.condesglose, d.importe, d.comisiones, d.impuestos, d.formapa, d.fechaprogramada, d.cajero, d.contacto, d.contactotipo, d.tipocambiodestino, d.proveedorautoendoso, d.carbancario, d.carbancarioiva, d.prioridad, d.comentarios, d.nota, d.fechaorigen, d.vencimiento, d.tasa, d.tasadias, d.tasaretencion, d.retencion, d.contuso, d.cliente, d.clienteenviara, d.proveedor, d.interestipo, d.titulo, t.valor, d.valororigen
+from dinero d with (nolock)
+left outer join titulo t with (nolock) on t.titulo = d.titulo
+where d.id = @id else
+if @modulo = 'cxc'
+insert cxc (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, codi, cliente, clienteenviara, clientemoneda, clientetipocambio, ctadinero, cobrador, personalcobrador, formacobro, importe, impuestos, aplicamanual, agente,movaplica, movaplicaid, condesglose, formacobro1, formacobro2, formacobro3 , formacobro4, formacobro5, importe1, importe2, importe3, importe4, importe5, referencia1, referencia2, referencia3, referencia4, referencia5, cambio, delefectivo, cajero, fechaoriginal, comentarios, nota, vin, contuso)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, case when origentipo = 'cam' then cxc.tipocambio else isnull(@tipocambio, cxc.tipocambio) end, referencia, observaciones, codi, cliente, clienteenviara, clientemoneda, case when origentipo = 'cam' then clientetipocambio else case @cfgtipocambio when 'venta' then ms.tipocambioventa when 'compra' then ms.tipocambiocompra else ms.tipocambio end end, ctadinero, cobrador, personalcobrador, formacobro, importe, impuestos, aplicamanual, agente, movaplica, movaplicaid, condesglose, formacobro1, formacobro2, formacobro3, formacobro4, formacobro5, importe1, importe2, importe3, importe4, importe5, referencia1, referencia2, referencia3, referencia4, referencia5, cambio, delefectivo, cajero, fechaoriginal, comentarios, nota, vin, contuso
+from cxc with (nolock), mon ms with (nolock)
+where ms.moneda = clientemoneda and id = @id else
+if @modulo = 'cxp'
+insert cxp (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, proveedor, proveedorsucursal, proveedormoneda, proveedortipocambio, ctadinero, formapa, importe, impuestos, aplicamanual, beneficiario, movaplica, movaplicaid, cajero, proveedorautoendoso, comentarios, nota, vin, contuso)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, case when origentipo = 'cam' then cxp.tipocambio else isnull(@tipocambio, cxp.tipocambio) end, referencia, observaciones, proveedor, proveedorsucursal, proveedormoneda, case when origentipo = 'cam' then proveedortipocambio else case @cfgtipocambio when 'venta' then ms.tipocambioventa when 'compra' then ms.tipocambiocompra else ms.tipocambio end end, ctadinero, formapa, importe, impuestos, aplicamanual, beneficiario, movaplica, movaplicaid, cajero, proveedorautoendoso, comentarios, nota, vin, contuso
+from cxp with (nolock), mon ms with (nolock)
+where ms.moneda = proveedormoneda and id = @id else if @modulo = 'agent'
+insert agent (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, agente, ctadinero, formapa, importe)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, agente, ctadinero, formapa, importe
+from agent with (nolock) where id = @id else if @modulo = 'gas'
+insert gasto (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, proyecto, uen, moneda, tipocambio, observaciones, acreedor, clase, subclase, ctadinero, formapa, condicion, importe, impuestos, movaplica, movaplicaid, periodicidad, tieneretencion, cxp, fecharequerida, actividad, af, afarticulo, afserie, convigencia, vigenciadesde, vigenciahasta, contratotipo, contratodescripcion, contratoserie, contratovalor, contratovalormoneda, contratoseguro, contratovencimiento, contratoresponsable, prioridad, anexomodulo, anexoid, comentarios, nota, clienteref, articuloref)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), observaciones, acreedor, clase, subclase, ctadinero, formapa, condicion, importe, impuestos, movaplica, movaplicaid, periodicidad, tieneretencion, cxp, fecharequerida, actividad, af, afarticulo, afserie, convigencia, vigenciadesde, vigenciahasta, contratotipo, contratodescripcion, contratoserie, contratovalor, contratovalormoneda, contratoseguro, contratovencimiento, contratoresponsable, prioridad, anexomodulo, anexoid, comentarios, nota, clienteref, articuloref
+from gasto with (nolock) where id = @id else if @modulo = 'emb'
+insert embarque (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, referencia, observaciones, vehiculo, ruta, agente, fechasalida, fecharetorno, ctadinero, proveedor, importe, impuestos, condicion, vencimiento, personalcobrador)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, referencia, observaciones, vehiculo, ruta, agente, fechasalida, fecharetorno, ctadinero, proveedor, importe, impuestos, condicion, vencimiento, personalcobrador
+from embarque with (nolock) where id = @id else if @modulo = 'nom'
+insert nomina (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, observaciones, condicion, periodotipo, fechad, fechaa, fechaorigen)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), observaciones, condicion, periodotipo, fechad, fechaa, fechaorigen
+from nomina with (nolock) where id = @id else if @modulo = 'rh'
+insert rh (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, evaluacion)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, evaluacion
+from rh with (nolock) where id = @id else if @modulo = 'asis'
+insert asiste (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, proyecto, uen, moneda, tipocambio, referencia, observaciones, localidad, fechad, fechaa)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, localidad, fechad, fechaa from asiste with (nolock) where id = @id else if @modulo = 'af'
+insert activofijo (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, proveedor, condicion, vencimiento,importe, impuestos, formapa, ctadinero, todo, revaluar, valormercado, personal, espacio, contuso)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, proveedor, condicion, vencimiento,importe, impuestos, formapa, ctadinero, todo, revaluar, valormercado, personal, espacio, contuso
+from activofijo with (nolock) where id = @id else if @modulo = 'pc'
+insert pc (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, listamodificar, recalcular, parcial, proveedor, metodo, monto)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, listamodificar, recalcular, parcial, proveedor, metodo, monto
+from pc with (nolock) where id = @id else if @modulo = 'ofer'
+insert oferta (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, fechad, fechaa, horad, horaa, diasesp, tipo, forma, usar, tienevolumen, montominimo, todassucursales, cateria, grupo, familia, linea, fabricante, porcentaje)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, fechad, fechaa, horad, horaa, diasesp, tipo, forma, usar, tienevolumen, montominimo, todassucursales, cateria, grupo, familia, linea, fabricante, porcentaje
+from oferta with (nolock) where id = @id else if @modulo = 'vale'
+insert vale (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, cliente, agente, condicion, vencimiento, tipo, precio, cantidad, importe, fechainicio, descuento, descuentoglobal, ctadinero)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, cliente, agente, condicion, vencimiento, tipo, precio, cantidad, importe, getdate(), descuento, descuentoglobal, ctadinero
+from vale with (nolock) where id = @id else if @modulo = 'cr'
+insert cr (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, caja, cajero, fechad, fechaa)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, caja, cajero, fechad, fechaa
+from cr with (nolock) where id = @id else if @modulo = 'st'
+insert soporte (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, referencia, observaciones, cliente, enviara, agente , contacto, telefono, extencion, fax, email, usuarioresponsable, tienecontrato, prioridad, clase, subclase, titulo, problema, solucion, comentarios, proveedor, personal, vencimiento, referenciainicial, condicionpa, importe, estado, condicionentrega, fechainicio, fechatermino, version, tiempo, tiempounidad, submodulo, espacio, vin, serviciotipo, fecharequerida, direccion, direccionnumero, entrecalles, plano, delegacion, colonia, poblacion, paisestado, pais, zona, codipostal, reporte, articulo, causa, clase1, clase2, clase3, clase4, clase5)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, referencia, observaciones, cliente, enviara, agente, contacto, telefono, extencion, fax, email, usuarioresponsable, tienecontrato, prioridad, clase, subclase, titulo, problema, solucion, comentarios, proveedor, personal, @fechaemision, referenciainicial, condicionpa, importe, 'no comenzado', condicionentrega, fechainicio, fechatermino, version, tiempo, tiempounidad, submodulo, espacio, vin, serviciotipo, fecharequerida, direccion, direccionnumero, entrecalles, plano, delegacion, colonia, poblacion, paisestado , pais, zona, codipostal, reporte, articulo, causa, clase1, clase2, clase3, clase4, clase5
+from soporte with (nolock) where id = @id else if @modulo = 'cap'
+insert capital (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, agente)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, agente
+from capital with (nolock) where id = @id
+if @modulo = 'inc'
+insert incidencia (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, fechaaplicacion, personal, nominaconcepto, fechad, fechaa, cantidad, valor, porcentaje, acreedor, vencimiento, repetir, prorratear, frecuencia, veces)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, fechaaplicacion, personal, nominaconcepto, fechad, fechaa, cantidad, valor, porcentaje, acreedor, vencimiento, repetir, prorratear, frecuencia, veces
+from incidencia with (nolock) where id = @id
+if @modulo = 'conc'
+insert conciliacion (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, ctadinero, fechad, fechaa)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, ctadinero, fechad, fechaa
+from conciliacion with (nolock) where id = @id
+if @modulo = 'ppto'
+insert presup (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones
+from presup with (nolock) where id = @id
+if @modulo = 'credi'
+insert credito (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, vencimiento, tipoamortizacion, tipotasa, comisiones, comisionesiva, deudor, acreedor, importe, ctadinero, formapa, lineacreditoesp, lineacredito, lineacreditofondeo, tienetasaesp, tasaesp)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, vencimiento, tipoamortizacion, tipotasa, comisiones, comisionesiva, deudor, acreedor, importe, ctadinero, formapa, lineacreditoesp, lineacredito, lineacreditofondeo, tienetasaesp, tasaesp
+from credito with (nolock) where id = @id
+if @modulo = 'wms'
+insert wms (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, referencia, observaciones, almacen, agente, contenedor)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, referencia, observaciones, almacen, agente, contenedor
+from wms with (nolock) where id = @id
+if @modulo = 'rss'
+insert rss (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, referencia, observaciones, canal, titulo, hipervinculo, descripcion, comentarios, autor, cateria, artorigen, adjunto, adjuntourl, adjuntotamano, adjuntotipo, fechapublicacion)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, referencia, observaciones, canal, titulo, hipervinculo, descripcion, comentarios, autor, cateria, artorigen, adjunto, adjuntourl, adjuntotamano, adjuntotipo, getdate()
+from rss with (nolock) where id = @id
+if @modulo = 'cmp'
+insert campana (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, referencia, observaciones, asunto, agente, campanatipo, tienevigencia, fechad, fechaa)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, referencia, observaciones, asunto, agente, campanatipo, tienevigencia, fechad, fechaa
+from campana with (nolock) where id = @id
+if @modulo = 'fis'
+insert fiscal (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, moneda, tipocambio, referencia, observaciones, acreedor, condicion, vencimiento)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, @moneda, isnull(@tipocambio, tipocambio), referencia, observaciones, acreedor, condicion, vencimiento
+from fiscal with (nolock) where id = @id
+if @modulo = 'frm'
+insert formaextra (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, referencia, observaciones, formatipo, aplica, aplicaclave)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, referencia, observaciones, formatipo, aplica, aplicaclave
+from formaextra with (nolock) where id = @id
+if @modulo = 'proy'
+insert proyecto (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, uen, referencia, observaciones, moneda, tipocambio, contactotipo, prospecto, cliente, proveedor, personal, agente, ries, proyectorama, supervisor, comienzo, fin, diashabiles, horasdia, montoestimado, proyectoreestructurar, reestructurar, comentarios)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, uen, referencia, observaciones, @moneda, isnull(@tipocambio, tipocambio), contactotipo, prospecto, cliente, proveedor, personal, agente, ries, proyectorama, supervisor, comienzo, fin, diashabiles, horasdia, montoestimado, proyectoreestructurar, 0, comentarios
+from proyecto with (nolock)
+where id = @id
+if @modulo = 'cam'
+insert cambio (ultimocambio, sucursal, sucursalorigen, sucursaldestino, origentipo, origen, origenid, empresa, usuario, estatus, mov, movid, fechaemision, concepto, proyecto, uen, referencia, observaciones, cliente, agente, condicion, vencimiento)
+select getdate(), @sucursal, @sucursal, case when @copiarsucursaldestino = 1 then sucursaldestino else @sucursal end, @origentipo, @origen, @origenid, @empresa, @usuario, @estatus, @generarmov, @generarmovid, @fechaemision, concepto, proyecto, uen, referencia, observaciones, cliente, agente, condicion, vencimiento
+from cambio with (nolock) where id = @id
+select @generarid = @@identity
+if @ac = 1
+exec spcopiartablaamortizacionguia @modulo, @id, @modulo, @generarid
+exec spmovcopiarformaanexo @modulo, @id, @modulo, @generarid
+exec spmovcopiaranexos @sucursal, @modulo, @id, @modulo, @generarid, @copiarbitacora
+exec xpmovcopiarencabezado @sucursal, @modulo, @id, @empresa, @mov, @movid, @usuario, @fechaemision, @estatus, @moneda, @tipocambio, @almacen, @almacendestino, @generardirecto, @generarmov, @generarmovid, @generarid, @ok output, @copiarbitacora
+if exists(select * from empresacfgmodulo with (nolock) where empresa = @empresa and modulo = @modulo and upper(tiempos) = 'si')
+insert movtiempo (modulo, sucursal, id, usuario, fechainicio, fechacomenzo, estatus)
+values(@modulo, @sucursal, @generarid, @usuario, getdate(), getdate(), @estatus)
+end
