@@ -1,0 +1,40 @@
+
+[Reporte]
+Clave=DM0500DEnlace
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+Submenu=CXC Menudeo Mavi
+SubmenuPreliminar=S
+ConFormaPrevia=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+FormaPrevia=DM0500DCteFinalesFrm
+
+PosicionInicialAlturaCliente=962
+PosicionInicialAncho=1296
+Nombre=DM0500D Apoyo Cobranza DIMA
+[Vista]
+Icono=0
+Clave=DM0500DEnlace
+VistaIndependiente=S
+SQL=SELECT SUM(1)

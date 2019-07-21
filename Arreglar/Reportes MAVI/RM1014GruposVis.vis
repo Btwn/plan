@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1014GruposVis
+Nombre=RM1014 Sucursales
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Grupo
+CamposBusquedaRapida=Grupo
+SQL=SELECT DISTINCT Grupo <BR>FROM art <BR>WHERE categoria = <T>VENTA<T> <BR>ORDER BY GRUPO
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Grupo

@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM1172SucursalesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Sucursal
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=select Sucursal From Sucursal <BR>Where Tipo=<T>PISO<T>
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal

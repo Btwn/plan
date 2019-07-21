@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=DM0243CtaDineroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CtaDinero<BR>Descripcion
+SQL=Select CtaDinero,Descripcion from Ctadinero With(NoLock) Where Categoria=<T>BANCO<T>
+[CtaDinero]
+Clave=CtaDinero
+Nombre=Banco
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=CtaDinero
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion

@@ -1,0 +1,29 @@
+[Tabla]
+Icono=0
+Clave=DM0289ConfigGrupoTrabajoTBL
+Archivo=DM0289ConfigGrupoTrabajo
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>GrupoTrabajo
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  GrupoTrabajo<BR><BR>FROM<BR>  DM0289ConfigGrupoTrabajo
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[GrupoTrabajo]
+Clave=GrupoTrabajo
+Nombre=GrupoTrabajo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista( <T>Select GrupoTrabajo from GrupoTrabajo Order by GrupoTrabajo<T> )

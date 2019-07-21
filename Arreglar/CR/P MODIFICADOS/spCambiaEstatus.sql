@@ -1,0 +1,21 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spCambiaEstatus
+@Personal	varchar(10),
+@Fecha		datetime,
+@Curso		varchar(50),
+@IDExamen	int,
+@NPregunta	int
+
+AS
+BEGIN
+UPDATE heExamenPersonal WITH (ROWLOCK) SET Estatus='CONCLUIDO'
+WHERE IDExamen=@IDExamen AND Personal=@Personal AND @Curso=Curso AND Fecha=@Fecha AND NPregunta=@NPregunta
+END
+

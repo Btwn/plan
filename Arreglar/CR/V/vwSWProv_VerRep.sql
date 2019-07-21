@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW vwSWProv_VerRep
+AS
+SELECT
+S.ID,
+S.Proveedor,
+S.Empresa,
+RTrim(S.Estatus) Estatus,
+S.Titulo,
+S.Prioridad,
+S.Referencia,
+R.Nombre,
+S.FechaEmision,
+S.FechaConclusion
+FROM Soporte S JOIN Recurso R ON S.Referencia = R.Recurso
+WHERE Submodulo = 'STPRO'
+

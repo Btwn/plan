@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=MaviProveePlacasVis
+Nombre=Placas Proveedor
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=PROVEEDOR<BR>PLACAS
+SQL=select PROVEEDOR,PLACAS from vehiculo<BR>where 1=1<BR>{Si(condatos(Info.Proveedor), <T>and proveedor=<T>+comillas(Info.Proveedor),<T><T>)}<BR>GROUP BY PROVEEDOR,PLACAS<BR>order by proveedor,placas
+[PROVEEDOR]
+Clave=PROVEEDOR
+Nombre=PROVEEDOR
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=PROVEEDOR
+[PLACAS]
+Clave=PLACAS
+Nombre=PLACAS
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=PLACAS

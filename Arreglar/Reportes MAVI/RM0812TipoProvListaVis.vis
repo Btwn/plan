@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=RM0812TipoProvListaVis
+Nombre=Tipo Proveedor
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Tipo
+SQL=Select Distinct Tipo From Prov
+[Tipo]
+Clave=Tipo
+Nombre=Tipo de Proveedor
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=Tipo

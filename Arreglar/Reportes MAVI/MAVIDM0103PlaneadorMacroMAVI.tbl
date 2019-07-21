@@ -1,0 +1,825 @@
+[Tabla]
+Icono=0
+Clave=MAVIDM0103PlaneadorMacroMAVI
+Nombre=MAVIDM0103PlaneadorMacroMAVI
+Archivo=MAVIDM0103PlaneadorMacroMAVI
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Proveedor<BR>Notas<BR>Codigo<BR>Descripcion<BR>Estatus<BR>Propiedad<BR>Categoria<BR>Grupo<BR>Linea<BR>Familia<BR>FactorDiasInv<BR>DiasDeInventario<BR>BackOrder<BR>ValorBackOrder<BR>PedidosxAutorizar<BR>PedidoEstimado<BR>CantidadOrdenar<BR>DescVarAnt1<BR>DescVarAnt2<BR>DescVarAnt3<BR>PrecioMAPcIva<BR>PrecioMAPsIva<BR>DescuentoFijo1<BR>DescuentoFijo2<BR>DescuentoFijo3<BR>CostoDescFijos<BR>DescVariable1<BR>DescVariable2<BR>DescVariable3<BR>CostoConDescuentos<BR>Apoyo<BR>CostoFinal<BR>ImporteTotal<BR>Exhibicion<BR>CostoPropre<BR>ExistenciaCD<BR>ExistenciaMAY<BR>ExistenciaSER<BR>ExistenciaAME1<BR>ExistenciaAME2<BR>ExistenciaAME3<BR>ExistenciaAME4<BR>ExistenciaINS<BR>ExistenciaVIU1<BR>ExistenciaVIU2<BR>ExistenciaVIU3<BR>ExistenciaVIU4<BR>ExistenciaRES<BR>TotalExistencias<BR>VentaAME1<BR>Ve<CONTINUA>
+ListaCampos002=<CONTINUA>ntaAME2<BR>VentaAME3<BR>VentaAME4<BR>VentaCAM<BR>VentaREA<BR>VentaINS<BR>VentaVIU1<BR>VentaVIU2<BR>VentaVIU3<BR>VentaVIU4<BR>VentaMAY<BR>VentaRES<BR>VentasGrupo<BR>VtasCredAME<BR>VtasCredVIU<BR>TotalVtasCredito<BR>ContadoAME<BR>ContadoVIU<BR>ContadoVIUPlazos<BR>VentaContado<BR>VentaMenudeo<BR>VentaMayoreo<BR>VentasCanal<BR>ImporteExistencias<BR>ImporteVtasMenudeo<BR>ImporteVtasMayoreo<BR>ImporteVtasTotal<BR>Observaciones<BR>Columna1<BR>Columna2<BR>Columna3<BR>Columna4<BR>Columna5<BR>Columna6<BR>Columna7<BR>Columna8<BR>Columna9<BR>Columna10<BR>Columna11<BR>Columna12<BR>Columna13<BR>Columna14<BR>Columna15<BR>DistMAY<BR>DistAME1<BR>DistAME2<BR>DistAME3<BR>DistAME4<BR>DistINS<BR>DistVIU1<BR>DistVIU2<BR>DistVIU3<BR>DistVIU4<BR>FechaD<BR>FechaA<BR>ImporteSol<BR>EstacionTrabajo<BR>ImporteTota
+LlavePrimaria=ID<BR>EstacionTrabajo
+ControlID=S
+ControlEstatus=S
+CampoID=ID
+CampoEstatus=Estatus
+ControlGrupo=S
+CampoGrupo=Grupo
+ListaCampos003=<CONTINUA>r
+ListaRelaciones=prov
+SQL=SELECT<BR>  ID ,<BR>  Estatus,<BR>  Proveedor ,<BR>  Notas,<BR>  Codigo,<BR>  Descripcion,<BR>  Propiedad,<BR>  Categoria,<BR>  Grupo,<BR>  Linea,<BR>  Familia,<BR>  FactorDiasInv,<BR>  DiasDeInventario,<BR>  BackOrder,<BR>  ValorBackOrder,<BR>  PedidosxAutorizar,<BR>  PedidoEstimado,<BR>  CantidadOrdenar,<BR>  DescVarAnt1,<BR>  DescVarAnt2,<BR>  DescVarAnt3,<BR>  PrecioMAPcIva,<BR>  PrecioMAPsIva,<BR>  DescuentoFijo1,<BR>  DescuentoFijo2,<BR>  DescuentoFijo3,<BR>  CostoDescFijos,<BR>  DescVariable1,<BR>  DescVariable2,<BR>  DescVariable3,<BR>  CostoConDescuentos,<BR>  Apoyo,<BR>  CostoFinal,<BR>  ImporteTotal,<BR>  Exhibicion,<BR>  CostoPropre,<BR>  ExistenciaCD,<BR>  ExistenciaMAY,<BR>  ExistenciaSER,<BR>  ExistenciaAME1,<BR>  ExistenciaAME2,<BR>  ExistenciaAME3,<BR>  ExistenciaAME4,<BR><CONTINUA>
+SQL002=<CONTINUA>  ExistenciaINS,<BR>  ExistenciaVIU1,<BR>  ExistenciaVIU2,<BR>  ExistenciaVIU3,<BR>  ExistenciaVIU4,<BR>  ExistenciaRES,<BR>  TotalExistencias,<BR>  VentaAME1,<BR>  VentaAME2,<BR>  VentaAME3,<BR>  VentaAME4,<BR>  VentaCAM,<BR>  VentaREA,<BR>  VentaINS,<BR>  VentaVIU1,<BR>  VentaVIU2,<BR>  VentaVIU3,<BR>  VentaVIU4,<BR>  VentaMAY,<BR>  VentaRES,<BR>  VentasGrupo,<BR>  VtasCredAME,<BR>  VtasCredVIU,<BR>  TotalVtasCredito,<BR>  ContadoAME,<BR>  ContadoVIU,<BR>  ContadoVIUPlazos,<BR>  VentaContado,<BR>  VentaMenudeo,<BR>  VentaMayoreo,<BR>  VentasCanal,<BR>  ImporteExistencias,<BR>  ImporteVtasMenudeo,<BR>  ImporteVtasMayoreo,<BR>  ImporteVtasTotal,<BR>  Observaciones,<BR>  Columna1,<BR>  Columna2,<BR>  Columna3,<BR>  Columna4,<BR>  Columna5,<BR>  Columna6,<BR>  Columna7,<BR>  Columna8,<BR>  C<CONTINUA>
+SQL003=<CONTINUA>olumna9,<BR>  Columna10,<BR>  Columna11,<BR>  Columna12,<BR>  Columna13,<BR>  Columna14,<BR>  Columna15,<BR>  DistMAY,<BR>  DistAME1,<BR>  DistAME2,<BR>  DistAME3,<BR>  DistAME4,<BR>  DistINS,<BR>  DistVIU1,<BR>  DistVIU2,<BR>  DistVIU3,<BR>  DistVIU4,<BR>  FechaD,<BR>  FechaA,<BR>  ImporteSol,<BR>  EstacionTrabajo<BR><BR>FROM<BR>MAVIDM0103PlaneadorMacroMAVI
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+TamanoValidacion=15
+Tamano=15
+UnicamenteLectura=S
+TipoDatos=Texto
+[Notas]
+Clave=Notas
+Nombre=Notas
+Visible=S
+TamanoValidacion=255
+Tamano=255
+UnicamenteLectura=S
+TipoDatos=Texto
+[Codigo]
+Clave=Codigo
+Nombre=Codigo del Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+UnicamenteLectura=S
+TipoDatos=Texto
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion del Articulo
+Visible=S
+TamanoValidacion=100
+Tamano=100
+UnicamenteLectura=S
+TipoDatos=Texto
+[Propiedad]
+Clave=Propiedad
+Nombre=Propiedad Planeador
+Visible=S
+TamanoValidacion=100
+Tamano=100
+UnicamenteLectura=S
+TipoDatos=Texto
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+TipoDatos=Texto
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+TipoDatos=Texto
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+TipoDatos=Texto
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+TipoDatos=Texto
+[FactorDiasInv]
+Clave=FactorDiasInv
+Nombre=Factor Dias de Inventario
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ListaRefrescar=PedidoEstimado
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ConRefrescar=S
+[DiasDeInventario]
+Clave=DiasDeInventario
+Nombre=Dias de Inventario
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[BackOrder]
+Clave=BackOrder
+Nombre=BackOrder
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ValorBackOrder]
+Clave=ValorBackOrder
+Nombre=Importe Backorder
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[PedidosxAutorizar]
+Clave=PedidosxAutorizar
+Nombre=Pedidos por autorizar
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[PedidoEstimado]
+Clave=PedidoEstimado
+Nombre=Pedido Estimado
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorRefrescar=SQL(<T>SELECT dbo.fnPedidoEstimadoDM0103MAVI( :tEmp, :tArt,:tFac)<T>, empresa, codigo,FactorDiasInv)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[CantidadOrdenar]
+Clave=CantidadOrdenar
+Nombre=Cantidad Borrador
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ConRefrescar=S
+ListaRefrescar=ImporteTotal
+[DescVarAnt1]
+Clave=DescVarAnt1
+Nombre=DV Anterior 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+[DescVarAnt2]
+Clave=DescVarAnt2
+Nombre=DV Anterior 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+[DescVarAnt3]
+Clave=DescVarAnt3
+Nombre=DV Anterior 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+[PrecioMAPcIva]
+Clave=PrecioMAPcIva
+Nombre=MAP (c/IVA)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[PrecioMAPsIva]
+Clave=PrecioMAPsIva
+Nombre=MAP (s/IVA)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[DescuentoFijo1]
+Clave=DescuentoFijo1
+Nombre=Descuento Fijo 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[DescuentoFijo2]
+Clave=DescuentoFijo2
+Nombre=Descuento Fijo 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[DescuentoFijo3]
+Clave=DescuentoFijo3
+Nombre=Descuento Fijo 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[CostoDescFijos]
+Clave=CostoDescFijos
+Nombre=Costo con Descuentos Fijos
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[DescVariable1]
+Clave=DescVariable1
+Nombre=Descuento Variable 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[DescVariable2]
+Clave=DescVariable2
+Nombre=Descuento Variable 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[DescVariable3]
+Clave=DescVariable3
+Nombre=Descuento Variable 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[CostoConDescuentos]
+Clave=CostoConDescuentos
+Nombre=Costo con Descuentos Fijos y Variables
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[Apoyo]
+Clave=Apoyo
+Nombre=Apoyo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[CostoFinal]
+Clave=CostoFinal
+Nombre=Costo Final
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[ImporteTotal]
+Clave=ImporteTotal
+Nombre=Importe Total
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=#,0.00
+ValorRefrescar=CostoFinal*CantidadOrdenar
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[Exhibicion]
+Clave=Exhibicion
+Nombre=EXH
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[CostoPropre]
+Clave=CostoPropre
+Nombre=Propre
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[ExistenciaCD]
+Clave=ExistenciaCD
+Nombre=Exis CD
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaMAY]
+Clave=ExistenciaMAY
+Nombre=Exis MAY
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaSER]
+Clave=ExistenciaSER
+Nombre=Exis SER
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaAME1]
+Clave=ExistenciaAME1
+Nombre=Exis AME 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaAME2]
+Clave=ExistenciaAME2
+Nombre=Exis AME 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaAME3]
+Clave=ExistenciaAME3
+Nombre=Exis AME 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaAME4]
+Clave=ExistenciaAME4
+Nombre=Exis AME 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaINS]
+Clave=ExistenciaINS
+Nombre=Exis INS
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaVIU1]
+Clave=ExistenciaVIU1
+Nombre=Exis VIU 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaVIU2]
+Clave=ExistenciaVIU2
+Nombre=Exis VIU 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaVIU3]
+Clave=ExistenciaVIU3
+Nombre=Exis VIU 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaVIU4]
+Clave=ExistenciaVIU4
+Nombre=Exis VIU 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ExistenciaRES]
+Clave=ExistenciaRES
+Nombre=Exis RES
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[TotalExistencias]
+Clave=TotalExistencias
+Nombre=Existencias
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaAME1]
+Clave=VentaAME1
+Nombre=Vta AME 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaAME2]
+Clave=VentaAME2
+Nombre=Vta AME 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaAME3]
+Clave=VentaAME3
+Nombre=Vta AME 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaAME4]
+Clave=VentaAME4
+Nombre=Vta AME 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaCAM]
+Clave=VentaCAM
+Nombre=Vta CAM
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaREA]
+Clave=VentaREA
+Nombre=Vta REA
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaINS]
+Clave=VentaINS
+Nombre=Vta INS
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaVIU1]
+Clave=VentaVIU1
+Nombre=Vta VIU 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaVIU2]
+Clave=VentaVIU2
+Nombre=Vta VIU 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaVIU3]
+Clave=VentaVIU3
+Nombre=Vta VIU 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaVIU4]
+Clave=VentaVIU4
+Nombre=Vta VIU 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaMAY]
+Clave=VentaMAY
+Nombre=Vta MAY
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaRES]
+Clave=VentaRES
+Nombre=Vta RES
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentasGrupo]
+Clave=VentasGrupo
+Nombre=Ventas / Grupo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VtasCredAME]
+Clave=VtasCredAME
+Nombre=Vta CRE AME
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VtasCredVIU]
+Clave=VtasCredVIU
+Nombre=Vta CRE VIU
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[TotalVtasCredito]
+Clave=TotalVtasCredito
+Nombre=Vta Credito
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ContadoAME]
+Clave=ContadoAME
+Nombre=Vta CON AME
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ContadoVIU]
+Clave=ContadoVIU
+Nombre=Vta CON VIU
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ContadoVIUPlazos]
+Clave=ContadoVIUPlazos
+Nombre=Vta PD VIU
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaContado]
+Clave=VentaContado
+Nombre=Vta Contado
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaMenudeo]
+Clave=VentaMenudeo
+Nombre=Vta Menudeo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentaMayoreo]
+Clave=VentaMayoreo
+Nombre=Vta Mayoreo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[VentasCanal]
+Clave=VentasCanal
+Nombre=Ventas Canal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[ImporteExistencias]
+Clave=ImporteExistencias
+Nombre=Importe Existencias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[ImporteVtasMenudeo]
+Clave=ImporteVtasMenudeo
+Nombre=Importe Ventas Menudeo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[ImporteVtasMayoreo]
+Clave=ImporteVtasMayoreo
+Nombre=Importe Ventas Mayoreo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[ImporteVtasTotal]
+Clave=ImporteVtasTotal
+Nombre=Importe Ventas Canal
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+FormatoValidacion=#,0.00
+[Observaciones]
+Clave=Observaciones
+Nombre=Observaciones
+Visible=S
+TamanoValidacion=255
+Tamano=255
+UnicamenteLectura=S
+TipoDatos=Texto
+[Columna1]
+Clave=Columna1
+Nombre=Columna1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[Columna2]
+Clave=Columna2
+Nombre=Columna2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[Columna3]
+Clave=Columna3
+Nombre=Columna3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[Columna4]
+Clave=Columna4
+Nombre=Columna4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[Columna5]
+Clave=Columna5
+Nombre=Columna5
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[Columna6]
+Clave=Columna6
+Nombre=Columna6
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[Columna7]
+Clave=Columna7
+Nombre=Columna7
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[Columna8]
+Clave=Columna8
+Nombre=Columna8
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[Columna9]
+Clave=Columna9
+Nombre=Columna9
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[Columna10]
+Clave=Columna10
+Nombre=Columna10
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+UnicamenteLectura=S
+[Columna11]
+Clave=Columna11
+Nombre=Columna11
+Visible=S
+TamanoValidacion=100
+Tamano=100
+UnicamenteLectura=S
+TipoDatos=Texto
+[Columna12]
+Clave=Columna12
+Nombre=Columna12
+Visible=S
+TamanoValidacion=100
+Tamano=100
+UnicamenteLectura=S
+TipoDatos=Texto
+[Columna13]
+Clave=Columna13
+Nombre=Columna13
+Visible=S
+TamanoValidacion=100
+Tamano=100
+UnicamenteLectura=S
+TipoDatos=Texto
+[Columna14]
+Clave=Columna14
+Nombre=Columna14
+Visible=S
+TamanoValidacion=100
+Tamano=100
+UnicamenteLectura=S
+TipoDatos=Texto
+[Columna15]
+Clave=Columna15
+Nombre=Columna15
+Visible=S
+TamanoValidacion=100
+Tamano=100
+UnicamenteLectura=S
+TipoDatos=Texto
+[DistMAY]
+Clave=DistMAY
+Nombre=Dist MAY
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistAME1]
+Clave=DistAME1
+Nombre=Dist AME 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistAME2]
+Clave=DistAME2
+Nombre=Dist AME 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistAME3]
+Clave=DistAME3
+Nombre=Dist AME 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistAME4]
+Clave=DistAME4
+Nombre=Dist AME 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistINS]
+Clave=DistINS
+Nombre=Dist INS
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistVIU1]
+Clave=DistVIU1
+Nombre=Dist VIU 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistVIU2]
+Clave=DistVIU2
+Nombre=Dist VIU 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistVIU3]
+Clave=DistVIU3
+Nombre=Dist VIU 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[DistVIU4]
+Clave=DistVIU4
+Nombre=Dist VIU 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+UnicamenteLectura=S
+[FechaD]
+Clave=FechaD
+Nombre=De la Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+UnicamenteLectura=S
+FormatoValidacion=dd/mmm/aaaa
+[FechaA]
+Clave=FechaA
+Nombre=A la Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+UnicamenteLectura=S
+FormatoValidacion=dd/mmm/aaaa
+[ImporteSol]
+Clave=ImporteSol
+Nombre=ImporteSol
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+UnicamenteLectura=S
+[EstacionTrabajo]
+Clave=EstacionTrabajo
+Nombre=EstacionTrabajo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[Proveedor]
+Clave=Proveedor
+Nombre=Proveedor
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+[ID]
+Clave=ID
+Nombre=Clave proveedor
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Relaciones.prov]
+TipoRelacion=Opcional
+LlaveLocal=Proveedor
+Clave=prov
+TablaRemota=Prov
+LlaveRemota=Proveedor
+[ImporteTota]
+Clave=ImporteTota
+Nombre=ImporteTotal2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante

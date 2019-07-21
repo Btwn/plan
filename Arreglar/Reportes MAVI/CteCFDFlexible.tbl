@@ -1,0 +1,309 @@
+[Tabla]
+Icono=0
+Clave=CteCFDFlexible
+Archivo=CteCFD
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Cliente<BR>EmisorID<BR>ReceptorID<BR>Cta<BR>ProveedorID<BR>TipoAddenda<BR>Version<BR>VersionFecha<BR>VersionAnterior<BR>Nombre<BR>Reporte<BR>Validar<BR>ValidarTipo<BR>ValidarSchema<BR>Almacenar<BR>AlmacenarTipo<BR>AlmacenarXML<BR>AlmacenarPDF<BR>AlmacenarRuta<BR>Enviar<BR>EnviarTipo<BR>EnviarXML<BR>EnviarPDF<BR>EnviarMedio<BR>EnviarDireccion<BR>EnviarRuta<BR>EnviarUsuario<BR>EnviarContrasena<BR>EnviarDe<BR>EnviarAsunto<BR>EnviarMensaje
+Nombre=Datos CFD
+Singular=Datos CFD
+LlavePrimaria=Cliente
+SQL=SELECT<BR>  Cliente,<BR>  EmisorID,<BR>  ReceptorID,<BR>  Cta,<BR>  ProveedorID,<BR>  TipoAddenda,<BR>  Version,<BR>  VersionFecha,<BR>  VersionAnterior,<BR>  Nombre,<BR>  Reporte,<BR>  Validar,<BR>  ValidarTipo,<BR>  ValidarSchema,<BR>  Almacenar,<BR>  AlmacenarTipo,<BR>  AlmacenarXML,<BR>  AlmacenarPDF,<BR>  AlmacenarRuta,<BR>  Enviar,<BR>  EnviarTipo,<BR>  EnviarXML,<BR>  EnviarPDF,<BR>  EnviarMedio,<BR>  EnviarDireccion,<BR>  EnviarRuta,<BR>  EnviarUsuario,<BR>  EnviarContrasena,<BR>  EnviarDe,<BR>  EnviarAsunto,<BR>  EnviarMensaje<BR><BR>FROM<BR>  CteCFD
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Cliente
+[EmisorID]
+Clave=EmisorID
+Nombre=Clave Emisor
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+TipoDatos=Texto
+[ReceptorID]
+Clave=ReceptorID
+Nombre=Clave Receptor
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+TipoDatos=Texto
+[ProveedorID]
+Clave=ProveedorID
+Nombre=Clave Proveedor
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+TipoDatos=Texto
+[Cta]
+Clave=Cta
+Nombre=Cuenta
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=25
+[TipoAddenda]
+Clave=TipoAddenda
+Nombre=Addenda
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ListaOpciones=N/A<BR>AMECE<BR>AMECE / LIVERPOOL<BR>AMECE / GIGANTE<BR>AMECE / CM<BR>EDIFACT<BR>CHEDRAUI<BR>INTERFACTURA / HEB<BR>INTERFACTURA / ELEKTRA<BR>HOME DEPOT<BR>SORIANA<BR>AMIS<BR>FEMSA<BR>ASSENSA
+TipoDatos=Texto
+CondicionDespliege=Empresa.CFD
+[Version]
+Clave=Version
+Nombre=Versión
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+[VersionFecha]
+Clave=VersionFecha
+Nombre=Vigente a partir del
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa
+AyudaEnCaptura=Calendario sin Hora
+[VersionAnterior]
+Clave=VersionAnterior
+Nombre=Versión Anterior
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+[Validar]
+Clave=Validar
+Nombre=Validar
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+CondicionDespliege=Empresa.CFD
+[ValidarSchema]
+Clave=ValidarSchema
+Nombre=Schema (*.xsd)
+Visible=S
+TamanoValidacion=255
+Tamano=255
+TipoDatos=Texto
+[Almacenar]
+Clave=Almacenar
+Nombre=Almacenar
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+[AlmacenarXML]
+Clave=AlmacenarXML
+Nombre=XML
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+[AlmacenarPDF]
+Clave=AlmacenarPDF
+Nombre=PDF
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Reporte
+[AlmacenarRuta]
+Clave=AlmacenarRuta
+Nombre=Ruta
+Visible=S
+TamanoValidacion=255
+Tamano=255
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=<BR>\\Servidor\CFD\<Cliente><BR>\\Servidor\CFD\<Ejercicio><BR>\\Servidor\CFD\<Ejercicio>\<Periodo><BR>\\Servidor\CFD\<Ejercicio>\<Periodo>\<Cliente>
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+[Nombre]
+Clave=Nombre
+Nombre=Nombre Archivo
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ListaOpciones=<BR><Movimiento> <Serie><Folio><BR><Cliente> <Serie><Folio><BR><Serie><Folio>
+[Enviar]
+Clave=Enviar
+Nombre=Enviar
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+CondicionEdicion=Almacenar
+[EnviarXML]
+Clave=EnviarXML
+Nombre=XML
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+[EnviarPDF]
+Clave=EnviarPDF
+Nombre=PDF
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+[EnviarMedio]
+Clave=EnviarMedio
+Nombre=Medio
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+ListaOpciones=SQL Mail<BR>SMTP<BR>FTP
+TipoDatos=Texto
+CondicionDespliege=Empresa.CFD
+[ValidarTipo]
+Clave=ValidarTipo
+Nombre=Tipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ValorPorOmision=<T>Especifico<T>
+CondicionDespliege=Validar
+ListaOpciones=Especifico<BR>Adicional
+TipoDatos=Texto
+[AlmacenarTipo]
+Clave=AlmacenarTipo
+Nombre=AlmacenarTipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+OpcionesUnicamente=S
+ValorPorOmision=<T>Especifico<T>
+CondicionDespliege=Almacenar
+ListaOpciones=Especifico<BR>Adicional
+TipoDatos=Texto
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=EnviarTipo
+[EnviarTipo]
+Clave=EnviarTipo
+Nombre=EnviarTipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+OpcionesUnicamente=
+OpcionesPredefinidas=
+ValorPorOmision=Caso  Empresa.CFD<BR>  Es VERDADERO Entonces <T>Especifico<T><BR>  Es FALSO     Entonces <T>Cliente<T><BR>Fin
+CondicionDespliege=(Enviar) y (Empresa.CFD o (AlmacenarTipo = <T>Adicional<T>))
+CondicionEdicion=Almacenar
+ListaOpciones=
+TipoDatos=Texto
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=Caso  Empresa.CFD<BR>  Es VERDADERO Entonces Lista(<T>Especifico<T>,<T>Adicional<T>)<BR>  Es FALSO     Entonces Lista(<T>Empresa<T>,<T>Cliente<T>)<BR>Fin
+[Reporte]
+Clave=Reporte
+Nombre=Reporte (Parámetro ID)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+CondicionDespliege=AlmacenarPDF
+Formula=ListaReportes
+[EnviarDireccion]
+Clave=EnviarDireccion
+Nombre=Dirección (Servidor)
+Visible=S
+TamanoValidacion=255
+Tamano=255
+[EnviarRuta]
+Clave=EnviarRuta
+Nombre=Ruta (Servidor)
+Visible=S
+TamanoValidacion=255
+Tamano=255
+[EnviarUsuario]
+Clave=EnviarUsuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Expresion
+ConRefrescar=S
+ListaRefrescar=EnviarContrasena
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Consulta opcional
+AyudaRefrescar=S
+Formula=Si(EnviarMedio=<T>FTP<T>, <T>anonymous<T>)
+[EnviarContrasena]
+Clave=EnviarContrasena
+Nombre=Contraseña
+Visible=S
+TamanoValidacion=100
+Tamano=100
+Contrasena=S
+ValorRefrescar=Si(EnviarUsuario=<T>anonymous<T>, EnviarUsuario)
+[EnviarDe]
+Clave=EnviarDe
+Nombre=De (usuario@empresa.com)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ListaOpciones=<BR>(Usuario)<BR>(Agente)
+[EnviarAsunto]
+Clave=EnviarAsunto
+Nombre=Asunto (usar <Nombre> para desplegar el nombre del archivo)
+Visible=S
+TamanoValidacion=255
+Tamano=255
+[EnviarMensaje]
+Clave=EnviarMensaje
+Nombre=Mensaje (usar <Nombre> para desplegar el nombre del archivo)
+Visible=S
+TamanoValidacion=255
+Tamano=255

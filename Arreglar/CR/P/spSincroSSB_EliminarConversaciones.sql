@@ -1,0 +1,30 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spSincroSSB_EliminarConversaciones
+
+AS BEGIN
+DECLARE
+@SQL     varchar(max),
+@Dialogo uniqueidentifier
+DECLARE crConversacion CURSOR LOCAL FORWARD_ONLY FOR
+SELECT conversation_handle
+FROM sys.conversation_endpoints
+OPEN crConversacion
+FETCH NEXT FROM crConversacion INTO @Dialogo
+WHILE @@FETCH_STATUS=0
+BEGIN
+SELECT @SQL = 'END CONVERSATION '+char(39)+CONVERT(varchar(255), @Dialogo) + char(39) + ' WITH CLEANUP;'
+EXEC (@SQL)
+PRINT @SQL
+FETCH NEXT FROM crConversacion INTO @Dialogo
+END
+CLOSE crConversacion
+DEALLOCATE crConversacion
+END
+

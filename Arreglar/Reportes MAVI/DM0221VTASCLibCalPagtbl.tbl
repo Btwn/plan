@@ -1,0 +1,60 @@
+
+[Tabla]
+Icono=0
+Clave=DM0221VTASCLibCalPagtbl
+Nombre=VTASCLibCalPag
+Archivo=VTASCLibCalPag
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IdLibCalPag<BR>Cali<BR>MA<BR>VIU
+LlavePrimaria=IdLibCalPag
+ControlID=S
+CampoID=IdLibCalPag
+SQL=SELECT<BR>  IdLibCalPag,<BR>  Cali,<BR>  MA,<BR>  VIU<BR><BR>  FROM VTASCLibCalPag
+[IdLibCalPag]
+Clave=IdLibCalPag
+Nombre=Id
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[Cali]
+Clave=Cali
+Nombre=Calificacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+Mayusculas=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>No se puede repetir la Calificación<T>
+Requerido=S
+ValidacionCondicion=Si<BR>    SQL(<T>SELECT COUNT(Cali)FROM VTASCLibCalPag WHERE Cali = :tCali<T>,Cali)>0<BR>Entonces<BR>    Falso<BR>Sino<BR>    Verdadero<BR>Fin
+ListaOpciones=REGULAR<BR>MALO<BR>PESIMO
+[MA]
+Clave=MA
+Nombre=MA
+Visible=S
+TamanoValidacion=1
+TipoDatos=Lógico
+
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+[VIU]
+Clave=VIU
+Nombre=VIU
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=1
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No

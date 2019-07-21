@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnFechaInicialEjercicio(
+@Ejercicio			int,
+@Periodo			int)
+RETURNS datetime
+
+AS
+BEGIN
+DECLARE @Fecha	datetime
+SELECT @Fecha = 0
+SELECT @Fecha = dbo.fnFechaSinHora(@Fecha)
+SELECT @Fecha = DATEADD(yy, @Ejercicio - 1900, @Fecha)
+IF @Periodo IS NOT NULL
+SELECT @Fecha = DATEADD(mm, @Periodo - 1, @Fecha)
+RETURN @Fecha
+END
+

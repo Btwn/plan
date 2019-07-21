@@ -1,0 +1,48 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgNominaCFDI ON Nomina
+FOR UPDATE
+AS
+BEGIN
+DECLARE @ID				int,
+@IDAnt			int,
+@NominaTimbrar	varchar(5),
+@Ok				int,
+@OkRef			varchar(255),
+@Mov				varchar(20),
+@MovID			varchar(20)
+SELECT @IDAnt = 0
+WHILE(1=1)
+BEGIN
+SELECT @ID = MIN(i.ID)
+FROM Inserted i
+JOIN Deleted d ON i.ID = d.ID
+WHERE i.Estatus =  'CANCELADO'
+AND d.Estatus <> 'CANCELADO'
+AND i.ID > @IDAnt
+IF @ID IS NULL BREAK
+SELECT @IDAnt = @ID
+SELECT @NominaTimbrar = ISNULL(NominaTimbrar, 0) FROM EmpresaCFD JOIN Nomina ON Nomina.Empresa = EmpresaCFD.Empresa WHERE Nomina.ID = @ID
+IF ISNULL(@NominaTimbrar, 0) = 1 AND EXISTS(SELECT * FROM CFDNomina WHERE Modulo = 'NOM' AND ModuloID = @ID AND ISNULL(Timbrado, 0) = 1 AND ISNULL(Cancelado, 0) = 0)
+BEGIN
+SELECT @Mov = Mov, @MovID = MovID FROM Inserted WHERE ID = @ID
+SELECT @Ok = 60050, @OkRef = 'CFDI - ' + RTRIM(@Mov)+' '+RTRIM(@MovID)
+BEGIN TRY
+EXEC spOk_RAISERROR @Ok, @OkRef
+END TRY
+BEGIN CATCH
+EXEC spOk_RAISERROR @Ok, @OkRef
+ROLLBACK TRAN
+END CATCH
+RETURN
+END
+END
+RETURN
+END
+

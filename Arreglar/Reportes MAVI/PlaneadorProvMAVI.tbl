@@ -1,0 +1,33 @@
+[Tabla]
+Icono=0
+Clave=PlaneadorProvMAVI
+Nombre=PlaneadorProvMAVI
+Archivo=PlaneadorProvMAVI
+Modulos=(Todos)
+Singular=PlaneadorProvMAVI
+TipoTabla=General
+ListaCampos=Proveedor<BR>Notas<BR>ImporteSol
+LlavePrimaria=Proveedor
+SQL=SELECT<BR>  Proveedor,<BR>  Notas,<BR>  ImporteSol<BR><BR>FROM<BR>  PlaneadorProvMAVI
+[Proveedor]
+Clave=Proveedor
+Nombre=Proveedor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[Notas]
+Clave=Notas
+Nombre=Notas
+Visible=S
+TamanoValidacion=255
+Tamano=255
+[ImporteSol]
+Clave=ImporteSol
+Nombre=Importe Total Solicitud de Compra
+Visible=S
+TamanoValidacion=20
+TipoDatos=NumMonetario
+FormatoValidacion=#,.00

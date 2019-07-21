@@ -1,0 +1,98 @@
+[Vista]
+Icono=0
+Clave=DM0207CriteriosAsignacionVis
+Modulos=(Todos)
+ListaTablas=DM0207CriteriosAsignacion
+TablaPrincipal=DM0207CriteriosAsignacion
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCalculados=AgentesxZona<BR>Zonas
+ListaCampos=DM0207CriteriosAsignacion.NivelCobranza<BR>DM0207CriteriosAsignacion.Region<BR>DM0207CriteriosAsignacion.Division<BR>DM0207CriteriosAsignacion.OrdenAsigna<BR>DM0207CriteriosAsignacion.ValidarAgentes<BR>DM0207CriteriosAsignacion.OrdenValores<BR>DM0207CriteriosAsignacion.OrdenarMov
+CamposBusquedaRapida=DM0207CriteriosAsignacion.Division<BR>DM0207CriteriosAsignacion.Region<BR>DM0207CriteriosAsignacion.NivelCobranza
+SQL=<BR>DECLARE @Q VARCHAR (MAX)<BR><BR>set @Q =(<T><BR>SELECT<BR>  DM0207CriteriosAsignacion.NivelCobranza,<BR>  DM0207CriteriosAsignacion.Region,<BR>  DM0207CriteriosAsignacion.Division,<BR>  DM0207CriteriosAsignacion.OrdenAsigna,<BR>  DM0207CriteriosAsignacion.ValidarAgentes,<BR>  DM0207CriteriosAsignacion.OrdenValores,<BR>  DM0207CriteriosAsignacion.OrdenarMov<BR><BR>FROM<BR>  DM0207CriteriosAsignacion <BR>WHERE 1=1 <T>)<BR><BR><BR>If <T>{Mavi.DM0207Nivelcob}<T> != <T>NULL<T><BR>begin <BR>Set @Q = @Q+ <T> AND  Nivelcobranza = <T><T>{Mavi.DM0207Nivelcob}<T><T> <T><BR>end<BR><BR><BR>If <T>{MAvi.DM0207Region}<T> != <T>NULL<T><BR>begin <BR>Set @Q = @Q+ <T> AND  Region = <T><T>{MAvi.DM0207Region}<T><T> <T><BR>end<BR><BR>If <T>{MAvi.DM0207Division}<T> != <T>NULL<T> <BR>begin <BR>Set @Q = @Q+ <T><CONTINUA>
+SQL002=<CONTINUA> AND  Division = <T><T>{MAvi.DM0207Division}<T><T> <T><BR>end<BR><BR><BR> Exec (@q)
+[AgentesxZona]
+Clave=AgentesxZona
+TipoDatos=Numérico
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Agentes Activos en Zona
+Formula=sql(<T>Select count(Agente) From DM0214Zonascobranza dz  where<BR>      division = :td and dz.Nivelcobranza = :tn AND  dz.region = :tr AND dz.Agente != :tag  Group by division<BR>       <T>,DM0207CriteriosAsignacion.Division,DM0207CriteriosAsignacion.NivelCobranza,DM0207CriteriosAsignacion.Region,<T>SIN AGENTE<T> )
+[Zonas]
+Clave=Zonas
+TipoDatos=Numérico
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Zonas
+Formula=sql(<T>Select count(Zona)from DM0214Zonascobranza where division = :td and Nivelcobranza = :tn and region = :tr <T>,DM0207CriteriosAsignacion.Division,DM0207CriteriosAsignacion.NivelCobranza,DM0207CriteriosAsignacion.Region)
+[DM0207CriteriosAsignacion.NivelCobranza]
+Clave=DM0207CriteriosAsignacion.NivelCobranza
+LigaTabla=DM0207CriteriosAsignacion
+LigaCampo=NivelCobranza
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=40
+ClaveBDE=NivelCobranza
+[DM0207CriteriosAsignacion.Region]
+Clave=DM0207CriteriosAsignacion.Region
+LigaTabla=DM0207CriteriosAsignacion
+LigaCampo=Region
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=40
+ClaveBDE=Region
+[DM0207CriteriosAsignacion.Division]
+Clave=DM0207CriteriosAsignacion.Division
+LigaTabla=DM0207CriteriosAsignacion
+LigaCampo=Division
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=40
+ClaveBDE=Division
+[DM0207CriteriosAsignacion.OrdenAsigna]
+Clave=DM0207CriteriosAsignacion.OrdenAsigna
+LigaTabla=DM0207CriteriosAsignacion
+LigaCampo=OrdenAsigna
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=OrdenAsigna
+[DM0207CriteriosAsignacion.ValidarAgentes]
+Clave=DM0207CriteriosAsignacion.ValidarAgentes
+LigaTabla=DM0207CriteriosAsignacion
+LigaCampo=ValidarAgentes
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=ValidarAgentes
+[DM0207CriteriosAsignacion.OrdenValores]
+Clave=DM0207CriteriosAsignacion.OrdenValores
+LigaTabla=DM0207CriteriosAsignacion
+LigaCampo=OrdenValores
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=OrdenValores
+[DM0207CriteriosAsignacion.OrdenarMov]
+Clave=DM0207CriteriosAsignacion.OrdenarMov
+Nombre=OrdenarMov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+LigaTabla=DM0207CriteriosAsignacion
+LigaCampo=OrdenarMov
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=OrdenarMov

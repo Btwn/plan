@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviConAnaDeImpXConComVis
+Nombre=ConceptoVenta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CONCEPTO
+SQL=select distinct CONCEPTO <BR>from concepto<BR>where concepto IS NOT NULL<BR>and concepto <> <T><T><BR>and modulo= <T>vtas<T><BR>order by CONCEPTO asc
+[CONCEPTO]
+Clave=CONCEPTO
+Nombre=CONCEPTO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CONCEPTO

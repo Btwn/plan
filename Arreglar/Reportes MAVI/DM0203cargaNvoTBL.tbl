@@ -1,0 +1,27 @@
+[Tabla]
+Icono=0
+Clave=DM0203cargaNvoTBL
+Archivo=DM0203CargaNvo
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Agente<BR>Ruta
+LlavePrimaria=Agente<BR>Ruta
+SQL=SELECT<BR>  Agente,<BR>  ruta<BR><BR>FROM<BR>  DM0203CargaNvo
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=50
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=50

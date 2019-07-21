@@ -1,0 +1,130 @@
+;**** Modificacion: 03-Feb-09
+;**** Modifico: Edgar Montelongo
+
+;**** Modificación:26-Ago-08
+;**** Modifico:Leticia Quezada
+;**** Se modifico: Se agregaron los campos de TipoOperacion, TipoTercero,TipoTerceroDesc y TipoOperacionDesc
+
+[Prov.vis/Vista]
+ListaCalculados=EstatusNombre<BR>TipoTerceroDesc<BR>TipoOperacionDesc
+
+[Prov.vis/Vista.ListaCampos]
+Prov.CentroCostos=Prov.TipoTercero
+Prov.TipoTercero=Prov.TipoOperacion
+Prov.TipoOperacion=Prov.LocalidadCNBV
+Prov.LocalidadCNBV=Prov.NotasPlaneador
+Prov.NotasPlaneador=CtaDinero.CtaDinero
+CentroCostos.Descripcion=LocalidadCNBV.LocalidadCNBV
+LocalidadCNBV.LocalidadCNBV=(Fin)
+
+[Prov.vis/Vista.SQL]
+Prov.CentroCostos,=Prov.TipoTercero,
+Prov.TipoTercero,=Prov.TipoOperacion,
+Prov.TipoOperacion,=Prov.LocalidadCNBV,
+Prov.LocalidadCNBV,=Prov.NotasPlaneador,
+Prov.NotasPlaneador,=CtaDinero.CtaDinero,
+CentroCostos.CentroCostos,=CentroCostos.Descripcion,
+CentroCostos.Descripcion,=LocalidadCNBV.LocalidadCNBV
+LocalidadCNBV.LocalidadCNBV=FROM Prov
+LEFT OUTER JOIN CentroCostos ON Prov.CentroCostos<IGUAL>CentroCostos.CentroCostos=LEFT OUTER JOIN LocalidadCNBV ON Prov.LocalidadCNBV<IGUAL>LocalidadCNBV.LocalidadCNBV
+LEFT OUTER JOIN LocalidadCNBV ON Prov.LocalidadCNBV<IGUAL>LocalidadCNBV.LocalidadCNBV=(Fin)
+
+[Prov.vis/Vista.ListaTablas]
+CentroCostos=LocalidadCNBV
+LocalidadCNBV=(Fin)
+
+[Prov.vis/Vista.ListaRelaciones]
+CtaDinero.Cta=Prov.LocalidadCNBV
+Prov.LocalidadCNBV=(Fin)
+
+[Prov.vis/Prov.TipoTercero]
+Clave=Prov.TipoTercero
+LigaTabla=Prov
+LigaCampo=TipoTercero
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=5
+ClaveBDE=TipoTercero
+
+[Prov.vis/TipoTerceroDesc]
+Clave=TipoTerceroDesc
+Tamano=15
+TipoCampo=Calculado
+TamanoValidacion=15
+Alineacion=por Omisión
+Nombre=Descripcion Tipo Tercero
+Formula=Caso  Prov.TipoTercero<BR>  Es <T>04<T> Entonces <T>Nacional<T><BR>  Es <T>05<T> Entonces <T>Internacional<T><BR>  Es <T>85<T> Entonces <T>Global<T><BR>Sino<BR>  <T> <T>             <BR>Fin
+
+[Prov.vis/Prov.TipoOperacion]
+Clave=Prov.TipoOperacion
+LigaTabla=Prov
+LigaCampo=TipoOperacion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=5
+ClaveBDE=TipoOperacion
+
+[Prov.vis/TipoOperacionDesc]
+Clave=TipoOperacionDesc
+Tamano=50
+TipoCampo=Calculado
+TamanoValidacion=50
+Nombre=Descripcion Operacion
+Formula=Caso  Prov.TipoOperacion<BR>  Es <T>03<T> Entonces <T>Prestacion Servicios Profesionales<T><BR>  Es <T>06<T> Entonces <T>Arrendamiento de Inmuebles<T><BR>  Es <T>85<T> Entonces <T>Otros<T><BR>Sino<BR>  <T> <T><BR>Fin
+
+
+[Prov.vis/Prov.NotasPlaneador]
+Clave=Prov.NotasPlaneador
+Nombre=Notas
+Visible=S
+TamanoValidacion=255
+Tamano=255
+LigaTabla=Prov
+LigaCampo=NotasPlaneador
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=NotasPlaneador
+
+[Prov.vis/Prov.LocalidadCNBV]
+Clave=Prov.LocalidadCNBV
+Nombre=LocalidadCNBV
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorRefrescar=Si(Info.Copiar,Info.Localidad,<T>X<T>)
+AyudaEnCaptura=Vista
+AyudaForma=LocalidadCNBVLista
+AyudaVista=LocalidadCNBV
+AyudaCampo=LocalidadCNBV.LocalidadCNBV
+ValidacionUsaTabla=S
+ValidacionTablas=LocalidadCNBV
+LigaTabla=Prov
+LigaCampo=LocalidadCNBV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=LocalidadCNBV
+
+[Prov.vis/LocalidadCNBV.LocalidadCNBV]
+Clave=LocalidadCNBV.LocalidadCNBV
+Nombre=LocalidadCNBV
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+LigaTabla=LocalidadCNBV
+LigaCampo=LocalidadCNBV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=LocalidadCNBV_1
+
+[Prov.vis/Relaciones.Prov.LocalidadCNBV]
+Clave=Prov.LocalidadCNBV
+TablaRemota=LocalidadCNBV
+LlaveLocal=Prov.LocalidadCNBV
+LlaveRemota=LocalidadCNBV
+TipoRelacion=Forzosa

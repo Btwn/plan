@@ -1,0 +1,2566 @@
+
+[Reporte]
+Clave=CFDValidoPDFS
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+
+Nombre=CFDValidoPDF
+PosicionInicialAlturaCliente=706
+PosicionInicialAncho=1382
+[Vista]
+Icono=0
+Clave=CFDValidoPDFS
+VistaIndependiente=S
+
+ListaCampos=Principal<BR>localname<BR>contenido<BR>Archivo<BR>Empresa<BR>Fecha
+SQL=EXEC spMuestradatosXML {Info.ID}, <T>{Info.Empresa}<T>
+[Principal]
+Clave=Principal
+Nombre=Principal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Principal
+
+[localname]
+Clave=localname
+Nombre=localname
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=localname
+
+[contenido]
+Clave=contenido
+Nombre=contenido
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50x3
+TipoDatos=Memo
+ClaveBDE=contenido
+
+[Archivo]
+Clave=Archivo
+Nombre=Archivo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=Archivo
+
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=Empresa
+
+
+[Formato]
+VentanaIzquierda=-8
+VentanaArriba=-8
+VentanaAltura=744
+VentanaAncho=1382
+PanelArriba=120
+PanelBotones=92
+ListaLineas=Título<BR>Encabezado<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Empresa<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Inicio: Archivo<BR>Pie<BR>Final
+
+[Linea1]
+Clave=Título
+Objetos=2
+Seccion=Título
+AltoEnCm=0.5
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+Grupo=
+[A1]
+Celda=A1
+Alineacion=Derecha
+AnchoEnCm=15
+AnchoTexto=81
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 9, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Documento: <T>
+
+[Linea2]
+Clave=Encabezado
+Objetos=2
+Seccion=Encabezado Página
+AltoEnCm=0.5
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+Grupo=
+[A2]
+Celda=A2
+Alineacion=Derecha
+AnchoEnCm=15
+AnchoTexto=81
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 9, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Fecha de Impresión: <T>
+
+
+BordeAbajo=S
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=Fecha
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Linea3]
+Clave=Inicio: Empresa
+Objetos=2
+Seccion=Inicio Grupo
+Grupo=Empresa
+AltoEnCm=0.5
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Marco=N
+EstiloMarco=0
+[A3]
+Celda=A3
+Alineacion=Izquierda
+AnchoEnCm=10
+AnchoTexto=54
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Emisor<T>
+
+Marco=N
+TextoConFlujo=N
+AlturaVariable=N
+EstiloMarco=0
+[Linea4]
+Clave=Inicio: Empresa
+Objetos=4
+Seccion=Inicio Grupo
+Grupo=Empresa
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+
+
+Marco=N
+EstiloMarco=0
+[A4]
+Celda=A4
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=10
+Marco=N
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>RFC <T>
+
+TextoConFlujo=N
+AlturaVariable=N
+
+EstiloMarco=0
+
+[D4]
+Celda=D4
+Alineacion=Izquierda
+AnchoEnCm=5.8
+TextoConFlujo=N
+AlturaVariable=N
+ExpresionMultiple=N
+AnchoTexto=31
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+
+
+
+
+
+
+
+
+
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>RFC<T>,<T>Receptor<T>,{Info.Empresa})
+[C6]
+Celda=C6
+Alineacion=Izquierda
+AnchoEnCm=1.39
+TextoConFlujo=N
+AlturaVariable=N
+AnchoTexto=7
+Marco=N
+EstiloMarco=0
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>RFC: <T>
+
+
+
+
+[Linea5]
+Clave=Inicio: Empresa
+Objetos=2
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+
+Grupo=Empresa
+[Linea6]
+Clave=Inicio: Empresa
+Objetos=2
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+Grupo=Empresa
+
+[A5]
+Celda=A5
+Alineacion=Izquierda
+AnchoEnCm=10
+AnchoTexto=54
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Calle <T> + SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>Calle<T>,<T>DomicilioFiscal<T>,{Info.Empresa}) + <T> No. Exterior <T> +  SQL( <T>EXEC<BR>spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>noExterior<T>,<T>DomicilioFiscal<T>,{Info.Empresa}) + <T> Colonia <T>  + SQL( <T>EXEC<BR>spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>, {Info.ID},<T>colonia<T>,<T>DomicilioFiscal<T>,<BR>{Info.Empresa})
+
+TextoConFlujo=S
+AlturaVariable=S
+[Linea7]
+Clave=Inicio: Empresa
+Objetos=2
+Seccion=Inicio Grupo
+Grupo=Empresa
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+[Linea10]
+Clave=Inicio: Empresa
+Objetos=1
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+Marco=N
+EstiloMarco=0
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Grupo=Empresa
+
+[A6]
+Celda=A6
+Alineacion=Izquierda
+AnchoEnCm=10
+AnchoTexto=54
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Localidad <T> + SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>, {Info.ID},<T>localidad<T>,<T>DomicilioFiscal<T>,<BR>{Info.Empresa})<BR>+ <T> Municipio <T> + SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>municipio<T>,<T>DomicilioFiscal<T>,{Info.Empresa})
+
+TextoConFlujo=N
+AlturaVariable=N
+
+
+[B3]
+Celda=B3
+Alineacion=Izquierda
+AnchoEnCm=10
+AnchoTexto=51
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Receptor <T>
+
+[C3]
+Celda=C3
+Alineacion=Izquierda
+FormatoValidacion=dd/mm/aa
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Ahora
+
+
+
+[B5]
+Celda=B5
+Alineacion=Izquierda
+AnchoEnCm=9
+AnchoTexto=48
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Calle <T> + SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>Calle<T>,<T>Domicilio<T>,{Info.Empresa}) + <T> No. Exterior <T> +  SQL( <T>EXEC <BR>spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>noExterior<T>,<T>Domicilio,<T>,{Info.Empresa}) + <T> Colonia <T>  + SQL( <T>EXEC <BR>spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>, {Info.ID},<T>colonia<T>,<T>Domicilio<T>,{Info.Empresa})
+
+TextoConFlujo=S
+AlturaVariable=S
+[Linea8]
+Clave=Inicio: Empresa
+Objetos=1
+Seccion=Inicio Grupo
+Grupo=Empresa
+AltoEnCm=0.39
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+Marco=N
+EstiloMarco=0
+[A7]
+Celda=A7
+Alineacion=Izquierda
+AnchoEnCm=10
+AnchoTexto=54
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Estado <T> + SQL( <T>EXEC spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>, {Info.ID},<T>estado<T>,<T>DomicilioFiscal<T>,<BR>{Info.Empresa})<BR> <T>Pais <T> + SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>pais<T>,<T>DomicilioFiscal<T>,{Info.Empresa}) + <T> Codigo Postal <T> + SQL( <T>EXEC<BR>spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>, {Info.ID},<T>codigoPostal<T>,<T>DomicilioFiscal<T>,<BR>{Info.Empresa})
+
+TextoConFlujo=N
+AlturaVariable=N
+
+
+
+BordeAbajo=N
+[B4]
+Celda=B4
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=32
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.Id},<T>RFC<T>,<T>Emisor<T>, {Info.Empresa} )
+
+[D6]
+Celda=D6
+Alineacion=Izquierda
+AnchoEnCm=6.61
+AnchoTexto=36
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz<T>,<BR>{Info.ID},<T>RFC<T>,<T>Receptor<T>)
+
+
+
+[Linea9]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+Objetos=1
+Grupo=Empresa
+
+
+[Linea11]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=1
+Grupo=Empresa
+[B6]
+Celda=B6
+Alineacion=Izquierda
+AnchoEnCm=9
+AnchoTexto=48
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Localidad <T> + SQL( <T>EXEC<BR>spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>, <BR>{Info.ID},<T>localidad<T>,<T>Domicilio<T>,{Info.Empresa})<BR>+ <T> Municipio <T> + SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>municipio<T>,<T>Domicilio<T>,{Info.Empresa})
+TextoConFlujo=N
+AlturaVariable=N
+
+[B7]
+Celda=B7
+Alineacion=Izquierda
+AnchoEnCm=9
+AnchoTexto=48
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Estado <T> + SQL( <T>EXEC spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>, {Info.ID},<T>estado<T>,<T>Domicilio<T>,{Info.Empresa})<BR> <T>Pais <T> + SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>pais<T>,<T>Domicilio<T>,{Info.Empresa}) + <T> Codigo Postal <T> + SQL( <T>EXEC <BR>spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>, {Info.ID},<T>codigoPostal<T>,<T>Domicilio<T>,<BR>{Info.Empresa})
+
+BordeAbajo=N
+
+[Linea12]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+Objetos=3
+Grupo=Empresa
+
+[Linea13]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=4
+Grupo=Empresa
+
+[Linea14]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=4
+Grupo=Empresa
+
+[A9]
+Celda=A9
+Alineacion=Izquierda
+AnchoEnCm=10
+AnchoTexto=51
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Calle <T> + SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>Calle<T>,<T>ExpedidoEn<T>,{Info.Empresa}) +<BR><T> No. Exterior <T> +  SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>noExterior<T>,<T>ExpedidoEn<T>,{Info.Empresa}) +<BR><T> No. Interior <T> +  SQL( <T>EXEC spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,{Info.ID},<T>noInterior<T>,<T>ExpedidoEn<T>,<BR>{Info.Empresa})
+
+
+
+BordeArriba=N
+[Linea15]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.5
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=4
+Grupo=Empresa
+
+
+[Linea16]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=4
+Grupo=Empresa
+
+[B1]
+Celda=B1
+Alineacion=Derecha
+AnchoEnCm=4
+AnchoTexto=22
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 9, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Archivo
+
+[B2]
+Celda=B2
+Alineacion=Derecha
+FormatoValidacion=dd/mm/aaaa
+AnchoEnCm=4
+AnchoTexto=22
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 9, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Ahora
+BordeAbajo=S
+
+[C4]
+Celda=C4
+Alineacion=Izquierda
+AnchoEnCm=3.2
+AnchoTexto=17
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>RFC <T>
+
+
+
+
+
+
+
+[Linea17]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=4
+Grupo=Empresa
+[A16]
+Celda=A16
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>No. Cta. Pago <T>
+
+TextoConFlujo=N
+AlturaVariable=N
+[Linea18]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=4
+Grupo=Empresa
+
+
+
+
+[Linea19]
+Clave=Inicio: Empresa
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=2
+Grupo=Empresa
+
+
+
+
+[A18]
+Celda=A18
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Tipo De Cambio <T>
+
+TextoConFlujo=N
+AlturaVariable=N
+[Linea20]
+Clave=Inicio: Archivo
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Arriba
+
+Objetos=4
+Grupo=Archivo
+[A14]
+Celda=A14
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Fecha <T>
+
+BordeArriba=N
+[B14]
+Celda=B14
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>Fecha<T>,<T>Comprobante<T>,{Info.Empresa})
+
+BordeArriba=N
+[C14]
+Celda=C14
+Alineacion=Izquierda
+AnchoEnCm=3.21
+AnchoTexto=17
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Metodo De Pago <T>
+
+BordeArriba=N
+[D14]
+Celda=D14
+Alineacion=Izquierda
+AnchoEnCm=5.79
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>metodoDePago<T>,<T>Comprobante<T>,{Info.Empresa})
+
+BordeArriba=N
+[A19]
+Celda=A19
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>No. Certificado <T>
+
+TextoConFlujo=N
+AlturaVariable=N
+BordeAbajo=N
+[Linea21]
+Clave=Inicio: Archivo
+Objetos=4
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Grupo=Archivo
+[Linea22]
+Clave=Inicio: Archivo
+Seccion=Inicio Grupo
+AltoEnCm=0.7
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=4
+Grupo=Archivo
+[A15]
+Celda=A15
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Arriba
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Lugar De Expedicion <T>
+
+[B15]
+Celda=B15
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>LugarExpedicion<T>,<T>Comprobante<T>,{Info.Empresa})
+
+
+TextoConFlujo=S
+AlturaVariable=S
+[A20]
+Celda=A20
+Alineacion=Izquierda
+AnchoEnCm=3.5
+TextoConFlujo=N
+AlturaVariable=N
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Arriba
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Cantidad <T>
+
+BordeArriba=S
+[A21]
+Celda=A21
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Unidad <T>
+
+TextoConFlujo=N
+AlturaVariable=N
+[A17]
+Celda=A17
+Alineacion=Izquierda
+AnchoEnCm=3.5
+TextoConFlujo=N
+AlturaVariable=N
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Descuento <T>
+
+[Linea23]
+Clave=Inicio: Archivo
+Objetos=1
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Grupo=Archivo
+[Linea24]
+Clave=Inicio: Archivo
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=5
+Grupo=Archivo
+[A8]
+Celda=A8
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Expedido En <T>
+
+[C15]
+Celda=C15
+Alineacion=Izquierda
+AnchoEnCm=3.2
+AnchoTexto=17
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Forma De Pago <T>
+
+[D15]
+Celda=D15
+Alineacion=Izquierda
+AnchoEnCm=5.79
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>formaDePago<T>,<T>Comprobante<T>,{Info.Empresa})
+
+[B16]
+Celda=B16
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>NumCtaPago<T>,<T>Comprobante<T>,{Info.Empresa})
+
+[C16]
+Celda=C16
+Alineacion=Izquierda
+AnchoEnCm=3.21
+AnchoTexto=17
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Tipo De Comprobante <T>
+
+[D16]
+Celda=D16
+Alineacion=Izquierda
+AnchoEnCm=5.79
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>tipoDeComprobante<T>,<T>Comprobante<T>,{Info.Empresa})
+
+[B17]
+Celda=B17
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>descuento<T>,<T>Comprobante<T>,{Info.Empresa})
+
+[A22]
+Celda=A22
+Alineacion=Izquierda
+AnchoEnCm=3.5
+TextoConFlujo=N
+AlturaVariable=N
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+Expresion=<T>Descripcion <T>
+BordeArriba=S
+[A23]
+Celda=A23
+Alineacion=Izquierda
+AnchoEnCm=19
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=
+
+TextoConFlujo=N
+AlturaVariable=N
+BordeArriba=N
+[Linea25]
+Clave=Inicio: Archivo
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=0
+Grupo=Archivo
+[A10]
+Celda=A10
+Alineacion=Izquierda
+AnchoEnCm=9.29
+AnchoTexto=51
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Coloniar <T> +  SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>colonia<T>,<T>ExpedidoEn<T>,{Info.Empresa}) +  <T> Municipio <T> + SQL( <T>EXEC<BR>spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>, {Info.ID},<T>municipio<T>,<T>ExpedidoEn<T>,<BR>{Info.Empresa}) +<BR><T> Estado <T> +  SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>estado<T>,<T>ExpedidoEn<T>,{Info.Empresa})
+
+
+TextoConFlujo=S
+AlturaVariable=S
+[C17]
+Celda=C17
+Alineacion=Izquierda
+AnchoEnCm=3.2
+AnchoTexto=17
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Sub Total <T>
+
+[D17]
+Celda=D17
+Alineacion=Izquierda
+AnchoEnCm=5.79
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>subTotal<T>,<T>Comprobante<T>,{Info.Empresa})
+
+[B18]
+Celda=B18
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>TipoCambio<T>,<T>Comprobante<T>,{Info.Empresa})
+
+
+[Linea26]
+Clave=Inicio: Archivo
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=4
+Grupo=Archivo
+[A11]
+Celda=A11
+Alineacion=Izquierda
+AnchoEnCm=10
+AnchoTexto=51
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Codigo Postal <T> +  SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>codigoPostal<T>,<T>ExpedidoEn<T>,{Info.Empresa}) + <T> Pais <T> +  SQL( <T>EXEC<BR>spSeleccionarGFC_V2<BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,{Info.ID},<T>pais<T>,<T>ExpedidoEn<T>,{Info.Empresa})
+
+[B11]
+Celda=B11
+Alineacion=Izquierda
+AnchoEnCm=6
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz<T>, <BR>{Info.ID},<T>Regimen<T>,<T>RegimenFiscal<T>)
+
+
+
+
+
+[A12]
+Celda=A12
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Regimen Fiscal <T>
+
+BordeAbajo=S
+[B12]
+Celda=B12
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>Regimen<T>,<T>RegimenFiscal<T>,{Info.Empresa})
+
+BordeAbajo=S
+
+
+
+
+[C12]
+Celda=C12
+Alineacion=Izquierda
+AnchoEnCm=9
+AnchoTexto=48
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+Expresion=
+BordeAbajo=S
+[A13]
+Celda=A13
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=102
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+BordeArriba=N
+Expresion=<T>Folio <T>
+
+[B13]
+Celda=B13
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>Folio<T>,<T>Comprobante<T>,{Info.Empresa})
+
+BordeArriba=N
+[C13]
+Celda=C13
+Alineacion=Izquierda
+AnchoEnCm=3.2
+AnchoTexto=17
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Condiciones De Pago <T>
+
+BordeArriba=N
+[D13]
+Celda=D13
+Alineacion=Izquierda
+AnchoEnCm=5.8
+AnchoTexto=31
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>condicionesDePago<T>,<T>Comprobante<T>,{Info.Empresa})
+
+BordeArriba=N
+[Linea27]
+Clave=Inicio: Archivo
+Objetos=4
+Seccion=Inicio Grupo
+Grupo=Archivo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Marco=N
+EstiloMarco=0
+[Linea28]
+Clave=Inicio: Archivo
+Objetos=1
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Grupo=Archivo
+[Linea29]
+Clave=Inicio: Archivo
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=1
+Grupo=Archivo
+
+
+
+[A26]
+Celda=A26
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Fecha De Timbrado <T>
+
+BordeArriba=S
+
+
+
+[B27]
+Celda=B27
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>UUID<T>,<T>TimbreFiscalDigital<T>,{Info.Empresa})
+
+BordeArriba=N
+[C27]
+Celda=C27
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>No Certificado SAT <T>
+
+BordeArriba=N
+[D27]
+Celda=D27
+Alineacion=Izquierda
+AnchoEnCm=5.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>noCertificadoSAT<T>,<T>TimbreFiscalDigital<T>,{Info.Empresa})
+
+BordeArriba=N
+
+[A24]
+Celda=A24
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=19
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Tasa <T>
+
+BordeArriba=S
+TextoConFlujo=N
+AlturaVariable=N
+
+
+
+[Linea30]
+Clave=Inicio: Archivo
+Seccion=Inicio Grupo
+Grupo=Archivo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=1
+[A29]
+Celda=A29
+Alineacion=Izquierda
+AnchoEnCm=19
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>selloSAT<T>,<T>TimbreFiscalDigital<T>,{Info.Empresa})
+
+BordeArriba=N
+TextoConFlujo=S
+AlturaVariable=S
+
+
+
+[E29]
+Celda=E29
+Alineacion=Izquierda
+AnchoEnCm=3.11
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz<T>, 1,<T>tasa<T>,<T>Traslado<T>)
+
+[F29]
+Celda=F29
+Alineacion=Izquierda
+AnchoEnCm=3.11
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Importe <T>
+
+[G29]
+Celda=G29
+Alineacion=Izquierda
+AnchoEnCm=3.4
+AnchoTexto=18
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz<T>, 1,<T>importe<T>,<T>Traslado<T>)
+
+
+[F27]
+Celda=F27
+Alineacion=Izquierda
+AnchoEnCm=3.11
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Importe <T>
+
+BordeArriba=S
+[G27]
+Celda=G27
+Alineacion=Izquierda
+AnchoEnCm=3.4
+AnchoTexto=18
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz<T>, 1,<T>importe<T>,<T>Traslado<T>)
+
+BordeArriba=S
+
+
+
+
+
+
+[A27]
+Celda=A27
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+BordeArriba=N
+Expresion=<T>Comprobante Fiscal <T>
+[Linea31]
+Clave=Inicio: Archivo
+Objetos=1
+Seccion=Inicio Grupo
+Grupo=Archivo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+[Linea32]
+Clave=Inicio: Archivo
+Objetos=1
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Grupo=Archivo
+[Linea33]
+Clave=Inicio: Archivo
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=1
+Grupo=Archivo
+[A30]
+Celda=A30
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Sello <T>
+
+BordeArriba=N
+
+
+
+[A31]
+Celda=A31
+Alineacion=Izquierda
+AnchoEnCm=19
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>Sello<T>,<T>Comprobante<T>,{Info.Empresa})
+
+
+
+
+TextoConFlujo=S
+AlturaVariable=S
+[A32]
+Celda=A32
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Certificado <T>
+
+TextoConFlujo=N
+AlturaVariable=N
+[Linea34]
+Clave=Pie
+Objetos=1
+Seccion=Pie Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Grupo=
+[Linea35]
+Clave=Final
+Seccion=Final
+AltoEnCm=0.35
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+[A33]
+Celda=A33
+Alineacion=Izquierda
+AnchoEnCm=19
+TextoConFlujo=S
+AlturaVariable=S
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>certificado<T>,<T>Comprobante<T>,{Info.Empresa})
+
+[A34]
+Celda=A34
+Alineacion=Derecha
+AnchoEnCm=19
+AnchoTexto=102
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Página <T>+ReportePaginaNumero
+
+[C19]
+Celda=C19
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Sub Total <T>
+
+[D19]
+Celda=D19
+Alineacion=Izquierda
+AnchoEnCm=6
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz<T>, 1,<T>subTotal<T>,<T>Comprobante<T>)
+
+[B20]
+Celda=B20
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Arriba
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>cantidad<T>,<T>Concepto<T>,{Info.Empresa})
+
+BordeArriba=S
+[C20]
+Celda=C20
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Arriba
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Importe <T>
+
+BordeArriba=S
+[D20]
+Celda=D20
+Alineacion=Izquierda
+AnchoEnCm=5.5
+AnchoTexto=30
+FondoColor=Blanco
+AVertical=Arriba
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>importe<T>,<T>Concepto<T>,{Info.Empresa})
+
+BordeArriba=S
+[B21]
+Celda=B21
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>unidad<T>,<T>Concepto<T>,{Info.Empresa})
+
+[B24]
+Celda=B24
+Alineacion=Izquierda
+AnchoEnCm=3.11
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>, <BR>{Info.ID},<T>tasa<T>,<T>Traslado<T>,{Info.Empresa})
+
+BordeArriba=S
+[C24]
+Celda=C24
+Alineacion=Izquierda
+AnchoEnCm=1.89
+AnchoTexto=10
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Importe <T>
+
+BordeArriba=S
+[D24]
+Celda=D24
+Alineacion=Izquierda
+AnchoEnCm=5
+AnchoTexto=27
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>, <BR>{Info.ID},<T>importe<T>,<T>Traslado<T>,{Info.Empresa})
+
+BordeArriba=S
+
+
+
+[B34]
+Celda=B34
+Alineacion=Izquierda
+AnchoEnCm=6
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz<T>,<BR>{Info.ID},<T>Folio<T>,<T>Comprobante<T>)
+
+[C34]
+Celda=C34
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=19
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Condiciones De Pago <T>
+
+[D34]
+Celda=D34
+Alineacion=Izquierda
+AnchoEnCm=6
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz<T>,<BR>{Info.ID},<T>condicionesDePago<T>,<T>Comprobante<T>)
+
+[C18]
+Celda=C18
+Alineacion=Izquierda
+AnchoEnCm=3.21
+AnchoTexto=17
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Total <T>
+
+[D18]
+Celda=D18
+Alineacion=Izquierda
+AnchoEnCm=5.79
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>total<T>,<T>Comprobante<T>,{Info.Empresa})
+
+[B19]
+Celda=B19
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>noCertificado<T>,<T>Comprobante<T>,{Info.Empresa})
+
+
+
+
+
+
+
+
+
+
+
+[Vista.ListaCampos]
+(Inicio)=Principal
+Principal=localname
+localname=contenido
+contenido=Archivo
+Archivo=Empresa
+Empresa=Fecha
+Fecha=(Fin)
+
+[C21]
+Celda=C21
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Valor Unitario <T>
+
+[D21]
+Celda=D21
+Alineacion=Izquierda
+AnchoEnCm=5.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>valorUnitario<T>,<T>Concepto<T>,{Info.Empresa})
+
+[B22]
+Celda=B22
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+BordeArriba=S
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>descripcion<T>,<T>Concepto<T>,{Info.Empresa})
+TextoConFlujo=S
+
+[C22]
+Celda=C22
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+BordeArriba=S
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>No.Identificacion <T>
+
+[D22]
+Celda=D22
+Alineacion=Izquierda
+AnchoEnCm=5.5
+AnchoTexto=16
+BordeArriba=S
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>noIdentificacion<T>,<T>Concepto<T>,{Info.Empresa})
+
+[E24]
+Celda=E24
+Alineacion=Izquierda
+AnchoEnCm=5.5
+AnchoTexto=30
+BordeArriba=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Impuesto <T> +  SQL( <T>EXEC spSeleccionarGFC_V2 <BR>:nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>Impuesto<T>,<T>Traslado<T>,{Info.Empresa})
+
+[B26]
+Celda=B26
+Alineacion=Izquierda
+AnchoEnCm=6.5
+AnchoTexto=16
+BordeArriba=S
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>FechaTimbrado<T>,<T>TimbreFiscalDigital<T>,{Info.Empresa})
+
+[C26]
+Celda=C26
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+BordeArriba=S
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Version <T>
+
+[D26]
+Celda=D26
+Alineacion=Izquierda
+AnchoEnCm=5.5
+AnchoTexto=16
+BordeArriba=S
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SQL( <T>EXEC spSeleccionarGFC_V2 :nid,:t@campo,:t@Raiz,:t@Empresa<T>,<BR>{Info.ID},<T>version<T>,<T>TimbreFiscalDigital<T>,{Info.Empresa})
+
+[A28]
+Celda=A28
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Sello SAT <T>

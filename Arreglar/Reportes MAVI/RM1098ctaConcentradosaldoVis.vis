@@ -1,0 +1,33 @@
+[Vista]
+Icono=0
+Clave=RM1098ctaConcentradosaldoVis
+Nombre=Cuenta       
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Ctadinero<BR>Saldo<BR>NombreCta
+SQL=EXEC SP_MAVIRM1098SaldoConcentrado {Si(ConDatos(Mavi.RM1098CtaBancaria),Reemplaza( Comillas(<T>,<T>), <T>,<T>, Mavi.RM1098CtaBancaria ),Comillas(<T><T>))},<BR>                                   {Comillas(Info.Dato)}
+[Ctadinero]
+Clave=Ctadinero
+Nombre=Cuenta Bancaria
+Visible=S
+TamanoValidacion=10
+Tamano=1
+ClaveBDE=CtaDinero
+TipoDatos=Texto
+[Saldo]
+Clave=Saldo
+Nombre=Saldo actuales en Banco
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Saldo
+Monetario=S
+[NombreCta]
+Clave=NombreCta
+Nombre=Nombre Cuenta
+Visible=S
+TamanoValidacion=17
+Tamano=1
+ClaveBDE=NombreCta
+TipoDatos=Texto

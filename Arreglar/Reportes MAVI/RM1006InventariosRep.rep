@@ -1,0 +1,147 @@
+[Reporte]
+Clave=RM1006InventariosRep
+Nombre=<T>RM1006InventariosRep<T>
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+TamanoPagina=2
+AnchoPagina=24.552
+LargoPagina=27.9
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+FormatoSinConexion=S
+Puerto=LPT1
+Parametros=S
+PosicionInicialAlturaCliente=423
+PosicionInicialAncho=630
+ImpresoraModo=Normal
+FormatoAscii=S
+AsciiPorOmision=S
+ArchivoEspecifico=F:\DireccionGral\Direccion\INVENTARIOS.txt
+ASCIISinSaltos=S
+[Vista]
+Icono=0
+Clave=RM1006InventariosRep
+VistaIndependiente=S
+ListaCampos=Concepto<BR>total
+BaseSR=S
+SQL=Declare <BR>@Devoluciones decimal(32,5),        <BR>@Facturas decimal(32,5),        <BR>@cosfa decimal(32,5),        <BR>@total decimal(32,5),        <BR>@muebles decimal(32,5),        <BR>@ARTBLOQDO decimal(32,5),        <BR>@fechad datetime,         <BR>@fechaa datetime    <BR>set @fechaa = <T>{Fechaformatoservidor(Info.FechaA)}<T>  <BR>set @fechad = (select dateadd(dd, -14,DATEADD(DD,0,DATEDIFF(DD,0, @fechaa))))    <BR>set @Facturas = <BR><TAB>(SELECT total = sum(CostoTotal) FROM venta With(Nolock)       <BR><TAB> WHERE mov in (select t.nombre from dbo.TablaStD t With(Nolock)    <BR><TAB><TAB><TAB><TAB>   where t.TablaSt = <T>RM1006 MOVIMIENTOS COSFA<T> and t.Nombre in (<T>factura<T>, <T>factura mayoreo<T>, <T>factura viu<T>))          <BR><TAB><TAB><TAB><TAB>   and estatus = <T>conclui<CONTINUA>
+SQL002=<CONTINUA>do<T> and DATEADD(DD,0,DATEDIFF(DD,0, FechaRegistro)) Between @fechad And @fechaa)    <BR>set @Devoluciones = <BR><TAB>(SELECT total = sum(CostoTotal) FROM venta With(Nolock)      <BR><TAB>where mov in (select t.nombre from dbo.TablaStD t With(Nolock) inner join dbo.MovTipo m With(Nolock) on t.Nombre = m.mov       <BR><TAB><TAB><TAB><TAB>  where t.TablaSt = <T>RM1006 MOVIMIENTOS COSFA<T>       <BR><TAB><TAB><TAB><TAB><TAB>and m.Modulo = <T>vtas<T> and m.clave = <T>vtas.d<T>      )      <BR><TAB><TAB><TAB><TAB><TAB>and estatus = <T>concluido<T> and DATEADD(DD,0,DATEDIFF(DD,0, FechaRegistro)) Between @fechad And @fechaa)    <BR>SELECT @cosfa = isnull(@Facturas,0) - isnull(@Devoluciones,0)    <BR>SELECT @total = (select costo = sum(ac.CostoPromedio * v.Total) <BR><TAB><TAB><TAB><TAB>from V_MA<CONTINUA>
+SQL003=<CONTINUA>VIDM0135IDTRANSITO v With(Nolock) <BR><TAB><TAB><TAB><TAB>inner JOIN dbo.ArtCosto ac on v.Sucursal = ac.Sucursal and v.Articulo = ac.Articulo)    <BR>SELECT @muebles = (select costo = sum(ac.CostoPromedio * v.Total) from V_MAVIDM0135IDTRANSITO v With(Nolock)   <BR><TAB><TAB><TAB>      inner JOIN dbo.ArtCosto ac on v.Sucursal = ac.Sucursal and v.Articulo = ac.Articulo         <BR><TAB><TAB><TAB><TAB>  Left Join Art A On V.Articulo = A.Articulo         <BR><TAB><TAB><TAB><TAB>  Where A.Familia IN (<T>MUEBLES<T>,<T>COLCHONERIA<T>) )  <BR>SELECT @ARTBLOQDO = (<BR><TAB>SELECT costo = sum(ac.CostoPromedio * v.Total) <BR><TAB>FROM V_MAVIDM0135IDTRANSITO v With(Nolock)   <BR><TAB>INNER JOIN dbo.ArtCosto ac on v.Sucursal = ac.Sucursal and v.Articulo = ac.Articulo         <BR><TAB>LEFT JOIN Art A On<CONTINUA>
+SQL004=<CONTINUA> V.Articulo = A.Articulo         <BR><TAB>WHERE A.Descripcion1 like <T>%-Q-%<T> and A.CATEGORIA = <T>VENTA<T> AND A.GRUPO = <T>MERCANCIA DE LINEA<T> AND LEFT(V.ALMACEN,1) = <T>V<T><BR><TAB>)<BR><BR>SELECT <T>Total<T> as Concepto,rtrim(cast((@total)as char(30))) as total   <BR>union all    <BR>select <T>CosFa15<T>,rtrim(cast((@cosfa)as char(30)))    <BR>union all    <BR>select <T>Muebles<T>,rtrim(cast((@muebles)as char(30)))<BR>union all    <BR>select <T>ArtBloqdo<T>,rtrim(cast((@ARTBLOQDO)as char(30)))
+[Formato]
+ListaLineas=Título<BR>Título<BR>Detalle
+VentanaIzquierda=-55
+VentanaArriba=101
+VentanaAltura=621
+VentanaAncho=1296
+PanelArriba=120
+PanelBotones=80
+[Linea1]
+Clave=Título
+Objetos=1
+Seccion=Título
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+[A1]
+Celda=A1
+Alineacion=Izquierda
+AnchoEnCm=16.61
+AnchoTexto=89
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T><T>+<T>De: <T>+FechaAMD(Info.FechaD)+<T> Hasta: <T>+FechaAMD(Info.FechaA)
+[Linea2]
+Clave=Título
+Objetos=0
+Seccion=Título
+AltoEnCm=0.4
+Renglones=1
+Marco=N
+EstiloMarco=0
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+[Linea3]
+Clave=Detalle
+Objetos=2
+Seccion=Detalle
+AltoEnCm=0.4
+Renglones=1
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+[A3]
+Celda=A3
+Alineacion=Izquierda
+AnchoEnCm=2.976
+AnchoTexto=16
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Concepto
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=9
+TipoDatos=Texto
+Tamano=9
+ClaveBDE=Concepto
+[total]
+Clave=total
+Nombre=total
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=total
+[B3]
+Celda=B3
+Alineacion=Izquierda
+AnchoEnCm=16.5
+AnchoTexto=89
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=total

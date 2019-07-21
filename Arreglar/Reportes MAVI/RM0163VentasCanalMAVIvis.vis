@@ -1,0 +1,53 @@
+;***** Modificacion: 09-Ene-09
+;***** Modifico: Judith Ramirez
+;***** Se modifico: Se agrego campo seenviaburocreditomavi para desarrollo buro credito
+
+[Vista]
+Icono=0
+Clave=RM0163VentasCanalMAVIvis
+Nombre=Canal de Ventas
+Modulos=(Todos)
+Singular=Canal de vta
+ListaCampos=VentasCanalMAVI.Clave<BR>id
+CamposBusquedaRapida=VentasCanalMAVI.ID<BR>VentasCanalMAVI.Clave<BR>VentasCanalMAVI.Cadena<BR>VentasCanalMAVI.Categoria
+VistaIndependiente=S
+SQL=SELECT<BR><BR>  VentasCanalMAVI.Clave,<BR>  VentasCanalMAVI.id<BR><BR>FROM<BR>  VentasCanalMAVI WHERE Categoria=<T>instituciones<T>
+
+
+
+
+
+
+
+;***** campo nuevo para buro de credito 30/12/2008 *****
+
+;***** campo nuevo para Moratorios *****
+
+[VentasCanalMAVI.Clave]
+Clave=VentasCanalMAVI.Clave
+LigaTabla=VentasCanalMAVI
+LigaCampo=Clave
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Clave
+[Clave]
+Clave=Clave
+Nombre=Clave
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Clave
+[id]
+Clave=id
+Nombre=id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=id

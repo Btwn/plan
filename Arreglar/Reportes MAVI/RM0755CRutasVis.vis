@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0755CRutasVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Ruta
+Nombre=Rutas
+SQL=Select Ruta from(select Ruta,zona from Ruta where 1=1 and zona like<T>MAY%<T>union select <T>SIN RUTA<T>,<T>SIN ZONA<T>)x<BR>where 1=1 {Si(Condatos(Mavi.RM0755CZona),<T> And Zona in (<T>+Mavi.RM0755CZona+<T>)<T>,<T><T>)}
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Ruta

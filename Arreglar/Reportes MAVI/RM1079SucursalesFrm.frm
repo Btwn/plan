@@ -1,0 +1,123 @@
+[Forma]
+Clave=RM1079SucursalesFrm
+Nombre=<T>RM1079 Sucursales<T>
+Icono=0
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=Lista
+CarpetaPrincipal=Lista
+PosicionInicialAlturaCliente=271
+PosicionInicialAncho=261
+ListaAcciones=seleccion
+PosicionInicialIzquierda=708
+PosicionInicialArriba=157
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+ExpresionesAlMostrar=Asigna(Mavi.RM1079SucursalesFiltro,<T><T>)
+[Acciones.Seltodo]
+Nombre=Seltodo
+Boton=0
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.quitsel]
+Nombre=quitsel
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Lista]
+Estilo=Iconos
+Clave=Lista
+BusquedaRapidaControles=S
+MenuLocal=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1079SucursalesVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Nombre
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+ListaAcciones=Seltodo<BR>quitsel
+CarpetaVisible=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+IconosSubTitulo=<T>Sucursal<T>
+IconosNombre=RM1079SucursalesVis:Sucursal
+[Lista.Columnas]
+0=77
+1=141
+Sucursal=64
+Nombre=604
+2=-2
+[Acciones.seleccion.asign]
+Nombre=asign
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.seleccion.expr]
+Nombre=expr
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Lista<T>)
+[Acciones.seleccion]
+Nombre=seleccion
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=asign<BR>expr<BR>selec
+Activo=S
+Visible=S
+[Acciones.seleccion.selec]
+Nombre=selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Expresion=Asigna(Mavi.RM1079SucursalesFiltro,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+Activo=S
+Visible=S
+[Lista.Nombre]
+Carpeta=Lista
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+

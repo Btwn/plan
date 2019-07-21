@@ -1,0 +1,100 @@
+[Forma]
+Clave=RM0995FILTROMESESfrm
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Ddd
+CarpetaPrincipal=Ddd
+PosicionInicialAlturaCliente=276
+PosicionInicialAncho=150
+PosicionInicialIzquierda=302
+PosicionInicialArriba=153
+EsConsultaExclusiva=S
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Asig<BR>Cancel
+VentanaTipoMarco=Chico
+VentanaPosicionInicial=por Diseño
+VentanaEscCerrar=S
+VentanaSinIconosMarco=S
+VentanaEstadoInicial=Normal
+[Ddd]
+Estilo=Iconos
+Clave=Ddd
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM0995FILTROMESESvis
+Fuente={Tahoma, 8, Negro, []}
+CarpetaVisible=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+IconosSubTitulo=Meses
+IconosNombreNumerico=S
+IconosNombre=RM0995FILTROMESESvis:numero
+ListaEnCaptura=Meses
+[Ddd.Columnas]
+Meses=34
+0=52
+1=-2
+[Acciones.Asig]
+Nombre=Asig
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Aceptar
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Asignando<BR>seleccionar Todo<BR>Seleccionar/Resultado
+[Acciones.Cancel]
+Nombre=Cancel
+Boton=21
+NombreEnBoton=S
+NombreDesplegar=&Cancelar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cancelar
+Activo=S
+Visible=S
+[Acciones.Asig.Seleccionar/Resultado]
+Nombre=Seleccionar/Resultado
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Expresion=SQL(<T>EXEC SP_MaviCuentaEstacionUEN <T>+Estaciontrabajo+<T>,2<T>)
+Activo=S
+Visible=S
+[Acciones.Asig.Asignando]
+Nombre=Asignando
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Asig.seleccionar Todo]
+Nombre=seleccionar Todo
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Ddd.Meses]
+Carpeta=Ddd
+Clave=Meses
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Blanco
+ColorFuente=Negro

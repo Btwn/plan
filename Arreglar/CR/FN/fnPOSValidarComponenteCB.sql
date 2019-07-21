@@ -1,0 +1,26 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION dbo.fnPOSValidarComponenteCB (
+@ID				varchar(36),
+@Estacion		int,
+@RenglonID		int
+)
+RETURNS int
+
+AS
+BEGIN
+DECLARE
+@Resultado  int
+SET @Resultado = 0
+IF EXISTS( SELECT * FROM POSArtJuegoComponente WHERE   RID = @ID  AND Estacion = @Estacion AND RenglonID = @RenglonID
+AND NULLIF(Opcion,'') IS  NULL AND Juego IS NOT  NULL)
+SELECT @Resultado = 1
+RETURN (@Resultado)
+END
+

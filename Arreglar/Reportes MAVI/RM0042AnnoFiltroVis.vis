@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM0042AnnoFiltroVis
+Nombre=RM0042AnnoFiltroVis
+Modulos=(Todos)
+Singular=RM0042AnnoFiltroVis
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Año
+CamposBusquedaRapida=Año
+LlavePrimaria=Año
+SQL=select distinct Año = year(fechaemision) from soporte
+[Año]
+Clave=Año
+Nombre=Año
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Año

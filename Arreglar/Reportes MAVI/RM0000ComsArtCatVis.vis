@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0000ComsArtCatVis
+Nombre=Categoria de Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Categoria
+CamposBusquedaRapida=Categoria
+SQL=SELECT DISTINCT(Categoria) <BR>FROM Art<BR>WHERE Art.Categoria IS NOT NULL<BR>{Si(Condatos(Mavi.RM0000ArtGrupLig) ,<T>AND Art.Grupo In (SELECT Grupo FROM ArtGrupo WHERE Grupo=<T>+Comillas(Mavi.RM0000ArtGrupLig)+<T>)<T>,<T><T>)}<BR>{Si(Condatos(Mavi.RM0000ArtFamLig)  ,<T>AND Art.Familia In (SELECT Familia FROM ArtFam WHERE Familia=<T>+Comillas(Mavi.RM0000ArtFamLig)+<T>)<T>,<T><T>)}<BR>{Si(Condatos(Mavi.RM0000ArtLinLig)  ,<T>AND Art.Linea In (SELECT Linea FROM ArtLinea WHERE Linea=<T>+Comillas(Mavi.RM0000ArtLinLig)+<T>)<T>,<T><T>)}<BR><BR>ORDER BY Categoria ASC
+[Categoria]
+Clave=Categoria
+Nombre=Lista de Categorías
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Categoria

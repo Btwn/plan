@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgTablaNumBC ON TablaNum
+
+FOR UPDATE, DELETE
+AS BEGIN
+DECLARE
+@ClaveNueva  	varchar(50),
+@ClaveAnterior	varchar(50)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @ClaveNueva    = TablaNum FROM Inserted
+SELECT @ClaveAnterior = TablaNum FROM Deleted
+IF @ClaveNueva IS NULL
+DELETE TablaNumD WHERE TablaNum = @ClaveAnterior
+ELSE
+UPDATE TablaNumD SET TablaNum = @ClaveNueva WHERE TablaNum = @ClaveAnterior
+END
+

@@ -1,0 +1,89 @@
+[Forma]
+Clave=RM1123FiltroNivelesFrm
+Nombre=RM1123 Filtro Niveles
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Nivel
+CarpetaPrincipal=Nivel
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=selcet
+[Nivel]
+Estilo=Iconos
+Clave=Nivel
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1123FiltroNivelesVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Nombre
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+CarpetaVisible=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+PestanaOtroNombre=S
+[Nivel.Nombre]
+Carpeta=Nivel
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+[Nivel.Columnas]
+0=-2
+[Acciones.selcet]
+Nombre=selcet
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=asig<BR>regis<BR>select
+[Acciones.selcet.asig]
+Nombre=asig
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.selcet.regis]
+Nombre=regis
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion( <T>Nivel<T> )
+[Acciones.selcet.select]
+Nombre=select
+Boton=0
+TipoAccion=Ventana
+Activo=S
+Visible=S
+ClaveAccion=Seleccionar/Resultado
+Expresion=Asigna(Mavi.RM1123NivelCobranza,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)

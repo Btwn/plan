@@ -1,0 +1,19 @@
+
+[Vista]
+Icono=0
+Clave=DM0500BTipoComisionMaviVIS
+Nombre=DM0500BTipoComisionMaviVIS
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=TipoComisionMavi
+SQL=SELECT *<BR>FROM V_DM0500BTipoComisionMavi
+[TipoComisionMavi]
+Clave=TipoComisionMavi
+Nombre=Tipo Comision Mavi
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=TipoComisionMavi

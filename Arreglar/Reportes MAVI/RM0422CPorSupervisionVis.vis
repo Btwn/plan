@@ -1,0 +1,26 @@
+[Vista]
+Icono=0
+Clave=RM0422CPorSupervisionVis
+Nombre=RM0422CPorSupervisionVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MC.MovID
+CamposBusquedaRapida=MC.MovID
+SQL=Select  distinct<BR>MC.MovID<BR>From MaviSupervision  MC<BR>       INNER JOIN maviRuta mr ON mr.ID=MC.RutaID<BR>       INNER JOIN MaviRutaD MD on md.SupervisionID = MC.ID<BR>where MC.tipo LIKE (<T>%LABORAL%<T>) AND mr.estatus=<T>Pendiente<T><BR>ORDER BY MC.MovID ASC
+[MC.MovID]
+Clave=MC.MovID
+Tamano=20
+ClaveBDE=MovID
+TamanoValidacion=20
+Nombre=MovID
+[MovID]
+Clave=MovID
+Nombre=MovID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovID

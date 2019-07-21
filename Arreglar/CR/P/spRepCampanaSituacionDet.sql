@@ -1,0 +1,22 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spRepCampanaSituacionDet
+@ID   int
+
+AS BEGIN
+SELECT c.ID, c.Mov, c.MovID, c.Asunto, c.Agente, a.Nombre as 'NombreAgente', cd.RID, cd.Situacion,
+TotalContatos = (SELECT Count(cd.RID) FROM CampanaD cd WHERE cd.ID = c.ID)
+FROM Campana c JOIN CampanaD cd
+ON c.ID = cd.ID LEFT JOIN Agente a
+ON c.Agente = a.Agente
+WHERE c.ID = ISNULL(@ID, c.ID)
+ORDER BY c.ID
+RETURN
+END
+

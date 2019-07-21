@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0946CxctipoclienteVis
+Nombre=cliente
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=tipocliente
+SQL=select <T>Menudeo<T> as tipocliente,ord=1<BR>union<BR>select <T>Instituciones<T> as tipocliente, ord=2<BR>union<BR>select <T>DIMA<T> as tipocliente, ord=3<BR>order by ord
+[tipocliente]
+Clave=tipocliente
+Nombre=tipocliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=13
+TipoDatos=Texto
+Tamano=13
+ClaveBDE=tipocliente

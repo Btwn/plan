@@ -1,0 +1,1443 @@
+[Vista]
+Icono=0
+Clave=PropreListaDDerecha
+Nombre=PropreListaDDerecha
+Modulos=(Todos)
+Singular=PropreListaDDerecha
+ListaTablas=PropreListaD<BR>PropreArt<BR>Art<BR>PropreLista<BR>PropreArtExistencia<BR>PropreArtVenta<BR>PropreArtFam<BR>PropreArtUltimaVenta<BR>PropreArtVentaUltimoMes<BR>PropreEmpresaCfg
+TablaPrincipal=PropreListaD
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCalculados=CostoConImpuestos<BR>PrecioBaseCalculo<BR>PrecioBase<BR>MC<BR>PrecioPlazo1Calculo<BR>PrecioPlazo1<BR>AbonoPlazo1<BR>PrecioPlazo2Calculo<BR>PrecioPlazo2<BR>AbonoPlazo2<BR>PrecioPlazo3Calculo<BR>PrecioPlazo3<BR>AbonoPlazo3<BR>PrecioPlazo4Calculo<BR>PrecioPlazo4<BR>AbonoPlazo4<BR>PrecioIntermedio<BR>MargenRealSobreCosto<BR>MargenRealSobreVenta<BR>DescuentoFamilia<BR>PrecioPlazo0Calculo<BR>PrecioPlazo0<BR>AbonoPlazo0<BR>PrecioContadoCalculo<BR>PrecioContado<BR>PrecioContadoM2Calculo<BR>PrecioContadoM2<BR>PrecioFinalZ1<BR>PagosDife1<BR>PagosDife2<BR>PagosDife3<BR>PrecioReferCalculo<BR>PrecioRefer<BR>PrecioCreditoCalculo<BR>PrecioCredito<BR>PagosDifeDoble1<BR>PagosDifeDoble2<BR>PagosDifeDoble3<BR>DifeRefe<BR>PrecioIntermedioCredito<BR>MCContado<BR>PrecioMayoreo1ConIVACalculo<BR>PrecioMayoreo1Con<CONTINUA>
+ListaRelaciones=PropreListaD.Art<BR>PropreListaD.PropreLista<BR>PropreListaD.PropreArt<BR>PropreListaD.PropreArtExistencia<BR>PropreListaD.PropreArtVenta<BR>PropreListaD.PropreArtFam<BR>PropreListaD.PropreArtUltimaVenta<BR>PropreListaD.PropreArtVentaUltimoMes<BR>PropreListaD.PropreEmpresaCfg<BR>PropreArt.Art<BR>PropreArt.PropreArtExistencia<BR>PropreLista.PropreEmpresaCfg<BR>PropreLista.PropreListaD<BR>PropreEmpresaCfg.ArtFam
+AlAgregar=S
+ListaCampos=PropreListaD.Lista<BR>PropreListaD.Articulo<BR>PropreListaD.Descripcion<BR>PropreListaD.Familia<BR>PropreListaD.Margen<BR>PropreListaD.Factor01<BR>PropreListaD.Factor02<BR>PropreListaD.Factor03<BR>PropreListaD.Factor04<BR>PropreListaD.Observaciones<BR>PropreListaD.PrecioEtiqueta<BR>PropreListaD.Clase<BR>PropreListaD.MargenCompra<BR>PropreListaD.FactorCredito<BR>PropreListaD.ImporteCupon<BR>PropreListaD.Margen2<BR>PropreListaD.Imprimir<BR>PropreArt.Costo<BR>PropreArt.PorcentajeBonificacion<BR>PropreArt.ApoyoActivo<BR>PropreArt.ApoyoFuturo<BR>PropreArt.GarantiaAmpliada<BR>PropreArt.NuevoCosto<BR>PropreArt.ArticuloTitular<BR>PropreArt.TipoArticulo<BR>Art.Descripcion1<BR>Art.Descripcion2<BR>Art.Categoria<BR>Art.Grupo<BR>Art.Familia<BR>Art.Linea<BR>Art.Impuesto1<BR>Art.Impuesto2<BR>Art.Impuesto<CONTINUA>
+ListaCampos002=<CONTINUA>3<BR>Art.MonedaCosto<BR>Art.MonedaPrecio<BR>PropreLista.Descripcion<BR>PropreLista.Clave<BR>PropreLista.Margen1<BR>PropreLista.Margen2<BR>PropreLista.Margen3<BR>PropreLista.ListaMadre<BR>PropreLista.GrupoListas<BR>PropreLista.EncabezadoLista<BR>PropreLista.UEN<BR>PropreLista.Periodicidad<BR>PropreLista.Estatus<BR>PropreLista.TipoLista<BR>PropreLista.InicioLista<BR>PropreLista.FolioUltimoAnexo<BR>PropreLista.FechaUltimoAnexo<BR>PropreLista.DecimalesPrecios<BR>PropreLista.UtilizarCupones<BR>PropreLista.UtilizaM2Contado<BR>PropreLista.MargenProteccion<BR>PropreLista.PorcentajeCargoFinanciero<BR>PropreLista.PorcentajeExportacion<BR>PropreLista.BonificacionApoyo<BR>PropreLista.Plazo0NumeroColumnas<BR>PropreLista.Plazo0NumeroMeses<BR>PropreLista.Plazo0SemanasQuincenas<BR>PropreLista.Plazo1Porcen<CONTINUA>
+ListaCampos003=<CONTINUA>taje<BR>PropreLista.Plazo1NumeroMeses<BR>PropreLista.Plazo1SemanasQuincenas<BR>PropreLista.Plazo1MesesDiferidos<BR>PropreLista.Plazo2Porcentaje<BR>PropreLista.Plazo2NumeroMeses<BR>PropreLista.Plazo2SemanasQuincenas<BR>PropreLista.Plazo2MesesDiferidos<BR>PropreLista.Plazo3Porcentaje<BR>PropreLista.Plazo3NumeroMeses<BR>PropreLista.Plazo3SemanasQuincenas<BR>PropreLista.Plazo3MesesDiferidos<BR>PropreLista.Plazo4Porcentaje<BR>PropreLista.Plazo4NumeroMeses<BR>PropreLista.Plazo4SemanasQuincenas<BR>PropreLista.TextoPeriodicidad<BR>PropreLista.MaximizarPlazo<BR>PropreLista.MaximizarPrecioMinimo<BR>PropreLista.Comentarios<BR>PropreArtExistencia.Existencia<BR>PropreArtVenta.Ventas<BR>PropreArtFam.Familia<BR>PropreArtUltimaVenta.Fecha<BR>PropreArtVentaUltimoMes.Ventas<BR>PropreEmpresaCfg.FolioUltimoAn<CONTINUA>
+ListaCampos004=<CONTINUA>exo<BR>PropreEmpresaCfg.FechaUltimoAnexo<BR>PropreEmpresaCfg.PrefijoGAmpliado<BR>PropreEmpresaCfg.PorcentajeDescuento1<BR>PropreEmpresaCfg.PorcentajeDescuento2<BR>PropreEmpresaCfg.PorcentajeDescuento3<BR>PropreEmpresaCfg.DiferenciaPrecioMayoreo<BR>PropreEmpresaCfg.PorcentajeMayoreo2<BR>PropreEmpresaCfg.MaxMargenPlazoMeses<BR>PropreEmpresaCfg.MaxMargenPrecMinPlazo1<BR>PropreEmpresaCfg.NombrePrecioIntermedio
+ListaCalculados002=<CONTINUA>IVA<BR>PrecioMayoreo2ConIVACalculo<BR>PrecioMayoreo2ConIVA<BR>PrecioMayoreo1<BR>PrecioMayoreo2<BR>CostoReal<BR>Clave1<BR>TextoImprimir
+CamposBusquedaRapida=PropreListaD.Articulo<BR>PropreListaD.Descripcion<BR>PropreListaD.Familia
+SQL=SELECT<BR>  PropreListaD.Lista,<BR>  PropreListaD.Articulo,<BR>  PropreListaD.Descripcion,<BR>  PropreListaD.Familia,<BR>  PropreListaD.Margen,<BR>  PropreListaD.Factor01,<BR>  PropreListaD.Factor02,<BR>  PropreListaD.Factor03,<BR>  PropreListaD.Factor04,<BR>  PropreListaD.Observaciones,<BR>  PropreListaD.PrecioEtiqueta,<BR>  PropreListaD.Clase,<BR>  PropreListaD.MargenCompra,<BR>  PropreListaD.FactorCredito,<BR>  PropreListaD.ImporteCupon,<BR>  PropreListaD.Margen2,<BR>  PropreListaD.Imprimir,<BR>  PropreArt.Costo,<BR>  PropreArt.PorcentajeBonificacion,<BR>  PropreArt.ApoyoActivo,<BR>  PropreArt.ApoyoFuturo,<BR>  PropreArt.GarantiaAmpliada,<BR>  PropreArt.NuevoCosto,<BR>  PropreArt.ArticuloTitular,<BR>  PropreArt.TipoArticulo,<BR>  Art.Descripcion1,<BR>  Art.Descripcion2,<BR>  Art.Grupo,<<CONTINUA>
+SQL002=<CONTINUA>BR>  Art.Categoria,<BR>  Art.Familia,<BR>  Art.Linea,<BR>  Art.Impuesto1,<BR>  Art.Impuesto2,<BR>  Art.Impuesto3,<BR>  Art.MonedaCosto,<BR>  Art.MonedaPrecio,<BR>  PropreLista.Descripcion,<BR>  PropreLista.Clave,<BR>  PropreLista.Margen1,<BR>  PropreLista.Margen2,<BR>  PropreLista.Margen3,<BR>  PropreLista.ListaMadre,<BR>  PropreLista.GrupoListas,<BR>  PropreLista.EncabezadoLista,<BR>  PropreLista.UEN,<BR>  PropreLista.Periodicidad,<BR>  PropreLista.Estatus,<BR>  PropreLista.TipoLista,<BR>  PropreLista.InicioLista,<BR>  PropreLista.FolioUltimoAnexo,<BR>  PropreLista.FechaUltimoAnexo,<BR>  PropreLista.DecimalesPrecios,<BR>  PropreLista.UtilizarCupones,<BR>  PropreLista.UtilizaM2Contado,<BR>  PropreLista.MargenProteccion,<BR>  PropreLista.PorcentajeCargoFinanciero,<BR>  PropreLista.Porcentaj<CONTINUA>
+SQL003=<CONTINUA>eExportacion,<BR>  PropreLista.BonificacionApoyo,<BR>  PropreLista.Plazo0NumeroColumnas,<BR>  PropreLista.Plazo0NumeroMeses,<BR>  PropreLista.Plazo0SemanasQuincenas,<BR>  PropreLista.Plazo1Porcentaje,<BR>  PropreLista.Plazo1NumeroMeses,<BR>  PropreLista.Plazo1SemanasQuincenas,<BR>  PropreLista.Plazo1MesesDiferidos,<BR>  PropreLista.Plazo2Porcentaje,<BR>  PropreLista.Plazo2NumeroMeses,<BR>  PropreLista.Plazo2SemanasQuincenas,<BR>  PropreLista.Plazo2MesesDiferidos,<BR>  PropreLista.Plazo3Porcentaje,<BR>  PropreLista.Plazo3NumeroMeses,<BR>  PropreLista.Plazo3SemanasQuincenas,<BR>  PropreLista.Plazo3MesesDiferidos,<BR>  PropreLista.Plazo4Porcentaje,<BR>  PropreLista.Plazo4NumeroMeses,<BR>  PropreLista.Plazo4SemanasQuincenas,<BR>  PropreLista.TextoPeriodicidad,<BR>  PropreLista.MaximizarPlazo,<<CONTINUA>
+SQL004=<CONTINUA>BR>  PropreLista.MaximizarPrecioMinimo,<BR>  PropreLista.Comentarios,<BR>  PropreArtExistencia.Existencia,<BR>  PropreArtVenta.Ventas,<BR>  PropreArtFam.Familia,<BR>  PropreArtUltimaVenta.Fecha,<BR>  PropreArtVentaUltimoMes.Ventas,<BR>  PropreEmpresaCfg.FolioUltimoAnexo,<BR>  PropreEmpresaCfg.FechaUltimoAnexo,<BR>  PropreEmpresaCfg.PrefijoGAmpliado,<BR>  PropreEmpresaCfg.PorcentajeDescuento1,<BR>  PropreEmpresaCfg.PorcentajeDescuento2,<BR>  PropreEmpresaCfg.PorcentajeDescuento3,<BR>  PropreEmpresaCfg.DiferenciaPrecioMayoreo,<BR>  PropreEmpresaCfg.PorcentajeMayoreo2,<BR>  PropreEmpresaCfg.MaxMargenPlazoMeses,<BR>  PropreEmpresaCfg.MaxMargenPrecMinPlazo1,<BR>  PropreEmpresaCfg.NombrePrecioIntermedio<BR><BR>FROM<BR>  PropreListaD<BR>  JOIN Art ON PropreListaD.Articulo=Art.Articulo<BR>  JOIN P<CONTINUA>
+SQL005=<CONTINUA>ropreLista ON PropreListaD.Lista=PropreLista.Lista<BR>  JOIN PropreArt ON PropreListaD.Articulo=PropreArt.Art<BR>  LEFT OUTER JOIN PropreArtExistencia ON PropreListaD.Articulo=PropreArtExistencia.Articulo<BR>  LEFT OUTER JOIN PropreArtVenta ON PropreListaD.Articulo=PropreArtVenta.Articulo<BR>  LEFT OUTER JOIN PropreArtFam ON PropreListaD.Familia=PropreArtFam.Familia<BR>  LEFT OUTER JOIN PropreArtUltimaVenta ON PropreListaD.Articulo=PropreArtUltimaVenta.Articulo<BR>  LEFT OUTER JOIN PropreArtVentaUltimoMes ON PropreListaD.Articulo=PropreArtVentaUltimoMes.Articulo<BR>  JOIN PropreEmpresaCfg ON <T>{Empresa}<T>=PropreEmpresaCfg.Empresa
+[PropreLista.Plazo1Porcentaje]
+Clave=PropreLista.Plazo1Porcentaje
+Nombre=<T>% <T> + NumEnTexto(SQL(<T>SELECT Plazo1NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo1SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaMemOpc=Unicamente opciones listadas
+CondicionDespliege=PropreLista.TipoLista = <T>Credito<T>
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+LigaTabla=PropreLista
+LigaCampo=Plazo1Porcentaje
+ClaveBDE=Plazo1Porcentaje
+Alineacion=por Omisión
+AyudaMemRenglones=8
+NombreExpresion=S
+TipoCampo=Tabla
+[MC]
+Clave=MC
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=MC
+FormatoValidacion=#,.000
+Formula=//((PrecioBaseCalculo - CostoConImpuestos)/CostoConImpuestos)*100<BR>((1/(1-(PropreListaD.Margen/100)))-1)*100
+[PrecioBase]
+Clave=PrecioBase
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Precio Base
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioBaseCalculo,2)<BR>SINO<BR>  Redondea(PrecioBaseCalculo,0)<BR>FIN
+[CostoConImpuestos]
+Clave=CostoConImpuestos
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=CostoConImpuestos
+Formula=Si<BR>  PropreLista.BonificacionApoyo en (<T>Activo<T>,<T>Futuro<T>)<BR>Entonces<BR>  ((PropreArt.Costo<BR>  - (PropreArt.Costo*(PropreArt.PorcentajeBonificacion/100))<BR>  - PropreArt.ApoyoActivo)<BR>  * (1 + (Art.Impuesto1/100))<BR>  * (1 + (Art.Impuesto2/100))<BR>  * (1 + (Art.Impuesto3/100)))<BR>Sino<BR>  (PropreArt.Costo<BR>  * (1 + (Art.Impuesto1/100))<BR>  * (1 + (Art.Impuesto2/100))<BR>  * (1 + (Art.Impuesto3/100)))<BR>Fin
+[PrecioPlazo1]
+Clave=PrecioPlazo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>T <T> + NumEnTexto(SQL(<T>SELECT Plazo1NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo1SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo1Calculo,2)<BR>SINO<BR>  Redondea(PrecioPlazo1Calculo,0)<BR>FIN
+[AbonoPlazo1]
+Clave=AbonoPlazo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>$ <T> + NumEnTexto(SQL(<T>SELECT Plazo1NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo1SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo1Calculo / PropreLista.Plazo1SemanasQuincenas,2)<BR>SINO<BR>  Redondea(PrecioPlazo1Calculo / PropreLista.Plazo1SemanasQuincenas,0)<BR>FIN
+[PrecioBaseCalculo]
+Clave=PrecioBaseCalculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=PrecioBaseCalculo
+Formula=(CostoConImpuestos / (1 - (PropreListaD.Margen/100))) * (1 + (PropreLista.PorcentajeExportacion/100))
+[PrecioPlazo1Calculo]
+Clave=PrecioPlazo1Calculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=PrecioPlazo1Calculo
+Formula=PrecioBaseCalculo+(PrecioBaseCalculo*(PropreLista.Plazo1Porcentaje/100))
+[PrecioPlazo2Calculo]
+Clave=PrecioPlazo2Calculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=PrecioPlazo2Calculo
+Formula=PrecioPlazo1Calculo+(PrecioPlazo1Calculo*(PropreLista.Plazo2Porcentaje/100))
+[PrecioPlazo2]
+Clave=PrecioPlazo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>T <T> + NumEnTexto(SQL(<T>SELECT Plazo2NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo2SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+NombreExpresion=S
+Monetario=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo2Calculo,2)<BR>SINO<BR>  Redondea(PrecioPlazo2Calculo,0)<BR>FIN
+[AbonoPlazo2]
+Clave=AbonoPlazo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>$ <T> + NumEnTexto(SQL(<T>SELECT Plazo2NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo2SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+NombreExpresion=S
+Monetario=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo2Calculo / PropreLista.Plazo2SemanasQuincenas,2)<BR>SINO<BR>  Redondea(  PrecioPlazo2Calculo / PropreLista.Plazo2SemanasQuincenas,0)<BR>FIN
+[PropreLista.Plazo2Porcentaje]
+Clave=PropreLista.Plazo2Porcentaje
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=<T>% <T> + NumEnTexto(SQL(<T>SELECT Plazo2NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo2SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+CondicionDespliege=(PropreLista.TipoLista = <T>Credito<T>) O (PropreLista.TipoLista = <T>Doble<T>)
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+LigaTabla=PropreLista
+LigaCampo=Plazo2Porcentaje
+ClaveBDE=Plazo2Porcentaje
+Alineacion=por Omisión
+AyudaMemRenglones=8
+NombreExpresion=S
+TipoCampo=Tabla
+[PropreLista.Plazo3Porcentaje]
+Clave=PropreLista.Plazo3Porcentaje
+LigaTabla=PropreLista
+LigaCampo=Plazo3Porcentaje
+TipoDatos=NumFlotante
+ClaveBDE=Plazo3Porcentaje
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>% <T> + NumEnTexto(SQL(<T>SELECT Plazo3NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo3SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Cantidad=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+NombreExpresion=S
+TipoCampo=Tabla
+[PropreLista.Plazo4Porcentaje]
+Clave=PropreLista.Plazo4Porcentaje
+LigaTabla=PropreLista
+LigaCampo=Plazo4Porcentaje
+TipoDatos=NumFlotante
+ClaveBDE=Plazo4Porcentaje
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>% <T> + NumEnTexto(SQL(<T>SELECT Plazo4NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo4SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Cantidad=S
+NombreExpresion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+[PrecioPlazo3Calculo]
+Clave=PrecioPlazo3Calculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=PrecioPlazo3Calculo
+Formula=PrecioPlazo1Calculo+(PrecioPlazo1Calculo*(PropreLista.Plazo3Porcentaje/100))
+[PrecioPlazo3]
+Clave=PrecioPlazo3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>T <T> + NumEnTexto(SQL(<T>SELECT Plazo3NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo3SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+NombreExpresion=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo3Calculo,2)<BR>SINO<BR>  Redondea(PrecioPlazo3Calculo,0)<BR>FIN
+[AbonoPlazo3]
+Clave=AbonoPlazo3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>$ <T> + NumEnTexto(SQL(<T>SELECT Plazo3NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo3SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo3Calculo / PropreLista.Plazo3SemanasQuincenas,2)<BR>SINO<BR>  Redondea(  PrecioPlazo3Calculo / PropreLista.Plazo3SemanasQuincenas,0)<BR>FIN
+[PrecioPlazo4]
+Clave=PrecioPlazo4
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>T <T> + NumEnTexto(SQL(<T>SELECT Plazo4NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo4SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+NombreExpresion=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo4Calculo,2)<BR>SINO<BR>  Redondea(PrecioPlazo4Calculo,0)<BR>FIN
+[AbonoPlazo4]
+Clave=AbonoPlazo4
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Monetario=S
+Nombre=<T>$ <T> + NumEnTexto(SQL(<T>SELECT Plazo4NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo4SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+NombreExpresion=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo4Calculo / PropreLista.Plazo4SemanasQuincenas,2)<BR>SINO<BR>  Redondea(  PrecioPlazo4Calculo / PropreLista.Plazo4SemanasQuincenas,0)<BR>FIN
+[PrecioPlazo4Calculo]
+Clave=PrecioPlazo4Calculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=PrecioPlazo4Calculado
+Formula=PrecioPlazo1Calculo+(PrecioPlazo1Calculo*(PropreLista.Plazo4Porcentaje/100))
+[PrecioIntermedio]
+Clave=PrecioIntermedio
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=SQL(<T>SELECT ISNULL(NombrePrecioIntermedio,:tVacio) FROM PropreEmpresaCfg WHERE Empresa = :tEmpresa<T>,<T><T>,Empresa)
+NombreExpresion=S
+Monetario=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo1Calculo/(1+(PropreLista.PorcentajeCargoFinanciero/100)),2)<BR>SINO<BR>  Redondea(PrecioPlazo1Calculo/(1+(PropreLista.PorcentajeCargoFinanciero/100)),0)<BR>FIN
+[MargenRealSobreCosto]
+Clave=MargenRealSobreCosto
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=% Real S/Costo
+FormatoValidacion=#,.000
+Formula=(1-(CostoConImpuestos / PrecioPlazo1Calculo))*100
+[MargenRealSobreVenta]
+Clave=MargenRealSobreVenta
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=% Real S/Venta
+FormatoValidacion=#,.000
+Formula=((PrecioPlazo1Calculo / CostoConImpuestos)-1)*100
+[PrecioPlazo0Calculo]
+Clave=PrecioPlazo0Calculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=PrecioPlazo0Calculo
+Formula=PrecioPlazo1Calculo-(PrecioPlazo1Calculo*(DescuentoFamilia/100))
+[DescuentoFamilia]
+Clave=DescuentoFamilia
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>% <T> + NumEnTexto(SQL(<T>SELECT Plazo0NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo0SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Cantidad=S
+NombreExpresion=S
+Formula=//Caso  PropreLista.Plazo0NumeroColumnas<BR>//  Es 1 Entonces<BR>//    Caso  PropreLista.Marca<BR>//      Es <T>M. America<T> Entonces PropreArtFam.C1America<BR>//      Es <T>Viu<T>        Entonces PropreArtFam.C1America<BR>//    Fin<BR>//  Es 2 Entonces<BR>//    Caso  PropreLista.Marca<BR>//      Es <T>M. America<T> Entonces PropreArtFam.C2America<BR>//      Es <T>Viu<T>        Entonces PropreArtFam.C2America<BR>//    Fin<BR>//Fin<BR><BR>SQL(<T>SELECT dbo.fnPropreDescuentoFamilia(:nPlazo,:nUEN,:tFamilia)<T>,PropreLista.Plazo0NumeroColumnas,PropreLista.UEN,PropreListaD.Familia)
+[PrecioPlazo0]
+Clave=PrecioPlazo0
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>T <T> + NumEnTexto(SQL(<T>SELECT Plazo0NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo0SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+NombreExpresion=S
+Monetario=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo0Calculo,2)<BR>SINO<BR>  Redondea(PrecioPlazo0Calculo,0)<BR>FIN
+[AbonoPlazo0]
+Clave=AbonoPlazo0
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>$ <T> + NumEnTexto(SQL(<T>SELECT Plazo0NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista)) + <T>/<T> + NumEnTexto(SQL(<T>SELECT Plazo0SemanasQuincenas FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+NombreExpresion=S
+Monetario=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioPlazo0Calculo / PropreLista.Plazo0SemanasQuincenas,2)<BR>SINO<BR>  Redondea(  PrecioPlazo0Calculo / PropreLista.Plazo0SemanasQuincenas,0)<BR>FIN
+[PrecioContadoCalculo]
+Clave=PrecioContadoCalculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=P. Contado
+Monetario=S
+Formula=CostoConImpuestos / (1 - (PropreListaD.Margen/100))
+[PrecioContado]
+Clave=PrecioContado
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Si Info.PropreSeccionPorcentaje = <T>Lista Doble M2<T> Entonces<BR>  <T>P. Base<T><BR>Sino<BR>  <T>P. Contado<T><BR>Fin
+NombreExpresion=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioContadoCalculo,2)<BR>SINO<BR>  Redondea(PrecioContadoCalculo,0)<BR>FIN
+[PrecioFinalZ1]
+Clave=PrecioFinalZ1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+Nombre=Precio Final Z1
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Si Info.PropreSeccionPorcentaje = <T>Lista Doble M2<T> Entonces<BR>    Redondea(PrecioContadoM2Calculo*(1-(PropreListaD.Factor01/100)),2)<BR>  Sino<BR>    Redondea(PrecioContadoCalculo*(1-(PropreListaD.Factor01/100)),2)<BR>  Fin<BR>SINO<BR>  Si Info.PropreSeccionPorcentaje = <T>Lista Doble M2<T> Entonces<BR>    Redondea(PrecioContadoM2Calculo*(1-(PropreListaD.Factor01/100)),0)<BR>  Sino<BR>    Redondea(PrecioContadoCalculo*(1-(PropreListaD.Factor01/100)),0)<BR>  Fin<BR>FIN
+[PagosDife1]
+Clave=PagosDife1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>Pagos Dife <T> + NumEnTexto(SQL(<T>SELECT Plazo1NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=Si ConDatos(PropreListaD.Factor02) Entonces<BR>  SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor02/100)),2)<BR>  SINO<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor02/100)),0)<BR>  FIN<BR>Sino<BR>  Nulo<BR>Fin
+[PagosDife2]
+Clave=PagosDife2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>Pagos Dife <T> + NumEnTexto(SQL(<T>SELECT Plazo2NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=Si ConDatos(PropreListaD.Factor03) Entonces<BR>  SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor03/100)),2)<BR>  SINO<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor03/100)),0)<BR>  FIN<BR>Sino<BR>  Nulo<BR>Fin
+[PagosDife3]
+Clave=PagosDife3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>Pagos Dife <T> + NumEnTexto(SQL(<T>SELECT Plazo3NumeroMeses FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=Si ConDatos(PropreListaD.Factor04) Entonces<BR>  SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor04/100)),2)<BR>  SINO<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor04/100)),0)<BR>  FIN<BR>Sino<BR>  Nulo<BR>Fin
+[PrecioReferCalculo]
+Clave=PrecioReferCalculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Precio Refer
+Formula=CostoConImpuestos / (1 - (PropreListaD.MargenCompra/100))
+[PrecioRefer]
+Clave=PrecioRefer
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Precio Refer
+Monetario=S
+Formula=Si ConDatos(PropreListaD.MargenCompra) Entonces<BR>  SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>    Redondea(PrecioReferCalculo,2)<BR>  SINO<BR>    Redondea(PrecioReferCalculo,0)<BR>  FIN<BR>Sino<BR>  Nulo<BR>Fin
+[PrecioCreditoCalculo]
+Clave=PrecioCreditoCalculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Credito
+Formula=PrecioContadoCalculo+(PrecioContadoCalculo*(PropreListaD.FactorCredito/100))
+[PrecioCredito]
+Clave=PrecioCredito
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Credito
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioCreditoCalculo,2)<BR>SINO<BR>  Redondea(PrecioCreditoCalculo,0)<BR>FIN
+[PagosDifeDoble1]
+Clave=PagosDifeDoble1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>Pagos Dife <T> + NumEnTexto(SQL(<T>SELECT Plazo1MesesDiferidos FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=Si ConDatos(PropreListaD.Factor02) Entonces<BR>  SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor02/100)),2)<BR>  SINO<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor02/100)),0)<BR>  FIN<BR>Sino<BR>  Nulo<BR>Fin
+[PagosDifeDoble2]
+Clave=PagosDifeDoble2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>Pagos Dife <T> + NumEnTexto(SQL(<T>SELECT Plazo2MesesDiferidos FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=Si ConDatos(PropreListaD.Factor03) Entonces<BR>  SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor03/100)),2)<BR>  SINO<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor03/100)),0)<BR>  FIN<BR>Sino<BR>  Nulo<BR>Fin
+[PagosDifeDoble3]
+Clave=PagosDifeDoble3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=<T>Pagos Dife <T> + NumEnTexto(SQL(<T>SELECT Plazo3MesesDiferidos FROM PropreLista WHERE Lista = :tLista<T>,Info.PropreLista))
+Monetario=S
+NombreExpresion=S
+Formula=Si ConDatos(PropreListaD.Factor04) Entonces<BR>  SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor04/100)),2)<BR>  SINO<BR>    Redondea(PrecioContadoCalculo*(1+(PropreListaD.Factor04/100)),0)<BR>  FIN<BR>Sino<BR>  Nulo<BR>Fin
+[DifeRefe]
+Clave=DifeRefe
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Dife Refe
+Formula=Si ConDatos(PropreListaD.MargenCompra) Entonces<BR>  SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>    Redondea(PrecioReferCalculo-PrecioContadoCalculo,2)<BR>  SINO<BR>    Redondea(PrecioReferCalculo-PrecioContadoCalculo,0)<BR>  FIN<BR>Sino<BR>  Nulo<BR>Fin
+[PropreListaD.Margen2]
+Clave=PropreListaD.Margen2
+LigaTabla=PropreListaD
+LigaCampo=Margen2
+TipoDatos=NumFlotante
+ClaveBDE=Margen2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=MV. Cont
+CondicionDespliege=PropreLista.UtilizaM2Contado
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+FormatoValidacion=#,.000
+TipoCampo=Tabla
+[PrecioIntermedioCredito]
+Clave=PrecioIntermedioCredito
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=SQL(<T>SELECT ISNULL(NombrePrecioIntermedio,:tVacio) FROM PropreEmpresaCfg WHERE Empresa = :tEmpresa<T>,<T><T>,Empresa)
+Monetario=S
+NombreExpresion=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioCredito/(1+(PropreLista.PorcentajeCargoFinanciero/100)),2)<BR>SINO<BR>  Redondea(PrecioCredito/(1+(PropreLista.PorcentajeCargoFinanciero/100)),0)<BR>FIN
+[PrecioContadoM2Calculo]
+Clave=PrecioContadoM2Calculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=P. Contado
+Formula=CostoConImpuestos / (1 - (PropreListaD.Margen2/100))
+[PrecioContadoM2]
+Clave=PrecioContadoM2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=P. Contado
+CondicionDespliege=PropreLista.UtilizaM2Contado
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioContadoM2Calculo,2)<BR>SINO<BR>  Redondea(PrecioContadoM2Calculo,0)<BR>FIN
+[MCContado]
+Clave=MCContado
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=MC Contado
+CondicionDespliege=PropreLista.UtilizaM2Contado 
+FormatoValidacion=#,.000
+Formula=((PrecioContadoM2Calculo - CostoConImpuestos)/CostoConImpuestos)*100
+[Art.Articulo]
+Clave=Art.Articulo
+LigaTabla=Art
+LigaCampo=Articulo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Articulo_1
+[PropreEmpresaCfg.DiferenciaPrecioMayoreo]
+Clave=PropreEmpresaCfg.DiferenciaPrecioMayoreo
+Nombre=Difepre
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaMemOpc=Unicamente opciones listadas
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+LigaTabla=PropreEmpresaCfg
+LigaCampo=DiferenciaPrecioMayoreo
+ClaveBDE=DiferenciaPrecioMayoreo
+Alineacion=por Omisión
+AyudaMemRenglones=8
+FormatoValidacion=#,.00
+TipoCampo=Tabla
+[PrecioMayoreo1ConIVACalculo]
+Clave=PrecioMayoreo1ConIVACalculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Nombre=Mayoreo 1 C/IVA
+Monetario=S
+Formula=((PrecioBaseCalculo/(1 - (PropreEmpresaCfg.PorcentajeDescuento1/100)))/(1 - (PropreEmpresaCfg.PorcentajeDescuento2/100)))/(1 - (PropreEmpresaCfg.PorcentajeDescuento3/100))
+[PrecioMayoreo1ConIVA]
+Clave=PrecioMayoreo1ConIVA
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Mayoreo 1 C/IVA
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioMayoreo1ConIVACalculo,2)<BR>SINO<BR>  Redondea(PrecioMayoreo1ConIVACalculo,0)<BR>FIN
+[PrecioMayoreo2ConIVACalculo]
+Clave=PrecioMayoreo2ConIVACalculo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Mayoreo 2 C/IVA
+Formula=PrecioMayoreo1ConIVACalculo/(1-(PropreEmpresaCfg.DiferenciaPrecioMayoreo/100))
+[PrecioMayoreo2ConIVA]
+Clave=PrecioMayoreo2ConIVA
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Mayoreo 2 C/IVA
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioMayoreo2ConIVACalculo,2)<BR>SINO<BR>  Redondea(PrecioMayoreo2ConIVACalculo,0)<BR>FIN
+[PrecioMayoreo1]
+Clave=PrecioMayoreo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Precio Mayoreo 1
+Monetario=S
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioMayoreo1ConIVACalculo/((1 + (Art.Impuesto1/100))*(1 + (Art.Impuesto2/100))*(1 + (Art.Impuesto3/100))),2)<BR>SINO<BR>  Redondea(PrecioMayoreo1ConIVACalculo/((1 + (Art.Impuesto1/100))*(1 + (Art.Impuesto2/100))*(1 + (Art.Impuesto3/100))),0)<BR>FIN
+[PrecioMayoreo2]
+Clave=PrecioMayoreo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Mayoreo 2
+Formula=SI PropreLista.DecimalesPrecios = Verdadero ENTONCES<BR>  Redondea(PrecioMayoreo2ConIVACalculo/((1 + (Art.Impuesto1/100))*(1 + (Art.Impuesto2/100))*(1 + (Art.Impuesto3/100))),2)<BR>SINO<BR>  Redondea(PrecioMayoreo2ConIVACalculo/((1 + (Art.Impuesto1/100))*(1 + (Art.Impuesto2/100))*(1 + (Art.Impuesto3/100))),0)<BR>FIN
+[CostoReal]
+Clave=CostoReal
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Costo
+Monetario=S
+Formula=//PropreArt.Costo-(PropreArt.Costo*(PropreArt.PorcentajeBonificacion/100))-PropreArt.ApoyoActivo<BR>Si<BR>  PropreLista.BonificacionApoyo en (<T>Activo<T>,<T>Futuro<T>)<BR>Entonces<BR>  PropreArt.Costo-(PropreArt.Costo*(PropreArt.PorcentajeBonificacion/100))-PropreArt.ApoyoActivo<BR>Sino<BR>  PropreArt.Costo<BR>Fin
+[Clave1]
+Clave=Clave1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+FormatoValidacion=0
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Clave
+Formula=PropreLista.Clave * PrecioContado
+[TextoImprimir]
+Clave=TextoImprimir
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Imprimir
+Mayusculas=S
+Formula=Caso Info.PropreImprimir<BR>  Es <T>S<T> Entonces <T>S<T><BR>  Es <T>P<T> Entonces <T>P<T><BR>  Es <T>N<T> Entonces <T>N<T><BR>Sino<BR>  <T>Todos<T><BR>Fin
+[PropreListaD.Lista]
+Clave=PropreListaD.Lista
+LigaTabla=PropreListaD
+LigaCampo=Lista
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Lista
+[PropreListaD.Articulo]
+Clave=PropreListaD.Articulo
+LigaTabla=PropreListaD
+LigaCampo=Articulo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Articulo
+[PropreListaD.Descripcion]
+Clave=PropreListaD.Descripcion
+LigaTabla=PropreListaD
+LigaCampo=Descripcion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion
+[PropreListaD.Familia]
+Clave=PropreListaD.Familia
+LigaTabla=PropreListaD
+LigaCampo=Familia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia
+[PropreListaD.Margen]
+Clave=PropreListaD.Margen
+LigaTabla=PropreListaD
+LigaCampo=Margen
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Margen
+[PropreListaD.Factor01]
+Clave=PropreListaD.Factor01
+LigaTabla=PropreListaD
+LigaCampo=Factor01
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Factor01
+[PropreListaD.Factor02]
+Clave=PropreListaD.Factor02
+LigaTabla=PropreListaD
+LigaCampo=Factor02
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Factor02
+[PropreListaD.Factor03]
+Clave=PropreListaD.Factor03
+LigaTabla=PropreListaD
+LigaCampo=Factor03
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Factor03
+[PropreListaD.Factor04]
+Clave=PropreListaD.Factor04
+LigaTabla=PropreListaD
+LigaCampo=Factor04
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Factor04
+[PropreListaD.Observaciones]
+Clave=PropreListaD.Observaciones
+LigaTabla=PropreListaD
+LigaCampo=Observaciones
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Observaciones
+[PropreListaD.PrecioEtiqueta]
+Clave=PropreListaD.PrecioEtiqueta
+LigaTabla=PropreListaD
+LigaCampo=PrecioEtiqueta
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=PrecioEtiqueta
+[PropreListaD.Clase]
+Clave=PropreListaD.Clase
+LigaTabla=PropreListaD
+LigaCampo=Clase
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Clase
+[PropreListaD.MargenCompra]
+Clave=PropreListaD.MargenCompra
+LigaTabla=PropreListaD
+LigaCampo=MargenCompra
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=MargenCompra
+[PropreListaD.FactorCredito]
+Clave=PropreListaD.FactorCredito
+LigaTabla=PropreListaD
+LigaCampo=FactorCredito
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=FactorCredito
+[PropreListaD.ImporteCupon]
+Clave=PropreListaD.ImporteCupon
+LigaTabla=PropreListaD
+LigaCampo=ImporteCupon
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=ImporteCupon
+[PropreListaD.Imprimir]
+Clave=PropreListaD.Imprimir
+LigaTabla=PropreListaD
+LigaCampo=Imprimir
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=Imprimir
+[PropreArt.Costo]
+Clave=PropreArt.Costo
+LigaTabla=PropreArt
+LigaCampo=Costo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=Costo
+[PropreArt.PorcentajeBonificacion]
+Clave=PropreArt.PorcentajeBonificacion
+LigaTabla=PropreArt
+LigaCampo=PorcentajeBonificacion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=PorcentajeBonificacion
+[PropreArt.ApoyoActivo]
+Clave=PropreArt.ApoyoActivo
+LigaTabla=PropreArt
+LigaCampo=ApoyoActivo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=ApoyoActivo
+[PropreArt.ApoyoFuturo]
+Clave=PropreArt.ApoyoFuturo
+LigaTabla=PropreArt
+LigaCampo=ApoyoFuturo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=ApoyoFuturo
+[PropreArt.GarantiaAmpliada]
+Clave=PropreArt.GarantiaAmpliada
+LigaTabla=PropreArt
+LigaCampo=GarantiaAmpliada
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=GarantiaAmpliada
+[PropreArt.NuevoCosto]
+Clave=PropreArt.NuevoCosto
+LigaTabla=PropreArt
+LigaCampo=NuevoCosto
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=NuevoCosto
+[PropreArt.ArticuloTitular]
+Clave=PropreArt.ArticuloTitular
+LigaTabla=PropreArt
+LigaCampo=ArticuloTitular
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=ArticuloTitular
+[PropreArt.TipoArticulo]
+Clave=PropreArt.TipoArticulo
+LigaTabla=PropreArt
+LigaCampo=TipoArticulo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=TipoArticulo
+[Art.Descripcion1]
+Clave=Art.Descripcion1
+LigaTabla=Art
+LigaCampo=Descripcion1
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion1
+[Art.Descripcion2]
+Clave=Art.Descripcion2
+LigaTabla=Art
+LigaCampo=Descripcion2
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=Descripcion2
+[Art.Grupo]
+Clave=Art.Grupo
+Nombre=Grupo
+AyudaEnCaptura=Validaciones Memoria
+TamanoValidacion=50
+Tamano=50
+AyudaMemTabla=ArtGrupo
+AyudaMemRenglones=8
+AyudaMemEnBlanco=S
+AyudaMemOpc=Validar captura en la lista
+TipoDatos=Texto
+LigaTabla=Art
+LigaCampo=Grupo
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Grupo
+[Art.Categoria]
+Clave=Art.Categoria
+Nombre=Categoría
+Tamano=50
+TamanoValidacion=50
+AyudaEnCaptura=Validaciones Memoria
+AyudaForma=ArtCat
+AyudaVista=ArtCat
+AyudaCampo=ArtCat.Categoria
+AyudaMemTabla=ArtCat
+AyudaMemEstilo=Validar captura
+AyudaMemOpc=Validar captura en la lista
+AyudaMemRenglones=20
+AyudaMemEnBlanco=S
+TipoDatos=Texto
+LigaTabla=Art
+LigaCampo=Categoria
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Categoria
+[Art.Familia]
+Clave=Art.Familia
+LigaTabla=Art
+LigaCampo=Familia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia_1
+[Art.Linea]
+Clave=Art.Linea
+LigaTabla=Art
+LigaCampo=Linea
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea
+[Art.Impuesto1]
+Clave=Art.Impuesto1
+LigaTabla=Art
+LigaCampo=Impuesto1
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Impuesto1
+[Art.Impuesto2]
+Clave=Art.Impuesto2
+LigaTabla=Art
+LigaCampo=Impuesto2
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Impuesto2
+[Art.Impuesto3]
+Clave=Art.Impuesto3
+LigaTabla=Art
+LigaCampo=Impuesto3
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Impuesto3
+[Art.MonedaCosto]
+Clave=Art.MonedaCosto
+LigaTabla=Art
+LigaCampo=MonedaCosto
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=MonedaCosto
+[Art.MonedaPrecio]
+Clave=Art.MonedaPrecio
+LigaTabla=Art
+LigaCampo=MonedaPrecio
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=MonedaPrecio
+[PropreLista.Descripcion]
+Clave=PropreLista.Descripcion
+LigaTabla=PropreLista
+LigaCampo=Descripcion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Descripcion_1
+[PropreLista.Clave]
+Clave=PropreLista.Clave
+LigaTabla=PropreLista
+LigaCampo=Clave
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Clave
+[PropreLista.Margen1]
+Clave=PropreLista.Margen1
+LigaTabla=PropreLista
+LigaCampo=Margen1
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Margen1
+[PropreLista.Margen2]
+Clave=PropreLista.Margen2
+LigaTabla=PropreLista
+LigaCampo=Margen2
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Margen2_1
+[PropreLista.Margen3]
+Clave=PropreLista.Margen3
+LigaTabla=PropreLista
+LigaCampo=Margen3
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Margen3
+[PropreLista.ListaMadre]
+Clave=PropreLista.ListaMadre
+LigaTabla=PropreLista
+LigaCampo=ListaMadre
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=ListaMadre
+[PropreLista.GrupoListas]
+Clave=PropreLista.GrupoListas
+LigaTabla=PropreLista
+LigaCampo=GrupoListas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=GrupoListas
+[PropreLista.EncabezadoLista]
+Clave=PropreLista.EncabezadoLista
+LigaTabla=PropreLista
+LigaCampo=EncabezadoLista
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=200
+ClaveBDE=EncabezadoLista
+[PropreLista.UEN]
+Clave=PropreLista.UEN
+LigaTabla=PropreLista
+LigaCampo=UEN
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=UEN
+[PropreLista.Periodicidad]
+Clave=PropreLista.Periodicidad
+LigaTabla=PropreLista
+LigaCampo=Periodicidad
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Periodicidad
+[PropreLista.Estatus]
+Clave=PropreLista.Estatus
+LigaTabla=PropreLista
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus
+[PropreLista.TipoLista]
+Clave=PropreLista.TipoLista
+LigaTabla=PropreLista
+LigaCampo=TipoLista
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=TipoLista
+[PropreLista.InicioLista]
+Clave=PropreLista.InicioLista
+LigaTabla=PropreLista
+LigaCampo=InicioLista
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=InicioLista
+[PropreLista.FolioUltimoAnexo]
+Clave=PropreLista.FolioUltimoAnexo
+LigaTabla=PropreLista
+LigaCampo=FolioUltimoAnexo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=FolioUltimoAnexo
+[PropreLista.FechaUltimoAnexo]
+Clave=PropreLista.FechaUltimoAnexo
+LigaTabla=PropreLista
+LigaCampo=FechaUltimoAnexo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=FechaUltimoAnexo
+[PropreLista.DecimalesPrecios]
+Clave=PropreLista.DecimalesPrecios
+LigaTabla=PropreLista
+LigaCampo=DecimalesPrecios
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=DecimalesPrecios
+[PropreLista.UtilizarCupones]
+Clave=PropreLista.UtilizarCupones
+LigaTabla=PropreLista
+LigaCampo=UtilizarCupones
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=UtilizarCupones
+[PropreLista.UtilizaM2Contado]
+Clave=PropreLista.UtilizaM2Contado
+LigaTabla=PropreLista
+LigaCampo=UtilizaM2Contado
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=UtilizaM2Contado
+[PropreLista.MargenProteccion]
+Clave=PropreLista.MargenProteccion
+LigaTabla=PropreLista
+LigaCampo=MargenProteccion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=MargenProteccion
+[PropreLista.PorcentajeCargoFinanciero]
+Clave=PropreLista.PorcentajeCargoFinanciero
+LigaTabla=PropreLista
+LigaCampo=PorcentajeCargoFinanciero
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=PorcentajeCargoFinanciero
+[PropreLista.PorcentajeExportacion]
+Clave=PropreLista.PorcentajeExportacion
+LigaTabla=PropreLista
+LigaCampo=PorcentajeExportacion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=PorcentajeExportacion
+[PropreLista.BonificacionApoyo]
+Clave=PropreLista.BonificacionApoyo
+LigaTabla=PropreLista
+LigaCampo=BonificacionApoyo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=BonificacionApoyo
+[PropreLista.Plazo0NumeroColumnas]
+Clave=PropreLista.Plazo0NumeroColumnas
+LigaTabla=PropreLista
+LigaCampo=Plazo0NumeroColumnas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Plazo0NumeroColumnas
+[PropreLista.Plazo0NumeroMeses]
+Clave=PropreLista.Plazo0NumeroMeses
+LigaTabla=PropreLista
+LigaCampo=Plazo0NumeroMeses
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo0NumeroMeses
+[PropreLista.Plazo0SemanasQuincenas]
+Clave=PropreLista.Plazo0SemanasQuincenas
+LigaTabla=PropreLista
+LigaCampo=Plazo0SemanasQuincenas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo0SemanasQuincenas
+[PropreLista.Plazo1NumeroMeses]
+Clave=PropreLista.Plazo1NumeroMeses
+LigaTabla=PropreLista
+LigaCampo=Plazo1NumeroMeses
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo1NumeroMeses
+[PropreLista.Plazo1SemanasQuincenas]
+Clave=PropreLista.Plazo1SemanasQuincenas
+LigaTabla=PropreLista
+LigaCampo=Plazo1SemanasQuincenas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo1SemanasQuincenas
+[PropreLista.Plazo1MesesDiferidos]
+Clave=PropreLista.Plazo1MesesDiferidos
+LigaTabla=PropreLista
+LigaCampo=Plazo1MesesDiferidos
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo1MesesDiferidos
+[PropreLista.Plazo2NumeroMeses]
+Clave=PropreLista.Plazo2NumeroMeses
+LigaTabla=PropreLista
+LigaCampo=Plazo2NumeroMeses
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo2NumeroMeses
+[PropreLista.Plazo2SemanasQuincenas]
+Clave=PropreLista.Plazo2SemanasQuincenas
+LigaTabla=PropreLista
+LigaCampo=Plazo2SemanasQuincenas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo2SemanasQuincenas
+[PropreLista.Plazo2MesesDiferidos]
+Clave=PropreLista.Plazo2MesesDiferidos
+LigaTabla=PropreLista
+LigaCampo=Plazo2MesesDiferidos
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo2MesesDiferidos
+[PropreLista.Plazo3NumeroMeses]
+Clave=PropreLista.Plazo3NumeroMeses
+LigaTabla=PropreLista
+LigaCampo=Plazo3NumeroMeses
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo3NumeroMeses
+[PropreLista.Plazo3SemanasQuincenas]
+Clave=PropreLista.Plazo3SemanasQuincenas
+LigaTabla=PropreLista
+LigaCampo=Plazo3SemanasQuincenas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo3SemanasQuincenas
+[PropreLista.Plazo3MesesDiferidos]
+Clave=PropreLista.Plazo3MesesDiferidos
+LigaTabla=PropreLista
+LigaCampo=Plazo3MesesDiferidos
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo3MesesDiferidos
+[PropreLista.Plazo4NumeroMeses]
+Clave=PropreLista.Plazo4NumeroMeses
+LigaTabla=PropreLista
+LigaCampo=Plazo4NumeroMeses
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo4NumeroMeses
+[PropreLista.Plazo4SemanasQuincenas]
+Clave=PropreLista.Plazo4SemanasQuincenas
+LigaTabla=PropreLista
+LigaCampo=Plazo4SemanasQuincenas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Plazo4SemanasQuincenas
+[PropreLista.TextoPeriodicidad]
+Clave=PropreLista.TextoPeriodicidad
+LigaTabla=PropreLista
+LigaCampo=TextoPeriodicidad
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=TextoPeriodicidad
+[PropreLista.MaximizarPlazo]
+Clave=PropreLista.MaximizarPlazo
+LigaTabla=PropreLista
+LigaCampo=MaximizarPlazo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=MaximizarPlazo
+[PropreLista.MaximizarPrecioMinimo]
+Clave=PropreLista.MaximizarPrecioMinimo
+LigaTabla=PropreLista
+LigaCampo=MaximizarPrecioMinimo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=MaximizarPrecioMinimo
+[PropreLista.Comentarios]
+Clave=PropreLista.Comentarios
+LigaTabla=PropreLista
+LigaCampo=Comentarios
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Comentarios
+[PropreArtExistencia.Existencia]
+Clave=PropreArtExistencia.Existencia
+LigaTabla=PropreArtExistencia
+LigaCampo=Existencia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Existencia
+[PropreArtVenta.Ventas]
+Clave=PropreArtVenta.Ventas
+LigaTabla=PropreArtVenta
+LigaCampo=Ventas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Ventas
+[PropreArtFam.Familia]
+Clave=PropreArtFam.Familia
+LigaTabla=PropreArtFam
+LigaCampo=Familia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia_2
+[PropreArtUltimaVenta.Fecha]
+Clave=PropreArtUltimaVenta.Fecha
+LigaTabla=PropreArtUltimaVenta
+LigaCampo=Fecha
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=Fecha
+[PropreArtVentaUltimoMes.Ventas]
+Clave=PropreArtVentaUltimoMes.Ventas
+LigaTabla=PropreArtVentaUltimoMes
+LigaCampo=Ventas
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Ventas_1
+[PropreEmpresaCfg.FolioUltimoAnexo]
+Clave=PropreEmpresaCfg.FolioUltimoAnexo
+LigaTabla=PropreEmpresaCfg
+LigaCampo=FolioUltimoAnexo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=FolioUltimoAnexo_1
+[PropreEmpresaCfg.FechaUltimoAnexo]
+Clave=PropreEmpresaCfg.FechaUltimoAnexo
+LigaTabla=PropreEmpresaCfg
+LigaCampo=FechaUltimoAnexo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=FechaUltimoAnexo_1
+[PropreEmpresaCfg.PrefijoGAmpliado]
+Clave=PropreEmpresaCfg.PrefijoGAmpliado
+LigaTabla=PropreEmpresaCfg
+LigaCampo=PrefijoGAmpliado
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=PrefijoGAmpliado
+[PropreEmpresaCfg.PorcentajeDescuento1]
+Clave=PropreEmpresaCfg.PorcentajeDescuento1
+LigaTabla=PropreEmpresaCfg
+LigaCampo=PorcentajeDescuento1
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=PorcentajeDescuento1
+[PropreEmpresaCfg.PorcentajeDescuento2]
+Clave=PropreEmpresaCfg.PorcentajeDescuento2
+LigaTabla=PropreEmpresaCfg
+LigaCampo=PorcentajeDescuento2
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=PorcentajeDescuento2
+[PropreEmpresaCfg.PorcentajeDescuento3]
+Clave=PropreEmpresaCfg.PorcentajeDescuento3
+LigaTabla=PropreEmpresaCfg
+LigaCampo=PorcentajeDescuento3
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=PorcentajeDescuento3
+[PropreEmpresaCfg.PorcentajeMayoreo2]
+Clave=PropreEmpresaCfg.PorcentajeMayoreo2
+LigaTabla=PropreEmpresaCfg
+LigaCampo=PorcentajeMayoreo2
+Ligado=S
+ClaveBDE=PorcentajeMayoreo2
+[PropreEmpresaCfg.MaxMargenPlazoMeses]
+Clave=PropreEmpresaCfg.MaxMargenPlazoMeses
+LigaTabla=PropreEmpresaCfg
+LigaCampo=MaxMargenPlazoMeses
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=MaxMargenPlazoMeses
+[PropreEmpresaCfg.MaxMargenPrecMinPlazo1]
+Clave=PropreEmpresaCfg.MaxMargenPrecMinPlazo1
+LigaTabla=PropreEmpresaCfg
+LigaCampo=MaxMargenPrecMinPlazo1
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=MaxMargenPrecMinPlazo1
+[PropreEmpresaCfg.NombrePrecioIntermedio]
+Clave=PropreEmpresaCfg.NombrePrecioIntermedio
+LigaTabla=PropreEmpresaCfg
+LigaCampo=NombrePrecioIntermedio
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=NombrePrecioIntermedio
+[Relaciones.PropreListaD.Art]
+Clave=PropreListaD.Art
+TablaRemota=Art
+LlaveLocal=PropreListaD.Articulo
+LlaveRemota=Articulo
+TipoRelacion=Forzosa
+[Relaciones.PropreListaD.PropreLista]
+Clave=PropreListaD.PropreLista
+TablaRemota=PropreLista
+LlaveLocal=PropreListaD.Lista
+LlaveRemota=Lista
+TipoRelacion=Forzosa
+[Relaciones.PropreListaD.PropreArt]
+Clave=PropreListaD.PropreArt
+TablaRemota=PropreArt
+LlaveLocal=PropreListaD.Articulo
+LlaveRemota=Art
+TipoRelacion=Forzosa
+[Relaciones.PropreListaD.PropreArtExistencia]
+Clave=PropreListaD.PropreArtExistencia
+TablaRemota=PropreArtExistencia
+LlaveLocal=PropreListaD.Articulo
+LlaveRemota=Articulo
+TipoRelacion=Opcional
+[Relaciones.PropreListaD.PropreArtVenta]
+Clave=PropreListaD.PropreArtVenta
+TablaRemota=PropreArtVenta
+LlaveLocal=PropreListaD.Articulo
+LlaveRemota=Articulo
+TipoRelacion=Opcional
+[Relaciones.PropreListaD.PropreArtFam]
+Clave=PropreListaD.PropreArtFam
+TablaRemota=PropreArtFam
+LlaveLocal=PropreListaD.Familia
+LlaveRemota=Familia
+TipoRelacion=Opcional
+[Relaciones.PropreListaD.PropreArtUltimaVenta]
+Clave=PropreListaD.PropreArtUltimaVenta
+TablaRemota=PropreArtUltimaVenta
+LlaveLocal=PropreListaD.Articulo
+LlaveRemota=Articulo
+TipoRelacion=Opcional
+[Relaciones.PropreListaD.PropreArtVentaUltimoMes]
+Clave=PropreListaD.PropreArtVentaUltimoMes
+TablaRemota=PropreArtVentaUltimoMes
+LlaveLocal=PropreListaD.Articulo
+LlaveRemota=Articulo
+TipoRelacion=Opcional
+[Relaciones.PropreListaD.PropreEmpresaCfg]
+Clave=PropreListaD.PropreEmpresaCfg
+TablaRemota=PropreEmpresaCfg
+LlaveLocal=<T>{Empresa}<T>
+LlaveRemota=Empresa
+TipoRelacion=Forzosa
+[Relaciones.PropreArt.Art]
+Clave=PropreArt.Art
+TablaRemota=Art
+LlaveLocal=PropreArt.Art
+LlaveRemota=Articulo
+TipoRelacion=Forzosa
+[Relaciones.PropreArt.PropreArtExistencia]
+Clave=PropreArt.PropreArtExistencia
+TablaRemota=PropreArtExistencia
+LlaveLocal=PropreArt.Art
+LlaveRemota=Articulo
+TipoRelacion=Opcional
+[Relaciones.PropreLista.PropreEmpresaCfg]
+Clave=PropreLista.PropreEmpresaCfg
+TablaRemota=PropreEmpresaCfg
+LlaveLocal=PropreLista.Empresa
+LlaveRemota=Empresa
+TipoRelacion=Forzosa
+[Relaciones.PropreLista.PropreListaD]
+Clave=PropreLista.PropreListaD
+TablaRemota=PropreListaD
+LlaveLocal=PropreLista.Lista
+LlaveRemota=Lista
+TipoRelacion=Opcional
+[Relaciones.PropreEmpresaCfg.ArtFam]
+Clave=PropreEmpresaCfg.ArtFam
+TablaRemota=PropreArtFam
+LlaveLocal=PropreEmpresaCfg.FamiliaGarantias
+LlaveRemota=Familia
+TipoRelacion=Opcional

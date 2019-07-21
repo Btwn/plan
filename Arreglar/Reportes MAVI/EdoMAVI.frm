@@ -1,0 +1,53 @@
+[Forma]
+Clave=EdoMAVI
+Nombre=Estados
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Estado
+CarpetaPrincipal=Estado
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+[calculoMoratoriosExMAVI.Columnas]
+Estado=304
+[Estado]
+Estilo=Hoja
+Clave=Estado
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=CodigoPostal
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=CodigoPostal.Estado
+CarpetaVisible=S
+Filtros=S
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=Automático
+FiltroEstilo=Folder (1 línea)
+FiltroGeneral=1 = 1 GROUP BY Estado
+[Estado.CodigoPostal.Estado]
+Carpeta=Estado
+Clave=CodigoPostal.Estado
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Estado.Columnas]
+Estado=304

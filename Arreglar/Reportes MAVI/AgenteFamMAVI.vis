@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=AgenteFamMAVI
+Nombre=Familias
+Modulos=INV
+Singular=Familia
+ListaTablas=AgenteFam
+TablaPrincipal=AgenteFam
+UsoCapturas=S
+UsoReportes=S
+UsoAfectaciones=S
+ListaCampos=AgenteFam.Familia
+CamposBusquedaRapida=AgenteFam.Familia
+UsarJOIN=S
+SQL=SELECT<BR>  AgenteFam.Familia<BR><BR>FROM<BR>  AgenteFam
+
+[AgenteFam.Familia]
+Clave=AgenteFam.Familia
+LigaTabla=AgenteFam
+LigaCampo=Familia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

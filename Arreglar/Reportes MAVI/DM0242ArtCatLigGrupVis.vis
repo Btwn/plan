@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=DM0242ArtCatLigGrupVis
+Nombre=Categoria Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Categoria
+LlavePrimaria=Categoria
+CamposBusquedaRapida=Categoria
+SQL=select <BR>distinct(Categoria) <BR>from art <BR>Where Art.Categoria is not null<BR>{Si(Condatos(Mavi.DM0242ArtLinLigLin) ,<T>And Art.Categoria In (select Categoria from Art where Linea=<T>+Comillas(Mavi.DM0242ArtLinLigLin)+<T>)<T>,<T><T>)}<BR><BR>{Si(Condatos(Mavi.DM0242ArtGrupLigFam) ,<T>And Art.Categoria In (select categoria from Art where Grupo=<T>+Comillas(Mavi.DM0242ArtGrupLigFam)+<T>)<T>,<T><T>)}<BR>{Si(Condatos(Mavi.DM0242ArtFamLigLin) ,<T>And Art.Categoria  In (select Categoria from Art where Familia=<T>+Comillas(Mavi.DM0242ArtFamLigLin)+<T>)<T>,<T><T>)}<BR>order by Categoria asc
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria

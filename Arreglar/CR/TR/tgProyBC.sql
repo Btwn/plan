@@ -1,0 +1,26 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgProyBC ON Proy
+
+FOR UPDATE, DELETE
+AS BEGIN
+DECLARE
+@ProyectoN 	varchar(50),
+@ProyectoA	varchar(50)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @ProyectoN = Proyecto FROM Inserted
+SELECT @ProyectoA = Proyecto FROM Deleted
+IF @ProyectoN = @ProyectoA RETURN
+IF @ProyectoN IS NULL
+DELETE ProyD WHERE Proyecto = @ProyectoA
+ELSE BEGIN
+UPDATE ProyD SET Proyecto = @ProyectoN WHERE Proyecto = @ProyectoA
+END
+END
+

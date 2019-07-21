@@ -1,0 +1,113 @@
+[Forma]
+Clave=RM0042topxmarcaA2frm
+Nombre=rm0042topxmarcaA2frm
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=vista
+CarpetaPrincipal=vista
+PosicionInicialAlturaCliente=287
+PosicionInicialAncho=251
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialIzquierda=519
+PosicionInicialArriba=161
+ListaAcciones=Selccionar
+[vista]
+Estilo=Iconos
+Clave=vista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=rm0042topxmarcasvis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=OrdenTaller
+CarpetaVisible=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+MenuLocal=S
+IconosSeleccionMultiple=S
+ListaAcciones=selall<BR>QitSel
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+PermiteLocalizar=S
+[vista.Columnas]
+Valor1=124
+0=-2
+1=-2
+[Acciones.selall]
+Nombre=selall
+Boton=0
+NombreDesplegar=&Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.QitSel]
+Nombre=QitSel
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Acciones.Selccionar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Selccionar.Registra]
+Nombre=Registra
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+Activo=S
+Visible=S
+[Acciones.Selccionar.Seleccionar]
+Nombre=Seleccionar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Acciones.Selccionar]
+Nombre=Selccionar
+Boton=23
+NombreDesplegar=&Selecconar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=Asigna<BR>Registra<BR>Seleccionar
+Activo=S
+Visible=S
+NombreEnBoton=S
+[vista.OrdenTaller]
+Carpeta=vista
+Clave=OrdenTaller
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=255
+ColorFondo=Blanco
+ColorFuente=Negro

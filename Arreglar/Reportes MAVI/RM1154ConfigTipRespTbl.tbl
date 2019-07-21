@@ -1,0 +1,39 @@
+
+[Tabla]
+Icono=0
+Clave=RM1154ConfigTipRespTbl
+Archivo=TablaStD
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=TablaSt<BR>Nombre<BR>Valor
+LlavePrimaria=Nombre
+CampoID=ID
+SQL=SELECT<BR>  TablaSt,<BR>  Nombre,<BR>  Valor<BR><BR>  FROM TablaStD
+[TablaSt]
+Clave=TablaSt
+Nombre=TablaSt
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+ValorPorOmision=<T>TIPOS RESPUESTA REANALISIS<T>
+[Nombre]
+Clave=Nombre
+Nombre=Tipo de Respuesta
+Visible=S
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+
+Requerido=S
+[Valor]
+Clave=Valor
+Nombre=Valor
+Visible=S
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+
+

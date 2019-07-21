@@ -1,0 +1,20 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spPOSAplicarOfertaTemp
+@Estacion           int,
+@ID                 varchar(36)
+
+AS
+BEGIN
+UPDATE POSLVenta  SET Aplicado = 1
+FROM POSLVenta v JOIN POSOfertaTemp p ON v.Renglon = p.Renglon AND p.Articulo = v.Articulo AND v.ID = p.IDR AND p.Estacion = @Estacion
+WHERE v.ID = @ID
+AND p.ID IN(SELECT ID FROM ListaID  WHERE Estacion = @Estacion)
+END
+

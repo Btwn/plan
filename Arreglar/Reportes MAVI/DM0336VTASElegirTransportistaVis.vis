@@ -1,0 +1,43 @@
+
+[Vista]
+Icono=0
+Clave=DM0336VTASElegirTransportistaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=TablaSt<BR>Nombre<BR>Valor
+SQL=SELECT * <BR>FROM TablaStD <BR>WHERE TablaSt=<T>DM0336Transportista<T>
+[TablaSt]
+Clave=TablaSt
+Nombre=TablaSt
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=TablaSt
+
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+ClaveBDE=Nombre
+
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+Formula=SELECT * FROM TablaStD WHERE TablaSt=<T>DM0336_Transportista<T>
+[Valor]
+Clave=Valor
+Nombre=Valor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+ClaveBDE=Valor

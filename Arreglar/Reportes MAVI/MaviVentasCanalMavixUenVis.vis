@@ -1,0 +1,15 @@
+[Vista]
+Icono=0
+Clave=MaviVentasCanalMaviXUenVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Valor
+SQL=SELECT Valor=Cadena <BR>FROM VentasCanalMavi <BR>{Si(ConDatos(Info.UEN),<T> WHERE UEN = <T>+Info.UEN,<T><T>)}<BR>GROUP BY Cadena
+[Valor]
+Clave=Valor
+Nombre=Canal de Venta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Valor

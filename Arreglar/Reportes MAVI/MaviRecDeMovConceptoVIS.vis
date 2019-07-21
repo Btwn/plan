@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=MaviRecDeMovConceptoVIS
+Nombre=Concepto de CXC
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Concepto
+CamposBusquedaRapida=Concepto
+SQL=Select distinct<BR><TAB><TAB>CXC.Concepto<BR>From CXC<BR>where cxc.mov in (<T>Nota Credito Mayoreo<T>,<T>Nota Cargo Mayoreo<T>,<T>Factura Mayoreo<T>,<T>Aplicacion<T>)<BR>AND CXC.Concepto is not null and CXC.Concepto not in(<T>CANC CREDILANA<T>,<T>DEV CREDILANA<T>,<T>NO COBRO CREDILANA<T>,<T>BONIFICACION CREDITO MENUDEO 1 A 12<T>,<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB> <T>BONIFICACION CREDITO MENUDEO 13 O MAS<T>,<T>CANC BONIFICACIONES MENUDEO<T>,<T>DEV CREDITO MENUDEO 1 A 12<T>,<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><T>DEV CREDITO MENUDEO 13 O MAS<T>,<T>CANC ABONO SEGUROS AUTOMOVIL<T><CONTINUA>
+SQL002=<CONTINUA>,<T>DEV SEGURO DE AUTO<T>)
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto

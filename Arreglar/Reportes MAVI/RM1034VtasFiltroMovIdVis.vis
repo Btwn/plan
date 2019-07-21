@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM1034VtasFiltroMovIdVis
+Nombre=RM1034VtasMovIdVis
+Modulos=(Todos)
+Singular=RM1034VtasMovIdVis
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MovId
+CamposBusquedaRapida=MovId
+SQL=SELECT <BR><TAB>a.MovId <BR>FROM fd_mfact a WITH(NOLOCK)<BR>GROUP BY a.MovId
+[MovId]
+Clave=MovId
+Nombre=MovId
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovId

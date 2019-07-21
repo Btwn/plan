@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=PropreArtFam
+Nombre=PropreArtFam
+Modulos=(Todos)
+Singular=PropreArtFam
+ListaTablas=PropreArtFam
+TablaPrincipal=PropreArtFam
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=PropreArtFam.Familia
+SQL=SELECT<BR>  PropreArtFam.Familia<BR><BR>FROM<BR>  PropreArtFam
+[PropreArtFam.Familia]
+Clave=PropreArtFam.Familia
+LigaTabla=PropreArtFam
+LigaCampo=Familia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

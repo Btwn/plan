@@ -1,0 +1,56 @@
+[Dialogo]
+Clave=DM0155SubInventarios
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=ListasArticulos<BR>Inventario<BR>RM1110FaltInv<BR>DM0320Ubicacion
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.ListasArticulos]
+Nombre=ListasArticulos
+Boton=0
+NombreDesplegar=Lista de Artículos Disponibles (Detalle)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0970ArtListaDisponibleFrm
+Activo=S
+Visible=S
+[Acciones.Inventario]
+Nombre=Inventario
+Boton=0
+NombreDesplegar=Inventario Series/Lotes
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarInvSerieLote
+Activo=S
+Visible=S
+
+[Acciones.RM1110FaltInv]
+Nombre=RM1110FaltInv
+Boton=0
+NombreDesplegar=RM1110 Faltantes Inventario
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+ClaveAccion=RM1110FaltInvMenu
+Activo=S
+Visible=S
+
+[Acciones.DM0320Ubicacion]
+Nombre=DM0320Ubicacion
+Boton=0
+NombreDesplegar=DM0320 Ubicación
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0320UbicacionFrm
+Activo=S
+Visible=S

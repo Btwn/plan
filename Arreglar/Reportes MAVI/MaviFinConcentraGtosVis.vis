@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviFinConcentraGtosVis
+Nombre=MaviFinConcentraGtosVis
+Modulos=(Todos)
+Singular=MaviFinConcentraGtosVis
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Concepto
+SQL=select DISTINCT<TAB>Gastod.Concepto<BR>from <BR><TAB>gastod <BR><TAB>inner join gasto on gasto.id=gastod.id<BR><TAB>inner join activof on activof.serie=gasto.afserie<BR><TAB>inner join art on art.articulo=activof.articulo<BR>where <BR><TAB>gasto.mov=<T>Gasto<T><BR><TAB>and gasto.af=1<BR><TAB>and gasto.estatus=<T>Concluido<T><BR><TAB>and gasto.afserie is not null<BR><BR>ORDER BY Gastod.Concepto
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto

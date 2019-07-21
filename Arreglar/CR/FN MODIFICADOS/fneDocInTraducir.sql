@@ -1,0 +1,26 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fneDocInTraducir
+(
+@TablaST			varchar(50),
+@ValorOriginal	varchar(50)
+)
+RETURNS varchar(100)
+AS
+BEGIN
+DECLARE
+@Resultado		varchar(100)
+SELECT @Resultado = Valor
+FROM TablaStD WITH(NOLOCK)
+WHERE TablaSt = @TablaSt
+AND Nombre = @ValorOriginal
+SET @Resultado = ISNULL(@Resultado,@ValorOriginal)
+RETURN RTRIM(LTRIM(@Resultado))
+END
+

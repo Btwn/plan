@@ -1,0 +1,39 @@
+[Tabla]
+Icono=0
+Clave=ProprePorcentajeValidacion
+Archivo=ProprePorcentajeValidacion
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Codigo<BR>Porcentaje<BR>Seccion
+LlavePrimaria=Seccion<BR>Codigo
+SQL=SELECT<BR>  Codigo,<BR>  Porcentaje,<BR>  Seccion<BR><BR>FROM<BR>  ProprePorcentajeValidacion
+[Codigo]
+Clave=Codigo
+Nombre=Codigo
+Visible=S
+TamanoValidacion=10
+ValorPorOmision=Asigna(Info.PropreCodigo, SQL(<T>EXEC xpValidaPropreConsecutivo :tSeccion, :tEmpresa, :nSucursal<T>, Info.PropreSeccionPorcentaje, Empresa,  Sucursal))<BR>Si<BR>   Info.PropreCodigo = <T>0<T><BR>Entonces<BR>  SQL(<T>EXEC xpVerPropreConsecutivo :tSeccion, :tEmpresa, :nSucursal<T>, Info.PropreSeccionPorcentaje, Empresa,  Sucursal)<BR>Sino<BR>  Error(Info.PropreCodigo);<BR>  Nulo;<BR>Fin
+BloqueaEdicion=S
+Requerido=S
+Tamano=20
+[Porcentaje]
+Clave=Porcentaje
+Nombre=Porcentaje
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0.000
+[Seccion]
+Clave=Seccion
+Nombre=Sección
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=11
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+OpcionesUnicamente=S
+OpcionesValidar=S
+ValorPorOmision=Info.PropreSeccionPorcentaje
+ListaOpciones=Empresas<BR>UEN Clase<BR>Articulos<BR>Sucursales<BR>Catálogo De Listas<BR>Lista De Mayoreo<BR>Lista De Crédito<BR>Lista De Contado<BR>Lista Doble<BR>Lista Doble M2<BR>Pagos Diferidos

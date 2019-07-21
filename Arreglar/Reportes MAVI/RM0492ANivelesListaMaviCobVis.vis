@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0492ANivelesListaMaviCobVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=nombre
+CamposBusquedaRapida=nombre
+SQL=Select nombre from MaviCob.dbo.nivelcobranzamavi
+[nombre]
+Clave=nombre
+Nombre=nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=nombre

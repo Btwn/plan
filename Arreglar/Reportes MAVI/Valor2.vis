@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=Valor2
+Nombre=Valor2
+Modulos=(Todos)
+Singular=Valor2
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Propiedad
+SQL=SELECT <BR>  DISTINCT Propiedad<BR>FROM<BR>  Prop<BR>WHERE Rama = <T>INV<T> AND Tipo = <T>{Vacio(Mapeo.Prop2, nulo)}<T><BR>ORDER BY Propiedad
+[Propiedad]
+Clave=Propiedad
+Nombre=Propiedad
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Propiedad

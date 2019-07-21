@@ -1,0 +1,22 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spPOSDescuentoDirecto
+@ID				varchar(50),
+@Renglon		float
+
+AS
+BEGIN
+DECLARE
+@Usuario	varchar(50)
+SELECT @Usuario = UsuarioAutoriza
+FROM POSL WITH (NOLOCK)
+WHERE ID = @ID
+UPDATE POSLVenta SET Observaciones = 'Descuento Aplicado de manera Directa, Autorizado por: '+@Usuario WHERE ID = @ID AND Renglon = @Renglon
+END
+

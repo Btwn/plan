@@ -1,0 +1,18 @@
+;*** Desarrollo de Campañas 27/08/09, Joel García Díaz (Mex), se agregaron campos adicionales a la conf. global.
+[EmpresaGral.tbl/Tabla.ListaCampos]
+NominaG4=BasePersonalMAVI
+BasePersonalMAVI=(Fin)
+
+[EmpresaGral.tbl/Tabla.SQL]
+ContabilidadParalela,=NominaG4,
+NominaG4,=BasePersonalMAVI
+BasePersonalMAVI=FROM EmpresaGral
+
+
+[EmpresaGral.tbl/BasePersonalMAVI]
+Clave=BasePersonalMAVI
+Nombre=Base de Datos Personal MAVI
+Visible=S
+TamanoValidacion=100
+Tamano=100
+Mayusculas=S

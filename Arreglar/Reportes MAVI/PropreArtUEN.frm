@@ -1,0 +1,117 @@
+[Forma]
+Clave=PropreArtUEN
+Nombre=Configuración Articulo UEN Propre
+Icono=34
+Modulos=(Todos)
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaBloquearAjuste=S
+VentanaEstadoInicial=Normal
+CarpetaPrincipal=Lista
+ListaCarpetas=Lista
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+Comentarios=Lista(Info.PropreArt)
+ListaAcciones=Aceptar<BR>General
+PosicionInicialIzquierda=438
+PosicionInicialArriba=229
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=403
+[Lista.PropreArtUEN.UEN]
+Carpeta=Lista
+Clave=PropreArtUEN.UEN
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Rojo
+[Lista.UEN.Nombre]
+Carpeta=Lista
+Clave=UEN.Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+[Lista.PropreArtUEN.Disponible]
+Carpeta=Lista
+Clave=PropreArtUEN.Disponible
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Rojo
+[Lista]
+Estilo=Hoja
+Pestana=S
+Clave=Lista
+PermiteEditar=S
+RefrescarAlEntrar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=PropreArtUEN
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+CampoColorLetras=Rojo
+CampoColorFondo=Blanco
+ListaEnCaptura=PropreArtUEN.UEN<BR>UEN.Nombre<BR>PropreArtUEN.Disponible
+CarpetaVisible=S
+Filtros=S
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=General
+FiltroGeneral=PropreArtUEN.Art = <T>{Info.PropreArt}<T>
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=3
+NombreEnBoton=S
+NombreDesplegar=&Guardar y cerrar
+GuardarAntes=S
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Aceptar
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+EjecucionCondicion=Asigna(Temp.Texto, ListaBuscarDuplicados(CampoEnLista(PropreArtUEN:PropreArtUEN.UEN)))<BR>Vacio(Temp.Texto)
+EjecucionMensaje=<T>UEN <T>+Comillas(Temp.Texto)+<T> Duplicada<T>
+[Lista.Columnas]
+UEN=64
+Nombre=216
+Disponible=64
+[Acciones.General]
+Nombre=General
+Boton=11
+NombreEnBoton=S
+NombreDesplegar=&General
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Vista
+Visible=S
+GuardarAntes=S
+Activo=S
+ConCondicion=S
+EjecucionConError=S
+EjecucionCondicion=Asigna(Temp.Texto, ListaBuscarDuplicados(CampoEnLista(PropreArtUEN:PropreArtUEN.UEN)))<BR>Vacio(Temp.Texto)
+EjecucionMensaje=<T>UEN <T>+Comillas(Temp.Texto)+<T> Duplicada<T>
+Antes=S
+AntesExpresiones=Asigna(Temp.Texto, ListaBuscarDuplicados(CampoEnLista(PropreArtUEN:PropreArtUEN.UEN)))<BR>Si(Vacio(Temp.Texto),FormaModal(<T>PropreArtUENGral<T>),Precaucion(<T>UEN <T>+ Temp.Texto + <T> Duplicada<T>))
+

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1036RutasXAgenteDelegacionVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Delegacion
+CamposBusquedaRapida=Delegacion
+SQL=select distinct Delegacion from CodigoPostal order by delegacion
+[Delegacion]
+Clave=Delegacion
+Nombre=Delegacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Delegacion

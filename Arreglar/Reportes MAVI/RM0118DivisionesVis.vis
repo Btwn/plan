@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM0118DivisionesVis
+Nombre=Divisiones de Equipos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=DIVISION
+CamposBusquedaRapida=DIVISION
+LlavePrimaria=DIVISION
+SQL=select distinct DIVISION  from V_MaviEstructuraInst where DIVISION like + <T>DIV<T> + substring(  {comillas(Mavi.RM0118GerenciaVtasExt)}  ,4,1) + <T>%<T><BR>
+[DIVISION]
+Clave=DIVISION
+Nombre=DIVISION
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=DIVISION

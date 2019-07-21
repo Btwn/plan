@@ -1,0 +1,112 @@
+[Forma]
+Clave=RM0946BFiltroZonaFrm
+Nombre=RM0946B Filtro Zona
+Icono=0
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=lista
+CarpetaPrincipal=lista
+PosicionInicialIzquierda=442
+PosicionInicialArriba=140
+PosicionInicialAlturaCliente=292
+PosicionInicialAncho=257
+ListaAcciones=Selec
+[lista]
+Estilo=Iconos
+Clave=lista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM0946BZonaVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+IconosSeleccionMultiple=S
+ListaEnCaptura=Zona
+BusquedaRapidaControles=S
+MenuLocal=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+ListaAcciones=seltodo<BR>quita
+[lista.Zona]
+Carpeta=lista
+Clave=Zona
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Blanco
+ColorFuente=Negro
+[lista.Columnas]
+0=-2
+[Acciones.Selec]
+Nombre=Selec
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+EnBarraHerramientas=S
+EspacioPrevio=S
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=asig<BR>registra<BR>sel
+[Acciones.seltodo]
+Nombre=seltodo
+Boton=0
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.quita]
+Nombre=quita
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Acciones.Selec.asig]
+Nombre=asig
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Selec.registra]
+Nombre=registra
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>lista<T>)
+Activo=S
+Visible=S
+[Acciones.Selec.sel]
+Nombre=sel
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=asigna(Mavi.RM0946BZonaFiltro,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>EXEC dbo.SP_MaviCuentaEstacionUEN :nEst, 1<T>,EstacionTrabajo)

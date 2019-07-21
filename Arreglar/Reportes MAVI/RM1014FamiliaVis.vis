@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1014FamiliaVis
+Nombre=RM1014 Familia
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=FAMILIA
+CamposBusquedaRapida=FAMILIA
+SQL=SELECT DISTINCT FAMILIA FROM art <BR>WHERE categoria = <T>VENTA<T> <BR>{Si(Condatos(Mavi.RM1014Grupos) ,<T>And Grupo =<T>+Comillas(Mavi.RM1014Grupos),<T><T>)}<BR>ORDER BY FAMILIA
+[FAMILIA]
+Clave=FAMILIA
+Nombre=FAMILIA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=FAMILIA

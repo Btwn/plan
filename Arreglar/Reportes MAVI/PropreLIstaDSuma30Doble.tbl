@@ -1,0 +1,48 @@
+[Tabla]
+Icono=0
+Clave=PropreLIstaDSuma30Doble
+Nombre=PropreLIstaDSuma30Doble
+Archivo=PropreLIstaDSuma30Doble
+Modulos=(Todos)
+Singular=PropreLIstaDSuma30Doble
+TipoTabla=General
+ListaCampos=Lista<BR>CostoXVentas30Dias<BR>PContadoXVentas30Dias<BR>MargenSobreVentas<BR>MargenSobreCosto
+SQL=SELECT<BR>  Lista,<BR>  CostoXVentas30Dias,<BR>  PContadoXVentas30Dias,<BR>  MargenSobreVentas,<BR>  MargenSobreCosto<BR><BR>FROM<BR>  PropreLIstaDSuma30Doble
+LlavePrimaria=Lista
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[CostoXVentas30Dias]
+Clave=CostoXVentas30Dias
+Nombre=Costo X Ventas 30 Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+[PContadoXVentas30Dias]
+Clave=PContadoXVentas30Dias
+Nombre=P. Contado X Ventas 30 Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+[MargenSobreVentas]
+Clave=MargenSobreVentas
+Nombre=Margen Sobre Ventas
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Cantidad=S
+[MargenSobreCosto]
+Clave=MargenSobreCosto
+Nombre=Margen Sobre Costo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Cantidad=S

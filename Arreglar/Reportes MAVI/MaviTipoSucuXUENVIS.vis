@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviTipoSucuXUENVIS
+Nombre=Tipo Sucursal X UEN
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=categoria
+SQL=select distinct CATEGORIA<BR>from ventascanalmavi <BR>{SI(CONDATOS(Mavi.UENC), <T> WHERE uen = <T>+Mavi.UENC,<T><T>)}
+[categoria]
+Clave=categoria
+Nombre=categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=categoria

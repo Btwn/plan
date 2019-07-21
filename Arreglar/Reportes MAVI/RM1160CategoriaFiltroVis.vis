@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM1160CategoriaFiltroVis
+Modulos=(Todos)
+TipoTabla=General
+Nombre=Categoria de Venta
+VistaIndependiente=S
+ListaCampos=Categoria
+SQL=SELECT DISTINCT Categoria <BR>FROM VentasCanalMAVI <BR>WHERE Categoria NOT IN (<T>Contado<T>,<T>Mayoreo<T>)
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Categoria
+TipoDatos=Texto

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0257ClientesVis
+Nombre=Clientes
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cliente
+SQL=SELECT distinct Cliente FROM CTE<BR>Where cliente not like <T>%D%<T><BR>Order by Cliente
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cliente

@@ -1,0 +1,88 @@
+;**** Ultima modificación:01-Dic-08
+;**** Modifico:Arly Rubio
+;**** Se modifico:Creacion
+
+
+;**** Se agregaron nuevos campos: IDCopiaMAVI *****
+[CompraD.tbl/Tabla.ListaCampos]
+TipoCambioD=IDCopiaMAVI
+IDCopiaMAVI=AreaMotora
+AreaMotora=(Fin)
+
+
+[CompraD.tbl/Tabla.SQL]
+MonedaD,=TipoCambioD,
+TipoCambioD,=IDCopiaMAVI,
+IDCopiaMAVI,=AreaMotora
+AreaMotora=FROM
+
+
+;*** Integracion paquete RM0803_09072011 nueva columna costo unitario BVF 11072011
+;****** Nuevo nombre de la columna de Costo Unitario  ahora Precio de Lista (LER)  2011/06/05 *********
+;**** Se modifico para que no fuera editable para ciertos movimientos ARC 30-Dic-08****
+;**** Modifico: Od.Campos,Je.Deltoro, Ja.Quinones, Integracion paquete DM0135_09022012 BVF 09022012
+; **** Modificacion de ValorRefrescar, se cambia el campo Configurcion por el campo Acceso Para los filtros de los usuarios, J del Toro 11-02-2012, para desarrollo DM0135 Informacion Del Articulo dentro del paquete DM0135_13022012. JR 13-Feb-2012. ****
+[CompraD.tbl/Costo]
+;CondicionEdicion=(no Usuario.BloquearCostos) y (Compra:Compra.Mov NoEn(<T>Entrada Compra<T>,<T>Entrada con Gastos<T>,<T>Remision<T>,<T>Consignacion<T>))
+Clave=Costo
+Nombre=Precio de Lista
+AyudaEnCaptura=Calculadora
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+CondicionDespliege=(Usuario.Costos o (MovTipo(<T>COMS<T>,Compra:Compra.Mov)=COMS.FL)) y (MovTipo(<T>COMS<T>,Compra:Compra.Mov) noen (COMS.OG, COMS.IG, COMS.DG))
+;ValorRefrescar=SI<BR>(((sql(<T>SELECT COUNT(Configuracion) FROM dbo.TablaStD St INNER JOIN dbo.Usuario U ON U.Configuracion=St.Nombre WHERE TablaSt=:tPer AND U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(sql(<T>select categoria from art where articulo=:tArt<T>,Articulo)<><T>VENTA<T>)))<BR>ENTONCES<BR>Si(Info.Copiar,Info.Costo, Si(MovTipoEn(<T>COMS<T>, Compra:Compra.Mov, (COMS.R, COMS.C,COMS.O,COMS.OP,COMS.CP,COMS.D,COMS.OG,COMS.OD,COMS.OI,COMS.F,COMS.FL,COMS.EG,COMS.EI,COMS.IG,COMS.CC)), Si(ConDatos(Compra:Compra.ListaPreciosEsp), SQL(<T>spVerPrecioEsp :tLista, :tMoneda, :tArt, :tSub, :tUnidad<T>, Compra:Compra.ListaPr<CONTINUA>
+;ValorRefrescar002=<CONTINUA>eciosEsp, Compra:Compra.Moneda, CompraD:CompraD.Articulo, CompraD:CompraD.SubCuenta, CompraD:CompraD.Unidad), SQL(<T>spVerCosto :nSucursal, :tEmpresa, :tProv, :tArticulo, :tSub, :tUnidad, :tCual, :tMoneda, :nTipoCambio<T>, Sucursal, Empresa, Compra:Compra.Proveedor, Articulo, SubCuenta, Unidad, Config.CompraCostoSugerido, Compra:Compra.Moneda, Compra:Compra.TipoCambio))))<BR>SINO<BR><T>0.00<T><BR>FIN
+ConRefrescar=S
+ListaRefrescar=DescuentoImporte
+CondicionEdicion=no Usuario.BloquearCostos
+ValorRefrescar=SI<BR>(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(sql(<T>select categoria from art where articulo=:tArt<T>,Articulo)<><T>VENTA<T>)))<BR>ENTONCES<BR>Si(Info.Copiar,Info.Costo, Si(MovTipoEn(<T>COMS<T>, Compra:Compra.Mov, (COMS.R, COMS.C,COMS.O,COMS.OP,COMS.CP,COMS.D,COMS.OG,COMS.OD,COMS.OI,COMS.F,COMS.FL,COMS.EG,COMS.EI,COMS.IG,COMS.CC)), Si(ConDatos(Compra:Compra.ListaPreciosEsp), SQL(<T>spVerPrecioEsp :tLista, :tMoneda, :tArt, :tSub, :tUnidad<T>, Compra:Compra.ListaPr<CONTINUA>
+ValorRefrescar002=<CONTINUA>eciosEsp, Compra:Compra.Moneda, CompraD:CompraD.Articulo, CompraD:CompraD.SubCuenta, CompraD:CompraD.Unidad), SQL(<T>spVerCosto :nSucursal, :tEmpresa, :tProv, :tArticulo, :tSub, :tUnidad, :tCual, :tMoneda, :nTipoCambio<T>, Sucursal, Empresa, Compra:Compra.Proveedor, Articulo, SubCuenta, Unidad, Config.CompraCostoSugerido, Compra:Compra.Moneda, Compra:Compra.TipoCambio))))<BR>SINO<BR><T>0.00<T><BR>FIN
+
+
+
+
+;**** Nuevo campo agregado 01-Dic-08 (ARC)****
+[CompraD.tbl/IDCopiaMAVI]
+Clave=IDCopiaMAVI
+Nombre=IDCopiaMAVI
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+
+;******Nuevo Campo Agregado 05/02/2014
+[CompraD.tbl/AreaMotora]
+Clave=AreaMotora
+Nombre=AreaMotora
+Visible=S
+TamanoValidacion=10
+Tamano=10
+CondicionDespliege=Config.ContUsoCompras
+AyudaEnCaptura=Vista
+AyudaForma=DM0169AreaMotoraFrm
+AyudaVista=DM0169AreaMotoraVis
+AyudaCampo=Valor
+
+;se modifica para que sea visible el campo ya que el modulo de uso compras no esta configurado
+[CompraD.tbl/ContUso]
+Clave=ContUso
+Nombre=Centro Costos
+Visible=S
+TamanoValidacion=20
+Tamano=20
+MascaraEdicion=Config.CentrosCostosFormato
+AyudaEnCaptura=Vista
+AyudaForma=CentroCostosLista
+AyudaVista=CentroCostosLista
+AyudaCampo=CentroCostosLista.CentroCostos
+ValidacionUsaTabla=S
+ValidacionTablas=CentroCostos
+CondicionDespliege=Config.ContUsoCompras
+Mayusculas=S
+ValorPorOmision=Usuario.DefContUso
+CondicionEdicion=(no Usuario.BloquearContUso) y ((Compra:Compra.Estatus en (EstatusSinAfectar, EstatusPorConfirmar)) o Usuario.ModificarProyUENActCC)
+TipoDatos=Texto
+
+

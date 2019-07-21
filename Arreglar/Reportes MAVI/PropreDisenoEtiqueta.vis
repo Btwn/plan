@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=PropreDisenoEtiqueta
+Nombre=<T>Diseño Etiqueta<T>
+Modulos=(Todos)
+Singular=<T>Diseño Etiqueta<T>
+ListaTablas=PropreDisenoEtiqueta
+TablaPrincipal=PropreDisenoEtiqueta
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=PropreDisenoEtiqueta.Codigo<BR>PropreDisenoEtiqueta.Descripcion
+SQL=SELECT<BR>  PropreDisenoEtiqueta.Codigo,<BR>  PropreDisenoEtiqueta.Descripcion<BR><BR>FROM<BR>  PropreDisenoEtiqueta
+[PropreDisenoEtiqueta.Codigo]
+Clave=PropreDisenoEtiqueta.Codigo
+LigaTabla=PropreDisenoEtiqueta
+LigaCampo=Codigo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Codigo
+[PropreDisenoEtiqueta.Descripcion]
+Clave=PropreDisenoEtiqueta.Descripcion
+LigaTabla=PropreDisenoEtiqueta
+LigaCampo=Descripcion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Descripcion

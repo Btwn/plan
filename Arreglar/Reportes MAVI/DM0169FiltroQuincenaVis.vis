@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=DM0169FiltroQuincenaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Quincena
+SQL=EXEC SP_DM0169FiltroQuincena {SI(ConDatos(Mavi.DM0169FiltroPeriodo),Mavi.DM0169FiltroPeriodo,<T>0<T>)}
+[Quincena]
+Clave=Quincena
+Nombre=Quincena
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Quincena

@@ -1,0 +1,19 @@
+
+[Vista]
+Icono=0
+Clave=RM1096AAreaVis
+Modulos=(Todos)
+TipoTabla=General
+Nombre=Area
+VistaIndependiente=S
+
+ListaCampos=Categoria
+SQL=SELECT DISTINCT<BR>  Categoria<BR>FROM Alm WITH (NOLOCK)<BR>WHERE Categoria LIKE <T>MANTENIMIENTO INSUMOS%<T><BR>AND Estatus = <T>ALTA<T><BR>AND Tipo = <T>NORMAL<T><BR>ORDER BY Categoria
+[Categoria]
+Clave=Categoria
+Nombre=Categoría
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria

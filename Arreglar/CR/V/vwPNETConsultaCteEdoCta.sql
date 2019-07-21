@@ -1,0 +1,26 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW dbo.vwPNETConsultaCteEdoCta
+AS
+SELECT ROW_NUMBER() OVER (ORDER BY CONVERT(DATETIME, C.Vencimiento) DESC) AS RowIndex, Cte.Cliente, C.Vencimiento, C.Empresa, RTRIM(A.MOV)
++ ' ' + RTRIM(ISNULL(A.MOVID, '')) [Movimiento], C.concepto, C.Estatus, A.Moneda, A.tipocambio[Tipocambio], ISNULL(A.Cargo, 0.00) + ISNULL(B.Cargo, 0.00) [Cargo],
+ISNULL(B.Abono, 0.00) + ISNULL(A.Abono, 0.00) [Abono], ((ISNULL(A.Cargo, 0.00) + ISNULL(B.Cargo, 0.00)) - (ISNULL(B.Abono, 0.00) + ISNULL(A.Abono, 0.00))) [Saldo],
+CONVERT(VARCHAR(10), C.Vencimiento, 105) [VencimientoString], CONVERT(VARCHAR(10), A.Fecha, 105) [FechaString], RTRIM(ISNULL(A.MOVID, '')) [MovID]
+FROM (SELECT DISTINCT MODULOID, MOV, MOVID, Fecha, MONEDA, TipoCambio, SUM(Cargo) Cargo, SUM(Abono) Abono, Modulo, CUENTA, APLICA, APLICAID
+FROM AUXILIAR
+WHERE RAMA = 'CXC'
+GROUP BY MODULOID, MOV, MOVID, Fecha, MONEDA, TipoCambio, Modulo, ModuloId, CUENTA, APLICA, APLICAID) AS A LEFT JOIN
+(SELECT DISTINCT Aplica MOV, AplicaID MOVID, SUM(Cargo) Cargo, SUM(Abono) Abono, 0 Saldo, A.Aplica, A.AplicaID
+FROM AUXILIAR A
+WHERE A.RAMA = 'CXC' AND ((MOV + MOVID) <> APLICA + APLICAID)
+GROUP BY Aplica, AplicaID) AS B ON A.MOV = B.MOV AND A.MOVID = B.MOVID JOIN CXC C ON C.ID = A.MODULOID
+JOIN Cte ON A.Cuenta = Cte.Cliente LEFT JOIN MovTipo MT ON MT.Modulo = A.Modulo AND C.Mov = MT.Mov
+WHERE MT.Clave NOT IN ('CXC.EST', 'CXC.SD', 'CXC.SCH') AND C.Estatus NOT IN ('CANCELADO') /*AND C.Vencimiento BETWEEN @DesdeD AND @HastaD*/ AND
+A.AplicaID = CASE WHEN A.AplicaID = A.MovID AND A.Aplica = A.Mov THEN A.AplicaID END
+

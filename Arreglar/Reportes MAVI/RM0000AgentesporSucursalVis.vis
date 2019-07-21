@@ -1,0 +1,39 @@
+[Vista]
+Icono=0
+Clave=RM0000AgentesporSucursalVis
+Nombre=RM0000Agentes de Sucursal
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SUCURSAL<BR>AGENTE<BR>NOMBRE
+SQL=DECLARE <BR> @usuario AS VARCHAR(10) ,<BR> @Sucursal AS VARCHAR(50),<BR> @Acceso as char(10)  <BR> <BR> <BR>SET @usuario = <T>{Usuario}<T>--<T>VENTP00315<T><BR><BR>Set @Acceso=<T>{USUARIO.Acceso}<T><BR><BR>IF(SubString((Select Acceso from usuario where usuario=@Usuario),1,5)=<T>DIREC<T>) or (@Acceso in (<T>VENTP_SUPA<T>,<T>VENTP_GECO<T>))  <BR>   Begin   <BR>           <BR>         SELECT DISTINCT S.SUCURSAL,AGT.AGENTE, AGT.NOMBRE FROM SUCURSAL S <BR><TAB><TAB><TAB>  INNER JOIN VentasCanalMavi VCM ON VCM.UEN = S.wUEN<BR><TAB><TAB><TAB>  RIGHT JOIN AGENTE AGT ON AGT.SUCURSALEMPRESA = S.SUCURSAL AND AGT.Estatus = <T>Alta<T><BR><TAB><TAB><TAB>  WHERE AGT.CATEGORIA= <T>VENTAS PISO<T> AND S.Sucursal is not null<BR><TAB><TAB><TAB>  AND S.Sucursal IN ({Mavi.RM0158ListadeSucursales}) <BR>         <CONTINUA>
+SQL002=<CONTINUA>                 ORDER BY Sucursal  <BR>   END  <BR><BR>IF (@Acceso not in (<T>VENTP_SUPA<T>,<T>VENTP_GECO<T>) and SubString((Select Acceso from usuario where usuario=@Usuario),1,5)<><T>DIREC<T>) OR (@Acceso IS NULL)  <BR>  Begin  <BR>  SELECT DISTINCT S.SUCURSAL,AGT.AGENTE, AGT.NOMBRE FROM SUCURSAL S <BR><TAB><TAB><TAB>  INNER JOIN VentasCanalMavi VCM ON VCM.UEN = S.wUEN<BR><TAB><TAB><TAB>  RIGHT JOIN AGENTE AGT ON AGT.SUCURSALEMPRESA = S.SUCURSAL AND AGT.Estatus = <T>Alta<T><BR><TAB><TAB><TAB>  WHERE  AGT.CATEGORIA= <T>VENTAS PISO<T> AND S.Sucursal is not null<BR><TAB><TAB><TAB>  AND S.Sucursal IN ({Mavi.RM0158ListadeSucursales}) <BR><TAB><TAB><TAB>  ORDER BY Sucursal<BR> <BR><BR>  End
+[SUCURSAL]
+Clave=SUCURSAL
+Nombre=SUCURSAL
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=SUCURSAL
+[AGENTE]
+Clave=AGENTE
+Nombre=AGENTE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=AGENTE
+[NOMBRE]
+Clave=NOMBRE
+Nombre=NOMBRE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NOMBRE

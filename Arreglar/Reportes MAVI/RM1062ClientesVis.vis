@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM1062clientesVis
+Nombre=RM1062clientesVis
+Modulos=(Todos)
+Singular=Vista Clientes
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CLIENTE
+CamposBusquedaRapida=CLIENTE
+SQL=SELECT DISTINCT C.CLIENTE <BR>FROM cxc C WITH (NOLOCK)<BR>INNER JOIN VENTASCANALMAVI V WITH (NOLOCK) ON V.ID=C.clienteenviara<BR>INNER JOIN Venta Vta WITH (NOLOCK) ON C.Mov=Vta.Mov and C.movid=Vta.Movid <BR>INNER JOIN Venta Ped WITH (NOLOCK) ON Vta.Origen=Ped.Mov and Vta.OrigenID=Ped.Movid <BR>INNER JOIN Sucursal Suc WITH (NOLOCK) ON Suc.Sucursal = Ped.SucursalOrigen<BR>WHERE V.CATEGORIA in (<T>CONTADO<T>,<T>CREDITO EXTERNO<T>,<T>MAYOREO<T>)<BR>AND (C.mov IN (<T>factura<T>, <T>factura viu<T>, <T>nota cargo<T>, <T>nota cargo viu<T>) <BR><TAB> OR (C.mov = <T>factura mayoreo<T> AND Suc.Grupo = <T>CORPORATIVO<T> AND Suc.Tipo = <T>INMUEBLE<T>))<BR>AND C.SALDO IS NOT NULL<BR>ORDER BY C.Cliente
+[CLIENTE]
+Clave=CLIENTE
+Nombre=CLIENTE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=CLIENTE

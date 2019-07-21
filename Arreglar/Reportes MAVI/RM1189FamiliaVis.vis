@@ -1,0 +1,23 @@
+
+[Vista]
+Icono=0
+Clave=RM1189FamiliaVis
+Nombre=Muestra Familia
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Familia
+VistaIndependiente=S
+
+
+SQL=Select  Distinct <BR>Familia from Art where Grupo = <T>Mercancia de linea<T> <BR>and Categoria = <T>Venta<T><BR>And Familia Not in (<T>ARTICULOS DE ESCRITORIO<T>,<T>GASTOS DE COBRANZA<T>,<BR>                  <T>INCOBRABLES<T>,<T>SEGUROS DE VIDA<T>,<T>SEGUROS DE AUTOMOVILES<T>,<BR>                  <T>VALERAS<T>,<T>VARIOS FINANCIEROS<T>,<T>VARIOS INTANGIBLES<T>)<BR>And Familia <> <T><T> <BR>Order by familia ASC
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

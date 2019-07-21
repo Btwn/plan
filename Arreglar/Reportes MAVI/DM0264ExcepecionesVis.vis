@@ -1,0 +1,31 @@
+
+[Vista]
+Icono=0
+Clave=DM0264ExcepecionesVis
+Nombre=DM0264Excepeciones
+Modulos=(Todos)
+ListaTablas=DM0264ExcepcionesTbl
+TablaPrincipal=DM0264ExcepcionesTbl
+UsoReportes=S
+
+ListaCampos=DM0264ExcepcionesTbl.Articulo
+UsoCapturas=S
+SQL=SELECT<BR>DM0264ExcepcionesTbl.Articulo<BR>FROM CREDIDExcepcionesMonxRed DM0264ExcepcionesTbl
+[DM0264ExcepcionesTbl.Articulo]
+Clave=DM0264ExcepcionesTbl.Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=20
+AyudaForma=DM0264ArticuloExcefrm
+AyudaVista=DM0264ArticuloExceVis
+AyudaCampo=Articulo
+AyudaMultiple=S
+LigaTabla=DM0264ExcepcionesTbl
+LigaCampo=Articulo
+ClaveBDE=Articulo
+Alineacion=por Omisión
+BloqueaEdicion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas

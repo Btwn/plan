@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0907MaviSimRefCondicionVis
+Nombre=Simulador de Refinanciamiento
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=NomColSDK
+SQL=select NomColSDK<BR>from ##connmm
+[NomColSDK]
+Clave=NomColSDK
+Nombre=Refinanciamiento
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=NomColSDK
+TipoDatos=Texto

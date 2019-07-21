@@ -1,0 +1,29 @@
+[Tabla]
+Icono=0
+Clave=DM0289ConfigArticulosTBL
+Archivo=DM0289ConfigArticulos
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Articulo
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  Articulo<BR><BR>FROM<BR>  DM0289ConfigArticulos
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Expresion
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista( <T>Select Articulo from Art Order by Articulo<T> )

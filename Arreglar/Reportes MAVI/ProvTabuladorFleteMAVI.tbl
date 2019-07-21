@@ -1,0 +1,46 @@
+[Tabla]
+Icono=0
+Clave=ProvTabuladorFleteMAVI
+Nombre=ProvTabuladorFleteMAVI
+Archivo=ProvTabuladorFleteMAVI
+Modulos=(Todos)
+Singular=ProvTabuladorFleteMAVI
+TipoTabla=General
+ListaCampos=Proveedor<BR>TipoUnidadVehicular<BR>Tabulador
+LlavePrimaria=Proveedor<BR>TipoUnidadVehicular
+SQL=SELECT<BR>  Proveedor,<BR>  TipoUnidadVehicular,<BR>  Tabulador<BR><BR>FROM<BR>  ProvTabuladorFleteMAVI
+[Proveedor]
+Clave=Proveedor
+Nombre=Proveedor
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Proveedor
+Mayusculas=S
+[TipoUnidadVehicular]
+Clave=TipoUnidadVehicular
+Nombre=Tipo de Unidad Vehicular
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Validar captura en la lista
+Requerido=S
+Formula=SQLEnLista(<T>Select TipoUnidad from TipoUnidadVehicularMAVI<T>)
+[Tabulador]
+Clave=Tabulador
+Nombre=Tabulador
+Visible=S
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Vista
+AyudaMemRenglones=12
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=TabuladorCosteoFleteMAVILista
+AyudaVista=TabuladorCosteoFleteMAVI
+AyudaCampo=TabuladorCosteoFleteMAVI.Tabulador
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Seleccione Un Tabulador Válido<T>
+ValidacionCondicion=SQL(<T>Select count(*) from TabuladorCosteoFleteMAVI where tabulador =:tTabulador<T>,Tabulador)>0

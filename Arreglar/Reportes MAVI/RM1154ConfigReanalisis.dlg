@@ -1,0 +1,39 @@
+[Dialogo]
+Clave=RM1154ConfigReanalisis
+Nombre=Configuración de Re Análisis
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+
+
+ListaAcciones=forma<BR>RM1154ConfigurarTipoRespuestaFrm<BR>RM1154EventosReanalisisFrm
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+
+
+[Acciones.RM1154ConfigurarTipoRespuestaFrm]
+Nombre=RM1154ConfigurarTipoRespuestaFrm
+Boton=0
+NombreDesplegar=Configuracion de Tipos de Respuesta Re Analisis
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1154ConfigurarTipoRespuestaFrm
+Activo=S
+Visible=S
+
+[Acciones.RM1154EventosReanalisisFrm]
+Nombre=RM1154EventosReanalisisFrm
+Boton=0
+NombreDesplegar=Configuracion de Eventos Re Analisis
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1154EventosReanalisisFrm
+Activo=S
+Visible=S

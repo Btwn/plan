@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=DM0500BNivelesCobranzaVIS
+Nombre=DM0500BNivelesCobranzaVIS
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Nombre
+SQL=SELECT Nombre<BR>FROM ( SELECT Nombre FROM NivelesEspecialesCobranzaMavi UNION SELECT Nombre FROM NivelCobranzaMavi ) A<BR>ORDER BY Nombre
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

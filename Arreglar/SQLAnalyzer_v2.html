@@ -1,0 +1,543 @@
+<!--
+	By: Gildardo Maldonado | 25/04/2018 
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>SQL Query Analyzer</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
+integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<style>
+	body{
+		background-color: #0C0E09;
+		font-size: 14px;
+	}
+	
+	.header{
+		color:white;
+		font-size: 17px;
+		display:inline;
+		font-style: bold;
+	}
+	
+	.main{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		min-height: 60px;
+		min-width: 800px;
+		background-color: #0C0E09;
+	}
+	
+	#contenedor{
+		color: white;
+		line-height: normal;
+	}
+	
+	#contenedor2{
+		color: white;
+		line-height: normal;
+	}
+	
+	#error{
+		background-color: #FF0104;
+	}
+	
+	#warning{
+		background-color: #FF500D;
+	}
+	
+	#nolock{
+		background-color: #0466A8;
+	}
+	
+	#rowlock{
+		background-color: #63A600;
+	}
+</style>
+<body>
+<div class="main">
+<br>
+<pre class="header">  SQL Query Analyzer</pre>
+<input type="file" name="file" id="file" style="color:white" accept=".sql">
+</div>
+<br>
+<br>
+<br>
+<pre name="contenedor" id="contenedor"> </pre>
+<pre name="contenedor2" id="contenedor2"> </pre>
+
+<script>
+	
+	var lines, line, par_comment, index, summary, summary_lines, is_keyword;
+	var curr_lvl, last_key_lvl, tablename_lvl, line_lvl, lock_lvl, table_line;
+	var tables_alive;
+	var keywords = new Array('SELECT','INSERT','INTO','UPDATE','DELETE','CREATE','DROP','TABLE','FROM','JOIN','WITH',
+							'WHERE','NOLOCK','ROWLOCK','IF','SET','DECLARE','GROUP','ORDER','WHILE','BEGIN','END','ON',
+							'LEFT','RIGHT','INNER','FULL','OUTER','(',')',',','FOR');
+	var blocked_keywords = new Array('WITH','WHERE','IF','SET','DECLARE','GROUP','ORDER','WHILE','BEGIN','END','ON','LEFT',
+									'RIGHT','INNER','FULL','OUTER','FOR');
+	var blocked = new Array('','AS');
+	var lvl_p, lvl_c, lvl_l, lvl_b;
+	var p_p, p_c, p_l, p_b;
+	var openIndexG, vtop;
+	
+	function isTemporal(str){
+		if(str.includes(".")){
+			var aux = str.split('.');
+			str = aux[aux.length-1];
+		}
+		if(str.charAt(0) == '@') return true;
+		if(str.charAt(0) == '#') return true;
+		if(str == 'SYSINDEXES') return true;
+		if(str == 'SYSOBJECTS') return true;
+		if(str == 'OPENQUERY') return true;
+		if(str == 'INSERTED') return true;
+		if(str == 'DELETED') return true;
+		return false;
+	}
+	
+	function labeled(str){
+		var nstr = str.trim();
+		nstr = nstr.split("(").join(" ( ");
+		nstr = nstr.split(")").join(" ) ");
+		nstr = nstr.split(",").join(" , ");
+		
+		
+		var words = nstr.split(' '), word;
+		var i, j, openIndex = (openIndexG > 0)? openIndexG : -1;
+		var print, last, index;
+		
+		for(i = 0; i < words.length; i++){ // SEPARAR LA LINEA DE INSTRUCCION POR PALABRAS
+			word = words[i].trim().toUpperCase();
+			
+			print = true;
+			for(j = 0; j < keywords.length; j++){
+				if(word == keywords[j]){
+					openIndex = -1;
+					if(word == '('){
+						curr_lvl++;
+						if(last_key_lvl.length == curr_lvl){
+							last_key_lvl.push('');
+							tablename_lvl.push('');
+							line_lvl.push(-1);
+							lock_lvl.push('');
+						}
+					}else if(word == ')'){
+						last_key_lvl[curr_lvl] = '';
+						curr_lvl--;
+					}else if(word == 'FROM' || word == 'JOIN' || word == 'DELETE' || word == 'UPDATE'){
+						openIndex = i + 3;
+					}else if(word == 'TABLE'){
+						last = summary.length-1;
+						if(summary[last] == 'CREATE' || summary[last] == 'DROP'){
+							openIndex = i + 1;
+						}else{
+							print = false;
+						}
+					}else if(word == 'INTO'){
+						openIndex = i + 1;
+					}
+					
+					if(word != '(' && word != ')' && word != ',' && word != 'ROWLOCK' && word != 'NOLOCK') last_key_lvl[curr_lvl] = word;
+					
+					if(word == ','){
+						if(last_key_lvl[curr_lvl] != 'FROM') print = false;
+						else{
+							openIndex = i + 3;
+						}
+					}
+					
+					if(blocked_keywords.indexOf(word) != -1) print = false;
+						
+					if(print){
+						summary_lines.push(line+1);
+						is_keyword.push(1);
+						summary.push(word);
+					}
+					break;
+				}
+			}
+			
+			// AQUI SE RECOPILAN LOS NOMBRES Y ALIAS DE LAS TABLAS
+			if(j == keywords.length && (i <= openIndex || vtop) ){ 
+				if(blocked.indexOf(word) == -1){
+					last = summary.length-1;
+					if(word == 'TOP' && (summary[last] == 'DELETE' || summary[last] == 'UPDATE')){ // DELETE, UPDATE TOP () 
+						index = keywords.indexOf('(');
+						if(index != -1) keywords.splice(index, 1);
+						index = keywords.indexOf(')');
+						if(index != -1) keywords.splice(index, 1);
+						vtop = true;
+						openIndex += 1;
+					} else if(word == ')'){
+						openIndex = i + 3;
+						keywords.push('(');
+						keywords.push(')');
+						vtop = false;
+					}else if(!vtop){
+						summary_lines.push(line+1);
+						is_keyword.push(0);
+						summary.push(word);
+					}
+				}else{
+					openIndex++;
+				}
+			}
+		}
+		
+		openIndexG = openIndex-words.length; // EL NOMBRE DE LA TABLA PUEDE ESTAR EN OTRA LINEA
+		return str;
+	}
+
+	function getComments(str){
+		var i_par, i_cpar, i_line;
+
+		if(par_comment){ // COMENTARIOS DE PARRAFO
+			i_cpar = str.indexOf("*/");
+			i_par = str.indexOf("/*");
+			
+			if(i_par == -1) i_par = str.length;
+			if(i_cpar == -1) i_cpar = str.length;
+			
+			if(i_cpar == i_par){
+				index = str.length;
+				return str;
+			}else{
+				if(i_par < i_cpar){
+					par_comment++;
+					index = i_par+2;
+					return str.substring(0,i_par+2);
+				}else{
+					par_comment--;
+					index = i_cpar+2;
+					if(par_comment == 0)
+						return str.substring(0,i_cpar+2) +"</span>";
+					else
+						return str.substring(0,i_cpar+2);
+				}
+			}
+		}else{
+			i_par = str.indexOf("/*");
+			i_line = str.indexOf("--");
+			
+			if(i_par == -1) i_par = str.length;
+			if(i_line == -1) i_line = str.length;
+			
+			if(i_par == i_line){
+				index = str.length;
+				return labeled(str);
+			}else{
+				if(i_line < i_par){
+					index = str.length;
+					return labeled(str.substring(0,i_line)) + "<span class='comment'>" + str.substring(i_line) + "</span>";
+				}else{
+					par_comment = 1;
+					index = i_par+2;
+					return labeled(str.substring(0,i_par)) + "<span class='comment'>/*";
+				}
+			}
+		}
+	}
+	
+	function parseComments(){ // IDENTIFICAR COMENTARIOS
+		var str, total_str = "", act_index;
+		par_comment = lvl_p = lvl_c = lvl_l = lvl_b = 0;
+		p_p = new Array(); p_c = new Array(); p_l = new Array(); p_b = new Array();
+		summary =  new Array();
+		for(line = 0; line < lines.length; line++){
+			act_index = index = 0;
+			str = lines[line] ;
+			while(act_index < str.length){ 
+				total_str += getComments(str.substring(act_index));
+				act_index += index;
+			}
+		}
+		
+		return total_str;
+	}
+	
+	function validate(){ // QUITAR BASURA Y VALIDAR QUE SE HAYAN DESTRUIDO LAS TABLAS TEMPORALES
+		var table, index; 
+		var i, j, d;
+		
+		for(i = 0; i < summary.length; i++){
+			if(summary[i] == ')' && summary[i-1] == '('){ // ELIMINAR PARENTESIS VACIOS '()'
+				summary_lines.splice(i-1, 2);
+				is_keyword.splice(i-1, 2);
+				summary.splice(i-1, 2);
+				i-=2;
+			}
+			if(summary[i] == '(' && i+2 < summary.length && (summary[i+1] == 'NOLOCK' || summary[i+1] == 'ROWLOCK') && summary[i+2] == ')'){ // QUITAR PARENTESIS DE NOLOCK Y ROWLOCK
+				summary_lines.splice(i, 1);
+				is_keyword.splice(i, 1);
+				summary.splice(i, 1);
+				
+				summary_lines.splice(i+1, 1);
+				is_keyword.splice(i+1, 1);
+				summary.splice(i+1, 1);
+			}
+		}
+		
+		for(i = 0; i < summary.length; i++){
+			if(summary[i] == 'INSERT' && i+2 < summary.length && summary[i+1] == 'INTO'){ // BORRAR INSERT
+				var d = (is_keyword[i+2])? 2 : 3;
+				
+				summary_lines.splice(i, d);
+				is_keyword.splice(i, d);
+				summary.splice(i, d);
+				
+				i--;
+				
+				// VERIFICAR TABLAS QUE NO HAN SIDO ELIMINADAS
+			}else if(summary[i] == 'CREATE' && i+2 < summary.length && summary[i+1] == 'TABLE'){ //AGREGAR TABLA
+				table = summary[i+2];
+				if(table.charAt(0) == '#' && !tables_alive.includes(table)){
+					tables_alive.push(table);
+					table_line.push(summary_lines[i]);
+				}
+				i+=2;
+			}else if(summary[i] == 'INTO' && i+1 < summary.length){ //AGREGAR TABLA
+				table = summary[i+1];
+				if(table.charAt(0) == '#' && !tables_alive.includes(table)){
+					tables_alive.push(table);
+					table_line.push(summary_lines[i]);
+				}
+				i+=1;
+			}else if(summary[i] == 'DROP' && i+2 < summary.length && summary[i+1] == 'TABLE'){ //ELIMINAR TABLA
+				table = summary[i+2];
+				index = tables_alive.indexOf(table);
+				if(index != -1){
+					tables_alive.splice(index, 1);
+					table_line.splice(index, 1);
+				}
+				i+=2;
+			}
+		}
+		
+	}
+	
+	document.getElementById('file').onchange = function(){
+		
+		var file = this.files[0];
+		console.log(this.files)
+		var reader = new FileReader();
+		console.log(reader)
+		var str, msg, err;
+		
+		curr_lvl = 0; // DEFINE EL NIVEL ACTUAL, PERMITE MOVERSE ENTRE LOS PARENTESIS ()
+		last_key_lvl = new Array(), tablename_lvl = new Array(), line_lvl = new Array(), lock_lvl = new Array(); 
+		last_key_lvl.push('');  // SI SE TRATA DE UNA INSTRUCCION SELECT, UPDATE O DELETE
+		tablename_lvl.push(''); // ALMACENAR NOMBRE O ALIAS DE LA TABLA QUE AFECTA
+		line_lvl.push(-1); // LINEA DONDE COMIENZA LA INSTRUCCION (SI CONTIENE UN -1 SE HA IDENTIFICADO LA TABLA QUE DEFINE EL ALIAS)
+		lock_lvl.push(''); // NOLOCK, ROWLOCK
+		summary = new Array(), summary_lines = new Array(), is_keyword = new Array(); // CONTIENE EL RESUMEN DE LAS INSTRUCCIONES INCLUYENDO LAS TABLAS 
+		
+		tables_alive = new Array(), table_line = new Array();
+		openIndexG = -1;
+		vtop = false;
+		var t_names = new Array();
+		
+		reader.onload = function(progressEvent){
+			lines = this.result.split('\n');
+			str = parseComments(); 
+			
+			validate();
+			
+			msg = ''; err = '';
+			curr_lvl = 0; last_key_lvl[curr_lvl] = '';
+			var lock_value;
+			for(var i = 0; i < summary.length; i++){
+				//msg += is_keyword[i] + '	' + summary_lines[i] + '	' + summary[i] + '	|' + last_key_lvl[curr_lvl] +  '|' + tablename_lvl[curr_lvl] +  '|' + lock_lvl[curr_lvl] +  '|\n';
+				
+				// NUEVA INSRUCCION
+				if(summary[i] == 'SELECT' || summary[i] == 'UPDATE' || summary[i] == 'DELETE'){
+					// EL NOMBRE DE LA TABLA EN EL UPDATE NO ES UN ALIAS
+					if(last_key_lvl[curr_lvl] == 'UPDATE' && tablename_lvl[curr_lvl] != '' && line_lvl[curr_lvl] != -1){
+						if(!isTemporal(tablename_lvl[curr_lvl])){
+							if(lock_lvl[curr_lvl] == '')
+							err += '<span id="error">Linea: ' + line_lvl[curr_lvl] + '\t</span>' + 
+															' Falta instrucción WITH (ROWLOCK) en la tabla ' + tablename_lvl[curr_lvl] + '\n';
+						}else if(lock_lvl[curr_lvl] == 'ROWLOCK'){
+							err += '<span id="warning">Linea: ' + line_lvl[curr_lvl] + '\t</span>'+
+															' No es necesaria la instrucción WITH (ROWLOCK) en la tabla ' + tablename_lvl[curr_lvl] + '\n';
+						}
+					}
+					
+					//CAMBIO DE INSTRUCCION
+					last_key_lvl[curr_lvl] = summary[i];
+					line_lvl[curr_lvl] = summary_lines[i];
+					if((summary[i] == 'UPDATE' || summary[i] == 'DELETE') && !is_keyword[i+1]){
+						i++;
+						tablename_lvl[curr_lvl] = summary[i];
+						if(summary[i+1] == 'ROWLOCK' || summary[i+1] == 'NOLOCK'){
+							i++;
+							lock_lvl[curr_lvl] = summary[i];
+							
+							if(last_key_lvl[curr_lvl] == 'DELETE' && (lock_lvl[curr_lvl] == 'NOLOCK' || lock_lvl[curr_lvl] == 'ROWLOCK' )){
+								err += '<span id="error">Linea: ' + line_lvl[curr_lvl] + '\t</span>' +
+									' Error en la instrucción '+ last_key_lvl[curr_lvl] + ' ' + tablename_lvl[curr_lvl] + ' WITH (' + lock_lvl[curr_lvl] + ')\n';
+							}
+							
+							if(last_key_lvl[curr_lvl] == 'UPDATE' && lock_lvl[curr_lvl] == 'NOLOCK'){
+								err += '<span id="error">Linea: ' + line_lvl[curr_lvl] + '\t</span>' +
+									' Error en la instrucción '+ last_key_lvl[curr_lvl] + ' ' + tablename_lvl[curr_lvl] +  ' WITH (' + lock_lvl[curr_lvl] + ')\n';
+								
+								lock_lvl[curr_lvl] = ''
+							}
+						}
+					}
+					else{
+						tablename_lvl[curr_lvl] = '';
+						lock_lvl[curr_lvl] = '';
+					}
+				}
+				else if(summary[i] == 'CREATE' || summary[i] == 'DROP'){ // ESTOS YA NO INTERESAN
+					last_key_lvl[curr_lvl] = summary[i];
+					tablename_lvl[curr_lvl] = '';
+					lock_lvl[curr_lvl] = '';
+					line_lvl[curr_lvl] = -1;
+				}
+				else if(summary[i] == '('){ // SUBIR UN NIVEL
+					curr_lvl++;
+				}
+				else if(summary[i] == ')'){ // BAJAR UN NIVEL
+					last_key_lvl[curr_lvl] = '';
+					curr_lvl--;
+				}else{
+					// TABLAS
+					if(!is_keyword[i]){
+						// LA TABLA VIENE DE UNA INSTRUCCION SELECT
+						if(last_key_lvl[curr_lvl] == 'SELECT'){ 
+							for(var j = i+1; j < summary.length && !is_keyword[j]; j++){}
+							lock_value = (j == summary.length)? '' : summary[j];
+							if(isTemporal(summary[i])){
+								if(lock_value == 'NOLOCK') err += '<span id="warning">Linea: ' + summary_lines[i] + '\t</span>'+
+															' No es necesaria la instrucción WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+							}else{
+								if(lock_value != 'NOLOCK') err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' Falta instrucción WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+							}
+							if(lock_value == 'ROWLOCK') err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' Error en la instrucción SELECT WITH (ROWLOCK) en la tabla ' + summary[i] + '\n';
+															
+							if(lock_value == 'NOLOCK' || lock_value == 'ROWLOCK' ) i = j;
+							else i = j - 1;
+						
+						// LA TABLA VIENE DE UNA INSTRUCCION UPDATE
+						} else if(last_key_lvl[curr_lvl] == 'UPDATE'){
+							for(var j = i; j < summary.length && !is_keyword[j]; j++) t_names.push(summary[j]);
+							lock_value = (j == summary.length)? '' : summary[j];
+							
+							//LA TABLA DEFINE EL ALIAS PARA LA INSTRUCCION UPDATE
+							if(t_names.indexOf(tablename_lvl[curr_lvl]) != -1){
+								if(lock_value == 'NOLOCK') err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' Error en la instrucción UPDATE WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+								if(lock_lvl[curr_lvl] == ''){
+									if(isTemporal(summary[i])){
+										if(lock_value == 'NOLOCK') err += '<span id="warning">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' No es necesaria la instrucción WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+									}else if(lock_value != 'ROWLOCK')
+										err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+												' Falta instrucción WITH (ROWLOCK) en la tabla ' + summary[i] + '\n';
+									
+									line_lvl[curr_lvl] = -1; // SE ENCONTRO EL ALIAS
+								}
+							}else{ // JOINS
+								if(isTemporal(summary[i])){
+									if(lock_value == 'NOLOCK') err += '<span id="warning">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' No es necesaria la instrucción WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+								}else if(lock_value != 'NOLOCK') err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' Falta instrucción WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+								if(lock_value == 'ROWLOCK') err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' Error en la instrucción UPDATE WITH (ROWLOCK) en la tabla ' + summary[i] + '\n';
+							}
+							
+							if(lock_value == 'NOLOCK' || lock_value == 'ROWLOCK' ) i = j;
+							else i = j - 1;
+							t_names.splice(0,t_names.length)
+						
+						// LA TABLA VIENE DE UNA INSTRUCCION DELETE
+						} else if(last_key_lvl[curr_lvl] == 'DELETE'){
+							for(var j = i; j < summary.length && !is_keyword[j]; j++) t_names.push(summary[j]);
+							lock_value = (j == summary.length)? '' : summary[j];
+							
+							//LA TABLA DEFINE EL ALIAS PARA LA INSTRUCCION DELETE, O NO SE ESPECIFICO UN ALIAS
+							if(t_names.indexOf(tablename_lvl[curr_lvl]) != -1 || tablename_lvl[curr_lvl] == ''){ 
+								if(lock_value == 'NOLOCK') err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' Error en la instrucción DELETE WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+							}else{ // JOINS
+								if(isTemporal(summary[i])){
+									if(lock_value == 'NOLOCK') err += '<span id="warning">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' No es necesaria la instrucción WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+								}else if(lock_value != 'NOLOCK') err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' Falta instrucción WITH (NOLOCK) en la tabla ' + summary[i] + '\n';
+							}
+							if(lock_value == 'ROWLOCK') err += '<span id="error">Linea: ' + summary_lines[i] + '\t</span>' + 
+															' Error en la instrucción DELETE WITH (ROWLOCK) en la tabla ' + summary[i] + '\n';
+							
+							if(lock_value == 'NOLOCK' || lock_value == 'ROWLOCK' ) i = j;
+							else i = j - 1;
+							t_names.splice(0,t_names.length)
+						}
+					}
+				}
+			}
+			
+			/*msg = '';
+			for(var i = 0; i < summary.length; i++){
+				msg += is_keyword[i] + '	' + summary_lines[i] + '	' + summary[i] + '\n';
+			}*/
+			
+			msg = '';
+			line = -1; curr_lvl = 0; 
+			for(var i = 0; i < summary.length; i++){
+				if(summary[i] == '(') curr_lvl++;
+				
+				if(line != summary_lines[i] || summary[i] == '(' || summary[i] == ')' || (i > 0 && summary[i-1] == '(' && line == summary_lines[i])){
+					line = summary_lines[i];
+					msg += '\n' + summary_lines[i]+ '\t';
+					
+					for(var j = 0; j < curr_lvl; j++) msg += '\t';
+				}
+				
+				if(summary[i] == ')') curr_lvl--;
+				
+				switch(summary[i]){
+					case 'NOLOCK':
+						msg += '<span id="nolock">NOLOCK</span> ';
+					break;
+					case 'ROWLOCK':
+						msg += '<span id="rowlock">ROWLOCK</span> ';
+					break;
+					default:
+						msg += summary[i] + ' ';
+					break;
+				}
+			}
+			
+			document.getElementById('contenedor2').innerHTML = msg;
+			
+			for(var i = 0; i < tables_alive.length; i++){
+				err += '<span id="error">Linea: ' + table_line[i] + '\t</span>' + 
+						' Falta destruir la tabla temporal ' + tables_alive[i] + '\n';
+			}
+			
+			if(err == '')
+				document.getElementById('contenedor').innerHTML = 'No se han encontrado errores';
+			else
+				document.getElementById('contenedor').innerHTML = err;
+		};
+		reader.readAsText(file,'ISO-8859-1');
+	};
+</script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" 
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" 
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" 
+crossorigin="anonymous"></script>
+</body>
+</html>

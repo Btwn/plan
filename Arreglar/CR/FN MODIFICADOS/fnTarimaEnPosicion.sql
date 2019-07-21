@@ -1,0 +1,21 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnTarimaEnPosicion (@Almacen varchar(10), @Posicion varchar(10))
+RETURNS varchar(20)
+
+AS BEGIN
+DECLARE
+@Resultado	varchar(20)
+SELECT @Resultado = NULL
+SELECT @Resultado = NULLIF(RTRIM(MIN(Tarima)), '')
+FROM Tarima WITH(NOLOCK)
+WHERE Almacen = @Almacen AND Posicion = @Posicion AND Estatus = 'ALTA'
+RETURN(@Resultado)
+END
+

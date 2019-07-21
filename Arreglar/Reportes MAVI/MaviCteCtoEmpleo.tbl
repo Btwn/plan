@@ -1,0 +1,539 @@
+[Tabla]
+Icono=0
+Clave=MaviCteCtoEmpleo
+Nombre=MaviCteCtoEmpleo
+Archivo=MaviCteCtoEmpleo
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Cliente<BR>ID<BR>Empresa<BR>Funciones<BR>Departamento<BR>JefeInmediato<BR>PuestoJefeInmediato<BR>Ingresos<BR>PeriodoIngresos<BR>Comprobables<BR>Direccion<BR>Colonia<BR>Delegacion<BR>CodigoPostal<BR>Estado<BR>Cruces<BR>Telefono<BR>Extension<BR>TrabajoAnterior<BR>TACodigoPostal<BR>TAColonia<BR>TADelegacion<BR>NumeroExterior<BR>NumeroInterior<BR>Poblacion<BR>Pais<BR>TADireccion<BR>TANumeroExterior<BR>TANumeroInterior<BR>TAEntreCalles<BR>TAPoblacion<BR>TAEstado<BR>TAPais<BR>TATelefono<BR>TAExtension<BR>TipoCalle<BR>TATipoCalle<BR>AntiguedadMesesMAVI<BR>AntiguedadAniosMAVI<BR>Antiguedad<BR>IDPadreMavi<BR>TipoMavi<BR>TipoEmpleo
+LlavePrimaria=Cliente<BR>ID
+CampoID=ID
+CampoEmpresa=Empresa
+
+SQL=SELECT<BR>  Cliente,<BR>  ID,<BR>  Empresa,<BR>  Funciones,<BR>  Departamento,<BR>  Antiguedad,<BR>  JefeInmediato,<BR>  PuestoJefeInmediato,<BR>  Ingresos,<BR>  PeriodoIngresos,<BR>  Comprobables,<BR>  Direccion,<BR>  Colonia,<BR>  Delegacion,<BR>  CodigoPostal,<BR>  Estado,<BR>  Cruces,<BR>  Telefono,<BR>  Extension,<BR>  TrabajoAnterior,<BR>  TACodigoPostal,<BR>  TAColonia,<BR>  TADelegacion,<BR>  AntiguedadMesesMAVI,<BR>  AntiguedadAniosMAVI,<BR>  NumeroExterior,<BR>  NumeroInterior,<BR>  Poblacion,<BR>  Pais,<BR>  TADireccion,<BR>  TANumeroExterior,<BR>  TANumeroInterior,<BR>  TAEntreCalles,<BR>  TAPoblacion,<BR>  TAEstado,<BR>  TAPais,<BR>  TATelefono,<BR>  TAExtension,<BR>  TipoCalle,<BR>  TATipoCalle,<BR>  IDPadreMavi,<BR>  TipoMavi, <BR>  TipoEmpleo<BR><BR>FROM<BR>  MaviCteCtoEmpleo
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Cliente
+TipoDatos=Texto
+
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.ID
+
+[Empresa]
+Clave=Empresa
+Nombre=* Empresa
+Visible=S
+TamanoValidacion=99
+TipoDatos=Texto
+Tamano=99
+Mayusculas=S
+
+Requerido=S
+ValorRefrescar=TipoEmpleo = <T>AMA DE CASA<T>,<T>LABORES DEL HOGAR<T>,<T><T>)
+CondicionEdicion=TipoEmpleo <> <T>AMA DE CASA<T>
+ConRefrescar=S
+ListaRefrescar=Empresa
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Empresa
+[Funciones]
+Clave=Funciones
+Nombre=Funciones
+Visible=S
+TamanoValidacion=50x3
+TipoDatos=Memo
+
+[Departamento]
+Clave=Departamento
+Nombre=Departamento
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+Mayusculas=S
+
+[JefeInmediato]
+Clave=JefeInmediato
+Nombre=Jefe Inmediato
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+Mayusculas=S
+
+[PuestoJefeInmediato]
+Clave=PuestoJefeInmediato
+Nombre=Puesto Jefe Inmediato
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+Mayusculas=S
+
+[Ingresos]
+Clave=Ingresos
+Nombre=Ingresos
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+AyudaEnCaptura=Calculadora
+Monetario=S
+
+[PeriodoIngresos]
+Clave=PeriodoIngresos
+Nombre=Periodo Ingresos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=4
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+TipoDatos=Texto
+Mayusculas=S
+
+ListaOpciones=Mensual<BR>Quincenal<BR>Semanal<BR>Diario
+[Comprobables]
+Clave=Comprobables
+Nombre=Comprobables
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Verdadero
+
+[Direccion]
+Clave=Direccion
+Nombre=Dirección
+Visible=S
+TamanoValidacion=100
+Tamano=100
+Mayusculas=S
+TipoDatos=Texto
+
+[Colonia]
+Clave=Colonia
+Nombre=Colonia
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ConRefrescar=S
+ListaRefrescar=Delegacion<BR>CodigoPostal<BR>Estado
+ValorRefrescar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,1)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(temp.Numerico4,0)<BR>Asigna(Info.Actualizar,<T>x<T>)<BR>Si(Info.Copiar,Info.Colonia,Colonia)
+AyudaEnCaptura=Vista
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.Colonia
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Colonia Incorrecta<T>
+AlCambiar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(temp.Numerico4,0)
+AyudaBusquedaRapida=Asigna(Colonia,<T><T>)<BR>Asigna(Info.Actualizar,<T>x<T>)<BR>Asigna(temp.Numerico1,1)<BR>Asigna(temp.Numerico2,1)<BR>Asigna(temp.Numerico3,1)<BR>Asigna(temp.Numerico4,1)
+ConAyudaBusquedaRapida=S
+Alineacion=por Omisión
+Mayusculas=S
+AyudaRefrescar=S
+
+TipoDatos=Texto
+ValidacionCondicion=Info.Actualizar <>nulo  y temp.Numerico2  <> 0
+[Delegacion]
+Clave=Delegacion
+Nombre=Delegación
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ConRefrescar=S
+ListaRefrescar=Colonia<BR>CodigoPostal<BR>Estado
+ValorRefrescar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,1)<BR>Asigna(temp.Numerico4,0)<BR>Asigna(Info.Actualizar,<T>x<T>)<BR>Si(Info.Copiar,Info.Delegacion,Delegacion)
+AyudaEnCaptura=Vista
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.Delegacion
+ValidacionConCondiciones=S
+Mayusculas=S
+ValidacionMensajeError=<T>Delegacion Incorrecta<T>
+AyudaBusquedaRapida=Asigna(Info.Actualizar,<T>x<T>)<BR>Asigna(temp.Numerico1,1)<BR>Asigna(temp.Numerico2,1)<BR>Asigna(temp.Numerico3,1)<BR>Asigna(temp.Numerico4,1)
+ConAyudaBusquedaRapida=S
+AlCambiar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(temp.Numerico4,0)
+TipoDatos=Texto
+
+ValidacionCondicion=info.Actualizar <> nulo y temp.Numerico3  <> 0
+[CodigoPostal]
+Clave=CodigoPostal
+Nombre=Código Postal
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ConRefrescar=S
+ListaRefrescar=Colonia<BR>Delegacion<BR>Estado
+ValorRefrescar=Asigna(temp.Numerico1,1)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(temp.Numerico4,0)<BR>Asigna(Info.Actualizar,<T>x<T>)<BR>Si(Info.Copiar,Info.CodigoPostal,CodigoPostal)
+AyudaEnCaptura=Vista
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.CodigoPostal
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Codigo Postal Incorrecto<T><T>
+AlCambiar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)                                                                        <BR>Asigna(temp.Numerico4,0)
+AyudaBusquedaRapida=Asigna(Info.Actualizar,<T>x<T>)<BR>Asigna(temp.Numerico1,1)<BR>Asigna(temp.Numerico2,1)<BR>Asigna(temp.Numerico3,1)<BR>Asigna(temp.Numerico4,1)
+ConAyudaBusquedaRapida=S
+TipoDatos=Texto
+Mayusculas=S
+
+ValidacionCondicion=info.Actualizar <> nulo    y temp.Numerico1  <> 0
+[Cruces]
+Clave=Cruces
+Nombre=Cruces
+Visible=S
+TamanoValidacion=100
+Tamano=100
+Mayusculas=S
+TipoDatos=Texto
+
+[Telefono]
+Clave=Telefono
+Nombre=Teléfono
+Visible=S
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+MascaraEdicion=99999999999999
+
+[Extension]
+Clave=Extension
+Nombre=Extensión
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+MascaraEdicion=9999
+
+[TrabajoAnterior]
+Clave=TrabajoAnterior
+Nombre=Trabajo Anterior
+Visible=S
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+Mayusculas=S
+
+[TACodigoPostal]
+Clave=TACodigoPostal
+Nombre=TA Código Postal
+Visible=S
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Vista
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.CodigoPostal
+ConRefrescar=S
+ListaRefrescar=TAColonia<BR>TADelegacion
+ValorRefrescar=Asigna(temp.Numerico1,1)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(Info.Actualizar,<T>x<T>)<BR>Si(Info.Copiar,Info.CodigoPostal,CodigoPostal)
+AlCambiar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)                                                                        <BR>Asigna(temp.Numerico4,0)
+AyudaBusquedaRapida=Asigna(Info.Actualizar,<T>x<T>)<BR>Asigna(temp.Numerico1,1)<BR>Asigna(temp.Numerico2,1)<BR>Asigna(temp.Numerico3,1)
+ConAyudaBusquedaRapida=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Codigo Postal Incorrecto<T>
+ValidacionCondicion=info.Actualizar <> nulo    y temp.Numerico1  <> 0
+TipoDatos=Texto
+Mayusculas=S
+
+[TAColonia]
+Clave=TAColonia
+Nombre=TA Colonia
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ConRefrescar=S
+ListaRefrescar=TACodigoPostal<BR>TADelegacion<BR>TAEstado<BR>TAPais
+ValorRefrescar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,1)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(Info.Actualizar,<T>x<T>)<BR>Si(Info.Copiar, Info.Colonia, Colonia)
+AyudaEnCaptura=Vista
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.Colonia
+AlCambiar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)                                                                        <BR>Asigna(temp.Numerico4,0)
+AyudaBusquedaRapida=Asigna(Info.Actualizar,<T>x<T>)<BR>Asigna(temp.Numerico1,1)<BR>Asigna(temp.Numerico2,1)<BR>Asigna(temp.Numerico3,1)
+ConAyudaBusquedaRapida=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Colonia Incorrecta<T>
+ValidacionCondicion=Info.Actualizar <>nulo  y temp.Numerico2  <> 0
+TipoDatos=Texto
+Mayusculas=S
+
+[TADelegacion]
+Clave=TADelegacion
+Nombre=TA Delegación
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ConRefrescar=S
+ListaRefrescar=TAColonia<BR>TACodigoPostal<BR>TAEstado
+ValorRefrescar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,1)<BR>Asigna(Info.Actualizar,<T>x<T>)<BR>Si(Info.Copiar, Info.Delegacion, Delegacion)
+AyudaEnCaptura=Vista
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.Delegacion
+AlCambiar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)                                                                        <BR>Asigna(temp.Numerico4,0)
+AyudaBusquedaRapida=Asigna(Info.Actualizar,<T>x<T>)<BR>Asigna(temp.Numerico1,1)<BR>Asigna(temp.Numerico2,1)<BR>Asigna(temp.Numerico3,1)
+ConAyudaBusquedaRapida=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Delegacion Incorrecta<T>
+ValidacionCondicion=info.Actualizar <> nulo y temp.Numerico3  <> 0
+TipoDatos=Texto
+Mayusculas=S
+
+[Estado]
+Clave=Estado
+Nombre=Estado
+Visible=S
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=PaisEstadoMexico
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Validar captura en la lista
+ValorRefrescar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(temp.Numerico4,1)<BR>Asigna(info.Actualizar,<T>x<T>)<BR>Si(Info.Copiar,Info.Estado,Estado)
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>EL Estado Incorrecto<T>
+AlCambiar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(temp.Numerico4,0)
+TipoDatos=Texto
+Mayusculas=S
+
+ValidacionCondicion=info.Actualizar <> nulo y temp.Numerico4  <> 0
+[NumeroExterior]
+Clave=NumeroExterior
+Nombre=No. Ext
+Visible=S
+TamanoValidacion=30
+Tamano=30
+TipoDatos=Texto
+Mayusculas=S
+
+[NumeroInterior]
+Clave=NumeroInterior
+Nombre=No. Int
+Visible=S
+TamanoValidacion=30
+Tamano=30
+TipoDatos=Texto
+Mayusculas=S
+
+[Poblacion]
+Clave=Poblacion
+Nombre=Población
+Visible=S
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+Mayusculas=S
+
+[Pais]
+Clave=Pais
+Nombre=País
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorPorOmision=<T>Mexico<T>
+ValorRefrescar=Si(Info.Copiar, Info.Pais, PaisCte)
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Paises
+OpcionesRenglones=8
+TipoDatos=Texto
+Mayusculas=S
+
+[TADireccion]
+Clave=TADireccion
+Nombre=TA Dirección
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+Mayusculas=S
+
+[TANumeroExterior]
+Clave=TANumeroExterior
+Nombre=TA No. Ext
+Visible=S
+TamanoValidacion=30
+Tamano=30
+TipoDatos=Texto
+Mayusculas=S
+
+[TANumeroInterior]
+Clave=TANumeroInterior
+Nombre=TA No.Int
+Visible=S
+TamanoValidacion=30
+Tamano=30
+TipoDatos=Texto
+Mayusculas=S
+
+[TAEntreCalles]
+Clave=TAEntreCalles
+Nombre=TA Cruces
+Visible=S
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+Mayusculas=S
+
+[TAPoblacion]
+Clave=TAPoblacion
+Nombre=TA Población
+Visible=S
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+Mayusculas=S
+
+[TAEstado]
+Clave=TAEstado
+Nombre=TA Estado
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorRefrescar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(temp.Numerico4,1)<BR><BR><BR>Asigna(info.Actualizar,<T>x<T>)<BR>Si(Info.Copiar,Info.Estado,EstadoCte)
+AlCambiar=Asigna(temp.Numerico1,0)<BR>Asigna(temp.Numerico2,0)<BR>Asigna(temp.Numerico3,0)<BR>Asigna(temp.Numerico4,0)
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=PaisEstadoMexico
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Estado Incorrecto<T>
+TipoDatos=Texto
+Mayusculas=S
+
+
+ValidacionCondicion=info.Actualizar <> nulo y temp.Numerico4  <> 0
+[TAPais]
+Clave=TAPais
+Nombre=TA País
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorPorOmision=<T>Mexico<T>
+ValorRefrescar=Si(Info.Copiar, Info.Pais, PaisCte)
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Paises
+OpcionesRenglones=8
+TipoDatos=Texto
+Mayusculas=S
+
+[TATelefono]
+Clave=TATelefono
+Nombre=TA Teléfono
+Visible=S
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+MascaraEdicion=99999999999999
+
+[TAExtension]
+Clave=TAExtension
+Nombre=TA Extensión
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+MascaraEdicion=9999
+
+
+[TipoCalle]
+Clave=TipoCalle
+Nombre=Tipo Calle
+Visible=S
+TamanoValidacion=25
+Tamano=25
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+ListaOpciones=Andador<BR>Autopista<BR>Avenida<BR>Boulevard<BR>Calle<BR>Callejón<BR>Calzada<BR>Camino<BR>Carretera<BR>Cerrada o Privada<BR>Pasaje
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+TipoDatos=Texto
+
+[TATipoCalle]
+Clave=TATipoCalle
+Nombre=TA Tipo Calle
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=25
+Tamano=25
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ListaOpciones=Andador<BR>Autopista<BR>Avenida<BR>Boulevard<BR>Calle<BR>Callejón<BR>Calzada<BR>Camino<BR>Carretera<BR>Cerrada o Privada<BR>Pasaje
+TipoDatos=Texto
+
+[AntiguedadMesesMAVI]
+Clave=AntiguedadMesesMAVI
+Nombre=Meses Antigüedad
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ValorMinimo=0
+ValorMaximo=11
+ValorPorOmision=0
+
+[AntiguedadAniosMAVI]
+Clave=AntiguedadAniosMAVI
+Nombre=Años Antigüedad
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ValorMinimo=0
+ValorPorOmision=0
+
+[Antiguedad]
+Clave=Antiguedad
+Nombre=Antiguedad
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+[IDPadreMavi]
+Clave=IDPadreMavi
+Nombre=IDPadreMavi
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.ID
+[TipoMavi]
+Clave=TipoMavi
+Nombre=TipoMavi
+Visible=S
+TamanoValidacion=30
+Tamano=30
+ValorPorOmision=<T>NORMAL<T>
+
+TipoDatos=Texto
+[TipoEmpleo]
+Clave=TipoEmpleo
+Nombre=TipoEmpleo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+ListaRefrescar=Empresa
+Alineacion=Centrado
+Requerido=S
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Empresa
+OpcionesUnicamente=S
+ListaOpciones=EMPLEADO<BR>PROFECION<BR>NEGOCIO ESTABLECIDO<BR>NEGOCIO INFORMAL<BR>OFICIO<BR>PENSIONADO<BR>AMA DE CASA

@@ -1,0 +1,27 @@
+
+[Vista]
+Icono=0
+Clave=RM1181COMSSeleccionarFamiliaVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=Familia
+CamposBusquedaRapida=Familia
+SQL=SELECT DISTINCT Familia <BR>FROM  art <BR>WHERE LEN(Familia) > 0<BR>{SI(ConDatos(Mavi.RM1181Proveedor),<T> AND Proveedor =<T> + Comillas(Mavi.RM1181Proveedor),<T><T>)}<BR>{SI(ConDatos(Mavi.RM1181Proveedor),<T> OR Articulo IN (SELECT DISTINCT Articulo FROM Compra C JOIN CompraD D ON C.Id=D.Id WHERE Proveedor =<T> + Comillas(Mavi.RM1181Proveedor)+<T>)<T>,<T><T>)}<BR>AND LEN(Familia) > 0
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia
+AyudaEnCaptura=Vista
+AyudaForma=RM1181COMSSeleccionarFamiliaVisFrm
+AyudaVista=RM1181COMSSeleccionarFamiliaVis
+AyudaCampo=Familia
+AyudaBusquedaRapida=Familia
+ConAyudaBusquedaRapida=S
+AyudaIgnoraChequeos=S
+AyudaMultiple=S

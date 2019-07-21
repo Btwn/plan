@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=MaviInvFactuProbEntregavis
+Nombre=Vista Agentes
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Agente<BR>Nombre
+CamposBusquedaRapida=Agente<BR>Nombre
+SQL=select Agente,Nombre<BR>from agente <BR>where Tipo=<T>CHOFER<T> <BR>and Estatus=<T>Alta<T><BR>order by Agente
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Agente
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

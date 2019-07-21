@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=RM1142CvfiltroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID<BR>Cadena
+SQL=Select ID,Cadena From VentasCanalMAVI With(NoLock)<BR>Where Categoria in (<T>Credito Menudeo<T>,<T>Contado<T>,<T>Asociados<T>)<BR>Order By ID
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID
+[Cadena]
+Clave=Cadena
+Nombre=Cadena
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Cadena

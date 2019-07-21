@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=DM0264FamiliasVis
+VistaIndependiente=S
+ListaCampos=Familia
+Nombre=Familias
+CamposBusquedaRapida=Familia
+SQL=SELECT DISTINCT Familia FROM art WITH(NOLOCK) WHERE Familia != <T><T> AND Grupo = <T>Mercancia de linea<T>
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

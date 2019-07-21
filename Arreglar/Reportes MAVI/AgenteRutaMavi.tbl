@@ -1,0 +1,31 @@
+[Tabla]
+Icono=0
+Clave=AgenteRutaMavi
+Nombre=AgenteRutaMavi
+Archivo=AgenteRutaMavi
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Agente<BR>Ruta
+LlavePrimaria=Agente<BR>Ruta
+SQL=SELECT<BR>  Agente,<BR>  Ruta<BR><BR>FROM<BR>  AgenteRutaMavi
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Agente
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=RutaEmbarqueListaMavi
+AyudaVista=Ruta
+AyudaCampo=Ruta.Ruta
+AyudaMultiple=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>No Existe la Ruta...<T>
+ValidacionCondicion=SQL(<T>SELECT COUNT(0) FROM Ruta WHERE Ruta =:tRuta <T>,Ruta) > 0

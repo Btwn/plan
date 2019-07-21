@@ -1,0 +1,22 @@
+SET DATEFIRST 7
+SET ANSI_NULLS ON
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET ANSI_WARNINGS ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION dbo.fnNOIValidarImporte
+(@EmpresaNOI     varchar(2),@Estacion  int,@TablaPeriodo  varchar(10))
+RETURNS bit
+
+AS BEGIN
+DECLARE
+@Resultado  bit
+SET @Resultado = 0
+IF EXISTS(SELECT * FROM NOINomina WHERE NetoPagado <0.0  AND EmpresaNOI = @EmpresaNOI AND Nomina = @TablaPeriodo AND Estacion = @Estacion)
+SELECT @Resultado = 1
+RETURN (@Resultado)
+END
+

@@ -1,0 +1,26 @@
+[Vista]
+Icono=0
+Clave=RM0422BPorsupervisionVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MB.MovID
+Nombre=RM0422BPorsupervisionVis
+CamposBusquedaRapida=MB.MovID
+SQL=Select  distinct<BR>MB.MovID<BR>From MaviSupervision  MB<BR>       INNER JOIN maviRuta mr ON mr.ID = MB.RutaID<BR>       INNER JOIN MaviRutaD MD on md.SupervisionID = MB.ID<BR><TAB>   LEFT JOIN CteCto ct on mB.cliente=Ct.Cliente<BR>where MB.tipo in (<T>personal<T>) AND MR.ESTATUS=<T>PENDIENTE<T> AND CT.MaviEstatus = <T>En supervision<T> and CT.tipo=<T>personal<T>
+[MovID]
+Clave=MovID
+Nombre=MovID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovID
+[MB.MovID]
+Clave=MB.MovID
+Tamano=20
+ClaveBDE=MovID
+TamanoValidacion=20
+Nombre=MovID

@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=maviDm0173CampanasMonederoLineaArt
+Nombre=LineaArt Campanas Monedero
+Modulos=(Todos)
+ListaTablas=MaviDm0173CampanasMonederoLineaArt
+TablaPrincipal=MaviDm0173CampanasMonederoLineaArt
+ListaCampos=MaviDm0173CampanasMonederoLineaArt.Id<BR>MaviDm0173CampanasMonederoLineaArt.LineaArt
+UsoCapturas=S
+UsarJOIN=S
+SQL=SELECT<BR>  MaviDm0173CampanasMonederoLineaArt.Id,<BR>  MaviDm0173CampanasMonederoLineaArt.LineaArt<BR><BR>FROM<BR>  mavidm0173campanasMonederolineaArt MaviDm0173CampanasMonederoLineaArt
+[MaviDm0173CampanasMonederoLineaArt.Id]
+Clave=MaviDm0173CampanasMonederoLineaArt.Id
+LigaTabla=MaviDm0173CampanasMonederoLineaArt
+LigaCampo=Id
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Id
+[MaviDm0173CampanasMonederoLineaArt.LineaArt]
+Clave=MaviDm0173CampanasMonederoLineaArt.LineaArt
+LigaTabla=MaviDm0173CampanasMonederoLineaArt
+LigaCampo=LineaArt
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=LineaArt

@@ -1,0 +1,35 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE speDocINValidarXML
+(
+@XML                  varchar(max),
+@Ok			int = NULL OUTPUT,
+@OkRef		varchar(255) = NULL OUTPUT
+)
+
+AS
+BEGIN
+DECLARE
+@x          xml
+BEGIN TRY
+SET @x = CONVERT(xml,@Xml)
+END TRY
+BEGIN CATCH
+SELECT @Ok = @@ERROR,  @OkRef = ERROR_MESSAGE()
+IF XACT_STATE() = -1
+BEGIN
+ROLLBACK TRAN
+SET @OkRef = 'Error  al validar el xml' + CONVERT(varchar,@Ok) + ', ' + @OkRef
+RAISERROR(@OkRef,20,1) WITH LOG
+END
+END CATCH
+IF @OK IS NOT NULL
+SET @OkRef = 'Error  al validar el xml(' + CONVERT(varchar,@Ok) +') ' + ', ' + @OkRef
+END
+

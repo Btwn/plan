@@ -1,0 +1,10 @@
+[Vista]
+Icono=0
+Clave=MaviBonificacionVsBonif
+Nombre=MaviBonificacionVsBonif
+Modulos=(Todos)
+Singular=MaviBonificacionVsBonif
+ListaTablas=MaviBonificacionVsBonif
+TablaPrincipal=MaviBonificacionVsBonif
+UsoCapturas=S
+UsoReportes=S

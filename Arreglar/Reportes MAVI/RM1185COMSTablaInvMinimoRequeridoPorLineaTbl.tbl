@@ -1,0 +1,20 @@
+
+[Tabla]
+Icono=0
+Clave=RM1185COMSTablaInvMinimoRequeridoPorLineaTbl
+Archivo=COMSCRM1185InvMinimoRequeridoPorLinea
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=LineaValida
+LlavePrimaria=Linea
+
+SQL=SELECT<BR>  LineaValida<BR><BR>  FROM COMSCRM1185InvMinimoRequeridoPorLinea<BR>  ORDER BY LineaValida
+[LineaValida]
+Clave=LineaValida
+Nombre=Lineas de Articulos
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+CondicionEdicion=verdadero = falso

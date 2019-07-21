@@ -1,0 +1,32 @@
+[Vista]
+Icono=0
+Clave=DM0209CXCSucursalVis
+Nombre=Seleccionar Sucursal
+Modulos=(Todos)
+Singular=Seleccionar Sucursal
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sucursal<BR>Nombre
+LlavePrimaria=Sucursal
+CamposBusquedaRapida=Sucursal<BR>Nombre
+CampoSucursal=Sucursal
+SQL=SELECT <BR>  Sucursal,<BR>  Nombre  <BR>FROM  <BR>  SUCURSAL
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

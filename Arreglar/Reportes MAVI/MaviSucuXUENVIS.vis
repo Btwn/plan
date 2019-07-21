@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=MaviSucuXUENVIS
+Nombre=Sucursales X UEN
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SUCURSAL<BR>NOMBRE
+SQL=SELECT distinct S.SUCURSAL, S.NOMBRE<BR>FROM SUCURSAL S <BR>right JOIN VentasCanalMavi VCM ON VCM.UEN = S.wUEN<BR>where S.WUEN is not null<BR>{Si((ConDatos(Mavi.TipoSuc292)) y (Condatos(Mavi.UENC)),<BR>    <T> AND Tipo = <T>+comillas(Mavi.TipoSuc292)+<T> AND S.Wuen = <T>+Mavi.UENC,<BR>    Si((ConDatos(Mavi.TipoSuc292)) y (Vacio(Mavi.UENC)),<BR>        <T> AND S.Tipo = <T>+comillas(Mavi.TipoSuc292),<BR><TAB><TAB>Si(Mavi.UENC=nulo,<T><T>,<T> AND S.wuen = <T>+comillas(Mavi.UENC))<BR>)<BR>)}
+[SUCURSAL]
+Clave=SUCURSAL
+Nombre=SUCURSAL
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=SUCURSAL
+[NOMBRE]
+Clave=NOMBRE
+Nombre=NOMBRE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NOMBRE

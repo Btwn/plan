@@ -1,0 +1,58 @@
+[Tabla]
+Icono=0
+Clave=PropreRepCostoExistencia
+Nombre=PropreRepCostoExistencia
+Archivo=PropreRepCostoExistencia
+Modulos=(Todos)
+Singular=PropreRepCostoExistencia
+TipoTabla=General
+ListaCampos=ID<BR>ProductoSinCosto<BR>ExistenciaCero<BR>ExistenciaTodos<BR>SoloExistencia
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  ProductoSinCosto,<BR>  ExistenciaCero,<BR>  ExistenciaTodos,<BR>  SoloExistencia<BR><BR>FROM<BR>  PropreRepCostoExistencia
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[ProductoSinCosto]
+Clave=ProductoSinCosto
+Nombre=Solo Producto Sin Costo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=1
+[ExistenciaCero]
+Clave=ExistenciaCero
+Nombre=Existencia Cero
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=0
+ConRefrescar=S
+ListaRefrescar=ExistenciaTodos<BR>SoloExistencia
+ValorRefrescar=Si<BR>  (no ExistenciaTodos) y (no SoloExistencia)<BR>Entonces<BR>  1<BR>Sino<BR>  0<BR>Fin
+[ExistenciaTodos]
+Clave=ExistenciaTodos
+Nombre=Todos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=0
+ConRefrescar=S
+ListaRefrescar=ExistenciaCero<BR>SoloExistencia
+ValorRefrescar=Si<BR>  (no ExistenciaCero) y (no SoloExistencia)<BR>Entonces<BR>  1<BR>Sino<BR>  0<BR>Fin
+[SoloExistencia]
+Clave=SoloExistencia
+Nombre=Solo Con Existencia
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ConRefrescar=S
+ListaRefrescar=ExistenciaCero<BR>ExistenciaTodos
+ValorPorOmision=1
+ValorRefrescar=Si<BR>  (no ExistenciaTodos) y (no ExistenciaCero)<BR>Entonces<BR>  1<BR>Sino<BR>  0<BR>Fin

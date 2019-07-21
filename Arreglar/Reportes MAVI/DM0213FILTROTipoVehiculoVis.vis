@@ -1,0 +1,31 @@
+[Vista]
+Icono=0
+Clave=DM0213FILTROTipoVehiculoVis
+Nombre=DM0213 Tipo Unidad Vehicular
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=TipoUnidadVehicular<BR>Descripcion
+LlavePrimaria=TipoUnidadVehicular
+CamposBusquedaRapida=TipoUnidadVehicular<BR>Descripcion
+SQL=select distinct TipoUnidadVehicular , Descripcion from DM0213CatalogoVehiculo
+[TipoUnidadVehicular]
+Clave=TipoUnidadVehicular
+Nombre=TipoUnidadVehicular
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=TipoUnidadVehicular
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=200
+TipoDatos=Texto
+Tamano=200
+ClaveBDE=Descripcion

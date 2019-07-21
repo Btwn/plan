@@ -1,0 +1,125 @@
+[Forma]
+Clave=RM0952AanalisisyAudGasFrm
+Nombre=Análisis y Auditoria de Gastos
+Icono=0
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=RM0952GastoporAgente<BR>RM0952GastComMens<BR>RM0952GastoDepto<BR>Cerrar<BR>Vistapree
+PosicionInicialIzquierda=317
+PosicionInicialArriba=395
+PosicionInicialAlturaCliente=33
+PosicionInicialAncho=623
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+BarraHerramientas=S
+ListaCarpetas=variables
+CarpetaPrincipal=variables
+[Acciones.RM0952GastComMens]
+Nombre=RM0952GastComMens
+Boton=64
+NombreEnBoton=S
+NombreDesplegar=G&astos por Rubro (Comparativo Mensual)
+EnBarraHerramientas=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM0952CRubroCompMensualRep
+Activo=S
+Visible=S
+EnBarraAcciones=S
+EnMenu=S
+[(Carpeta Abrir)]
+Estilo=Iconos
+Pestana=S
+Clave=(Carpeta Abrir)
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+CampoColorLetras=Negro
+CampoColorFondo=Negro
+CarpetaVisible=S
+[Acciones.RM0952GastComMens.GastosComp]
+Nombre=GastosComp
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+[Acciones.RM0952GastoDepto]
+Nombre=RM0952GastoDepto
+Boton=61
+NombreDesplegar=Gastos por Rubro por Departamento
+EnMenu=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM0952DsGastoRubroDptoRep
+Activo=S
+Visible=S
+NombreEnBoton=S
+EnBarraHerramientas=S
+[Acciones.RM0952GastoporAgente]
+Nombre=RM0952GastoporAgente
+Boton=60
+NombreDesplegar=Gasto por Agente
+EnMenu=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM0952BRubroagenteRep
+Activo=S
+Visible=S
+NombreEnBoton=S
+EnBarraHerramientas=S
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+EspacioPrevio=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Vistapree]
+Nombre=Vistapree
+Boton=0
+NombreDesplegar=preeliminar
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=preeliminar
+[Acciones.Vistapree.preeliminar]
+Nombre=preeliminar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[variables]
+Estilo=Ficha
+Pestana=S
+Clave=variables
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+CampoColorLetras=Negro
+CampoColorFondo=Negro
+CarpetaVisible=S
+

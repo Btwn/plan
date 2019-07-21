@@ -1,0 +1,177 @@
+[Tabla]
+Icono=0
+Clave=MaviEmbarqueCasaDTbl
+Archivo=MaviEmbarqueCasaDTbl
+Modulos=(Todos)
+TipoTabla=Movimientos
+ListaCampos=ID<BR>Renglon<BR>RenglonID<BR>Orden<BR>Mov<BR>MovID<BR>Codigo<BR>ObservacionInicial<BR>EstadoArticulo<BR>FechaEntrega<BR>ObservacionFinal<BR>EstadoArticuloProrroga<BR>FechaEntregaProrroga<BR>ObservacionFinalProrroga
+Nombre=Detalle de Embarque de Casas
+LlavePrimaria=ID<BR>Renglon
+CampoID=ID
+CampoMov=Mov
+CampoMovID=MovID
+ControlRenglonID=S
+CampoRenglonID=RenglonID
+ListaRelaciones=Art<BR>Factura
+SQL=SELECT<BR>  ID,<BR>  Renglon,<BR>  RenglonID,<BR>  Orden,<BR>  Mov,<BR>  MovID,<BR>  Codigo,<BR>  ObservacionInicial,<BR>  ObservacionFinal,<BR>  ObservacionFinalProrroga,<BR>  FechaEntrega,<BR>  EstadoArticulo,<BR>  FechaEntregaProrroga,<BR>  EstadoArticuloProrroga<BR><BR>FROM<BR>  MaviEmbarqueCasaDTbl
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Renglon]
+Clave=Renglon
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Alineacion=Centrado
+[RenglonID]
+Clave=RenglonID
+Nombre=RenglonID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Alineacion=Centrado
+[Mov]
+Clave=Mov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Alineacion=Izquierda
+TipoDatos=Texto
+[MovID]
+Clave=MovID
+Nombre=Movimiento ID
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Alineacion=Centrado
+TipoDatos=Texto
+[Codigo]
+Clave=Codigo
+Nombre=Codigo
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ListaRefrescar=ObservacionInicial
+TipoDatos=Texto
+[ObservacionInicial]
+Clave=ObservacionInicial
+Nombre=Observacion Inicial
+Visible=S
+TamanoValidacion=100
+Tamano=100
+CondicionEdicion=MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=ESTATUSSINAFECTAR
+ListaRefrescar=Renglon
+ListaRefrescarCondiciones=Renglon
+CondicionDespliege=SQL(<T>Select ID From MaviEmbarqueCasaDTbl Where ID = :nID<T>,MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.ID)<>Nulo
+[ObservacionFinal]
+Clave=ObservacionFinal
+Nombre=Observacion Final
+Visible=S
+TamanoValidacion=100
+Tamano=100
+CondicionEdicion=(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=0)
+CondicionDespliege=MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus En (EstatusPendiente,EstatusConcluido)
+[ObservacionFinalProrroga]
+Clave=ObservacionFinalProrroga
+Nombre=Observacion Final Prórroga
+Visible=S
+TamanoValidacion=100
+Tamano=100
+CondicionEdicion=(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1)
+CondicionDespliege=((MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1))<BR>o<BR>((MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusConcluido)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1))
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Solo se puede Capturar un Artículo que No haya sido Entregado Antes<T>
+ValidacionCondicion=Si(EstadoArticulo=<T>No Entregado<T>,Verdadero,Falso)
+[FechaEntrega]
+Clave=FechaEntrega
+Nombre=Fecha de Entrega
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+CondicionEdicion=(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=0)
+CondicionDespliege=MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus En (EstatusPendiente,EstatusConcluido)
+FormatoValidacion=dd/mmm/aaaa
+AyudaEnCaptura=Calendario sin Hora
+ValorRefrescar=Hoy
+[EstadoArticulo]
+Clave=EstadoArticulo
+Nombre=Estado del Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+CondicionEdicion=(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=0)
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+CondicionDespliege=MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus En (EstatusPendiente,EstatusConcluido)
+ConRefrescar=S
+ListaRefrescar=FechaEntrega
+OpcionesLlave=Opción
+Requerido=S
+ValorPorOmision=<T>Pendiente<T>
+Alineacion=Izquierda
+AlCambiar=Si(EstadoArticulo=Nulo,<T>Pendiente<T>,)
+ListaOpciones=Pendiente<BR>Transito<BR>Entregado<BR>No Entregado<BR>Cancela por Tiempo<BR>Cliente Cancela
+[FechaEntregaProrroga]
+Clave=FechaEntregaProrroga
+Nombre=Fecha Prorroga Entrega
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+CondicionEdicion=(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1)
+CondicionDespliege=((MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1))<BR>o<BR>((MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusConcluido)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1))
+FormatoValidacion=dd/mmm/aaaa
+AyudaEnCaptura=Calendario sin Hora
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Solo se puede Capturar un Artículo que No haya sido Entregado Antes<T>
+ValorRefrescar=Hoy
+ValidacionCondicion=Si(EstadoArticulo=<T>No Entregado<T>,Verdadero,Falso)
+[EstadoArticuloProrroga]
+Clave=EstadoArticuloProrroga
+Nombre=Estado Articulo Prórroga
+Visible=S
+TamanoValidacion=20
+Tamano=20
+CondicionEdicion=(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y<BR>(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1)
+CondicionDespliege=((MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusPendiente)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1))<BR>o<BR>((MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.Estatus=EstatusConcluido)y(MaviEmbarqueCasaVis:MaviEmbarqueCasaTbl.EnProrroga=1))
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Solo se puede Capturar un Artículo que No haya sido Entregado Antes<T>
+ConRefrescar=S
+ListaRefrescar=FechaEntregaProrroga
+AlCambiar=Vacio(EstadoArticuloProrroga)
+ValidacionCondicion=Si(EstadoArticulo=<T>No Entregado<T>,Verdadero,Falso)
+ListaOpciones=Pendiente<BR>Transito<BR>Entregado<BR>No Entregado<BR>Cancela por Tiempo<BR>Cliente Cancela
+[Relaciones.Art]
+TipoRelacion=Forzosa
+LlaveLocal=Codigo
+Clave=Art
+TablaRemota=Art
+LlaveRemota=Articulo
+[Relaciones.Factura]
+TipoRelacion=Forzosa
+LlaveLocal=Mov<BR>MovID
+Clave=Factura
+TablaRemota=Venta
+LlaveRemota=Mov<BR>MovID

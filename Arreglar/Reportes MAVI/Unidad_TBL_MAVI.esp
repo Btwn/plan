@@ -1,0 +1,17 @@
+[Unidad.tbl/Tabla.ListaCampos]
+ReferenciaIntelisisService=UnidadSatMavi
+UnidadSatMavi=(Fin)
+
+[Unidad.tbl/Tabla.SQL]
+INFORDescripcion,=ReferenciaIntelisisService,
+ReferenciaIntelisisService,=UnidadSatMavi
+UnidadSatMavi=FROM Unidad
+FROM Unidad=(Fin)
+
+[Unidad.tbl/UnidadSatMavi]
+Clave=UnidadSatMavi
+Nombre=Unidad SAT
+Visible=S
+TamanoValidacion=3
+Tamano=3
+Requerido=S

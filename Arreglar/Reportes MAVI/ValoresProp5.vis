@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=ValoresProp5
+Nombre=ValoresProp5
+Modulos=(Todos)
+Singular=ValoresProp5
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Valor
+SQL=SELECT <BR>  Valor<BR>FROM<BR>  ValoresTemporalesVariablesMAVI<BR>WHERE Estacion = {EstacionTrabajo} AND Propiedad = 5
+[Valor]
+Clave=Valor
+Nombre=Valor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Valor

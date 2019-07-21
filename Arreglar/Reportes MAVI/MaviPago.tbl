@@ -1,0 +1,27 @@
+[Tabla]
+Icono=0
+Clave=MaviPago
+Nombre=MaviPago
+Archivo=MaviPago
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Pago
+SQL=SELECT<BR>  ID,<BR>  Pago<BR><BR>FROM<BR>  MaviPago
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Pago]
+Clave=Pago
+Nombre=Pago
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S

@@ -1,0 +1,95 @@
+
+[Vista]
+Icono=0
+Clave=CONTCDevolucionesActBandvis
+Nombre=CONTCDevolucionesActBandvis
+Modulos=(Todos)
+ListaTablas=CONTCDevolucionesActBandtbl
+TablaPrincipal=CONTCDevolucionesActBandtbl
+
+ListaCampos=CONTCDevolucionesActBandtbl.idDevolucionesActBand<BR>CONTCDevolucionesActBandtbl.MovID<BR>CONTCDevolucionesActBandtbl.FechaEmision<BR>CONTCDevolucionesActBandtbl.Cliente<BR>CONTCDevolucionesActBandtbl.Importe<BR>CONTCDevolucionesActBandtbl.OrigenID
+CamposBusquedaRapida=CONTCDevolucionesActBandtbl.idDevolucionesActBand
+SQL=SELECT<BR>CONTCDevolucionesActBandtbl.idDevolucionesActBand,<BR>CONTCDevolucionesActBandtbl.MovID,<BR>CONTCDevolucionesActBandtbl.FechaEmision,<BR>CONTCDevolucionesActBandtbl.Cliente,<BR>CONTCDevolucionesActBandtbl.Importe,<BR>CONTCDevolucionesActBandtbl.OrigenID<BR>FROM CONTCDevolucionesActBand CONTCDevolucionesActBandtbl
+[CONTCDevolucionesActBandtbl.idDevolucionesActBand]
+Clave=CONTCDevolucionesActBandtbl.idDevolucionesActBand
+Nombre=idDevolucionesActBand
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=CONTCDevolucionesActBandtbl
+LigaCampo=idDevolucionesActBand
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=idDevolucionesActBand
+
+[CONTCDevolucionesActBandtbl.MovID]
+Clave=CONTCDevolucionesActBandtbl.MovID
+Nombre=Devolución
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=20
+LigaTabla=CONTCDevolucionesActBandtbl
+LigaCampo=MovID
+ClaveBDE=MovID
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[CONTCDevolucionesActBandtbl.FechaEmision]
+Clave=CONTCDevolucionesActBandtbl.FechaEmision
+Nombre=Fecha Emision
+Visible=S
+TamanoValidacion=10
+TipoDatos=FechaHora
+LigaTabla=CONTCDevolucionesActBandtbl
+LigaCampo=FechaEmision
+ClaveBDE=FechaEmision
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[CONTCDevolucionesActBandtbl.Cliente]
+Clave=CONTCDevolucionesActBandtbl.Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+LigaTabla=CONTCDevolucionesActBandtbl
+LigaCampo=Cliente
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Cliente
+
+[CONTCDevolucionesActBandtbl.Importe]
+Clave=CONTCDevolucionesActBandtbl.Importe
+Nombre=Importe
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+LigaTabla=CONTCDevolucionesActBandtbl
+LigaCampo=Importe
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Importe
+
+[CONTCDevolucionesActBandtbl.OrigenID]
+Clave=CONTCDevolucionesActBandtbl.OrigenID
+Nombre=Origen
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=20
+LigaTabla=CONTCDevolucionesActBandtbl
+LigaCampo=OrigenID
+ClaveBDE=OrigenID
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas

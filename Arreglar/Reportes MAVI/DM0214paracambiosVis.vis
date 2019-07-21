@@ -1,0 +1,89 @@
+[Vista]
+Icono=0
+Clave=DM0214paracambiosVis
+Nombre=DM0214paracambiosVis
+Modulos=(Todos)
+ListaCampos=DM0214ZonasCobranza.Zona<BR>DM0214ZonasCobranza.NivelCobranza<BR>DM0214ZonasCobranza.Region<BR>DM0214ZonasCobranza.Division<BR>DM0214ZonasCobranza.Equipo
+ListaTablas=DM0214ZonasCobranza
+TablaPrincipal=DM0214ZonasCobranza
+UsoReportes=S
+UsoCapturas=S
+UsarJOIN=S
+CamposBusquedaRapida=Division<BR>Nivelcobranza
+SQL=SELECT<BR>  DM0214ZonasCobranza.Zona,<BR>  DM0214ZonasCobranza.NivelCobranza,<BR>  DM0214ZonasCobranza.Region,<BR>  DM0214ZonasCobranza.Division,<BR>  DM0214ZonasCobranza.Equipo<BR><BR>FROM<BR>  DM0214ZonasCobranza<BR>  where division =<T>/<T>
+[DM0214ZonasCobranza.NivelCobranza]
+Clave=DM0214ZonasCobranza.NivelCobranza
+Nombre=Nivel Cobranza
+Visible=S
+TamanoValidacion=10
+Tamano=100
+AyudaMemOpc=Validar captura en la lista
+Mayusculas=S
+LigaTabla=DM0214ZonasCobranza
+LigaCampo=NivelCobranza
+ClaveBDE=NivelCobranza
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaEnCaptura=Expresion
+AyudaRefrescar=S
+ValorRefrescar=Nulo
+Formula=SQLEnLista(<T>Select Distinct Nivelcobranza From DM0214ZonasCobranza where  Division = :td <T>,DM0214ZonasCobranza.Division)
+[DM0214ZonasCobranza.Region]
+Clave=DM0214ZonasCobranza.Region
+Nombre=Nueva Region
+Visible=S
+TamanoValidacion=10
+Tamano=30
+AyudaMemOpc=Validar captura en la lista
+Mayusculas=S
+LigaTabla=DM0214ZonasCobranza
+LigaCampo=Region
+ClaveBDE=Region
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaEnCaptura=Expresion
+Formula=sqlenlista(<T>Select Region from dm0214Regiones<T> )
+[DM0214ZonasCobranza.Division]
+Clave=DM0214ZonasCobranza.Division
+Nombre=Division
+Visible=S
+TamanoValidacion=10
+Tamano=20
+AyudaMemOpc=Validar captura en la lista
+Mayusculas=S
+LigaTabla=DM0214ZonasCobranza
+LigaCampo=Division
+ClaveBDE=Division
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaEnCaptura=Expresion
+ListaRefrescar=DM0214ZonasCobranza.NivelCobranza
+ConRefrescar=S
+AlCambiar=//avanzarcaptura
+Formula=SI Info.Clave = <T>DM0214cambioDivision<T><BR><BR>entonces<BR>sqlenlista(<T>Select division from dm0214divisiones<T> )<BR>Sino<BR>sqlenlista(<T>Select Distinct division from dm0214Zonascobranza <T>)     <BR><BR><BR>fin
+[DM0214ZonasCobranza.Equipo]
+Clave=DM0214ZonasCobranza.Equipo
+Nombre=Equipo
+Visible=S
+TamanoValidacion=10
+Tamano=15
+AyudaMemOpc=Validar captura en la lista
+Estatus=:Te  <T> , <T>Equipo<T>,<T>COBRANZA MENUDEO<T>, <T>ALTA<T><BR> )
+Mayusculas=S
+LigaTabla=DM0214ZonasCobranza
+LigaCampo=Equipo
+ClaveBDE=Equipo
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaEnCaptura=Expresion
+Formula=SQLenlista(<T>Select Distinct Equipo From DM0214ZonasCobranza<T> )
+[DM0214ZonasCobranza.Zona]
+Clave=DM0214ZonasCobranza.Zona
+Visible=S
+LigaTabla=DM0214ZonasCobranza
+LigaCampo=Zona
+ClaveBDE=Zona
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas

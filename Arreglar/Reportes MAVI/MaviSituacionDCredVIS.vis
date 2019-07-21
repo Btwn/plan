@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviSituacionDCredVIS
+Nombre=Situaciones X Creditos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SITUACION
+SQL=SELECT SITUACION FROM MOVSITUACION WHERE MODULO = <T>VTAS<T> AND MOV=<T> SOLICITUD CREDITO<T> OR MOV =<T>ANALISIS MAYOREO<T>
+[SITUACION]
+Clave=SITUACION
+Nombre=SITUACION
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=SITUACION

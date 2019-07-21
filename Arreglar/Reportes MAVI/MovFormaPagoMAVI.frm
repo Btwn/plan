@@ -1,0 +1,103 @@
+[Forma]
+Clave=MovFormaPagoMAVI
+Nombre=Tipos de Forma de Pago
+Icono=101
+Modulos=(Todos)
+MovModulo=(Todos)
+ListaCarpetas=Lista
+CarpetaPrincipal=Lista
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialIzquierda=302
+PosicionInicialArriba=257
+PosicionInicialAlturaCliente=237
+PosicionInicialAncho=335
+ListaAcciones=Guardar<BR>Nuevo<BR>Elliminar
+Comentarios=Info.Clave
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaExclusiva=S
+[Lista]
+Estilo=Hoja
+Clave=Lista
+Filtros=S
+OtroOrden=S
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=MovFormaPagoMAVI
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=MovFormaPagoMAVI.FormaPagoTipo
+ListaOrden=MovFormaPagoMAVI.FormaPagoTipo<TAB>(Acendente)
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=General
+CarpetaVisible=S
+FiltroGeneral=MovFormaPagoMAVI.Mov = <T>{Info.Clave}<T>
+[Lista.MovFormaPagoMAVI.FormaPagoTipo]
+Carpeta=Lista
+Clave=MovFormaPagoMAVI.FormaPagoTipo
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Lista.Columnas]
+FormaPagoTipo=304
+[Acciones.Nuevo]
+Nombre=Nuevo
+Boton=1
+NombreDesplegar=&Nuevo
+EnBarraHerramientas=S
+Carpeta=(Carpeta principal)
+TipoAccion=Controles Captura
+ClaveAccion=Registro Agregar
+Activo=S
+Visible=S
+NombreEnBoton=S
+EspacioPrevio=S
+[Acciones.Elliminar]
+Nombre=Elliminar
+Boton=5
+NombreEnBoton=S
+NombreDesplegar=&Eliminar
+EnBarraHerramientas=S
+Carpeta=(Carpeta principal)
+TipoAccion=Controles Captura
+ClaveAccion=Registro Eliminar
+Activo=S
+Visible=S
+[Acciones.Guardar]
+Nombre=Guardar
+Boton=3
+NombreEnBoton=S
+NombreDesplegar=&Guardar y Salir
+GuardarAntes=S
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionCondicion=Asigna(Temp.Texto, ListaBuscarDuplicados(CampoEnLista(MovFormaPagoMAVI:MovFormaPagoMAVI.FormaPagoTipo)))<BR>Vacio(Temp.Texto)
+EjecucionMensaje=Comillas(Temp.Texto)+<T> Duplicado<T>
+EjecucionConError=S
+

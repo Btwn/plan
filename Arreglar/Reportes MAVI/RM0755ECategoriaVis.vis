@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM0755ECategoriaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=CATEGORIA
+SQL=SELECT <BR>  DISTINCT CATEGORIA <BR>FROM (SELECT CATEGORIA FROM VENTASCANALMAVI UNION SELECT <T>NA<T> UNION SELECT <T>ANTICIPOS<T>)X
+[CATEGORIA]
+Clave=CATEGORIA
+Nombre=CATEGORIA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CATEGORIA

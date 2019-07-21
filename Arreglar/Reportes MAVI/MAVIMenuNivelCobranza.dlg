@@ -1,0 +1,32 @@
+[Dialogo]
+Clave=MAVIMenuNivelCobranza
+Nombre=Nivel de Cobranza
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=MAVINivelCobranza<BR>MAVINivelCobranzaH
+[Acciones.MAVINivelCobranza]
+Nombre=MAVINivelCobranza
+Boton=0
+NombreDesplegar=&Modifica
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=MAVINivelCobranza
+Activo=S
+Visible=S
+[Acciones.MAVINivelCobranzaH]
+Nombre=MAVINivelCobranzaH
+Boton=0
+NombreDesplegar=&Consulta Histórico
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=MAVINivelCobranzaH
+Activo=S
+Visible=S

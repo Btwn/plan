@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0118CelulaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Celula
+CamposBusquedaRapida=Celula
+LlavePrimaria=Celula
+SQL=select Distinct Celula from V_MaviEstructuraInst where Celula like + <T>CEL<T> + substring(  {comillas(Mavi.RM0118GerenciaVtasExt)}  ,4,1) + <T>%<T>
+[Celula]
+Clave=Celula
+Nombre=Celula
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Celula

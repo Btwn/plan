@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviMarcasArticulosVis
+Nombre=Marcas de Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Fabricante
+CamposBusquedaRapida=Fabricante
+SQL=Select Distinct(Fabricante)<BR>From Art<BR>Where Fabricante <> <T><T><BR>{Si(ConDatos(Mavi.ListaLineasArt) ,<T>And Linea = <T>+Comillas(Mavi.ListaLineasArt),<T><T>)}<BR>{Si(ConDatos(Mavi.ArticuloFD) ,<T>And Articulo = <T>+Comillas(Mavi.ArticuloFD),<T><T>)}<BR>{Si(ConDatos(Mavi.ArticuloFA) ,<T>And Articulo = <T>+Comillas(Mavi.ArticuloFA),<T><T>)}<BR>Order By Fabricante Asc
+[Fabricante]
+Clave=Fabricante
+Nombre=Fabricante
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Fabricante

@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=DM0500DNivelCobranzaVis
+Nombre=DM0500D NivelCobranza
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=NivelCobranza
+VistaIndependiente=S
+CamposBusquedaRapida=NivelCobranza
+SQL=SELECT DISTINCT NivelCobranza<BR>FROM DM0207MaviRecuperacionCteFinal WITH(NOLOCK)<BR>WHERE ApoyoDima = 1 <BR>  AND NivelCobranza NOT IN (<T>INTERMEDIA<T>,<T>DETERMINACION<T>,<T>ESPECIAL<T>,<T>SIN NIVEL<T>,<T>SIN NIVEL POR DIVISION<T>)<BR>  AND LEFT(NivelCobranza,3)<><T>Loc<T>
+[NivelCobranza]
+Clave=NivelCobranza
+Nombre=NivelCobranza
+Visible=S
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NivelCobranza

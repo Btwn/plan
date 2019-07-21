@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=RM0000AgenteInstVis
+Nombre=RM0000 Agentes de Instituciones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Agente<BR>Nombre
+SQL=select Agente, Nombre from agente<BR>where Agente like <T>E0%<T> and Categoria = <T>VENTAS A INSTITUCIONES<T>
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Agente
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0232SucursalesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sucursal
+CamposBusquedaRapida=Sucursal
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=Select Sucursal From Sucursal Where Tipo=<T>INSTITUCIONES<T>
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal

@@ -1,0 +1,38 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spWMSMovTransito
+@Modulo				varchar(5),
+@Mov				varchar(20)
+
+AS BEGIN
+DECLARE
+@Clave				varchar(20),
+@SubClave			varchar(20)
+SELECT @Clave = Clave, @SubClave = SubClave FROM MovTipo WHERE Modulo = @Modulo AND Mov = @Mov
+IF @Modulo = 'TMA'
+BEGIN
+IF @Clave = 'TMA.SADO'
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.OADO'
+ELSE
+IF @Clave = 'TMA.SRADO'
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.ORADO'
+ELSE
+IF @Clave = 'TMA.OSUR' AND @SubClave IS NULL
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.TSUR' AND SubClave IS NULL
+ELSE
+IF @Clave = 'TMA.OSUR' AND @SubClave = 'TMA.OSURP'
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.TSUR' AND SubClave = 'TMA.TSURP'
+ELSE
+IF @Clave = 'TMA.OPCKTARIMA' AND @SubClave IS NULL
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.PCKTARIMATRAN' AND SubClave IS NULL
+ELSE SELECT ''
+END
+ELSE SELECT ''
+END
+

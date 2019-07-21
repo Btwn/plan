@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1150FamsArtVis
+Nombre=RM1150FamsArtVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=familia
+SQL=SELECT DISTINCT  a.Familia<BR>FROM ART  A with(nolock) inner join ProprelistaDFinal P with(nolock) on a.Articulo=p.Articulo<BR>WHERE Grupo=<T>MERCANCIA DE LINEA<T> AND Categoria=<T>Venta<T> AND (Estatus=<T>ALTA<T> OR Estatus=<T>BLOQUEADO<T>) AND P.condicion like <T>%val%<T><BR>and familia<><T>VALERAS<T> ORDER BY A.FAMILIA ASC<BR><TAB><TAB>
+[familia]
+Clave=familia
+Nombre=familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=familia

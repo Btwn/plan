@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviEstatusActivoFijoVis
+Nombre=Estatus ActivoFijo
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=EstatusActivoFijo
+SQL=SELECT ESTATUS AS EstatusActivoFijo FROM ACTIVOF where ESTATUS IS NOT NULL<BR>GROUP BY ESTATUS ORDER BY ESTATUS
+[EstatusActivoFijo]
+Clave=EstatusActivoFijo
+Nombre=EstatusActivoFijo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=EstatusActivoFijo

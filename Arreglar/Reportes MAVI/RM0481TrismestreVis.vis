@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM0481TrismestreVis
+Nombre=Trimestre
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Trimestre
+SQL=select * from<BR>(<BR>(select <BR>Trimestre=1)<BR>union<BR>(select <BR>Trimestre=2)<BR>union<BR>(select <BR>Trimestre=3)<BR>union<BR>(select <BR>Trimestre=4)<BR>)t<BR>where 1=1<BR>{Si((Info.Periodo) en (1,2,3),<T>And t.trimestre=1<T>,<T><T>)}<BR>{Si((Info.Periodo) en (4,5,6),<T>And t.trimestre=2<T>,<T><T>)}<BR>{Si((Info.Periodo) en (7,8,9),<T>And t.trimestre=3<T>,<T><T>)}<BR>{Si((Info.Periodo) en (10,11,12),<T>And t.trimestre=4<T>,<T><T>)}
+[Trimestre]
+Clave=Trimestre
+Nombre=Trimestre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Trimestre

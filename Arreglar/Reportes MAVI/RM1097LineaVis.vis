@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM1097LineaVis
+Nombre=Lineas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Observaciones
+CamposBusquedaRapida=Observaciones
+SQL=select Distinct Observaciones from ActivoF <BR>where Categoria <> <T>EQUIPO DE TRANSPORTE<T><BR>And Observaciones is not null and Observaciones <> <T> <T><BR>{SI(ConDatos(Mavi.RM1097Categoria),<T> And Categoria in (<T>+Mavi.RM1097Categoria+<T>)<T>,<T> <T>)}<BR>{SI(ConDatos(Mavi.RM1097Localizacion), <T> And Localizacion in (<T>+Mavi.RM1097Localizacion+<T>)<T>,<T> <T>)}<BR>{SI(ConDatos(Mavi.RM1097Familia), <T> And Almacen in (<T>+Mavi.RM1097Familia+<T>)<T>,<T> <T>)}
+[Observaciones]
+Clave=Observaciones
+Nombre=Número Económico
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Observaciones

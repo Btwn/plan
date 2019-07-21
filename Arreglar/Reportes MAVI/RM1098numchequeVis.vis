@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM1098numchequeVis
+Nombre=Numero de Cheque
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MovID
+CamposBusquedaRapida=MovID
+SQL=select Distinct MovID  From Dinero Where Mov like <T>Cheque%<T> and MovID Is Not Null<BR>{SI(ConDatos(Mavi.RM1098CtaBancaria), <T> And CtaDinero in (<T>+Mavi.RM1098CtaBancaria+<T>)<T>,<T><T>)}<BR>{SI(ConDatos(Mavi.RM1098Beneficiario), <T> And MovID=<T>+Comillas(Mavi.RM1098Beneficiario),<T><T>)}<BR>{SI(ConDatos(Mavi.RM1098Concepto),<T> And Observaciones in (<T>+Mavi.RM1098Concepto+<T>)<T>,<T><T>)}<BR>order by 1
+[MovID]
+Clave=MovID
+Nombre=Numero de Cheque
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=MovID

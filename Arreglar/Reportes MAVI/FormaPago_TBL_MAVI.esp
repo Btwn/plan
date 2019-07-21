@@ -1,0 +1,20 @@
+[FormaPago.tbl/Tabla.ListaCampos]
+AbreCajon=VentaLinea
+VentaLinea=(Fin)
+
+[FormaPago.tbl/Tabla.SQL]
+POSDenominacion,=AbreCajon,
+AbreCajon,=VentaLinea
+VentaLinea=FROM
+
+[FormaPago.tbl/VentaLinea]
+Clave=VentaLinea
+Nombre=Venta Linea
+Visible=S
+TamanoValidacion=4
+TipoDatos=Texto
+Tamano=4
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8

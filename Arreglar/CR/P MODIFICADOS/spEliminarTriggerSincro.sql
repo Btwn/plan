@@ -1,0 +1,29 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spEliminarTriggerSincro
+AS BEGIN
+SET NOCOUNT ON
+DECLARE
+@Trigger 	varchar(255)
+DECLARE crTabla CURSOR FOR
+SELECT name FROM sysobjects AS s WHERE NAME LIKE '%sincro%' AND s.[type] = 'TR'
+OPEN crTabla
+FETCH NEXT FROM crTabla  INTO @Trigger
+WHILE @@FETCH_STATUS <> -1
+BEGIN
+IF @@FETCH_STATUS <> -2
+BEGIN
+EXEC("if exists (select * from sysobjects where id = object_id('"+@Trigger+"') and sysstat & 0xf = 8) drop trigger "+@Trigger)
+END
+FETCH NEXT FROM crTabla  INTO @Trigger
+END
+CLOSE crTabla
+DEALLOCATE crTabla
+END
+

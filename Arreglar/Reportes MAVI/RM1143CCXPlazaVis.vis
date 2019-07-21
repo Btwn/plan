@@ -1,0 +1,40 @@
+[Vista]
+Icono=0
+Clave=RM1143CCXPlazaVis
+Nombre=Vista Centro de Costos por Plaza
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Plaza<BR>Descripcion<BR>CC
+LlavePrimaria=Plaza
+CamposBusquedaRapida=Plaza<BR>Descripcion<BR>CC
+SQL=SELECT * FROM RM1143CCXPLAZA<BR>ORDER BY Plaza
+[Plaza]
+Clave=Plaza
+Nombre=Plaza
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Plaza
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion
+[CC]
+Clave=CC
+Nombre=Centro de Costos
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=CC
+Alineacion=por Omisión
+TipoDatos=Texto

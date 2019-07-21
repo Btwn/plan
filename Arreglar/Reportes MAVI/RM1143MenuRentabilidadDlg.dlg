@@ -1,0 +1,44 @@
+[Dialogo]
+Clave=RM1143MenuRentabilidadDlg
+Nombre=Rentabilidad
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+ListaAcciones=RM1143GCambios<BR>RM1143CCXAreaMotora<BR>RM1143CCXPlazaFrm
+PosicionInicialAlturaCliente=128
+PosicionInicialAncho=500
+[Acciones.RM1143GCambios]
+Nombre=RM1143GCambios
+Boton=0
+NombreDesplegar=&Importador Cambios Gastos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143GastosGCambiosFrm
+Activo=S
+Visible=S
+[Acciones.RM1143CCXAreaMotora]
+Nombre=RM1143CCXAreaMotora
+Boton=0
+NombreDesplegar=&Centros de Costos X Area Motora
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143CCAreaMotoraFrm
+Activo=S
+Visible=S
+[Acciones.RM1143CCXPlazaFrm]
+Nombre=RM1143CCXPlazaFrm
+Boton=0
+NombreDesplegar=CC &Excepciones X Plaza
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143CCXPlazaFrm
+Activo=S
+Visible=S

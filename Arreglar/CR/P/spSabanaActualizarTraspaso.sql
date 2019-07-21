@@ -1,0 +1,19 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spSabanaActualizarTraspaso
+@Estacion           INT,
+@Articulo           VARCHAR(20),
+@Almacen            VARCHAR(20),
+@Valor              VARCHAR(2)
+
+AS
+BEGIN
+UPDATE SabanaD SET Traspaso =  @Valor WHERE Estacion = @Estacion AND Articulo = @Articulo AND Almacen = @Almacen
+END
+

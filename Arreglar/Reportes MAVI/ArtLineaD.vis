@@ -1,0 +1,56 @@
+[Vista]
+Icono=0
+Clave=ArtLineaD
+Nombre=ArtLineaD
+Modulos=(Todos)
+Singular=ArtLineaD
+ListaTablas=ArtLineaD
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=ArtLineaD.ID<BR>ArtLineaD.ArtTipo<BR>ArtLineaD.CanalVenta
+TablaPrincipal=ArtLineaD
+UsarJOIN=S
+SQL=SELECT<BR>  ArtLineaD.ID,<BR>  ArtLineaD.ArtTipo,<BR>  ArtLineaD.CanalVenta<BR><BR>FROM<BR>  ArtLineaD
+[ArtLineaD.ID]
+Clave=ArtLineaD.ID
+LigaTabla=ArtLineaD
+LigaCampo=ID
+TipoDatos=Numérico
+ClaveBDE=ID
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorPorOmision=Mavi.DM0175BP58ArtLineaID 
+Nombre=Línea
+[ArtLineaD.ArtTipo]
+Clave=ArtLineaD.ArtTipo
+LigaTabla=ArtLineaD
+LigaCampo=ArtTipo
+Tamano=50
+ClaveBDE=ArtTipo
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaEnCaptura=Vista
+AyudaForma=ArtTipo
+AyudaVista=ArtTipo
+AyudaCampo=ArtTipo
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Nombre=Tipo Artículo
+[ArtLineaD.CanalVenta]
+Clave=ArtLineaD.CanalVenta
+LigaTabla=ArtLineaD
+LigaCampo=CanalVenta
+TipoDatos=Numérico
+ClaveBDE=CanalVenta
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Canal Venta
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Vista
+AyudaForma=CanalVenta
+AyudaVista=CanalVenta
+AyudaCampo=ID

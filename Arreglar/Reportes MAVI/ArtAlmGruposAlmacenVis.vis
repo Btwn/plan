@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=ArtAlmGruposAlmacenVis
+Nombre=<T>Grupos de Almacenes<T>
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Grupo
+CamposBusquedaRapida=Grupo
+
+
+SQL=Select Distinct Ca.Nombre as Grupo<BR>From CREDICAgrupador Ca<BR>JOIN CREDIRAgrupadorSucursal Cas<BR><TAB>ON Cas.Agrupador = Ca.IdAgrupador<BR>JOIN Alm A<BR><TAB>ON Cas.Sucursal=A.Sucursal  <BR>Where A.Estatus = <T>Alta<T> And A.Tipo = <T>Normal<T><BR>      And (A.Exclusivo = <T>Venta<T> Or Exclusivo = <T>Compra/Venta<T>)
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Grupo

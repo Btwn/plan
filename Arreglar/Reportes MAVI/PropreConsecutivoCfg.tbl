@@ -1,0 +1,43 @@
+[Tabla]
+Icono=0
+Clave=PropreConsecutivoCfg
+Nombre=PropreConsecutivoCfg
+Archivo=PropreConsecutivoCfg
+Modulos=(Todos)
+Singular=PropreConsecutivoCfg
+TipoTabla=General
+ListaCampos=Empresa<BR>Tipo<BR>Seccion
+LlavePrimaria=Empresa<BR>Tipo<BR>Seccion
+ControlEmpresas=S
+CampoEmpresa=Empresa
+ControlTipo=S
+CampoTipo=Tipo
+SQL=SELECT<BR>  Empresa,<BR>  Tipo,<BR>  Seccion<BR><BR>FROM<BR>  PropreConsecutivoCfg
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+Tamano=5
+Requerido=S
+ValorPorOmision=Empresa
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista(<T>SELECT Tipo FROM Consecutivo<T>)
+[Seccion]
+Clave=Seccion
+Nombre=Sección
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaRefrescar=S
+AyudaMemEnBlanco=S
+AyudaMemOpc=Consulta opcional
+Formula=SQLEnLista(<T>SELECT DISTINCT Seccion FROM ProprePorcentajeValidacion<T>)

@@ -1,0 +1,103 @@
+[Forma]
+Clave=RM1142Familiafilfrm
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=fam
+CarpetaPrincipal=fam
+PosicionInicialAlturaCliente=457
+PosicionInicialAncho=246
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=selccio
+PosicionInicialIzquierda=212
+PosicionInicialArriba=69
+[fam]
+Estilo=Iconos
+Clave=fam
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1142FamiliaFiltroVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Familia
+CarpetaVisible=S
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+FiltroIgnorarEmpresas=S
+IconosSeleccionMultiple=S
+MenuLocal=S
+ListaAcciones=seleccionatodo
+[fam.Familia]
+Carpeta=fam
+Clave=Familia
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[fam.Columnas]
+0=-2
+[Acciones.selccio]
+Nombre=selccio
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=asign<BR>Regis<BR>selec
+[Acciones.selccio.asign]
+Nombre=asign
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.selccio.Regis]
+Nombre=Regis
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>fam<T>)
+[Acciones.selccio.selec]
+Nombre=selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM1142FamArt,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Acciones.seleccionatodo]
+Nombre=seleccionatodo
+Boton=0
+NombreDesplegar=Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S

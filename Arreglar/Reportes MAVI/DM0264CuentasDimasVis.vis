@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=DM0264CuentasDimasVis
+Nombre=Cuentas DIMAS
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cliente<BR>nombre
+CamposBusquedaRapida=Cliente
+SQL=select distinct v.cliente, c.nombre <BR>from venta v <BR>left join cte c on v.cliente = c.cliente<BR>where v.enviarA = 76
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=cliente
+[nombre]
+Clave=nombre
+Nombre=nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=nombre

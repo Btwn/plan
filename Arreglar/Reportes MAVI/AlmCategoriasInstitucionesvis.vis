@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=AlmCategoriasInstitucionesvis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Categoria
+LlavePrimaria=Categoria
+SQL=Select Nombre as Categoria<BR>From TablaSTD<BR>Where TablaSt = <T>CATEGORIAS ALMACENES<T>
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Categoria
+TipoDatos=Texto

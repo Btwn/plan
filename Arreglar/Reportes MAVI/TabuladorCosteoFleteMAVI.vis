@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=TabuladorCosteoFleteMAVI
+Nombre=Tabuladores Costeo Fletes
+Modulos=(Todos)
+Singular=Tabulador Costeo Flete
+ListaTablas=TabuladorCosteoFleteMAVI
+TablaPrincipal=TabuladorCosteoFleteMAVI
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=TabuladorCosteoFleteMAVI.Tabulador
+SQL=SELECT<BR>  TabuladorCosteoFleteMAVI.Tabulador<BR><BR>FROM<BR>  TabuladorCosteoFleteMAVI
+[TabuladorCosteoFleteMAVI.Tabulador]
+Clave=TabuladorCosteoFleteMAVI.Tabulador
+Nombre=Tabulador
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+LigaTabla=TabuladorCosteoFleteMAVI
+LigaCampo=Tabulador
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Tabulador

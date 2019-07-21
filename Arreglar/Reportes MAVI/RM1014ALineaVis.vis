@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1014ALineaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=LINEA
+CamposBusquedaRapida=LINEA
+SQL=SELECT DISTINCT LINEA FROM art <BR>WHERE categoria = <T>VENTA<T> <BR>{Si(Condatos(Mavi.RM1014Grupos) ,<T>And Grupo =<T>+Comillas(Mavi.RM1014Grupos),<T><T>)}<BR>{Si(Condatos(Mavi.RM1014Familias) ,<T>And Familia =<T>+Comillas(Mavi.RM1014Familias),<T><T>)}<BR>ORDER BY LINEA
+[LINEA]
+Clave=LINEA
+Nombre=LINEA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=LINEA

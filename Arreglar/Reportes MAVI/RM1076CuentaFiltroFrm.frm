@@ -1,0 +1,99 @@
+[Forma]
+Clave=RM1076CuentaFiltroFrm
+Nombre=Cuentas
+Icono=0
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=Cuentas
+CarpetaPrincipal=Cuentas
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+ListaAcciones=Selec
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+ExpresionesAlMostrar=Asigna(Mavi.RM1076cuentaFiltro,<T><T> )
+[Cuentas]
+Estilo=Iconos
+Clave=Cuentas
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1076CuentaFiltroVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+PestanaOtroNombre=S
+PestanaNombre=Cuenta Balance
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+ListaEnCaptura=Cuenta
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+[Cuentas.Columnas]
+0=-2
+1=-2
+[Acciones.Selec.asign]
+Nombre=asign
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Selec.regis]
+Nombre=regis
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Cuentas<T>)
+[Acciones.Selec]
+Nombre=Selec
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+ListaAccionesMultiples=asign<BR>regis<BR>sele
+Activo=S
+Visible=S
+[Acciones.Selec.sele]
+Nombre=sele
+Boton=0
+TipoAccion=Ventana
+Activo=S
+Visible=S
+ClaveAccion=Seleccionar/Resultado
+Expresion=Asigna(Mavi.RM1076cuentaFiltro,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Cuentas.Cuenta]
+Carpeta=Cuentas
+Clave=Cuenta
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+

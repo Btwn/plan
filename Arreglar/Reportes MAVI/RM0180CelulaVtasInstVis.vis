@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0180CelulaVtasInstVis
+Nombre=Celulas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=equipo
+CamposBusquedaRapida=equipo
+SQL=select distinct Equipo <BR>from equipoagente <BR>where equipo like <T>CELI%<T>
+[equipo]
+Clave=equipo
+Nombre=equipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=equipo

@@ -1,0 +1,106 @@
+[Tabla]
+Icono=0
+Clave=ContSATMovTipo
+Nombre=Tipos de Movimientos
+Archivo=MovTipo
+Modulos=(Todos)
+Singular=Tipo de Movimiento
+TipoTabla=General
+ListaCampos=Modulo<BR>Mov<BR>TipoPoliza<BR>ContRelacionarComp<BR>ContArrastrarCompOrigen<BR>AsociarCFDCBB<BR>AsociarExtranjero<BR>ValidaImporteXML<BR>ValidaImpAfecta<BR>AsociaMovAnterior<BR>AsociaMovPosterior
+ListaCampos002=<CONTINUA>FD_Reporte<BR>EsISRReglamento<BR>CFDEsParcialidad<BR>eDocEstatus<BR>eDoc<BR>CFDFlex<BR>CFDReporteJasper<BR>SAT_MN<BR>CFDReportBuilder<BR>CFDReporteIntelisis<BR>TipoPoliza<BR>ContRelacionarComp<BR>ContArrastrarCompOrigen
+ListaRelaciones=Modulo
+LlavePrimaria=Modulo<BR>Mov
+SQL=SELECT<BR>  Modulo,<BR>  Mov,<BR>  TipoPoliza,<BR>  ContRelacionarComp,<BR>  ContArrastrarCompOrigen,<BR>  AsociarCFDCBB,<BR>  AsociarExtranjero,<BR>  ValidaImporteXML,<BR>  ValidaImpAfecta,<BR>  AsociaMovAnterior,<BR>  AsociaMovPosterior<BR>FROM<BR>  MovTipo
+[Modulo]
+Clave=Modulo
+Nombre=Módulo
+Visible=S
+TamanoValidacion=5
+Tamano=5
+TipoDatos=Texto
+[Mov]
+Clave=Mov
+Nombre=Nombre
+Visible=S
+TamanoValidacion=20
+Tamano=20
+TipoDatos=Texto
+[TipoPoliza]
+Clave=TipoPoliza
+Nombre=Tipo Poliza
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+OpcionesValidar=S
+CondicionDespliege=Modulo=<T>CONT<T>
+ListaOpciones=Diario<BR>Ingresos<BR>Egresos
+TipoDatos=Texto
+[ContRelacionarComp]
+Clave=ContRelacionarComp
+Nombre=Asociar Comprobantes
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+[ContArrastrarCompOrigen]
+Clave=ContArrastrarCompOrigen
+Nombre=Arrastrar Comprobantes de Movimiento Origen
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+[Relaciones.Modulo]
+TipoRelacion=Opcional
+LlaveLocal=Modulo
+Clave=Modulo
+TablaRemota=Modulo
+LlaveRemota=Modulo
+[AsociarCFDCBB]
+Clave=AsociarCFDCBB
+Nombre=Permite Asociar Comprobante CFD- CBB
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionEdicion=(Modulo = <T>GAS<T>) o (Modulo = <T>COMS<T>) o (Modulo = <T>CXP<T>)
+[AsociarExtranjero]
+Clave=AsociarExtranjero
+Nombre=Permite Asociar Comprobante Extranjero
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionEdicion=(Modulo = <T>GAS<T>) o (Modulo = <T>COMS<T>) o (Modulo = <T>CXP<T>)
+
+[ValidaImporteXML]
+Clave=ValidaImporteXML
+Nombre=Validar Importe del Comprobante
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+
+[ValidaImpAfecta]
+Clave=ValidaImpAfecta
+Nombre=Valida Importe al Afectar
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+
+[AsociaMovAnterior]
+Clave=AsociaMovAnterior
+Nombre=Relacionar Comprobantes en Pólizas Anteriores
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+[AsociaMovPosterior]
+Clave=AsociaMovPosterior
+Nombre=Asociar Retroactivo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico

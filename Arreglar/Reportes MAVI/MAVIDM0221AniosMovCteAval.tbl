@@ -1,0 +1,50 @@
+[Tabla]
+Icono=0
+Clave=MAVIDM0221AniosMovCteAval
+Nombre=MAVIDM0221AniosMovCteAvalTbl
+Archivo=MAVIDM0221AniosMovCteAval
+Modulos=(Todos)
+Singular=MAVIDM0221AniosMovCteAvalTbl
+TipoTabla=General
+ListaCampos=TipoContacto<BR>Mov<BR>AniosD<BR>AniosA
+ControlMov=S
+CampoMov=Mov
+LlavePrimaria=TipoContacto<BR>Mov<BR>AniosD<BR>AniosA
+SQL=SELECT<BR>  TipoContacto,<BR>  Mov,<BR>  AniosD,<BR>  AniosA<BR><BR>FROM<BR>  MAVIDM0221AniosMovCteAval
+[Mov]
+Clave=Mov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Consulta opcional
+Formula=SQLEnLista(<T>SELECT Mov FROM dbo.MovTipo WITH(NOLOCK) WHERE Clave=:tC AND Mov!=:tM<T>,<T>VTAS.F<T>,<T>Factura Mayoreo<T>)
+TipoDatos=Texto
+[AniosD]
+Clave=AniosD
+Nombre=Años D
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[AniosA]
+Clave=AniosA
+Nombre=Años A
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[TipoContacto]
+Clave=TipoContacto
+Nombre=TipoContacto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+ListaOpciones=Cliente<BR>Aval
+OpcionesPredefinidas=Ninguna
+TipoDatos=Texto

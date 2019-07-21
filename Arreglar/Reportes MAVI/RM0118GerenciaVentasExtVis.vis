@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=RM0118GerenciaVentasExtVis
+Nombre=Gerencias para Ventas Externas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Gerencias
+SQL=select distinct equipo as Gerencia from equipoagente where 1=1 and equipo not like <T>GERCO%<T>--equipo like <T>GERRE%<T> or equipo like <T>GERCA%<T> or  equipo like <T>GERIN%<T> <BR><BR><BR>{Si((Condatos(Mavi.RM0118Sucursales293039)) y ((Mavi.RM0118Sucursales293039)=<T>29<T>),<T>And Equipoagente.Equipo like <T>+Comillas(<T>GERCA%<T>),<T><T>)}<BR>{Si((Condatos(Mavi.RM0118Sucursales293039)) Y ((Mavi.RM0118Sucursales293039)=<T>(TODAS)<T>) ,<T>And Equipoagente.Equipo like <T>+Comillas(<T>GER%<T>),<T><T>)}<BR>{Si((Condatos(Mavi.RM0118Sucursales293039)) y ((Mavi.RM0118Sucursales293039)=<T>30<T>),<T>And Equipoagente.Equipo like <T>+Comillas(<T>GERRE%<T>),<T><T>)}<BR>{Si((Condatos(Mavi.RM0118Sucursales293039)) y ((Mavi.RM0118Sucursales293039)=<T>39<T>),<T>And Equipoagente.Equipo like <T>+Comillas<CONTINUA>
+SQL002=<CONTINUA>(<T>GERIN%<T>),<T><T>)}<BR>--{Si((Condatos(Mavi.RM0118Sucursales293039)) y ((Mavi.RM0118Sucursales293039)=<T>29<T>) o ((Mavi.RM0118Sucursales293039)=<T>(TODAS)<T>) ,<T>And Equipoagente.Equipo like <T>+Comillas(<T>GER%<T>),<T><T>)}
+[Gerencias]
+Clave=Gerencias
+Tamano=10
+ClaveBDE=Gerencia
+TamanoValidacion=20
+Nombre=Gerencias

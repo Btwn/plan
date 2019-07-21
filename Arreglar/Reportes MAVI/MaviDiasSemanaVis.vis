@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviDiasSemanaVis
+Nombre=Dias de la Semana
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Domingo
+SQL=Select A.Domingo<BR>from (<BR>        Select <T>Domingo<T> as Domingo <BR>        Union<BR>        Select <T>Lunes<T> as Lunes<BR>        Union<BR>        Select <T>Martes<T> as Martes<BR>        Union<BR>        Select <T>Miercoles<T> as Miercoles<BR>        Union<BR>        Select <T>Jueves<T> as Jueves<BR>        Union<BR>        Select <T>Viernes<T> as Viernes<BR>        Union<BR>        Select <T>Sabado<T> as Sabado<BR>       )A<BR>/*{Si((Info.Desglosar=<T>Si<T>),<T> Where A.Movimiento=<T>+Comillas(<T>Recoleccion<T>)+<T> or A.Movimiento=<T>+Comillas(<T>Devolucion Cliente<T>),<T> Where A.Movimiento=<T>+Comillas(<T>XX<T>))}*/
+[Domingo]
+Clave=Domingo
+Nombre=Domingo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=9
+TipoDatos=Texto
+Tamano=9
+ClaveBDE=Domingo

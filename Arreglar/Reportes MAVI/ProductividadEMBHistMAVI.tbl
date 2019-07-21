@@ -1,0 +1,61 @@
+[Tabla]
+Icono=0
+Clave=ProductividadEMBHistMAVI
+Nombre=ProductividadEMBHistMAVI
+Archivo=ProductividadEMBHistMAVI
+Modulos=(Todos)
+Singular=ProductividadEMBHistMAVI
+TipoTabla=General
+ListaCampos=ID<BR>Calificacion<BR>PorcentajeIni<BR>PorcentajeFin<BR>PrecioEntrega<BR>Bonificacion<BR>Fecha
+SQL=SELECT<BR>  ID,<BR>  Calificacion,<BR>  PorcentajeIni,<BR>  PorcentajeFin,<BR>  PrecioEntrega,<BR>  Bonificacion,<BR>  Fecha<BR><BR>FROM<BR>  ProductividadEMBHistMAVI
+LlavePrimaria=ID
+CampoID=ID
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Calificacion]
+Clave=Calificacion
+Nombre=Calificación
+Visible=S
+TamanoValidacion=20
+Tamano=20
+[PorcentajeIni]
+Clave=PorcentajeIni
+Nombre=% Inicial
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+[PorcentajeFin]
+Clave=PorcentajeFin
+Nombre=% Final
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+[PrecioEntrega]
+Clave=PrecioEntrega
+Nombre=Precio Entrega
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[Bonificacion]
+Clave=Bonificacion
+Nombre=Bonificación
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa  (hh:nn am/pm)

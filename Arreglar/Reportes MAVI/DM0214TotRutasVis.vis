@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=DM0214TotRutasVis
+Nombre=Total de Rutas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Zona<BR>TotRutas
+LlavePrimaria=Zona
+SQL=Select Zona,count (Ruta) TotRutas<BR>FROM<BR>  ZonaCobranzamen<BR>Group by Zona
+[Zona]
+Clave=Zona
+Nombre=Zona
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Zona
+[TotRutas]
+Clave=TotRutas
+Nombre=<T>Total de Rutas<T>
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=TotRutas
+NombreExpresion=S

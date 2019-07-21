@@ -1,0 +1,79 @@
+[Tabla]
+Icono=0
+Clave=DM0287ParametrosTbl
+Archivo=DM0287Parametrosliberador
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=UEN<BR>Documento<BR>HistDV<BR>EvaluarFP<BR>MHDVPermitidos<BR>HistEvaluarDias<BR>MontoMinDocumento<BR>MesesPagados<BR>DVPermitidos<BR>ID
+LlavePrimaria=ID
+SQL=SELECT<BR>  ID,<BR>  UEN,<BR>  Documento,<BR>  HistDV,<BR>  EvaluarFP,<BR>  MHDVPermitidos,<BR>  HistEvaluarDias,<BR>  MontoMinDocumento,<BR>  MesesPagados,<BR>  DVPermitidos<BR><BR>FROM<BR>  DM0287Parametrosliberador
+ControlID=S
+CampoID=ID
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Documento]
+Clave=Documento
+Nombre=Documento
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=25
+TipoDatos=Texto
+Tamano=25
+[HistDV]
+Clave=HistDV
+Nombre=Historial en Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[EvaluarFP]
+Clave=EvaluarFP
+Nombre=Evaluar Forma Pago
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+[MHDVPermitidos]
+Clave=MHDVPermitidos
+Nombre=MHDV Permitidos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[HistEvaluarDias]
+Clave=HistEvaluarDias
+Nombre=Historico a Evaluar Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[MontoMinDocumento]
+Clave=MontoMinDocumento
+Nombre=Monto Minimo Documento
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[MesesPagados]
+Clave=MesesPagados
+Nombre=Meses Pagados
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[DVPermitidos]
+Clave=DVPermitidos
+Nombre=DV Permitidos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc

@@ -1,0 +1,36 @@
+[Dialogo]
+Clave=DM0155SubCxp
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=EXPPend<BR>EXPMovi
+PosicionInicialAlturaCliente=80
+PosicionInicialAncho=500
+PosicionInicialIzquierda=134
+PosicionInicialArriba=254
+[Acciones.EXPPend]
+Nombre=EXPPend
+Boton=0
+NombreDesplegar=Pendiente
+EnMenu=S
+EnBarraAcciones=S
+Activo=S
+Visible=S
+TipoAccion=Formas
+ClaveAccion=ExplorarCxpMov
+[Acciones.EXPMovi]
+Nombre=EXPMovi
+Boton=0
+NombreDesplegar=Movimientos
+EnMenu=S
+EnBarraAcciones=S
+Activo=S
+Visible=S
+TipoAccion=Formas
+ClaveAccion=ExplorarCxp

@@ -1,0 +1,20 @@
+
+[Tabla]
+Icono=0
+Clave=MotivoMAVIPublicidad
+Nombre=Motivo
+Archivo=MotivoMAVIPublicidad
+Modulos=(Todos)
+Singular=Motivo
+TipoTabla=Maestros
+
+ListaCampos=Motivo
+LlavePrimaria=Motivo
+SQL=SELECT<BR>  Motivo<BR><BR>FROM<BR>  MotivoMAVIPublicidad
+[Motivo]
+Clave=Motivo
+Nombre=Motivo
+Visible=S
+TamanoValidacion=70
+Tamano=70
+Mayusculas=S

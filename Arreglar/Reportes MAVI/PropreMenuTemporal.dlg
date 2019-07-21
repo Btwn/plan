@@ -1,0 +1,104 @@
+[Dialogo]
+Clave=PropreMenuTemporal
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Empresa<BR>Porcentaje<BR>Familias<BR>Articulos<BR>Sucursal<BR>Listas<BR>CopiarLista<BR>ManipularListas
+PosicionInicialIzquierda=555
+PosicionInicialArriba=277
+PosicionInicialAlturaCliente=248
+PosicionInicialAncho=315
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+[Acciones.Articulos]
+Nombre=Articulos
+Boton=0
+NombreDesplegar=&Articulos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+NombreEnBoton=S
+Expresion=EJECUTARSQL(<T>EXEC spActualizaPropreArt<T>)<BR>Forma(<T>PropreArt<T>)
+[Acciones.CopiarLista]
+Nombre=CopiarLista
+Boton=0
+NombreDesplegar=&Copiar Listas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+NombreEnBoton=S
+Expresion=Forma(<T>PropreCopiarLista<T>)<BR>SI ConDatos(Info.PropreLista) Entonces<BR>  EJECUTARSQL(<T>spPropreCopiarLista :tLista, :tListaDestino, :tDescripcionLista<T>,Info.PropreLista,Info.PropreListaDestino,Info.PropreDescripcionLista)<BR>Fin
+[Acciones.Familias]
+Nombre=Familias
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=&Configuracion de familias
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=PropreArtFam
+Activo=S
+Visible=S
+[Acciones.Empresa]
+Nombre=Empresa
+Boton=0
+NombreDesplegar=&Configuracion Propre
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=formas
+ClaveAccion=PropreEmpresaCfg
+Activo=S
+Visible=S
+NombreEnBoton=S
+[Acciones.Sucursal]
+Nombre=Sucursal
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Configuracion de sucursales
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=formas
+ClaveAccion=PropreSucursal
+Activo=S
+Visible=S
+[Acciones.Listas]
+Nombre=Listas
+Boton=0
+NombreDesplegar=Configuracion Listas de precios
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=formas
+ClaveAccion=PropreLista
+Activo=S
+Visible=S
+NombreEnBoton=S
+[Acciones.Porcentaje]
+Nombre=Porcentaje
+Boton=0
+NombreDesplegar=Configuracion de porcentajes
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=formas
+ClaveAccion=ProprePorcentajeValidacion
+Activo=S
+Visible=S
+NombreEnBoton=S
+[Acciones.ManipularListas]
+Nombre=ManipularListas
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Listas de precios
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=PropreListaCaptura
+Activo=S
+Visible=S

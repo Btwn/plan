@@ -1,0 +1,60 @@
+[Reporte]
+Clave=DM0316PrincipalRep
+Nombre=DM0316 Flyers X Sucursal
+Icono=0
+Tipo=Reporte
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=.5
+MargenAbajo=1
+MargenIzquierdo=.5
+MargenDerecho=.5
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+VistaEspecial=S
+Submenu=Publicidad y MKT
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=DM0316flyersporSucursalFrm
+[Formato]
+VentanaIzquierda=-8
+VentanaArriba=-8
+VentanaAltura=1000
+VentanaAncho=1296
+PanelArriba=120
+PanelBotones=80
+ListaLineas=Encabezado<BR>Encabezado
+[Linea1]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+[Linea2]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+[Vista]
+Icono=0
+Clave=DM0316PrincipalRep
+VistaIndependiente=S
+SQL=select uno=1

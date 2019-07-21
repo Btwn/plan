@@ -1,0 +1,79 @@
+;**** Ultima modificación: 25-Ago-08
+;**** Modifico: Leticia Quezada
+;**** Se modifico: Agregaron campos adicionales EsAcreedora y EstatusConcepto.
+;**** Ultima modificación: 24-Jul-09
+;**** Modifico: Joel García (Mex)
+;**** Se modifico: Agrego el campo adicional ConceptoBonificacion
+
+[Concepto.tbl/Tabla.ListaCampos]
+ValorAduana=EsAcreedora
+EsAcreedora=Estatus
+Estatus=ConceptoBonificacion
+ConceptoBonificacion=NoPedirCfdiMavi
+NoPedirCfdiMavi=(Fin)
+
+[Concepto.tbl/Tabla.SQL]
+MFAEsDeducible,=ValorAduana,
+ValorAduana,=EsAcreedora,
+EsAcreedora,=EstatusConcepto,
+EstatusConcepto,=ConceptoBonificacion,
+ConceptoBonificacion,=NoPedirCfdiMavi
+NoPedirCfdiMavi=FROM Concepto
+
+[Concepto.tbl/EsAcreedora]
+Clave=EsAcreedora
+Nombre=Es Acreedora
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+
+[Concepto.tbl/EstatusConcepto]
+Clave=EstatusConcepto
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=5
+Tamano=5
+Requerido=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+ListaOpciones=Alta<BR>Baja
+OpcionesPredefinidas=Ninguna
+
+[Concepto.tbl/ConceptoBonificacion]
+Clave=ConceptoBonificacion
+Nombre=Concepto Bonificacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Verdadero
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+CondicionDespliege=Info.Modulo=<T>CXC<T>
+
+[Concepto.tbl/Clase]
+CondicionDespliege=
+
+
+[Concepto.tbl/NoPedirCfdiMavi]
+Clave=NoPedirCfdiMavi
+Nombre=No Pedir CFDI MAVI
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionDespliege=Info.Modulo=<T>GAS<T>
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+
+
+

@@ -1,0 +1,132 @@
+[Forma]
+Clave=RM1069ResumenCtasResulContablefrm
+Nombre=<T>Resumen Cuentas de Resultado Contable<T>
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=(Variables)
+CarpetaPrincipal=(Variables)
+PosicionInicialAlturaCliente=224
+PosicionInicialAncho=389
+BarraAcciones=S
+AccionesTamanoBoton=15x5
+ListaAcciones=Aceptar<BR>cerrar<BR>Excel
+PosicionInicialIzquierda=463
+PosicionInicialArriba=103
+AccionesCentro=S
+BarraHerramientas=S
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Arriba
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Info.Periodo<BR>Info.Ano
+CarpetaVisible=S
+FichaMarco=S
+[(Variables).Info.Periodo]
+Carpeta=(Variables)
+Clave=Info.Periodo
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[(Variables).Info.Ano]
+Carpeta=(Variables)
+Clave=Info.Ano
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Aceptar.asig]
+Nombre=asig
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Aceptar.cerrar]
+Nombre=cerrar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+EjecucionCondicion=ConDatos(Info.Ano) y  ConDatos(Info.Periodo)
+EjecucionMensaje=<T>Debes Seleccionar Periodo Y Ejercicio para Continuar<T>
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=23
+NombreDesplegar=&Aceptar
+Multiple=S
+EnBarraAcciones=S
+ListaAccionesMultiples=asig<BR>cerrar
+Activo=S
+Visible=S
+NombreEnBoton=S
+[Acciones.cerrar]
+Nombre=cerrar
+Boton=36
+NombreEnBoton=S
+NombreDesplegar=&Cancelar
+EnBarraAcciones=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Excel.asigna]
+Nombre=asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Excel.xls]
+Nombre=xls
+Boton=0
+TipoAccion=Reportes Excel
+ClaveAccion=RM1069ResumenCtasResulContableXlsrep
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionCondicion=ConDatos(Info.Ano) y  ConDatos(Info.Periodo)
+EjecucionMensaje=<T>Seleccione Periodo Y Ejercicio para Enviar a Excel<T>
+EjecucionConError=S
+[Acciones.Excel]
+Nombre=Excel
+Boton=115
+NombreEnBoton=S
+NombreDesplegar=Enviar a E&xcel
+Multiple=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+ListaAccionesMultiples=asigna<BR>xls<BR>cerrar
+Activo=S
+Visible=S
+[Acciones.Excel.cerrar]
+Nombre=cerrar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

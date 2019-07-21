@@ -1,0 +1,55 @@
+[Vista]
+Icono=0
+Clave=RM0949CteInstListaVis
+Nombre=Listado de Clientes
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cliente<BR>Nombre<BR>Tipo<BR>Categoria<BR>Estatus
+CamposBusquedaRapida=Cliente<BR>Nombre<BR>RFCInstitucion<BR>Nomina
+ControlEstatus=S
+CampoEstatus=Estatus
+SQL=SELECT <BR>Cliente, Nombre, Tipo, Estatus, Categoria<BR>FROM (<BR><TAB>SELECT <BR><TAB>C.Cliente,<BR><TAB>C.Nombre,<BR><TAB>C.Tipo,<BR><TAB>C.Estatus,<BR><TAB>CEA.Categoria,<BR><TAB>C.PersonalApellidoPaterno<BR><TAB>FROM dbo.Cte C<BR><TAB>INNER JOIN (SELECT Cliente, VCM.Categoria<BR><TAB><TAB><TAB><TAB>FROM dbo.CteEnviarA CEA<BR><TAB><TAB><TAB><TAB>INNER JOIN dbo.VentasCanalMAVI VCM ON CEA.ID = VCM.ID<BR><TAB><TAB><TAB><TAB>GROUP BY Cliente, VCM.Categoria<BR><TAB><TAB><TAB><TAB>) AS CEA ON C.Cliente = CEA.Cliente<BR><TAB>WHERE C.Cliente IS NOT NULL<BR><TAB>{Si(ConDatos(Info.CategoriaCanal),<T>AND CEA.Categoria=<T>+Comillas(Info.CategoriaCanal),<T><T>)}<BR><TAB>{Si(ConDatos(Info.CteGrupo),<T>AND CEA.SeccionCobranzaMAVI=<T>+Comillas(Info.CteGrupo),<T><T>)}<BR><TAB>GROUP BY <BR><TAB>C.Cliente<CONTINUA>
+SQL002=<CONTINUA>,<BR><TAB>C.Nombre,<BR><TAB>C.Tipo,<BR><TAB>C.Estatus,<BR><TAB>CEA.Categoria,<BR><TAB>C.PersonalApellidoPaterno<BR>) AS Cte
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cliente
+[Nombre]
+Clave=Nombre
+Nombre=Nombre del Cliente
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+TipoDatos=Texto
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=Tipo
+TipoDatos=Texto
+[Categoria]
+Clave=Categoria
+Nombre=Categoría de Canal de Venta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Categoria
+TipoDatos=Texto
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=Estatus
+TipoDatos=Texto

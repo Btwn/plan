@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1100XmlVis
+Nombre=XML
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=FolioFiscal
+SQL=Select SUBSTRING(FolioFiscal,25,12) AS FolioFiscal From RM1100RepXmlGasto
+[FolioFiscal]
+Clave=FolioFiscal
+Nombre=FolioFiscal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=36
+TipoDatos=Texto
+Tamano=36
+ClaveBDE=FolioFiscal

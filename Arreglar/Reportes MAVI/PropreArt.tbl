@@ -1,0 +1,150 @@
+[Tabla]
+Icono=0
+Clave=PropreArt
+Nombre=PropreArt
+Archivo=PropreArt
+Modulos=(Todos)
+Singular=PropreArt
+TipoTabla=General
+ListaCampos=Art<BR>Costo<BR>PorcentajeBonificacion<BR>ApoyoActivo<BR>ApoyoFuturo<BR>GarantiaAmpliada<BR>NuevoCosto<BR>ArticuloTitular<BR>TipoArticulo<BR>SubFamilia
+LlavePrimaria=Art
+ListaRelaciones=Art<BR>Art2<BR>Art3<BR>PropreArtExistencia<BR>ArtCostoEmpresa
+SQL=SELECT<BR>  Art,<BR>  Costo,<BR>  NuevoCosto,<BR>  PorcentajeBonificacion,<BR>  ApoyoActivo,<BR>  ApoyoFuturo,<BR>  ArticuloTitular,<BR>  TipoArticulo,<BR>  SubFamilia,<BR>  GarantiaAmpliada<BR><BR>FROM<BR>  PropreArt
+[Art]
+Clave=Art
+Nombre=Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+TipoDatos=Texto
+[Costo]
+Clave=Costo
+Nombre=Costo Propre
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[PorcentajeBonificacion]
+Clave=PorcentajeBonificacion
+Nombre=% Bonificación
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Articulos<T>,PorcentajeBonificacion) <> NULO
+[ApoyoActivo]
+Clave=ApoyoActivo
+Nombre=$ Apoyo Activo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Apoyo Activo debe ser Menor al Costo<T>
+ValidacionCondicion=Costo > ApoyoActivo
+[ApoyoFuturo]
+Clave=ApoyoFuturo
+Nombre=$ Apoyo Futuro
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Apoyo Futuro debe ser Menor al Costo<T>
+ValidacionCondicion=Costo > ApoyoFuturo
+[GarantiaAmpliada]
+Clave=GarantiaAmpliada
+Nombre=Garantia Ampliada
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreArtListaGarantias
+AyudaVista=Art
+AyudaCampo=Art.Articulo
+ValidacionConCondiciones=S
+ValidacionMensajeError=//Asigna(Temp.Texto, SQL(<T>SELECT PrefijoGAmpliado FROM ProPreEmpresaCFG WHERE Empresa = :tEmp<T>, Empresa) )<BR>Si<BR>  Info.Articulo = NULO<BR>Entonces<BR>  <T>El Articulo Garantia no Existe<T>  <BR>Sino<BR>  Si<BR>    Temp.Texto <> Izquierda(GarantiaAmpliada,  Longitud( Temp.Texto ) )<BR>  Entonces<BR>    <T>Prefijo Incorrecto<T><BR>  Fin<BR>Fin
+ValidacionCondicion=Asigna(Temp.Texto, SQL(<T>SELECT PrefijoGAmpliado FROM ProPreEmpresaCFG WHERE Empresa = :tEmp<T>, Empresa) )<BR>Asigna(Info.Articulo, SQL(<T>SELECT Articulo FROM Art WHERE Linea = :tFamilia AND Articulo = :tArticulo AND Estatus = :tEstatus<T>,Info.PropreFamiliaGarantias,GarantiaAmpliada, EstatusAlta))<BR>(Info.Articulo <> NULO) y<BR>(Temp.Texto = Izquierda(GarantiaAmpliada,  Longitud( Temp.Texto ) ) )
+[Relaciones.Art]
+TipoRelacion=Forzosa
+LlaveLocal=Art
+Clave=Art
+TablaRemota=Art
+LlaveRemota=Articulo
+[NuevoCosto]
+Clave=NuevoCosto
+Nombre=Nuevo Costo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[ArticuloTitular]
+Clave=ArticuloTitular
+Nombre=Articulo Titular
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreArtListaTitular
+AyudaVista=Art
+AyudaCampo=Art.Articulo
+ValidacionUsaTabla=S
+ValidacionTablas=Art3
+ValidacionConCondiciones=S
+AyudaRefrescar=S
+ValidacionCondicion=Si TipoArticulo = <T>A<T> Entonces<BR>  SQL(<T>SELECT Articulo FROM Art WHERE Familia <> :tFamilia AND Articulo = :tArticulo AND Articulo <> :tArt<T>,Info.PropreFamiliaGarantias,ArticuloTitular,Art) <> NULO<BR>Sino<BR>  Falso<BR>Fin
+TipoDatos=Texto
+[TipoArticulo]
+Clave=TipoArticulo
+Nombre=Tipo Articulo
+Visible=S
+TamanoValidacion=1
+Tamano=1
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+OpcionesValidar=S
+Ayuda=Solo admite los valores <T>T<T> o <T>A<T>
+AlCambiar=Si<BR>  (TipoArticulo noen (<T>T<T>,<T>t<T>,<T>A<T>,<T>a<T>))<BR>Entonces<BR> // Precaucion (<T>Valor Incorrecto<T>)<BR>  VerMensaje( <T>Error<T>,<T>Valor Incorrecto<T> )<BR>Fin
+Alineacion=Centrado
+ListaOpciones=T<BR>A
+[SubFamilia]
+Clave=SubFamilia
+Nombre=Sub Linea
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+[Relaciones.Art2]
+TipoRelacion=Opcional
+LlaveLocal=GarantiaAmpliada
+Clave=Art2
+TablaRemota=Art2
+LlaveRemota=Articulo
+[Relaciones.Art3]
+TipoRelacion=Opcional
+LlaveLocal=ArticuloTitular
+Clave=Art3
+TablaRemota=Art3
+LlaveRemota=Articulo
+[Relaciones.PropreArtExistencia]
+TipoRelacion=Opcional
+LlaveLocal=Art
+Clave=PropreArtExistencia
+TablaRemota=PropreArtExistencia
+LlaveRemota=Articulo
+[Relaciones.ArtCostoEmpresa]
+TipoRelacion=Opcional
+LlaveLocal=<T>{Empresa}<T><BR>Art
+Clave=ArtCostoEmpresa
+TablaRemota=ArtCostoEmpresa
+LlaveRemota=Empresa<BR>Articulo

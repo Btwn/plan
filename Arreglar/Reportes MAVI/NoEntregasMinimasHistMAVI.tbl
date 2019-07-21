@@ -1,0 +1,35 @@
+[Tabla]
+Icono=0
+Clave=NoEntregasMinimasHistMAVI
+Nombre=NoEntregasMinimasHistMAVI
+Archivo=NoEntregasMinimasHistMAVI
+Modulos=(Todos)
+Singular=NoEntregasMinimasHistMAVI
+TipoTabla=General
+ListaCampos=ID<BR>NoEntregasMinimas<BR>Fecha
+LlavePrimaria=ID
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  NoEntregasMinimas,<BR>  Fecha<BR><BR>FROM<BR>  NoEntregasMinimasHistMAVI
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[NoEntregasMinimas]
+Clave=NoEntregasMinimas
+Nombre=No. Entregas Min.
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmmm/aaaa (hh:mm:ss am/pm)
+Alineacion=Derecha

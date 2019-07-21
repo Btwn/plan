@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviServicasaGrupoCalificacionesVis
+Nombre=Grupos de Calificaciones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Grupo
+SQL=Select Distinct(substring(Grupo,1,1)) Grupo<BR>From MaviClaveSeguimiento<BR>Where Modulo=<T>VTAS<T><BR>order by grupo
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Grupo

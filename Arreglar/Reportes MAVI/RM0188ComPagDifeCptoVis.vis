@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0188ComPagDifeCptoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Condicion
+Nombre=RM0188ComPagDifeCptoVis
+Singular=RM0188ComPagDifeCptoVis
+SQL=select Distinct Condicion <BR>from condicion<BR>WHERE Grupo IN (<T>MAYOREO<T>,<T>MENUDEO<T>)<BR>order by Condicion
+[Condicion]
+Clave=Condicion
+Nombre=Condición de Pago
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Condicion

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MAVICompetenciaLista
+Nombre=MAVICompetenciaLista
+Modulos=(Todos)
+Singular=MAVICompetenciaLista
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Respuesta
+SQL=SELECT<BR>  Distinct Respuesta<BR>FROM<BR>  EvaluacionCto<BR>WHERE<BR>  Punto = <T>Nombre de Empresa<T>
+[Respuesta]
+Clave=Respuesta
+Nombre=Respuesta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Respuesta

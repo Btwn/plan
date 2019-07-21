@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=RM1101ClavesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Calificacion<BR>Nombre
+SQL=select Valor As Calificacion, <BR>Nombre  from TablaStD Where TablaSt=<T>RM1101Rechazos<T>
+[Calificacion]
+Clave=Calificacion
+Nombre=Calificacion
+Visible=S
+TamanoValidacion=30
+Tamano=100
+ClaveBDE=Calificacion
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=30
+Tamano=100
+ClaveBDE=Nombre

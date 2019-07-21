@@ -1,0 +1,46 @@
+[Dialogo]
+Clave=CFDFlexMenuCfgConcepto
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+
+ListaAcciones=Venta<BR>CXC
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.Venta]
+Nombre=Venta
+Boton=0
+NombreDesplegar=&Ventas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexConcepto
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>VTAS<T>)<BR>Asigna(Info.Descripcion, <T>Ventas<T>)
+[Acciones.CXC]
+Nombre=CXC
+Boton=0
+NombreDesplegar=Cuentas por &Cobrar
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexConcepto
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo,<T>CXC<T>)<BR>Asigna(Info.Descripcion, <T>Cuentas por Cobrar<T>)
+
+[Dialogo.ListaAcciones]
+(Inicio)=Venta
+Venta=CXC
+CXC=(Fin)

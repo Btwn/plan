@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=GrupoFabricante
+Nombre=GrupoFabricante
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=grupo
+SQL=select distinct grupo from fabricante
+LlavePrimaria=grupo
+[grupo]
+Clave=grupo
+Nombre=grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=grupo

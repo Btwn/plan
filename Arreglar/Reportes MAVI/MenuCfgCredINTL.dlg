@@ -1,0 +1,56 @@
+[Dialogo]
+Clave=MenuCfgCredINTL
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=ParametrosINTL<BR>CatalogosINTL<BR>PuntosMOPINTL<BR>PonderacionXtipoFacturaINtl
+PosicionInicialIzquierda=386
+PosicionInicialArriba=308
+PosicionInicialAlturaCliente=152
+PosicionInicialAncho=500
+[Acciones.ParametrosINTL]
+Nombre=ParametrosINTL
+Boton=0
+NombreDesplegar=&Parametros INTL BURO
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=expresion
+Expresion=Ejecutar(<T>PlugIns\INTL203.exe<T>)
+Activo=S
+Visible=S
+[Acciones.CatalogosINTL]
+Nombre=CatalogosINTL
+Boton=0
+NombreDesplegar=&Catalogos INTL BURO
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=expresion
+Activo=S
+Visible=S
+Expresion=Ejecutar(<T>PlugIns\INTL204.exe<T>)
+[Acciones.PuntosMOPINTL]
+Nombre=PuntosMOPINTL
+Boton=0
+NombreDesplegar=&Puntos MOP INTL
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=formas
+ClaveAccion=PuntosMOPMAVIIntl
+Activo=S
+Visible=S
+[Acciones.PonderacionXtipoFacturaINtl]
+Nombre=PonderacionXtipoFacturaINtl
+Boton=0
+NombreDesplegar=Ponderacion &Intl
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=formas
+ClaveAccion=PonderacionxTipoFacturaMAVIIntl
+Activo=S
+Visible=S

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1100RFCReceptorVis
+Nombre=RFC Receptor
+Modulos=GAS
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=RFCReceptor
+CamposBusquedaRapida=RFCReceptor
+SQL=select distinct RFCReceptor From RM1100RepXmlGasto<BR>Order By 1
+[RFCReceptor]
+Clave=RFCReceptor
+Nombre=RFCReceptor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=13
+TipoDatos=Texto
+Tamano=13
+ClaveBDE=RFCReceptor

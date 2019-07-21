@@ -1,0 +1,31 @@
+[Vista]
+Icono=0
+Clave=DM0213CatalogoProveedoresVIS
+Nombre=DM0213 Catalogo Proveedores  <T> VEHICULO <T>
+Modulos=(Todos)
+CamposBusquedaRapida=Proveedores
+ListaCampos=Proveedores<BR>Nombre
+TipoTabla=Movimientos
+LlavePrimaria=Proveedores
+VistaIndependiente=S
+SQL=SELECT  DISTINCT  CF.Proveedores <BR>                , CP.Nombre<BR><BR>FROM DM0213ConsultaFinal CF LEFT JOIN PROV CP ON CF.Proveedores = CP.Proveedor
+[Proveedores]
+Clave=Proveedores
+Nombre=Proveedores
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Proveedores
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

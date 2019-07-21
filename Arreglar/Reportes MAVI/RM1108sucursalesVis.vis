@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=RM1108sucursalesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sucursal
+CamposBusquedaRapida=Sucursal
+ControlSucursal=S
+CampoSucursal=Sucursal
+Nombre=RM1108SucursalesVis
+LlavePrimaria=Sucursal
+SQL=select Sucursal from Sucursal where  Tipo =<T>PISO<T> and Sucursal <> 94 Or Sucursal=39
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal

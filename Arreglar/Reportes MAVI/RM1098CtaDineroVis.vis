@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1098CtaDineroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CtaDinero
+CamposBusquedaRapida=CtaDinero
+SQL=select CtaDinero from CtaDinero Where Categoria=<T>BANCO<T><BR>and Ctadinero in (select distinct CtaDinero from RM1098CtasDinero )<BR>ORder By CtaDinero
+[CtaDinero]
+Clave=CtaDinero
+Nombre=CtaDinero
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=CtaDinero

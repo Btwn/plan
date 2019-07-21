@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=FactorCosteoFleteMagisterio
+Nombre=FactorCosteoFleteMagisterio
+Modulos=(Todos)
+Singular=FactorCosteoFleteMagisterio
+ListaTablas=FactorCosteoFleteMagisterio
+TablaPrincipal=FactorCosteoFleteMagisterio
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=FactorCosteoFleteMagisterio.FactorCosteoMagisterio
+SQL=SELECT<BR>  FactorCosteoFleteMagisterio.FactorCosteoMagisterio<BR><BR>FROM<BR>  FactorCosteoFleteMagisterio
+[FactorCosteoFleteMagisterio.FactorCosteoMagisterio]
+Clave=FactorCosteoFleteMagisterio.FactorCosteoMagisterio
+Nombre=Factor Costeo Flete Magisterio
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+LigaTabla=FactorCosteoFleteMagisterio
+LigaCampo=FactorCosteoMagisterio
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=FactorCosteoMagisterio

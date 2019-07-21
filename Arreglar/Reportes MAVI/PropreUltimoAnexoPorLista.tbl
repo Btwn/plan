@@ -1,0 +1,32 @@
+[Tabla]
+Icono=0
+Clave=PropreUltimoAnexoPorLista
+Nombre=PropreUltimoAnexoPorLista
+Archivo=PropreUltimoAnexoPorLista
+Modulos=(Todos)
+Singular=PropreUltimoAnexoPorLista
+TipoTabla=General
+ListaCampos=Lista<BR>UltimoAnexo<BR>Fecha
+LlavePrimaria=Lista
+SQL=SELECT<BR>  Lista,<BR>  UltimoAnexo,<BR>  Fecha<BR><BR>FROM<BR>  PropreUltimoAnexoPorLista
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[UltimoAnexo]
+Clave=UltimoAnexo
+Nombre=Folio Ultimo Anexo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Fecha]
+Clave=Fecha
+Nombre=Fecha Ultimo Anexo
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora

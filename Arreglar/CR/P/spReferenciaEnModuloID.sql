@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spReferenciaEnModuloID
+@Referencia 	varchar(50),
+@Modulo		varchar(5),
+@ID		int = NULL	OUTPUT,
+@EnSilencio	bit = 1
+
+AS BEGIN
+DECLARE
+@Mov	varchar(20),
+@MovID	varchar(20)
+EXEC spReferenciaEnMovMovID @Referencia, @Mov OUTPUT, @MovID OUTPUT
+EXEC spMovInfo @ID OUTPUT, @Modulo, @Mov = @Mov, @MovID = @MovID
+IF @EnSilencio = 0 SELECT 'ID' = @ID
+RETURN
+END
+

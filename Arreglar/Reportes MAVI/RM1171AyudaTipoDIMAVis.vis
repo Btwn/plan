@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM1171AyudaTipoDIMAVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=TipoDIMA
+SQL=SELECT DISTINCT TipoDIMA FROM VTASCLimTipoDIMA ORDER BY TipoDIMA
+[TipoDIMA]
+Clave=TipoDIMA
+Nombre=TipoDIMA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=TipoDIMA

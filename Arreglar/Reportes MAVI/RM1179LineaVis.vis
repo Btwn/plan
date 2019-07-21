@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM1179LineaVis
+Nombre=Linea
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=SELECT DISTINCT Linea <BR>FROM Art WITH(NOLOCK)<BR>WHERE Categoria = <T>Venta<T> AND Linea <> <T><T> AND Linea IS NOT NULL<BR>AND Grupo = <T>MERCANCIA DE LINEA<T><BR>{Si(ConDatos(Mavi.RM1179Familia), <T>And Familia IN(<T>+Mavi.RM1179Familia+<T>)<T>, <T><T>)}<BR>ORDER BY Linea ASC
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

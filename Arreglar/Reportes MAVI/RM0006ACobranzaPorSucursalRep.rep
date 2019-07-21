@@ -1,0 +1,45 @@
+[Reporte]
+Clave=RM0006ACobranzaPorSucursalRep
+Nombre=RM0006A CobroPorSucursal
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=RM0006ACobroPorSucursalfRM
+BarraHerramientas=S
+Menus=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+Submenu=CXC Menudeo Mavi
+[Vista]
+Icono=0
+Clave=RM0006ACobranzaPorSucursalRep
+UsoCapturas=S
+UsoReportes=S
+[Formato]
+VentanaIzquierda=320
+VentanaArriba=302
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80

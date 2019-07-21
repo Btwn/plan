@@ -1,0 +1,23 @@
+
+[Vista]
+Icono=0
+Clave=RM1199FamArtvis
+Modulos=(Todos)
+TipoTabla=General
+Nombre=Familia Articulos
+VistaIndependiente=S
+
+ListaCampos=Valor
+LlavePrimaria=Valor
+
+SQL=select distinct Valor from TablaStD<BR>WHERE TablaSt =<T>TIEMPO VIDA ARTICULOS<T><BR><BR>{Si(ConDatos(Mavi.RM1199LineaArt), <T> And Nombre IN(<T>+Mavi.RM1199LineaArt+<T>)<T>, <T><T>)}<BR>order by Valor
+[Valor]
+Clave=Valor
+Nombre=Valor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+ClaveBDE=Valor

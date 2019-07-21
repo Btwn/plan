@@ -1,0 +1,32 @@
+[Dialogo]
+Clave=CteRelacionConfirmar
+Nombre=Confirmar
+Icono=5
+TipoDialogo=Mensaje
+Modulos=(Todos)
+Fuente={MS Sans Serif, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Aceptar
+PosicionInicialIzquierda=314
+PosicionInicialArriba=318
+PosicionInicialAltura=131
+PosicionInicialAncho=396
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=Centrado
+VentanaExclusiva=S
+VentanaConIcono=S
+VentanaEscCerrar=
+VentanaSiempreAlFrente=S
+TipoMensaje=General
+Mensaje=<T>Los Datos han sido Eliminados<T>
+
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=0
+NombreDesplegar=&Aceptar
+EnBarraAcciones=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

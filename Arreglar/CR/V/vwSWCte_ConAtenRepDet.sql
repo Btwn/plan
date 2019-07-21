@@ -1,0 +1,20 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW vwSWCte_ConAtenRepDet
+AS
+SELECT
+S.ID,
+S.Comentarios,
+RTRIM(S.Mov) + ' ' + RTRIM(ISNULL(MovID,'')) Titulo,
+RTRIM(ISNULL(S.Origen,'')) + ' ' + RTRIM(ISNULL(S.OrigenID,'')) Origen,
+(SELECT RTRIM(Mov)+' '+RTRIM(ISNULL(MovID,''))
+FROM Soporte WHERE OrigenTipo = 'ST' AND Empresa = S.Empresa AND Origen=S.Mov AND OrigenID = S.MovID) Destino
+FROM Soporte S LEFT JOIN Recurso R ON S.UsuarioResponsable = R.Recurso
+WHERE S.Submodulo = 'ST'
+

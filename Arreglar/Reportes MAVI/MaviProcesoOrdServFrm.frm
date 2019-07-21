@@ -1,0 +1,105 @@
+[Forma]
+Clave=MaviProcesoOrdServFrm
+Nombre=Orden de Servicio
+Icono=675
+Modulos=(Todos)
+MovModulo=(Todos)
+ListaCarpetas=(Variables)
+CarpetaPrincipal=(Variables)
+PosicionInicialIzquierda=538
+PosicionInicialArriba=426
+PosicionInicialAlturaCliente=143
+PosicionInicialAncho=203
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaBloquearAjuste=S
+VentanaAvanzaTab=S
+VentanaEstadoInicial=Normal
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+BarraHerramientas=S
+ListaAcciones=Preliminar<BR>Cerrar
+ExpresionesAlMostrar=Asigna( Mavi.ListOrdSer, Nulo )<BR>Asigna( Mavi.EligeDevRec,Nulo)
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=152
+FichaNombres=Arriba
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Mavi.ListOrdSer<BR>Mavi.EligeDevRec
+CarpetaVisible=S
+[(Variables).Mavi.ListOrdSer]
+Carpeta=(Variables)
+Clave=Mavi.ListOrdSer
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[(Variables).Mavi.EligeDevRec]
+Carpeta=(Variables)
+Clave=Mavi.EligeDevRec
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+EspacioPrevio=S
+[Acciones.Preliminar.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Preliminar.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+ConCondicion=S
+EjecucionCondicion=ConDatos( Mavi.ListOrdSer)
+EjecucionMensaje=<T>Falta Seleccionar Informacion<T>
+EjecucionConError=S
+Visible=S
+[Acciones.Preliminar]
+Nombre=Preliminar
+Boton=6
+NombreDesplegar=&Preliminar
+Multiple=S
+EnMenu=S
+ListaAccionesMultiples=Asignar<BR>Cerrar
+Activo=S
+Visible=S
+NombreEnBoton=S
+EnBarraHerramientas=S
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+EnMenu=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+

@@ -1,0 +1,35 @@
+
+[Vista]
+Icono=0
+Clave=RM1189SucursalesVentaVis
+Nombre=Sucursales de Venta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Sucursal<BR>NombreAlm
+LlavePrimaria=Sucursal
+CamposBusquedaRapida=Sucursal<BR>NombreAlm
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=SELECT * FROM (<BR>SELECT <BR><TAB>Sucursal.Sucursal AS Sucursal, <BR><TAB>Alm.Nombre AS NombreAlm<BR>FROM <BR><TAB>Sucursal<TAB><BR>JOIN Alm<BR><TAB>ON Alm.Sucursal = Sucursal.Sucursal<BR><TAB><TAB>AND Alm.Almacen = Sucursal.AlmacenPrincipal<TAB><TAB><BR>WHERE <BR><TAB>Sucursal.AlmacenPrincipal <> <T>V00196<T><BR><TAB>AND Alm.Estatus = <T>ALTA<T><BR><TAB>AND Sucursal.Estatus = <T>ALTA<T><BR><TAB>AND Sucursal.Tipo =<T>PISO<T><BR><TAB>)A<BR>ORDER BY<BR><TAB>A.Sucursal
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal
+
+[NombreAlm]
+Clave=NombreAlm
+Nombre=NombreAlm
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreAlm

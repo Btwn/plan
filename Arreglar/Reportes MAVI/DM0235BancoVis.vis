@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0235BancoVis
+Nombre=DM0235 Bancos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Banco
+SQL=select institucion As Banco From InstitucionFin With(NoLock)
+[Banco]
+Clave=Banco
+Nombre=Banco
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Banco

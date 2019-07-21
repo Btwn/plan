@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0966VTASTipoVtasVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=TipoComision
+Nombre=RM0966VTASTipoVtasVis
+SQL=<BR>SELECT <T>REACTIVACION<T> AS TipoComision<BR>UNION<BR>SELECT <T>INSTITUCIONES<T> AS TipoComision<BR>UNION<BR>SELECT <T>CAMBACEO<T> AS TipoComision<BR>UNION<BR>SELECT <T>AVANZADA<T> AS TipoComision
+[TipoComision]
+Clave=TipoComision
+Nombre=Tipo de Sucursal
+Visible=S
+TamanoValidacion=20
+Tamano=13
+ClaveBDE=TipoComision
+TipoDatos=Texto

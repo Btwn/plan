@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0000ComsArtGrupVis
+Nombre=Grupo de Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Grupo
+CamposBusquedaRapida=Grupo
+SQL=SELECT DISTINCT(Grupo) <BR>FROM Art<BR>WHERE Art.Grupo IS NOT NULL<BR>{Si(Condatos(Mavi.RM0000ArtCatLig) ,<T>AND Art.Categoria In (SELECT Categoria FROM ArtCat WHERE Categoria=<T>+Comillas(Mavi.RM0000ArtCatLig)+<T>)<T>,<T><T>)}<BR>{Si(Condatos(Mavi.RM0000ArtFamLig) ,<T>AND Art.Familia  In (SELECT Familia FROM ArtFam WHERE Familia=<T>+Comillas(Mavi.RM0000ArtFamLig)+<T>)<T>,<T><T>)}<BR>{Si(Condatos(Mavi.RM0000ArtLinLig) ,<T>AND Art.Linea In (SELECT Linea FROM ArtLinea WHERE Linea=<T>+Comillas(Mavi.RM0000ArtLinLig)+<T>)<T>,<T><T>)}<BR>ORDER BY Grupo ASC
+[Grupo]
+Clave=Grupo
+Nombre=Lista de Grupos
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Grupo

@@ -1,0 +1,28 @@
+
+[Tabla]
+Icono=0
+Clave=DM0345COMSFamiliasEImagenesAppDimaTbl
+Archivo=COMSDFamiliasImagenesAppDima
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Familia<BR>NombreImagen
+LlavePrimaria=Familia<BR>NombreImagen
+SQL=SELECT<BR>  Familia,<BR>  NombreImagen<BR><BR>  FROM COMSDFamiliasImagenesAppDima
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>SELECT DISTINCT Familia<BR>             FROM Art WITH(NOLOCK)<BR>             WHERE Grupo = :tGrupo<BR>             AND Categoria = :tCategoria<BR>             AND Estatus IN (:tEstatusUno,:tEstatusDos)<BR>             AND LEN(Familia) > 0<BR>             ORDER BY Familia<T>,<T>MERCANCIA DE LINEA<T>,<T>VENTA<T>,<T>ALTA<T>,<T>BLOQUEADO<T>)
+[NombreImagen]
+Clave=NombreImagen
+Nombre=Nombre De La Imagen
+Visible=S
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100

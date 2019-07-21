@@ -1,0 +1,121 @@
+[Forma]
+Clave=RM1075AutSolDevSUCFrm
+Nombre=RM1075 Sucursales
+Icono=23
+Modulos=VTAS
+ListaCarpetas=RM1075AutSolDevSUCVis
+CarpetaPrincipal=RM1075AutSolDevSUCVis
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=322
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=479
+PosicionInicialArriba=356
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar
+[RM1075AutSolDevSUCVis]
+Estilo=Iconos
+Clave=RM1075AutSolDevSUCVis
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1075AutSolDevSUCVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosSubTitulo=<T>Sucursal<T>
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Nombre
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+CarpetaVisible=S
+MenuLocal=S
+IconosNombre=RM1075AutSolDevSUCVis:Sucursal
+ListaAcciones=Seleccionar Todo<BR>Quitar Seleccion
+[RM1075AutSolDevSUCVis.Nombre]
+Carpeta=RM1075AutSolDevSUCVis
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+[RM1075AutSolDevSUCVis.Columnas]
+0=56
+1=228
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Seleccionar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Variables Asignar<BR>Expresion<BR>Seleccionar/Resultado
+[Acciones.Seleccionar.Variables Asignar]
+Nombre=Variables Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Expresion]
+Nombre=Expresion
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Lista<T>)
+[Acciones.Seleccionar.Seleccionar/Resultado]
+Nombre=Seleccionar/Resultado
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM1075Sucursal,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>)
+[Acciones.Seleccionar Todo]
+Nombre=Seleccionar Todo
+Boton=0
+NombreDesplegar=Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.Quitar Seleccion]
+Nombre=Quitar Seleccion
+Boton=0
+NombreDesplegar=Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+

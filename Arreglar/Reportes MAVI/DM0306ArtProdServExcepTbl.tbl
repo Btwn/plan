@@ -1,0 +1,22 @@
+[Tabla]
+Icono=0
+Clave=DM0306ArtProdServExcepTbl
+Nombre=DM0306ArtProdServExcep
+Archivo=DM0306ArtProdServExcep
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Articulo<BR>CveProdServ
+LlavePrimaria=CveProdServ
+SQL=SELECT<BR>  Articulo,<BR>  CveProdServ<BR><BR>FROM<BR>  DM0306ArtProdServExcep
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+[CveProdServ]
+Clave=CveProdServ
+Nombre=CveProdServ
+Visible=S
+TamanoValidacion=10
+Tamano=10

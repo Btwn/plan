@@ -1,0 +1,34 @@
+[Dialogo]
+Clave=DM0287menuliberadordlg
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=DM0287Parametros<BR>DM0287LineasCred
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.DM0287Parametros]
+Nombre=DM0287Parametros
+Boton=0
+NombreDesplegar=Parametros de Configuracion
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0287ParametrosFrm
+Activo=S
+Visible=S
+[Acciones.DM0287LineasCred]
+Nombre=DM0287LineasCred
+Boton=0
+NombreDesplegar=Lineas De Credito a Asignar
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0287lineasCredFrm
+Activo=S
+Visible=S

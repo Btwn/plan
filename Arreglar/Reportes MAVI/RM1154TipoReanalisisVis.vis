@@ -1,0 +1,34 @@
+
+[Vista]
+Icono=1
+Clave=RM1154TipoReanalisisVis
+Modulos=(Todos)
+
+ListaCampos=Nombre<BR>Valor
+Nombre=Tipos de Reanalisis
+VistaIndependiente=S
+
+SQL=SELECT Valor,<BR><TAB>Nombre<BR>FROM TablaStD <BR>WHERE <BR><TAB>TablaSt = <T>EVENTOS REANALISIS<T>
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+ClaveBDE=Nombre
+
+
+
+[Valor]
+Clave=Valor
+Nombre=Valor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+ClaveBDE=Valor

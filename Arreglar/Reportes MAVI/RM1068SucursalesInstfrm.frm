@@ -1,0 +1,112 @@
+[Forma]
+Clave=RM1068SucursalesInstfrm
+Nombre=Sucursales Instituciones
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=lista
+CarpetaPrincipal=lista
+PosicionInicialAlturaCliente=286
+PosicionInicialAncho=278
+PosicionInicialIzquierda=713
+PosicionInicialArriba=328
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Sel
+[lista]
+Estilo=Iconos
+Clave=lista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1068SucursalesInstVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Sucursal
+CarpetaVisible=S
+PestanaOtroNombre=S
+PestanaNombre=Sucursales Instituciones
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+MenuLocal=S
+ListaAcciones=SelTodo<BR>Quitar
+[lista.Sucursal]
+Carpeta=lista
+Clave=Sucursal
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=30
+ColorFondo=Blanco
+ColorFuente=Negro
+[lista.Columnas]
+0=-2
+[Acciones.Sel.asig]
+Nombre=asig
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Sel.resgis]
+Nombre=resgis
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+Activo=S
+Visible=S
+[Acciones.Sel]
+Nombre=Sel
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=asig<BR>resgis<BR>Selec
+Activo=S
+Visible=S
+[Acciones.Sel.Selec]
+Nombre=Selec
+Boton=0
+TipoAccion=Ventana
+Activo=S
+Visible=S
+ClaveAccion=Seleccionar/Resultado
+Expresion=Asigna(Mavi.RM1068SucursalesInst,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>)
+[Acciones.SelTodo]
+Nombre=SelTodo
+Boton=0
+NombreDesplegar=Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.Quitar]
+Nombre=Quitar
+Boton=0
+NombreDesplegar=Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S

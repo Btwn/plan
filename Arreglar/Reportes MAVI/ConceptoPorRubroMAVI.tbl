@@ -1,0 +1,46 @@
+[Tabla]
+Icono=0
+Clave=ConceptoPorRubroMAVI
+Nombre=ConceptoPorRubroMAVI
+Archivo=ConceptoPorRubroMAVI
+Modulos=(Todos)
+Singular=ConceptoPorRubroMAVI
+TipoTabla=General
+ListaCampos=Rubro<BR>Concepto<BR>Orden
+LlavePrimaria=Rubro
+SQL=SELECT<BR>  Rubro,<BR>  Concepto, <BR>  Orden<BR><BR>FROM<BR>  ConceptoPorRubroMAVI
+[Rubro]
+Clave=Rubro
+Nombre=Rubro Embarque
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+Tamano=15
+Mayusculas=S
+Requerido=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+ListaOpciones=FLETE<BR>MANIOBRAS<BR>DESTINOS<BR>ENTREGAS<BR>OTROS
+[Concepto]
+Clave=Concepto
+Nombre=Concepto a Manejar
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Mayusculas=S
+Requerido=S
+AyudaEnCaptura=Vista
+AyudaForma=GastoConcepto
+AyudaVista=GastoConcepto
+AyudaCampo=Concepto
+TipoDatos=Texto
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Alineacion=Derecha

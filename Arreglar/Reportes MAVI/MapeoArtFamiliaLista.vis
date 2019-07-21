@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MapeoArtFamiliaLista
+Nombre=MapeoArtFamiliaLista
+Modulos=(Todos)
+Singular=MapeoArtFamiliaLista
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Familia
+SQL=SELECT DISTINCT<BR>Familia<BR>FROM Art<BR>WHERE Categoria = <T>{Mapeo.Categoria}<T> AND Grupo = <T>{Mapeo.Grupo}<T><BR>ORDER BY Familia
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

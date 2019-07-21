@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1132ZonaVis
+Nombre=RM1132ZonaVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Zona
+SQL=select Zona <BR>from DM0263DisSucGeo<BR>group by Zona<BR>order by Zona
+[Zona]
+Clave=Zona
+Nombre=Zona
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Zona

@@ -1,0 +1,20 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW MFAConceptoOpcional AS
+SELECT
+concepto_clave       = '(todos)',
+concepto_descripcion = NULL,
+concepto_tipo        = NULL
+UNION ALL
+SELECT
+concepto_clave,
+concepto_descripcion,
+concepto_tipo
+FROM MFAConcepto
+

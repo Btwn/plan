@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviCelulaVtasInstVis
+Nombre=Celulas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=equipo
+CamposBusquedaRapida=equipo
+SQL=declare @x varchar(150)<BR>set @x = <T>select Distinct Equipo from equipoagente where equipo like<T>  + <T><T><T><T> + <T>CEL<T> + substring(  {comillas(Mavi.GerenciaVI)}  ,4,1) + <T>%<T> + <T><T><T><T><BR>exec (@x)
+[equipo]
+Clave=equipo
+Nombre=equipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=equipo

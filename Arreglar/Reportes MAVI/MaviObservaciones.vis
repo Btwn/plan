@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviObservaciones
+Nombre=Observaciones
+Modulos=(Todos)
+Singular=Observacion
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=causa
+SQL=select distinct causa from embarqued
+[causa]
+Clave=causa
+Nombre=causa
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=causa

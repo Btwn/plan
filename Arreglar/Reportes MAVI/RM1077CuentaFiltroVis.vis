@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1077CuentaFiltroVis
+Nombre=RM1077CuentaFiltroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cuenta
+SQL=Select Distinct Cuenta From RMSAnaliticoBalance
+CamposBusquedaRapida=Cuenta
+[Cuenta]
+Clave=Cuenta
+Nombre=Cuenta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cuenta

@@ -1,0 +1,173 @@
+[Tabla]
+Icono=0
+Clave=DM0278HistCancelacionSegurosVidaTBL
+Archivo=DM0278HistCancelacionSegurosVida
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Mov<BR>MovID<BR>Saldo<BR>Motivos<BR>Cliente<BR>NombreCliente<BR>Telefono<BR>ImporteCancelacion<BR>NominaSolicitante<BR>NombreSolicitante<BR>ComentarioVentas<BR>MovCXC<BR>MovIDCXC<BR>ComentarioCobranza<BR>Pagado<BR>Estatus
+LlavePrimaria=ID
+ControlID=S
+ControlMov=S
+ControlMovID=S
+CampoID=ID
+CampoMov=Mov
+CampoMovID=MovID
+ListaRelaciones=RCXC
+SQL=SELECT<BR>  ID,<BR>  Mov,<BR>  MovID,<BR>  Saldo,<BR>  Motivos,<BR>  Cliente,<BR>  NombreCliente,<BR>  Telefono,<BR>  ImporteCancelacion,<BR>  NominaSolicitante,<BR>  NombreSolicitante,<BR>  ComentarioVentas,<BR>  MovCXC,<BR>  MovIDCXC,<BR>  ComentarioCobranza,<BR>  Pagado,<BR>  Estatus<BR><BR>FROM<BR>  DM0278HistCancelacionSegurosVida
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+[MovID]
+Clave=MovID
+Nombre=Seguro Vida
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ConRefrescar=S
+ListaRefrescar=Saldo<BR>Motivos<BR>Cliente<BR>NombreCliente<BR>Telefono<BR>ImporteCancelacion<BR>ComentarioVentas<BR>ComentarioCobranza<BR>Estatus
+CondicionEdicion=SQL(<T>select  dbo.FN_DM0278VerificarUsuarioAcceso(<T>+comillas(Usuario)+<T>)<T>)=1
+Mayusculas=S
+TipoDatos=Texto
+[Saldo]
+Clave=Saldo
+Nombre=Saldo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ValorRefrescar=SQL(<T>select Saldo from dbo.FN_DM0278DatosClienteCancelacionSeguroVida(<T>+comillas(MovID)+<T>)<T>)
+AlCambiar=SQL(<T>select Saldo from dbo.FN_DM0278DatosClienteCancelacionSeguroVida(<T>+comillas(MovID)+<T>)<T>)
+[Motivos]
+Clave=Motivos
+Nombre=Motivos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+ValorRefrescar=<T><T>
+CondicionEdicion=SQL(<T>select  dbo.FN_DM0278VerificarUsuarioAcceso(<T>+comillas(Usuario)+<T>)<T>)=1
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ListaOpciones=<BR>FACTURA UNICA<BR>NO ES LO QUE LE VENDIERON<BR>NO FIRMO SOBRE EL SEGURO<BR>NO PUEDE SEGUIR PAGANDOLO<BR>OTRO<BR>SEGURO PREACTIVADO<BR>YA CUENTA CON OTRO SEGURO<BR>YA NO LE INTERESA
+TipoDatos=Texto
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ValorRefrescar=SQL(<T>select CuentaCliente from dbo.FN_DM0278DatosClienteCancelacionSeguroVida(<T>+comillas(MovID)+<T>)<T>)
+AlCambiar=SQL(<T>select CuentaCliente from dbo.FN_DM0278DatosClienteCancelacionSeguroVida(<T>+comillas(MovID)+<T>)<T>)
+TipoDatos=Texto
+[NombreCliente]
+Clave=NombreCliente
+Nombre=NombreCliente
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ValorRefrescar=SQL(<T>select NombreCliente from dbo.FN_DM0278DatosClienteCancelacionSeguroVida(<T>+comillas(MovID)+<T>)<T>)
+AlCambiar=SQL(<T>select NombreCliente from dbo.FN_DM0278DatosClienteCancelacionSeguroVida(<T>+comillas(MovID)+<T>)<T>)
+TipoDatos=Texto
+[Telefono]
+Clave=Telefono
+Nombre=Telefono
+Visible=S
+TamanoValidacion=20
+Tamano=20
+CondicionEdicion=SQL(<T>select  dbo.FN_DM0278VerificarUsuarioAcceso(<T>+comillas(Usuario)+<T>)<T>)=1
+ValorRefrescar=<T><T>
+TipoDatos=Texto
+[ImporteCancelacion]
+Clave=ImporteCancelacion
+Nombre=ImporteCancelacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ValorRefrescar=SQL(<T>select  dbo.FN_DM0278DiasVencidosSeguroVida(<T>+comillas(MovID)+<T>)<T>)
+AlCambiar=SQL(<T>select  dbo.FN_DM0278DiasVencidosSeguroVida(<T>+comillas(MovID)+<T>)<T>)
+[NominaSolicitante]
+Clave=NominaSolicitante
+Nombre=NominaSolicitante
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=SQL(<T>select CuentaUsuario from dbo.FN_DM0278DatosPersonalCancelacionSeguroVida(<T>+comillas(Usuario)+<T>)<T>)
+TipoDatos=Texto
+[NombreSolicitante]
+Clave=NombreSolicitante
+Nombre=NombreSolicitante
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ValorPorOmision=SQL(<T>select NombreUsuario from dbo.FN_DM0278DatosPersonalCancelacionSeguroVida(<T>+comillas(Usuario)+<T>)<T>)
+TipoDatos=Texto
+[ComentarioVentas]
+Clave=ComentarioVentas
+Nombre=ComentarioVentas
+Visible=S
+TamanoValidacion=250
+Tamano=250
+ValorRefrescar=<T><T>
+CondicionEdicion=SQL(<T>select  dbo.FN_DM0278VerificarUsuarioAcceso(<T>+comillas(Usuario)+<T>)<T>)=1
+[MovCXC]
+Clave=MovCXC
+Nombre=MovCXC
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[MovIDCXC]
+Clave=MovIDCXC
+Nombre=Nota Cargo
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[ComentarioCobranza]
+Clave=ComentarioCobranza
+Nombre=ComentarioCobranza
+Visible=S
+TamanoValidacion=250
+Tamano=250
+ValorRefrescar=<T><T>
+CondicionEdicion=SQL(<T>select  dbo.FN_DM0278VerificarUsuarioAcceso(<T>+comillas(Usuario)+<T>)<T>)=2
+[Pagado]
+Clave=Pagado
+Nombre=Pagado
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=0
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ValorPorOmision=<T>EN PROCESO<T>
+ValorRefrescar=SQL(<T>select dm.Estatus From CXC c inner join DM0278HistCancelacionSegurosVida dm on dm.MovIDCXC=c.MovID where Concepto=<T>+comillas(<T>CANC SEGUROS<T>)+<T> and dm.MovID=<T>+comillas(MovID))
+AlCambiar=SQL(<T>select dm.Estatus From CXC c inner join DM0278HistCancelacionSegurosVida dm on dm.MovIDCXC=c.MovID where Concepto=<T>+comillas(<T>CANC SEGUROS<T>)+<T> and dm.MovID=<T>+comillas(MovID))
+
+[Relaciones.RCXC]
+TipoRelacion=Forzosa
+LlaveLocal=MovIDCXC
+Clave=RCXC
+TablaRemota=Cxc
+LlaveRemota=MovID

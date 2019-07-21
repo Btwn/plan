@@ -1,0 +1,152 @@
+
+[Reporte]
+Clave=DM0305SeguimientoDiarioRep
+Nombre=DM0305 Seguimiento Diario
+Icono=18
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+
+PosicionInicialAlturaCliente=96
+PosicionInicialAncho=477
+Submenu=CXC Menudeo Mavi
+BarraHerramientas=S
+ListaAcciones=decCte
+FormatoSinConexion=S
+Impresora=S
+Orientacion=por Omision
+ConFormaPrevia=S
+FormaPrevia=DM0305SeguimientoDiarioFrm
+[Vista]
+Icono=0
+Clave=DM0305Valid
+VistaIndependiente=S
+
+ListaCampos=Nada
+
+
+
+
+
+SQL=SELECT <T><T> AS Nada
+[Formato]
+ListaLineas=Título<BR>Detalle
+
+VentanaIzquierda=0
+VentanaArriba=25
+VentanaAltura=717
+VentanaAncho=1382
+PanelArriba=120
+PanelBotones=80
+[Linea1]
+Clave=Título
+Objetos=1
+Seccion=Título
+AltoEnCm=0.63
+Renglones=2
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+
+[A1]
+Celda=A1
+Alineacion=Centrado
+AnchoEnCm=12
+AnchoTexto=65
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 9, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>REPORTE DM0305 VALIDACION TELEFONOS<T>
+
+
+
+
+
+
+
+
+
+
+[Acciones.decCte]
+Nombre=decCte
+Boton=115
+NombreEnBoton=S
+NombreDesplegar=&Exportar
+EnBarraHerramientas=S
+TipoAccion=Reportes Excel
+ClaveAccion=DM0305SeguimientoDiarioRepXls
+Activo=S
+Visible=S
+
+
+[Nada]
+Clave=Nada
+Nombre=Nada
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=4
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=Nada
+
+[Linea2]
+Clave=Detalle
+Objetos=1
+Seccion=Detalle
+AltoEnCm=0.1
+Renglones=1
+Marco=N
+EstiloMarco=3
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+[A2]
+Celda=A2
+Alineacion=Izquierda
+AnchoEnCm=1
+AnchoTexto=5
+Marco=N
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Nada

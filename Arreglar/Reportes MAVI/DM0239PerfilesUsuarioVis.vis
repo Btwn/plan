@@ -1,0 +1,45 @@
+
+[Vista]
+Icono=0
+Clave=DM0239PerfilesUsuarioVis
+Nombre=Perfiles de Usuario
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=Asignar/Desasignar Lineas<BR>Crear/Eliminar Segmentos<BR>Acceso
+
+
+
+
+SQL=SELECT<BR>  PerfilAcceso [Acceso],<BR>  PermLineas [Asignar/Desasignar Lineas],<BR>  PermSegmento [Crear/Eliminar Segmentos]<BR>FROM INVCPerfilesUsuario
+[Asignar/Desasignar Lineas]
+Clave=Asignar/Desasignar Lineas
+Nombre=Asignar/Desasignar Lineas
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ClaveBDE=Asignar/Desasignar Lineas
+
+[Crear/Eliminar Segmentos]
+Clave=Crear/Eliminar Segmentos
+Nombre=Crear/Eliminar Segmentos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ClaveBDE=Crear/Eliminar Segmentos
+
+[Acceso]
+Clave=Acceso
+Nombre=Acceso
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Acceso

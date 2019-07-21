@@ -1,0 +1,28 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnSerieLoteConsignacionUltimoCorte
+(
+@OModulo				varchar(20),
+@OModuloID				int
+)
+RETURNS int
+
+AS BEGIN
+DECLARE
+@Resultado				int
+SELECT TOP 1
+@Resultado = NULLIF(CorteID,0)
+FROM SerieLoteConsignacionAux WITH(NOLOCK)
+WHERE OModuloID = @OModuloID
+AND OModulo = @OModulo
+AND CorteID NOT IN (SELECT CorteIDAnterior FROM SerieLoteConsignacionAux WITH(NOLOCK) WHERE OModuloID = @OModuloID AND OModulo = @OModulo AND CorteID IS NOT NULL)
+AND CorteID IS NOT NULL
+RETURN (@Resultado)
+END
+

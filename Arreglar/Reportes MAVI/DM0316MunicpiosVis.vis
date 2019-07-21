@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=DM0316MunicpiosVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Delegacion
+SQL=select distinct Delegacion from Sucursal with(nolock)<BR>where wUEN=1 and wAlmacen not in (<T>V00039<T>,<T>V00029<T>,<T>V00090<T>,<T>V00094<T>)
+[Delegacion]
+Clave=Delegacion
+Nombre=Delegacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Delegacion

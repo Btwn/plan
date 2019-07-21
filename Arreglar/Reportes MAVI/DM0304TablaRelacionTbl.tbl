@@ -1,0 +1,45 @@
+[Tabla]
+Icono=0
+Clave=DM0304TablaRelacionTbl
+Nombre=DM0304TablaRelacion
+Archivo=eCommerceLineasRelacion
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Familia<BR>Linea<BR>FamiliaRelacionada<BR>LineaRelacionada<BR>Cantidad
+LlavePrimaria=Familia<BR>FamiliaRelacionada<BR>Linea<BR>LineaRelacionada<BR>Cantidad
+SQL=SELECT<BR>  Familia,<BR>  Linea,<BR>  FamiliaRelacionada,<BR>  LineaRelacionada,<BR>  Cantidad<BR><BR>FROM<BR>  eCommerceLineasRelacion
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+[FamiliaRelacionada]
+Clave=FamiliaRelacionada
+Nombre=Familia Relacionada
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+[LineaRelacionada]
+Clave=LineaRelacionada
+Nombre=Linea Relacionada
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+[Cantidad]
+Clave=Cantidad
+Nombre=Cantidad
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S

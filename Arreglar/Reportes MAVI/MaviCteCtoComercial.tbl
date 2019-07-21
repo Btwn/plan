@@ -1,0 +1,65 @@
+[Tabla]
+Icono=0
+Clave=MaviCteCtoComercial
+Nombre=MaviCteCtoComercial
+Archivo=MaviCteCtoComercial
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Cliente<BR>ID<BR>IDInterno<BR>Compania<BR>Giro<BR>Contacto<BR>Telefono
+LlavePrimaria=Cliente<BR>ID<BR>IDInterno
+ControlID=S
+CampoID=IDInterno
+SQL=SELECT<BR>  Cliente,<BR>  ID,<BR>  IDInterno,<BR>  Compania,<BR>  Giro,<BR>  Contacto,<BR>  Telefono<BR><BR>FROM<BR>  MaviCteCtoComercial
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Cliente
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.ID
+[IDInterno]
+Clave=IDInterno
+Nombre=IDInterno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Compania]
+Clave=Compania
+Nombre=* Compañia
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+[Giro]
+Clave=Giro
+Nombre=* Giro
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+[Contacto]
+Clave=Contacto
+Nombre=* Contacto
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+[Telefono]
+Clave=Telefono
+Nombre=* Teléfono
+Visible=S
+TamanoValidacion=40
+Tamano=40
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Telefono Incorrecto<T>
+Mayusculas=S
+ValidacionCondicion=Si<BR>  SQL(<T>Select dbo.fn_ValidaTelefonosMaviExtra(<T>&comillas(Telefono)&<T>)<T>)=1<BR>Entonces<BR>  SQL(<T>Select dbo.fn_ValidaTelefonosMaviExtra(<T>&comillas(Telefono)&<T>)<T>)<BR>Sino<BR>  1=1<BR>Fin

@@ -1,0 +1,39 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE speDocOrdenarSeccion
+@Estacion	int,
+@Modulo		varchar(5),
+@eDoc		varchar(50)
+
+AS BEGIN
+DECLARE
+@Orden		int,
+@Clave		varchar(255),
+@Actividad		varchar(10),
+@ActividadID	int
+BEGIN TRANSACTION
+SELECT @Orden = 0
+DECLARE crListaSt CURSOR FOR SELECT Clave FROM ListaSt WHERE Estacion = @Estacion ORDER BY ID
+OPEN crListaSt
+FETCH NEXT FROM crListaSt INTO @Clave
+WHILE @@FETCH_STATUS <> -1
+BEGIN
+IF @@FETCH_STATUS <> -2
+BEGIN
+SELECT @Orden = @Orden + 1
+UPDATE eDocD SET Orden = @Orden WHERE Seccion = @Clave AND eDoc = @eDoc AND Modulo = @Modulo
+END
+FETCH NEXT FROM crListaSt INTO @Clave
+END 
+CLOSE crListaSt
+DEALLOCATE crListaSt
+COMMIT TRANSACTION
+RETURN
+END
+

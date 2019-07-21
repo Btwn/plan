@@ -1,0 +1,103 @@
+[Vista]
+Icono=0
+Clave=RM0946CxcInfEdoCtasConRutVis
+Nombre=RM0946CxcInfEdoCtasConRutVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=nivelcobranza<BR>clientes<BR>facturas<BR>capital<BR>vencido<BR>subtotal<BR>Porc
+ListaCalculados=incluyendohermanas<BR>incluyendomenores<BR>incluyendoincobrables<BR>Excluyendoanticipos
+SQL=select  nivelcobranza, COUNT(DISTINCT cliente) clientes, count(factura) facturas, sum(capital) capital, sum(saldoven) vencido, sum(subtotal) subtotal<BR>,CAST(round(100*sum(subtotal)/sum(capital),2) AS varCHAR(10)) +<T>%<T> Porc<BR> from RM0946CxcInfEdoCtas<BR>where estaciontrabajo={estaciontrabajo}<BR>{si(Mavi.RM0946inchermanas=<T>Si<T>,<T><T>,<T>and eshermana=0<T>)}<BR>{si(Mavi.RM0946excmenores=<T>No<T>,<T><T>,<T>and esmenor=0<T>)}<BR>{si(Mavi.RM0946inccastigadas=<T>Si<T>,<T><T>,<T>and Incobrable=0<T>)}<BR>{si(Mavi.RM0946excanticipos=<T>No<T>,<T><T>,<T>and esanticipo=0<T>)}<BR>{si(condatos(Mavi.RM0946agente),<T>and agentecobrador in (<T>+Mavi.RM0946agente+<T>)<T>,<T><T>)}<BR>{si(condatos(Mavi.RM0946cliente),<T>and cliente in (<T> +Mavi.RM0946cliente+<T>)<T>,<T><T>)}<BR>{si(condatos(Mavi.<CONTINUA>
+SQL002=<CONTINUA>RM0946ncobranza),<T>and nivelcobranza in (<T> +Mavi.RM0946ncobranza+<T>)<T>,<T><T>)}<BR>group by nivelcobranza
+[nivelcobranza]
+Clave=nivelcobranza
+Nombre=Nivel de Cobranza
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=nivelcobranza
+TipoDatos=Texto
+[clientes]
+Clave=clientes
+Nombre=Clientes
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=clientes
+[facturas]
+Clave=facturas
+Nombre=Facturas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=facturas
+[capital]
+Clave=capital
+Nombre=Importe
+Visible=S
+TamanoValidacion=20
+TipoDatos=NumFlotante
+ClaveBDE=capital
+Monetario=S
+Alineacion=Derecha
+[vencido]
+Clave=vencido
+Nombre=Saldo Capital
+Visible=S
+TamanoValidacion=20
+TipoDatos=NumFlotante
+ClaveBDE=vencido
+Monetario=S
+Alineacion=Derecha
+[subtotal]
+Clave=subtotal
+Nombre=Saldo Vencido
+Visible=S
+TamanoValidacion=20
+TipoDatos=NumFlotante
+ClaveBDE=subtotal
+Monetario=S
+Alineacion=Derecha
+[Porc]
+Clave=Porc
+Nombre=<T>%<T>
+Visible=S
+TamanoValidacion=11
+Tamano=11
+ClaveBDE=Porc
+Alineacion=Derecha
+AdvMemoEstilo=Expresion
+NombreExpresion=S
+TipoDatos=Texto
+[incluyendohermanas]
+Clave=incluyendohermanas
+Tamano=20
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Incluyendo Hermanas
+Formula=si  Mavi.RM0946inchermanas =<T>Si<T><BR>entonces<BR><T>Si<T><BR>sino<BR><T>No<T><BR>fin
+[incluyendomenores]
+Clave=incluyendomenores
+Tamano=20
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Excluyendo Menores
+Formula=si  Mavi.RM0946excmenores =<T>Si<T><BR>entonces<BR><T>Si<T><BR>sino<BR><T>No<T><BR>fin
+[incluyendoincobrables]
+Clave=incluyendoincobrables
+Tamano=20
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Incluyendo Incobrables
+Formula=si  Mavi.RM0946inccastigadas =<T>Si<T><BR>entonces<BR><T>Si<T><BR>sino<BR><T>No<T><BR>fin
+[Excluyendoanticipos]
+Clave=Excluyendoanticipos
+Tamano=20
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Excluyendo Anticipos
+Formula=si  Mavi.RM0946excanticipos =<T>Si<T><BR>entonces<BR><T>Si<T><BR>sino<BR><T>No<T><BR>fin

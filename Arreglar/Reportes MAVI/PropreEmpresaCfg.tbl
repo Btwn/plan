@@ -1,0 +1,188 @@
+[Tabla]
+Icono=0
+Clave=PropreEmpresaCfg
+Nombre=PropreEmpresaCfg
+Archivo=PropreEmpresaCfg
+Modulos=(Todos)
+Singular=PropreEmpresaCfg
+TipoTabla=General
+ListaCampos=Empresa<BR>FolioUltimoAnexo<BR>FechaUltimoAnexo<BR>PrefijoGAmpliado<BR>PorcentajeDescuento1<BR>PorcentajeDescuento2<BR>PorcentajeDescuento3<BR>DiferenciaPrecioMayoreo<BR>PorcentajeMayoreo2<BR>MaxMargenPlazoMeses<BR>MaxMargenPrecMinPlazo1<BR>NombrePrecioIntermedio<BR>FamiliaGarantias<BR>PrecioMayoreo1Condicion<BR>PrecioMayoreo2Condicion
+LlavePrimaria=Empresa
+ControlEmpresas=S
+CampoEmpresa=Empresa
+ListaRelaciones=ArtFam
+SQL=SELECT<BR>  Empresa,<BR>  FolioUltimoAnexo,<BR>  FechaUltimoAnexo,<BR>  PrefijoGAmpliado,<BR>  PorcentajeDescuento1,<BR>  PorcentajeDescuento2,<BR>  PorcentajeDescuento3,<BR>  DiferenciaPrecioMayoreo,<BR>  PorcentajeMayoreo2,<BR>  MaxMargenPlazoMeses,<BR>  MaxMargenPrecMinPlazo1,<BR>  NombrePrecioIntermedio,<BR>  FamiliaGarantias,<BR>  PrecioMayoreo1Condicion,<BR>  PrecioMayoreo2Condicion<BR><BR>FROM<BR>  PropreEmpresaCfg
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+Tamano=5
+ValorPorOmision=Info.Empresa
+AyudaMemOpc=Validar captura en la lista
+TipoDatos=Texto
+[FolioUltimoAnexo]
+Clave=FolioUltimoAnexo
+Nombre=Folio Ultimo Anexo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+UnicamenteLectura=S
+[FechaUltimoAnexo]
+Clave=FechaUltimoAnexo
+Nombre=Fecha Ultimo Anexo
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa
+UnicamenteLectura=S
+[PrefijoGAmpliado]
+Clave=PrefijoGAmpliado
+Nombre=Prefijo G. Ampliada
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+TipoDatos=Texto
+[PorcentajeDescuento1]
+Clave=PorcentajeDescuento1
+Nombre=% Descuento 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaMemOpc=Validar captura en la lista
+AyudaEnCaptura=Vista
+AyudaRefrescar=S
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+ValidacionConCondiciones=S
+Requerido=S
+FormatoValidacion=#,.000
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Empresas<T>,PorcentajeDescuento1) <> NULO
+[PorcentajeDescuento2]
+Clave=PorcentajeDescuento2
+Nombre=% Descuento 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaMemRenglones=12
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+Requerido=S
+FormatoValidacion=#,.000
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Empresas<T>,PorcentajeDescuento2) <> NULO
+[PorcentajeDescuento3]
+Clave=PorcentajeDescuento3
+Nombre=% Descuento 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+ValidacionConCondiciones=S
+FormatoValidacion=#,.000
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Empresas<T>,PorcentajeDescuento3) <> NULO
+[DiferenciaPrecioMayoreo]
+Clave=DiferenciaPrecioMayoreo
+Nombre=Difepre Mayoreo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+ValidacionConCondiciones=S
+ConRefrescar=S
+ListaRefrescar=PorcentajeMayoreo2
+FormatoValidacion=#,.000
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Empresas<T>,DiferenciaPrecioMayoreo) <> NULO
+[PorcentajeMayoreo2]
+Clave=PorcentajeMayoreo2
+Nombre=% Mayoreo 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+ValorRefrescar=((1/(1- (DiferenciaPrecioMayoreo / 100)))-1) * 100
+FormatoValidacion=#,.000
+[MaxMargenPlazoMeses]
+Clave=MaxMargenPlazoMeses
+Nombre=Plazo Meses (Maximizar)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+[MaxMargenPrecMinPlazo1]
+Clave=MaxMargenPrecMinPlazo1
+Nombre=Precio Minimo (Maximizar)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+[NombrePrecioIntermedio]
+Clave=NombrePrecioIntermedio
+Nombre=Nombre Precio Intermedio
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[FamiliaGarantias]
+Clave=FamiliaGarantias
+Nombre=Linea Garantias
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=PropreArtFamLista
+AyudaVista=PropreArtFam
+AyudaCampo=PropreArtFam.Familia
+ValidacionUsaTabla=S
+ValidacionTablas=PropreArtFam
+[Relaciones.ArtFam]
+TipoRelacion=Opcional
+LlaveLocal=FamiliaGarantias
+Clave=ArtFam
+TablaRemota=PropreArtFam
+LlaveRemota=Familia
+[PrecioMayoreo1Condicion]
+Clave=PrecioMayoreo1Condicion
+Nombre=Condicion Precio Mayoreo 1
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=CondicionLista
+AyudaVista=Condicion
+AyudaCampo=Condicion.Condicion
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Condicion FROM Condicion WHERE Condicion = :tCondicion<T>,PrecioMayoreo1Condicion) <> NULO
+[PrecioMayoreo2Condicion]
+Clave=PrecioMayoreo2Condicion
+Nombre=Condicion Precio Mayoreo 2
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=CondicionLista
+AyudaVista=Condicion
+AyudaCampo=Condicion.Condicion
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Condicion FROM Condicion WHERE Condicion = :tCondicion<T>,PrecioMayoreo2Condicion) <> NULO

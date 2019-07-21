@@ -1,0 +1,43 @@
+[Dialogo]
+Clave=MaviCancelarEmbCasaDlg
+Nombre=Precaución
+Icono=7
+TipoMensaje=Precaución
+TipoDialogo=Mensaje
+Modulos=(Todos)
+Fuente={Tahoma, 10, Azul marino, [Negritas]}
+AccionesTamanoBoton=15x5
+PosicionInicialAlturaCliente=97
+PosicionInicialAncho=271
+ConFuenteEspecial=S
+AccionesCentro=S
+PosicionInicialIzquierda=376
+PosicionInicialArriba=322
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+ListaAcciones=Si<BR>No
+VentanaExclusiva=S
+VentanaBloquearAjuste=S
+Mensaje=<T>¿Cancelar el Movimiento:<T>+NuevaLinea+Comillas(Info.Mov+<T> <T>+Info.MovID)+<T> ?<T>
+[Acciones.Si]
+Nombre=Si
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=Si
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=EjecutarSQL(<T>SP_MaviAfectarEmbarqueCasa <T>+Info.ID+<T>,<T>+Info.Estatus+<T>,<T>+Info.Posicion+<T>,3<T>)
+[Acciones.No]
+Nombre=No
+Boton=36
+NombreEnBoton=S
+NombreDesplegar=No
+EnBarraAcciones=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

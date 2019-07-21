@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0218SociosVis
+Nombre=nombre
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=nombre
+SQL=select Nombre from prov where tipo =<T>socio<T>
+[nombre]
+Clave=nombre
+Nombre=nombre
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+TipoDatos=Texto

@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=RM0479ReferenciafiltroVis
+Nombre=RM0479ReferenciafiltroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Referencia
+Singular=Referencia
+LlavePrimaria=Referencia
+CamposBusquedaRapida=Referencia
+SQL=select distinct Referencia from GastoT
+[Referencia]
+Clave=Referencia
+Nombre=Referencia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Referencia

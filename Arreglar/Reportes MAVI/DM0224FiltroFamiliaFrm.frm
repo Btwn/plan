@@ -1,0 +1,112 @@
+[Forma]
+Clave=DM0224FiltroFamiliaFrm
+Nombre=Familias
+Icono=0
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=Vista
+CarpetaPrincipal=Vista
+PosicionInicialAlturaCliente=405
+PosicionInicialAncho=247
+ListaAcciones=Seleccion
+PosicionInicialIzquierda=457
+PosicionInicialArriba=214
+[Vista]
+Estilo=Iconos
+Clave=Vista
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0224FiltroFamiliaVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Familia
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+CarpetaVisible=S
+MenuLocal=S
+ListaAcciones=Seltodo<BR>quit
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+IconosNombre=DM0224FiltroFamiliaVis:Familia
+[Vista.Familia]
+Carpeta=Vista
+Clave=Familia
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Vista.Columnas]
+0=18
+1=-2
+[Acciones.Seltodo]
+Nombre=Seltodo
+Boton=0
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.quit]
+Nombre=quit
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Acciones.Seleccion.Asign]
+Nombre=Asign
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccion.Exp]
+Nombre=Exp
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Seleccion]
+Nombre=Seleccion
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=Asign<BR>Exp<BR>Selec
+Activo=S
+Visible=S
+[Acciones.Seleccion.Selec]
+Nombre=Selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.DM0224FamiliaFiltro,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)

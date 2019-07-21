@@ -1,0 +1,48 @@
+[Vista]
+Icono=0
+Clave=DM0196AgenteAvalMaxVis
+Nombre=DM0196AgenteAvalMaxVis
+Modulos=(Todos)
+ListaCampos=DM0196AgenteAvalMAx.Agente<BR>DM0196AgenteAvalMAx.Maximo<BR>DM0196AgenteAvalMAx.nivelcobranza
+ListaTablas=DM0196AgenteAvalMAx
+TablaPrincipal=DM0196AgenteAvalMAx
+UsoCapturas=S
+CamposBusquedaRapida=DM0196AgenteAvalMAx.Agente
+SQL=SELECT<BR>  DM0196AgenteAvalMAx.Agente,<BR>  DM0196AgenteAvalMAx.Maximo,<BR>  DM0196AgenteAvalMAx.nivelcobranza<BR><BR>FROM<BR>  DM0196AgenteAvalMax DM0196AgenteAvalMAx
+[DM0196AgenteAvalMAx.Agente]
+Clave=DM0196AgenteAvalMAx.Agente
+LigaTabla=DM0196AgenteAvalMAx
+LigaCampo=Agente
+ClaveBDE=Agente
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaForma=DM0196Agentevisfrm
+AyudaVista=DM0196AgenteVis
+AyudaCampo=Agente
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Tamano=25
+AyudaEnCaptura=Vista
+BloqueaEdicion=S
+ConRefrescar=S
+RefrescarTodo=
+ListaRefrescar=DM0196AgenteAvalMAx.nivelcobranza
+AlCambiar=//informacion(DM0196AgenteAvalMAx.Agente)
+[DM0196AgenteAvalMAx.Maximo]
+Clave=DM0196AgenteAvalMAx.Maximo
+LigaTabla=DM0196AgenteAvalMAx
+LigaCampo=Maximo
+Ligado=S
+ClaveBDE=Maximo
+[DM0196AgenteAvalMAx.nivelcobranza]
+Clave=DM0196AgenteAvalMAx.nivelcobranza
+Visible=S
+LigaTabla=DM0196AgenteAvalMAx
+LigaCampo=nivelcobranza
+ClaveBDE=nivelcobranza
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=SQL(<T>select nivelcobranzamavi from agente  where agente = :Tagen<T>,DM0196AgenteAvalMAx.Agente)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+BloqueaEdicion=S

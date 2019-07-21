@@ -1,0 +1,22 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW EmbarqueDArtVCI
+AS
+SELECT
+ID,
+Articulo,
+ISNULL(SubCuenta,'') SubCuenta,
+Descripcion,
+SUM(ISNULL(Cantidad,0.0)) Cantidad,
+SUM(ISNULL(CantidadTotal,0.0)) CantidadTotal,
+SUM(ISNULL(ImporteTotal,0.0)) ImporteTotal,
+SUM((ISNULL(Cantidad,0.0)*ISNULL(ImporteTotal,0.0))/ISNULL(CantidadTotal,0.0)) Importe
+FROM EmbarqueDArtMovVCI
+GROUP BY ID, Articulo, ISNULL(SubCuenta,''), Descripcion
+

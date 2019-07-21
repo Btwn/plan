@@ -1,0 +1,33 @@
+
+[Vista]
+Icono=0
+Clave=DM0344FajillasUsuVis
+Nombre=Reporte Fajillas
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=nombre<BR>usu
+
+CamposBusquedaRapida=usuario
+
+SQL=select <BR>usuario usu,<BR>nombre<BR>from usuario<BR>where GrupoTrabajo=<T>cajas<T> and Estatus=<T>alta<T><BR>order by usuario asc
+[nombre]
+Clave=nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=nombre
+
+
+
+[usu]
+Clave=usu
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=usu

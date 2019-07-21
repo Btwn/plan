@@ -1,0 +1,61 @@
+
+[Tabla]
+Icono=0
+Clave=DM0285COMSDetalleListaPrioridadTbl
+Archivo=COMSDListaPrioridad
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IdListaPrioridad<BR>IdListaPrioridadEcommerce<BR>Codigo<BR>Descripcion<BR>Orden
+LlavePrimaria=IdListaPrioridad
+ControlID=S
+CampoID=IdListaPrioridad
+SQL=SELECT<BR>  IdListaPrioridad,<BR>  IdListaPrioridadEcommerce,<BR>  Codigo,<BR>  Descripcion,<BR>  Orden<BR><BR>  FROM COMSDListaPrioridad
+[IdListaPrioridadEcommerce]
+Clave=IdListaPrioridadEcommerce
+Nombre=IdListaPrioridadEcommerce
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+[Codigo]
+Clave=Codigo
+Nombre=Codigo
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+AlCambiar=Asigna(Descripcion,SQL(<T>SELECT Descripcion1 FROM Art WITH(NOLOCK) WHERE Articulo = :tArticulo<T>,Codigo))<BR>Asigna(IdListaPrioridadEcommerce,Info.Numero)
+AyudaMemOpc=Consulta opcional
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>DECLARE @Familia VARCHAR(50), @Linea VARCHAR(50)<BR>              SELECT @Familia = Familia, @Linea = Linea<BR>              FROM COMSCListaPrioridadEcommerce WITH(NOLOCK)<BR>              WHERE IdListaPrioridadEcommerce = :nID<BR><BR>              SELECT DISTINCT Articulo<BR>              FROM Art A WITH(NOLOCK)<BR>              LEFT JOIN COMSDListaPrioridad L WITH(NOLOCK)<BR>              ON L.Codigo = A.Articulo<BR>              AND L.IdListaPrioridadEcommerce = :nID<BR>              WHERE A.Familia = @Familia<BR>              AND A.Linea = @Linea<BR>              AND A.Grupo = :tGrupo<BR>              AND L.Codigo IS NULL<BR>              AND A.Estatus IN (:tEstatus1,:tEstatus2)<T>,Info.Numero,Info.Numero,<T>MERCANCIA DE LINEA<T>,<T>ALTA<T>,<T>BLOQUEADO<T>)
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+
+
+
+AyudaMemOpc=Consulta opcional
+[IdListaPrioridad]
+Clave=IdListaPrioridad
+Nombre=IdListaPrioridad
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc

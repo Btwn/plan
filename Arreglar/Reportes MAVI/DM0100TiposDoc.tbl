@@ -1,0 +1,28 @@
+[Tabla]
+Icono=0
+Clave=DM0100TiposDoc
+Nombre=Tipos de documentos
+Archivo=DM0100CatalogoDocDigitalizar
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Depto<BR>Concepto
+LlavePrimaria=Concepto
+SQL=SELECT<BR>  Depto,<BR>  Concepto,<BR>  Clave,<BR>  Extra2<BR><BR>FROM<BR>  DM0100CatalogoDocDigitalizar
+[Depto]
+Clave=Depto
+Nombre=Depto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50

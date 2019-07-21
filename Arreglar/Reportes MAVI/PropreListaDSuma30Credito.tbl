@@ -1,0 +1,54 @@
+[Tabla]
+Icono=0
+Clave=PropreListaDSuma30Credito
+Nombre=PropreListaDSuma30Credito
+Archivo=PropreListaDSuma30Credito
+Modulos=(Todos)
+Singular=PropreListaDSuma30Credito
+TipoTabla=General
+ListaCampos=Lista<BR>CLASE<BR>CostoXVentas30Dias<BR>PPlazo1XVentas30Dias<BR>MargenSobreVentas<BR>MargenSobreCosto
+LlavePrimaria=CLASE
+SQL=SELECT<BR>  Lista,<BR>  Clase,<BR>  CostoXVentas30Dias,<BR>  PPlazo1XVentas30Dias,<BR>  MargenSobreVentas,<BR>  MargenSobreCosto<BR><BR>FROM<BR>  PropreListaDSuma30Credito
+[CLASE]
+Clave=CLASE
+Nombre=Bloque
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+[CostoXVentas30Dias]
+Clave=CostoXVentas30Dias
+Nombre=Costo X Ventas 30 Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+[PPlazo1XVentas30Dias]
+Clave=PPlazo1XVentas30Dias
+Nombre=P. Plazo 1 X Ventas 30 Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+[MargenSobreVentas]
+Clave=MargenSobreVentas
+Nombre=Margen Sobre Ventas
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.000
+[MargenSobreCosto]
+Clave=MargenSobreCosto
+Nombre=Margen Sobre Costo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.000
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20

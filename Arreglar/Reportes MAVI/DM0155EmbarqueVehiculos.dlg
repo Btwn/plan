@@ -1,0 +1,22 @@
+[Dialogo]
+Clave=DM0155EmbarqueVehiculos
+Nombre=Embarques
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Vehiculo
+[Acciones.Vehiculo]
+Nombre=Vehiculo
+Boton=0
+NombreDesplegar=Ve&hiculos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=Vehiculo
+Activo=S
+Visible=S

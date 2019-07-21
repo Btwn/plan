@@ -1,0 +1,64 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spRFCValidos
+
+AS
+BEGIN
+DECLARE
+@ID			int,
+@Cual		varchar(20),
+@Registro	varchar(20),
+@Largo		int,
+@Ok			bit 
+SELECT @Ok = 1
+SELECT @Registro = NULLIF(NULLIF(RTRIM(LTRIM(@Registro)),  '0'),  '')
+DECLARE crRFCValidos CURSOR FOR
+SELECT ID
+FROM RFCValidos
+ORDER BY ID
+OPEN crRFCValidos
+FETCH NEXT FROM crRFCValidos INTO @ID
+WHILE @@FETCH_STATUS <> -1
+BEGIN
+IF @@FETCH_STATUS <> -2 AND @Ok = 1
+BEGIN
+SELECT @Registro = NULL,@Cual = NULL
+SELECT @Registro = Valor,@Cual = Tipo FROM RFCValidos WHERE ID = @ID
+IF @Cual = 'RFC' AND LEN(ISNULL(@Registro, '')) > 0
+BEGIN
+EXEC spRegistroOk @Cual,@Registro,@Ok=@Ok
+RETURN
+END
+ELSE
+IF @Cual = 'IMSS' AND LEN(RTRIM(LTRIM(ISNULL(@Registro, '')))) <> 11
+SELECT  @Ok = 0
+ELSE
+IF @Cual = 'CURP' AND LEN(ISNULL(@REGISTRO, '')) <= 0
+SELECT  @Ok = 0
+ELSE
+IF ISNULL(NULLIF(@Cual,''),'') = ''
+SELECT  @Ok = 0
+END
+FETCH NEXT FROM crRFCValidos INTO @ID
+END
+CLOSE crRFCValidos
+DEALLOCATE crRFCValidos
+IF @Ok = 0 AND ISNULL(NULLIF(@Cual,''),'') <> ''
+BEGIN
+SELECT @Registro = @Registro
+END
+ELSE
+IF @Ok = 0 AND ISNULL(NULLIF(@Cual,''),'') = ''
+SELECT @Registro = 'TIPO'
+ELSE
+SELECT @Registro = ''
+SELECT @Ok
+RETURN
+END
+

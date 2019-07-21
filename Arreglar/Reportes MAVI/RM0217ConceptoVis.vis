@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM0217ConceptoVis
+Nombre=Conceptos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Concepto
+SQL=Select Concepto<BR>from concepto <BR>where modulo=<T>cxp<T><BR>and Clase=<T>ACUERDOS PROVEEDORES<T><BR>and EstatusConcepto=<T>Alta<T>
+LlavePrimaria=Concepto
+CamposBusquedaRapida=Concepto
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto

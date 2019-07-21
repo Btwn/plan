@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0169CPEstadoVis
+Nombre=Estados
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Estado
+SQL=Select Estado From CodigoPostal <BR>Group By estado<BR>Order By Estado
+[Estado]
+Clave=Estado
+Nombre=Estado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Estado

@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM1107CATEGORIASVTAVis
+Nombre=RM1107CATEGORIASVTAVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=Categoria
+SQL=select distinct Categoria from VentasCanalMAVI<BR>WHERE Categoria is NOT NULL <BR>{Si(ConDatos(Mavi.RM1107UEN), <T> And UEN IN(<T>+Mavi.RM1107UEN+<T>)<T>, <T><T>)} 
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1036RutasXAgenteColoniaVis
+Nombre=Colonia
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=colonia
+CamposBusquedaRapida=colonia
+SQL=select distinct colonia from CodigoPostal order by colonia
+[colonia]
+Clave=colonia
+Nombre=colonia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=60
+TipoDatos=Texto
+Tamano=60
+ClaveBDE=colonia

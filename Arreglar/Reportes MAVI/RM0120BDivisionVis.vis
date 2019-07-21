@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0120BDivisionVis
+Nombre=Divisiones
+Modulos=(Todos)
+Singular=Division
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Divisiones
+SQL=select distinct equipo as Divisiones from equipoagente <BR>{<T>where Equipo like <T>+comillas(<T>div<T>)+<T> +<T>+<T>substring(<T>+comillas(Mavi.RM0120BGerencia)+<T>,4,1) +<T>+comillas(<T>%<T>)}
+[Divisiones]
+Clave=Divisiones
+Nombre=Divisiones
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Divisiones

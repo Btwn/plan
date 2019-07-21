@@ -1,0 +1,19 @@
+;*** Desarrollo de Campañas 27/08/09, Joel García Díaz , se agregaron campos a la config global de la empresa.
+[EmpresaGral.vis/Vista.ListaCampos]
+EmpresaGral.NominaG4=EmpresaGral.BasePersonalMAVI
+EmpresaGral.BasePersonalMAVI=Cte.Nombre
+
+[EmpresaGral.vis/Vista.SQL]
+EmpresaGral.NominaG4,=EmpresaGral.BasePersonalMAVI,
+EmpresaGral.BasePersonalMAVI,=Cte.Nombre,
+
+
+[EmpresaGral.vis/EmpresaGral.BasePersonalMAVI]
+Clave=EmpresaGral.BasePersonalMAVI
+LigaTabla=EmpresaGral
+LigaCampo=BasePersonalMAVI
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=BasePersonalMAVI

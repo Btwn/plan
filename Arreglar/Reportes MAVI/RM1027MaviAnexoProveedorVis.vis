@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1027MaviAnexoProveedorVis
+Nombre=RM1027 Mavi Anexo Proveedor    
+Modulos=CXP
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SALDOS
+SQL=select <BR>       W.SALDOS<BR> from (<BR>      SELECT<BR>       b.TIPO<BR>       ,X.CUENTA<BR>       ,b.Proveedor<BR>       ,b.NOMBRE<BR>       ,b.CATEGORIA<BR>       ,SALDO=SUM (ISNULL (X.CARGO,0)) - sum(ISNULL (X.ABONO,0))<BR>       ,CASE WHEN SUM (ISNULL (X.CARGO,0)) - sum(ISNULL (X.ABONO,0)) <> 0 THEN <T>ConSaldo<T> else <T>SinSaldo<T> end as SALDOS<BR>   FROM AUXILIAR X WITH (NOLOCK) <BR>         LEFT JOIN CXP a WITH (NOLOCK) on a.id=x.moduloid<BR>          LEFT JOIN prov b WITH (NOLOCK) on b.proveedor=x.cuenta<TAB><TAB><TAB><TAB><TAB><TAB><TAB><BR>WHERE X.MODULO=<T>CXP<T><BR>and a.estatus in (<T>pendiente<T>,<T>CONCLUIDO<T>)<BR>and (a.mov not in (<T>Solicitud Cheque<T>,<T>Solicitud Deposito<T>,<T>Aplicacion<T>) or (a.Mov = <T>Aplicacion<T> and X.Aplica IN (<T>Entrada Compra<T>,<T>Doc<CONTINUA>
+SQL002=<CONTINUA>umento<T>,<T>Entrada con Gastos<T>,<T>Nota Credito<T>,<T>Redondeo<T>)))<BR>      group by b.tipo,x.cuenta,b.Proveedor,b.nombre,b.categoria<BR>)W GROUP BY W.SALDOS
+[SALDOS]
+Clave=SALDOS
+Nombre=SALDOS
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=8
+TipoDatos=Texto
+Tamano=8
+ClaveBDE=SALDOS

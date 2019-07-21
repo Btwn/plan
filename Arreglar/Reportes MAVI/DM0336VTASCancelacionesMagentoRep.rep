@@ -1,0 +1,892 @@
+
+[Reporte]
+Clave=DM0336VTASCancelacionesMagentoRep
+Nombre=DM0336 Reporte de Pedidos Cancelados En Magento
+Icono=18
+VistaEspecial=S
+Tipo=Reporte
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=1
+AnchoPagina=52
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ContarPaginas=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+
+PosicionInicialAlturaCliente=705
+PosicionInicialAncho=1382
+PreliminarColores=S
+[Formato]
+ListaLineas=Encabezado<BR>Encabezado<BR>Encabezado<BR>Encabezado<BR>Encabezado<BR>Detalle<BR>Pie<BR>Pie
+
+VentanaIzquierda=-8
+VentanaArriba=-8
+VentanaAltura=744
+VentanaAncho=1382
+PanelArriba=120
+PanelBotones=80
+[Linea1]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+[Linea2]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=1.5
+Renglones=4
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+Objetos=2
+[Linea3]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.63
+Renglones=2
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+Objetos=1
+[Linea4]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+Objetos=0
+Marco=N
+FondoEstilo=0
+[Linea5]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.79
+Renglones=2
+FondoColor=$00D2D2D2
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+Marco=S
+EstiloMarco=0
+
+Objetos=11
+FondoEstilo=1
+[A2]
+Celda=A2
+Alineacion=Centrado
+AnchoEnCm=43.7
+AnchoTexto=235
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 22, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>MAVI DE OCCIDENTE S.A. DE C.V.<T>
+
+
+
+
+
+
+
+
+
+
+
+[Vista]
+Icono=0
+Clave=DM0336VTASCancelacionesMagentoRep
+
+ListaCampos=MovID<BR>FechaRequerida<BR>NumeroPedidoEcommerce<BR>Suc<BR>UsuarioPedido<BR>NombreUsuarioPedido<BR>FechaCancelacion<BR>Estatus<BR>UsuarioCancelacion<BR>NombreUsuarioCancelacion<BR>Observaciones
+
+
+
+
+
+
+
+
+
+
+VistaIndependiente=S
+SQL=SELECT DISTINCT<BR>  Pedidos.FechaRequerida,<BR>  Pedidos.MovId,<BR>  Pedidos.NumeroPedidoEcommerce,<BR>  Pedidos.Suc,<BR>  Pedidos.Usuario AS <T>UsuarioPedido<T>,<BR>  Pedidos.Nombre AS <T>NombreUsuarioPedido<T>,<BR>  Pedidos.FechaCancelacion,<BR>  Estatus = <T>CANCELADO<T>,<BR>  Pedidos.UsuarioCancelacion,<BR>  Pedidos.NombreUsuarioCancelacion,<BR>  Pedidos.Observaciones<BR>FROM (SELECT  -- Obtener todos los datos acerca del pedido<BR>  V.Id,<BR>  Suc = V.SucursalOrigen,<BR>  V.Mov,<BR>  V.MovID,<BR>  V.FechaRequerida,<BR>  NumeroPedidoEcommerce = V.ReferenciaOrdenCompra,<BR>  V.Usuario,<BR>  U.Nombre,<BR>  V.FechaCancelacion,<BR>  V.Observaciones,<BR>  U2.Usuario AS UsuarioCancelacion,<BR>  U2.Nombre AS NombreUsuarioCancelacion<BR>FROM Venta V WITH (NOLOCK)<BR>JOIN VentaD D WITH (NOLOCK)<BR>  ON V.ID = D.ID<BR>JOIN Art A WITH (NOLOCK)<BR>  ON A.Articulo = D.Articulo<BR>  AND A.Grupo = <T>MERCANCIA DE LINEA<T><BR>  AND A.Tipo NOT IN (<T>Servicio<T>,<T>Juego<T>)<BR><BR>LEFT JOIN MovTiempo T WITH (NOLOCK)<BR>  ON T.Id = V.ID<BR>  AND T.Modulo = <T>VTAS<T><BR>  AND T.Estatus = <T>CANCELADO<T><BR>LEFT JOIN Usuario U2 WITH (NOLOCK)<BR>  ON U2.Usuario = T.Usuario<BR><BR>LEFT JOIN Usuario U WITH (NOLOCK)<BR>  ON U.Usuario = V.Usuario<BR>WHERE Mov IN (<T>Pedido<T>)<BR>AND V.Estatus = <T>CANCELADO<T><BR>AND V.SucursalOrigen IN (41, 90)<BR>AND ReferenciaOrdenCompra IS NOT NULL) Pedidos<BR>WHERE 1 = 1<BR>{Si((ConDatos(Info.FechaD)) y (ConDatos(Info.FechaA)),<T> AND CAST(Pedidos.FechaRequerida AS DATE) BETWEEN <T> & Comillas(FechaFormatoServidor(Info.FechaD)) & <T> AND <T> & Comillas(FechaFormatoServidor(Info.FechaA)),<T><T>)}<BR>{Si(ConDatos(Mavi.DM0336Sucursal), <T> AND Pedidos.Suc = <T>+Mavi.DM0336Sucursal,<T><T>)}<BR>ORDER BY Pedidos.FechaCancelacion DESC
+[B2]
+Celda=B2
+Alineacion=Izquierda
+AnchoEnCm=4.29
+AnchoTexto=23
+FondoColor=Blanco
+AVertical=Centrado
+EsImagen=S
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=MAVI.bmp
+
+
+
+
+
+
+
+[MovID]
+Clave=MovID
+Nombre=MovID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovId
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[A5]
+Celda=A5
+Alineacion=Centrado
+AnchoEnCm=3.5
+AnchoTexto=19
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Fecha del pedido<T>
+
+FondoEstilo=1
+[B5]
+Celda=B5
+Alineacion=Centrado
+AnchoEnCm=2.21
+AnchoTexto=12
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>MovID<T>
+
+FondoEstilo=1
+[C5]
+Celda=C5
+Alineacion=Centrado
+AnchoEnCm=3.29
+AnchoTexto=18
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>N° de pedido<T>+<BR><T>E-Commerce<T>
+
+ExpresionMultiple=S
+FondoEstilo=1
+[D5]
+Celda=D5
+Alineacion=Centrado
+AnchoEnCm=1.79
+AnchoTexto=10
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Sucursal<T>
+
+ExpresionMultiple=N
+FondoEstilo=1
+[E5]
+Celda=E5
+Alineacion=Centrado
+AnchoEnCm=2.71
+AnchoTexto=15
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Usuario que<T>+<BR><T>realizó pedido<T>
+
+FondoEstilo=1
+ExpresionMultiple=S
+[F5]
+Celda=F5
+Alineacion=Centrado
+AnchoEnCm=8
+AnchoTexto=32
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Nombre del usuario<T>
+
+FondoEstilo=1
+[G5]
+Celda=G5
+Alineacion=Centrado
+AnchoEnCm=3.71
+AnchoTexto=20
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Fecha de cancelación<T>
+
+ExpresionMultiple=N
+FondoEstilo=1
+[H5]
+Celda=H5
+Alineacion=Centrado
+AnchoEnCm=3.29
+AnchoTexto=18
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Ultimo estatus<T>+<BR><T>registrado del pedido<T>
+
+ExpresionMultiple=S
+FondoEstilo=1
+[I5]
+Celda=I5
+Alineacion=Centrado
+AnchoEnCm=3.61
+AnchoTexto=19
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Usuario que realizó<T>+<BR><T>la cancelacion<T>
+
+FondoEstilo=1
+ExpresionMultiple=S
+[J5]
+Celda=J5
+Alineacion=Centrado
+AnchoEnCm=8
+AnchoTexto=36
+Marco=S
+EstiloMarco=0
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Nombre del usuario<T>
+
+
+
+FondoEstilo=1
+[Linea6]
+Clave=Detalle
+Seccion=Detalle
+AltoEnCm=0.39
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=11
+Marco=S
+EstiloMarco=3
+[Linea7]
+Clave=Pie
+Seccion=Pie Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+Objetos=0
+
+
+
+
+[FechaRequerida]
+Clave=FechaRequerida
+Nombre=FechaRequerida
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaRequerida
+
+[NumeroPedidoEcommerce]
+Clave=NumeroPedidoEcommerce
+Nombre=NumeroPedidoEcommerce
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=NumeroPedidoEcommerce
+
+[UsuarioPedido]
+Clave=UsuarioPedido
+Nombre=UsuarioPedido
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=UsuarioPedido
+
+[NombreUsuarioPedido]
+Clave=NombreUsuarioPedido
+Nombre=NombreUsuarioPedido
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreUsuarioPedido
+
+[FechaCancelacion]
+Clave=FechaCancelacion
+Nombre=FechaCancelacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaCancelacion
+
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=9
+ClaveBDE=Estatus
+
+[UsuarioCancelacion]
+Clave=UsuarioCancelacion
+Nombre=UsuarioCancelacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=UsuarioCancelacion
+
+[NombreUsuarioCancelacion]
+Clave=NombreUsuarioCancelacion
+Nombre=NombreUsuarioCancelacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreUsuarioCancelacion
+
+[Observaciones]
+Clave=Observaciones
+Nombre=Observaciones
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=Observaciones
+
+[Linea8]
+Clave=Pie
+Objetos=3
+Seccion=Pie Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+[A3]
+Celda=A3
+Alineacion=Centrado
+AnchoEnCm=43.71
+AnchoTexto=235
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 12, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Reporte De Pedidos Cancelados En Magento<T>
+
+[A6]
+Celda=A6
+Alineacion=Izquierda
+AnchoEnCm=3.5
+AnchoTexto=19
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=FechaRequerida
+
+[B6]
+Celda=B6
+Alineacion=Centrado
+AnchoEnCm=2.21
+AnchoTexto=12
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=MovID
+
+[C6]
+Celda=C6
+Alineacion=Izquierda
+AnchoEnCm=3.29
+AnchoTexto=18
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=NumeroPedidoEcommerce
+
+[D6]
+Celda=D6
+Alineacion=Derecha
+AnchoEnCm=1.79
+AnchoTexto=10
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suc
+
+[E6]
+Celda=E6
+Alineacion=Centrado
+AnchoEnCm=2.71
+AnchoTexto=15
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=UsuarioPedido
+
+[F6]
+Celda=F6
+Alineacion=Izquierda
+AnchoEnCm=8
+AnchoTexto=32
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=NombreUsuarioPedido
+
+[G6]
+Celda=G6
+Alineacion=Izquierda
+AnchoEnCm=3.71
+AnchoTexto=20
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=FechaCancelacion
+
+[H6]
+Celda=H6
+Alineacion=Centrado
+AnchoEnCm=3.29
+AnchoTexto=18
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Estatus
+
+[I6]
+Celda=I6
+Alineacion=Centrado
+AnchoEnCm=3.61
+AnchoTexto=19
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=UsuarioCancelacion
+
+[J6]
+Celda=J6
+Alineacion=Izquierda
+AnchoEnCm=8
+AnchoTexto=32
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=NombreUsuarioCancelacion
+
+[A8]
+Celda=A8
+Alineacion=Izquierda
+AnchoEnCm=15.39
+AnchoTexto=75
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>DM0336VTASCancelacionesMagentoRep<T>
+
+[B8]
+Celda=B8
+Alineacion=Centrado
+AnchoEnCm=16.1
+AnchoTexto=87
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=usuario+ <T> - <T>+usuario.nombre+<T> - <T> + usuario.departamento
+
+[C8]
+Celda=C8
+Alineacion=Derecha
+AnchoEnCm=16.5
+AnchoTexto=89
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Página <T> + ReportePaginaNumero + <T> de <T> + ReportePaginaTotal+<T>   <T>
+
+
+[K5]
+Celda=K5
+Alineacion=Centrado
+AnchoEnCm=7.89
+AnchoTexto=42
+Marco=S
+FondoEstilo=1
+FondoColor=$00D2D2D2
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Motivo de cancelación<T>
+
+[K6]
+Celda=K6
+Alineacion=Izquierda
+AnchoEnCm=7.89
+AnchoTexto=42
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Observaciones
+
+[Suc]
+Clave=Suc
+Nombre=Suc
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Suc

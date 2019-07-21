@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM1142FiltroListaREPEPVIS
+Nombre=RM1142FiltroListaREPEP
+Modulos=(Todos)
+Singular=RM1142FiltroListaREPEP
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Lista
+SQL=SELECT DISTINCT Lista FROM RM1142_REPEP_Mavi <BR>ORDER BY Lista ASC
+CamposBusquedaRapida=Lista
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=150
+TipoDatos=Texto
+Tamano=150
+ClaveBDE=Lista

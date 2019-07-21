@@ -1,0 +1,29 @@
+;Modifico: ARC
+;Ultima Modificacion: 28-Feb-09
+
+
+
+
+;**** Nuevos campos agregados: ARC COmisionChoferesMAVI ****
+[Departamento.vis/Vista.ListaCampos]
+Sucursal.Nombre=Departamento.ComisionChoferesMAVI
+Departamento.ComisionChoferesMAVI=(Fin)
+
+[Departamento.vis/Vista.SQL]
+Sucursal.Sucursal,=Sucursal.Nombre,
+Sucursal.Nombre,=Departamento.ComisionChoferesMAVI
+Departamento.ComisionChoferesMAVI=FROM Departamento
+
+
+;**** Nuevo campo agregado ****
+[Departamento.vis/Departamento.ComisionChoferesMAVI]
+Clave=Departamento.ComisionChoferesMAVI
+Nombre=Comisión Choferes
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+LigaTabla=Departamento
+LigaCampo=ComisionChoferesMAVI
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ComisionChoferesMAVI

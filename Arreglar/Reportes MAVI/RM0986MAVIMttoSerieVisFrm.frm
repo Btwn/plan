@@ -1,0 +1,102 @@
+[Forma]
+Clave=RM0986MAVIMttoSerieVisFrm
+Nombre=Series
+Icono=0
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=RM0986MAVIMttoSerieVisFrm
+CarpetaPrincipal=RM0986MAVIMttoSerieVisFrm
+PosicionInicialIzquierda=562
+PosicionInicialArriba=363
+PosicionInicialAlturaCliente=269
+PosicionInicialAncho=253
+ListaAcciones=Seleccionar
+[Acciones.SelTodo]
+Nombre=SelTodo
+Boton=0
+NombreDesplegar=&Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.QuiSel]
+Nombre=QuiSel
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[RM0986MAVIMttoSerieVisFrm]
+Estilo=Iconos
+Clave=RM0986MAVIMttoSerieVisFrm
+BusquedaRapidaControles=S
+MenuLocal=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM0986MAVIMttoSerieVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosSubTitulo=Serie
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Negro
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+ListaAcciones=SelTodo<BR>QuiSel
+CarpetaVisible=S
+IconosNombre=RM0986MAVIMttoSerieVis:SerieLote
+[RM0986MAVIMttoSerieVisFrm.Columnas]
+0=-2
+[Acciones.Seleccionar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Registra]
+Nombre=Registra
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=Asigna<BR>Registra<BR>Select
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Select]
+Nombre=Select
+Boton=0
+TipoAccion=ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=<BR>Asigna(Mavi.RM0254FamArt,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)

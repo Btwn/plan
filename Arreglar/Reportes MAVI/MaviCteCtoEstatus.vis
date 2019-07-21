@@ -1,0 +1,56 @@
+[Vista]
+Icono=0
+Clave=MaviCteCtoEstatus
+Nombre=MaviCteCtoEstatus
+Modulos=(Todos)
+ListaTablas=MaviCteCtoEstatus
+TablaPrincipal=MaviCteCtoEstatus
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=MaviCteCtoEstatus.Estatus<BR>MaviCteCtoEstatus.GeneraMovimiento<BR>MaviCteCtoEstatus.Orden
+SQL=SELECT<BR>  MaviCteCtoEstatus.Estatus,<BR>  MaviCteCtoEstatus.GeneraMovimiento,<BR>  MaviCteCtoEstatus.Orden<BR><BR>FROM<BR>  MaviCteCtoEstatus
+[MaviCteCtoEstatus.Estatus]
+Clave=MaviCteCtoEstatus.Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+LigaTabla=MaviCteCtoEstatus
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Estatus
+[MaviCteCtoEstatus.GeneraMovimiento]
+Clave=MaviCteCtoEstatus.GeneraMovimiento
+Nombre=Genera Movimiento
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+OpcionesValidar=S
+LigaTabla=MaviCteCtoEstatus
+LigaCampo=GeneraMovimiento
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=GeneraMovimiento
+[MaviCteCtoEstatus.Orden]
+Clave=MaviCteCtoEstatus.Orden
+Nombre=Orden
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=MaviCteCtoEstatus
+LigaCampo=Orden
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Orden

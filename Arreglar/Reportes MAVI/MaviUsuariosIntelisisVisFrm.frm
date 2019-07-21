@@ -1,0 +1,135 @@
+[Forma]
+Clave=MaviUsuariosIntelisisVisFrm
+Nombre=Uusarios Intelisis
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Vista
+CarpetaPrincipal=Vista
+PosicionInicialAlturaCliente=427
+PosicionInicialAncho=504
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaBloquearAjuste=S
+VentanaAvanzaTab=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=388
+PosicionInicialArriba=281
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Sel
+[Vista]
+Estilo=Iconos
+Clave=Vista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=MaviUusariosIntelisiVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Nombre<BR>Sucursal
+CarpetaVisible=S
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+MenuLocal=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosSubTitulo=<T>Usuario<T>
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+ListaAcciones=SelTodo<BR>QuiSel
+IconosNombre=MaviUusariosIntelisiVis:Usuario
+IconosConPaginas=S
+[Vista.Nombre]
+Carpeta=Vista
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+[Vista.Sucursal]
+Carpeta=Vista
+Clave=Sucursal
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[Vista.Columnas]
+Usuario=92
+Nombre=316
+Sucursal=64
+0=-2
+1=-2
+2=-2
+[Acciones.SelTodo]
+Nombre=SelTodo
+Boton=0
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.QuiSel]
+Nombre=QuiSel
+Boton=0
+NombreDesplegar=Quitar &Selección
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Acciones.Sel.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Sel.Reg]
+Nombre=Reg
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Sel.Seleccion]
+Nombre=Seleccion
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.DeptoRHDSuc,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Acciones.Sel]
+Nombre=Sel
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+TipoAccion=Expresion
+ListaAccionesMultiples=Asigna<BR>Reg<BR>Seleccion
+Activo=S
+Visible=S
+

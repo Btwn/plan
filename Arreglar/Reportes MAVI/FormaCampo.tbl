@@ -1,0 +1,340 @@
+[Tabla]
+Icono=0
+Clave=FormaCampo
+Archivo=FormaCampo
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=FormaTipo<BR>Campo<BR>Etiqueta<BR>Grupo<BR>TipoDato<BR>Orden<BR>FondoColor<BR>PosX<BR>PosY<BR>Ancho<BR>FuenteEspecial<BR>FuenteNombre<BR>FuenteEstilo<BR>FuenteTamano<BR>FuenteColor<BR>FuenteSubrayado<BR>EsContrasena<BR>EsMayusculas<BR>LongitudMaxima<BR>Mascara<BR>AyudaTipo<BR>AyudaReferencia<BR>AyudaExpresion<BR>AyudaRefrescar<BR>AyudaComentario<BR>ValidacionTipo<BR>ValidacionReferencia<BR>ValidacionTabla<BR>ValidacionCampo<BR>ValidacionExpresion<BR>DespliegueTipo<BR>DespliegueReferencia<BR>DespliegueExpresion
+Nombre=Campos
+Singular=Campo
+ListaRelaciones=FormaTipo<BR>FormaGrupo
+LlavePrimaria=FormaTipo<BR>Campo
+ControlGrupo=S
+CampoGrupo=Grupo
+SQL=SELECT<BR>  FormaTipo,<BR>  Campo,<BR>  Etiqueta,<BR>  Grupo,<BR>  TipoDato,<BR>  EsContrasena,<BR>  EsMayusculas,<BR>  LongitudMaxima,<BR>  Orden,<BR>  AyudaTipo,<BR>  AyudaReferencia,<BR>  AyudaExpresion,<BR>  AyudaRefrescar,<BR>  AyudaComentario,<BR>  ValidacionTipo,<BR>  ValidacionTabla,<BR>  ValidacionCampo,<BR>  ValidacionReferencia,<BR>  ValidacionExpresion,<BR>  Mascara,<BR>  FondoColor,<BR>  PosX,<BR>  PosY,<BR>  Ancho,<BR>  FuenteEspecial,<BR>  FuenteNombre,<BR>  FuenteEstilo,<BR>  FuenteTamano,<BR>  FuenteColor,<BR>  FuenteSubrayado,<BR>  DespliegueTipo,<BR>  DespliegueExpresion,<BR>  DespliegueReferencia<BR><BR>FROM<BR>  FormaCampo
+[FormaTipo]
+Clave=FormaTipo
+Nombre=FormaTipo
+Visible=S
+TamanoValidacion=50
+Tamano=20
+ValorPorOmision=Info.FormaTipo
+Mayusculas=S
+TipoDatos=Texto
+[Campo]
+Clave=Campo
+Nombre=Campo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ConRefrescar=S
+ListaRefrescar=Etiqueta
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Invalido<T>
+ValidacionCondicion=Contiene(Campo,<BR><T>a<T>, <T>b<T>, <T>c<T>, <T>d<T>, <T>e<T>, <T>f<T>, <T>g<T>, <T>h<T>, <T>i<T>, <T>j<T>, <T>k<T>, <T>l<T>, <T>m<T>, <T>n<T>, <T>o<T>, <T>p<T>, <T>q<T>, <T>r<T>, <T>s<T>, <T>t<T>, <T>u<T>, <T>v<T>, <T>x<T>, <T>y<T>, <T>z<T>,<BR><T>A<T>, <T>B<T>, <T>C<T>, <T>D<T>, <T>E<T>, <T>F<T>, <T>G<T>, <T>H<T>, <T>I<T>, <T>J<T>, <T>K<T>, <T>L<T>, <T>M<T>, <T>N<T>, <T>O<T>, <T>P<T>, <T>Q<T>, <T>R<T>, <T>S<T>, <T>T<T>, <T>U<T>, <T>V<T>, <T>X<T>, <T>Y<T>, <T>Z<T>,<BR><T>0<T>, <T>1<T>, <T>2<T>, <T>3<T>, <T>4<T>, <T>5<T>, <T>6<T>, <T>7<T>, <T>8<T>, <T>9<T>, <T>_<T>)
+[Etiqueta]
+Clave=Etiqueta
+Nombre=Etiqueta
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ValorPorOmision=Vacio(Etiqueta, Campo)
+TipoDatos=Texto
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+ValidacionUsaTabla=S
+ValidacionTablas=FormaGrupo
+Formula=SQLEnLista(<T>SELECT Grupo FROM FormaGrupo WHERE FormaTipo=:tFormaTipo<T>, Info.FormaTipo)
+TipoDatos=Texto
+[TipoDato]
+Clave=TipoDato
+Nombre=Tipo Dato
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+ValorPorOmision=<T>Texto<T>
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+ConRefrescar=S
+ListaRefrescar=AyudaTipo
+ListaOpciones=Texto<BR>Numerico<BR>Flotante<BR>Monetario<BR>Fecha<BR>Hora<BR>Fecha/Hora<BR>Logico
+TipoDatos=Texto
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[FondoColor]
+Clave=FondoColor
+Nombre=Color Fondo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Buscar Color
+[PosX]
+Clave=PosX
+Nombre=Posición X
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[PosY]
+Clave=PosY
+Nombre=Posición Y
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[FuenteEspecial]
+Clave=FuenteEspecial
+Nombre=Fuente Especial
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+[FuenteNombre]
+Clave=FuenteNombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+Formula=ListaFuentes
+TipoDatos=Texto
+[FuenteEstilo]
+Clave=FuenteEstilo
+Nombre=Estilo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ListaOpciones=Normal<BR>Cursiva<BR>Negrita<BR>Negrita cursiva
+TipoDatos=Texto
+[FuenteTamano]
+Clave=FuenteTamano
+Nombre=Tamaño
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ListaOpciones=8<BR>10<BR>12<BR>14<BR>18<BR>24<BR>36<BR>48<BR>60<BR>72
+[FuenteColor]
+Clave=FuenteColor
+Nombre=Color
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Buscar Color
+[FuenteSubrayado]
+Clave=FuenteSubrayado
+Nombre=Subrayado
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+[Relaciones.FormaGrupo]
+TipoRelacion=Opcional
+LlaveLocal=FormaTipo<BR>Grupo
+Clave=FormaGrupo
+TablaRemota=FormaGrupo
+LlaveRemota=FormaTipo<BR>Grupo
+[Relaciones.FormaTipo]
+TipoRelacion=Forzosa
+LlaveLocal=FormaTipo
+Clave=FormaTipo
+TablaRemota=FormaTipo
+LlaveRemota=FormaTipo
+[EsContrasena]
+Clave=EsContrasena
+Nombre=Contraseña
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+CondicionDespliege=TipoDato=<T>Texto<T>
+[EsMayusculas]
+Clave=EsMayusculas
+Nombre=Mayusculas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+CondicionDespliege=TipoDato=<T>Texto<T>
+[LongitudMaxima]
+Clave=LongitudMaxima
+Nombre=Longitud Máxima
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+CondicionDespliege=TipoDato=<T>Texto<T>
+[AyudaTipo]
+Clave=AyudaTipo
+Nombre=Ayuda
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+ValorRefrescar=Caso TipoDato<BR>  Es <T>Flotante<T>   Entonces <T>Calculadora<T><BR>  Es <T>Monetario<T>  Entonces <T>Calculadora<T><BR>  Es <T>Fecha<T>      Entonces <T>Calendario<T><BR>  Es <T>Hora<T>       Entonces <T>Calendario<T><BR>  Es <T>Fecha/Hora<T> Entonces <T>Calendario<T><BR>Sino<BR>  AyudaTipo<BR>Fin
+ListaOpciones=<BR>Calculadora<BR>Calendario<BR>Lista<BR>Lista Opcional<BR>Forma<BR>Expresion<BR>Expresion Opcional
+TipoDatos=Texto
+[AyudaReferencia]
+Clave=AyudaReferencia
+Nombre=Forma Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=AyudaTipo en (<T>Expresion<T>, <T>Expresion Opcional<T>, <T>Forma<T>)
+TipoDatos=Texto
+[AyudaExpresion]
+Clave=AyudaExpresion
+Nombre=Expresión
+Visible=S
+TamanoValidacion=50x3
+TipoDatos=Memo
+AyudaExpresionesForma=Info.Referencia
+AyudaEnCaptura=Editor Expresiones
+[AyudaRefrescar]
+Clave=AyudaRefrescar
+Nombre=Refrescar
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+[ValidacionTipo]
+Clave=ValidacionTipo
+Nombre=Validación
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+ListaOpciones=<BR>Tabla<BR>Expresion
+[ValidacionTabla]
+Clave=ValidacionTabla
+Nombre=Tabla
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=ValidacionTipo = <T>Tabla<T>
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>SELECT name FROM sysobjects WHERE type = :tTipo order by name<T>, <T>U<T>)
+TipoDatos=Texto
+[ValidacionCampo]
+Clave=ValidacionCampo
+Nombre=Campo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=ValidacionTipo = <T>Tabla<T>
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Consulta opcional
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT Campo FROM SysCampo WHERE Tabla=:tTabla ORDER BY ColID<T>, ValidacionTabla)
+TipoDatos=Texto
+[ValidacionReferencia]
+Clave=ValidacionReferencia
+Nombre=Forma Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=ValidacionTipo = <T>Expresion<T>
+[ValidacionExpresion]
+Clave=ValidacionExpresion
+Nombre=Expresión
+Visible=S
+TamanoValidacion=50x3
+TipoDatos=Memo
+AyudaExpresionesForma=Info.Referencia
+AyudaEnCaptura=Editor Expresiones
+[Mascara]
+Clave=Mascara
+Nombre=Máscara
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Editor Mascaras
+CondicionDespliege=TipoDato=<T>Texto<T>
+TipoDatos=Texto
+[AyudaComentario]
+Clave=AyudaComentario
+Nombre=Comentario
+Visible=S
+TamanoValidacion=255
+Tamano=255
+TipoDatos=Texto
+[Ancho]
+Clave=Ancho
+Nombre=Ancho
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[DespliegueTipo]
+Clave=DespliegueTipo
+Nombre=Despliegue
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+ValorPorOmision=<T>Valor<T>
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+ListaOpciones=Valor<BR>Expresion
+[DespliegueExpresion]
+Clave=DespliegueExpresion
+Nombre=Expresión
+Visible=S
+TamanoValidacion=50x3
+TipoDatos=Memo
+AyudaExpresionesForma=Info.Referencia
+AyudaEnCaptura=Editor Expresiones
+[DespliegueReferencia]
+Clave=DespliegueReferencia
+Nombre=Forma Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=DespliegueTipo = <T>Expresion<T>

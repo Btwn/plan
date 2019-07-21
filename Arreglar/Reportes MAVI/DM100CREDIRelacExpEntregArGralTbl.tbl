@@ -1,0 +1,147 @@
+[Tabla]
+Icono=0
+Clave=DM100CREDIRelacExpEntregArGralTbl
+Nombre=Tabla que almacena la relacion de Cuentas/Documentos que Credito Entrega a Digitalizacion
+Archivo=MaviCREDIDM100CapturaEntregaDocumentosDigital
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=id<BR>Cliente<BR>TipoCta<BR>UsuarioCaptura<BR>FechaCaptura<BR>RecepcionCorrecta<BR>UsuarioRecepcion<BR>FechaRecepcion<BR>Imprimir<BR>Extra1<BR>Extra2<BR>Extra3<BR>Extra4<BR>Comentarios
+ListaRelaciones=Clientes
+LlavePrimaria=Cliente<BR>id
+ControlID=S
+CampoID=id
+CamposBusquedaRapida=Cliente
+SQL=SELECT<BR>  id,<BR>  Cliente,<BR>  TipoCta,<BR>  UsuarioCaptura,<BR>  FechaCaptura,<BR>  UsuarioRecepcion,<BR>  FechaRecepcion,<BR>  RecepcionCorrecta,<BR>  Imprimir,<BR>  Extra1,<BR>  Extra2,<BR>  Extra3,<BR>  Extra4,<BR>  Comentarios<BR><BR>FROM<BR>  MaviCREDIDM100CapturaEntregaDocumentosDigital
+[id]
+Clave=id
+Nombre=id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValidacionUsaTabla=S
+ValidacionTablas=Cte
+ConRefrescar=S
+ListaRefrescar=UsuarioCaptura<BR>FechaCaptura<BR>TipoCta
+AyudaForma=CteLista
+AyudaVista=MaviCteA
+AyudaCampo=Cte.Cliente
+AyudaEnCaptura=Vista
+TipoDatos=Texto
+[TipoCta]
+Clave=TipoCta
+Nombre=Tipo Venta
+Visible=S
+TamanoValidacion=5
+Tamano=20
+Requerido=S
+ValorPorOmision=Mavi.DM100CREDITiposVenta
+ValorRefrescar=Mavi.DM100CREDITiposVenta
+TipoDatos=Texto
+[UsuarioCaptura]
+Clave=UsuarioCaptura
+Nombre=Usuario Captura
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorRefrescar=Usuario
+TipoDatos=Texto
+[FechaCaptura]
+Clave=FechaCaptura
+Nombre=Fecha Captura
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorRefrescar=SQL(<T>Select Getdate()<T>)
+FormatoValidacion=dd/mmm/aaaa hh:mm am/pm
+[UsuarioRecepcion]
+Clave=UsuarioRecepcion
+Nombre=Usuario Recepción
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorRefrescar=Usuario
+TipoDatos=Texto
+[FechaRecepcion]
+Clave=FechaRecepcion
+Nombre=Fecha Recepcion
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorRefrescar=SQL(<T>Select Getdate()<T>)
+FormatoValidacion=dd/mmm/aaaa hh:mm am/pm
+[RecepcionCorrecta]
+Clave=RecepcionCorrecta
+Nombre=Recibido
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ConRefrescar=S
+ListaRefrescar=UsuarioRecepcion<BR>FechaRecepcion
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=3
+[Imprimir]
+Clave=Imprimir
+Nombre=Imprimir?
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Vista
+AyudaMultiple=S
+[Extra1]
+Clave=Extra1
+Nombre=Extra1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[Extra2]
+Clave=Extra2
+Nombre=Extra2
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[Extra3]
+Clave=Extra3
+Nombre=Extra3
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Extra4]
+Clave=Extra4
+Nombre=Extra4
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Relaciones.Clientes]
+TipoRelacion=Forzosa
+LlaveLocal=Cliente
+Clave=Clientes
+TablaRemota=Cte
+LlaveRemota=Cliente
+[Comentarios]
+Clave=Comentarios
+Nombre=Comentarios
+Visible=S
+TamanoValidacion=200
+Tamano=200
+CondicionEdicion=Vacio(Comentarios)

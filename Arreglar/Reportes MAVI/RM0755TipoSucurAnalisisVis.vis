@@ -1,0 +1,15 @@
+[Vista]
+Icono=0
+Clave=RM0755TipoSucurAnalisisVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Tipo de Sucursal
+SQL=Select Distinct Tipo as [Tipo de Sucursal] From(<BR>Select  Tipo=ISNULL(S.Tipo,<T>OTROS<T>),<BR>        Wuen=isnull(S.Wuen,0)<BR>From Sucursal S)x<BR>Where 1=1<BR>{Si(ConDatos(Mavi.RM0755UENNUM),<T> and x.WUEN in (<T>+Mavi.RM0755UENNUM+<T>)<T>,<BR><T> and x.WUEN =<T>+comillas())}<BR><BR>order by tipo
+[Tipo de Sucursal]
+Clave=Tipo de Sucursal
+Nombre=Tipo de Sucursal
+Visible=S
+TamanoValidacion=30
+Tamano=50
+ClaveBDE=Tipo de Sucursal

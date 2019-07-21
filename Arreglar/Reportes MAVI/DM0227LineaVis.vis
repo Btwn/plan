@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0227LineaVis
+Nombre=Linea
+Modulos=COMS
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=Select Distinct Linea From Art Where Categoria <> <T>Venta<T> and Linea <> <T> <T><BR>{Si(ConDatos(Mavi.DM0227Grupo),<T> And Familia in (<T>+Mavi.DM0227Familia+<T>)<T>,<T> <T>)}<BR>{Si(ConDatos(Mavi.DM0227Linea),<T> And Grupo in (<T>+Mavi.DM0227Grupo+<T>)<T>,<T> <T>)}<BR>{Si(ConDatos(Mavi.RM1096Categorias),<T> And Categoria in (<T>+Mavi.RM1096Categorias+<T>)<T>,<T> <T>)}<BR>Order By Linea
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

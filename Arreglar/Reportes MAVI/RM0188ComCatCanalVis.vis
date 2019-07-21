@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0188ComCatCanalVis
+Nombre=RM0188ComCatCanalVis
+Modulos=(Todos)
+Singular=RM0188ComCatCanalVis
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Categoria
+SQL=SELECT <BR><TAB>DISTINCT Categoria <BR>FROM VentasCanalMAVI
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria

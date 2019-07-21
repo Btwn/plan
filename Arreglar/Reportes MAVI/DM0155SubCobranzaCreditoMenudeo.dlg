@@ -1,0 +1,101 @@
+[Dialogo]
+Clave=DM0155SubCobranzaCreditoMenudeo
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=RM0946<BR>DM0995<BR>RM0946B<BR>RM1050<BR>DM0198<BR>DM0199<BR>DM201
+PosicionInicialAlturaCliente=224
+PosicionInicialAncho=500
+PosicionInicialIzquierda=59
+PosicionInicialArriba=29
+
+[Acciones.RM0946]
+Nombre=RM0946
+Boton=0
+NombreDesplegar=RM0946 Informe Estado de Cuentas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0946CxcInfEdoCtasVisFrm
+Activo=S
+Visible=S
+
+[Acciones.DM0995]
+Nombre=DM0995
+Boton=0
+NombreDesplegar=RM0995 Bitacora de Bonificaciones Cobranza
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0995CXCFiltroPrincipalfrm
+Activo=S
+Visible=S
+
+[Acciones.RM0946B]
+Nombre=RM0946B
+Boton=0
+NombreDesplegar=RM0946B Informe Estado de Cuenta con Niveles Especiales
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0946BCxcInfEdoCtasVisFrm
+Activo=S
+Visible=S
+
+[Acciones.RM1050]
+Nombre=RM1050
+Boton=0
+NombreDesplegar=RM1050EnlaceNuxiba
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1050EnlaceNuxibaFRM
+Activo=S
+Visible=S
+[Acciones.DM0198]
+Nombre=DM0198
+Boton=0
+NombreDesplegar=Cobranza Diaria por Cliente
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0198CobroDiarioxCteVisFrm
+Activo=S
+Visible=S
+[Acciones.DM0199]
+Nombre=DM0199
+Boton=0
+NombreDesplegar=Cobrenza Diaria Instituciones
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0199CobranzaDiariaInstVisFrm
+Activo=S
+Visible=S
+[Acciones.DM0201]
+Nombre=DM0201
+Boton=0
+NombreDesplegar=Cobrenza Diaria x Departamento
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0201CobranzaDiariaDptoVisFRM
+Activo=S
+Visible=S
+
+[Acciones.DM201]
+Nombre=DM201
+Boton=0
+NombreDesplegar=Cobranza Diaria x Departamento
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0201CobranzaDiariaDptoVisFRM
+Activo=S
+Visible=S

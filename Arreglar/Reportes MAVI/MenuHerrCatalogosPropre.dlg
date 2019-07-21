@@ -1,0 +1,50 @@
+[Dialogo]
+Clave=MenuHerrCatalogosPropre
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+PosicionInicialAlturaCliente=128
+PosicionInicialAncho=238
+ListaAcciones=Porcentaje<BR>Listas<BR>Formatos
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+[Acciones.Porcentaje]
+Nombre=Porcentaje
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Catalogo de Porcentajes 
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ProprePorcentajeValidacion
+Activo=S
+Visible=S
+[Acciones.Listas]
+Nombre=Listas
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Catalogo de Listas 
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=PropreLista
+Activo=S
+Visible=S
+[Acciones.Formatos]
+Nombre=Formatos
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Etiquetas de Precios 
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=PropreFormatoEtiqueta
+Activo=S
+Visible=S

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1142FiltroTelefonoREPEPVIS
+Nombre=RM1142FiltroTelefonoREPEP
+Modulos=(Todos)
+Singular=RM1142 FiltroTelefono REPEP
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Telefono
+SQL=SELECT DISTINCT CONVERT(VARCHAR(10),Telefono) as Telefono FROM RM1142_REPEP_Mavi <BR>ORDER BY Telefono ASC
+CamposBusquedaRapida=Telefono
+[Telefono]
+Clave=Telefono
+Visible=S
+ClaveBDE=Telefono
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas

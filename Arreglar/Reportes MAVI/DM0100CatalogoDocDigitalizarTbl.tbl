@@ -1,0 +1,38 @@
+[Tabla]
+Icono=0
+Clave=DM0100CatalogoDocDigitalizarTbl
+Nombre=catalogo Documentos a Digitalizar
+Archivo=DM0100CatalogoDocDigitalizar
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Depto<BR>Concepto<BR>Clave
+LlavePrimaria=Concepto<BR>Clave<BR>Depto
+CamposBusquedaRapida=Concepto<BR>Clave
+SQL=SELECT<BR>  Depto,<BR>  Concepto,<BR>  Clave<BR><BR>FROM<BR>  DM0100CatalogoDocDigitalizar
+[Depto]
+Clave=Depto
+Nombre=Depto
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ValorPorOmision=sQL(<T>sELECT top 1 Perfil fROM FN_MAVIDM0100DIGITALIZACIONDOCUMENTOS (:tUSUARIO)<T>,USUARIO)
+ValorPorOmision002=<CONTINUA>S <T>MAYOREO<T><BR>                        FIN
+Mayusculas=S
+LlavePrimariaEnBlanco=S
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Requerido=S
+LlavePrimariaEnBlanco=S
+TipoDatos=Texto
+[Clave]
+Clave=Clave
+Nombre=Clave
+Visible=S
+TamanoValidacion=20
+ListaRefrescar=Depto
+TipoDatos=Numérico
+LlavePrimariaEnBlanco=S

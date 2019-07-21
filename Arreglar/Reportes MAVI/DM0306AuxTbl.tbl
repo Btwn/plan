@@ -1,0 +1,29 @@
+
+[Tabla]
+Icono=0
+Clave=DM0306AuxTbl
+Nombre=DM0306AuxTbl
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Articulo<BR>CveProdServ
+Archivo=DM0306ArtProdServExcep
+LlavePrimaria=Articulo
+SQL=SELECT <BR>  Articulo,<BR>  CveProdServ <BR>FROM<BR>  DM0306ArtProdServExcep
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+Mayusculas=S
+[CveProdServ]
+Clave=CveProdServ
+Nombre=Clave SAT
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+Mayusculas=S

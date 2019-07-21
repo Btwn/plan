@@ -1,0 +1,22 @@
+
+[Vista]
+Icono=1
+Clave=RM1154TipoRespuestaReanalisisVis
+Modulos=(Todos)
+
+ListaCampos=Nombre
+VistaIndependiente=S
+
+SQL=SELECT <BR><TAB>Nombre<BR>FROM TablaStD <BR>WHERE <BR><TAB>TablaSt = <T>TIPOS RESPUESTA REANALISIS<T>
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+ClaveBDE=Nombre
+
+

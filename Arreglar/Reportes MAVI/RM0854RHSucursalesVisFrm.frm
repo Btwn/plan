@@ -1,0 +1,142 @@
+[Forma]
+Clave=RM0854RHSucursalesVisFrm
+Nombre=<T>Sucursal<T>
+Icono=152
+Modulos=(Todos)
+ListaCarpetas=Vista
+CarpetaPrincipal=Vista
+PosicionInicialIzquierda=527
+PosicionInicialArriba=330
+PosicionInicialAlturaCliente=336
+PosicionInicialAncho=226
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar
+VentanaBloquearAjuste=S
+[Vista]
+Estilo=Iconos
+Clave=Vista
+AlineacionAutomatica=S
+AcomodarTexto=S
+Zona=A1
+Vista=RM0854RHSucursalesVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+MenuLocal=S
+ListaAcciones=Todos<BR>QuitarSeleccion
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSubTitulo=<T>Sucursal<T>
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+ListaEnCaptura=Nombre
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+IconosNombre=RM0854RHSucursalesVis:Num
+[Vista.Columnas]
+0=53
+1=143
+Sucursal=100
+Nombre=136
+ID=24
+2=-2
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+GuardarAntes=S
+RefrescarDespues=S
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Seleccionar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Asigna<BR>Registrar<BR>Sel
+[Acciones.Todos]
+Nombre=Todos
+Boton=0
+NombreDesplegar=&Seleccionar Todos
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+E
+[Acciones.QuitarSeleccion]
+Nombre=QuitarSeleccion
+Boton=0
+NombreDesplegar=&Quitar Selección
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+R
+[Acciones.Seleccionar.Registrar]
+Nombre=Registrar
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)  <BR>//Asigna(Mavi.Factura,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo))<BR>//Asigna(Mavi.SucuAdeC, nulo)
+[Acciones.Seleccionar.Sel]
+Nombre=Sel
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=asigna(Mavi.RM0854SucursalRH,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>)
+[Acciones.Seleccionar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+[Acciones.AutoSelecciona.Seleccion]
+Nombre=Seleccion
+Boton=0
+TipoAccion=Expresion
+Expresion=SeleccionarTodo(<T>Vista<T>)
+Activo=S
+Visible=S
+[Acciones.AutoSelecciona.Stop]
+Nombre=Stop
+Boton=0
+TipoAccion=Expresion
+Expresion=Asigna(Mavi.SW,0)
+Activo=S
+Visible=S
+[Vista.Nombre]
+Carpeta=Vista
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+

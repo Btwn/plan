@@ -1,0 +1,35 @@
+
+[Dialogo]
+Clave=DM0285VTASAgrupaFamilia
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+
+ListaAcciones=DM0285VTASAgrupaFamilia<BR>DM0285FamiliaLinea
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.DM0285VTASAgrupaFamilia]
+Nombre=DM0285VTASAgrupaFamilia
+Boton=0
+NombreDesplegar=DM0285 Agrupar Configurables
+EnBarraHerramientas=S
+TipoAccion=Formas
+ClaveAccion=DM0285VTASRAgrupaFamLineaVisFrm
+Activo=S
+Visible=S
+
+[Acciones.DM0285FamiliaLinea]
+Nombre=DM0285FamiliaLinea
+Boton=0
+NombreDesplegar=DM0285 Familia Linea
+EnBarraHerramientas=S
+TipoAccion=Formas
+ClaveAccion=DM0285familialineaespfrm
+Activo=S
+Visible=S

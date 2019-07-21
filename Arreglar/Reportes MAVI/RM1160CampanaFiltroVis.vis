@@ -1,0 +1,27 @@
+
+[Vista]
+Icono=0
+Clave=RM1160CampanaFiltroVis
+Nombre=Campaña
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=id<BR>Titulo
+SQL=SELECT <BR>id,<BR>Titulo <BR>FROM RM1160ConfMensaje
+[Titulo]
+Clave=Titulo
+Nombre=Titulo
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Titulo
+
+[id]
+Clave=id
+Nombre=id
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+ClaveBDE=id

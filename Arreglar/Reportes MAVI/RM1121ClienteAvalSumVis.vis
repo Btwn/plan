@@ -1,0 +1,73 @@
+[Vista]
+Icono=0
+Clave=RM1121ClienteAvalSumVis
+Nombre=RM1121 TOTAL
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Importe<BR>Abono<BR>SALDO<BR>SaldoVencido<BR>Moratorios<BR>TotSaldoVen<BR>ExigibleMes<BR>PorcIngresoAval
+SQL=SELECT<BR><TAB><TAB><TAB>SUM(Importe) Importe,<BR><TAB><TAB><TAB>SUM(Abonos) Abono,<BR><TAB><TAB><TAB>SUM(Saldo) Saldo,<BR><TAB><TAB><TAB>SUM(SaldoVencido) SaldoVencido,<BR><TAB><TAB><TAB>SUM(Moratorios) Moratorios,<BR><TAB><TAB><TAB>SUM(TotSaldoVen) TotSaldoVen,<BR><TAB><TAB><TAB>SUM(ExigibleMes) ExigibleMes,<BR><TAB><TAB><TAB>SUM(PorcIngresoAval) PorcIngresoAval <BR><TAB><TAB>FROM(<BR><TAB><TAB><TAB>SELECT <BR><TAB><TAB><TAB><TAB>SUM(Importe) Importe,<BR><TAB><TAB><TAB><TAB>SUM(Abonos) Abonos,<BR><TAB><TAB><TAB><TAB>SUM(Saldo) Saldo,<BR><TAB><TAB><TAB><TAB>SUM(SaldoVencido) SaldoVencido,<BR><TAB><TAB><TAB><TAB>SUM(Moratorios) Moratorios,<BR><TAB><TAB><TAB><TAB>SUM(TotSaldoVen) TotSaldoVen,<BR><TAB><TAB><TAB><TAB>SUM(ExigibleMes) ExigibleMes,<BR><TAB><TAB><TAB><TAB>SUM(PorcIngresoAval) Po<CONTINUA>
+SQL002=<CONTINUA>rcIngresoAval<BR><TAB><TAB><TAB>FROM RM1121CALCULOAVAL<BR><TAB><TAB><TAB>WHERE Cliente LIKE <T>C%<T> AND Nombre <> (SELECT Nombre FROM RM1121CALCULOCLIENTE)<BR><TAB><TAB><TAB>UNION<BR><TAB><TAB><TAB>SELECT<BR><TAB><TAB><TAB><TAB>SUM(Importe) Importe,<BR><TAB><TAB><TAB><TAB>SUM(Abonos) Abonos,<BR><TAB><TAB><TAB><TAB>SUM(Saldo) Saldo,<BR><TAB><TAB><TAB><TAB>SUM(SaldoVencido) SaldoVencido,<BR><TAB><TAB><TAB><TAB>SUM(Moratorios) Moratorios,<BR><TAB><TAB><TAB><TAB>SUM(TotSaldoVen) TotSaldoVen,<BR><TAB><TAB><TAB><TAB>SUM(ExigibleMes) ExigibleMes,<BR><TAB><TAB><TAB><TAB>SUM(PorcIngresoAval) PorcIngresoAval<BR><TAB><TAB><TAB>FROM RM1121CALCULOCLIENTE<BR><TAB><TAB><TAB><BR><TAB><TAB>)X
+[Importe]
+Clave=Importe
+Nombre=Importe
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Importe
+Monetario=S
+[SaldoVencido]
+Clave=SaldoVencido
+Nombre=Saldo Vencido
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=SaldoVencido
+Monetario=S
+[Moratorios]
+Clave=Moratorios
+Nombre=Moratorios
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Moratorios
+Monetario=S
+[ExigibleMes]
+Clave=ExigibleMes
+Nombre=Exigible Mensual
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=ExigibleMes
+Monetario=S
+[PorcIngresoAval]
+Clave=PorcIngresoAval
+Nombre=PorcIngresoAval
+Visible=S
+TamanoValidacion=1
+TipoDatos=NumFlotante
+ClaveBDE=PorcIngresoAval
+[TotSaldoVen]
+Clave=TotSaldoVen
+Nombre=Total Saldo Ven
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=TotSaldoVen
+Monetario=S
+[SALDO]
+Clave=SALDO
+Nombre=Saldo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Saldo
+Monetario=S
+[Abono]
+Clave=Abono
+Nombre=Abono
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Abono
+Monetario=S

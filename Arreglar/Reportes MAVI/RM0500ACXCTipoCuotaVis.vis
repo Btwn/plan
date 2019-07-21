@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0500ACXCTipoCuotaVis
+Nombre=Tipo Cuota
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cuota
+SQL=select Cuota=<T>A<T><BR>UNION<BR>select <T>B<T><BR>UNION<BR>select <T>C<T>
+[Cuota]
+Clave=Cuota
+Nombre=Cuota
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=8
+TipoDatos=Texto
+Tamano=8
+ClaveBDE=Cuota

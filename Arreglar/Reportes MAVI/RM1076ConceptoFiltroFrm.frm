@@ -1,0 +1,105 @@
+[Forma]
+Clave=RM1076ConceptoFiltroFrm
+Nombre=Conceptos
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=concepto
+CarpetaPrincipal=concepto
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccion
+PosicionInicialIzquierda=56
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+ExpresionesAlMostrar=Asigna(Mavi.RM1076ConceptoFiltro,<T><T> )
+[concepto]
+Estilo=Iconos
+PestanaOtroNombre=S
+PestanaNombre=Conceptos
+Clave=concepto
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1076ConceptoFiltroVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+FiltroIgnorarEmpresas=S
+CarpetaVisible=S
+ListaEnCaptura=Concepto
+[concepto.Columnas]
+0=-2
+1=-2
+[Acciones.Seleccion.asig]
+Nombre=asig
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccion]
+Nombre=Seleccion
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+ListaAccionesMultiples=asig<BR>regis<BR>select
+Activo=S
+Visible=S
+[Acciones.Seleccion.regis]
+Nombre=regis
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Concepto<T>)
+[Acciones.Seleccion.select]
+Nombre=select
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+Expresion=Asigna(Mavi.RM1076ConceptoFiltro,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+EjecucionCondicion=ConDatos(Mavi.RM1076RubroFiltro)
+EjecucionMensaje=<T>Seleccione un Rubro Primero<T>
+[concepto.Concepto]
+Carpeta=concepto
+Clave=Concepto
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=150
+ColorFondo=Blanco
+ColorFuente=Negro
+

@@ -1,0 +1,15 @@
+[Vista]
+Icono=0
+Clave=RM0351TipoFacturaVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Movimiento
+SQL=SELECT DISTINCT MOVIMIENTO  = MOV FROM MOVTIPO WHERE MODULO IN(<T>VTAS<T>,<T>CXC<T>)
+[Movimiento]
+Clave=Movimiento
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=MOVIMIENTO

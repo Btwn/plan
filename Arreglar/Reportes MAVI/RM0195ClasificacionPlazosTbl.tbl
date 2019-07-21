@@ -1,0 +1,51 @@
+
+[Tabla]
+Icono=0
+Clave=RM0195ClasificacionPlazosTbl
+Archivo=COMSCClasificacionPlazos
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IDClasificacionPlazos<BR>Plazos<BR>Clasificacion
+LlavePrimaria=IDClasificacionPlazos
+ControlID=S
+CampoID=IDClasificacionPlazos
+
+SQL=SELECT<BR>  IDClasificacionPlazos,<BR>  Plazos,<BR>  Clasificacion<BR><BR>  FROM COMSCClasificacionPlazos
+[Plazos]
+Clave=Plazos
+Nombre=Plazos
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+[Clasificacion]
+Clave=Clasificacion
+Nombre=Clasificación
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+OpcionesValidar=S
+
+Requerido=S
+ValidacionConCondiciones=S
+ValidacionCondicion=Si<BR>    Vacio(Clasificacion)<BR>Entonces<BR>    Falso<BR>Sino<BR>    Verdadero<BR>Fin
+ValidacionMensajeError=<T>El campo [Clasificacion] debe tener un valor<T>
+ListaOpciones=TCPU<BR>TCMSI
+[IDClasificacionPlazos]
+Clave=IDClasificacionPlazos
+Nombre=IDClasificacionPlazos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc

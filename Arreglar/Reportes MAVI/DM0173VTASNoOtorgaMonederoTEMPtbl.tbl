@@ -1,0 +1,44 @@
+
+[Tabla]
+Icono=0
+Clave=DM0173VTASNoOtorgaMonederoTEMPtbl
+Nombre=No Otorga Monedero
+Archivo=VTASCNoOtorgaMonederoTEMP
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Sucursal<BR>TipoCondicion<BR>IdNoOtorgaMonederoTEMP
+CampoID=Id
+CampoSucursal=Sucursal
+LlavePrimaria=IdNoOtorgaMonederoTEMP<BR>Sucursal<BR>TipoCondicion
+
+SQL=SELECT<BR>  IdNoOtorgaMonederoTEMP,<BR>  Sucursal,<BR>  TipoCondicion<BR><BR>  FROM VTASCNoOtorgaMonederoTEMP
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>SELECT Sucursal FROM Sucursal WITH(NOLOCK) WHERE Tipo=<T> +  Comillas(<T>PISO<T>))
+[TipoCondicion]
+Clave=TipoCondicion
+Nombre=TipoCondicion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista( <T>SELECT DISTINCT TipoCondicion FROM Condicion WITH(NOLOCK)<T>)
+
+[IdNoOtorgaMonederoTEMP]
+Clave=IdNoOtorgaMonederoTEMP
+Nombre=IdNoOtorgaMonederoTEMP
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico

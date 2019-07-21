@@ -1,0 +1,31 @@
+[Vista]
+Icono=0
+Clave=MaviNomConceptosNomVIS
+Nombre=Conceptos de Nomina
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Concepto<BR>Movimiento
+CamposBusquedaRapida=Concepto<BR>Movimiento
+CampoMov=Movimiento
+SQL=Select Distinct Concepto, Movimiento <BR>From NominaD <BR>Where Concepto is not null<BR>{Si(ConDatos(Mavi.NomMovConcep),<BR>    <T> And Movimiento In(<T>+Mavi.NomMovConcep+<T>)<T>,<BR>    <T><T>)}
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto
+[Movimiento]
+Clave=Movimiento
+Nombre=Movimiento
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Movimiento

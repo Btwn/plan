@@ -1,0 +1,58 @@
+
+[Tabla]
+Icono=0
+Clave=DM0216VTASArtDatalogicTbl
+Archivo=DM0216PagoExternoArt
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Codigo<BR>Nombre<BR>Tipo<BR>Prov<BR>Monto
+LlavePrimaria=Codigo
+SQL=SELECT<BR>  Codigo,<BR>  Nombre,<BR>  Tipo,<BR>  Prov,<BR>  Monto<BR><BR>  FROM DM0216PagoExternoArt
+[Codigo]
+Clave=Codigo
+Nombre=Codigo DataLogic
+Visible=S
+TamanoValidacion=13
+TipoDatos=Texto
+Tamano=13
+
+[Nombre]
+Clave=Nombre
+Nombre=Nombre DataLogic
+Visible=S
+TamanoValidacion=150
+TipoDatos=Texto
+Tamano=150
+
+[Tipo]
+Clave=Tipo
+Nombre=Tipo DataLogic
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Monto
+ListaOpciones=PS<BR>TAE
+[Prov]
+Clave=Prov
+Nombre=Proveedor DataLogic
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+[Monto]
+Clave=Monto
+Nombre=Monto
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+CondicionEdicion=Si<BR> Tipo=<T>PS<T><BR>Entonces<BR>  Falso<BR>Sino<BR>  Verdadero<BR>Fin

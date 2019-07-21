@@ -1,0 +1,46 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spHistAsiste
+@Horas      float,
+@HastaFecha datetime,
+@HastaHora  datetime,
+@Ok         int          OUTPUT,
+@OkRef      varchar(255) OUTPUT
+
+AS BEGIN
+DECLARE
+@ID        int,
+@Cantidad  int
+BEGIN TRANSACTION
+ALTER TABLE Asiste DISABLE TRIGGER ALL
+SELECT @Cantidad = 0
+DECLARE crHistAsiste CURSOR FORWARD_ONLY LOCAL STATIC FOR
+SELECT TOP 1000000 ID
+FROM Asiste WITH(NOLOCK)
+WHERE FechaEmision < @HastaFecha AND Estatus IN ('CONCLUIDO', 'CONCILIADO', 'CANCELADO')
+ORDER BY FechaEmision
+OPEN crHistAsiste
+FETCH NEXT FROM crHistAsiste  INTO @ID
+WHILE @@FETCH_STATUS = 0 AND @Ok IS NULL
+BEGIN
+EXEC spHistAsisteMover @ID, @Ok OUTPUT, @OkRef OUTPUT
+IF @Ok IS NULL
+EXEC spHistMovMover @ID, 'ASIS', @Ok OUTPUT, @OkRef OUTPUT
+IF @Ok IS NULL SELECT @Cantidad = @Cantidad + 1
+FETCH NEXT FROM crHistAsiste  INTO @ID
+END
+CLOSE crHistAsiste
+DEALLOCATE crHistAsiste
+ALTER TABLE Asiste ENABLE TRIGGER ALL
+IF @Ok IS NULL COMMIT TRANSACTION ELSE ROLLBACK TRANSACTION
+INSERT HistLog (Modulo, HastaFecha, HastaHora, Cantidad, Ok, OkRef, Horas, Periodo, Ejercicio) VALUES ('ASIS', @HastaFecha, @HastaHora, @Cantidad, @Ok, @OkRef, @Horas, MONTH(@HastaFecha), YEAR(@HastaFecha))
+RETURN
+END
+;
+

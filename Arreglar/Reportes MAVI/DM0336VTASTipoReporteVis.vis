@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=DM0336VTASTipoReporteVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Reporte
+SQL=SELECT UPPER(Reporte) AS Reporte<BR>FROM(<BR>SELECT <T>Pedidos Cancelados - Reporte De Pantalla<T> AS Reporte<BR>UNION ALL<BR>SELECT <T>Pedidos Cancelados - Reporte De Texto <T> AS Reporte<BR>)tablaDerivadaReportes
+[Reporte]
+Clave=Reporte
+Nombre=Reporte
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=40
+TipoDatos=Texto
+Tamano=40
+ClaveBDE=Reporte

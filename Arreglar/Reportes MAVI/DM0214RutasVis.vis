@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=DM0214RutasVis
+Nombre=DM0214RutasVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Ruta
+CamposBusquedaRapida=Ruta
+SQL=SELECT Ruta FROM Ruta
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Ruta

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RelIngresosConcepto
+Nombre=Concepto del Movimiento Origen
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Concepto
+SQL=EXEC spRelIngresosSeparaCadenaMavi <T>{RelIngresos.MovOrigen}<T>, <T>{RelIngresos.MovIng}<T>, <T>MovOrigen<T><BR><BR><BR><BR>/*SELECT DISTINCT<BR><TAB>C.Concepto<BR><BR>FROM<BR>  Concepto C LEFT OUTER JOIN RelIngresosTipoMov R ON C.Concepto=R.Concepto<BR><BR>WHERE <BR>  C.Modulo = <T>CXC<T>  */
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto

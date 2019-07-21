@@ -1,0 +1,81 @@
+[Tabla]
+Icono=0
+Clave=ContSatPeriodoBalanza
+Nombre=ContSatPeriodoBalanza
+Archivo=ContSatPeriodoBalanza
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Estacion<BR>Empresa<BR>Ejercicio<BR>Periodo<BR>Nivel<BR>ConMovtos
+LlavePrimaria=Estacion<BR>Empresa
+SQL=SELECT<BR>  Estacion,<BR>  Empresa,<BR>  Ejercicio,<BR>  Periodo,<BR>  Nivel,<BR>  ConMovtos<BR><BR>  FROM ContSatPeriodoBalanza
+[Estacion]
+Clave=Estacion
+Nombre=Estacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorPorOmision=EstacionTrabajo
+[Ejercicio]
+Clave=Ejercicio
+Nombre=Ejercicio
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+
+Requerido=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesLlave=Opción
+OpcionesPredefinidas=Años
+[Periodo]
+Clave=Periodo
+Nombre=Periodo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+
+Requerido=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesLlave=Opción
+OpcionesPredefinidas=Ninguna
+ListaOpciones=1<BR>2<BR>3<BR>4<BR>5<BR>6<BR>7<BR>8<BR>9<BR>10<BR>11<BR>12<BR>13
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+Requerido=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesLlave=Opción
+OpcionesPredefinidas=Ninguna
+
+ListaOpciones=Mayor<BR>Subcuenta<BR>Auxiliar
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+ValorPorOmision=Empresa
+
+[ConMovtos]
+Clave=ConMovtos
+Nombre=Con Movimientos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+Requerido=S

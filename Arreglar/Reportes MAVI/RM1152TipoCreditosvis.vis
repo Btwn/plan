@@ -1,0 +1,53 @@
+[Vista]
+Icono=0
+Clave=RM1152TipoCreditosvis
+Nombre=Tipo Creditos
+ListaTablas=DM0299Tipodecliente
+TablaPrincipal=DM0299Tipodecliente
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=DM0299Tipodecliente.ID<BR>DM0299Tipodecliente.TipoCredito<BR>DM0299Tipodecliente.TextoAmostrar
+SQL=SELECT<BR>  DM0299Tipodecliente.ID,<BR>  DM0299Tipodecliente.TipoCredito,<BR>  DM0299Tipodecliente.TextoAmostrar<BR><BR>FROM<BR>  DM0299Tipodecliente
+[DM0299Tipodecliente.ID]
+Clave=DM0299Tipodecliente.ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=DM0299Tipodecliente
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ID
+[DM0299Tipodecliente.TipoCredito]
+Clave=DM0299Tipodecliente.TipoCredito
+Nombre=TipoCredito
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+ListaOpciones=Credito Normal<BR>Credito Express<BR>Credito Relacionado<BR>Credito Relacionado con Diferente Domicilio<BR>Credito Agil<BR>Credito Agil  Calzado<BR>Credito DIMA<BR>Credito Internet<BR>Credito Seguro Express
+LigaTabla=DM0299Tipodecliente
+LigaCampo=TipoCredito
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=TipoCredito
+[DM0299Tipodecliente.TextoAmostrar]
+Clave=DM0299Tipodecliente.TextoAmostrar
+Nombre=Texto A Mostrar
+Visible=S
+TamanoValidacion=30
+Tamano=30
+LigaTabla=DM0299Tipodecliente
+LigaCampo=TextoAmostrar
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=TextoAmostrar

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0175BArtTipoFiltrovis
+Nombre=Art Tipo
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ArtTipo
+VistaIndependiente=S
+Singular=Art Tipo
+SQL=SELECT DISTINCT ALD.ArtTipo<BR>FROM ArtLinea AL <BR>INNER JOIN ArtLineaD ALD ON AL.ID = ALD.ID<BR>INNER JOIN VentascanalMavi CVM ON ALD.CanalVenta= CVM.ID
+[ArtTipo]
+Clave=ArtTipo
+Nombre=ArtTipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=ArtTipo

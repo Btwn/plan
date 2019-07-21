@@ -1,0 +1,26 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION dbo.fneDocXmlAUTF8Min
+(
+@XML    varchar(max),
+@ConvertirCP437  bit = 0,
+@ConvertirComillas  bit = 1
+)
+RETURNS varchar(max)
+
+AS BEGIN
+SET @XML = ISNULL(@XML,'') COLLATE Modern_Spanish_CS_AS
+SET @XML = REPLACE(@XML,'''','&apos;') COLLATE Modern_Spanish_CS_AS
+SET @XML = REPLACE(@XML,'&','&amp;') COLLATE Modern_Spanish_CS_AS
+SET @XML = REPLACE(@XML,'<','&gt;') COLLATE Modern_Spanish_CS_AS
+SET @XML = REPLACE(@XML,'>','&lt;') COLLATE Modern_Spanish_CS_AS
+SET @XML = REPLACE(@XML,'"','&quot;') COLLATE Modern_Spanish_CS_AS
+RETURN @XML
+END
+

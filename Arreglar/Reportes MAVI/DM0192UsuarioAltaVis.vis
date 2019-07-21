@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=DM0192UsuarioAltaVis
+Nombre=DM0192 Usuario de Alta
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=NombreUsuarioAlta<BR>UsuarioAlta
+CamposBusquedaRapida=UsuarioAlta<BR>NombreUsuarioAlta
+SQL=<BR>Select *<BR>from<BR>(Select Distinct UsuarioAlta=isnull(UsuarioAltaC,<T><T>),NombreUsuarioAlta=isnull(u.Nombre,<T><T>)<BR>From ClienteExpressMavi cem<BR>LEFT JOIN usuario u on cem.usuarioaltac=u.usuario<BR>where UsuarioAltaC is not null)Aux
+[NombreUsuarioAlta]
+Clave=NombreUsuarioAlta
+Nombre=NombreUsuarioAlta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreUsuarioAlta
+[UsuarioAlta]
+Clave=UsuarioAlta
+Nombre=UsuarioAlta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=UsuarioAlta

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0167MaviGerenciaVtasInstVis
+VistaIndependiente=S
+TipoTabla=General
+Nombre=Gerencias
+Modulos=(Todos)
+ListaCampos=Gerencia
+SQL=select distinct equipo as Gerencia<BR>from equipoagente <BR>where equipo like <T>GERI%<T>
+[Gerencia]
+Clave=Gerencia
+Nombre=Gerencia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Gerencia

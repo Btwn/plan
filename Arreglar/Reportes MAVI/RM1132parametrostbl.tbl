@@ -1,0 +1,61 @@
+[Tabla]
+Icono=0
+Clave=RM1132parametrostbl
+Archivo=RM1132Parametros
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>SaldoActual<BR>FechaLiquidacionCuenta<BR>Facturas<BR>Meses<BR>MontoAbonos<BR>DValDia<BR>MHDV
+SQL=SELECT<BR>  ID,<BR>  SaldoActual,<BR>  FechaLiquidacionCuenta,<BR>  Facturas,<BR>  Meses,<BR>  MontoAbonos,<BR>  DValDia,<BR>  MHDV<BR><BR>FROM<BR>  RM1132Parametros
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[SaldoActual]
+Clave=SaldoActual
+Nombre=Saldo Actual
+Visible=S
+TamanoValidacion=25
+Tamano=50
+[FechaLiquidacionCuenta]
+Clave=FechaLiquidacionCuenta
+Nombre=Fecha Liquidacion Cuenta
+Visible=S
+TamanoValidacion=25
+Tamano=255
+[Facturas]
+Clave=Facturas
+Nombre=Facturas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Meses]
+Clave=Meses
+Nombre=Meses
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[MontoAbonos]
+Clave=MontoAbonos
+Nombre=Monto Abonos
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[DValDia]
+Clave=DValDia
+Nombre=DV al Dia
+Visible=S
+TamanoValidacion=20
+Tamano=50
+[MHDV]
+Clave=MHDV
+Nombre=MHDV
+Visible=S
+TamanoValidacion=20
+Tamano=50

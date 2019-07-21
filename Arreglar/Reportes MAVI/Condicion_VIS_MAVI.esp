@@ -1,0 +1,184 @@
+;**** Modificacion: 22-Abr-09
+;**** Modifico: Edgar Montelongo
+;**** Se modifico: Integracion Camo LeasingMAVI para Refinanciamiento
+
+;**** Ultima modificación:26-Ago-08
+;**** Modifico:Arly Rubio
+;**** Se modifico: Integracion PROPRE
+
+;***** 26-Ago-08(Arly): Se agregaron los campos: Condicion.PROPREGrupo, COndicion.PROPRECanal, VentasCanalMAVI.ID, VentasCanalMAVI.Clave, PropreCondicionGrupo.CondicionGrupo *****
+;***** 26-Ago-08(Arly): Se agregaron nuevas relaciones: Condicion.Grupo, Condicion.VentasCanal*****
+
+[Condicion.vis/Vista]
+ListaTablas=Condicion<BR>VentasCanalMAVI<BR>PropreCondicionGrupo
+ListaRelaciones=Condicion.Grupo<BR>Condicion.VentasCanal
+
+
+
+
+;***** Nuevo campo agregado *****
+[Condicion.vis/Condicion.PROPREGrupo]
+Clave=Condicion.PROPREGrupo
+LigaTabla=Condicion
+LigaCampo=PROPREGrupo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=PROPREGrupo
+
+
+;***** Nuevo campo agregado *****
+[Condicion.vis/Condicion.PROPRECanal]
+Clave=Condicion.PROPRECanal
+LigaTabla=Condicion
+LigaCampo=PROPRECanal
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=PROPRECanal
+
+
+;***** Nuevo campo agregado *****
+[Condicion.vis/VentasCanalMAVI.ID]
+Clave=VentasCanalMAVI.ID
+LigaTabla=VentasCanalMAVI
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=ID
+
+
+;***** Nuevo campo agregado *****
+[Condicion.vis/VentasCanalMAVI.Clave]
+Clave=VentasCanalMAVI.Clave
+LigaTabla=VentasCanalMAVI
+LigaCampo=Clave
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Clave
+
+
+;***** Nuevo campo agregado *****
+[Condicion.vis/PropreCondicionGrupo.CondicionGrupo]
+Clave=PropreCondicionGrupo.CondicionGrupo
+LigaTabla=PropreCondicionGrupo
+LigaCampo=CondicionGrupo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CondicionGrupo
+
+
+
+;****************************************************************** RELACIONES *****************************************************************
+;***********************************************************************************************************************************************
+
+
+;***** Nueva relacion ****
+[Condicion.vis/Relaciones.Condicion.Grupo]
+Clave=Condicion.Grupo
+TablaRemota=PropreCondicionGrupo
+LlaveLocal=Condicion.PROPREGrupo
+LlaveRemota=CondicionGrupo
+TipoRelacion=Opcional
+
+
+;***** Nueva relacion ****
+[Condicion.vis/Relaciones.Condicion.VentasCanal]
+Clave=Condicion.VentasCanal
+TablaRemota=VentasCanalMAVI
+LlaveLocal=Condicion.PROPRECanal
+LlaveRemota=ID
+TipoRelacion=Opcional
+
+
+;**** Integracion campo LeasingMAVI
+[Condicion.vis/Condicion.LeasingMAVI]
+Clave=Condicion.LeasingMAVI
+Nombre=LeasingMAVI
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+LigaTabla=Condicion
+LigaCampo=LeasingMAVI
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=LeasingMAVI
+
+[Condicion.vis/Condicion.ListTemp]
+Clave=Condicion.ListTemp
+Nombre=ListTemp
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+LigaTabla=Condicion
+LigaCampo=ListTemp
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ListTemp
+
+[Condicion.vis/Condicion.ProdUnic]
+Clave=Condicion.ProdUnic
+Nombre=En Productos Unicos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+LigaTabla=Condicion
+LigaCampo=ProdUnic
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ProdUnic
+
+[Condicion.vis/Condicion.DIMA]
+Clave=Condicion.DIMA
+Nombre=DIMA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+LigaTabla=Condicion
+LigaCampo=DIMA
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=DIMA
+
+[Condicion.vis/Vista.ListaCampos]
+Condicion.DiferirFechaAcumulacion=Condicion.PROPREGrupo
+Condicion.PROPREGrupo=Condicion.PROPRECanal
+Condicion.PROPRECanal=Condicion.DIMA
+Condicion.DIMA=VentasCanalMAVI.ID
+VentasCanalMAVI.ID=VentasCanalMAVI.Clave
+VentasCanalMAVI.Clave=PropreCondicionGrupo.CondicionGrupo
+PropreCondicionGrupo.CondicionGrupo=Condicion.LeasingMAVI
+Condicion.LeasingMAVI=Condicion.ListTemp
+Condicion.ListTemp=Condicion.ProdUnic
+Condicion.ProdUnic=Condicion.VentasCanal
+Condicion.VentasCanal=(Fin)
+
+[Condicion.vis/Vista.SQL]
+Condicion.CFD_metodoDePago,=Condicion.DiferirFechaAcumulacion,
+Condicion.DiferirFechaAcumulacion,=Condicion.PROPREGrupo,
+Condicion.PROPREGrupo,=Condicion.PROPRECanal,
+Condicion.PROPRECanal,=Condicion.DIMA,
+Condicion.DIMA,=VentasCanalMAVI.ID,
+VentasCanalMAVI.ID,=VentasCanalMAVI.Clave,
+VentasCanalMAVI.Clave,=PropreCondicionGrupo.CondicionGrupo,
+PropreCondicionGrupo.CondicionGrupo,=Condicion.LeasingMAVI,
+Condicion.LeasingMAVI,=Condicion.ListTemp,
+Condicion.ListTemp,=Condicion.ProdUnic
+Condicion.ProdUnic=FROM Condicion
+FROM Condicion=LEFT OUTER JOIN PropreCondicionGrupo ON
+LEFT OUTER JOIN PropreCondicionGrupo ON=Condicion.PROPREGrupo<IGUAL>PropreCondicionGrupo.CondicionGrupo
+Condicion.PROPREGrupo<IGUAL>PropreCondicionGrupo.CondicionGrupo=LEFT OUTER JOIN VentasCanalMAVI ON
+LEFT OUTER JOIN VentasCanalMAVI ON=Condicion.PROPRECanal<IGUAL>VentasCanalMAVI.ID 
+Condicion.PROPRECanal<IGUAL>VentasCanalMAVI.ID=(Fin)

@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=RM1132FechaLiqVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=id<BR>FechaUltimoCobro
+SQL=select distinct id,FechaLiquidacionCuenta as FechaUltimoCobro from RM1132Parametros Where FechaLiquidacionCuenta is not null<BR>ORDER bY id
+[id]
+Clave=id
+Nombre=id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+ClaveBDE=id
+[FechaUltimoCobro]
+Clave=FechaUltimoCobro
+Nombre=FechaUltimoCobro
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=FechaUltimoCobro

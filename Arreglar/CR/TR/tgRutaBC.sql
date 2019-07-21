@@ -1,0 +1,34 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgRutaBC ON Ruta
+
+FOR UPDATE, DELETE
+AS BEGIN
+DECLARE
+@RutaN  	varchar(50),
+@RutaA	varchar(50),
+@Mensaje	varchar(255)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @RutaN = Ruta FROM Inserted
+SELECT @RutaA = Ruta FROM Deleted
+IF @RutaN = @RutaA RETURN
+IF @RutaN IS NULL AND
+EXISTS(SELECT * FROM Cte WHERE Ruta = @RutaA) OR EXISTS(SELECT * FROM CteEnviarA WHERE Ruta = @RutaA)
+BEGIN
+SELECT @Mensaje = '"'+LTRIM(RTRIM(@RutaA))+ '" ' + Descripcion FROM MensajeLista WHERE Mensaje = 30155
+RAISERROR (@Mensaje,16,-1)
+END ELSE
+IF @RutaA IS NOT NULL
+BEGIN
+UPDATE Cte SET Ruta = @RutaN WHERE Ruta = @RutaA
+UPDATE CteEnviarA SET Ruta = @RutaN WHERE Ruta = @RutaA
+UPDATE CodigoPostal SET Ruta = @RutaN WHERE Ruta = @RutaA
+END
+END
+

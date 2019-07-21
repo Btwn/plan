@@ -1,0 +1,65 @@
+[Dialogo]
+Clave=DM0155SubExpVentas
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Vent<BR>VentDet<BR>PendientDet<BR>PendientCliente<BR>RM0907
+PosicionInicialAlturaCliente=152
+PosicionInicialAncho=500
+[Acciones.Vent]
+Nombre=Vent
+Boton=0
+NombreDesplegar=Ventas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarVenta
+Activo=S
+Visible=S
+[Acciones.VentDet]
+Nombre=VentDet
+Boton=0
+NombreDesplegar=Ventas  (Detalle)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarVentaD
+Activo=S
+Visible=S
+[Acciones.PendientDet]
+Nombre=PendientDet
+Boton=0
+NombreDesplegar=Pendientes (Detalle)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarVentaPendienteD
+Activo=S
+Visible=S
+[Acciones.PendientCliente]
+Nombre=PendientCliente
+Boton=0
+NombreDesplegar=Pendentes por Cliente (Detalle)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarVentaPendienteCte
+Activo=S
+Visible=S
+
+[Acciones.RM0907]
+Nombre=RM0907
+Boton=0
+NombreDesplegar=Simulador Refinanciamientos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0907MaviSimRefinanciamientofrm
+Activo=S
+Visible=S

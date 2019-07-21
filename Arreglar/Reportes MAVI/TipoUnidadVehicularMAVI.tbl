@@ -1,0 +1,26 @@
+[Tabla]
+Icono=0
+Clave=TipoUnidadVehicularMAVI
+Nombre=Tipos de Unidades Vehiculares
+Archivo=TipoUnidadVehicularMAVI
+Modulos=(Todos)
+Singular=Tipo de Unidad Vehicular
+TipoTabla=Maestros
+ListaCampos=TipoUnidad<BR>Capacidad
+LlavePrimaria=TipoUnidad
+SQL=SELECT<BR>  TipoUnidad,<BR>  Capacidad<BR><BR>FROM<BR>  TipoUnidadVehicularMAVI
+[TipoUnidad]
+Clave=TipoUnidad
+Nombre=Tipo Unidad
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+[Capacidad]
+Clave=Capacidad
+Nombre=Capacidad
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+Requerido=S

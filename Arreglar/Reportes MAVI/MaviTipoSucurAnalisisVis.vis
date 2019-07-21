@@ -1,0 +1,15 @@
+[Vista]
+Icono=0
+Clave=MaviTipoSucurAnalisisVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Tipo de Sucursal
+SQL=Select Distinct S.Tipo as [Tipo de Sucursal]<BR>From Sucursal S<BR>INNER JOIN UEN U on U.UEN = S.WUEN<BR>Where s.tipo is not null  <BR>{Si(ConDatos(Mavi.UEN),<T> and U.Nombre in (<T>+Mavi.UEN+<T>)<T>,<BR><T> and U.Nombre =<T>+comillas())}
+[Tipo de Sucursal]
+Clave=Tipo de Sucursal
+Nombre=Tipo de Sucursal
+Visible=S
+TamanoValidacion=30
+Tamano=50
+ClaveBDE=Tipo de Sucursal

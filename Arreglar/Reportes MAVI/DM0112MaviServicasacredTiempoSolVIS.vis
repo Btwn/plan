@@ -1,0 +1,32 @@
+[Vista]
+Icono=0
+Clave=DM0112MaviServicasacredTiempoSolVIS
+Nombre=DM0112MaviServicasacredTiempoSolVIS
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MOV<BR>MOVID<BR>TIEMPO
+SQL=select * FROM dbo.Fn_DM0112TiempototalServicasaCred(<T>{Info.Mov}<T>,{Info.ID})
+[MOV]
+Clave=MOV
+Nombre=MOVIMIENTO
+Visible=S
+TamanoValidacion=25
+Tamano=25
+ClaveBDE=MOV
+TipoDatos=Texto
+[MOVID]
+Clave=MOVID
+Nombre=ID MOVIMIENTO
+Visible=S
+TamanoValidacion=25
+Tamano=25
+ClaveBDE=movID
+TipoDatos=Texto
+[TIEMPO]
+Clave=TIEMPO
+Nombre=FECHA ORIGEN
+Visible=S
+TamanoValidacion=25
+Tamano=25
+ClaveBDE=TIEMPO

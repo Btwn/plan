@@ -1,0 +1,63 @@
+;**** Modificacion: 03-Feb-09
+;**** Modifico: Edgar Montelongo
+;**** Se Modifico: Se agregaron acciones a los campos Mov, Importe y ConDesglose
+
+;**** Modificación:15-Dic-08
+;**** Modifico:Arly Rubio
+;**** Se modifico:Formula campo 'Retencion'
+
+;Se agrega relacion a provt
+[Dinero.tbl/Tabla.ListaRelaciones]
+CentroCostos3=Provt
+Provt=(Fin)
+
+
+;***** Se agregaron parentesis en la formula al refrescar ARC 15-Dic-08 *****
+[Dinero.tbl/Retencion]
+ValorRefrescar=(((Importe*(vacio(Tasa,0)/100))/TasaDias)*(Vencimiento-FechaOrigen))*(TasaRetencion/100)<BR>//Importe*(Vencimiento-FechaOrigen)*(TasaRetencion/TasaDias/100.0)
+
+
+;***** SE agregaron acciones alos campos EM 03-Feb-09 ****
+[Dinero.tbl/Mov]
+AlCambiar=Si<BR>  Mov=<T>Apertura Caja<T><BR>Entonces<BR>  Asigna(Info.Conteo,1)<BR>Sino<BR>  Si<BR>    ConDesglose<BR>  Entonces<BR>    Asigna(Info.Conteo,1)<BR>  Sino<BR>    Asigna(Info.Conteo,0)<BR>  Fin<BR>
+
+[Dinero.tbl/Importe]
+CondicionEdicion=Info.Conteo <> 1 //o (no Dinero:Dinero.ConDesglose)) y Dinero:Dinero.Directo) o MovTipoEn(<T>DIN<T>, Dinero:Dinero.Mov, (DIN.CB,DIN.AB))
+ValorPorOmision=0.00
+
+[Dinero.tbl/ConDesglose]
+AlCambiar=Si<BR>  ConDesglose<BR>Entonces<BR>  Asigna(Info.Conteo,1)<BR>Sino<BR>  Si<BR>    Mov en (<T>Apertura Caja<T>)<BR>  Entonces<BR>    Asigna(Info.Conteo,1)<BR>  Sino<BR>    Asigna(Info.Conteo,0)<BR>  Fin<BR>Fin
+CondicionEdicion=si<BR>mov=<T>Traspaso Caja<T>      Entonces<BR> Falso<BR>Sino<BR>  no Config.DineroDesgloseObligatorio<BR>fin
+
+;Modificacion para acomodar el Nivel de Acceso ALQG - 15/06/2010
+[Dinero.tbl/Cajero]
+ValidacionUsaTabla=N
+ValidacionTablas=
+CondicionEdicion=Dinero:Dinero.Mov Noen (<T>Apertura Caja<T>,<T>Traspaso Caja<T>)
+
+[Dinero.tbl/BeneficiarioNombre]
+CondicionDespliege=(MovTipoEn(<T>DIN<T>,Mov,(DIN.CH, DIN.CHE, DIN.E, DIN.SCH))) y (Mov noen (<T>Pago Dinero<T>,<T>Recibo  Dinero<T>))
+
+;nueva relacion
+
+[Dinero.tbl/Relaciones.Provt]
+TipoRelacion=Opcional
+LlaveLocal=Contacto
+Clave=Provt
+TablaRemota=Prov
+LlaveRemota=Proveedor
+
+[Dinero.tbl/FormaPago]
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=FormaPago
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+CondicionEdicion=SI<BR>mov=<T>Traspaso Caja<T> Entonces<BR>Asigna(FormaPago,<T>EFECTIVO<T>)<BR> Sino<BR> no Usuario.BloquearFormaPago<BR>Fin
+
+[CtaDineroDestino]
+CondicionEdicion=
+
+; **** Se modifico el campo para que tomara la uen de la sucursal por default y para que no fuera editable 02/10/09  ALQG****
+[Dinero.tbl/UEN]
+ValorPorOmision=Sucursal.wUEN
+CondicionEdicion=Falso

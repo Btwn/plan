@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=DM0304FamiliaRelVis
+Nombre=DM0304FamiliaRelVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Familia
+ListaCampos002=<CONTINUA>s<BR>ServicioTipo<BR>ServicioArticulo<BR>ServicioSerie<BR>ServicioContrato<BR>ServicioContratoID<BR>ServicioContratoTipo<BR>ServicioGarantia<BR>ServicioDescripcion<BR>ServicioFecha<BR>ServicioFlotilla<BR>ServicioRampa<BR>ServicioIdentificador<BR>ServicioPlacas<BR>ServicioKms<BR>ServicioTipoOrden<BR>ServicioTipoOperacion<BR>ServicioSiniestro<BR>ServicioExpress<BR>ServicioDemerito<BR>ServicioDeducible<BR>ServicioDeducibleImporte<BR>ServicioNumero<BR>ServicioNumeroEconomico<BR>ServicioAseguradora<BR>ServicioPuntual<BR>ServicioPoliza<BR>OrigenTipo<BR>Origen<BR>OrigenID<BR>Poliza<BR>PolizaID<BR>GenerarPoliza<BR>ContID<BR>Ejercicio<BR>Periodo<BR>FechaRegistro<BR>FechaConclusion<BR>FechaCancelacion<BR>FechaEntrega<BR>EmbarqueEstado<BR>EmbarqueGastos<BR>Peso<BR>Volumen<BR>Causa<BR>Atencion<BR>Aten<CONTINUA>
+ListaCampos003=<CONTINUA>cionTelefono<BR>ListaPreciosEsp<BR>ZonaImpuesto<BR>Extra<BR>CancelacionID<BR>Mensaje<BR>Departamento<BR>Sucursal<BR>GenerarOP<BR>DesglosarImpuestos<BR>DesglosarImpuesto2<BR>ExcluirPlaneacion<BR>ConVigencia<BR>VigenciaDesde<BR>VigenciaHasta<BR>Enganche<BR>Bonificacion<BR>IVAFiscal<BR>IEPSFiscal<BR>EstaImpreso<BR>Periodicidad<BR>SubModulo<BR>ContUso<BR>Espacio<BR>AutoCorrida<BR>AutoCorridaHora<BR>AutoCorridaServicio<BR>AutoCorridaRol<BR>AutoCorridaOrigen<BR>AutoCorridaDestino<BR>AutoCorridaKms<BR>AutoCorridaLts<BR>AutoCorridaRuta<BR>AutoOperador2<BR>AutoBoleto<BR>AutoKms<BR>AutoKmsActuales<BR>AutoBomba<BR>AutoBombaContador<BR>Logico1<BR>Logico2<BR>Logico3<BR>Logico4<BR>DifCredito<BR>EspacioResultado<BR>Clase<BR>Subclase<BR>GastoAcreedor<BR>GastoConcepto<BR>Comentarios<BR>Pagado<BR>GenerarDin<CONTINUA>
+ListaCampos004=<CONTINUA>ero<BR>Dinero<BR>DineroID<BR>DineroCtaDinero<BR>DineroConciliado<BR>DineroFechaConciliacion<BR>Extra1<BR>Extra2<BR>Extra3<BR>Reabastecido<BR>SucursalVenta<BR>AF<BR>AFArticulo<BR>AFSerie<BR>ContratoTipo<BR>ContratoDescripcion<BR>ContratoSerie<BR>ContratoValor<BR>ContratoValorMoneda<BR>ContratoSeguro<BR>ContratoVencimiento<BR>ContratoResponsable<BR>Incentivo<BR>IncentivoConcepto<BR>EndosarA<BR>InteresTasa<BR>InteresIVA<BR>AnexoID<BR>FordVisitoOASIS<BR>LineaCredito<BR>TipoAmortizacion<BR>TipoTasa<BR>Comisiones<BR>ComisionesIVA<BR>CompraID<BR>OperacionRelevante<BR>TieneTasaEsp<BR>TasaEsp<BR>FormaPagoTipo<BR>SobrePrecio<BR>SincroID<BR>SincroC<BR>SucursalOrigen<BR>SucursalDestino<BR>MaviTipoVenta<BR>EsCredilana<BR>Mayor12Meses<BR>IDIngresoMAVI<BR>AfectaComisionMavi<BR>SucJuego<BR>OrigenSucursal<<CONTINUA>
+ListaCampos005=<CONTINUA>BR>FacDesgloseIVA<BR>EsModVenta<BR>ContImpSimp<BR>ContImpCiego<BR>ContImpCFD<BR>FormaCobro<BR>NoCtaPago<BR>RedimePtos<BR>ComLibera<BR>CteFinal<BR>Band402<BR>FechaEnvioSID<BR>Liberado<BR>Autoriza<BR>ArtQ<BR>HuellaLiberacion<BR>IDEcommerce
+ControlSucursalDestino=S
+CampoSucursalDestino=SucursalDestino
+ControlSucursalOrigen=S
+CampoSucursalOrigen=SucursalOrigen
+CamposBusquedaRapida=Familia
+SQL=SELECT DISTINCT al.Familia FROM ArtLinea al<BR>            INNER JOIN art a ON a.Familia = al.Familia <BR>            WHERE a.categoria = <T>venta<T><BR>            AND a.grupo  = <T>mercancia de linea<T><BR>            AND a.Estatus in (<T>alta<T>,<T>bloqueado<T>)<BR>            ORDER BY al.Familia
+[Familia]
+Clave=Familia
+Nombre=Buscar Familia
+Visible=S
+TamanoValidacion=50
+Tamano=250
+ClaveBDE=Familia

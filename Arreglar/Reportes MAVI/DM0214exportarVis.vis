@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=DM0214exportarVis
+Nombre=DM0214exportarVis
+Modulos=(Todos)
+ListaCampos=DM0214ZonasCobranza.NivelCobranza
+ListaTablas=DM0214ZonasCobranza
+TablaPrincipal=DM0214ZonasCobranza
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+SQL=<BR>SELECT<BR>  DM0214ZonasCobranza.NivelCobranza<BR><BR>FROM<BR>  DM0214ZonasCobranza<BR>where zona =<T><T>
+[DM0214ZonasCobranza.NivelCobranza]
+Clave=DM0214ZonasCobranza.NivelCobranza
+LigaTabla=DM0214ZonasCobranza
+LigaCampo=NivelCobranza
+Tamano=50
+ClaveBDE=NivelCobranza
+TamanoValidacion=25
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Formula=sqlenlista(<T><BR>Select  Distinct Nivelcobranza from dm0214zonascobranza <BR>union<BR>Select :tv as nivel<BR><T>,<T>TODO<T>)

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0167MaviEquipoVtasInstVis
+Nombre=Equipo
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Equipo
+SQL=Select distinct equipo as Equipo<BR>From Equipoagente <BR>Where Equipo like <T>EQI%<T>
+CamposBusquedaRapida=Equipo
+[Equipo]
+Clave=Equipo
+Nombre=Equipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Equipo

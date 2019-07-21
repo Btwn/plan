@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM1062MovVis
+Nombre=MovVis
+Modulos=(Todos)
+Singular=Movimientos
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MOV
+CamposBusquedaRapida=MOV
+SQL=SELECT DISTINCT C.MOV <BR>FROM cxc C WITH (NOLOCK)<BR>WHERE  mov in (<T>factura<T>,<T>factura viu<T>,<T>nota cargo<T>,<T>nota cargo viu<T>,<T>factura mayoreo<T>) <BR>AND SALDO IS NOT NULL<BR>ORDER BY C.Mov
+[MOV]
+Clave=MOV
+Nombre=MOV
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MOV

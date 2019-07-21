@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0497NivelesCobranzaVis
+Nombre=Niveles de Cobranza
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre
+CamposBusquedaRapida=Nombre
+SQL=SELECT Nombre FROM NivelesEspecialesCobranzaMavi <BR>UNION <BR>SELECT Nombre FROM NivelCobranzaMavi
+[Nombre]
+Clave=Nombre
+Nombre=Niveles de Cobranza
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre

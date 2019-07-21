@@ -1,0 +1,19 @@
+[Vista]
+Icono=720
+Clave=RM0163DivisionVis
+Nombre=División Estructura Instituciones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Division
+SQL=Select Distinct Division<BR>From V_MaviEstructuraInst<BR>where 1=1 AND Division<><T><T><BR>{Si(ConDatos(Mavi.RM0163Gerencia) ,<T>And Gerencia in (<T>+COMILLAS(Mavi.RM0163Gerencia)+<T>)<T>,<T><T>)}<BR><BR>Order By Division
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Division

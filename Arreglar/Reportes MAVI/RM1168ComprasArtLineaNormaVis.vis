@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM1168ComprasArtLineaNormaVis
+Nombre=RM1168 Linea
+Modulos=(Todos)
+VistaIndependiente=S
+
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=select distinct Linea from Art with(nolock) <BR>where Categoria = <T>VENTA<T> AND Grupo = <T>MERCANCIA DE LINEA<T> AND Linea IS NOT NULL AND Linea <><T><T><BR>ORDER BY Linea
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

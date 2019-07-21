@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM1195AyudaMovimientoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Mov
+SQL=SELECT <BR>  Mov <BR>FROM <BR>  MovTipo WITH (NOLOCK) <BR>WHERE <BR>  Modulo = <T>VTAS<T> <BR>  AND Clave = <T>VTAS.F<T>
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Mov

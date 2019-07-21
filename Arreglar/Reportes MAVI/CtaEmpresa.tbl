@@ -1,0 +1,55 @@
+[Tabla]
+Icono=0
+Clave=CtaEmpresa
+Nombre=CtaEmpresa
+Archivo=CtaEmpresa
+Modulos=(Todos)
+Singular=CtaEmpresa
+TipoTabla=General
+ListaCampos=Cuenta<BR>Empresa<BR>Pertenece
+ListaRelaciones=Cta<BR>Empresa
+LlavePrimaria=Cuenta<BR>Empresa
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  Cuenta,<BR>  Empresa,<BR>  Pertenece<BR><BR>FROM<BR>  CtaEmpresa
+[Cuenta]
+Clave=Cuenta
+Nombre=Cuenta
+Visible=S
+TamanoValidacion=20
+Tamano=20
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+Tamano=5
+AyudaEnCaptura=Vista
+AyudaForma=EmpresaLista
+AyudaVista=Empresa
+AyudaCampo=Empresa.Empresa
+[Pertenece]
+Clave=Pertenece
+Nombre=Pertenece
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+OpcionesValidar=S
+AlCambiar=Si<BR>  Pertenece = Falso<BR>Entonces<BR>   Precaucion( <T>Excluir una cuenta con movimientos puede provocar<BR>el descuadre de la Balanza de Comprobación.<T> )<BR>Fin
+[Relaciones.Cta]
+TipoRelacion=Forzosa
+LlaveLocal=Cuenta
+Clave=Cta
+TablaRemota=Cta
+LlaveRemota=Cuenta
+[Relaciones.Empresa]
+TipoRelacion=Forzosa
+LlaveLocal=Empresa
+Clave=Empresa
+TablaRemota=Empresa
+LlaveRemota=Empresa

@@ -1,0 +1,76 @@
+;**** Ultima modificación: 25-Ago-08
+;**** Modifico: Leticia Quezada
+;**** Se modifico: Se agregaron los campos de EsAcreedora y Estatus
+;**** Ultima modificación: 24-Jul-09
+;**** Modifico: Joel García (Mex)
+;**** Se modifico: Se agrego el campo ConceptoBonificacion
+
+[Concepto.vis/Vista.ListaCampos]
+Concepto.ValorAduana=Concepto.EsAcreedora
+Concepto.EsAcreedora=Concepto.EstatusConcepto
+Concepto.EstatusConcepto=Concepto.ConceptoBonificacion
+Concepto.ConceptoBonificacion=Concepto.NoPedirCfdiMavi
+Concepto.NoPedirCfdiMavi=Cta.Cuenta
+
+[Concepto.vis/Vista.SQL]
+Concepto.ValorAduana,=Concepto.EsAcreedora,
+Concepto.EsAcreedora,=Concepto.EstatusConcepto,
+Concepto.EstatusConcepto,=Concepto.ConceptoBonificacion,
+Concepto.ConceptoBonificacion,=Concepto.NoPedirCfdiMavi,
+Concepto.NoPedirCfdiMavi,=Cta.Cuenta,
+
+
+[Concepto.vis/Concepto.EsAcreedora]
+Clave=Concepto.EsAcreedora
+Nombre=EsAcreedora
+TipoDatos=Lógico
+LigaTabla=Concepto
+LigaCampo=EsAcreedora
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=EsAcreedora
+
+
+[Concepto.vis/Concepto.EstatusConcepto]
+Clave=Concepto.EstatusConcepto
+Nombre=Estatus
+TipoDatos=Texto
+Tamano=5
+LigaTabla=Concepto
+LigaCampo=EstatusConcepto
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=EstatusConcepto
+
+[Concepto.vis/Concepto.ConceptoBonificacion]
+Clave=Concepto.ConceptoBonificacion
+Nombre=ConceptoBonificacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+LigaTabla=Concepto
+LigaCampo=ConceptoBonificacion
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ConceptoBonificacion
+
+[Concepto.vis/Concepto.NoPedirCfdiMavi]
+Clave=Concepto.NoPedirCfdiMavi
+Nombre=NoPedirCfdiMavi
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+LigaTabla=Concepto
+LigaCampo=NoPedirCfdiMavi
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=NoPedirCfdiMavi
+
+
+
+
+

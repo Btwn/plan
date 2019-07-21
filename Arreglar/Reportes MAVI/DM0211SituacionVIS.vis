@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=DM0211SituacionVIS
+Nombre=DM0211 Situacion
+Modulos=(Todos)
+CamposBusquedaRapida=SITUACION
+VistaIndependiente=S
+ListaCampos=SITUACION
+LlavePrimaria=SITUACION
+TipoTabla=General
+SQL=select * from (<BR>SELECT DISTINCT SITUACION FROM cxp union all<BR>SELECT DISTINCT SITUACION FROM gasto<BR>)z where situacion is not null
+[SITUACION]
+Clave=SITUACION
+Nombre=SITUACION
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=SITUACION

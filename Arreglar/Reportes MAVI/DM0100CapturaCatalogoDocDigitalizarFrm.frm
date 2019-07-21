@@ -1,0 +1,123 @@
+[Forma]
+Clave=DM0100CapturaCatalogoDocDigitalizarFrm
+Nombre=Catalogo Documentos A Digitalizar
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=CapturaCatalogo
+CarpetaPrincipal=CapturaCatalogo
+PosicionInicialIzquierda=356
+PosicionInicialArriba=131
+PosicionInicialAlturaCliente=370
+PosicionInicialAncho=439
+BarraHerramientas=S
+BarraAcciones=S
+AccionesTamanoBoton=25x5
+ListaAcciones=Guardar y Cerrar
+AccionesCentro=S
+[Acciones.Guardar y Cerrar.Guardar]
+Nombre=Guardar
+Boton=0
+TipoAccion=Controles Captura
+Activo=S
+Visible=S
+ClaveAccion=Guardar Cambios
+[Acciones.Guardar y Cerrar.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Guardar y Cerrar]
+Nombre=Guardar y Cerrar
+Boton=3
+NombreDesplegar=&Guardar y Cerrar
+Multiple=S
+EnBarraHerramientas=S
+EnBarraAcciones=S
+ListaAccionesMultiples=Guardar<BR>Cerrar
+Activo=S
+Visible=S
+NombreEnBoton=S
+GuardarAntes=S
+[CapturaCatalogo]
+Estilo=Hoja
+Clave=CapturaCatalogo
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=dm0100CatalogoDocDigitalizar
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+PermiteEditar=S
+ListaEnCaptura=DM0100CatalogoDocDigitalizarTbl.Clave<BR>DM0100CatalogoDocDigitalizarTbl.Depto<BR>DM0100CatalogoDocDigitalizarTbl.Concepto
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaVistaOmision=Automática
+Filtros=S
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=General
+HojaPermiteEliminar=S
+OtroOrden=S
+ListaOrden=DM0100CatalogoDocDigitalizarTbl.Clave<TAB>(Acendente)
+FiltroGeneral=DM0100CatalogoDocDigitalizarTbl.Depto IN (SELECT * FROM FN_MAVIDM0100DIGITALIZACIONDOCUMENTOS ({Comillas(Usuario)}))
+[CapturaCatalogo.Columnas]
+Depto=100
+Concepto=225
+Extra1=124
+Clave=58
+[CapturaCatalogo.DM0100CatalogoDocDigitalizarTbl.Depto]
+Carpeta=CapturaCatalogo
+Clave=DM0100CatalogoDocDigitalizarTbl.Depto
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[CapturaCatalogo.DM0100CatalogoDocDigitalizarTbl.Concepto]
+Carpeta=CapturaCatalogo
+Clave=DM0100CatalogoDocDigitalizarTbl.Concepto
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[CapturaCatalogo.DM0100CatalogoDocDigitalizarTbl.Clave]
+Carpeta=CapturaCatalogo
+Clave=DM0100CatalogoDocDigitalizarTbl.Clave
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Eliminar.SPEliminar]
+Nombre=SPEliminar
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=EJECUTARSQL(<T>EXEC SP_MAVIDM0100ELIMINARCAPTURA :tDepto, :tConcepto<T>,<BR>    dm0100CatalogoDocDigitalizar:DM0100CatalogoDocDigitalizarTbl.Concepto,<BR>    dm0100CatalogoDocDigitalizar:DM0100CatalogoDocDigitalizarTbl.Depto)
+[Acciones.Eliminar.Act]
+Nombre=Act
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Vista
+Activo=S
+Visible=S

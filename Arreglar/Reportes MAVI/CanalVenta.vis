@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=CanalVenta
+Nombre=CanalVenta
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Categoria
+VistaIndependiente=S
+Singular=CanalVenta
+SQL=SELECT ID,Categoria  <BR>FROM VentascanalMavi <BR>WHERE ID IN (5,6,7,9)
+[ID]
+Clave=ID
+Nombre=Canal Venta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria

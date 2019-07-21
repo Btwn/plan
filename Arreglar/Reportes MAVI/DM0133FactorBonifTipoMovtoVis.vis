@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0133FactorBonifTipoMovtoVis
+Nombre=DM0133FactorBonifTipoMovtoVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Mov
+SQL=select Mov from movtipo <BR>     where Cfd =1 and Modulo = <T>VTAS<T>
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Mov

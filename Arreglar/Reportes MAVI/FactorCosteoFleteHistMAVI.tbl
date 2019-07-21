@@ -1,0 +1,35 @@
+[Tabla]
+Icono=0
+Clave=FactorCosteoFleteHistMAVI
+Nombre=FactorCosteoFleteHistMAVI
+Archivo=FactorCosteoFleteHistMAVI
+Modulos=(Todos)
+Singular=FactorCosteoFleteHistMAVI
+TipoTabla=General
+ListaCampos=FactorCosteoFlete<BR>Fecha<BR>FactorCosteoFlete2
+LlavePrimaria=FactorCosteoFlete<BR>Fecha<BR>FactorCosteoFlete2
+SQL=SELECT<BR>  FactorCosteoFlete,<BR>  FactorCosteoFlete2,<BR>  Fecha<BR><BR>FROM<BR>  FactorCosteoFleteHistMAVI
+[FactorCosteoFlete]
+Clave=FactorCosteoFlete
+Nombre=% Autorizado Costeo Flete
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+ValorPorOmision=0
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aa hh:mm:ss
+ValorPorOmision=Ahora
+[FactorCosteoFlete2]
+Clave=FactorCosteoFlete2
+Nombre=% Autorizado Costeo Flete Dirección
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+ValorPorOmision=0

@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=DM0213FiltroCatalogoRefaccionesVis
+Nombre=DM0213FiltroCatalogoRefaccionesVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=SERVICIOREFACCION
+CamposBusquedaRapida=SERVICIOREFACCION
+LlavePrimaria=SERVICIOREFACCION
+SQL=SELECT DISTINCT SERVICIOREFACCION FROM DM0213CatalogoServRefac
+[SERVICIOREFACCION]
+Clave=SERVICIOREFACCION
+Nombre=SERVICIOREFACCION
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=200
+ClaveBDE=SERVICIOREFACCION

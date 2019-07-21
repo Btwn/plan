@@ -1,0 +1,92 @@
+
+[Vista]
+Icono=0
+Clave=DM0306ArticulosProdServVist
+Modulos=(Todos)
+
+TablaPrincipal=DM0306AuxTbl
+ListaCalculados=Descripcion1<BR>Descrip
+
+
+Nombre=Articulos
+CamposBusquedaRapida=DM0306AuxTbl.Articulo<BR>DM0306AuxTbl.CveProdServ
+UsoCapturas=S
+UsoReportes=S
+ListaTablas=DM0306AuxTbl
+ListaCampos=DM0306AuxTbl.Articulo<BR>DM0306AuxTbl.CveProdServ
+SQL=SELECT<BR>DM0306AuxTbl.Articulo,<BR>DM0306AuxTbl.CveProdServ<BR>FROM DM0306ArtProdServExcep DM0306AuxTbl
+[Descripcion1]
+Clave=Descripcion1
+TipoDatos=Texto
+TipoCampo=Calculado
+TamanoValidacion=60
+Alineacion=por Omisión
+Nombre=Descripción
+
+Tamano=60
+Formula=SQL(<T>SELECT Descripcion1 FROM Art WHERE Articulo=:tArt<T>, DM0306AuxTbl.Articulo)
+[Descripcion ]
+Clave=Descripcion 
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=descripcioncve
+Formula=   SQL(<T>SELECT Descripcion FROM DM0306ProdServ WHERE CveProdServ=:tclave<T>, DM0306AuxiliarTbl.CveProdServ)
+
+[DM0306AuxTbl.Articulo]
+Clave=DM0306AuxTbl.Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=20
+LigaTabla=DM0306AuxTbl
+LigaCampo=Articulo
+ClaveBDE=Articulo
+
+Alineacion=por Omisión
+AyudaEnCaptura=Vista
+AyudaForma=DM0306ArticuloFrm
+AyudaVista=DM0306Articulo
+AyudaCampo=Articulo
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+Mayusculas=S
+Requerido=S
+AlCambiar=Si<BR>   Vacio(DM0306AuxTbl.Articulo)<BR>Entonces<BR>  informacion(<T>El campo Articulo debe tener un valor<T>)<BR>  AbortarOperacion<BR>Sino<BR>  Verdadero<BR>Fin
+ValidacionCondicion=Si(SQL(<T>SELECT COUNT(Articulo) FROM Art WHERE Articulo=:tArticulo  and estatus in (:tEstat , :tEstat2)<T>,DM0306AuxTbl.Articulo,<T>ALTA<T>,<T>BLOQUEADO<T>)>0,Verdadero, Informacion(<T>El aticulo no existe<T>) AbortarOperacion)<BR><BR>Si(SQL(<T>SELECT COUNT(Articulo) FROM Art WHERE  Articulo NOT IN (SELECT Articulo FROM DM0306ArtProdServExcep) AND Articulo=:tArticulo<T>,DM0306ArticulosProdServVist:DM0306AuxTbl.Articulo)=0, Informacion(<T>El articulo ya tiene registrada una clave SAT<T>)AbortarOperacion,Verdadero)<BR><BR>Si(Vacio(DM0306AuxTbl.Articulo),error(<T>ingresa algo<T>)AbortarOperacion,Verdadero)
+[DM0306AuxTbl.CveProdServ]
+Clave=DM0306AuxTbl.CveProdServ
+Nombre=Clave SAT
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+LigaTabla=DM0306AuxTbl
+LigaCampo=CveProdServ
+ClaveBDE=CveProdServ
+
+Alineacion=por Omisión
+AyudaEnCaptura=Vista
+AyudaForma=DM0306claveSatFrm
+AyudaVista=DM0306ClaveSatVist
+AyudaCampo=DM0306ClaveSatTbl.CveProdServ
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+Requerido=S
+Mayusculas=S
+AlCambiar=Si<BR>   Vacio(DM0306AuxTbl.CveProdServ)<BR>Entonces<BR>  informacion(<T>El campo Clave SAT debe tener un valor<T>)<BR>  AbortarOperacion<BR>Sino<BR>  Verdadero<BR>Fin
+ValidacionCondicion=Si(SQL(<T>SELECT COUNT(CveProdServ) FROM DM0306ProdServ WHERE CveProdServ = :tClave<T>,DM0306AuxTbl.CveProdServ)>0,Verdadero,Informacion(<T>La clave no pertenece al catalogo<T>) AbortarOperacion)<BR><BR><BR>Si ConDatos(DM0306AuxTbl.CveProdServ)<BR>    Entonces<BR>    Verdadero<BR>Sino<BR>    Error(<T>El campo clave no debe estar vacio<T>)<BR>    AbortarOperacion<BR>Fin
+[Descrip]
+Clave=Descrip
+TipoDatos=Texto
+Tamano=50
+TipoCampo=Calculado
+TamanoValidacion=50
+Nombre=Descripción
+Formula=SQL(<T>SELECT Descripcion FROM DM0306ProdServ WHERE CveProdServ=:tclave<T>, DM0306AuxTbl.CveProdServ)

@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=DM0304LineasRelVis
+Nombre=Buscar Linea
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=SELECT h.Linea FROM (<BR><BR>SELECT DISTINCT ArtLinea.Linea, ArtLinea.Familia FROM ArtLinea <BR>   INNER JOIN art ON ArtLinea.Familia = art.Familia <BR>WHERE <BR>  1=1<BR>  AND categoria = <T>venta<T><BR>  AND grupo = <T>mercancia de linea<T><BR>  AND Estatus in (<T>alta<T>,<T>bloqueado<T>)<BR>  )h<BR><BR>ORDER BY Linea
+[Linea]
+Clave=Linea
+Nombre=Buscar Linea
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Linea

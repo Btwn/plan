@@ -1,0 +1,72 @@
+[Dialogo]
+Clave=MenuCuotasForaneosMayoreo
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Cuotas<BR>ReporteHistF.M.<BR>RevPor<BR>RepComisionesForaneasMAy<BR>Sancion
+PosicionInicialAlturaCliente=152
+PosicionInicialAncho=500
+PosicionInicialIzquierda=234
+PosicionInicialArriba=259
+[Acciones.Cuotas]
+Nombre=Cuotas
+Boton=0
+NombreDesplegar=Cuotas Foraneos Mayoreo
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CuotaForaneaMayMaviFRM
+Activo=S
+Visible=S
+[Acciones.ReporteHistF.M.]
+Nombre=ReporteHistF.M.
+Boton=0
+NombreDesplegar=Rep. Histórico Foráneos Mayoreo
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=HistComisionForaneaMayMavi
+Activo=S
+Visible=S
+Antes=S
+EspacioPrevio=S
+AntesExpresiones=Asigna(Mavi.ComiForaneaMayoreo,<T>Comisiones Foraneas Mayoreo<T>)
+[Acciones.RepComisionesForaneasMAy]
+Nombre=RepComisionesForaneasMAy
+Boton=0
+NombreDesplegar=Comisión Foráneas Mayoreo
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ComisionesForaneosMayMavi
+Activo=S
+Visible=S
+EspacioPrevio=S
+Antes=S
+AntesExpresiones=Asigna(Mavi.ComiForaneaMayoreo,<T>Comisiones Foraneas Mayoreo<T>)
+[Acciones.RevPor]
+Nombre=RevPor
+Boton=0
+NombreDesplegar=Hist. Porcentajes de Cartera Vencida x Agente
+EnMenu=S
+EnBarraAcciones=S
+Activo=S
+Visible=S
+TipoAccion=Formas
+ClaveAccion=MaviHistPorCVAgtForMayFrm
+[Acciones.Sancion]
+Nombre=Sancion
+Boton=0
+NombreDesplegar=Saldos Pendientes Mas de 60 Dias
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0987SancionSaldosPendientesMasDe60DiasFrm
+Activo=S
+Visible=S

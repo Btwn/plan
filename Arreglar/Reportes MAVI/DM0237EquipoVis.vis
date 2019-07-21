@@ -1,0 +1,22 @@
+
+[Vista]
+Icono=0
+Clave=DM0237EquipoVis
+Nombre=DM0237EquipoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=agente
+CamposBusquedaRapida=agente
+SQL=select distinct agente from Agente where Agente like <T>EQ%<T> <BR>OR Agente like <T>DIVI%<T> OR Agente like <T>CEL%<T> OR Agente like <T>GER%<T>
+[agente]
+Clave=agente
+Nombre=agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=agente

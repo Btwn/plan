@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM1153DiasVentavis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Numero
+SQL=select Numero from TablanumD with(Nolock)<BR>Where Tablanum=<T>RM1153DIAS<T>
+[Numero]
+Clave=Numero
+Nombre=Numero
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Numero

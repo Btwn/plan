@@ -1,0 +1,258 @@
+;**** Ultima modificación:03-Sep-08
+;**** Modifico:Arly Rubio
+;**** Se modifico:
+
+
+
+
+;***** Se agregaron nuevos campos: ModificarRangoskmServicioMAVI, ModifComisnsChoferesMAVI ****
+[UsuarioCfg2.tbl/Tabla]
+ListaCampos=(Lista)
+SQL=(Lista)
+
+
+
+;*****Nuevo campo agregado 03-Sep-08 ****
+[UsuarioCfg2.tbl/ModificarRangoskmServicioMAVI]
+Clave=ModificarRangoskmServicioMAVI
+Nombre=Modificar Rangos Km Mannto
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+
+
+;*****Nuevo campo agregado ARC 28-02-08 ****
+[UsuarioCfg2.tbl/ModifComisnsChoferesMAVI]
+Clave=ModifComisnsChoferesMAVI
+Nombre=Modificar Comisiones Choferes
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=0
+
+
+
+;****20-May-09 Nuevo campo agregado para desarrollo de huella, para permitir eliminar registros de huella***
+[UsuarioCfg2.tbl/EliminarHuellaMAVI]
+Clave=EliminarHuellaMAVI
+Nombre=Eliminar Registro de Huellas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=0
+
+
+
+;****20-May-09 Nuevo campo agregado para desarrollo de REFINANCIAMIENTO, para permitir editar la condicion en la solicitud***
+[UsuarioCfg2.tbl/ModifCondicionSolRefin]
+Clave=ModifCondicionSolRefin
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+Nombre=Modificar Condicion Sol. Refinanciamiento
+ValorPorOmision=0
+
+;****07-Jul-09 Nuevos Campos Moratorios MP***
+
+[UsuarioCfg2.tbl/AutorizaCondMoratorioMAVI]
+Clave=AutorizaCondMoratorioMAVI
+Nombre=Autoriza Condonacion Moratorios
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=PorcentajeCondMoratorioMAVI
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+
+;****07-Jul-09 Nuevos Campos Moratorios MP***
+
+[UsuarioCfg2.tbl/PorcentajeCondMoratorioMAVI]
+Clave=PorcentajeCondMoratorioMAVI
+Nombre=Porcentaje Màximo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionEdicion=AutorizaCondMoratorioMAVI
+AyudaEnCaptura=Calculadora
+ValorMinimo=0
+ValorMaximo=100
+
+;****07-Jul-09 Nuevos Campos Moratorios MP***
+
+[UsuarioCfg2.tbl/AplicacionManualCxcMAVI]
+Clave=AplicacionManualCxcMAVI
+Nombre=Aplica Manual en Cxc
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+;**** 23-jul-09 MODIFICAR SUCURSALES MOISES MAVI 15/JUNIO/2009 Integrado por MP
+[UsuarioCfg2.tbl/ModificarSucursalVenta]
+Clave=ModificarSucursalVenta
+Nombre=Modificar la Sucursal de Venta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+;*** 17-07-09 Bonificaciones  YRG ****
+;[UsuarioCfg2.tbl/Tabla]
+;ListaCampos.Cambios=Insertar<TAB>AfectaBonif<TAB>43
+;SQL.Cambios=Insertar<TAB>  
+;LimitarDialogoAbrirGuardar,<TAB>43<BR>Insertar<TAB>
+;AfectaBonif<TAB>44
+
+[UsuarioCfg2.tbl/AfectaBonif]
+Clave=AfectaBonif
+Nombre=Afecta Bonificación
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+
+
+
+[UsuarioCfg2.tbl/Tabla.ListaCampos]
+(Inicio)=Usuario
+Usuario=CxcMovExpress
+CxcMovExpress=CxpMovExpress
+CxpMovExpress=ModificarClienteBackOrder
+ModificarClienteBackOrder=AfectarLote
+AfectarLote=CancelarLote
+CancelarLote=ContabilizarLote
+ContabilizarLote=BloquearMonedaArtPrecio
+BloquearMonedaArtPrecio=BloquearMonedaArtCosto
+BloquearMonedaArtCosto=BloquearListaMateriales
+BloquearListaMateriales=ModificarObservaciones
+ModificarObservaciones=ControlAlmacenes
+ControlAlmacenes=ControlAlmacenesEnAlm
+ControlAlmacenesEnAlm=ControlListasPrecios
+ControlListasPrecios=ModificarAnexosMovConcluidos
+ModificarAnexosMovConcluidos=ModificarProdCostosAd
+ModificarProdCostosAd=AutorizarProdAvances
+AutorizarProdAvances=Digitalizar
+Digitalizar=VentaSugerirDisponible
+VentaSugerirDisponible=LimitarCompraLocal
+LimitarCompraLocal=GastoModificarProrrateo
+GastoModificarProrrateo=InvFisicoAlmacen
+InvFisicoAlmacen=CompraSugerirDisponible
+CompraSugerirDisponible=PedidoGenerarOT
+PedidoGenerarOT=PedidoGenerarOTAbrir
+PedidoGenerarOTAbrir=BloquearMaestrosPersonal
+BloquearMaestrosPersonal=BloquearAltaExpressPersonal
+BloquearAltaExpressPersonal=GastosPV
+GastosPV=CompraGenerarOrdenesAlProcesar
+CompraGenerarOrdenesAlProcesar=GastosEditarDeducible
+GastosEditarDeducible=PlanEditarOrdenes
+PlanEditarOrdenes=PlanOrdenCompra
+PlanOrdenCompra=PlanOrdenProduccion
+PlanOrdenProduccion=PlanOrdenTransferencia
+PlanOrdenTransferencia=PlanOrdenTraspaso
+PlanOrdenTraspaso=TraspasarMovimientos
+TraspasarMovimientos=CancelarEmbarquesExplorador
+CancelarEmbarquesExplorador=OcultarDineroCtaDineroSaldo
+OcultarDineroCtaDineroSaldo=RecibirDemasSinLimites
+RecibirDemasSinLimites=ModificarFactorMovTipo
+ModificarFactorMovTipo=VINTransferirComponentes
+VINTransferirComponentes=TransferirEntradas
+TransferirEntradas=LimitarDialogoAbrirGuardar
+LimitarDialogoAbrirGuardar=ModificarEstatusCuotaCx
+ModificarEstatusCuotaCx=ModificarGestionAgenda
+ModificarGestionAgenda=AgendaAccesoOtrosModulos
+AgendaAccesoOtrosModulos=ModificarAsisteExtra
+ModificarAsisteExtra=ModificarAsisteMovimientoRef
+ModificarAsisteMovimientoRef=ModificarAsisteGestionRef
+ModificarAsisteGestionRef=ModificarAsisteActividadABCRef
+ModificarAsisteActividadABCRef=ModificarAsistenciaExtra
+ModificarAsistenciaExtra=SincroISNotificarError
+SincroISNotificarError=NotificacionAlAcceso
+NotificacionAlAcceso=InterfazExentus
+InterfazExentus=AccesoInterfazExentus
+AccesoInterfazExentus=eCommerce
+eCommerce=eCommerceMostrarHerramienta
+eCommerceMostrarHerramienta=CONTPModificarDatosMov
+CONTPModificarDatosMov=UsuarioCfg2.ModificarRangoskmServicioMAVI
+UsuarioCfg2.ModificarRangoskmServicioMAVI=UsuarioCfg2.ModifComisnsChoferesMAVI
+UsuarioCfg2.ModifComisnsChoferesMAVI=UsuarioCfg2.EliminarHuellaMAVI
+UsuarioCfg2.EliminarHuellaMAVI=UsuarioCfg2.ModifCondicionSolRefin
+UsuarioCfg2.ModifCondicionSolRefin=UsuarioCfg2.AutorizaCondMoratorioMAVI
+UsuarioCfg2.AutorizaCondMoratorioMAVI=UsuarioCfg2.PorcentajeCondMoratorioMAVI
+UsuarioCfg2.PorcentajeCondMoratorioMAVI=UsuarioCfg2.AplicacionManualCxcMAVI
+UsuarioCfg2.AplicacionManualCxcMAVI=UsuarioCfg2.ModificarSucursalVenta
+UsuarioCfg2.ModificarSucursalVenta=UsuarioCfg2.AfectaBonif
+UsuarioCfg2.AfectaBonif=(Fin)
+
+[UsuarioCfg2.tbl/Tabla.SQL]
+(Inicio)=SELECT
+SELECT=Usuario,
+Usuario,=CxcMovExpress,
+CxcMovExpress,=CxpMovExpress,
+CxpMovExpress,=LimitarCompraLocal,
+LimitarCompraLocal,=VentaSugerirDisponible,
+VentaSugerirDisponible,=Digitalizar,
+Digitalizar,=AutorizarProdAvances,
+AutorizarProdAvances,=ModificarProdCostosAd,
+ModificarProdCostosAd,=ModificarAnexosMovConcluidos,
+ModificarAnexosMovConcluidos,=ControlAlmacenes,
+ControlAlmacenes,=ControlAlmacenesEnAlm,
+ControlAlmacenesEnAlm,=ControlListasPrecios,
+ControlListasPrecios,=ModificarObservaciones,
+ModificarObservaciones,=BloquearMonedaArtPrecio,
+BloquearMonedaArtPrecio,=BloquearMonedaArtCosto,
+BloquearMonedaArtCosto,=AfectarLote,
+AfectarLote,=CancelarLote,
+CancelarLote,=ContabilizarLote,
+ContabilizarLote,=ModificarClienteBackOrder,
+ModificarClienteBackOrder,=GastoModificarProrrateo,
+GastoModificarProrrateo,=InvFisicoAlmacen,
+InvFisicoAlmacen,=CompraSugerirDisponible,
+CompraSugerirDisponible,=PedidoGenerarOT,
+PedidoGenerarOT,=PedidoGenerarOTAbrir,
+PedidoGenerarOTAbrir,=BloquearMaestrosPersonal,
+BloquearMaestrosPersonal,=BloquearAltaExpressPersonal,
+BloquearAltaExpressPersonal,=GastosPV,
+GastosPV,=CompraGenerarOrdenesAlProcesar,
+CompraGenerarOrdenesAlProcesar,=GastosEditarDeducible,
+GastosEditarDeducible,=PlanEditarOrdenes,
+PlanEditarOrdenes,=PlanOrdenCompra,
+PlanOrdenCompra,=PlanOrdenProduccion,
+PlanOrdenProduccion,=PlanOrdenTransferencia,
+PlanOrdenTransferencia,=PlanOrdenTraspaso,
+PlanOrdenTraspaso,=TraspasarMovimientos,
+TraspasarMovimientos,=CancelarEmbarquesExplorador,
+CancelarEmbarquesExplorador,=OcultarDineroCtaDineroSaldo,
+OcultarDineroCtaDineroSaldo,=RecibirDemasSinLimites,
+RecibirDemasSinLimites,=ModificarFactorMovTipo,
+ModificarFactorMovTipo,=BloquearListaMateriales,
+BloquearListaMateriales,=VINTransferirComponentes,
+VINTransferirComponentes,=TransferirEntradas,
+TransferirEntradas,=LimitarDialogoAbrirGuardar,
+LimitarDialogoAbrirGuardar,=ModificarEstatusCuotaCx,
+ModificarEstatusCuotaCx,=ModificarGestionAgenda,
+ModificarGestionAgenda,=AgendaAccesoOtrosModulos,
+AgendaAccesoOtrosModulos,=ModificarAsistenciaExtra,
+ModificarAsistenciaExtra,=ModificarAsisteMovimientoRef,
+ModificarAsisteMovimientoRef,=ModificarAsisteGestionRef,
+ModificarAsisteGestionRef,=ModificarAsisteActividadABCRef,
+ModificarAsisteActividadABCRef,=SincroISNotificarError,
+SincroISNotificarError,=NotificacionAlAcceso,
+NotificacionAlAcceso,=ModificarAsisteExtra,
+ModificarAsisteExtra,=InterfazExentus,
+InterfazExentus,=AccesoInterfazExentus,
+AccesoInterfazExentus,=eCommerce,
+eCommerce,=eCommerceMostrarHerramienta,
+eCommerceMostrarHerramienta,=CONTPModificarDatosMov,
+CONTPModificarDatosMov,=UsuarioCfg2.ModificarRangoskmServicioMAVI,
+UsuarioCfg2.ModificarRangoskmServicioMAVI,=UsuarioCfg2.ModifComisnsChoferesMAVI,
+UsuarioCfg2.ModifComisnsChoferesMAVI,=UsuarioCfg2.EliminarHuellaMAVI,
+UsuarioCfg2.EliminarHuellaMAVI,=UsuarioCfg2.ModifCondicionSolRefin,
+UsuarioCfg2.ModifCondicionSolRefin,=UsuarioCfg2.AutorizaCondMoratorioMAVI,
+UsuarioCfg2.AutorizaCondMoratorioMAVI,=UsuarioCfg2.PorcentajeCondMoratorioMAVI,
+UsuarioCfg2.PorcentajeCondMoratorioMAVI,=UsuarioCfg2.AplicacionManualCxcMAVI,
+UsuarioCfg2.AplicacionManualCxcMAVI,=UsuarioCfg2.ModificarSucursalVenta,
+UsuarioCfg2.ModificarSucursalVenta,=UsuarioCfg2.AfectaBonif
+UsuarioCfg2.AfectaBonif=FROM UsuarioCfg2
+FROM UsuarioCfg2=(Fin)

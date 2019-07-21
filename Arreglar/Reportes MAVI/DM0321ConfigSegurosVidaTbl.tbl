@@ -1,0 +1,80 @@
+
+[Tabla]
+Icono=0
+Clave=DM0321ConfigSegurosVidaTbl
+Archivo=TcIDM0321_ConfigSegurosVida
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=ID<BR>NombreParametro<BR>Parametro<BR>FechaInicioVigencia<BR>FechaCambio<BR>Usuario
+ControlID=S
+CampoID=ID
+LlavePrimaria=ID
+ControlUsuarios=S
+CampoUsuario=Usuario
+SQL=SELECT<BR>  ID,<BR>  NombreParametro,<BR>  Parametro,<BR>  FechaInicioVigencia,<BR>  FechaCambio,<BR>  Usuario<BR><BR>FROM TcIDM0321_ConfigSegurosVida
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[NombreParametro]
+Clave=NombreParametro
+Nombre=Nombre del párametro
+Visible=S
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=50
+
+ConRefrescar=S
+ListaRefrescar=FechaCambio<BR>Usuario
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>SELECT DISTINCT Nombre FROM TABLASTD WHERE TABLAST = :tTabla<T>,<T>DM0321ParametroSegVida<T>)
+[Parametro]
+Clave=Parametro
+Nombre=Parámetro
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+
+ConRefrescar=S
+ListaRefrescar=FechaCambio<BR>Usuario
+ValidacionConCondiciones=S
+ValidacionCondicion=Si(Parametro <= 0,Error(<T>El valor ingresado debe ser mayor a 0<T>) AbortarOperacion,Verdadero)
+[FechaInicioVigencia]
+Clave=FechaInicioVigencia
+Nombre=Fecha de inicio vigencia
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+AyudaEnCaptura=Calendario sin Hora
+ConRefrescar=S
+ListaRefrescar=FechaCambio<BR>Usuario
+ValidacionConCondiciones=S
+ValidacionCondicion=Si<BR>    SQL(<T>SELECT COUNT(FechaInicioVigencia) FROM TcIDM0321_ConfigSegurosVida WHERE NombreParametro = :tNpara AND FechaInicioVigencia = :fFecha<T>,NombreParametro,FechaInicioVigencia)>0<BR>Entonces<BR>    Falso<BR>Sino<BR>    Verdadero<BR>Fin
+ValidacionMensajeError=<T>Fecha no valida, ya a sido registrada para ese tipo de parámetro<T>
+[FechaCambio]
+Clave=FechaCambio
+Nombre=FechaCambio
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+ValorPorOmision=Ahora
+ValorRefrescar=Ahora
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ValorPorOmision=Usuario
+ValorRefrescar=Usuario

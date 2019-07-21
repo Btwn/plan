@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1097GrupoVis
+Nombre=Grupos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Serie
+CamposBusquedaRapida=Serie
+SQL=select  Serie from ActivoF where Categoria <> <T>EQUIPO DE TRANSPORTE<T><BR>{SI((ConDatos(Mavi.RM1097ArticuloD) y ConDatos(Mavi.RM1097ArticuloA)),<T> And Articulo Between<T>+ASCII(39)+Mavi.RM1097ArticuloD+ASCII(39)+<T> And<T>+ASCII(39)+Mavi.RM1097ArticuloA+ASCII(39),<T><T>)}<BR>{SI((ConDatos(Mavi.RM1097ArticuloD) y Vacio(Mavi.RM1097ArticuloA)),<T> And Articulo ><T>+ASCII(39)+ Mavi.RM1097ArticuloD+ASCII(39),<T> <T>)}<BR>{SI((Vacio(Mavi.RM1097ArticuloD) y ConDatos(Mavi.RM1097ArticuloA)),<T> And Articulo <<T>+ASCII(39)+ Mavi.RM1097ArticuloA+ASCII(39),<T> <T>)}<BR>group by Serie<BR>order by Serie
+[Serie]
+Clave=Serie
+Nombre=Serie
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Serie

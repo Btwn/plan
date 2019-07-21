@@ -1,0 +1,63 @@
+[Dialogo]
+Clave=RM1100Opcionesdlg
+Nombre=Opciones Referencia
+Icono=5
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialIzquierda=533
+PosicionInicialArriba=312
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=300
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=Centrado
+VentanaEstadoInicial=Normal
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+ListaAcciones=RevisarRef<BR>Autoriza
+VentanaBloquearAjuste=S
+[Acciones.RevisarRef]
+Nombre=RevisarRef
+Boton=0
+NombreDesplegar=Revisar Referencia
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Cerrar
+[Acciones.Autoriza]
+Nombre=Autoriza
+Boton=0
+NombreDesplegar=Autorizar Afectación
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=forma<BR>Cerrar
+[Acciones.RevisarRef.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Autoriza.forma]
+Nombre=forma
+Boton=0
+TipoAccion=Formas
+ClaveAccion=RM1100XMLCandadoFrm
+Activo=S
+Visible=S
+[Acciones.Autoriza.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

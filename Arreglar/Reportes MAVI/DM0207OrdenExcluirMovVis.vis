@@ -1,0 +1,36 @@
+[Vista]
+Icono=0
+Clave=DM0207OrdenExcluirMovVis
+Nombre=DM0207OrdenExcluirMovVis
+Modulos=(Todos)
+ListaTablas=DM0207OrdenExcluirMov
+TablaPrincipal=DM0207OrdenExcluirMov
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=DM0207OrdenExcluirMov.Excluirpara<BR>DM0207OrdenExcluirMov.Movimiento
+SQL=SELECT<BR>  DM0207OrdenExcluirMov.Excluirpara,<BR>  DM0207OrdenExcluirMov.Movimiento<BR><BR>FROM<BR>  DM0207OrdenExcluirMov
+[DM0207OrdenExcluirMov.Excluirpara]
+Clave=DM0207OrdenExcluirMov.Excluirpara
+LigaTabla=DM0207OrdenExcluirMov
+LigaCampo=Excluirpara
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Excluirpara
+[DM0207OrdenExcluirMov.Movimiento]
+Clave=DM0207OrdenExcluirMov.Movimiento
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista( <T>Select mov from movmavi<T> )
+LigaTabla=DM0207OrdenExcluirMov
+LigaCampo=Movimiento
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Movimiento

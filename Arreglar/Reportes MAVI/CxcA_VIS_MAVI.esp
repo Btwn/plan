@@ -1,0 +1,37 @@
+;**** Modificacion: 18-Jun-09
+;**** Modifico: Miguel Peña
+;**** Se modifico: Moratorios
+
+[CxcA.vis/Vista]
+CamposBusquedaRapida=Cxc.Mov<BR>Cxc.MovID<BR>Cxc.Cliente<BR>Cxc.Codigo<BR>Cxc.Referencia<BR>Cxc.VIN
+
+[CxcA.vis/Vista.ListaCalculados]
+TasaAnual=DiasVencidos
+DiasVencidos=FactorIM
+FactorIM=(Fin)
+
+[CxcA.vis/FactorIM]
+Clave=FactorIM
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Factor IM
+TipoCalculo=De la misma vista
+FormulaSQL=SELECT dbo.fnFactorIMMAVI(Cxc.ID)
+
+[CxcA.vis/DiasVencidos]
+Clave=DiasVencidos
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Dias Vencidos
+LigaTabla=Cxc
+TipoCalculo=De la misma vista
+FormulaSQL=SELECT dbo.fnDiasVencidosCXCMavi(Cxc.ID)
+
+
+; **** Integracion de campo ImporteTotal, modificacion de Formula, se restringe GruposTrabajo Especificos de la tabla CFG ACCESOS ESPECIALES, odcampos 30_Mar_2012, para desarrollo DM0180 Importe Control Acceso dentro del paquete DM0180_30032012. JR 30-Mar-2012. ****
+[CxcA.vis/ImporteTotal]
+Formula=SQL(<T>SELECT COUNT(U.GrupoTrabajo) FROM dbo.TablaStD T<BR>INNER JOIN dbo.Usuario U ON U.GrupoTrabajo=T.Nombre<BR>WHERE T.TablaSt=:tNom AND U.Usuario=:tUser<T>,<T>CFG ACCESOS ESPECIALES<T>,Usuario)=0<BR>y <BR>Caso  Usuario.GrupoTrabajo<BR>Es <T>CAJAS<T> Entonces<BR>Caso   MovTipo(<T>CxC<T>,Cxc.Mov)<BR>Es <T>CXC.AA<T> Entonces 0<BR>Es <T>CXC.C<T> Entonces 0<BR>Es <T>CXC.DE<T> Entonces 0<BR>Es <T>CXC.DC<T> Entonces 0<BR>Es <T>CXC.A<T> Entonces 0<BR>Es <T>CXC.DFA<T> Entonces 0<BR>Sino<BR>Cxc.Importe+Cxc.Impuestos-Cxc.Retencion<BR>Fin<BR>Es <T>VENTAS PISO<T> Entonces<BR>Caso   MovTipo(<T>CxC<T>,Cxc.Mov)<BR>Es <T>CXC.AA<T> Entonces 0<BR>Es <T>CXC.C<T> Entonces 0<BR>Es <T>CXC.DE<T> Entonces 0<BR>Es <T>CXC.DC<T> Entonces 0<BR>Es <T>CXC.A<T> Entonces 0<BR>Es <T>CXC.DFA<T> Entonces 0<BR>Sino<BR>Cxc.Importe+Cxc.Impuestos-Cxc.Retencion<BR>Fin<BR>Es <T>FACTURACION<T> Entonces<BR>Caso   MovTipo(<T>CxC<T>,Cxc.Mov)<BR>Es <T>CXC.AA<T> Entonces 0<BR>Es <T>CXC.C<T> Entonces 0<BR>Es <T>CXC.DE<T> Entonces 0<BR>Es <T>CXC.DC<T> Entonces 0<BR>Es <T>CXC.A<T> Entonces 0<BR>Es <T>CXC.DFA<T> Entonces 0<BR>Sino<BR>Cxc.Importe+Cxc.Impuestos-Cxc.Retencion<BR>Fin<BR>Sino<BR>Cxc.Importe+Cxc.Impuestos-Cxc.Retencion<BR>Fin

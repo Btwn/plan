@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0112SituacionFiltroVis
+Nombre=DM0112SituacionFiltroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Situacion
+SQL=Select Situacion =<T>(Todas)<T><BR>union<BR>SELECT DISTINCT Ms.Situacion FROM MovSituacion Ms <BR>WHERE Modulo=<T>VTAS<T><BR>AND Mov=<T>{Mavi.DM0112Mov}<T>
+[Situacion]
+Clave=Situacion
+Nombre=Situacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Situacion

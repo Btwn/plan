@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM1186AlmacenVis
+Nombre=RM1186AlmacenVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Almacen
+SQL=SELECT a.Almacen FROM Sucursal s WITH(NOLOCK)<BR>JOIN Alm a WITH(NOLOCK) ON s.wAlmacen = a.Almacen<BR>JOIN UEN u WITH(NOLOCK) ON s.wUEN = u.UEN<BR>WHERE s.wUEN IN (1,2) AND a.Estatus=<T>Alta<T> <BR>AND a.Exclusivo = <T>Venta<T> <BR>AND s.wAlmacen NOT IN (<T>V00030<T>,<T>V00039<T>,<T>V00041<T>,<T>V00090<T>);
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Almacen

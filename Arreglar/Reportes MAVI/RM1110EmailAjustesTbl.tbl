@@ -1,0 +1,40 @@
+[Tabla]
+Icono=0
+Clave=RM1110EmailAjustesTbl
+Archivo=RM1110EMAILAJUSTES
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=NOMINA<BR>NOMBRE<BR>EMAIL
+LlavePrimaria=NOMINA
+CampoID=NOMINA
+Nombre=RM1110EmailAjustesTbl
+SQL=SELECT<BR>  NOMINA,<BR>  NOMBRE,<BR>  EMAIL<BR><BR>FROM<BR>  RM1110EMAILAJUSTES
+[NOMINA]
+Clave=NOMINA
+Nombre=NOMINA
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ConRefrescar=S
+ListaRefrescar=NOMBRE<BR>EMAIL
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Esta Nomina ya está registrada<T>
+ValidacionCondicion=SI<BR>    SQL( <T>SELECT count(NOMINA) FROM RM1110EMAILAJUSTES where NOMINA = :tNom<T>, NOMINA ) > 0<BR>Entonces<BR>    Falso<BR>Sino<BR>    Verdadero
+[NOMBRE]
+Clave=NOMBRE
+Nombre=NOMBRE
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorRefrescar=SQL(<T>Select nombre+<T>+Comillas(<T> <T>)+<T>+ApellidoPaterno+<T>+Comillas(<T> <T>)+<T>+ApellidoMaterno as Nombre from Comercializadora.dbo.Personal where Personal=:tPer<T>,NOMINA)
+CondicionEdicion=ConDatos( NOMINA )
+[EMAIL]
+Clave=EMAIL
+Nombre=EMAIL
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorRefrescar=Asigna(Info.Competencia, SQL(<T>Select dbo.FN_RM1110REGRESACORREO(:tNom)<T>,NOMINA))<BR>Info.Competencia
+CondicionEdicion=ConDatos( NOMINA)
+AyudaMemOpc=Consulta opcional
+Requerido=S

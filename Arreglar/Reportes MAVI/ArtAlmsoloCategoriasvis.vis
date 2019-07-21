@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=ArtAlmsoloCategoriasvis
+Nombre=Solamente Categorias
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sucursal
+LlavePrimaria=SucursalAsignada
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=select Sucursal from Sucursal where Tipo =<T>INSTITUCIONES<T> and Sucursal <> 39
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal

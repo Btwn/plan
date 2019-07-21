@@ -1,0 +1,11 @@
+[ActivoFijo.tbl/FechaEmision]
+CondicionEdicion=1=2
+
+[ActivoFijo.tbl/Personal]
+AyudaIgnoraChequeos=S
+ValidacionConCondiciones=N
+
+; **** Se modifico el campo para que tomara la uen de la sucursal por default y para que no fuera editable 02/10/09  ALQG****
+[ActivoFijo.tbl/UEN]
+ValorPorOmision=Sucursal.wUEN
+CondicionEdicion=Falso

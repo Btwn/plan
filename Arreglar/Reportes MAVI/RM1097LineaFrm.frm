@@ -1,0 +1,113 @@
+[Forma]
+Clave=RM1097LineaFrm
+Nombre=Número Económico
+Icono=0
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=Line
+CarpetaPrincipal=Line
+PosicionInicialAlturaCliente=316
+PosicionInicialAncho=519
+ListaAcciones=seleccion
+[Line]
+Estilo=Iconos
+Clave=Line
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1097LineaVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Observaciones
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+FiltroIgnorarEmpresas=S
+CarpetaVisible=S
+MenuLocal=S
+ListaAcciones=todo<BR>Quitar
+[Line.Columnas]
+0=-2
+[Acciones.seleccion.asign]
+Nombre=asign
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.seleccion.regis]
+Nombre=regis
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Line<T>)
+[Acciones.seleccion]
+Nombre=seleccion
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+ListaAccionesMultiples=asign<BR>regis<BR>selec
+Activo=S
+Visible=S
+[Acciones.seleccion.selec]
+Nombre=selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM1097Linea,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Acciones.todo]
+Nombre=todo
+Boton=0
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.Quitar]
+Nombre=Quitar
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Line.Observaciones]
+Carpeta=Line
+Clave=Observaciones
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro

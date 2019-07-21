@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0422RutasSuperVis
+Nombre=Rutas Supervisiones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Ruta
+CamposBusquedaRapida=Ruta
+SQL=Select Distinct <BR>Ruta<BR>From MaviRutaSupervision
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Ruta

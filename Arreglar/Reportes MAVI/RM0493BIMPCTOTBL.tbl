@@ -1,0 +1,27 @@
+[Tabla]
+Icono=0
+Clave=RM0493BIMPCTOTBL
+Archivo=RM0497NivelCobAgente
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Nivel<BR>Agente
+LlavePrimaria=Nivel
+SQL=Select Nivel, Agente From RM0497NivelCobAgente
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100

@@ -1,0 +1,57 @@
+
+[Tabla]
+Icono=0
+Clave=DM0221VTASCTipoBFtbl
+Archivo=VTASCTipoBF
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IdTipoBF<BR>TipoBF<BR>LimiteCredito<BR>LimiteCredilana<BR>ValidacionTel
+Nombre=DM0221VTASCTipoBF
+LlavePrimaria=IdTipoBF
+ControlID=S
+CampoID=IdTipoBF
+SQL=SELECT<BR>  IdTipoBF,<BR>  TipoBF,<BR>  LimiteCredito,<BR>  LimiteCredilana,<BR>  ValidacionTel<BR><BR>  FROM VTASCTipoBF
+[IdTipoBF]
+Clave=IdTipoBF
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[TipoBF]
+Clave=TipoBF
+Nombre=Tipo de BF
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+[LimiteCredito]
+Clave=LimiteCredito
+Nombre=Limite de Crédito
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+Monetario=S
+[LimiteCredilana]
+Clave=LimiteCredilana
+Nombre=Limite de Credilana
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Monetario=S
+
+[ValidacionTel]
+Clave=ValidacionTel
+Nombre=ValidacionTel
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=2
+TipoDatos=Texto
+Tamano=2
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=SI<BR>NO
+OpcionesPredefinidas=Ninguna

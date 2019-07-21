@@ -1,0 +1,58 @@
+[Tabla]
+Icono=0
+Clave=CobTelRespuestasMavi
+Archivo=CobTelRespuestasMavi
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Clave<BR>Descripcion<BR>Promesa<BR>Seguimiento<BR>NumPromesas
+LlavePrimaria=Clave
+SQL=SELECT<BR>  Clave,<BR>  Descripcion,<BR>  Promesa,<BR>  Seguimiento,<BR>  NumPromesas<BR><BR>FROM<BR>  CobTelRespuestasMavi
+[Clave]
+Clave=Clave
+Nombre=Clave
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+TipoDatos=Texto
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+[Promesa]
+Clave=Promesa
+Nombre=Promesa
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+OpcionesValidar=S
+[Seguimiento]
+Clave=Seguimiento
+Nombre=Seguimiento
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+OpcionesValidar=S
+[NumPromesas]
+Clave=NumPromesas
+Nombre=NumPromesas
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico

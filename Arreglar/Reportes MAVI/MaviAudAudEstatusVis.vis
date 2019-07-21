@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviAudAudEstatusVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Situacion
+Nombre=MaviAudAudEstatusVis
+Singular=MaviAudAudEstatusVis
+SQL=select <BR>   distinct Situacion <BR>from <BR>  movsituacion <BR>where modulo=<T>VTAS<T> <BR>order by 1
+[Situacion]
+Clave=Situacion
+Nombre=Situacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Situacion

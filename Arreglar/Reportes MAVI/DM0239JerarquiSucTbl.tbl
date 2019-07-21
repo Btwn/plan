@@ -1,0 +1,35 @@
+[Tabla]
+Icono=0
+Clave=DM0239JerarquiSucTbl
+Archivo=DM0239JerarquiadeSuc
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Sucursal<BR>Ranking<BR>SucLiquidadora
+LlavePrimaria=Sucursal
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=SELECT<BR>  Sucursal,<BR>  Ranking,<BR>  SucLiquidadora<BR><BR>FROM<BR>  DM0239JerarquiadeSuc
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Existe Sucursal en otro Ranking<T>
+ValidacionCondicion=SQL(<T>Select Count(*) From DM0239JerarquiadeSuc Where Sucursal=:nSuc<T>,Sucursal) = 0
+[Ranking]
+Clave=Ranking
+Nombre=Ranking
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>YA EXISTE ESE RANKING<T>
+ValidacionCondicion=SQL(<T>Select Count(*) From DM0239JerarquiadeSuc Where Ranking=:nR<T>,Ranking) = 0
+[SucLiquidadora]
+Clave=SucLiquidadora
+Nombre=Sucursal Liquidadora
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico

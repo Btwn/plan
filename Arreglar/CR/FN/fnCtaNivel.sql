@@ -1,0 +1,28 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnCtaNivel (@Cuenta varchar(20), @ConEstructura bit)
+RETURNS int
+
+AS BEGIN
+DECLARE
+@Nivel  int,
+@Rama   varchar(20),
+@Tipo   varchar(20)
+SELECT @Nivel = NULL, @Rama = ''
+WHILE @Rama IS NOT NULL
+BEGIN
+SELECT @Rama = NULLIF(RTRIM(Rama), ''), @Tipo = Tipo FROM Cta WHERE Cuenta = @Cuenta
+IF @ConEstructura = 0 AND UPPER(@Tipo) = 'ESTRUCTURA'
+SELECT @Rama = NULL
+ELSE
+SELECT @Nivel = ISNULL(@Nivel, 0) + 1, @Cuenta = @Rama
+END
+RETURN(@Nivel)
+END
+

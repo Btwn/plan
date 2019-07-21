@@ -1,0 +1,70 @@
+[Dialogo]
+Clave=MenuCfgCxcCalifCtes
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=(Lista)
+PosicionInicialIzquierda=551
+PosicionInicialArriba=289
+PosicionInicialAlturaCliente=152
+PosicionInicialAncho=258
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=Centrado
+VentanaEstadoInicial=Normal
+VentanaEscCerrar=S
+
+[Acciones.ValoresMOP]
+Nombre=ValoresMOP
+Boton=0
+NombreDesplegar=Valores MOP
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ValoresMOPMAVI
+Activo=S
+Visible=S
+
+[Acciones.PonderacionxTipoFactura]
+Nombre=PonderacionxTipoFactura
+Boton=0
+NombreDesplegar=Ponderación x Tipo de Factura
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=PonderacionxTipoFacturaMAVI
+Activo=S
+Visible=S
+
+[Acciones.PuntosMOPMAVI]
+Nombre=PuntosMOPMAVI
+Boton=0
+NombreDesplegar=Puntos MOP
+TipoAccion=Formas
+ClaveAccion=PuntosMOPMAVI
+Activo=S
+Visible=S
+EnMenu=S
+EnBarraAcciones=S
+[Acciones.ConfigDesempeño]
+Nombre=ConfigDesempeño
+Boton=0
+NombreDesplegar=&Parametros Desempeño Pago
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Expresion=Ejecutar(<T>PlugIns\Inte201.exe<T>)
+Activo=S
+Visible=S
+
+[Dialogo.ListaAcciones]
+(Inicio)=ConfigDesempeño
+ConfigDesempeño=ValoresMOP
+ValoresMOP=PuntosMOPMAVI
+PuntosMOPMAVI=PonderacionxTipoFactura
+PonderacionxTipoFactura=(Fin)

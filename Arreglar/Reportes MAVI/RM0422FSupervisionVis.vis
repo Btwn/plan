@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM0422FSupervisionVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sup
+Nombre=Supervisiones
+CamposBusquedaRapida=Sup
+ListaCampos002=<CONTINUA>>Estatus_2<BR>Sucursal_1<BR>FechaDeAsignacionAlSupervisor<BR>ID_2<BR>SupervisionID<BR>Estado_2<BR>Observaciones_2
+SQL=select * from (Select distinct<BR>Sup = MB.MovID<BR>From MaviSupervision  MB<BR>       INNER JOIN maviRuta mr ON mr.ID = MB.RutaID<BR>       INNER JOIN MaviRutaD MD on md.SupervisionID = MB.ID<BR>where MB.estatus IN (<T>PENDIENTE<T>,<T>CONCLUIDO<T>)) X<BR>order by Sup
+[Sup]
+Clave=Sup
+Nombre=Sup
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Sup

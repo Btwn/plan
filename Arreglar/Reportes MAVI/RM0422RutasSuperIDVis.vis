@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=RM0422RutasSuperIDVis
+Nombre=Rutas Supervisiones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=movid<BR>Ruta
+CamposBusquedaRapida=movid
+SQL=SELECT distinct CONVERT(INT, mr.MovID) Movid, mr.Ruta<BR>FROM Maviruta mr<BR>WHERE mr.movid IS NOT null<BR>and mr.estatus=<T>pendiente<T><BR>Order By Movid
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+ClaveBDE=Ruta
+Tamano=50
+[movid]
+Clave=movid
+Nombre=movid
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Movid

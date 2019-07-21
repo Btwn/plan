@@ -1,0 +1,35 @@
+[Vista]
+Icono=0
+Clave=MaviAlmArtiSeriesValidasxFactRetVis
+Nombre=Relacion de Articulos validos para una Factura
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Serie<BR>Articulo<BR>Id
+SQL=Select <BR>Id,<BR>Articulo,<BR>Serie<BR>From<BR>MaviEmbarqueFisicoAlmacen<BR>{si(condatos(Mavi.AlmacenIdEmbarque),<T>Where  idEmbarque=<T>+Mavi.AlmacenIdEmbarque,<T>Where  idEmbarque is null<T>)}<BR>--{si(Mavi.AlmacenIdFactura >0,<T>And idFactura=<T>+Mavi.AlmacenIdFactura,<T>And idFactura is null<T>)}
+[Serie]
+Clave=Serie
+Nombre=Serie
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Serie
+[Articulo]
+Clave=Articulo
+Nombre=Código
+Visible=S
+TamanoValidacion=10
+ClaveBDE=Articulo
+Tamano=30
+[Id]
+Clave=Id
+Nombre=Id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+ClaveBDE=Id

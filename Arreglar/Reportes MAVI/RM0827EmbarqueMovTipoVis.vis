@@ -1,0 +1,15 @@
+[Vista]
+Icono=0
+Clave=RM0827EmbarqueMovTipoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Mov
+SQL=Select Distinct Mov<BR>From Embarque<BR>Where Mov Like <T>Embarque%<T>
+[Mov]
+Clave=Mov
+Nombre=Tipo de Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Mov

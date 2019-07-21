@@ -1,0 +1,34 @@
+[Dialogo]
+Clave=PropreGenerarEtiquetaD
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Todos<BR>Existencia
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.Todos]
+Nombre=Todos
+Boton=0
+NombreDesplegar=&Todos los Articulos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=EjecutarSQL(<T>EXEC spPropreGenerarEtiqueta :tEmpresa, :nEstacion, :nSucursal, :nCodigo, 1<T>, Empresa, Estaciontrabajo, Sucursal, Info.Numero)
+[Acciones.Existencia]
+Nombre=Existencia
+Boton=0
+NombreDesplegar=Solo con &Existencia
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=EjecutarSQL(<T>EXEC spPropreGenerarEtiqueta :tEmpresa, :nEstacion, :nSucursal, :nCodigo, 0<T>, Empresa, Estaciontrabajo, Sucursal, Info.Numero)

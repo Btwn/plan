@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=DM0102FamArtVis
+Nombre=Familia Articulos
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Familia
+LlavePrimaria=Familia
+CamposBusquedaRapida=Familia
+SQL=select <BR>distinct(Familia) <BR>from art <BR>Where <BR>Art.Familia is not null AND Grupo=<T>MERCANCIA ESPECIAL<T> and CATEGORIA=<T>venta<T><BR>AND LEN(Art.Familia)>0<BR>{Si(Condatos(Mavi.DM0102LineaArtEsp) ,<T>And Art.Familia In (select Familia from Art where Linea=<T>+Comillas(Mavi.DM0102LineaArtEsp)+<T>)<T>,<T><T>)}<BR><BR>order by Familia asc
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

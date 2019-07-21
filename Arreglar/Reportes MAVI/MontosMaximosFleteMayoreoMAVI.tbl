@@ -1,0 +1,34 @@
+[Tabla]
+Icono=0
+Clave=MontosMaximosFleteMayoreoMAVI
+Nombre=MontosMaximosFletesMayoreoMAVI
+Archivo=MontosMaximosFleteMayoreoMAVI
+Modulos=(Todos)
+Singular=MontosMaximosFletesMayoreoMAVI
+TipoTabla=General
+ListaCampos=TipoUnidadVehicular<BR>CostoMaximo
+LlavePrimaria=TipoUnidadVehicular
+SQL=SELECT<BR>  TipoUnidadVehicular,<BR>  CostoMaximo<BR><BR>FROM<BR>  MontosMaximosFleteMayoreoMAVI
+[TipoUnidadVehicular]
+Clave=TipoUnidadVehicular
+Nombre=Tipo Unidad Vehicular
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+Requerido=S
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>Select TipoUnidad from TipoUnidadVehicularMAVI<T>)
+[CostoMaximo]
+Clave=CostoMaximo
+Nombre=Costo Máximo x Km
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+Requerido=S
+ValorPorOmision=0
+AyudaEnCaptura=Calculadora
+Alineacion=Izquierda

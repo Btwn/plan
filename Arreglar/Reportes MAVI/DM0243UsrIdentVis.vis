@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=DM0243UsrIdentVis
+Nombre=DM0243UsrIdentVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=UsrIdentDep
+SQL=Select UsrIdentDep From DM0243DepositosInstCred <BR>Group BY UsrIdentDep
+[UsrIdentDep]
+Clave=UsrIdentDep
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=UsrIdentDep

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0493AFichasNivelesVis
+Nombre=Seleccion de Nivel
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre
+SQL=Select nombre from nivelcobranzamavi
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=nombre

@@ -1,0 +1,45 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnTCBanorteFecha(
+@Texto	varchar(30)
+)
+RETURNS datetime
+AS
+BEGIN
+DECLARE @Dia		int,
+@Mes		int,
+@Ano		int,
+@Hora		int,
+@Minuto	int,
+@Segundo	int,
+@Fecha	datetime
+SELECT @Fecha = ''
+SELECT @Dia = SUBSTRING(@Texto, 9, 2),
+@Mes = CASE SUBSTRING(@Texto, 5, 3)
+WHEN 'Jan' THEN 1
+WHEN 'Feb' THEN 2
+WHEN 'Mar' THEN 3
+WHEN 'Apr' THEN 4
+WHEN 'May' THEN 5
+WHEN 'Jun' THEN 6
+WHEN 'Jul' THEN 7
+WHEN 'Aug' THEN 8
+WHEN 'Sep' THEN 9
+WHEN 'Oct' THEN 10
+WHEN 'Nov' THEN 11
+WHEN 'Dec' THEN 12
+END,
+@Ano = SUBSTRING(@Texto, 25, 4),
+@Hora = SUBSTRING(@Texto, 12, 2),
+@Minuto = SUBSTRING(@Texto, 15, 2),
+@Segundo = SUBSTRING(@Texto, 18, 2)
+SELECT @Fecha = DATEADD(ss, @Segundo, DATEADD(hh, @Hora, DATEADD(mi, @Minuto, DATEADD(YEAR, @Ano - 1900, DATEADD(m, @Mes - 1, DATEADD(DD, @Dia - 1, @Fecha))))))
+RETURN @Fecha
+END
+

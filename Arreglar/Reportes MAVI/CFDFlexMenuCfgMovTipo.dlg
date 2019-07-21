@@ -1,0 +1,546 @@
+[Dialogo]
+Clave=CFDFlexMenuCfgMovTipo
+Nombre=MovTipo
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=VTAS<BR>PC<BR>CR<BR>VALE<BR>ST<BR>RSS<BR>PROY<BR>EMB<BR>DIN<BR>CXC<BR>CXP<BR>AGENT<BR>GAS<BR>INV<BR>AF<BR>COMS<BR>PROD<BR>INC<BR>NOM<BR>ASIS<BR>RH<BR>CONT<BR>CONC<BR>CAP<BR>CAM<BR>PACTO<BR>CREDI<BR>TMA<BR>FRM<BR>MEX01<BR>MEX02<BR>MEX03<BR>MEX04<BR>MEX05<BR>MEX06<BR>MEX07<BR>MEX08<BR>MEX09<BR>ORG<BR>RE<BR>ISL
+PosicionInicialAltura=525
+PosicionInicialAncho=256
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=Centrado
+VentanaConIcono=S
+PosicionInicialIzquierda=672
+PosicionInicialArriba=98
+PosicionInicialAlturaCliente=666
+
+[Acciones.VTAS]
+Nombre=VTAS
+Boton=0
+NombreDesplegar=&Ventas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+AntesExpresiones=Asigna(Info.Modulo, <T>VTAS<T>)<BR>Asigna(Info.Descripcion, <T>Ventas<T>)
+
+[Acciones.ST]
+Nombre=ST
+Boton=0
+NombreDesplegar=&Módulos Atención
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>ST<T>)<BR>Asigna(Info.Descripcion, <T>Módulos Atención<T>)
+[Acciones.EMB]
+Nombre=EMB
+Boton=0
+NombreDesplegar=&Embarques
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>EMB<T>)<BR>Asigna(Info.Descripcion, <T>Embarques<T>)
+[Acciones.CXC]
+Nombre=CXC
+Boton=0
+NombreDesplegar=Cuentas por &Cobrar
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>CXC<T>)<BR>Asigna(Info.Descripcion, <T>Cuentas por Cobrar<T>)
+[Acciones.DIN]
+Nombre=DIN
+Boton=0
+NombreDesplegar=&Tesorería
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+EspacioPrevio=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>DIN<T>)<BR>Asigna(Info.Descripcion, <T>Tesorería<T>)
+[Acciones.INV]
+Nombre=INV
+Boton=0
+NombreDesplegar=&Inventarios
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+EspacioPrevio=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>INV<T>)<BR>Asigna(Info.Descripcion, <T>Inventarios<T>)
+[Acciones.PROD]
+Nombre=PROD
+Boton=0
+NombreDesplegar=Pro&ducción
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+EspacioPrevio=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>PROD<T>)<BR>Asigna(Info.Descripcion, <T>Producción<T>)
+VisibleCondicion=General.Prod
+[Acciones.AF]
+Nombre=AF
+Boton=0
+NombreDesplegar=Activos &Fijos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>AF<T>)<BR>Asigna(Info.Descripcion, <T>Activos Fijos<T>)
+[Acciones.NOM]
+Nombre=NOM
+Boton=0
+NombreDesplegar=&Nómina
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+EspacioPrevio=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>NOM<T>)<BR>Asigna(Info.Descripcion, <T>Nómina<T>)
+[Acciones.ASIS]
+Nombre=ASIS
+Boton=0
+NombreDesplegar=&Asistencias
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>ASIS<T>)<BR>Asigna(Info.Descripcion, <T>Asistencias<T>)
+[Acciones.RH]
+Nombre=RH
+Boton=0
+NombreDesplegar=Recursos &Humanos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>RH<T>)<BR>Asigna(Info.Descripcion, <T>Recursos Humanos<T>)
+[Acciones.GAS]
+Nombre=GAS
+Boton=0
+NombreDesplegar=&Gastos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>GAS<T>)<BR>Asigna(Info.Descripcion, <T>Gastos<T>)
+[Acciones.AGENT]
+Nombre=AGENT
+Boton=0
+NombreDesplegar=Comisiones y Desta&jos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>AGENT<T>)<BR>Asigna(Info.Descripcion, <T>Comisiones y Destajos<T>)
+[Acciones.CXP]
+Nombre=CXP
+Boton=0
+NombreDesplegar=Cuentas por &Pagar
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>CXP<T>)<BR>Asigna(Info.Descripcion, <T>Cuentas por Pagar<T>)
+[Acciones.COMS]
+Nombre=COMS
+Boton=0
+NombreDesplegar=C&ompras
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>COMS<T>)<BR>Asigna(Info.Descripcion, <T>Compras<T>)
+[Acciones.CONT]
+Nombre=CONT
+Boton=0
+NombreDesplegar=Co&ntabilidad
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>CONT<T>)<BR>Asigna(Info.Descripcion, <T>Contabilidad<T>)
+
+[Acciones.CONC]
+Nombre=CONC
+Boton=0
+NombreDesplegar=Conciliaciones
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>CONC<T>)<BR>Asigna(Info.Descripcion, <T>Conciliaciones<T>)
+[Acciones.CAP]
+Nombre=CAP
+Boton=0
+NombreDesplegar=&Capital
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>CAP<T>)<BR>Asigna(Info.Descripcion, <T>Capital<T>)
+[Acciones.PC]
+Nombre=PC
+Boton=0
+NombreDesplegar=P&recios y Costos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>PC<T>)<BR>Asigna(Info.Descripcion, <T>Precios y Costos<T>)
+VisibleCondicion=General.PC
+[Acciones.CAM]
+Nombre=CAM
+Boton=0
+NombreDesplegar=Cambios
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+EspacioPrevio=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>CAM<T>)<BR>Asigna(Info.Descripcion, <T>Cambios<T>)
+VisibleCondicion=General.Cambios
+[Acciones.CREDI]
+Nombre=CREDI
+Boton=0
+NombreDesplegar=Crédito
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+EspacioPrevio=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>CREDI<T>)<BR>Asigna(Info.Descripcion, <T>Crédito<T>)
+VisibleCondicion=General.AC
+[Acciones.VALE]
+Nombre=VALE
+Boton=0
+NombreDesplegar=Vale&s
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>VALE<T>)<BR>Asigna(Info.Descripcion, <T>Vales<T>)
+[Acciones.CR]
+Nombre=CR
+Boton=0
+NombreDesplegar=Cajas &Registradoras
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+ActivoCondicion=General.CR
+AntesExpresiones=Asigna(Info.Modulo, <T>CR<T>)<BR>Asigna(Info.Descripcion, <T>Cajas Registradoras<T>)
+VisibleCondicion=General.CR
+[Acciones.INC]
+Nombre=INC
+Boton=0
+NombreDesplegar=&Incidencias
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>INC<T>)<BR>Asigna(Info.Descripcion, <T>Incidencias<T>)
+VisibleCondicion=General.NomAuto
+[Acciones.TMA]
+Nombre=TMA
+Boton=0
+NombreDesplegar=&Tarimas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>TMA<T>)<BR>Asigna(Info.Descripcion, <T>Tarimas<T>)
+VisibleCondicion=General.WMS
+[Acciones.PROY]
+Nombre=PROY
+Boton=0
+NombreDesplegar=&Proyectos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+EspacioPrevio=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>PROY<T>)<BR>Asigna(Info.Descripcion, <T>Proyectos<T>)
+VisibleCondicion=General.PM
+
+[Acciones.FRM]
+Nombre=FRM
+Boton=0
+NombreDesplegar=&Formas Extras
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>FRM<T>)<BR>Asigna(Info.Descripcion, <T>Formas Extras<T>)
+[Acciones.RSS]
+Nombre=RSS
+Boton=0
+NombreDesplegar=&Fuentes (RSS)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>RSS<T>)<BR>Asigna(Info.Descripcion, <T>Fuentes (RSS)<T>)
+
+[Acciones.PACTO]
+Nombre=PACTO
+Boton=0
+NombreDesplegar=Contratos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Antes=S
+Visible=S
+
+
+AntesExpresiones=Asigna(Info.Modulo,<T>PACTO<T>)<BR>Asigna(Info.Descripcion,<T>Contratos<T>)
+[Acciones.MEX01]
+Nombre=MEX01
+Boton=0
+NombreDesplegar=&ModuloExtra01
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX01<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra01<T>)
+[Acciones.MEX02]
+Nombre=MEX02
+Boton=0
+NombreDesplegar=&ModuloExtra02
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX02<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra02<T>)
+[Acciones.MEX03]
+Nombre=MEX03
+Boton=0
+NombreDesplegar=&ModuloExtra03
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX03<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra03<T>)
+[Acciones.MEX04]
+Nombre=MEX04
+Boton=0
+NombreDesplegar=&ModuloExtra04
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX04<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra04<T>)
+[Acciones.MEX05]
+Nombre=MEX05
+Boton=0
+NombreDesplegar=&ModuloExtra05
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX05<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra05<T>)
+[Acciones.MEX06]
+Nombre=MEX06
+Boton=0
+NombreDesplegar=&ModuloExtra06
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX06<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra06<T>)
+[Acciones.MEX07]
+Nombre=MEX07
+Boton=0
+NombreDesplegar=&ModuloExtra07
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX07<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra07<T>)
+[Acciones.MEX08]
+Nombre=MEX08
+Boton=0
+NombreDesplegar=&ModuloExtra08
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX08<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra08<T>)
+[Acciones.MEX09]
+Nombre=MEX09
+Boton=0
+NombreDesplegar=&ModuloExtra09
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>MEX09<T>)<BR>Asigna(Info.Descripcion, <T>ModuloExtra09<T>)
+[Acciones.ORG]
+Nombre=ORG
+Boton=0
+NombreDesplegar=&Organización
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>ORG<T>)<BR>Asigna(Info.Descripcion, <T>Organización<T>)
+[Acciones.RE]
+Nombre=RE
+Boton=0
+NombreDesplegar=&Reclutamiento y Selección
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=S
+Antes=S
+
+AntesExpresiones=Asigna(Info.Modulo, <T>RE<T>)<BR>Asigna(Info.Descripcion, <T>Reclutamiento y Selección<T>)
+[Acciones.ISL]
+Nombre=ISL
+Boton=0
+NombreDesplegar=&ISL
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CFDFlexMovTipo
+Activo=S
+Visible=Gris
+Antes=S
+AntesExpresiones=Asigna(Info.Modulo, <T>ISL<T>)<BR>Asigna(Info.Descripcion, <T>ISL<T>)

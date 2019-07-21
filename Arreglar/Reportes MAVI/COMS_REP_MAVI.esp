@@ -1,0 +1,111 @@
+[COMS.rep/Linea3]
+AltoEnCm=1.26
+
+[COMS.rep/A3]
+Expresion=Compra.Mov & <T>  <T> <BR>& Compra.MovID
+ExpresionMultiple=S
+
+[COMS.rep/Linea6]
+Clave=Inicio: Compra.ID
+Objetos=4
+Seccion=Inicio Grupo
+Grupo=Compra.ID
+AltoEnCm=2.11
+AVertical=Centrado
+Fuente={Arial, 10, Negro, []}
+BordeAbajo=N
+EstiloMarco=3
+Marco=N
+FondoEstilo=0
+Visible=
+EstiloAbajo=0
+Renglones=6
+FondoColor=Blanco
+
+[COMS.rep/A6]
+AnchoEnCm=2.61
+Expresion=<T>Factura<T> & <T>:<T><BR><T>Fecha Pago<T> & <T>:<T><BR>CampoNombre( Compra.Concepto )  & <T>:<T><BR>CampoNombre( Compra.Observaciones ) & <T>:<T><BR>CampoNombre( Compra.Usuario ) & <T>:<T>
+AnchoTexto=13
+
+[COMS.rep/B6]
+AnchoEnCm=9.79
+Expresion=Compra.Referencia<BR>Compra.Vencimiento<BR>Compra.Concepto<BR>Compra.Observaciones<BR>SQL(<T>SELECT Nombre FROM USUARIO WHERE Usuario =:tNom<T>,Compra.Usuario)
+ExpresionMultiple=S
+
+[COMS.rep/C6]
+Celda=C6
+Alineacion=Derecha
+AnchoEnCm=2.29
+ExpresionMultiple=S
+AnchoTexto=12
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=CampoNombre( Compra.Estatus ) & <T>:<T><BR>CampoNombre( Compra.Origen ) & <T>:<T><BR><T>OrigenID<T> & <T>:<T>
+
+[COMS.rep/D6]
+Celda=D6
+Alineacion=Izquierda
+AnchoEnCm=4.8
+ExpresionMultiple=S
+AnchoTexto=26
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Compra.Estatus<BR>Compra.Origen<BR>Compra.OrigenID
+
+[COMS.rep/Linea7]
+AltoEnCm=0.0
+
+[COMS.rep/Linea8]
+AltoEnCm=0.0
+
+[COMS.rep/Linea10]
+Visible=((sql(<T>select count(usuario) from(SELECT Usuario FROM USUARIO WHERE acceso in (select Nombre from tablastd where tablast=:tUsu1))x where usuario=:tusu<T>,<T>CFG PERFIL COSTOS VTAS<T>,usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(sql(<T>select categoria from art where articulo=:tArt<T>,Info.Articulo)=<T>VENTA<T>) y<BR>(sql(<T>select grupo from art where articulo=:tArt<T>,Info.Articulo)=<T>MERCANCIA DE LINEA<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(sql(<T>select categoria from art where articulo=:tArt<T>,Info.Articulo)<><T>VENTA<T>) y<BR>(sql(<T>select grupo from art where articulo=:tArt<T>,Info.Articulo)<><T>MERCANCIA DE LINEA<T>))
+
+[COMS.rep/G10]
+Expresion=SI<BR>(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN<BR>dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND<BR>U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(SQL(<T>SELECT COUNT(Nombre) FROM dbo.TablaStD WHERE TablaSt=:tPer<BR>AND Nombre=:tNom<T>,<T>CONTROL COSTOS MOVIMIENTOS<T>,Compra.Mov)=0) ))<BR>ENTONCES<BR>    Si(Usuario.Costos, CompraD.Costo)<BR>SINO<BR>    <T>0.00<T><BR>FIN
+
+[COMS.rep/I10]
+Expresion=SI<BR>(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN<BR>dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND<BR>U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(SQL(<T>SELECT COUNT(Nombre) FROM dbo.TablaStD WHERE TablaSt=:tPer<BR>AND Nombre=:tNom<T>,<T>CONTROL COSTOS MOVIMIENTOS<T>,Compra.Mov)=0) ))<BR>ENTONCES<BR>    Si(Usuario.Costos, ImporteLinea)<BR>SINO<BR>    <T>0.00<T><BR>FIN
+
+[COMS.rep/F14]
+Expresion=Si(Usuario.ConsultarCompraPendiente o (MovTipo(<T>COMS<T>, Compra.Mov) noen <BR>(COMS.O, COMS.OP, COMS.CP, COMS.OG, COMS.OD, COMS.OI)), Suma(CantidadNeta))
+
+[COMS.rep/Linea15]
+Visible=(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(SQL(<T>SELECT COUNT(Nombre) FROM dbo.TablaStD WHERE TablaSt=:tPer AND Nombre=:tNom<T>,<T>CONTROL COSTOS MOVIMIENTOS<T>,Compra.Mov)=0) ))
+
+[COMS.rep/Linea16]
+Visible=(Usuario.Costos y (Suma(DescGlobal)<>0.0))<BR>y<BR>(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(SQL(<T>SELECT COUNT(Nombre) FROM dbo.TablaStD WHERE TablaSt=:tPer AND Nombre=:tNom<T>,<T>CONTROL COSTOS MOVIMIENTOS<T>,Compra.Mov)=0) ))
+
+[COMS.rep/Linea17]
+Visible=(Usuario.Costos y (Suma(DescGlobal)<>0.0))<BR>y<BR>(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(SQL(<T>SELECT COUNT(Nombre) FROM dbo.TablaStD WHERE TablaSt=:tPer AND Nombre=:tNom<T>,<T>CONTROL COSTOS MOVIMIENTOS<T>,Compra.Mov)=0) ))
+
+[COMS.rep/Linea18]
+Visible=(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(SQL(<T>SELECT COUNT(Nombre) FROM dbo.TablaStD WHERE TablaSt=:tPer AND Nombre=:tNom<T>,<T>CONTROL COSTOS MOVIMIENTOS<T>,Compra.Mov)=0) ))
+
+[COMS.rep/Linea19]
+Visible=(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(SQL(<T>SELECT COUNT(Nombre) FROM dbo.TablaStD WHERE TablaSt=:tPer AND Nombre=:tNom<T>,<T>CONTROL COSTOS MOVIMIENTOS<T>,Compra.Mov)=0) ))
+
+[COMS.rep/Linea20]
+Visible=(Usuario.Costos y (Suma(DescGlobal)<>0.0))<BR>y<BR>(((sql(<T>SELECT COUNT(Acceso) FROM dbo.TablaStD St INNER JOIN dbo.Usuario U ON U.Acceso=St.Nombre WHERE TablaSt=:tPer AND U.Usuario=:tUs<T>,<T>CFG PERFIL COSTOS VTAS<T>,Usuario))=1 y<BR>(sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>))<BR> o<BR>((sql(<T>select costos from usuario where usuario=:tUsu1<T>,Usuario)=<T>1<T>) y<BR>(SQL(<T>SELECT COUNT(Nombre) FROM dbo.TablaStD WHERE TablaSt=:tPer AND Nombre=:tNom<T>,<T>CONTROL COSTOS MOVIMIENTOS<T>,Compra.Mov)=0) ))

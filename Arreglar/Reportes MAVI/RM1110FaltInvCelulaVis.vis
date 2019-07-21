@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1110FaltInvCelulaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CELULA
+SQL=select distinct agente AS CELULA from Agente WHERE CATEGORIA=<T>VENTAS A INSTITUCIONES<T> AND AGENTE LIKE <T>CELI%<T>
+[CELULA]
+Clave=CELULA
+Nombre=CELULA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=CELULA

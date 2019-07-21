@@ -1,0 +1,62 @@
+[Tabla]
+Icono=0
+Clave=MaviAlmCapturaEliminacionRetEmbarqueFisicoTbl
+Nombre=Captura Eliminaciones Para Retorno
+Archivo=MAVIEliminaEmbarqueFisicoAlmacen
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=id<BR>idEmbarque<BR>Serie<BR>Articulo
+LlavePrimaria=Articulo<BR>Serie
+ListaRelaciones=MaviAlmDevEmbarqueFisicoTbl
+SQL=SELECT<BR>  id,<BR>  idEmbarque,<BR>  Articulo,<BR>  Serie<BR><BR>FROM<BR>  MAVIEliminaEmbarqueFisicoAlmacen
+[id]
+Clave=id
+Nombre=id
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+[idEmbarque]
+Clave=idEmbarque
+Nombre=idEmbarque
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Mavi.AlmacenIdEmbarque
+[Serie]
+Clave=Serie
+Nombre=Serie
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaForma=MaviAlmCodSersElimRetEmbarqueFisicoFrm
+AyudaVista=MaviAlmArtiSeriesValidasxFactxElimRetVis
+AyudaCampo=Serie
+ValidacionUsaTabla=S
+ValidacionTablas=MaviAlmDevEmbarqueFisicoTbl
+ValorRefrescar=Asigna(Info.Familia,(SQL(<T>Select Familia from Art Where Articulo=(Select Cuenta from CB Where codigo=:tval1)<T>,Articulo)))<BR>Asigna(Info.Artlinea,(SQL(<T>Select Linea from Art Where Articulo=(Select Cuenta from CB Where codigo=:tval1)<T>,Articulo)))<BR>Asigna(Info.Articulo,(SQL(<T>Select Articulo from Art Where Articulo=(Select Cuenta from CB Where codigo=:tval1)<T>,Articulo)))<BR>Asigna(Info.ArtTipo,(SQL(<T>Select Tipo from Art where Articulo=:tval1<T>,Info.Articulo)))<BR>Asigna(Info.Mov,(SQL(<T>Select Mov from Embarque where id=:nval1<T>,Mavi.AlmacenIdEmbarque)))<BR><BR><BR><BR><BR>SI(<BR>(<BR>((Info.Mov<><T>Embarque Mayoreo<T>) y (Info.ArtTipo=<T>Serie<T>)) o<BR><BR>   (<BR>    (Info.Mov=<T>Embarque Mayoreo<T>) y<BR>     ((Info.Familia<><T>MUEBLES<T>) y<BR>      (Info.Familia<><T>CO<CONTINUA>
+ValorRefrescar002=<CONTINUA>LCHONERIA<T>) y<BR>      (Info.Familia<><T>ELECTRODOMESTICOS<T>) y<BR>      (Vacio(SQL(<T>Select Articulo from Art where Descripcion1 like :tval1 and Descripcion1 like :tval2 AND ARTICULO=:tval3<T>,<T>%Ro%<T>,<T>%ENFRIADOR%<T>,Info.Articulo)))<BR>     )<BR>   )<BR>o<BR>(<BR> (Info.Mov=<T>Embarque Mayoreo<T>) y<BR> (Info.Artlinea=<T>HORNOS MICROONDAS<T>)<BR>)<BR>o<BR>(<BR>(Info.Mov=<T>Embarque Mayoreo<T>) y (Info.Artlinea=<T>ENFRIADORES<T>) y (Vacio(SQL(<T>Select Articulo from Art where Descripcion1 like :tval1 and Descripcion1 like :tval2 AND ARTICULO=:tval3<T>,<T>%Ro%<T>,<T>%ENFRIADOR%<T>,Info.Articulo)))<BR>)<BR>)<BR>,,<T>N/A<T>)
+CondicionEdicion=Asigna(Info.Familia,(SQL(<T>Select Familia from Art Where Articulo=(Select Cuenta from CB Where codigo=:tval1)<T>,Articulo)))<BR>Asigna(Info.Artlinea,(SQL(<T>Select Linea from Art Where Articulo=(Select Cuenta from CB Where codigo=:tval1)<T>,Articulo)))<BR>Asigna(Info.Articulo,(SQL(<T>Select Articulo from Art Where Articulo=(Select Cuenta from CB Where codigo=:tval1)<T>,Articulo)))<BR>Asigna(Info.ArtTipo,(SQL(<T>Select Tipo from Art where Articulo=:tval1<T>,Info.Articulo)))<BR>Asigna(Info.Mov,(SQL(<T>Select Mov from Embarque where id=:nval1<T>,Mavi.AlmacenIdEmbarque)))<BR>(((Info.Mov<><T>Embarque Mayoreo<T>) y (Info.ArtTipo=<T>Serie<T>)) o ((Info.Mov=<T>Embarque Mayoreo<T>) y (Info.Familia noen(<T>MUEBLES<T>,<T>COLCHONERIA<T>,<T>ELECTRODOMESTICOS<T>)) y (Vacio(SQL(<T>Select Articulo from A<CONTINUA>
+CondicionEdicion002=<CONTINUA>rt where Descripcion1 like :tval1 and Descripcion1 like :tval2 AND ARTICULO=:tval3<T>,<T>%Ro%<T>,<T>%ENFRIADOR%<T>,Info.Articulo)))) o ((Info.Mov=<T>Embarque Mayoreo<T>) y (Info.Artlinea=<T>HORNOS MICROONDAS<T>)) o ((Info.Mov=<T>Embarque Mayoreo<T>) y (Info.Artlinea=<T>ENFRIADORES<T>) y (Vacio(SQL(<T>Select Articulo from Art where Descripcion1 like :tval1 and Descripcion1 like :tval2 AND ARTICULO=:tval3<T>,<T>%Ro%<T>,<T>%ENFRIADOR%<T>,Info.Articulo)))))
+Requerido=S
+[Articulo]
+Clave=Articulo
+Nombre=Código
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaForma=MaviAlmCodSersElimRetEmbarqueFisicoFrm
+AyudaVista=MaviAlmArtiSeriesValidasxFactxElimRetVis
+AyudaCampo=Articulo
+ValidacionUsaTabla=S
+ValidacionTablas=MaviAlmDevEmbarqueFisicoTbl
+ConRefrescar=S
+ListaRefrescar=Serie
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Serie
+Requerido=S
+[Relaciones.MaviAlmDevEmbarqueFisicoTbl]
+TipoRelacion=Forzosa
+LlaveLocal=Serie<BR>Articulo
+Clave=MaviAlmDevEmbarqueFisicoTbl
+TablaRemota=MaviAlmDevEmbarqueFisicoTbl
+LlaveRemota=Serie<BR>Articulo

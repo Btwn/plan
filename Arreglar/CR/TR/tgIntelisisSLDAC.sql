@@ -1,0 +1,19 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgIntelisisSLDAC ON IntelisisSLD
+
+FOR INSERT, UPDATE
+AS BEGIN
+IF dbo.fnEstaSincronizando() = 1 RETURN
+INSERT IntelisisSLDHist (
+Licencia, Licenciamiento, Cantidad, Estatus, TieneMovimientos)
+SELECT Licencia, Licenciamiento, Cantidad, Estatus, TieneMovimientos
+FROM Inserted
+END
+

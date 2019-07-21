@@ -1,0 +1,91 @@
+[Tabla]
+Icono=0
+Clave=DM0207CriteriosAsignacion
+Nombre=DM0207CriteriosAsignacion
+Archivo=DM0207CriteriosAsignacion
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=NivelCobranza<BR>Region<BR>Division<BR>OrdenAsigna<BR>ValidarAgentes<BR>OrdenValores<BR>OrdenarMov
+LlavePrimaria=NivelCobranza<BR>Region<BR>Division
+SQL=SELECT<BR>  NivelCobranza,<BR>  Region,<BR>  Division,<BR>  OrdenAsigna,<BR>  ValidarAgentes,<BR>  Ordenvalores,<BR>  OrdenarMov<BR>FROM<BR>  DM0207CriteriosAsignacion
+[NivelCobranza]
+Clave=NivelCobranza
+Nombre=NivelCobranza
+Visible=S
+TamanoValidacion=30
+Tamano=40
+Mayusculas=S
+AyudaMemOpc=Validar captura en la lista
+TipoDatos=Texto
+[Region]
+Clave=Region
+Nombre=Region
+Visible=S
+TamanoValidacion=30
+Tamano=40
+Mayusculas=S
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+TamanoValidacion=20
+Tamano=40
+Mayusculas=S
+AyudaMemOpc=Validar captura en la lista
+TipoDatos=Texto
+[OrdenValores]
+Clave=OrdenValores
+Nombre=OrdenValores
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+Requerido=S
+OpcionesUnicamente=S
+ListaOpciones=MENOR A MAYOR<BR>MAYOR A MENOR
+TipoDatos=Texto
+[OrdenAsigna]
+Clave=OrdenAsigna
+Nombre=OrdenAsigna
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+OpcionesValidar=S
+Requerido=S
+ListaOpciones=CAPITAL<BR>CAPITAL VENCIDO<BR>DIAS VENCIDOS<BR>DIAS INACTIVOS
+TipoDatos=Texto
+[ValidarAgentes]
+Clave=ValidarAgentes
+Nombre=ValidarAgentes
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+OpcionesValidar=S
+Requerido=S
+ValorPorOmision=0
+[OrdenarMov]
+Clave=OrdenarMov
+Nombre=Orden por Movimiento
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1160SeccionFiltroVis
+Nombre=Seccion Filtro
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=SeccionCobranzaMAVI
+SQL=SELECT DISTINCT SeccionCobranzaMAVI <BR>FROM   CteEnviarA<BR>WHERE SeccionCobranzaMAVI IS NOT NULL AND SeccionCobranzaMAVI!=<T><T>  AND SeccionCobranzaMAVI not in (<T>CONTADO<T>,<T>MAYOREO<T>)
+[SeccionCobranzaMAVI]
+Clave=SeccionCobranzaMAVI
+Nombre=SeccionCobranzaMAVI
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=SeccionCobranzaMAVI

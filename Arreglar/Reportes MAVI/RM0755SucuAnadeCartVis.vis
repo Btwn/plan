@@ -1,0 +1,41 @@
+[Vista]
+Icono=0
+Clave=RM0755SucuAnadeCartVis
+Nombre=Sucursal para Análisis de Cartera
+Modulos=(Todos)
+VistaIndependiente=S
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Nombre
+LigaTabla=Sucursal
+LigaCampo=Nombre
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoTabla=General
+ListaCampos=Num<BR>Nombre
+SQL=SELECT NUM=SUCURSAL,Nombre FROM SUCURSAL
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre
+[Num]
+Clave=Num
+Nombre=Num
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Num

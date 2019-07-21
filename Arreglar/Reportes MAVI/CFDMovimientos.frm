@@ -1,0 +1,236 @@
+[Forma]
+Clave=CFDMovimientos
+Nombre=Movimientos
+Icono=0
+Modulos=(Todos)
+MovModulo=(Todos)
+ListaCarpetas=Lista
+CarpetaPrincipal=Lista
+Menus=S
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Aceptar<BR>Asociados<BR>NoAsociados<BR>Todos
+Comentarios=Lista({Info.Titulo})
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+PosicionInicialAlturaCliente=437
+PosicionInicialAncho=1017
+PosicionInicialIzquierda=174
+PosicionInicialArriba=146
+VentanaExclusiva=S
+ExpresionesAlMostrar=Asigna( Info.Titulo, <T><T> )
+ExpresionesAlCerrar=Asigna( Info.Titulo, <T><T> ) <BR>Asigna( Info.ID, 0 )<BR>EjecutarSQL(<T>spVerMovtos :tEmpresa, :tModulo, :tMov, :tMovID, :nBandera<T>, {Empresa}, {Info.Modulo}, {Nulo}, {Nulo}, 0 )
+[Lista]
+Estilo=Iconos
+Clave=Lista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=Movimientos
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Movimientos.Mov<BR>Movimientos.MovID<BR>Movimientos.FechaEmision<BR>Movimientos.Moneda<BR>Movimientos.TipoCambio<BR>Movimientos.Importe<BR>Movimientos.Estatus
+CarpetaVisible=S
+Filtros=S
+OtroOrden=S
+BusquedaRapidaControles=S
+MenuLocal=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosSubTitulo=<T>Empresar<T>
+ElementosPorPagina=200
+IconosConRejilla=S
+ListaOrden=Movimientos.ID<TAB>(Decendente)<BR>Movimientos.FechaEmision<TAB>(Decendente)
+FiltroPredefinido=S
+FiltroGrupo1=Movimientos.Mov
+FiltroValida1=Movimientos.Mov
+FiltroNullNombre=(sin clasificar)
+FiltroTodo=S
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=Múltiple (por Grupos)
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+FiltroEstatus=S
+FiltroFechas=S
+FiltroMonedas=S
+FiltroListaEstatus=(Todos)<BR>CONCLUIDO<BR>PENDIENTE<BR>CANCELADO
+FiltroEstatusDefault=CONCLUIDO
+FiltroFechasCampo=Movimientos.FechaEmision
+FiltroFechasDefault=Este Mes
+FiltroMonedasCampo=Movimientos.Moneda
+ListaAcciones=AsociarMovimiento<BR>SeleccionarTodo<BR>QuitarTodo
+IconosNombre=Movimientos:Movimientos.Empresa
+FiltroGeneral={<T>Movimientos.Empresa<T>} = {Comillas(Empresa)}<BR>{Si Info.Titulo = <T>Asociados<T> Entonces <T> AND Movimientos.ID IN (Select ModuloID From CFDValidoMov Where Modulo = <T>&Comillas(Info.Modulo)&<T>)<T> Sino <T> <T> Fin}<BR>{Si Info.Titulo = <T>NoAsociados<T> Entonces <T> AND Movimientos.ID NOT IN (Select ModuloID From CFDValidoMov Where Modulo = <T>&Comillas(Info.Modulo)&<T>)<T> Sino <T> <T> Fin}
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Aceptar
+Activo=S
+Visible=S
+[Acciones.Asociados]
+Nombre=Asociados
+Boton=71
+NombreEnBoton=S
+NombreDesplegar=&Asociados
+EnBarraHerramientas=S
+EspacioPrevio=S
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Visible=S
+Antes=S
+ActivoCondicion=Info.Titulo <> <T>Asociados<T>
+AntesExpresiones=Asigna( Info.Titulo, <T>Asociados<T> )
+[Acciones.NoAsociados]
+Nombre=NoAsociados
+Boton=71
+NombreDesplegar=&No Asociados
+EnBarraHerramientas=S
+Visible=S
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+NombreEnBoton=S
+ActivoCondicion=Info.Titulo <> <T>NoAsociados<T>
+Antes=S
+AntesExpresiones=Asigna( Info.Titulo, <T>NoAsociados<T> )
+[Acciones.Todos]
+Nombre=Todos
+Boton=71
+NombreEnBoton=S
+NombreDesplegar=&Todos
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Antes=S
+Visible=S
+ActivoCondicion=Info.Titulo <> <T><T>
+AntesExpresiones=Asigna( Info.Titulo, <T><T> )
+[Lista.Columnas]
+ID=64
+0=100
+1=100
+2=100
+3=100
+4=100
+5=100
+6=100
+7=100
+8=100
+
+[Lista.Movimientos.MovID]
+Carpeta=Lista
+Clave=Movimientos.MovID
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+[Lista.Movimientos.FechaEmision]
+Carpeta=Lista
+Clave=Movimientos.FechaEmision
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+[Lista.Movimientos.Moneda]
+Carpeta=Lista
+Clave=Movimientos.Moneda
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Blanco
+[Lista.Movimientos.TipoCambio]
+Carpeta=Lista
+Clave=Movimientos.TipoCambio
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+[Lista.Movimientos.Importe]
+Carpeta=Lista
+Clave=Movimientos.Importe
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+[Lista.Movimientos.Estatus]
+Carpeta=Lista
+Clave=Movimientos.Estatus
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Blanco
+[Acciones.AsociarMovimiento]
+Nombre=AsociarMovimiento
+Boton=0
+NombreDesplegar=Asociar Movimientos
+Multiple=S
+EnMenu=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=AsociarMovimientos
+[Acciones.AsociarMovimiento.AsociarMovimientos]
+Nombre=AsociarMovimientos
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccionID(<T>Lista<T>)<BR>Asigna(Info.Descripcion, SQL(<T>spValidaImporteSAT :nEstacion, :tModulo, :tEmpresa, 1<T>, EstacionTrabajo, Info.Modulo, Empresa ))<BR>Si<BR>    (Info.Descripcion <> <T><T>) y (Info.Descripcion <> Nulo)<BR>Entonces<BR>   Informacion(SQL(<T>spValidaImporteSAT :nEstacion, :tModulo, :tEmpresa, 1<T>, EstacionTrabajo, Info.Modulo, Empresa))<BR>Fin<BR><BR>Asigna(Info.Descripcion, SQL(<T>spAsociarCFD :tEmpresa, :nID, :tModulo, :tEstacion, :tUsuario<T>, {Empresa}, {Movimientos:Movimientos.ID}, {Info.Modulo}, {EstacionTrabajo}, {Usuario}))<BR>Informacion(Info.Descripcion)<BR>EjecutarSQL(<T>spVerMovtos :tEmpresa, :tModulo, :tMov, :tMovID, :nBandera<T>, {Empresa}, {Info.Modulo}, {Nulo}, {Nulo}, 1 )<BR>ActualizarVista
+[Acciones.SeleccionarTodo]
+Nombre=SeleccionarTodo
+Boton=0
+NombreDesplegar=Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+EspacioPrevio=S
+[Acciones.QuitarTodo]
+Nombre=QuitarTodo
+Boton=0
+NombreDesplegar=Quitar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+ActivoCondicion=ListaSeleccion(<T>Lista<T>)<><T><T>
+Visible=S
+
+[Lista.Movimientos.Mov]
+Carpeta=Lista
+Clave=Movimientos.Mov
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+

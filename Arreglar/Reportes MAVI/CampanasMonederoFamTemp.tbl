@@ -1,0 +1,28 @@
+[Tabla]
+Icono=0
+Clave=CampanasMonederoFamTemp
+Nombre=FamiliaArt campanas Monedero
+Archivo=CampanasMonederoFamTemp
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Id<BR>FamiliaArt
+LlavePrimaria=Id<BR>FamiliaArt
+CampoID=Id
+SQL=SELECT<BR>  Id,<BR>  FamiliaArt<BR><BR>FROM<BR>  CampanasMonederoFamTemp
+[Id]
+Clave=Id
+Nombre=Id
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[FamiliaArt]
+Clave=FamiliaArt
+Nombre=FamiliaArt
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=MaviArtFamCatGpoMultfrm
+AyudaVista=MaviArtFamCatGpoMultVis
+AyudaCampo=Familia
+AyudaMultiple=S

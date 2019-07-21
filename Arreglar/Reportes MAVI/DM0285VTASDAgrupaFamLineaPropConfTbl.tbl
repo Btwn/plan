@@ -1,0 +1,55 @@
+
+[Tabla]
+Icono=0
+Clave=DM0285VTASDAgrupaFamLineaPropConfTbl
+Nombre=Ventas Agrupa Familia Linea Configuracion
+Archivo=VTASDAgrupaFamLineaPropConf
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=PropiedadSIP<BR>Renglon<BR>IDAgrupaFamLineaProp
+LlavePrimaria=Renglon<BR>IDAgrupaFamLineaProp
+Singular=Ventas Agrupa Familia Linea Configuracion
+ListaRelaciones=unionllaves
+
+CamposBusquedaRapida=IDAgrupaFamLineaProp
+SQL=SELECT<BR>  IDAgrupaFamLineaProp,<BR>  PropiedadSIP,<BR>  Renglon<BR><BR>  FROM VTASDAgrupaFamLineaPropConf
+[PropiedadSIP]
+Clave=PropiedadSIP
+Nombre=PropiedadSIP
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DISTINCT CP.PROPIEDAD FROM familia_propiedad FP JOIN catalogo_propiedad CP on FP.PROPIEDAD = CP.id WHERE FP.FAMILIA_INTELISIS = :tFam AND FP.LINEA_INTELISIS = :tLin<T>,DM0285VTASRAgrupaFamLineaVis:DM0285VTASRAgrupaFamLineaTbl.Familia,DM0285VTASRAgrupaFamLineaVis:DM0285VTASRAgrupaFamLineaTbl.Linea)
+[Renglon]
+Clave=Renglon
+Nombre=Renglon
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+
+
+
+[Relaciones.unionllaves]
+TipoRelacion=Forzosa
+LlaveLocal=ID
+Clave=unionllaves
+TablaRemota=DM0285VTASRAgrupaFamLineaTbl
+LlaveRemota=ID
+
+
+[IDAgrupaFamLineaProp]
+Clave=IDAgrupaFamLineaProp
+Nombre=IDAgrupaFamLineaProp
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico

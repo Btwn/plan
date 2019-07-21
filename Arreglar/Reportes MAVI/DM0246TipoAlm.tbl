@@ -1,0 +1,32 @@
+[Tabla]
+Icono=0
+Clave=DM0246TipoAlm
+Nombre=DM0246TipoAlm
+Archivo=DM0246TipoAlm
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Almacen<BR>TipoAlmacen
+LlavePrimaria=Almacen
+SQL=SELECT<BR>  Almacen,<BR>  TipoAlmacen<BR><BR>FROM<BR>  DM0246TipoAlm
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[TipoAlmacen]
+Clave=TipoAlmacen
+Nombre=TipoAlmacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+ValidacionConCondiciones=S
+ValidacionCondicion=Si<BR>  (TipoAlmacen=<T>Unidad<T>) o (TipoAlmacen=<T>Base de Inventario<T>) o (TipoAlmacen=<T>Exhibicion<T>) o (TipoAlmacen=<T>unidad<T>) o (TipoAlmacen=<T>base de inventario<T>) o (TipoAlmacen=<T>exhibicion<T>) o (TipoAlmacen=<T>UNIDAD<T>) o (TipoAlmacen=<T>BASE DE INVENTARIO<T>) o (TipoAlmacen=<T>EXHIBICION<T>) o (TipoAlmacen=<T>Base de inventario<T>)<BR><BR>Entonces<BR>  verdadero<BR>Sino<BR>  falso<BR>Fin
+ListaOpciones=Unidad<BR>Base de inventario<BR>Exhibicion

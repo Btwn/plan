@@ -1,0 +1,96 @@
+
+[Tabla]
+Icono=0
+Clave=RM1132ACREDITablaDeConfiguracionTbl
+Archivo=CREDIDTablaConfiguracionBF
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IdTablaConfiguracionBF<BR>SaldoActual<BR>Movimientos<BR>Meses<BR>MontoAbonos<BR>DValDia<BR>MHDV<BR>MHDVxPeriodo<BR>ApoyoCobranza
+LlavePrimaria=IdTablaConfiguracionBF
+ControlID=S
+CampoID=IdTablaConfiguracionBF
+
+SQL=SELECT<BR>  IdTablaConfiguracionBF,<BR>  SaldoActual,<BR>  Movimientos,<BR>  Meses,<BR>  MontoAbonos,<BR>  DValDia,<BR>  MHDV,<BR>  MHDVxPeriodo,<BR>  ApoyoCobranza<BR><BR>  FROM CREDIDTablaConfiguracionBF
+[SaldoActual]
+Clave=SaldoActual
+Nombre=SaldoActual
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaMemOpc=Validar captura en la lista
+[Movimientos]
+Clave=Movimientos
+Nombre=Movimientos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+
+AyudaMemOpc=Validar captura en la lista
+Tamano=50
+[Meses]
+Clave=Meses
+Nombre=Meses
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+
+AyudaMemOpc=Validar captura en la lista
+Tamano=50
+[MontoAbonos]
+Clave=MontoAbonos
+Nombre=MontoAbonos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+
+AyudaMemOpc=Validar captura en la lista
+Tamano=50
+[DValDia]
+Clave=DValDia
+Nombre=DValDia
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaMemOpc=Validar captura en la lista
+[MHDV]
+Clave=MHDV
+Nombre=MHDV
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaMemOpc=Validar captura en la lista
+[MHDVxPeriodo]
+Clave=MHDVxPeriodo
+Nombre=MHDVxPeriodo
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaMemOpc=Validar captura en la lista
+
+[ApoyoCobranza]
+Clave=ApoyoCobranza
+Nombre=ApoyoCobranza
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaMemOpc=Validar captura en la lista
+
+
+[IdTablaConfiguracionBF]
+Clave=IdTablaConfiguracionBF
+Nombre=IdTablaConfiguracionBF
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc

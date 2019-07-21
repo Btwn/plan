@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1110FaltInvEquipoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=EQUIPO
+SQL=select distinct agente AS EQUIPO from Agente WHERE CATEGORIA=<T>VENTAS A INSTITUCIONES<T> AND AGENTE LIKE <T>EQI%<T>
+[EQUIPO]
+Clave=EQUIPO
+Nombre=EQUIPO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=EQUIPO

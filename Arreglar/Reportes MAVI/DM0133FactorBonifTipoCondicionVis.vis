@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0133FactorBonifTipoCondicionVis
+Nombre=DM0133FactorBonifTipoCondicionVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Condicion
+SQL=select Condicion from condicion <BR>     where grupo = <T>menudeo<T> and tipocondicion = <T>credito<T>
+[Condicion]
+Clave=Condicion
+Nombre=Condicion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Condicion

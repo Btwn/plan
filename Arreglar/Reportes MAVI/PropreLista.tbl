@@ -1,0 +1,799 @@
+[Tabla]
+Icono=0
+Clave=PropreLista
+Nombre=PropreLista
+Archivo=PropreLista
+Modulos=(Todos)
+Singular=PropreLista
+TipoTabla=General
+ListaCampos=Lista<BR>Descripcion<BR>Clave<BR>Margen1<BR>Margen2<BR>Margen3<BR>ListaMadre<BR>GrupoListas<BR>EncabezadoLista<BR>UEN<BR>Periodicidad<BR>Estatus<BR>TipoLista<BR>InicioLista<BR>FolioUltimoAnexo<BR>FechaUltimoAnexo<BR>DecimalesPrecios<BR>UtilizarCupones<BR>UtilizaM2Contado<BR>MargenProteccion<BR>PorcentajeCargoFinanciero<BR>PorcentajeExportacion<BR>BonificacionApoyo<BR>Plazo0NumeroColumnas<BR>Plazo0NumeroMeses<BR>Plazo0SemanasQuincenas<BR>Plazo1Porcentaje<BR>Plazo1NumeroMeses<BR>Plazo1SemanasQuincenas<BR>Plazo1MesesDiferidos<BR>Plazo2Porcentaje<BR>Plazo2NumeroMeses<BR>Plazo2SemanasQuincenas<BR>Plazo2MesesDiferidos<BR>Plazo3Porcentaje<BR>Plazo3NumeroMeses<BR>Plazo3SemanasQuincenas<BR>Plazo3MesesDiferidos<BR>Plazo4Porcentaje<BR>Plazo4NumeroMeses<BR>Plazo4SemanasQuincenas<BR>TextoPeriodicidad<B<CONTINUA>
+LlavePrimaria=Lista
+ControlEstatus=S
+CampoEstatus=Estatus
+ListaRelaciones=PropreListaSucursalTotal<BR>UEN<BR>PropreEmpresaCfg<BR>PropreListaD<BR>PropreUltimoAnexoPorLista
+ListaCampos002=<CONTINUA>R>MaximizarPlazo<BR>MaximizarPrecioMinimo<BR>Comentarios<BR>Empresa<BR>Plazo0CondicionMeses<BR>Plazo1CondicionMeses<BR>Plazo2CondicionMeses<BR>Plazo3CondicionMeses<BR>Plazo4CondicionMeses<BR>Plazo1CondicionMesesDif<BR>Plazo2CondicionMesesDif<BR>Plazo3CondicionMesesDif<BR>PrecioContadoCondicion<BR>PrecioCreditoCondicion<BR>PrecioMayoreoCondicion<BR>FechaOrigen<BR>Orden<BR>FinLista<BR>PrecioMayoreo1Condicion<BR>PrecioMayoreo2Condicion<BR>MayoreoEspecial<BR>PrecioTCPUCondicion<BR>CreditoExternoCondicion
+SQL=SELECT<BR>  Lista,<BR>  Descripcion,<BR>  Clave,<BR>  Margen1,<BR>  Margen2,<BR>  Margen3,<BR>  ListaMadre,<BR>  GrupoListas,<BR>  EncabezadoLista,<BR>  UEN,<BR>  Periodicidad,<BR>  Estatus,<BR>  TipoLista,<BR>  InicioLista,<BR>  FolioUltimoAnexo,<BR>  FechaUltimoAnexo,<BR>  DecimalesPrecios,<BR>  UtilizarCupones,<BR>  MargenProteccion,<BR>  PorcentajeCargoFinanciero,<BR>  PorcentajeExportacion,<BR>  BonificacionApoyo,<BR>  Plazo0NumeroColumnas,<BR>  Plazo0NumeroMeses,<BR>  Plazo0SemanasQuincenas,<BR>  Plazo0CondicionMeses,<BR>  Plazo1Porcentaje,<BR>  Plazo1NumeroMeses,<BR>  Plazo1SemanasQuincenas,<BR>  Plazo1MesesDiferidos,<BR>  Plazo1CondicionMeses,<BR>  Plazo1CondicionMesesDif,<BR>  Plazo2Porcentaje,<BR>  Plazo2NumeroMeses,<BR>  Plazo2SemanasQuincenas,<BR>  Plazo2MesesDiferidos,<BR>  Pl<CONTINUA>
+SQL002=<CONTINUA>azo2CondicionMeses,<BR>  Plazo2CondicionMesesDif,<BR>  Plazo3Porcentaje,<BR>  Plazo3NumeroMeses,<BR>  Plazo3SemanasQuincenas,<BR>  Plazo3MesesDiferidos,<BR>  Plazo3CondicionMeses,<BR>  Plazo3CondicionMesesDif,<BR>  Plazo4Porcentaje,<BR>  Plazo4NumeroMeses,<BR>  Plazo4SemanasQuincenas,<BR>  Plazo4CondicionMeses,<BR>  UtilizaM2Contado,<BR>  MaximizarPlazo,<BR>  MaximizarPrecioMinimo,<BR>  Comentarios,<BR>  Empresa,<BR>  PrecioContadoCondicion,<BR>  PrecioCreditoCondicion,<BR>  FechaOrigen,<BR>  Orden,<BR>  FinLista,<BR>  PrecioMayoreo1Condicion,<BR>  PrecioMayoreo2Condicion,<BR>  PrecioMayoreoCondicion,<BR>  MayoreoEspecial,<BR>  PrecioTCPUCondicion,<BR>  CreditoExternoCondicion,<BR>  TextoPeriodicidad<BR><BR>FROM<BR>  PropreLista
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=TipoLista
+ConRefrescar=S
+RefrescarTodo=
+ListaRefrescar=Orden
+MascaraEdicion=999999;1
+TipoDatos=Texto
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[Clave]
+Clave=Clave
+Nombre=Clave
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Margen1]
+Clave=Margen1
+Nombre=Margen 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+FormatoEdicion=#,.000
+FormatoValidacion=#,.000
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,Margen1) <> NULO
+[Margen2]
+Clave=Margen2
+Nombre=Margen 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+FormatoEdicion=#,.000
+FormatoValidacion=#,.000
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,Margen2) <> NULO
+[Margen3]
+Clave=Margen3
+Nombre=Margen 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+FormatoEdicion=#,.000
+FormatoValidacion=#,.000
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,Margen3) <> NULO
+[ListaMadre]
+Clave=ListaMadre
+Nombre=Lista Madre
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Descripcion
+TipoDatos=Texto
+[GrupoListas]
+Clave=GrupoListas
+Nombre=Grupo Listas
+Visible=S
+TamanoValidacion=20
+Tamano=20
+TipoDatos=Texto
+[EncabezadoLista]
+Clave=EncabezadoLista
+Nombre=Encabezado Lista
+Visible=S
+TamanoValidacion=200
+Tamano=200
+TipoDatos=Texto
+[Periodicidad]
+Clave=Periodicidad
+Nombre=Periodicidad
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=TextoPeriodicidad
+CondicionDespliege=TipoLista noen ( <T>Contado<T>, <T>Mayoreo<T>)
+RequeridoActivo=S
+ListaOpciones=Semanas<BR>Quincenas
+TipoDatos=Texto
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+RequeridoActivo=S
+ListaOpciones=Activa<BR>Baja
+TipoDatos=Texto
+[TipoLista]
+Clave=TipoLista
+Nombre=Tipo Lista
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+ConRefrescarCondiciones=S
+RefrescarTodo=
+RefrescarTodoCondiciones=S
+ListaRefrescar=TextoPeriodicidad
+CondicionEdicion=SQL(<T>SELECT ISNULL(COUNT(Lista),0) FROM PropreListaD WHERE Lista = :tLista<T>,Lista) = 0
+RequeridoActivo=S
+ListaOpciones=Credito<BR>Contado<BR>Doble<BR>Mayoreo
+TipoDatos=Texto
+[InicioLista]
+Clave=InicioLista
+Nombre=Inicio Lista
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+RequeridoActivo=S
+FormatoValidacion=dd/mm/aaaa
+[FolioUltimoAnexo]
+Clave=FolioUltimoAnexo
+Nombre=Folio Ultimo Anexo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[FechaUltimoAnexo]
+Clave=FechaUltimoAnexo
+Nombre=Fecha Ultimo Anexo
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+UnicamenteLectura=S
+[DecimalesPrecios]
+Clave=DecimalesPrecios
+Nombre=Decimales Precios
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+[UtilizarCupones]
+Clave=UtilizarCupones
+Nombre=Utilizar Cupones
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+[MargenProteccion]
+Clave=MargenProteccion
+Nombre=Margen Protección
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+FormatoValidacion=#,.000
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,MargenProteccion) <> NULO
+[PorcentajeCargoFinanciero]
+Clave=PorcentajeCargoFinanciero
+Nombre=% Cargo Financiero
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+CondicionDespliege=(TipoLista = <T>Credito<T>)
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,PorcentajeCargoFinanciero) <> NULO
+[PorcentajeExportacion]
+Clave=PorcentajeExportacion
+Nombre=% Exportacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,PorcentajeExportacion) <> NULO
+[BonificacionApoyo]
+Clave=BonificacionApoyo
+Nombre=% Bonif. y $ Apoyo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+CondicionDespliege=(TipoLista = <T>Credito<T>)
+ListaOpciones=Activo<BR>Futuro<BR>No Aplica
+[Plazo0NumeroColumnas]
+Clave=Plazo0NumeroColumnas
+Nombre=Plazo 0
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+[Plazo0NumeroMeses]
+Clave=Plazo0NumeroMeses
+Nombre=Meses
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+[Plazo0SemanasQuincenas]
+Clave=Plazo0SemanasQuincenas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+[Plazo1Porcentaje]
+Clave=Plazo1Porcentaje
+Nombre=Plazo 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+CondicionDespliege=TipoLista = <T>Credito<T>
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,Plazo1Porcentaje) <> NULO
+[Plazo1NumeroMeses]
+Clave=Plazo1NumeroMeses
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+Nombre=Meses
+CondicionDespliege=(TipoLista <> <T>Mayoreo<T>)
+[Plazo1SemanasQuincenas]
+Clave=Plazo1SemanasQuincenas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+[Plazo1MesesDiferidos]
+Clave=Plazo1MesesDiferidos
+Nombre=Meses P/Dife
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=TipoLista = <T>Doble<T>
+[Plazo2Porcentaje]
+Clave=Plazo2Porcentaje
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+Nombre=Plazo 2
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,Plazo2Porcentaje) <> NULO
+[Plazo2NumeroMeses]
+Clave=Plazo2NumeroMeses
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista <> <T>Mayoreo<T>)
+[Plazo2SemanasQuincenas]
+Clave=Plazo2SemanasQuincenas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+[Plazo2MesesDiferidos]
+Clave=Plazo2MesesDiferidos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=TipoLista = <T>Doble<T>
+[Plazo3Porcentaje]
+Clave=Plazo3Porcentaje
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+Nombre=Plazo 3
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,Plazo3Porcentaje) <> NULO
+[Plazo3NumeroMeses]
+Clave=Plazo3NumeroMeses
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista <> <T>Mayoreo<T>)
+[Plazo3SemanasQuincenas]
+Clave=Plazo3SemanasQuincenas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+[Plazo3MesesDiferidos]
+Clave=Plazo3MesesDiferidos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=TipoLista = <T>Doble<T>
+[Plazo4Porcentaje]
+Clave=Plazo4Porcentaje
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Cantidad=S
+AyudaEnCaptura=Vista
+AyudaMemOpc=Validar captura en la lista
+Nombre=Plazo 4
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Seccion FROM ProprePorcentajeValidacion WHERE Seccion = :tSeccion AND Porcentaje = :nPorcentaje<T>,<T>Catálogo De Listas<T>,Plazo4Porcentaje) <> NULO
+[Plazo4NumeroMeses]
+Clave=Plazo4NumeroMeses
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+[Plazo4SemanasQuincenas]
+Clave=Plazo4SemanasQuincenas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+[UtilizaM2Contado]
+Clave=UtilizaM2Contado
+Nombre=Utiliza M2 Para Contado
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionEdicion=TipoLista = <T>Doble<T>
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+[Relaciones.PropreListaSucursalTotal]
+TipoRelacion=Opcional
+LlaveLocal=Lista
+Clave=PropreListaSucursalTotal
+TablaRemota=PropreListaSucursalTotal
+LlaveRemota=Lista
+[TextoPeriodicidad]
+Clave=TextoPeriodicidad
+Nombre=TextoPeriodicidad
+Visible=S
+TamanoValidacion=30
+Tamano=30
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+UnicamenteLectura=S
+TipoDatos=Texto
+[MaximizarPlazo]
+Clave=MaximizarPlazo
+Nombre=Plazo Maximizar
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=5
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+CondicionDespliege=(TipoLista = <T>Credito<T>)
+ListaOpciones=0<BR>1<BR>2<BR>3<BR>4
+[MaximizarPrecioMinimo]
+Clave=MaximizarPrecioMinimo
+Nombre=Precio Mínimo Maximizar
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+AyudaEnCaptura=Calculadora
+CondicionDespliege=(TipoLista = <T>Credito<T>)
+[Comentarios]
+Clave=Comentarios
+Nombre=Comentarios
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=UENLista
+AyudaVista=UEN
+AyudaCampo=UEN.UEN
+ValidacionUsaTabla=S
+ValidacionTablas=UEN
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>No se puede modificar la UEN porque tiene sucursales asignadas.<T>
+ValidacionCondicion=SQL(<T>SELECT dbo.fnPropreValidarUEN(:tLista, :nUENLista)<T>,PropreLista:PropreLista.Lista, PropreLista:PropreLista.UEN) = 0
+[Relaciones.UEN]
+TipoRelacion=Opcional
+LlaveLocal=UEN
+Clave=UEN
+TablaRemota=UEN
+LlaveRemota=UEN
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+Tamano=5
+Requerido=S
+ValorPorOmision=Empresa
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+[Relaciones.PropreEmpresaCfg]
+TipoRelacion=Forzosa
+LlaveLocal=Empresa
+Clave=PropreEmpresaCfg
+TablaRemota=PropreEmpresaCfg
+LlaveRemota=Empresa
+[Plazo0CondicionMeses]
+Clave=Plazo0CondicionMeses
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>) O (TipoLista = <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,Plazo0CondicionMeses) <> NULO
+TipoDatos=Texto
+[Plazo1CondicionMeses]
+Clave=Plazo1CondicionMeses
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista <> <T>Mayoreo<T>) Y (TipoLista <> <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,Plazo1CondicionMeses) <> NULO
+TipoDatos=Texto
+[Plazo2CondicionMeses]
+Clave=Plazo2CondicionMeses
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista <> <T>Mayoreo<T>) Y (TipoLista <> <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,Plazo2CondicionMeses) <> NULO
+TipoDatos=Texto
+[Plazo3CondicionMeses]
+Clave=Plazo3CondicionMeses
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista <> <T>Mayoreo<T>) Y (TipoLista <> <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,Plazo3CondicionMeses) <> NULO
+TipoDatos=Texto
+[Plazo4CondicionMeses]
+Clave=Plazo4CondicionMeses
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Credito<T>) O (TipoLista = <T>Doble<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,Plazo4CondicionMeses) <> NULO
+TipoDatos=Texto
+[Plazo1CondicionMesesDif]
+Clave=Plazo1CondicionMesesDif
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Nombre=Condicion Pago Diferido
+CondicionDespliege=(TipoLista = <T>Doble<T>) O (TipoLista = <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,Plazo1CondicionMesesDif) <> NULO
+TipoDatos=Texto
+[Plazo2CondicionMesesDif]
+Clave=Plazo2CondicionMesesDif
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Doble<T>) O (TipoLista = <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,Plazo2CondicionMesesDif) <> NULO
+TipoDatos=Texto
+[Plazo3CondicionMesesDif]
+Clave=Plazo3CondicionMesesDif
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Doble<T>) O (TipoLista = <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,Plazo3CondicionMesesDif) <> NULO
+TipoDatos=Texto
+[PrecioContadoCondicion]
+Clave=PrecioContadoCondicion
+Nombre=Condicion Precio Contado
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Doble<T>) O (TipoLista = <T>Contado<T>)
+ValidacionConCondiciones=S
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,PrecioContadoCondicion) <> NULO
+TipoDatos=Texto
+[PrecioCreditoCondicion]
+Clave=PrecioCreditoCondicion
+Nombre=Condicion Precio Credito
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Doble<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,PrecioCreditoCondicion) <> NULO
+[Relaciones.PropreListaD]
+TipoRelacion=Opcional
+LlaveLocal=Lista
+Clave=PropreListaD
+TablaRemota=PropreListaD
+LlaveRemota=Lista
+[FechaOrigen]
+Clave=FechaOrigen
+Nombre=Fecha de Copiado
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+CondicionDespliege=ConDatos(FechaOrigen)
+FormatoValidacion=dd/mm/aaaa
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorRefrescar=SQL(<T>SELECT dbo.fnPropreListaOrden (:tLista)<T>, PropreLista:PropreLista.Lista); 
+[Relaciones.PropreUltimoAnexoPorLista]
+TipoRelacion=Opcional
+LlaveLocal=Lista
+Clave=PropreUltimoAnexoPorLista
+TablaRemota=PropreUltimoAnexoPorLista
+LlaveRemota=Lista
+[FinLista]
+Clave=FinLista
+Nombre=Fin Lista
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mm/aaaa hh:nn am/pm
+AyudaEnCaptura=Calendario c/Horas
+Requerido=S
+[PrecioMayoreoCondicion]
+Clave=PrecioMayoreoCondicion
+Nombre=Condicion Precio Mayoreo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Mayoreo<T>) 
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,PrecioMayoreoCondicion) <> NULO
+TipoDatos=Texto
+[PrecioMayoreo1Condicion]
+Clave=PrecioMayoreo1Condicion
+Nombre=Condicion Precio Mayoreo1
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Mayoreo<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,PrecioMayoreo1Condicion) <> NULO
+TipoDatos=Texto
+[PrecioMayoreo2Condicion]
+Clave=PrecioMayoreo2Condicion
+Nombre=Condicion Precio Mayoreo2
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValidacionConCondiciones=S
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+CondicionDespliege=(TipoLista = <T>Mayoreo<T>)
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,PrecioMayoreo2Condicion) <> NULO
+TipoDatos=Texto
+[MayoreoEspecial]
+Clave=MayoreoEspecial
+Nombre=Mayoreo Especial
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionDespliege=TipoLista = <T>Mayoreo<T>
+[PrecioTCPUCondicion]
+Clave=PrecioTCPUCondicion
+Nombre=Condicion Precio TC PU 
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=(TipoLista = <T>Doble<T>) O (TipoLista = <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,PrecioTCPUCondicion) <> NULO
+[CreditoExternoCondicion]
+Clave=CreditoExternoCondicion
+Nombre=Condicion Credito Externo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValidacionConCondiciones=S
+CondicionDespliege=(TipoLista = <T>Doble<T>) O (TipoLista = <T>Contado<T>)
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoListaA
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionCondicion=SQL(<T>SELECT CondicionGrupo FROM PropreCondicionGrupo WHERE CondicionGrupo = :tCondicion<T>,CreditoExternoCondicion) <> NULO

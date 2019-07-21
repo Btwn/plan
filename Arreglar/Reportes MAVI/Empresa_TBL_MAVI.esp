@@ -1,0 +1,31 @@
+[Empresa.tbl/FiscalRegimen]
+Nombre=FiscalRegimen
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>SELECT FiscalRegimen FROM FiscalRegimen<T>)
+
+[Empresa.tbl/Colonia]
+AyudaEnCaptura=
+AyudaForma=
+AyudaVista=
+AyudaCampo=
+
+[Empresa.tbl/CodigoPostal]
+AyudaEnCaptura=
+AyudaForma=
+AyudaVista=
+AyudaCampo=
+
+[Empresa.tbl/Poblacion]
+AyudaEnCaptura=
+AyudaForma=
+AyudaVista=
+AyudaCampo=
+
+[Empresa.tbl/Delegacion]
+AyudaEnCaptura=
+AyudaForma=
+AyudaVista=
+AyudaCampo=

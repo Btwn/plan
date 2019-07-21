@@ -1,0 +1,17 @@
+[Tabla]
+Icono=0
+Clave=PropreArtFam
+Nombre=PropreArtFam
+Archivo=PropreArtFam
+Modulos=(Todos)
+Singular=PropreArtFam
+TipoTabla=General
+ListaCampos=Familia
+LlavePrimaria=Familia
+SQL=SELECT<BR>  Familia<BR><BR><BR>FROM<BR>  PropreArtFam
+[Familia]
+Clave=Familia
+Nombre=Linea
+Visible=S
+TamanoValidacion=50
+Tamano=50

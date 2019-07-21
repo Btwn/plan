@@ -1,0 +1,76 @@
+
+[Tabla]
+Icono=0
+Clave=RM0906ConfigDivisionYParamTbl
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=ID<BR>Division<BR>DV<BR>DI<BR>PorcdeAbonoFinal<BR>PorcdeBonificaciondeInteres
+Archivo=TcIRM0906_ConfigDivisionYParam
+LlavePrimaria=ID
+CampoID=ID
+ControlID=S
+SQL=SELECT <BR>   ID, <BR>   Division,<BR>   DV,<BR>   DI,<BR>   PorcdeAbonoFinal ,<BR>   PorcdeBonificaciondeInteres <BR>FROM <BR>   TcIRM0906_ConfigDivisionYParam
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+
+Requerido=S
+AyudaEnCaptura=Vista
+AyudaForma=RM0906NivelCobranzaFrm
+AyudaVista=RM0906NivelCobranzaVis
+AyudaCampo=division
+AlCambiar=Asigna(Info.ID,nulo)<BR>SI(ID<0,Asigna(Info.ID,0),Asigna(Info.ID,ID))<BR>Si(SQL(<T>SELECT COUNT(Division) FROM NivelCobranzaMavidiv WHERE Division= :tDiv<T>,Division)=0,Error(<T>La division ingresada no esta registrada<T>)AbortarOperacion,Si(ConDatos(Division) y ConDatos(DV) y ConDatos(DI) Y ConDatos(PorcdeAbonoFinal) y  ConDatos(PorcdeBonificaciondeInteres) y (SQL(<T>SELECT Division FROM TcIRM0906_ConfigDivisionYParam where ID=:nID<T>,ID)<>Division), Ejecutarsql(<T>EXEC SPIRM0906_HistoricoConfDiv :nOption,:nID,:tUsuario,:tDivision,:nDV,:nDI,:nProA,:nProB<T>,1,Info.ID,Usuario, Division,DV,DI,PorcdeAbonoFinal,PorcdeBonificaciondeInteres),Falso))
+Mayusculas=S
+[DV]
+Clave=DV
+Nombre=DV
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+AlCambiar=Asigna(Info.ID,nulo)<BR>SI(ID<0,Asigna(Info.ID,0),Asigna(Info.ID,ID))<BR>Si((ConDatos(Division) y ConDatos(DV) y ConDatos(DI) Y ConDatos(PorcdeAbonoFinal) y  ConDatos(PorcdeBonificaciondeInteres) y (SQL(<T>SELECT DV FROM TcIRM0906_ConfigDivisionYParam where ID=:nID<T>,ID)<>DV)),.Ejecutarsql(<T>EXEC SPIRM0906_HistoricoConfDiv :nOption,:nID,:tUsuario,:tDivision,:nDV,:nDI,:nProA,:nProB<T>,1,Info.ID,Usuario,Division,DV,DI,PorcdeAbonoFinal,PorcdeBonificaciondeInteres),Falso)
+Requerido=S
+[DI]
+Clave=DI
+Nombre=DI
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+AlCambiar=Asigna(Info.ID,nulo)<BR>SI(ID<0,Asigna(Info.ID,0),Asigna(Info.ID,ID))<BR>Si((ConDatos(Division) y ConDatos(DV) y ConDatos(DI) Y ConDatos(PorcdeAbonoFinal) y  ConDatos(PorcdeBonificaciondeInteres) y (SQL(<T>SELECT DI FROM TcIRM0906_ConfigDivisionYParam where ID=:nID<T>,ID)<>DI)),Ejecutarsql(<T>EXEC SPIRM0906_HistoricoConfDiv :nOption,:nID,:tUsuario,:tDivision,:nDV,:nDI,:nProA,:nProB<T>,1,Info.ID,Usuario,Division,DV,DI,PorcdeAbonoFinal,PorcdeBonificaciondeInteres),Falso)
+
+
+Requerido=S
+[PorcdeAbonoFinal]
+Clave=PorcdeAbonoFinal
+Nombre=PorcdeAbonoFinal
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+
+ValidacionConCondiciones=S
+Requerido=S
+AlCambiar=Asigna(Info.ID,nulo)<BR>SI(ID<0,Asigna(Info.ID,0),Asigna(Info.ID,ID))<BR>Si(PorcdeAbonoFinal>100 o PorcdeAbonoFinal<0 ,Error(<T>Valor no permitido<T>)AbortarOperacion),Si((ConDatos(Division) y ConDatos(DV) y ConDatos(DI) Y ConDatos(PorcdeAbonoFinal) y  ConDatos(PorcdeBonificaciondeInteres) y (SQL(<T>SELECT PorcdeAbonoFinal FROM TcIRM0906_ConfigDivisionYParam WHERE ID=:nID<T>,ID)<>PorcdeAbonoFinal)), Ejecutarsql(<T>EXEC SPIRM0906_HistoricoConfDiv :nOption,:nID,:tUsuario,:tDivision,:nDV,:nDI,:nProA,:nProB<T>,1,Info.ID,Usuario, Division,DV,DI,PorcdeAbonoFinal,PorcdeBonificaciondeInteres),Falso))
+ValidacionCondicion=Asigna(Info.ID,ID)<BR>SI(Info.ID<0,Asigna(Info.ID,0),Asigna(Info.ID,ID))<BR><BR>ASIGNA(Info.Dialogo,SQL(<T>EXEC SPIRM0906_ValidaPorcentaje :nID, :nPorc, :tDivision, :nOpc<T>,Info.ID,PorcdeAbonoFinal,Division,1))<BR>Si<BR> Info.Dialogo=<T>BIEN<T><BR>Entonces<BR> VERDADERO<BR>Sino<BR> Informacion(Info.Dialogo)<BR> AbortarOperacion<BR>Fin
+[PorcdeBonificaciondeInteres]
+Clave=PorcdeBonificaciondeInteres
+Nombre=PorcdeBonificaciondeInteres
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValidacionConCondiciones=S
+Requerido=S
+AlCambiar=Asigna(Info.ID,nulo)<BR>SI(ID<0,Asigna(Info.ID,0),Asigna(Info.ID,ID))<BR>Si(PorcdeBonificaciondeInteres>100 o PorcdeBonificaciondeInteres<0 ,Error(<T>Valor no permitido<T>)AbortarOperacion),Si((ConDatos(Division) y ConDatos(DV) y ConDatos(DI) Y ConDatos(PorcdeAbonoFinal) y  ConDatos(PorcdeBonificaciondeInteres) y (SQL(<T>SELECT PorcdeBonificaciondeInteres FROM TcIRM0906_ConfigDivisionYParam where ID=:nID<T>,ID))<>PorcdeBonificaciondeInteres), Ejecutarsql(<T>EXEC SPIRM0906_HistoricoConfDiv :nOption,:nID,:tUsuario,:tDivision,:nDV,:nDI,:nProA,:nProB<T>,1,Info.ID,Usuario, Division,DV,DI,PorcdeAbonoFinal,PorcdeBonificaciondeInteres),Falso))
+ValidacionCondicion=Asigna(Info.ID,ID)<BR>SI(Info.ID<0,Asigna(Info.ID,0),Asigna(Info.ID,ID))<BR><BR>ASIGNA(Info.Dialogo,SQL(<T>EXEC SPIRM0906_ValidaPorcentaje :nID, :nPorc, :tDivision, :nOpc<T>,Info.ID,PorcdeBonificaciondeInteres,Division,2))<BR>Si(Info.Dialogo=<T>BIEN<T>,VERDADERO,Informacion(Info.Dialogo) AbortarOperacion)

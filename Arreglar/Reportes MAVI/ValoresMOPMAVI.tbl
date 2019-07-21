@@ -1,0 +1,56 @@
+[Tabla]
+Icono=0
+Clave=ValoresMOPMAVI
+Nombre=ValoresMOPMAVI
+Archivo=ValoresMOPMAVI
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=(Lista)
+LlavePrimaria=ValorMOP
+SQL=SELECT<BR>  ValorMOP,<BR>  Descripcion,<BR>  DiaAtrasoMin,<BR>  DiaAtrasoMax,<BR> MOPBuroMavi<BR><BR>FROM<BR>  ValoresMOPMAVI
+[ValorMOP]
+Clave=ValorMOP
+Nombre=Valor MOP
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[DiaAtrasoMin]
+Clave=DiaAtrasoMin
+Nombre=Dias de Atraso Mininimo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[DiaAtrasoMax]
+Clave=DiaAtrasoMax
+Nombre=Dias de Atraso Maximo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=Pago puntual<BR>Atraso de<BR>Atraso mayor
+OpcionesPredefinidas=Ninguna
+
+[MOPBuroMavi]
+Clave=MOPBuroMavi
+Nombre=MOP Buro
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+AyudaEnCaptura=No
+
+[Tabla.ListaCampos]
+(Inicio)=ValorMOP
+ValorMOP=Descripcion
+Descripcion=DiaAtrasoMin
+DiaAtrasoMin=DiaAtrasoMax
+DiaAtrasoMax=MOPBuroMavi
+MOPBuroMavi=(Fin)

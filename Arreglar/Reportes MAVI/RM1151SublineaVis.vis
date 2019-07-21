@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1151SublineaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Propiedad
+SQL=select distinct Propiedad from Prop with(Nolock)<BR>Where Tipo =<T>Sublinea<T>
+[Propiedad]
+Clave=Propiedad
+Nombre=Propiedad
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Propiedad

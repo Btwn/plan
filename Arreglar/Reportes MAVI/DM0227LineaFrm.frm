@@ -1,0 +1,113 @@
+[Forma]
+Clave=DM0227LineaFrm
+Nombre=Lineas
+Icono=0
+BarraHerramientas=S
+Modulos=COMS
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=Linea
+CarpetaPrincipal=Linea
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+ListaAcciones=Seleccion
+[Linea]
+Estilo=Iconos
+Clave=Linea
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0227LineaVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Linea
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+FiltroIgnorarEmpresas=S
+CarpetaVisible=S
+MenuLocal=S
+ListaAcciones=todo<BR>quitar
+[Linea.Linea]
+Carpeta=Linea
+Clave=Linea
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Linea.Columnas]
+0=-2
+[Acciones.Seleccion.asigna]
+Nombre=asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccion.regis]
+Nombre=regis
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Linea<T>)
+Activo=S
+Visible=S
+[Acciones.Seleccion]
+Nombre=Seleccion
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+ListaAccionesMultiples=asigna<BR>regis<BR>selec
+Activo=S
+Visible=S
+[Acciones.Seleccion.selec]
+Nombre=selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.DM0227Linea,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Acciones.todo]
+Nombre=todo
+Boton=0
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.quitar]
+Nombre=quitar
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S

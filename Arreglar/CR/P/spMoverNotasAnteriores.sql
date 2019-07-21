@@ -1,0 +1,56 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spMoverNotasAnteriores
+@Empresa	varchar(5),
+@Tope		int		= 1000
+
+AS BEGIN
+DECLARE
+@ID		int,
+@Conteo	int,
+@Ok		int,
+@OkRef	varchar(255),
+@Mensaje	varchar(255)
+SELECT @Conteo = 0, @Ok = NULL, @OkRef = NULL
+DECLARE crMoverNotas CURSOR LOCAL FOR
+SELECT TOP (@Tope) e.ID
+FROM Venta e
+JOIN MovTipo mt ON mt.Modulo = 'VTAS' AND mt.Mov = e.Mov AND mt.Clave IN ('VTAS.N', 'VTAS.NO', 'VTAS.NR')
+WHERE e.Empresa = @Empresa AND e.Estatus IN ('CONCLUIDO', 'CANCELADO')
+ORDER BY e.ID
+OPEN crMoverNotas
+FETCH NEXT FROM crMoverNotas INTO @ID
+WHILE @@FETCH_STATUS <> -1
+BEGIN
+IF @@FETCH_STATUS <> -2
+BEGIN
+BEGIN TRY
+BEGIN TRANSACTION
+EXEC spMoverNota @ID
+COMMIT TRANSACTION
+SELECT @Conteo = @Conteo + 1
+END TRY
+BEGIN CATCH
+SELECT @Ok = ERROR_NUMBER(), @OkRef = ERROR_MESSAGE()
+ROLLBACK TRANSACTION
+BREAK
+END CATCH
+END
+FETCH NEXT FROM crMoverNotas INTO @ID
+END
+CLOSE crMoverNotas
+DEALLOCATE crMoverNotas
+SELECT @Mensaje = CONVERT(varchar, @Conteo)+' Notas Movidas, '
+IF @Ok IS NULL
+SELECT @Mensaje = @Mensaje + 'sin Errores.'
+ELSE
+SELECT @Mensaje = @Mensaje + 'Error '+ISNULL(@OkRef, CONVERT(varchar, @Ok))+'.'
+SELECT 'Mensaje' = @Mensaje
+END
+

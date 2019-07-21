@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0946BZonaVis
+Nombre=RM0946B Filtro Zona
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Zona
+CamposBusquedaRapida=Zona
+SQL=select Distinct Zona From ZonaCobranzaHis With(NoLock)
+[Zona]
+Clave=Zona
+Nombre=Zona
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Zona

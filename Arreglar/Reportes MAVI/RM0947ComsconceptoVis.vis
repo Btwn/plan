@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0947ComsconceptoVis
+Nombre=Concepto
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=concepto
+SQL=select distinct concepto <BR>from compra<BR>where concepto is not null<BR>and mov like <T>cotizacion%<T>
+[concepto]
+Clave=concepto
+Nombre=concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=concepto

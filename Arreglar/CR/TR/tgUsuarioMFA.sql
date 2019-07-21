@@ -1,0 +1,27 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgUsuarioMFA ON Usuario
+FOR UPDATE
+AS BEGIN
+DECLARE
+@Usuario		char(10),
+@Configuracion	char(10)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+IF UPDATE(Configuracion)
+BEGIN
+SELECT @Usuario = Usuario FROM Inserted
+SELECT @Configuracion = NULLIF(RTRIM(Configuracion), '') FROM Usuario WHERE Usuario = @Usuario
+IF @Usuario IS NOT NULL
+BEGIN
+IF @Configuracion IS NOT NULL
+EXEC spCopiarUsuarioCfgMFA @Configuracion, @Usuario
+END
+END
+END
+

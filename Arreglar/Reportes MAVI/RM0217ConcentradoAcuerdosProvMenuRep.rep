@@ -1,0 +1,62 @@
+[Reporte]
+Clave=RM0217ConcentradoAcuerdosProvMenuRep
+Nombre=RM0217concentradoAcuerdosProveedor
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+Submenu=Compras Mavi
+ConFormaPrevia=S
+FormaPrevia=RM0217ConcentradoAcuerdoProveedorFrm
+PosicionInicialAlturaCliente=423
+PosicionInicialAncho=630
+Menus=S
+SubmenuPreliminar=S
+ListaAcciones=Cerrar
+[Formato]
+VentanaIzquierda=320
+VentanaArriba=302
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80
+[Vista]
+Icono=0
+Clave=RM0217ConcentradoAcuerdosProvMenuRep
+VistaIndependiente=S
+SQL=Select Uno=1
+[Acciones.Cerrar.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Reportes Pantalla
+Activo=S
+Visible=S
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=0
+NombreDesplegar=&Cerrar
+Multiple=S
+EnMenu=S
+ListaAccionesMultiples=Cerrar
+Activo=S
+Visible=S

@@ -1,0 +1,24 @@
+[Vista]
+Icono=0
+Clave=DM0214CatRegionesVis
+Nombre=DM0214CatRegionesVis
+Modulos=(Todos)
+ListaCampos=Region
+LlavePrimaria=Region
+CamposBusquedaRapida=Region
+ListaTablas=DM0214Regiones
+TablaPrincipal=DM0214Regiones
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+SQL=Select Region from DM0214regiones<BR>order by region
+[Region]
+Clave=Region
+Nombre=Region
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Region

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1142FiltroCategoriaVis
+Nombre=RM1142FiltroCategoriaVis
+Modulos=(Todos)
+Singular=RM1142FiltroCategoriaVis
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=categoria
+SQL=select distinct categoria from ventascanalmavi <BR>where categoria in( <BR><T>contado<T>,<BR><T>credito menudeo<T>, <BR><T>asociados<T><BR>)
+[categoria]
+Clave=categoria
+Nombre=categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=categoria

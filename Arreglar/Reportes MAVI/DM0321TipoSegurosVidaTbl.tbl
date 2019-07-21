@@ -1,0 +1,101 @@
+
+[Tabla]
+Icono=0
+Clave=DM0321TipoSegurosVidaTbl
+Archivo=TcIDM0321_TipoSegurosVida
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=ID<BR>Codigo<BR>SumaAsegurada<BR>Clase<BR>SubGrupo<BR>CoberturaBase<BR>CoberturaAdicional<BR>Proveedor
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  Codigo,<BR>  SumaAsegurada,<BR>  Clase,<BR>  SubGrupo,<BR>  CoberturaBase,<BR>  CoberturaAdicional,<BR>  Proveedor<BR><BR>  FROM TcIDM0321_TipoSegurosVida
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+
+[SumaAsegurada]
+Clave=SumaAsegurada
+Nombre=Suma Asegurada
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+
+Requerido=S
+Monetario=S
+[Clase]
+Clave=Clase
+Nombre=Clase
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+Requerido=S
+Mayusculas=S
+[SubGrupo]
+Clave=SubGrupo
+Nombre=Sub Grupo
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+
+Requerido=S
+[CoberturaBase]
+Clave=CoberturaBase
+Nombre=Cobertura Base
+Visible=S
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+
+Requerido=S
+[CoberturaAdicional]
+Clave=CoberturaAdicional
+Nombre=Cobertura Adicional
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+
+Requerido=S
+[Proveedor]
+Clave=Proveedor
+Nombre=Proveedor
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El proveedor no es valido<T>
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Consulta opcional
+
+Requerido=S
+ValidacionCondicion=Si SQL(<T>SELECT COUNT(Proveedor) FROM Prov WHERE Estatus = :tEstatus AND Familia = :tFamilia AND Proveedor = :tProv<T>,<T>Alta<T>,<T>Seguros<T>,Proveedor) > 0<BR>Entonces Verdadero<BR>Sino Falso<BR>Fin
+Formula=SQLEnLista(<T>SELECT DISTINCT Proveedor FROM Prov WHERE Estatus = :tEstatus AND Familia = :tFamilia ORDER BY Proveedor<T>,<T>Alta<T>,<T>Seguros<T>)
+[Codigo]
+Clave=Codigo
+Nombre=Codigo
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Consulta opcional
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El código ingresado no es valido<T>
+Requerido=S
+ValidacionCondicion=Si SQL(<T>SELECT COUNT(Articulo) FROM Art WHERE Familia = :tFamilia AND Articulo = :tArticulo AND Estatus=:tEstatus<T>,<T>SEGUROS DE VIDA<T>,Codigo,<T>ALTA<T>) > 0<BR>Entonces Verdadero<BR>Sino Falso<BR>Fin
+Formula=SQLEnLista(<T>SELECT DISTINCT Articulo FROM Art WHERE Familia = :tFamilia AND Estatus = :tEstatus ORDER BY Articulo<T>,<T>SEGUROS DE VIDA<T>,<T>ALTA<T>)

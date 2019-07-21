@@ -1,0 +1,26 @@
+[Alm.Vis/Vista.ListaCampos]
+AlmPosCrossDocking.Descripcion=Alm.SucursalAsignada
+Alm.SucursalAsignada=(Fin)
+
+[Alm.Vis/Vista.SQL]
+AlmPosCrossDocking.Tipo,=AlmPosCrossDocking.Descripcion,
+AlmPosCrossDocking.Descripcion,=Alm.SucursalAsignada
+Alm.SucursalAsignada=FROM Alm
+
+
+[Alm.Vis/Alm.SucursalAsignada]
+Clave=Alm.SucursalAsignada
+Nombre=Sucursal Asignada
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=SucursalLista
+AyudaVista=Sucursal
+AyudaCampo=Sucursal.Sucursal
+AyudaRefrescar=S
+LigaTabla=Alm
+LigaCampo=SucursalAsignada
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=SucursalAsignada

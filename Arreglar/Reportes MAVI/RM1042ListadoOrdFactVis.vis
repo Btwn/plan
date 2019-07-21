@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=RM1042ListadoOrdFactVis
+Nombre=Listado Orden
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=movid<BR>MOV
+LlavePrimaria=movid
+CamposBusquedaRapida=movid
+SQL=EXEC SP_RM1042ArmRutasOrdFact_Filtro<BR><BR><BR> <T>{FechaFormatoServidor(Info.FechaD)}<T>, <BR> <T>{FechaFormatoServidor(Info.FechaA)}<T>,<BR>  {si(condatos(Mavi.RM1042FamiliaFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042FamiliaFiltro)),comillas(<T><T>))},<BR>  {si(condatos(Mavi.RM1042IdEmbFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042IdEmbFiltro)),comillas(<T><T>))},<BR>  {si(condatos(Mavi.RM1042TipoEmbFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042TipoEmbFiltro)),comillas(<T><T>))}
+[movid]
+Clave=movid
+Nombre=movid
+Visible=S
+TamanoValidacion=20
+Tamano=200
+ClaveBDE=MovID
+TipoDatos=Texto
+[MOV]
+Clave=MOV
+Nombre=MOV
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=200
+ClaveBDE=Mov

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0257MovIdVis
+Nombre=DM0257MovId
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=MovID
+SQL=SELECT DISTINCT MovID FROM Venta<BR>WHERE Mov IN (<T>ANALISIS CREDITO<T>, <T>SOLICITUD CREDITO<T>)
+[MovID]
+Clave=MovID
+Nombre=MovID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovID

@@ -1,0 +1,32 @@
+[Vista]
+Icono=0
+Clave=DM0209CXCBusUsVis
+Nombre=Buscar Usuario
+Modulos=(Todos)
+Singular=Buscar Usuario
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Usuario<BR>Nombre
+LlavePrimaria=Usuario
+CamposBusquedaRapida=Usuario
+SQL=SELECT Usuario,Nombre <BR><TAB>FROM Usuario<BR>WHERE  Acceso in (SELECT Nombre FROM tablastd WHERE TablaSt =<T>ACCESO CANCELACION RECIBOS<T><BR>) <BR><TAB>AND Estatus=<T>Alta<T>
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Usuario
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

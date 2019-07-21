@@ -1,0 +1,45 @@
+[Vista]
+Icono=0
+Clave=MovFormaPagoMAVI
+Nombre=MovFormaPagoMAVI
+Modulos=(Todos)
+Singular=MovFormaPagoMAVI
+ListaTablas=MovFormaPagoMAVI
+TablaPrincipal=MovFormaPagoMAVI
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=MovFormaPagoMAVI.Mov<BR>MovFormaPagoMAVI.FormaPagoTipo
+SQL=SELECT<BR>  MovFormaPagoMAVI.Mov,<BR>  MovFormaPagoMAVI.FormaPagoTipo<BR><BR>FROM<BR>  MovFormaPagoMAVI
+[MovFormaPagoMAVI.Mov]
+Clave=MovFormaPagoMAVI.Mov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Requerido=N
+ValorPorOmision=Info.Clave
+LigaTabla=MovFormaPagoMAVI
+LigaCampo=Mov
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Mov
+[MovFormaPagoMAVI.FormaPagoTipo]
+Clave=MovFormaPagoMAVI.FormaPagoTipo
+Nombre=Tipo Forma Pago
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Requerido=N
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=FormaPagoTipo
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=MovFormaPagoMAVI
+LigaCampo=FormaPagoTipo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=FormaPagoTipo

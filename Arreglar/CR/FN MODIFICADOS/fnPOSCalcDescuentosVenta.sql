@@ -1,0 +1,22 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION dbo.fnPOSCalcDescuentosVenta (
+@DescuentoGlobal   float,
+@DescuentoLineal   float
+)
+RETURNS float
+
+AS
+BEGIN
+DECLARE
+@Resultado  float
+SELECT  @Resultado =ROUND(100 - ((100-ISNULL(@DescuentoGlobal,0.0))/100 * (100-ISNULL(@DescuentoLineal,0.0))/100) * 100, 10)
+RETURN (@Resultado)
+END
+

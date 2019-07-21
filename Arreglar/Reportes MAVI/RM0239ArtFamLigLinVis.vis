@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM0239ArtFamLigLinVis
+Nombre=Familia Articulos
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Familia
+LlavePrimaria=Familia
+CamposBusquedaRapida=Familia
+SQL=select <BR>distinct(Familia) <BR>from art <BR>Where <BR>Art.Familia is not null<BR>AND LEN(Art.Familia)>0<BR>{Si(Condatos(Mavi.RM0239ArtLinLigLin) ,<T>And Art.Familia In (select Familia from Art where Linea IN (<T>+Mavi.RM0239ArtLinLigLin+<T>))<T>,<T><T>)}<BR>{SI(CONDATOS(Mavi.RM0239ArtCatLigGrup),<T>AND Art.Categoria=<T>+COMILLAS(Mavi.RM0239ArtCatLigGrup),<T><T>)}<BR>{SI(CONDATOS(Mavi.RM0239ArtGrupLigFam),<T>AND Art.Grupo=<T>+COMILLAS(Mavi.RM0239ArtGrupLigFam),<T><T>)}<BR>order by Familia asc
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

@@ -1,0 +1,101 @@
+[Tabla]
+Icono=0
+Clave=ContSATExtranjero
+Nombre=ContSATExtranjero
+Archivo=ContSATExtranjero
+Modulos=(Todos)
+Singular=ContSATExtranjero
+TipoTabla=General
+ListaCampos=ID<BR>Modulo<BR>ModuloID<BR>ContID<BR>NumFactExt<BR>TaxID<BR>MontoTotal<BR>Moneda<BR>TipoCambio
+ControlID=S
+CampoID=ID
+LlavePrimaria=ID
+SQL=SELECT<BR>  ID,<BR>  Modulo,<BR>  ModuloID,<BR>  ContID,<BR>  NumFactExt,<BR>  TaxID,<BR>  MontoTotal,<BR>  Moneda,<BR>  TipoCambio<BR><BR>FROM<BR>  ContSATExtranjero
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Modulo]
+Clave=Modulo
+Nombre=Modulo
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Modulo
+[ModuloID]
+Clave=ModuloID
+Nombre=ModuloID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.Id
+[ContID]
+Clave=ContID
+Nombre=ContID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[NumFactExt]
+Clave=NumFactExt
+Nombre=Número de Factura
+Visible=S
+TamanoValidacion=255
+Tamano=255
+CondicionEdicion=Info.Valor = <T>1<T>
+MascaraEdicion=>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Requerido=S
+[TaxID]
+Clave=TaxID
+Nombre=Tax ID
+Visible=S
+TamanoValidacion=255
+Tamano=255
+CondicionEdicion=Info.Valor = <T>1<T>
+MascaraEdicion=>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Requerido=S
+[MontoTotal]
+Clave=MontoTotal
+Nombre=Monto Total
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionEdicion=Info.Valor = <T>1<T>
+Monetario=S
+AyudaEnCaptura=Calculadora
+Requerido=S
+[Moneda]
+Clave=Moneda
+Nombre=Moneda
+Visible=S
+TamanoValidacion=10
+Tamano=10
+CondicionEdicion=//Info.Valor = <T>1<T><BR>Moneda=<T>MXN<T>
+Mayusculas=S
+ConRefrescar=S
+ListaRefrescar=TipoCambio
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=TipoCambio
+RefrescarTotales=S
+AyudaEnCaptura=Vista
+AyudaForma=MonLista
+AyudaVista=Mon
+AyudaCampo=Mon.Clave
+ValidacionConCondiciones=S
+ValidacionMensajeError=pruebas
+ValorPorOmision=<T>MXN<T>
+ValidacionCondicion=condatos(moneda)
+[TipoCambio]
+Clave=TipoCambio
+Nombre=Tipo de Cambio
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionEdicion=//(Info.Valor = <T>1<T>) y (Moneda <> <T>MXN<T>) y (ConDatos(Moneda))<BR>(Moneda <> <T>MXN<T>) y (ConDatos(Moneda))
+ValorRefrescar=SQL(<T>SELECT TipoCambio FROM Mon WHERE Clave = :tMoneda<T>,Moneda)
+ValorPorOmision=1

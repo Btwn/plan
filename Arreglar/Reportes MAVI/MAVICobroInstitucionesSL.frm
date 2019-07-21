@@ -1,0 +1,291 @@
+[Forma]
+Clave=MAVICobroInstitucionesSL
+Nombre=Cobro Instituciones
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=(Variables)<BR>Lista
+CarpetaPrincipal=(Variables)
+PosicionInicialAlturaCliente=219
+PosicionInicialAncho=806
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaExclusiva=S
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=237
+PosicionInicialArriba=383
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionSec1=147
+ListaAcciones=GenerarCobro
+PosicionSec2=209
+Menus=S
+EsConsultaExclusiva=S
+MenuPrincipal=&Acciones
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Plata
+CarpetaVisible=S
+FichaEspacioEntreLineas=0
+FichaEspacioNombres=0
+FichaColorFondo=Plata
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+ListaEnCaptura=Info.InstitucionMAVI<BR>Info.DepositoAnticipadoMAVI<BR>Info.ImportetMAVI<BR>Info.Ejercicio<BR>Mavi.DM0169FiltroPeriodo<BR>Mavi.DM0169FiltroQuincena
+FichaEspacioNombresAuto=S
+AutoRefrescar=S
+TiempoRefrescar=00:05
+PermiteEditar=S
+[Lista.Cte.Nombre]
+Carpeta=Lista
+Clave=Cte.Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+[Lista.Cxc.Importe]
+Carpeta=Lista
+Clave=Cxc.Importe
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[Lista.Cxc.Impuestos]
+Carpeta=Lista
+Clave=Cxc.Impuestos
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[Lista.Columnas]
+0=173
+1=137
+2=96
+3=211
+4=113
+5=122
+6=-2
+[Lista.Cxc.Situacion]
+Carpeta=Lista
+Clave=Cxc.Situacion
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.GenerarCobro]
+Nombre=GenerarCobro
+Boton=7
+NombreDesplegar=Generar Cobro Institución  
+EnBarraHerramientas=S
+EnBarraAcciones=S
+BtnResaltado=S
+Activo=S
+Visible=S
+NombreEnBoton=S
+Menu=&Acciones
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Antes=S
+ConCondicion=S
+EjecucionConError=S
+GuardarAntes=S
+DespuesGuardar=S
+EjecucionCondicion=ConDatos(Info.Ejercicio) y ConDatos(Mavi.DM0169FiltroPeriodo)   y ConDatos(Mavi.DM0169FiltroQuincena)
+EjecucionMensaje=<T>Los datos de periodo,  ejercicio y quincena son requeridos<T>
+AntesExpresiones=//RegistrarListaSt(<T>Lista<T>, <T>Cxc.ID<T> )<BR>//Asigna(Info.Importe, SQL( <T>spMAVIImporteTotales :nEstacionT, :tEmpresa, :tUsuario<T>, EstacionTrabajo, Empresa, Usuario))<BR>Asigna(Mavi.DM0169FiltroPeriodo, Reemplaza(ASCII(39),<T> <T> , Mavi.DM0169FiltroPeriodo) )<BR>Asigna(Mavi.DM0169FiltroQuincena, Reemplaza(ASCII(39),<T> <T> , Mavi.DM0169FiltroQuincena) )<BR>Asigna(Info.SaldoMavi, SQL(<T>SELECT dbo.fnObtenerSaldoDepositoAnticipado(:tMov, :tMovID)<T>, Info.MAVIMov, Info.MAVIMovId))<BR>//Si((vacio(Redondea(Info.Importe,2),0)> vacio(Redondea(Info.SaldoMavi,2),0)), Si(Precaucion(<T>El importe de los movimientos seleccionados es mayor que el saldo del deposito anticipado<T>,BotonAceptar, BotonCancelar)=BotonAceptar, AbortarOperacion, AbortarOperacion), verdadero)<BR>EjecutarSQLAnimado( <CONTINUA>
+AntesExpresiones002=<CONTINUA><T>spMAVICobroInstituciones :nEstacionT, :tEmpresa, :tUsuario, :tMovD, :tMovIDD, :nImporte, :tInst, :nEje, :tPer, :tQui<T>,EstacionTrabajo, Empresa, Usuario, Info.MAVIMov, Info.MAVIMovId, Info.SaldoMAVI, Info.InstitucionMAVI, Info.Ejercicio, Mavi.DM0169FiltroPeriodo, Mavi.DM0169FiltroQuincena)<BR>Si(SQL(<T>SELECT COUNT(*) FROM ListaIDOK WHERE ID = :nID AND Modulo =:tMod AND Estacion =:nEstacion<T>, 0, <T>CXC<T>, EstacionTrabajo)>0,Error(SQL(<T>SELECT TOP 1 OkRef FROM ListaIDOK WHERE ID=:nID AND Modulo =:tMod AND Estacion =:nEstacion<T>, 0, <T>CXC<T>, EstacionTrabajo)) AbortarOperacion)<BR>Forma(<T>ListaIDOk<T>)<BR>Asigna(Info.SaldoMavi, SQL(<T>SELECT dbo.fnObtenerSaldoDepositoAnticipado(:tMov, :tMovID)<T>, Info.MAVIMov, Info.MAVIMovId))   // Se vuelve a poner para que refresque el saldo de<CONTINUA>
+AntesExpresiones003=<CONTINUA>spues del cobro
+[(Variables).Info.InstitucionMAVI]
+Carpeta=(Variables)
+Clave=Info.InstitucionMAVI
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Plata
+ColorFuente=Negro
+[(Variables).Info.DepositoAnticipadoMAVI]
+Carpeta=(Variables)
+Clave=Info.DepositoAnticipadoMAVI
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Plata
+ColorFuente=Negro
+[Lista.Cxc.Saldo]
+Carpeta=Lista
+Clave=Cxc.Saldo
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[(Carpeta Totalizadores)]
+Clave=(Carpeta Totalizadores)
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=C2
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Izquierda
+FichaAlineacion=Derecha
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+Totalizadores1=Saldo Anticipo
+Totalizadores2=Info.SaldoMavi
+Totalizadores3=(Monetario)
+Totalizadores=S
+CampoColorLetras=Negro
+CampoColorFondo=Plata
+CarpetaVisible=S
+TotCarpetaRenglones=Lista
+ListaEnCaptura=Saldo Anticipo
+TotAlCambiar=S
+[Acciones.Totales.Datos]
+Nombre=Datos
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarListaSt(<T>Lista<T>, <T>Cxc.ID<T>)<BR>Asigna(Info.Importe, SQL( <T>spMAVIImporteTotales :nEstacionT, :tEmpresa, :tUsuario<T>, EstacionTrabajo, Empresa, Usuario))<BR>Informacion(<T>El Total seleccionado es : <T>+ MonetarioEnTexto( Info.Importe))
+[Acciones.Filtro.Especificar]
+Nombre=Especificar
+Boton=0
+TipoAccion=Formas
+ClaveAccion=EspecificarEjercicioPeriodo
+Activo=S
+Visible=S
+[Acciones.Filtro.Actualizar]
+Nombre=Actualizar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Activo=S
+Visible=S
+[(Carpeta Totalizadores).Saldo Anticipo]
+Carpeta=(Carpeta Totalizadores)
+Clave=Saldo Anticipo
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+Efectos=[Negritas]
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=0
+NombreDesplegar=Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.Deseleccionar]
+Nombre=Deseleccionar
+Boton=0
+NombreDesplegar=Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[(Variables).Info.Ejercicio]
+Carpeta=(Variables)
+Clave=Info.Ejercicio
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Blanco
+ColorFuente=Negro
+[Lista]
+Estilo=Ficha
+Clave=Lista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=B1
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+Vista=saldoDepAnticipadoMAVI
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+ListaEnCaptura=Saldo
+[Lista.Saldo]
+Carpeta=Lista
+Clave=Saldo
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+Tamano=20
+[(Variables).Info.ImportetMAVI]
+Carpeta=(Variables)
+Clave=Info.ImportetMAVI
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Plata
+ColorFuente=Negro
+[(Variables).Mavi.DM0169FiltroPeriodo]
+Carpeta=(Variables)
+Clave=Mavi.DM0169FiltroPeriodo
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+Pegado=S
+[(Variables).Mavi.DM0169FiltroQuincena]
+Carpeta=(Variables)
+Clave=Mavi.DM0169FiltroQuincena
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+Pegado=S
+
+

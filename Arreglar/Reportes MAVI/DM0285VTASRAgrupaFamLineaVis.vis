@@ -1,0 +1,68 @@
+
+[Vista]
+Icono=0
+Clave=DM0285VTASRAgrupaFamLineaVis
+Nombre=Ventas Agrupa Familia Linea
+Modulos=(Todos)
+
+ListaTablas=DM0285VTASRAgrupaFamLineaTbl
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+Singular=Familias
+UsoPagina=S
+PaginaCampos=DM0285VTASRAgrupaFamLineaTbl.Familia<BR>DM0285VTASRAgrupaFamLineaTbl.Linea
+PaginaUtilizarTodos=S
+
+
+ListaCampos=DM0285VTASRAgrupaFamLineaTbl.Familia<BR>DM0285VTASRAgrupaFamLineaTbl.Linea<BR>DM0285VTASRAgrupaFamLineaTbl.prefijo<BR>DM0285VTASRAgrupaFamLineaTbl.IDAgrupaFamLineaProp
+
+
+
+
+
+
+TablaPrincipal=DM0285VTASRAgrupaFamLineaTbl
+
+
+
+
+
+CamposBusquedaRapida=DM0285VTASRAgrupaFamLineaTbl.Familia<BR>DM0285VTASRAgrupaFamLineaTbl.Linea
+SQL=SELECT<BR>DM0285VTASRAgrupaFamLineaTbl.Familia,<BR>DM0285VTASRAgrupaFamLineaTbl.Linea,<BR>DM0285VTASRAgrupaFamLineaTbl.prefijo,<BR>DM0285VTASRAgrupaFamLineaTbl.IDAgrupaFamLineaProp<BR>FROM VTASRAgrupaFamLineaProp DM0285VTASRAgrupaFamLineaTbl
+[DM0285VTASRAgrupaFamLineaTbl.Familia]
+Clave=DM0285VTASRAgrupaFamLineaTbl.Familia
+LigaTabla=DM0285VTASRAgrupaFamLineaTbl
+LigaCampo=Familia
+ClaveBDE=Familia
+
+Ligado=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Familia FROM ArtFam WHERE Familia IS NOT NULL<T>)
+[DM0285VTASRAgrupaFamLineaTbl.Linea]
+Clave=DM0285VTASRAgrupaFamLineaTbl.Linea
+LigaTabla=DM0285VTASRAgrupaFamLineaTbl
+LigaCampo=Linea
+ClaveBDE=Linea
+
+TipoDatos=Texto
+TamanoValidacion=50
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Linea FROM ArtLinea WHERE Linea IS NOT NULL AND Familia like :tFam <T>,  &  DM0285VTASRAgrupaFamLineaTbl.Familia  & <T>%<T>)
+[DM0285VTASRAgrupaFamLineaTbl.prefijo]
+Clave=DM0285VTASRAgrupaFamLineaTbl.prefijo
+LigaTabla=DM0285VTASRAgrupaFamLineaTbl
+LigaCampo=prefijo
+Ligado=S
+ClaveBDE=prefijo
+
+[DM0285VTASRAgrupaFamLineaTbl.IDAgrupaFamLineaProp]
+Clave=DM0285VTASRAgrupaFamLineaTbl.IDAgrupaFamLineaProp
+Visible=S
+LigaTabla=DM0285VTASRAgrupaFamLineaTbl
+LigaCampo=IDAgrupaFamLineaProp
+Ligado=S
+ClaveBDE=IDAgrupaFamLineaProp

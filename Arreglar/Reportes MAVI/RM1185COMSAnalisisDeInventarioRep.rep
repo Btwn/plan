@@ -1,0 +1,48 @@
+
+[Reporte]
+Clave=RM1185COMSAnalisisDeInventarioRep
+Icono=0
+Tipo=Reporte
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=RM1185COMSGenerarReporteFrm
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+VistaEspecial=S
+
+PosicionInicialAlturaCliente=961
+PosicionInicialAncho=1296
+Nombre=RM1185 Analisis De Inventario
+Submenu=Inventarios Mavi
+[Vista]
+Icono=0
+Clave=RM1185COMSAnalisisDeInventario
+SQL=SELECT 1
+VistaIndependiente=S
+
+[Formato]
+VentanaIzquierda=320
+VentanaArriba=302
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80

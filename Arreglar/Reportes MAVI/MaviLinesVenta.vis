@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviLinesVenta
+Nombre=MaviLinesVenta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea
+SQL=select distinct(Linea) from art <BR>Where Categoria=<T>VENTA<T> and Grupo=<T>MERCANCIA DE LINEA<T> and<BR> linea<><T><T> and Familia=<T>{(Mavi.FamiliasVenta)}<T><BR>order by linea asc
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

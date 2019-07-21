@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1098DepartamentoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=GrupoTrabajo
+CamposBusquedaRapida=GrupoTrabajo
+SQL=select Distinct GrupoTrabajo  from Usuario Where GrupoTrabajo is not null<BR>ORder By 1
+[GrupoTrabajo]
+Clave=GrupoTrabajo
+Nombre=GrupoTrabajo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=GrupoTrabajo

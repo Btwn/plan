@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=PropreGrupoLista
+Nombre=PropreGrupoLista
+Modulos=(Todos)
+Singular=PropreGrupoLista
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=PropreGrupo
+SQL=SELECT Distinct PropreGrupo FROM Condicion <BR>WHERE PropreGrupo is not null and grupo = <T>Menudeo<T>
+[PropreGrupo]
+Clave=PropreGrupo
+Nombre=PropreGrupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=PropreGrupo

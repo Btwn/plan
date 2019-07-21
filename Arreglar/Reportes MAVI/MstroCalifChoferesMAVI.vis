@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=MstroCalifChoferesMAVI
+Nombre=MstroCalifChoferesMAVI
+Modulos=(Todos)
+Singular=MstroCalifChoferesMAVI
+ListaTablas=MstroCalifChoferesMAVI
+TablaPrincipal=MstroCalifChoferesMAVI
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=MstroCalifChoferesMAVI.Calificacion
+SQL=SELECT<BR>  MstroCalifChoferesMAVI.Calificacion<BR><BR>FROM<BR>  MaestroCalificacionesComisionesChoferesMAVI MstroCalifChoferesMAVI
+[MstroCalifChoferesMAVI.Calificacion]
+Clave=MstroCalifChoferesMAVI.Calificacion
+Nombre=Calificación
+Visible=S
+TamanoValidacion=20
+Tamano=20
+LigaTabla=MstroCalifChoferesMAVI
+LigaCampo=Calificacion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Calificacion

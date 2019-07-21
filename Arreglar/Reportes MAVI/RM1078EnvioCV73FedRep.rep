@@ -1,0 +1,116 @@
+[Reporte]
+Clave=RM1078EnvioCV73FedRep
+Nombre=RM1078Envio SSJ
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=24.552
+LargoPagina=27.9
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+FormatoAscii=S
+ArchivoEspecifico=RM1078 SSJ Fed
+AsciiPorOmision=S
+PosicionInicialAlturaCliente=423
+PosicionInicialAncho=630
+[Vista]
+Icono=0
+Clave=RM1078EnvioCV73FedRep
+VistaIndependiente=S
+ListaCampos=TEXTO
+Nombre=RM1078Envio SSJ Fed
+SQL=SELECT <BR><TAB>TEXTO=(RFC+<T>|<T>+<T>2|<T>+<T>46|<T>+replicate(<T>0<T>,(8 - len(importe))) + importe+<T>|<T>+VIGENCIAAZO + QUINCENA+<T>|<T>+<T>MA<T>+<T>|<T>+MOVIMIENTO+<T>|<T>)<BR>FROM(<BR><TAB>SELECT<BR><TAB><TAB>RFC = CteEA.RFCInstitucion,<BR><TAB><TAB>NOMBRE = Cte.Nombre,<BR><TAB><TAB>IMPORTE = CONVERT(VARCHAR,MEDE.DescCte/2),<BR><TAB><TAB>VIGENCIA = MEDE.FechaEmision,<BR><TAB><TAB>QUINCENA = CONVERT(VARCHAR,dbo.Fn_MaviNumQuincena(DATEADD(mm,MEDE.NoDocs,MEDE.FechaEmision))),<BR><TAB><TAB>VIGENCIAAZO = CONVERT(VARCHAR,YEAR(DATEADD(mm,MEDE.NoDocs,MEDE.FechaEmision))),<BR><TAB><TAB>MOVIMIENTO = CASE WHEN substring(MEDE.TipoEnvio,1,1) = <T>B<T> THEN <T>E<T> ELSE substring(MEDE.TipoEnvio,1,1) END,<BR><TAB><TAB>SALDO = SUM(MEDE.DescCte) OVER(PARTITION BY CteEA.RFCInstitucion),<BR><TAB><TAB>S<CONTINUA>
+SQL002=<CONTINUA>ALDOS = MEDE.DescCte,<BR><TAB><TAB>CONT = ROW_NUMBER() OVER (PARTITION BY MEDE.CLIENTE,MEDE.TipoEnvio ORDER BY CteEA.RFCInstitucion DESC),<BR><TAB><TAB>CteEA.CARGO<BR><TAB>FROM MaviEnvDispElectHist MEDE<BR><TAB><TAB>INNER JOIN CteEnviarA CteEA ON CteEA.Id=MEDE.IdCanalVenta AND CteEA.Cliente = MEDE.Cliente<BR><TAB><TAB>INNER JOIN Cte Cte ON Cte.Cliente = MEDE.Cliente<BR><TAB>WHERE 1=1 <BR><TAB>AND MEDE.IDCanalVenta=73 <BR><TAB>{Si(ConDatos(Info.Ejercicio),<T> And MEDE.Ejercicio=<T>+Info.Ejercicio,<T><T>)}<BR><TAB>{Si(ConDatos(Info.Periodo),<T> And MEDE.Periodo=<T>+Info.Periodo,<T><T>)}<BR><TAB>{Si(ConDatos(Info.Quincena),<T> And MEDE.Quincena=<T>+Info.Quincena,<T><T>)}<BR><TAB>{si(condatos(Mavi.RM1078Subdependencias),(CASO Mavi.RM1078Subdependencias ES <T>Otros...<T> ENTONCES <T> and CteEA.<CONTINUA>
+SQL003=<CONTINUA>CARGO NOT IN (<T>+COMILLAS(<T>Federal<T>)+<T>,<T>+COMILLAS(<T>Estatal<T>)+<T>,<T>+COMILLAS(<T>Regularizado<T>)+<T>)<T> <BR><TAB>SINO <T> AND CteEA.CARGO=<T>+comillas(Mavi.RM1078Subdependencias)),<T><T>)}<BR>) T<BR>WHERE CONT = 1 <BR>group by RFC,<BR><TAB>NOMBRE,<BR><TAB>IMPORTE,<BR><TAB>VIGENCIAAZO ,<BR><TAB>QUINCENA,<BR><TAB>MOVIMIENTO,<BR><TAB>CARGO<BR>ORDER BY  RFC,Movimiento
+[TEXTO]
+Clave=TEXTO
+Nombre=TEXTO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=TEXTO
+[Formato]
+ListaLineas=Encabezado<BR>Detalle
+VentanaIzquierda=320
+VentanaArriba=302
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80
+[Linea1]
+Clave=Encabezado
+Objetos=1
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+[Linea2]
+Clave=Detalle
+Objetos=1
+Seccion=Detalle
+AltoEnCm=0.4
+Renglones=1
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+[A1]
+Celda=A1
+Alineacion=Izquierda
+AnchoEnCm=4
+AnchoTexto=22
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>0|TP|CP|IM|VI|PA|TM|<T>
+[A2]
+Celda=A2
+Alineacion=Izquierda
+AnchoEnCm=11.11
+AnchoTexto=60
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=TEXTO

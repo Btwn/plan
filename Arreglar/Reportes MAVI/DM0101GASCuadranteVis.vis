@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=DM0101GASCuadranteVis
+Nombre=Cuadrantes de Master de Gastos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Propiedad<BR>Cuenta
+SQL=SELECT <BR>Propiedad,<BR>Cuenta <BR>FROM  dbo.Prop <BR>WHERE Tipo = <T>Cuadrante<T>
+CamposBusquedaRapida=Propiedad
+[Propiedad]
+Clave=Propiedad
+Nombre=Propiedad
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Propiedad
+[Cuenta]
+Clave=Cuenta
+Nombre=Cuenta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cuenta

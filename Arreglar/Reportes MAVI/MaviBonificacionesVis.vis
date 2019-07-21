@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviBonificacionesVis
+Nombre=Bonificaciones de CXC
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Concepto de Bonificaciones
+SQL=Select Distinct Concepto as [Concepto de Bonificaciones]<BR>from CXC<BR>{Si OpcionEnTexto(Mavi.DevolucionUEN,<T>Devoluciones MA<T>,<T>Devoluciones Mayoreo<T>,<T>Devoluciones VIU<T>,<T>(Todo Devolución)<T>) <> <T><T><BR>  Entonces <T> Where concepto is null and Concepto is not null<T><BR>  Sino <T> Where Concepto Like <T>+Comillas(<T>Bonifica%<T>)+<T> And Concepto is not Null<T>}
+[Concepto de Bonificaciones]
+Clave=Concepto de Bonificaciones
+Nombre=Concepto de Bonificaciones
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto de Bonificaciones

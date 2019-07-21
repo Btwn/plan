@@ -1,0 +1,570 @@
+[Tabla]
+Icono=0
+Clave=AgenteAux
+Archivo=Agente
+Modulos=VTAS<BR>CXC
+TipoTabla=Cuentas
+ListaCampos=Agente<BR>Nombre<BR>Tipo<BR>Telefonos<BR>Extencion<BR>Categoria<BR>Grupo<BR>Familia<BR>Zona<BR>Estatus<BR>Clase<BR>UltimoCambio<BR>BeneficiarioNombre<BR>Moneda<BR>TipoComision<BR>Porcentaje<BR>Nomina<BR>Personal<BR>NominaMov<BR>NominaConcepto<BR>Direccion<BR>Colonia<BR>Poblacion<BR>Estado<BR>Pais<BR>CodigoPostal<BR>RFC<BR>CURP<BR>Conciliar<BR>Alta<BR>CostoHora<BR>Mensaje<BR>TieneMovimientos<BR>NivelAcceso<BR>SucursalEmpresa<BR>Equipo<BR>Cuota<BR>ArticuloDef<BR>Acreedor<BR>eMail<BR>eMailAuto<BR>VentasCasa<BR>Baja<BR>ReportaA<BR>AlmacenDef<BR>Jornada
+Nombre=Agentes
+Singular=Agente
+LlavePrimaria=Agente
+ControlEstatus=S
+ControlCambios=S
+CampoEstatus=Estatus
+CampoUltimoCambio=UltimoCambio
+EstatusDefault=ALTA
+CampoSugerido=Agente
+ControlClase=
+CampoClase=
+ListaRelaciones=Personal<BR>Acum<BR>Sucursal<BR>ServiciosPendientesAgente<BR>Art<BR>Acreedor<BR>AgenteDestino
+ControlSugerido=S
+ControlNivelAcceso=S
+CampoNivelAcceso=NivelAcceso
+ControlSucursal=S
+CampoSucursal=SucursalEmpresa
+SQL=SELECT<BR>  Agente,<BR>  Nombre,<BR>  Tipo,<BR>  Moneda,<BR>  Telefonos,<BR>  Extencion,<BR>  Categoria,<BR>  Familia,<BR>  Zona,<BR>  Grupo,<BR>  Estatus,<BR>  UltimoCambio,<BR>  Clase,<BR>  Alta,<BR>  Baja,<BR>  Conciliar,<BR>  Mensaje,<BR>  BeneficiarioNombre,<BR>  CostoHora,<BR>  TipoComision,<BR>  Porcentaje,<BR>  Nomina,<BR>  Personal,<BR>  NominaMov,<BR>  NominaConcepto,<BR>  Direccion,<BR>  Colonia,<BR>  Poblacion,<BR>  Estado,<BR>  Pais,<BR>  CodigoPostal,<BR>  RFC,<BR>  CURP,<BR>  TieneMovimientos,<BR>  NivelAcceso,<BR>  SucursalEmpresa,<BR>  Equipo,<BR>  Cuota,<BR>  ArticuloDef,<BR>  Acreedor,<BR>  eMail,<BR>  eMailAuto,<BR>  VentasCasa,<BR>  ReportaA,<BR>  AlmacenDef,<BR>  Jornada<BR><BR>FROM<BR>  Agente
+
+[Agente]
+Clave=Agente
+Nombre=Clave
+Tamano=10
+TamanoValidacion=10
+Mayusculas=S
+CondicionEdicion=no TieneMovimientos
+TipoDatos=Texto
+
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Tamano=100
+TamanoValidacion=50
+TipoDatos=Texto
+
+[Telefonos]
+Clave=Telefonos
+Nombre=Teléfonos
+Tamano=100
+TamanoValidacion=50
+TipoDatos=Texto
+
+[Extencion]
+Clave=Extencion
+Nombre=Extensión
+Tamano=10
+TamanoValidacion=10
+TipoDatos=Texto
+
+[Categoria]
+Clave=Categoria
+Nombre=Categoría
+AyudaEnCaptura=Validaciones Memoria
+Tamano=50
+TamanoValidacion=50
+AyudaMemTabla=AgenteCat
+AyudaMemOpc=Validar captura en la lista
+AyudaMemEnBlanco=S
+AyudaMemRenglones=12
+TipoDatos=Texto
+
+[Zona]
+Clave=Zona
+Nombre=Zona
+AyudaEnCaptura=Validaciones Memoria
+Tamano=30
+TamanoValidacion=30
+AyudaMemTabla=Zona
+AyudaMemOpc=Consulta opcional
+TipoDatos=Texto
+
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Tamano=15
+TamanoValidacion=15
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ConRefrescar=S
+ListaRefrescar=Baja
+ListaOpciones=ALTA<BR>BLOQUEADO<BR>BAJA
+TipoDatos=Texto
+
+[UltimoCambio]
+Clave=UltimoCambio
+Nombre=Ultimo Cambio
+TipoDatos=FechaHora
+TamanoValidacion=15
+
+[Mensaje]
+Clave=Mensaje
+Nombre=Mensaje Emergente
+TamanoValidacion=50x3
+Tamano=50
+TipoDatos=Texto
+
+[Moneda]
+Clave=Moneda
+Nombre=Moneda
+AyudaEnCaptura=Validaciones Memoria
+Tamano=10
+TamanoValidacion=10
+AyudaMemTabla=Mon
+AyudaMemOpc=Unicamente opciones listadas
+AyudaMemRenglones=8
+AyudaMemEnBlanco=S
+TipoDatos=Texto
+
+[Alta]
+Clave=Alta
+Nombre=Fecha Alta
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorPorOmision=Hoy
+FormatoValidacion=dd/mmm/aaaa
+
+[Conciliar]
+Clave=Conciliar
+Nombre=Conciliar movimientos
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+CondicionEdicion=Falso
+
+[Clase]
+Clave=Clase
+Nombre=Clase
+TamanoValidacion=15
+Tamano=15
+TipoDatos=Texto
+
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+AyudaEnCaptura=Validaciones Memoria
+TamanoValidacion=50
+Tamano=50
+AyudaMemTabla=AgenteGrupo
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+
+[BeneficiarioNombre]
+Clave=BeneficiarioNombre
+Nombre=Beneficiario al pagar
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+
+[CostoHora]
+Clave=CostoHora
+Nombre=Costo por Hora
+AyudaEnCaptura=Calculadora
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+
+[Personal]
+Clave=Personal
+Nombre=Personal
+Visible=S
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Vista
+AyudaForma=PersonalLista
+AyudaVista=Personal
+AyudaCampo=Personal.Personal
+ValidacionUsaTabla=S
+ValidacionTablas=Personal
+AyudaIgnoraChequeos=S
+Mayusculas=S
+CondicionDespliege=Nomina
+RequeridoActivo=S
+CondicionEdicion=no Equipo
+TipoDatos=Texto
+
+[Direccion]
+Clave=Direccion
+Nombre=Dirección
+Visible=S
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+
+[Colonia]
+Clave=Colonia
+Nombre=Colonia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+Tamano=30
+TipoDatos=Texto
+
+[Poblacion]
+Clave=Poblacion
+Nombre=Población
+Visible=S
+TamanoValidacion=30
+Tamano=30
+TipoDatos=Texto
+
+[Estado]
+Clave=Estado
+Nombre=Estado
+Visible=S
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=PaisEstadoMexico
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+TipoDatos=Texto
+
+[Pais]
+Clave=Pais
+Nombre=País
+Visible=S
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Paises
+OpcionesRenglones=8
+TipoDatos=Texto
+
+[CodigoPostal]
+Clave=CodigoPostal
+Nombre=Código Postal
+Visible=S
+TamanoValidacion=15
+Tamano=15
+Mayusculas=S
+TipoDatos=Texto
+
+[RFC]
+Clave=RFC
+Nombre=RFC
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Incorrecto<T>
+ValidacionCondicion=SQL(<T>spRegistroOk :tCual, :tRegistro, :tEmpresa<T>, <T>RFC<T>, RFC, Empresa)
+
+[Relaciones.Personal]
+TipoRelacion=Opcional
+LlaveLocal=Personal
+Clave=Personal
+TablaRemota=Personal
+LlaveRemota=Personal
+
+[Porcentaje]
+Clave=Porcentaje
+Nombre=%
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+CondicionDespliege=TipoComision<><T>por Tipo Factura<T>
+
+[TipoComision]
+Clave=TipoComision
+Nombre=Tipo Comisión
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=12
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+ValorPorOmision=<T>(sin Comision)<T>
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+ListaOpciones=(sin Comision)<BR>(Especial)<BR>por Factura<BR>por Tipo Factura<BR>por Articulo<BR>por Factura/Articulo<BR>por Cliente
+TipoDatos=Texto
+
+[Nomina]
+Clave=Nomina
+Nombre=En Nómina
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+CondicionEdicion=no Equipo
+
+[NominaMov]
+Clave=NominaMov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+CondicionDespliege=Nomina
+RequeridoActivo=S
+CondicionEdicion=no Equipo
+Formula=SQLEnLista(<T>SELECT Mov FROM MovTipo WHERE Clave = :tClave<T>, <T>NOM.P<T>)
+TipoDatos=Texto
+
+[Relaciones.Acum]
+TipoRelacion=Forzosa
+LlaveLocal={Comillas(Empresa)}<BR>{<T>AGENT<T>}<BR>Agente
+Clave=Acum
+TablaRemota=Acum
+LlaveRemota=Empresa<BR>Rama<BR>Cuenta
+
+[TieneMovimientos]
+Clave=TieneMovimientos
+Nombre=Tiene Movimientos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+
+[NivelAcceso]
+Clave=NivelAcceso
+Nombre=Acceso
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=NivelAcceso
+AyudaMemRenglones=12
+AyudaMemOpc=Unicamente opciones listadas
+CondicionDespliege=General.NivelAcceso
+TipoDatos=Texto
+
+[CURP]
+Clave=CURP
+Nombre=CURP
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>spRegistroOk :tCual, :tRegistro, :tEmpresa<T>, <T>CURP<T>, CURP, Empresa)
+ValidacionMensajeError=<T>Incorrecto<T>
+TipoDatos=Texto
+
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ValorPorOmision=<T>Agente<T>
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=AgenteTipo
+AyudaMemRenglones=12
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+
+[SucursalEmpresa]
+Clave=SucursalEmpresa
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=SucursalLista
+AyudaVista=Sucursal
+AyudaCampo=Sucursal.Sucursal
+ValidacionUsaTabla=S
+ValidacionTablas=Sucursal
+
+[Relaciones.Sucursal]
+TipoRelacion=Opcional
+LlaveLocal=SucursalEmpresa
+Clave=Sucursal
+TablaRemota=Sucursal
+LlaveRemota=Sucursal
+
+[NominaConcepto]
+Clave=NominaConcepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=Nomina
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Conceptos
+OpcionesModulo=NOM
+CondicionEdicion=no Equipo
+TipoDatos=Texto
+
+[Equipo]
+Clave=Equipo
+Nombre=Equipo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+
+[Relaciones.ServiciosPendientesAgente]
+TipoRelacion=Opcional
+LlaveLocal=Agente
+Clave=ServiciosPendientesAgente
+TablaRemota=ServiciosPendientesAgente
+LlaveRemota=Agente
+
+[Cuota]
+Clave=Cuota
+Nombre=Cuota
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+AyudaEnCaptura=Calculadora
+
+[ArticuloDef]
+Clave=ArticuloDef
+Nombre=Artículo (por Omisión)
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+AyudaEnCaptura=Vista
+AyudaForma=ArtLista
+AyudaVista=Art
+AyudaCampo=Art.Articulo
+ValidacionUsaTabla=S
+ValidacionTablas=Art
+TipoDatos=Texto
+
+[Relaciones.Art]
+TipoRelacion=Opcional
+LlaveLocal=ArticuloDef
+Clave=Art
+TablaRemota=Art
+LlaveRemota=Articulo
+
+[Acreedor]
+Clave=Acreedor
+Nombre=Acreedor
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+AyudaEnCaptura=Vista
+AyudaForma=AcreedorLista
+AyudaVista=Prov
+AyudaCampo=Prov.Proveedor
+ValidacionUsaTabla=S
+ValidacionTablas=Acreedor
+TipoDatos=Texto
+
+[Relaciones.Acreedor]
+TipoRelacion=Opcional
+LlaveLocal=Acreedor
+Clave=Acreedor
+TablaRemota=Acreedor
+LlaveRemota=Proveedor
+
+[eMail]
+Clave=eMail
+Nombre=Correo Electrónico
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+
+[eMailAuto]
+Clave=eMailAuto
+Nombre=Avisos Automáticos (e-mail)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+
+[VentasCasa]
+Clave=VentasCasa
+Nombre=Ventas Casa
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionDespliege=General.Ford
+ValorPorOmision=Falso
+
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=AgenteFam
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+
+[Baja]
+Clave=Baja
+Nombre=Fecha Baja
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorRefrescar=Si(Estatus=<T>BAJA<T>, Hoy)
+FormatoValidacion=dd/mmm/aaaa
+
+[ReportaA]
+Clave=ReportaA
+Nombre=Reporta a
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+AyudaEnCaptura=Vista
+AyudaForma=AgenteLista
+AyudaVista=AgenteA
+AyudaCampo=Agente.Agente
+ValidacionUsaTabla=S
+ValidacionTablas=AgenteDestino
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>No Puede ser el Mismo<T>
+ValidacionCondicion=Agente<>ReportaA
+TipoDatos=Texto
+
+[Relaciones.AgenteDestino]
+TipoRelacion=Opcional
+LlaveLocal=ReportaA
+Clave=AgenteDestino
+TablaRemota=AgenteDestino
+LlaveRemota=Agente
+[AlmacenDef]
+Clave=AlmacenDef
+Nombre=Almacén (por Omisión)
+Visible=S
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=Alm
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+[Jornada]
+Clave=Jornada
+Nombre=Jornada
+Visible=S
+TamanoValidacion=20
+Tamano=20
+CondicionDespliege=no Nomina
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=Jornada
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas

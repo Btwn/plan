@@ -1,0 +1,112 @@
+[Forma]
+Clave=PropreGrupoCanal
+Nombre=Canales por Grupo
+Icono=0
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=Canales
+CarpetaPrincipal=Canales
+PosicionInicialIzquierda=392
+PosicionInicialArriba=229
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=495
+AutoGuardar=S
+ListaAcciones=Guardar<BR>Eliminar
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaExclusiva=S
+VentanaEstadoInicial=Normal
+Comentarios=Info.PropreGrupo
+[Canales]
+Estilo=Hoja
+Clave=Canales
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=PropreGrupoCanal
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=PropreGrupoCanal.Canal<BR>VentasCanalMAVI.Clave<BR>VentasCanalMAVI.Cadena
+CarpetaVisible=S
+Filtros=S
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=General
+FiltroGeneral=PropreGrupoCanal.Grupo = <T>{info.PropreGrupo}<T>
+[Canales.PropreGrupoCanal.Canal]
+Carpeta=Canales
+Clave=PropreGrupoCanal.Canal
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[Canales.Columnas]
+Canal=86
+Clave=64
+Cadena=304
+[Canales.VentasCanalMAVI.Clave]
+Carpeta=Canales
+Clave=VentasCanalMAVI.Clave
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Blanco
+ColorFuente=Negro
+[Canales.VentasCanalMAVI.Cadena]
+Carpeta=Canales
+Clave=VentasCanalMAVI.Cadena
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Guardar]
+Nombre=Guardar
+Boton=3
+NombreEnBoton=S
+NombreDesplegar=G&uardar y Cerrar
+GuardarAntes=S
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+EjecucionCondicion=Asigna(Temp.Texto, ListaBuscarDuplicados(CampoEnLista(PropreGrupoCanal:PropreGrupoCanal.Canal)))<BR>Vacio(Temp.Texto)
+EjecucionMensaje=<T>Canal <T>+ Comillas(Temp.Texto)+<T> DUplicado<T>
+[Acciones.Eliminar]
+Nombre=Eliminar
+Boton=5
+NombreEnBoton=S
+NombreDesplegar=Eliminar
+EnBarraHerramientas=S
+EspacioPrevio=S
+Carpeta=(Carpeta principal)
+TipoAccion=Controles Captura
+ClaveAccion=Registro Eliminar
+Activo=S
+Visible=S
+

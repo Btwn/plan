@@ -1,0 +1,50 @@
+
+[Dialogo]
+Clave=Mavi.DM0341MenuMacrosDlg
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+
+ListaAcciones=Bonificaciones<BR>ApoyosDiferidos<BR>Ruta
+PosicionInicialAlturaCliente=128
+PosicionInicialAncho=500
+PosicionInicialIzquierda=199
+PosicionInicialArriba=251
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+[Acciones.ApoyosDiferidos]
+Nombre=ApoyosDiferidos
+Boton=0
+NombreDesplegar=Porcentaje De Apoyos Diferidos
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0341COMSPorcentajeApoyoDiferidoFrm
+Activo=S
+Visible=S
+
+EnBarraAcciones=S
+[Acciones.Bonificaciones]
+Nombre=Bonificaciones
+Boton=0
+NombreDesplegar=Porcentaje De Bonificaciones
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0341COMSPorcentajeBonificacionFrm
+Activo=S
+Visible=S
+
+EnBarraAcciones=S
+[Acciones.Ruta]
+Nombre=Ruta
+Boton=0
+NombreDesplegar=Configurar Ruta Del Reporte
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0341COMSRutaDelReporteFrm
+Activo=S
+Visible=S
+EnBarraAcciones=S

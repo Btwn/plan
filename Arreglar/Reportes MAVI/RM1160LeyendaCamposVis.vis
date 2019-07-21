@@ -1,0 +1,26 @@
+[Vista]
+Icono=0
+Clave=Rm1160LeyendaCamposVis
+Nombre=Leyenda Campos
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Identificador<BR>Campos a Presentar
+SQL=SELECT X.a AS IDENTIFICADOR, X.b AS <T>CAMPOS A PRESENTAR<T><BR>FROM (VALUES(<T>*1<T> , <T>Apellido<T>),<BR><TAB>    (<T>*2<T> , <T>Cuenta<T>),<BR>            (<T>*3<T> , <T>Uen <T>) ,<BR><TAB>    (<T>*4<T> , <T>Saldo<T>) ,<BR><TAB>    (<T>*5<T> , <T>Fecha de Vencimiento<T>))AS X (a,b)
+[Identificador]
+Clave=Identificador
+Nombre=Identificador
+Visible=S
+TamanoValidacion=10
+ClaveBDE=IDENTIFICADOR
+Tamano=2
+[Campos a Presentar]
+Clave=Campos a Presentar
+Nombre=Campos a Presentar
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=CAMPOS A PRESENTAR

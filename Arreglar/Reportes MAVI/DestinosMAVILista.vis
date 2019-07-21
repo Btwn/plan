@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DestinosMAVILista
+Nombre=DestinosMAVILista
+Modulos=(Todos)
+Singular=DestinosMAVILista
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Delegacion
+CamposBusquedaRapida=Delegacion
+LlavePrimaria=Delegacion
+SQL=SELECT<BR>  Delegacion <BR>FROM<BR>  CodigoPostal<BR>GROUP BY Delegacion
+[Delegacion]
+Clave=Delegacion
+Visible=S
+ClaveBDE=Delegacion
+Ligado=S
+LigaTabla=CodigoPostal
+LigaCampo=Delegacion

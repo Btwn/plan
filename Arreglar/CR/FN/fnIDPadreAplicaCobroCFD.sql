@@ -1,0 +1,31 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION dbo.fnIDPadreAplicaCobroCFD (@ID int)
+RETURNS int
+AS BEGIN
+DECLARE
+@Aplica varchar(20),
+@AplicaID varchar(20),
+@IDMovAplica int,
+@Padre varchar(45),
+@IDPadre int,
+@MovP varchar(20),
+@MovIDP varchar(20) ,
+@Empresa char(5)
+SELECT TOP 1 @Aplica=Aplica, @AplicaID=AplicaID FROM CxCD WITH (NOLOCK) WHERE ID=@ID
+SELECT @IDMovAplica=ID,@Empresa = Empresa FROM Cxc WITH (NOLOCK) WHERE Mov=@Aplica AND MovID=@AplicaID
+IF ((SELECT Concepto FROM Cxc WITH (NOLOCK) WHERE ID=@IDMovAplica) IN ('MORATORIOS MAYOREO', 'MORATORIOS MENUDEO') )
+SELECT @Padre=REPLACE(Valor, '_', ' '),@MovP =SUBSTRING(Valor,1,CHARINDEX('_',Valor) -1),
+@MovIDP=SUBSTRING(Valor,CHARINDEX('_',Valor)+1,255) FROM MovCampoExtra WITH (NOLOCK) WHERE ID=@IDMovAplica AND Modulo='CXC' AND CampoExtra IN ('NC_FACTURA', 'NCM_FACTURA', 'NCV_FACTURA')
+ELSE
+SELECT @Padre=PadreMavi + ' ' + PadreIDMavi,@MovP = PadreMavi,@MovIDP = PadreIDMavi FROM Cxc WITH (NOLOCK) WHERE ID=@IDMovAplica
+SELECT @IDPadre=ID FROM Cxc WITH (NOLOCK) WHERE  MovID = @MovIDP AND Mov = @MovP AND Empresa = @Empresa
+RETURN (@IDPadre)
+END
+

@@ -1,0 +1,38 @@
+[Vista]
+Icono=0
+Clave=ExplorarLineasportipoycanalventavis
+Nombre=Lineas por Tipo y Canal VTA
+Modulos=(Todos)
+Singular=Lineas por Tipo y Canal VTA
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea<BR>ArtTipo<BR>CanalVenta<BR>Cadena
+SQL=SELECT AL.Linea,ALD.ArtTipo,ALD.CanalVenta,CVM.Cadena<BR>FROM ArtLinea AL <BR>INNER JOIN ArtLineaD ALD ON AL.ID = ALD.ID<BR>INNER JOIN VentascanalMavi CVM ON ALD.CanalVenta= CVM.ID<BR>WHERE 1=1<BR>{Si(Condatos(Mavi.DM0175BLineaFiltro),<T> And AL.Linea= <T>+COMILLAS(Mavi.DM0175BLineaFiltro),<T><T>)}<BR>{Si(Condatos(Mavi.DM0175BArtTipoFiltro),<T> And ALD.ArtTipo= <T>+COMILLAS(Mavi.DM0175BArtTipoFiltro),<T><T>)}<BR>{Si(Condatos(Mavi.DM0175BCanalVentaFiltro),<T> And ALD.CanalVenta= <T>+Mavi.DM0175BCanalVentaFiltro,<T><T>)}<BR>ORDER BY ALD.ArtTipo,AL.Linea
+[Linea]
+Clave=Linea
+Nombre=Línea
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Linea
+[ArtTipo]
+Clave=ArtTipo
+Nombre=Tipo Artículo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=ArtTipo
+[CanalVenta]
+Clave=CanalVenta
+Nombre=Canal Venta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=CanalVenta
+[Cadena]
+Clave=Cadena
+Nombre=Descripción
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Cadena

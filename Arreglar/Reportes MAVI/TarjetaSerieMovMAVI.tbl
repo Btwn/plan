@@ -1,0 +1,97 @@
+
+[Tabla]
+Icono=0
+Clave=TarjetaSerieMovMAVI
+Nombre=TarjetaSerieMovMAVI
+Archivo=TarjetaSerieMovMAVI
+Modulos=(Todos)
+Singular=TarjetaSerieMovMAVI
+TipoTabla=General
+
+ListaCampos=Empresa<BR>Modulo<BR>ID<BR>Serie<BR>Importe<BR>Sucursal<BR>Estatus
+LlavePrimaria=Empresa<BR>Modulo<BR>ID<BR>Serie
+ControlEmpresas=S
+CampoEmpresa=Empresa
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=SELECT<BR>  Empresa,<BR>  Modulo,<BR>  ID,<BR>  Serie,<BR>  Importe,<BR>  Sucursal,<BR>  Estatus<BR><BR>  FROM TarjetaSerieMovMavi
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+Tamano=5
+
+ValorPorOmision=Empresa
+TipoDatos=Texto
+[Modulo]
+Clave=Modulo
+Nombre=Modulo
+Visible=S
+TamanoValidacion=5
+Tamano=5
+
+ValorPorOmision=<T>VTAS<T>
+TipoDatos=Texto
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorPorOmision=Info.ID
+[Serie]
+Clave=Serie
+Nombre=No. Monedero
+Visible=S
+TamanoValidacion=20
+Tamano=20
+
+Mayusculas=S
+AyudaForma=TarjetaMonederoMAVIACTIVA
+AyudaVista=TarjetaMonederoMAVI
+AyudaCampo=TarjetaMonederoMAVI.Serie
+ConRefrescar=S
+RefrescarTodo=S
+CondicionEdicion=SQL(<T>SELECT COUNT(1)<BR>    FROM dbo.Venta V WITH(NOLOCK)<BR>    JOIN dbo.VentasCanalMAVI VC WITH(NOLOCK) ON VC.ID=V.EnviarA<BR>    JOIN dbo.TablaRangoStD MV WITH(NOLOCK) ON Mv.TablaRangoSt=<T>+Comillas(<T>MODALIDAD MONEDERO VIRTUAL<T>)+<T><BR>    AND (CASE ISNULL(MV.NumeroD,0) WHEN 0 THEN V.UEN ELSE MV.NumeroD END) = V.UEN<BR>    AND (CASE WHEN (ISNULL(MV.NumeroA,0)< 1) THEN V.Sucursal ELSE MV.NumeroA END) = V.Sucursal<BR>    AND (CASE ISNULL(MV.Nombre,<T>+Comillas(<T><T>)+<T>) WHEN <T>+Comillas(<T><T>)+<T> THEN VC.Categoria ELSE MV.Nombre END) = VC.Categoria<BR>    AND V.ID=:nId<T>,Info.ID)=0
+ValorPorOmision=SQL(<T>SELECT C.SerieMonedero<BR>FROM dbo.Venta V WITH(NOLOCK)<BR>JOIN dbo.Cte C WITH(NOLOCK) ON C.Cliente=V.Cliente<BR>JOIN dbo.VentasCanalMAVI VC WITH(NOLOCK) ON VC.ID=V.EnviarA<BR>JOIN dbo.TablaRangoStD MV WITH(NOLOCK) ON Mv.TablaRangoSt=<T>+Comillas(<T>MODALIDAD MONEDERO VIRTUAL<T>)+<T><BR>    AND (CASE ISNULL(MV.NumeroD,0) WHEN 0 THEN V.UEN ELSE MV.NumeroD END) = V.UEN<BR>    AND (CASE WHEN (ISNULL(MV.NumeroA,0) <1) THEN V.Sucursal ELSE MV.NumeroA END) = V.Sucursal<BR>    AND (CASE ISNULL(MV.Nombre,<T>+Comillas(<T><T>)+<T>) WHEN <T>+Comillas(<T><T>)+<T> THEN VC.Categoria ELSE MV.Nombre END) = VC.Categoria<BR>    AND V.ID=:nId<T>,Info.ID)
+Contrasena=S
+ValorPorOmision002=<CONTINUA> Entonces<BR>       Asigna(Info.Cliente,SQL(<T>SELECT Cliente FROM Venta WITH(NOLOCK) WHERE ID = :nId<T>,Info.ID)) //ya no pregunto si tiene virtual lo se desde la forma de venta<BR>       SQL(<T>SELECT Serie FROM TarjetaMonederoMAVI WITH(NOLOCK) WHERE estatus = :tEst AND TipoMonedero = :tTip AND Cliente = :tCte <T>,<T>ACTIVO<T>,<T>VIRTUAL<T>,Info.Cliente)<BR>    Sino<BR>      SQL(<T>SELECT C.SerieMonedero<BR>        FROM dbo.Venta V WITH(NOLOCK)<BR>        JOIN dbo.Cte C WITH(NOLOCK) ON C.Cliente=V.Cliente<BR>        JOIN dbo.VentasCanalMAVI VC WITH(NOLOCK) ON VC.ID=V.EnviarA<BR>        JOIN dbo.TablaRangoStD MV WITH(NOLOCK) ON Mv.TablaRangoSt=<T>+Comillas(<T>MODALIDAD MONEDERO VIRTUAL<T>)+<T><BR>        AND (CASE ISNULL(MV.NumeroD,0) WHEN 0 THEN V.UEN ELSE MV.NumeroD END) = V.UEN<BR>    <CONTINUA>
+ValorPorOmision003=<CONTINUA>    AND (CASE WHEN (ISNULL(MV.NumeroA,0) <1) THEN V.Sucursal ELSE MV.NumeroA END) = V.Sucursal<BR>        AND (CASE ISNULL(MV.Nombre,<T>+Comillas(<T><T>)+<T>) WHEN <T>+Comillas(<T><T>)+<T> THEN VC.Categoria ELSE MV.Nombre END) = VC.Categoria<BR>        AND V.ID=:nId<T>,Info.ID)<BR>    Fin<BR><BR><BR>Fin
+CondicionEdicion002=<CONTINUA>H(NOLOCK) WHERE ID = :nId<T>,Info.ID)) //ya no pregunto si tiene virtual lo se desde la forma de venta<BR>       SQL(<T>SELECT COUNT(*) FROM TarjetaMonederoMAVI WITH(NOLOCK) WHERE estatus = :tEst AND TipoMonedero = :tTip AND Cliente = :tCte <T>,<T>ACTIVO<T>,<T>VIRTUAL<T>,Info.Cliente) = 0<BR>    Sino<BR>         SQL(<T>SELECT COUNT(1)<BR>    FROM dbo.Venta V WITH(NOLOCK)<BR>    JOIN dbo.VentasCanalMAVI VC WITH(NOLOCK) ON VC.ID=V.EnviarA<BR>    JOIN dbo.TablaRangoStD MV WITH(NOLOCK) ON Mv.TablaRangoSt=<T>+Comillas(<T>MODALIDAD MONEDERO VIRTUAL<T>)+<T><BR>    AND (CASE ISNULL(MV.NumeroD,0) WHEN 0 THEN V.UEN ELSE MV.NumeroD END) = V.UEN<BR>    AND (CASE WHEN (ISNULL(MV.NumeroA,0)< 1) THEN V.Sucursal ELSE MV.NumeroA END) = V.Sucursal<BR>    AND (CASE ISNULL(MV.Nombre,<T>+Comillas(<T><T>)+<T>) <CONTINUA>
+CondicionEdicion003=<CONTINUA>WHEN <T>+Comillas(<T><T>)+<T> THEN VC.Categoria ELSE MV.Nombre END) = VC.Categoria<BR>    AND V.ID=:nId<T>,Info.ID)=0<BR>    Fin<BR><BR><BR>Fin
+ValorRefrescar=Si<BR>      Mavi.TipoMoneDima = <T>VIRTUAL<T><BR>Entonces<BR>       Asigna(Info.Cliente,SQL(<T>SELECT Cliente FROM Venta WITH(NOLOCK) WHERE ID = :nId<T>,Info.ID)) //ya no pregunto si tiene virtual lo se desde la forma de venta<BR>       SQL(<T>SELECT Serie FROM TarjetaMonederoMAVI WITH(NOLOCK) WHERE estatus = :tEst AND TipoMonedero = :tTip AND Cliente = :tCte <T>,<T>ACTIVO<T>,<T>VIRTUAL<T>,Info.Cliente)<BR><BR>Fin
+TipoDatos=Texto
+[Importe]
+Clave=Importe
+Nombre=Importe
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+
+Monetario=S
+ValorMinimo=1
+AyudaEnCaptura=Calculadora
+;ValorMaximo=TarjetaSerieMovMavi:Saldo
+ValorMaximo=Si<BR>  TarjetaSerieMovMavi:Saldo > Info.Importe<BR>Entonces<BR>  Info.Importe<BR>Sino<BR>  TarjetaSerieMovMavi:Saldo<BR>Fin
+CondicionEdicion=SQL(<T>SELECT COUNT(1)<BR>FROM dbo.Venta V WITH(NOLOCK)<BR>JOIN dbo.VentasCanalMAVI VC WITH(NOLOCK) ON VC.ID=V.EnviarA<BR>JOIN dbo.TablaRangoStD MV WITH(NOLOCK) ON Mv.TablaRangoSt=<T>+Comillas(<T>MODALIDAD MONEDERO VIRTUAL<T>)+<T><BR>    AND (CASE ISNULL(MV.NumeroD,0) WHEN 0 THEN V.UEN ELSE MV.NumeroD END) = V.UEN<BR>    AND (CASE ISNULL(MV.NumeroA,0) WHEN 0 THEN V.Sucursal ELSE MV.NumeroA END) = V.Sucursal<BR>    AND (CASE ISNULL(MV.Nombre,<T>+Comillas(<T><T>)+<T>) WHEN <T>+Comillas(<T><T>)+<T> THEN VC.Categoria ELSE MV.Nombre END) = VC.Categoria<BR>    AND V.ID=:nId<T>,Info.ID)=0
+ValorPorOmision=SQL(<T>SELECT CASE WHEN <T>+NumEnTexto(Info.Importe)+<T> < SUM(ISNULL(S.Saldo,0.0)) THEN <T>+NumEnTexto(Info.Importe)+<T> ELSE SUM(ISNULL(S.Saldo,0.0)) END<BR>FROM dbo.Venta V WITH(NOLOCK)<BR>JOIN dbo.Cte C WITH(NOLOCK) ON C.Cliente=V.Cliente<BR>    AND V.RedimePtos = 1   <BR>JOIN dbo.VentasCanalMAVI VC WITH(NOLOCK) ON VC.ID=V.EnviarA<BR>JOIN dbo.TablaRangoStD MV WITH(NOLOCK) ON Mv.TablaRangoSt=<T>+Comillas(<T>MODALIDAD MONEDERO VIRTUAL<T>)+<T><BR>    AND (CASE ISNULL(MV.NumeroD,0) WHEN 0 THEN V.UEN ELSE MV.NumeroD END) = V.UEN<BR>    AND (CASE ISNULL(MV.NumeroA,0) WHEN 0 THEN V.Sucursal ELSE MV.NumeroA END) = V.Sucursal<BR>    AND (CASE ISNULL(MV.Nombre,<T>+Comillas(<T><T>)+<T>) WHEN <T>+Comillas(<T><T>)+<T> THEN VC.Categoria ELSE MV.Nombre END) = VC.Categoria<BR>JOIN dbo.SaldoP S WITH(NO<CONTINUA>
+ValorPorOmision002=<CONTINUA>LOCK) ON S.Empresa=V.Empresa <BR>    AND S.Rama=<T>+Comillas(<T>MONEL<T>)+<T><BR>    AND S.Moneda=V.Moneda<BR>    AND S.Grupo=<T>+Comillas(<T>ME<T>)+<T><BR>    AND S.Cuenta=C.SerieMonedero<BR>    AND S.UEN=V.UEN<BR>    AND V.ID=:nId<BR>WHERE NOT EXISTS(<BR>    SELECT <BR>        TablaRangoSt<BR>    FROM dbo.TablaRangoStD MNR WITH(NOLOCK) <BR>    WHERE MNR.TablaRangoSt = <T>+Comillas(<T>MOVIMIENTOS NO REDENCION MONEDERO<T>)+<T><BR>        AND MNR.NumeroD = V.UEN<BR>        AND MNR.Nombre = dbo.fnMovFinalSegunFamilia_MAVI(V.ID)<BR>)<T>,Info.ID)
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorPorOmision=Sucursal
+
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ValorPorOmision=<T>PENDIENTE<T>

@@ -1,0 +1,17 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE xpEstadoMonedero
+@Cuenta		Varchar(20),
+@Empresa	Varchar(5)
+AS BEGIN
+SELECT Mov, MovID, Modulo, Moneda, Empresa, Sucursal, Ejercicio, Periodo, Cargo, Abono, Cuenta, Fecha   FROM AuxiliarPMon
+WHERE Cuenta = @Cuenta AND Empresa = @Empresa
+RETURN
+END
+

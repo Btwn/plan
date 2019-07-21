@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM0422CredHojasSuperLaboralFrmVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=TIPO
+SQL=SELECT TIPO<BR>FROM MAVICTECTOTIPO <BR>WHERE <BR>TIPO LIKE (<T>%LABORAL%<T>)
+[TIPO]
+Clave=TIPO
+Nombre=TIPO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=TIPO

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0224FiltroSucursalVis
+Nombre=DM0224 Filtro Sucursal
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Almacen
+CamposBusquedaRapida=Almacen
+SQL=SELECT Almacen FROM  Alm With(Nolock)<BR>WHERE  LEFT(Almacen,1)=<T>V<T> AND Estatus = <T>ALTA<T><BR>ORDER BY Almacen ASC
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Almacen

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MovCxP
+Nombre=MovimientosCxP
+Modulos=(Todos)
+Singular=MovimientoCxP
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Mov
+SQL=SELECT <BR>  Mov<BR>FROM<BR>  MovTipo<BR>WHERE<BR>  Modulo=<T>CXP<T>
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Mov

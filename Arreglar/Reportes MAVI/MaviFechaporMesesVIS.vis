@@ -1,0 +1,26 @@
+[Vista]
+Icono=0
+Clave=MaviFechaporMesesVIS
+Nombre=Fecha en Meses
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Num<BR>Mes
+SQL=Select * From(<BR>Select Num=1,Mes=<T>Enero<T><BR>Union<BR>Select Num=2,Mes=<T>Febrero<T><BR>Union<BR>Select Num=3,Mes=<T>Marzo<T><BR>Union<BR>Select Num=4,<T>Abril<T><BR>Union<BR>Select Num=5,Mes=<T>Mayo<T><BR>Union<BR>Select Num=6,Mes=<T>Junio<T><BR>Union<BR>Select Num=7,Mes=<T>Julio<T><BR>Union<BR>Select Num=8,Mes=<T>Agosto<T><BR>Union<BR>Select Num=9,Mes=<T>Septiembre<T><BR>Union<BR>Select Num=10,Mes=<T>Octubre<T><BR>Union<BR>Select Num=11,Mes=<T>Noviembre<T><BR>Union<BR>Select Num=12,Mes=<T>Diciembre<T>)X<BR>Order By X.Num
+[Num]
+Clave=Num
+Nombre=Numero
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Num
+[Mes]
+Clave=Mes
+Nombre=Mes
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Mes

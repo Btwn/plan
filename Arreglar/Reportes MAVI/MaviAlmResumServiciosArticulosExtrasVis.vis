@@ -1,0 +1,50 @@
+[Vista]
+Icono=0
+Clave=MaviAlmResumServiciosArticulosExtrasVis
+Nombre=Resumen de Articulos Extras en el Embarque en comparacion con la Factura
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=ArticuloScanner<BR>Cuenta<BR>Facturados<BR>Scanner
+SQL=<TAB><TAB><TAB>Select Scanner.ArticuloScanner,Scanner.Cuenta,<BR>            Facturados=case When (Facturados.Facturados) > 0 Then (Facturados.Facturados)<BR>                       Else 0<BR>                       End,<BR>            Scanner.Scanner<BR><TAB><TAB><TAB>from (<BR><BR><TAB><TAB><TAB>Select Articulo as ArticuloScanner, CB.Cuenta, count(Articulo) as Scanner<BR>            from MAVIDevEmbarqueFisicoAlmacen  /*---*/<BR>            Inner join CB on MAVIDevEmbarqueFisicoAlmacen  /*---*/.Articulo=CB.Codigo<BR>            {si(condatos(Mavi.AlmacenIdEmbarque),<T>Where IDEmbarque=<T>+Mavi.AlmacenIdEmbarque,<T>Where IDEmbarque is null<T>)}<BR><TAB><TAB><TAB>Group By Articulo, Cb.Cuenta<BR><BR><TAB><TAB>    )as Scanner<BR>/*Left*/<TAB>Left Join <BR><TAB><TAB><TAB>( <BR><TAB><TAB><TAB>Sele<CONTINUA>
+SQL002=<CONTINUA>ct <BR>        /*+*/ Facturados.Codigo,<TAB><TAB>  <BR>             -- Facturados.Articulo,<BR><TAB><TAB><TAB>  Facturados.Facturados<BR><TAB><TAB><TAB>  from <BR><TAB><TAB><TAB>  (<BR><TAB><TAB><TAB>   Select <BR>        /*+*/  Codigo=CB.Codigo,<BR><TAB><TAB><TAB>--  Articulo=VD.Articulo,<BR><TAB><TAB><TAB>   Facturados=sum(VD.Cantidad)<BR>               from Embarque E<BR>               Inner Join EmbarqueD ED on E.ID=ED.ID<BR>               Inner Join EmbarqueMov EM on ED.EmbarqueMov=EM.ID<BR>                       {si(Info.Mov=<T>Embarque<T>,<T>Inner Join Venta V on V.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque<T>,<T>Inner Join VentaD VD on VD.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Sucursales<T>,<T>Inner Join Inv <CONTINUA>
+SQL003=<CONTINUA>V on V.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Sucursales<T>,<T>Inner Join InvD VD on VD.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Magisterio<T>,<T>Inner Join Venta V on V.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Magisterio<T>,<T>Inner Join VentaD VD on VD.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Mayoreo<T>,<T>Inner Join Venta V on V.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Mayoreo<T>,<T>Inner Join VentaD VD on VD.ID=EM.ModuloID<T>,<T><T>)}<BR><BR>                    /*+*/ Inner Join CB on VD.Articulo=CB.cuenta<BR>                          {si(condatos(Mavi.AlmacenIdEmbarque),<T>Where E.ID=<T>+Mavi.AlmacenId<CONTINUA>
+SQL004=<CONTINUA>Embarque,<T>Where E.ID is null<T>)}<BR>                           And EM.Mov <> <T>Orden Traspaso<T>      <BR>                          Group By VD.Articulo/**/,CB.Codigo<BR>UNION<BR><TAB><TAB><TAB>   Select <BR>        /*+*/  Codigo=CB.Codigo,<BR><TAB><TAB><TAB>--  Articulo=VD.Articulo,<BR><TAB><TAB><TAB>   Facturados=sum(VD.Cantidad)<BR>               from Embarque E<BR>               Inner Join EmbarqueD ED on E.ID=ED.ID<BR>               Inner Join EmbarqueMov EM on ED.EmbarqueMov=EM.ID<BR>               {si(Info.Mov=<T>Embarque Magisterio<T>,<T>Inner Join Inv V on V.ID=EM.ModuloID<T>,<T>Inner Join Inv V on V.ID=EM.ModuloID<T>)}<BR>               {si(Info.Mov=<T>Embarque Magisterio<T>,<T>Inner Join InvD VD on VD.ID=EM.ModuloID<T>,<T>Inner Join InvD VD on VD.ID=EM.ModuloID<T>)}<BR>     <CONTINUA>
+SQL005=<CONTINUA>               /*+*/ Inner Join CB on VD.Articulo=CB.cuenta<BR>                          {si(condatos(Mavi.AlmacenIdEmbarque),<T>Where E.ID=<T>+Mavi.AlmacenIdEmbarque,<T>Where E.ID is null<T>)}<BR>                           And EM.Mov = <T>Orden Traspaso<T>      <BR>                          Group By VD.Articulo/**/,CB.Codigo<BR><BR><TAB><TAB><TAB>   ) as Facturados<BR><BR><TAB><TAB><TAB>) as Facturados on Scanner.ArticuloScanner=Facturados./*Articulo*/Codigo<BR><BR><BR>Except<BR><BR><TAB><TAB><TAB><TAB><TAB>Select <BR><TAB><TAB><TAB><TAB>/*+*/ Facturados.Codigo,<TAB><TAB>  <BR><TAB><TAB><TAB><TAB><TAB>  Facturados.Articulo,<BR><TAB><TAB><TAB><TAB><TAB>  Facturados.Facturados,<BR>                      Scanner.Scanner<BR><TAB><TAB><TAB><TAB><TAB>  from <BR><TAB><TAB><TAB><TAB><TAB>  (<BR><T<CONTINUA>
+SQL006=<CONTINUA>AB><TAB><TAB><TAB><TAB>   Select <BR><TAB><TAB><TAB><TAB>/*+*/  Codigo=CB.Codigo,<BR><TAB><TAB><TAB><TAB><TAB>  Articulo=VD.Articulo,<BR><TAB><TAB><TAB><TAB><TAB>   Facturados=sum(VD.Cantidad)<BR>                       from Embarque E<BR>                       Inner Join EmbarqueD ED on E.ID=ED.ID<BR>                       Inner Join EmbarqueMov EM on ED.EmbarqueMov=EM.ID<BR>                       {si(Info.Mov=<T>Embarque<T>,<T>Inner Join Venta V on V.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque<T>,<T>Inner Join VentaD VD on VD.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Sucursales<T>,<T>Inner Join Inv V on V.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Sucursales<T>,<T>Inner Join InvD VD on<CONTINUA>
+SQL007=<CONTINUA> VD.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Magisterio<T>,<T>Inner Join Venta V on V.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Magisterio<T>,<T>Inner Join VentaD VD on VD.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Mayoreo<T>,<T>Inner Join Venta V on V.ID=EM.ModuloID<T>,<T><T>)}<BR>                       {si(Info.Mov=<T>Embarque Mayoreo<T>,<T>Inner Join VentaD VD on VD.ID=EM.ModuloID<T>,<T><T>)}<BR><BR>                    /*+*/ Inner Join CB on VD.Articulo=CB.cuenta<BR>                          Inner Join Art on VD.Articulo=Art.Articulo and Art.Tipo<><T>Servicio<T><BR>                          {si(condatos(Mavi.AlmacenIdEmbarque),<T>Where E.ID=<T>+Mavi.AlmacenIdEmbarque,<T>Where E.ID<CONTINUA>
+SQL008=<CONTINUA> is null<T>)}<BR>                          And EM.Mov <> <T>Orden Traspaso<T>      <BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>  Group By VD.Articulo/**/,CB.Codigo<BR>UNION<BR><TAB><TAB><TAB><TAB><TAB>   Select <BR><TAB><TAB><TAB><TAB>/*+*/  Codigo=CB.Codigo,<BR><TAB><TAB><TAB><TAB><TAB>  Articulo=VD.Articulo,<BR><TAB><TAB><TAB><TAB><TAB>   Facturados=sum(VD.Cantidad)<BR>                       from Embarque E<BR>                       Inner Join EmbarqueD ED on E.ID=ED.ID<BR>                       Inner Join EmbarqueMov EM on ED.EmbarqueMov=EM.ID<BR>               {si(Info.Mov=<T>Embarque Magisterio<T>,<T>Inner Join Inv V on V.ID=EM.ModuloID<T>,<T>Inner Join Inv V on V.ID=EM.ModuloID<T>)}<BR>               {si(Info.Mov=<T>Embarque Magisterio<T>,<T>Inner Join InvD VD on VD.ID=EM.ModuloID<T><CONTINUA>
+SQL009=<CONTINUA>,<T>Inner Join InvD VD on VD.ID=EM.ModuloID<T>)}<BR>                    /*+*/ Inner Join CB on VD.Articulo=CB.cuenta<BR>                          Inner Join Art on VD.Articulo=Art.Articulo and Art.Tipo<><T>Servicio<T><BR>                          {si(condatos(Mavi.AlmacenIdEmbarque),<T>Where E.ID=<T>+Mavi.AlmacenIdEmbarque,<T>Where E.ID is null<T>)}<BR>                          And EM.Mov = <T>Orden Traspaso<T>      <BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>  Group By VD.Articulo/**/,CB.Codigo<BR><BR><TAB><TAB><TAB><TAB><TAB>   ) as Facturados<BR><BR><TAB><TAB><TAB><TAB><TAB>--) as Facturados --on Scanner.ArticuloScanner=Facturados./*Articulo*/Codigo<BR><TAB><TAB><TAB><TAB><TAB>Left Join <BR><TAB><TAB><TAB><TAB><TAB>(<BR><TAB><TAB><TAB><TAB><TAB><TAB>Select Articulo as ArticuloScanner, C<CONTINUA>
+SQL010=<CONTINUA>B.Cuenta, count(Articulo) as Scanner<BR><TAB><TAB><TAB><TAB><TAB><TAB>from MAVIDevEmbarqueFisicoAlmacen  /*---*/<BR><TAB><TAB><TAB><TAB><TAB><TAB>Inner join CB on MAVIDevEmbarqueFisicoAlmacen  /*---*/.Articulo=CB.Codigo<BR>            {si(condatos(Mavi.AlmacenIdEmbarque),<T>Where IDEmbarque=<T>+Mavi.AlmacenIdEmbarque,<T>Where IDEmbarque is null<T>)}<BR><TAB><TAB><TAB><TAB><TAB><TAB>Group By Articulo, Cb.Cuenta<BR><TAB><TAB><TAB><TAB><TAB>)as Scanner on Facturados./*Articulo*/Codigo=Scanner.ArticuloScanner
+[ArticuloScanner]
+Clave=ArticuloScanner
+Nombre=Codigo
+Visible=S
+TamanoValidacion=30
+Tamano=30
+ClaveBDE=ArticuloScanner
+[Cuenta]
+Clave=Cuenta
+Nombre=Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Cuenta
+[Facturados]
+Clave=Facturados
+Nombre=Facturados
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Facturados
+[Scanner]
+Clave=Scanner
+Nombre=Scanner
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Scanner

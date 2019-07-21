@@ -1,0 +1,46 @@
+[Reporte]
+Clave=RM0291BMaviVtasPsoRelVtasxTdaPrincipalRep
+Icono=0
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+VistaEspecial=S
+Submenu=Vtas Generales Mavi
+ConFormaPrevia=S
+Nombre=RM0291-B Relación de Ventas Total
+FormaPrevia=RM0291BMaviRelVtasxTdaFrm
+[Vista]
+Icono=0
+Clave=RM0291BMaviVtasPsoRelVtasxTdaPrincipalRep
+VistaIndependiente=S
+ListaCampos=Uno
+SQL=Select Uno = 1
+[Uno]
+Clave=Uno
+Nombre=Uno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Uno

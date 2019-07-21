@@ -1,0 +1,46 @@
+[Reporte]
+Clave=RM0422CredHojaSuperClienteAvalUnifPrincipalRep
+Nombre=RM0422A Hoja de Supervisión Cliente - Aval
+Icono=533
+VistaEspecial=S
+Tipo=Reporte
+Submenu=Supervisiones Mavi
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=RM0422CredHojaSuperClienteAvalUnifFrm
+BarraHerramientas=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+PosicionInicialAlturaCliente=423
+PosicionInicialAncho=630
+[Vista]
+Icono=0
+Clave=RM0422CredHojaSuperClienteAvalUnifPrincipalRep
+UsoCapturas=S
+UsoReportes=S
+[Formato]
+VentanaIzquierda=360
+VentanaArriba=174
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80

@@ -1,0 +1,70 @@
+[Vista]
+Icono=0
+Clave=DM0194FechasExigiblesVis
+Modulos=(Todos)
+ListaTablas=DM0194FechasExigibles
+TablaPrincipal=DM0194FechasExigibles
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=DM0194FechasExigibles.ID<BR>DM0194FechasExigibles.Mes<BR>DM0194FechasExigibles.FechaI<BR>DM0194FechasExigibles.FechaF<BR>DM0194FechasExigibles.Quincena
+Nombre=Fecha Exigibles
+CamposBusquedaRapida=DM0194FechasExigibles.ID
+SQL=SELECT<BR>  DM0194FechasExigibles.ID,<BR>  DM0194FechasExigibles.Mes,<BR>  DM0194FechasExigibles.FechaI,<BR>  DM0194FechasExigibles.FechaF,<BR>  DM0194FechasExigibles.Quincena<BR><BR>FROM<BR>  DM0194FechasExigibles
+[DM0194FechasExigibles.ID]
+Clave=DM0194FechasExigibles.ID
+LigaTabla=DM0194FechasExigibles
+LigaCampo=ID
+TipoDatos=Numérico
+ClaveBDE=ID
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Canal Vtas
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+[DM0194FechasExigibles.FechaI]
+Clave=DM0194FechasExigibles.FechaI
+LigaTabla=DM0194FechasExigibles
+LigaCampo=FechaI
+TipoDatos=FechaHora
+ClaveBDE=FechaI
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=FechaInicio
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+[DM0194FechasExigibles.FechaF]
+Clave=DM0194FechasExigibles.FechaF
+LigaTabla=DM0194FechasExigibles
+LigaCampo=FechaF
+TipoDatos=FechaHora
+ClaveBDE=FechaF
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=FechaFinal
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+[DM0194FechasExigibles.Mes]
+Clave=DM0194FechasExigibles.Mes
+LigaTabla=DM0194FechasExigibles
+LigaCampo=Mes
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Mes
+[DM0194FechasExigibles.Quincena]
+Clave=DM0194FechasExigibles.Quincena
+Nombre=Quincena
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0194FechasExigibles
+LigaCampo=Quincena
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Quincena

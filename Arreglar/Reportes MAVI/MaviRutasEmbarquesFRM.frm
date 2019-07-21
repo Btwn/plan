@@ -1,0 +1,124 @@
+[Forma]
+Clave=MaviRutasEmbarquesFRM
+Nombre=Rutas de Embarques
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Rutas
+CarpetaPrincipal=Rutas
+PosicionInicialIzquierda=484
+PosicionInicialArriba=332
+PosicionInicialAlturaCliente=391
+PosicionInicialAncho=421
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Sel<BR>Cerrar
+[Rutas]
+Estilo=Iconos
+Clave=Rutas
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=MaviRutasEmbarquesVIS
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosSubTitulo=Ruta
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionPorLlave=S
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Zona
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+CarpetaVisible=S
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaEnLinea=S
+MenuLocal=S
+IconosNombre=Ruta
+ListaAcciones=SelAl<BR>QuitAL
+[Rutas.Zona]
+Carpeta=Rutas
+Clave=Zona
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=30
+ColorFondo=Blanco
+ColorFuente=Negro
+[Rutas.Columnas]
+0=146
+1=243
+[Acciones.Sel]
+Nombre=Sel
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=<T>Seleccionar<T>
+Multiple=S
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=Sel<BR>reg<BR>Exe
+[Acciones.Sel.Sel]
+Nombre=Sel
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Sel.reg]
+Nombre=reg
+Boton=0
+TipoAccion=expresion
+Expresion=RegistrarSeleccion(<T>Rutas<T>)
+Activo=S
+Visible=S
+[Acciones.Sel.Exe]
+Nombre=Exe
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Expresion=SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+Activo=S
+Visible=S
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=5
+NombreEnBoton=S
+NombreDesplegar=<T>Cerrar<T>
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.SelAl]
+Nombre=SelAl
+Boton=0
+NombreDesplegar=<T>&Seleccionar Todo<T>
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.QuitAL]
+Nombre=QuitAL
+Boton=0
+NombreDesplegar=<T>&Quitar Selecion<T>
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S

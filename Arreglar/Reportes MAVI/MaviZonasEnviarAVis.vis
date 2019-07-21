@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviZonasEnviarAVis
+Nombre=Zonas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ZONA
+SQL=SELECT DISTINCT(ZONA) FROM CteEnviarA<BR>WHERE LEN(ZONA)>0<BR>AND ZONA IS NOT NULL<BR>ORDER BY ZONA
+[ZONA]
+Clave=ZONA
+Nombre=ZONA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=ZONA

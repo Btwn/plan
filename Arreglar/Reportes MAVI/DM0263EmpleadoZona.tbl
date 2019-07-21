@@ -1,0 +1,27 @@
+[Tabla]
+Icono=0
+Clave=DM0263EmpleadoZona
+Archivo=DM0263EmpleadoZona
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Personal<BR>Zona
+LlavePrimaria=Zona
+SQL=SELECT<BR>  Zona,<BR>  Personal<BR><BR>FROM<BR>  DM0263EmpleadoZona
+[Personal]
+Clave=Personal
+Nombre=Personal
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+AlCambiar=Asigna(Temp.Numerico3,1)
+TipoDatos=Texto
+[Zona]
+Clave=Zona
+Nombre=Zona
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Alineacion=Izquierda
+Mayusculas=S
+AlCambiar=ASIGNA(Temp.Numerico3,1)<BR>SI<BR>    SQL(<T>select Count(ZONA) from DM0263EmpleadoZona Where Zona like <T>+Comillas(Zona)+<T> group by zona<T>)>0<BR>ENTONCES<BR>    INFORMACION(<T>Ya se ha asignado la zona a otra persona. Favor de rectificar antes de guardar.<T>)<BR>    Asigna(Zona,NULO)<BR>SINO<BR>    INFORMACION(<T>Seleccione el renglon modificado, y de click en Guardar<T>)<BR>FIN

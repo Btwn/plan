@@ -1,0 +1,265 @@
+;**** Ultima modificación:14-May-08
+;**** Modifico:Arly Rubio
+;**** Se modifico: Se agrego el campo CteEnviarA.Cadena
+
+;**** Se agreagó nuevos campos: CteEnviarA.Cadena ****
+[Venta.vis/Vista.ListaCampos]
+Venta.Monedero=Venta.AfectaComisionMavi
+Venta.AfectaComisionMavi=Venta.FacDesgloseIVA
+Venta.FacDesgloseIVA=Venta.IDEcommerce
+Venta.IDEcommerce=CteEnviarA.Cadena
+CteEnviarA.Cadena=Venta.OrigenSucursal
+Venta.OrigenSucursal=Venta.FormaCobro
+Venta.FormaCobro=Venta.NoCtaPago
+Venta.NoCtaPago=Venta.RedimePtos
+Venta.RedimePtos=Venta.MaviTipoVenta
+Venta.MaviTipoVenta=Mon.Moneda
+
+[Venta.vis/Vista.SQL]
+Venta.Monedero,=Venta.MaviTipoVenta,
+Venta.MaviTipoVenta,=Venta.AfectaComisionMavi,
+Venta.AfectaComisionMavi,=Venta.FacDesgloseIVA,
+Venta.FacDesgloseIVA,=Venta.IDEcommerce,
+Venta.IDEcommerce,=CteEnviarA.Cadena,
+CteEnviarA.Cadena,=Venta.OrigenSucursal,
+Venta.OrigenSucursal,=Venta.FormaCobro,
+Venta.FormaCobro,=Venta.NoCtaPago,
+Venta.NoCtaPago,=Venta.RedimePtos,
+Venta.RedimePtos,=Mon.Moneda,
+
+
+[Venta.vis/Venta.FormaCobro]
+Clave=Venta.FormaCobro
+LigaTabla=Venta
+LigaCampo=FormaCobro
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=FormaCobro
+
+[Venta.vis/Venta.NoCtaPago]
+Clave=Venta.NoCtaPago
+LigaTabla=Venta
+LigaCampo=NoCtaPago
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=25
+ClaveBDE=NoCtaPago
+
+;**** Nuevo campo agregado ****
+
+[Venta.vis/CteEnviarA.Cadena]
+Clave=CteEnviarA.Cadena
+Nombre=Cadena
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorRefrescar=SQL(<T>Select Cadena from VentasCanalMAVI where ID=:nClave<T>,ID)
+LigaTabla=CteEnviarA
+LigaCampo=Cadena
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Cadena
+
+
+
+;**** Nuevo campo agregado ARC 07-May-09 (MAVI) *****
+[Venta.vis/Venta.AfectaComisionMavi]
+Clave=Venta.AfectaComisionMavi
+Nombre=AfectaComisionMavi
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionEdicion=Venta.Mov = <T>Solicitud Mayoreo<T>
+ConMensageEmergente=S
+MensageEmergente=<T>Afectala comision al 50%<T>
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+ListaOpciones=1<BR>0
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+LigaTabla=Venta
+LigaCampo=AfectaComisionMavi
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=AfectaComisionMavi
+
+;**** PENDIENTEINTEGRACIONMOISES SE AGREGA NUEVO CAMPO DE VENTAS "ORIGENSUCURSAL" MOISES MAVI 15/JUNIO/2009
+[Venta.vis/Venta.OrigenSucursal]
+Clave=Venta.OrigenSucursal
+Nombre=Sucursal Origen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=Venta
+LigaCampo=OrigenSucursal
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=OrigenSucursal
+
+;****** Campo agregado para la Facturacion Electronica BVF
+[Venta.vis/Venta.FacDesgloseIVA]
+Clave=Venta.FacDesgloseIVA
+Nombre=FacDesgloseIVA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+LigaTabla=Venta
+LigaCampo=FacDesgloseIVA
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=FacDesgloseIVA
+
+; **** Integracion de campo RedimePtos para Monedero Electronico. JR 11-Oct-2012. ****
+[Venta.vis/Venta.RedimePtos]
+Clave=Venta.RedimePtos
+LigaTabla=Venta
+LigaCampo=RedimePtos
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=RedimePtos
+
+;Miguel Ramos 05/11/2014 modificacion CondicionDespliegue Cte.RFC y ListaRefrescarCondiciones en Venta.EnviarA y Venta.Cliente
+
+[Venta.Vis/Cte.RFC]
+Clave=Cte.RFC
+Tamano=15
+ClaveBDE=RFC
+TamanoValidacion=15
+CondicionDespliege=SQL(<T>Select ID From CteEnviarA Where Cliente=:tCte<T>,Venta.Cliente) = 11
+Nombre=RFC
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Incorrecto<T>
+Mayusculas=S
+ValidacionCondicion=SQL(<T>spRegistroOk :tCual, :tRegistro, :tEmpresa<T>, <T>RFC<T>, Cte.RFC, Empresa)
+Ligado=N
+
+[Venta.Vis/Venta.Cliente]
+Clave=Venta.Cliente
+Tamano=10
+ClaveBDE=Cliente
+TamanoValidacion=10
+Ligado=N
+Nombre=&Cliente
+Mayusculas=S
+CondicionEdicion=Vacio(Venta.AnexoID) y Vacio(Filtro.Cliente)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorPorOmision=Si(ConDatos(Filtro.Cliente), Filtro.Cliente, Usuario.DefCliente)
+AlCambiar=Asigna(Info.Cliente, Venta.Cliente)
+MascaraEdicion=Config.CteFormato
+ValorRefrescar=Si(ConDatos(Info.Cliente),Info.Cliente,Venta.Cliente)
+Requerido=S
+ConRefrescar=S
+ListaRefrescar=Venta.Proyecto<BR>Venta.EnviarA<BR>Venta.Agente<BR>Venta.AgenteServicio<BR>Venta.FormaEnvio<BR>Venta.Condicion<BR>Venta.Vencimiento<BR>Venta.Descuento<BR>VEnta.DescuentoGlobal<BR>VEnta.Bonificacion<BR>Venta.Almacen<BR>Venta.ListaPreciosEsp<BR>Venta.ZonaImpuesto<BR>Venta.Moneda<BR>Venta.DesglosarImpuestos<BR>Venta.DesglosarImpuesto2
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Venta.Vencimiento<BR>Venta.Bonificacion<BR>Cte.RFC
+ConMensageEmergente=S
+RefrescarTotales=S
+AutoBloqueaDetalle=S
+MensageEmergente=Cte.Mensaje
+AyudaEnCaptura=Vista
+AyudaForma=CteLista
+AyudaVista=MaviCteA
+AyudaCampo=Cte.Cliente
+ValidacionUsaTabla=S
+ValidacionTablas=Cte
+ValidacionConCondiciones=S
+ValidacionMensajeError=Cte.Cliente+Si(Cte.Tipo=<T>Estructura<T>,<T> No es un Cliente<T>,<T> No permiten las Ventas a Consignación<T>)
+ValidacionCondicion=(Cte.Tipo<><T>Estructura<T>) y<BR>((MovTipo(<T>VTAS<T>,Venta.Mov) noen (VTAS.VC, VTAS.DC,VTAS.DCR)) o Cte.VtasConsignacion)
+
+;[Venta.Vis/Venta.EnviarA]
+;Clave=Venta.EnviarA
+;LigaTabla=Venta
+;LigaCampo=EnviarA
+;ClaveBDE=EnviarA
+;TipoDatos=Numérico
+;TamanoValidacion=10
+;ConRefrescarCondiciones=S
+;ListaRefrescarCondiciones=Venta.Vencimiento<BR>Venta.Agente<BR>Cte.RFC
+;AyudaMemRenglones=8
+;AyudaMemOpc=Unicamente opciones listadas
+;CondicionDespliege=MovTipo(<T>VTAS<T>, Venta.Mov) <> VTAS.CO
+;ConRefrescar=S
+;CondicionEdicion=(Vacio(Venta.Origen) y Vacio(Venta.OrigenID))
+;ValorRefrescar=SQL(<T>SELECT EnviarA FROM Cte WHERE Cliente=:tCliente<T>,Venta.Cliente )
+;RequeridoActivo=S
+;Nombre=Canal Venta
+;ListaRefrescar=Venta.Agente<BR>Venta.Proyecto<BR>Venta.FormaEnvio<BR>Venta.Descuento<BR>Venta.DescuentoGlobal<BR>Venta.Condicion<BR>Venta.Vencimiento<BR>Venta.ZonaImpuesto<BR>Venta.ListaPreciosEsp<BR>Venta.Almacen
+;AyudaEnCaptura=Vista
+;AyudaForma=CteEnviarALista
+;AyudaVista=CteEnviarA
+;AyudaCampo=CteEnviarA.ID
+;AyudaBusquedaRapida=Asigna(Info.Cliente,Venta.Cliente)
+;ConAyudaBusquedaRapida=S
+;ValidacionUsaTabla=S
+;ValidacionTablas=CteEnviarA
+;Ligado=N
+
+;***** Fernando Hernandez 10/12/14  DM0238 - Se agrego validacioncondicion del campo Venta.EnviarA para validar que el canal de venta seleccionado tenga estatus activo
+;Se agrego ValidacionCondicion por el canal de venta
+[Venta.Vis/Venta.EnviarA]
+Clave=Venta.EnviarA
+LigaTabla=Venta
+LigaCampo=EnviarA
+ClaveBDE=EnviarA
+TipoDatos=Numérico
+TamanoValidacion=10
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Venta.Vencimiento<BR>Venta.Agente<BR>Cte.RFC<BR>Venta.Concepto<BR>Venta.FormaEnvio<BR>Venta.NoCtaPago<BR>Venta.Descuento<BR>Venta.Condicion<BR>Venta.DescuentoGlobal<BR>Venta.Proyecto<BR>Venta.ListaPreciosEsp<BR>Venta.OrdenCompra<BR>Venta.FormaCobro 
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+CondicionDespliege=MovTipo(<T>VTAS<T>, Venta.Mov) <> VTAS.CO
+ConRefrescar=S
+CondicionEdicion=(Vacio(Venta.Origen) y Vacio(Venta.OrigenID))
+ValorRefrescar=SQL(<T>SELECT EnviarA FROM Cte WHERE Cliente=:tCliente<T>,Venta.Cliente )
+RequeridoActivo=S
+Nombre=Canal Venta
+ListaRefrescar=Venta.Agente<BR>Venta.Proyecto<BR>Venta.FormaEnvio<BR>Venta.Descuento<BR>Venta.DescuentoGlobal<BR>Venta.Condicion<BR>Venta.Vencimiento<BR>Venta.ZonaImpuesto<BR>Venta.ListaPreciosEsp<BR>Venta.Almacen<BR>Venta.formaPagoTipo
+AyudaEnCaptura=Vista
+AyudaForma=CteEnviarALista
+AyudaVista=CteEnviarA
+AyudaCampo=CteEnviarA.ID
+AyudaBusquedaRapida=Asigna(Info.Cliente,Venta.Cliente)
+ConAyudaBusquedaRapida=S
+ValidacionUsaTabla=S
+ValidacionTablas=CteEnviarA
+Ligado=N
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>EL CANAL DE VENTA DE ESTA INSTITUCION ESTA SUSPENDIDO<T>
+;ValidacionCondicion=SQL(<T>SELECT COUNT(ESTATUS) AS VALOR FROM DM0238VIGENCIASINSTITUCIONES DM JOIN VENTASCANALMAVI VC ON DM.CANAL_VENTA=VC.ID WHERE VC.CATEGORIA IN (:tcat,:tcat2) AND CANAL_VENTA=:ncv AND (ESTATUS=:tcan OR ESTATUS=:tina)<T>,<T>INSTITUCIONES<T>,<T>CREDITO MENUDEO<T>,Venta.EnviarA,<T>CANCELADO<T>,<T>INACTIVA<T>)=0
+ValidacionCondicion=Si (Venta.Mov noen (<T>Solicitud Credito<T>,<T>Analisis Credito<T>,<T>Pedido<T>,<T>Factura<T>,<T>Credilana<T>,<T>Prestamo Personal<T>,<T>Factura VIU<T>,<T>Seguro Vida<T>))<BR>Entonces<BR>  Verdadero<BR>SiNo<BR>  Si SQL(<T>SELECT COUNT(ESTATUS) AS VALOR FROM DM0238VIGENCIASINSTITUCIONES DM JOIN VENTASCANALMAVI VC ON DM.CANAL_VENTA=VC.ID WHERE VC.CATEGORIA IN (:tcat,:tcat2) AND CANAL_VENTA=:ncv AND (ESTATUS=:tcan OR ESTATUS=:tina)<T>,<T>INSTITUCIONES<T>,<T>CREDITO MENUDEO<T>,Venta.EnviarA,<T>CANCELADO<T>,<T>INACTIVA<T>)=0<BR>  Entonces<BR>    Verdadero<BR>  Sino<BR>    Falso<BR>Fin
+
+[Venta.vis/Venta.MaviTipoVenta]
+Clave=Venta.MaviTipoVenta
+LigaTabla=Venta
+LigaCampo=MaviTipoVenta
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=5
+ClaveBDE=MaviTipoVenta
+
+[Venta.vis/Venta.IDEcommerce]
+Clave=Venta.IDEcommerce
+Nombre=IDEcommerce
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+LigaTabla=Venta
+LigaCampo=IDEcommerce
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=IDEcommerce

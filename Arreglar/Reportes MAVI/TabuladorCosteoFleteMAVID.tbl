@@ -1,0 +1,45 @@
+[Tabla]
+Icono=0
+Clave=TabuladorCosteoFleteMAVID
+Nombre=TabuladorCosteoFleteMAVID
+Archivo=TabuladorCosteoFleteMAVID
+Modulos=(Todos)
+Singular=TabuladorCosteoFleteMAVID
+TipoTabla=General
+ListaCampos=Tabulador<BR>Km<BR>PrecioBase<BR>PrecioTransportista
+LlavePrimaria=Tabulador<BR>Km
+SQL=SELECT<BR>  Tabulador,<BR>  Km,<BR>  PrecioBase,<BR>  PrecioTransportista<BR><BR>FROM<BR>  TabuladorCosteoFleteMAVID
+[Tabulador]
+Clave=Tabulador
+Nombre=Tabulador
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[Km]
+Clave=Km
+Nombre=Km
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+CondicionEdicion=ConDatos(TabuladorCosteoFleteMAVI:TabuladorCosteoFleteMAVI.Tabulador)
+[PrecioBase]
+Clave=PrecioBase
+Nombre=Precio Base
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorPorOmision=0
+AyudaEnCaptura=Calculadora
+CondicionEdicion=ConDatos(TabuladorCosteoFleteMAVI:TabuladorCosteoFleteMAVI.Tabulador)
+[PrecioTransportista]
+Clave=PrecioTransportista
+Nombre=Precio Transportista
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorPorOmision=0
+AyudaEnCaptura=Calculadora
+CondicionEdicion=ConDatos(TabuladorCosteoFleteMAVI:TabuladorCosteoFleteMAVI.Tabulador)

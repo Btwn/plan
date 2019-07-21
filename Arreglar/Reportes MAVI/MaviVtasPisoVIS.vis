@@ -1,0 +1,182 @@
+[Vista]
+Icono=0
+Clave=MaviVtasPisoVIS
+Nombre=Vista de Ventas Piso
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Tipo<BR>SucursalVenta<BR>NombreSUC<BR>Agente<BR>Nombre<BR>UEN<BR>NombreUEN<BR>NominaAgente<BR>NombreSupervisor<BR>P13<BR>P15<BR>P18<BR>P24<BR>P36<BR>Importe<BR>PP<BR>TipoSuc
+SQL=SELECT<BR><TAB>MT.Tipo, MT.SucursalVenta, MT.NombreSUC, MT.Agente, MT.Nombre, MT.UEN, MT.NombreUEN, MT.NominaAgente, MT.NombreSupervisor,<BR><TAB>MT.P13, MT.P15, MT.P18, MT.P24, MT.P36, MT.Importe, PP=cast(MT.PP as decimal(10,2) ), MT.TipoSuc<BR>FROM ((SELECT Tipo = <T>Sucursal<T>,<BR> T.SucursalVenta, NombreSUC=S.Nombre, Agente=<T><T>, Nombre=<T><T>, T.UEN, U.Nombre AS NombreUEN, T.Descripcion1 as NominaAgente, T.NombreSupervisor,<BR><TAB><TAB><TAB>P13 = Sum(T.Plazo13),<BR><TAB><TAB><TAB>P15 = Sum(T.Plazo15),<BR><TAB><TAB><TAB>P18 = Sum(T.Plazo18),<BR><TAB><TAB><TAB>P24 = Sum(T.Plazo24),<BR><TAB><TAB><TAB>P36 = Sum(T.Plazo36),<BR><TAB><TAB><TAB>Importe = (Sum(T.Plazo13) + Sum(T.Plazo15) + Sum(T.Plazo18) + Sum(T.Plazo24) + Sum(T.Plazo36)),<BR><TAB><TAB><TAB>PP = Case When (Max(T.Plazo13)<><CONTINUA>
+SQL002=<CONTINUA>0 or Max(T.Plazo15)<>0 or Max(T.Plazo18)<>0 or Max(T.Plazo24)<>0 or Max(T.Plazo36)<>0)<BR><TAB><TAB><TAB> Then ((Sum(T.Plazo13)*13) + (Sum(T.Plazo15)*15) + (Sum(T.Plazo18)*18) + (Sum(T.Plazo24)*24) + (Sum(T.Plazo36)*36))<BR><TAB><TAB><TAB><TAB>/(Sum(T.Plazo13) + Sum(T.Plazo15) + Sum(T.Plazo18) + Sum(T.Plazo24) + Sum(T.Plazo36))else 0 end, S.Tipo as TipoSuc<BR>FROM (SELECT VN.SucursalVenta, Sum(Precio) as Precio, VN.Agente, VN.UEN, SOD.Descripcion1, Ag2.Nombre as NombreSupervisor,<BR><TAB><TAB><TAB>Plazo13 = Sum(Case When VN.Documentos = 13 Then VN.Precio Else 0 End),<BR><TAB><TAB><TAB>Plazo15 = Sum(Case When VN.Documentos = 15 Then VN.Precio Else 0 End),<BR><TAB><TAB><TAB>Plazo18 = Sum(Case When VN.Documentos = 18 Then VN.Precio Else 0 End),<BR><TAB><TAB><TAB>Plazo24 = Sum(Case When VN.Doc<CONTINUA>
+SQL003=<CONTINUA>umentos = 24 Then VN.Precio Else 0 End),<BR><TAB><TAB><TAB>Plazo36 = Sum(Case When VN.Documentos = 36 Then VN.Precio Else 0 End)<BR><TAB><TAB>FROM V_MaviVentasNetas VN<BR><TAB><TAB>LEFT JOIN SucursalOtrosDatos SOD ON VN.SucursalVenta = SOD.Sucursal<BR><TAB><TAB>LEFT JOIN Agente Ag2 ON SOD.Descripcion1 = Ag2.Agente<BR><TAB><TAB>LEFT JOIN VentasCanalMavi CM ON CM.ID = VN.EnviarA <BR><TAB><TAB>WHERE VN.Origen in (<BR>{Si(Condatos(Mavi.TipoMovVtas),<BR>    Si(Mavi.TipomovVtas=<T>Solo Facturas<T>,<BR>        Comillas(<T>Factura<T>)+<T>,<T>+comillas(<T>Factura VIU<T>),<BR>         Si(Mavi.TipoMovVtas=<T>Solo Prestamos de Dinero<T>,<BR>             Comillas(<T>Credilana<T>)+<T> ,<T>+ comillas(<T>Prestamo Personal<T>),<BR>              Si(Mavi.TipoMovVtas=<T>Facturas y Prestamos de Dinero<T>,<BR> <CONTINUA>
+SQL004=<CONTINUA>                 Comillas(<T>Factura<T>)+<T>,<T>+Comillas(<T>Factura VIU<T>)+<T>,<T>+Comillas(<T>Credilana<T>)+<T> ,<T>+ Comillas(<T>Prestamo Personal<T>),<BR>                   Si(Mavi.TipoMovVtas=<T>Seguros de Vida<T>,<BR>                   Comillas(<T>Seguro Vida<T>),<BR>                   Comillas(<T>Seguro Auto<T>))))))}<BR>)<BR><TAB><TAB><TAB>AND VN.Documentos in (13,15,18,24,36) -- para identificar que solo esos canales<BR><TAB><TAB><TAB>AND VN.Uen in (1,2) -- 1 para muebles america, 2 para viu<BR><TAB><TAB><TAB>{Si<BR>  (Condatos(Info.FechaD) y Condatos(Info.FechaA))<BR>Entonces<BR>  Si((ConDatos(Info.FechaD)) y (ConDatos(Info.FechaA)),<T>And VN.FechaMavi BETWEEN <T>+Comillas(FechaFormatoServidor(Info.FechaD)+<T> 00:00:00:000<T>)+<T> And <T>+Comillas(FechaFormatoServidor(Info.Fecha<CONTINUA>
+SQL005=<CONTINUA>A)+<T> 23:59:59:999<T>),<T><T>)<BR>Sino<BR>    Si<BR>  (Condatos(Info.FechaD) y Vacio(Info.FechaA))<BR>   Entonces<BR>  Si((ConDatos(Info.FechaD)) y (Vacio(Info.FechaA)),<T>And VN.FechaMavi BETWEEN <T>+Comillas(FechaFormatoServidor(Info.FechaD)+<T> 00:00:00:000<T>)+<T> And <T>+Comillas(FechaFormatoServidor(ultimodiaaño)+<T> 23:59:59:999<T>),<T><T>)<BR>   Sino<BR>     Si<BR>      (Vacio(Info.FechaD) y ConDatos(Info.FechaA))<BR>     Entonces<BR>     Si((Vacio(Info.FechaD)) y (ConDatos(Info.FechaA)),<T>And VN.FechaMavi BETWEEN <T>+Comillas(FechaFormatoServidor(primerdiaaño)+<T> 00:00:00:000<T>)+<T> And <T>+Comillas(FechaFormatoServidor(Info.FechaA)+<T> 23:59:59:999<T>),<T><T>)<BR>     Sino<BR>     Si((Vacio(Info.FechaD)) y (Vacio(Info.FechaA)),<T>And VN.FechaMavi BETWEEN <T>+Comillas(FechaFor<CONTINUA>
+SQL006=<CONTINUA>matoServidor(primerdiaaño)+<T> 00:00:00:000<T>)+<T> And <T>+Comillas(FechaFormatoServidor(ultimodiaaño)+<T> 23:59:59:999<T>),<T><T>)<BR>    Fin<BR>  Fin<BR>Fin }<BR>{Si(ConDatos(Mavi.CategoriasCanal),<T>AND CM.Categoria = (<T>+COMILLAS(Mavi.CategoriasCanal)+<T>)<T>,<T><T>)}<BR><TAB><TAB>GROUP BY VN.SucursalVenta, VN.Agente, VN.UEN, SOD.Descripcion1, Ag2.Nombre)T <BR>LEFT JOIN Agente Ag ON T.Agente = Ag.Agente<BR>LEFT JOIN UEN U ON T.Uen = U.Uen<BR>LEFT JOIN Sucursal S ON T.SucursalVenta = S.Sucursal<BR>{Si(ConDatos(Mavi.TipoSuc292),<T> WHERE S.Tipo = (<T>+COMILLAS(Mavi.TipoSuc292)+<T>)<T>,<T><T>)}<BR>GROUP BY T.SucursalVenta, T.UEN, U.Nombre, T.Descripcion1, T.NombreSupervisor, S.Tipo, S.Nombre)<BR>UNION<BR>(SELECT Tipo = <T>Agente<T>,<BR> T.SucursalVenta, S.Nombre as NombreSUC, T.Agente, <CONTINUA>
+SQL007=<CONTINUA>Ag.Nombre, T.UEN, U.Nombre as NombreUEN, T.Descripcion1 as NominaAgente, T.NombreSupervisor,<BR><TAB><TAB><TAB>P13 = Sum(T.Plazo13),<BR><TAB><TAB><TAB>P15 = Sum(T.Plazo15),<BR><TAB><TAB><TAB>P18 = Sum(T.Plazo18),<BR><TAB><TAB><TAB>P24 = Sum(T.Plazo24),<BR><TAB><TAB><TAB>P36 = Sum(T.Plazo36),<BR><TAB><TAB><TAB>Importe = (Sum(T.Plazo13) + Sum(T.Plazo15) + Sum(T.Plazo18) + Sum(T.Plazo24) + Sum(T.Plazo36)),<TAB><BR><TAB><TAB><TAB>PP = Case When (Max(T.Plazo13)<>0 or Max(T.Plazo15)<>0 or Max(T.Plazo18)<>0 or Max(T.Plazo24)<>0 or Max(T.Plazo36)<>0)<BR><TAB><TAB><TAB> Then ((Sum(T.Plazo13)*13) + (Sum(T.Plazo15)*15) + (Sum(T.Plazo18)*18) + (Sum(T.Plazo24)*24) + (Sum(T.Plazo36)*36))<BR><TAB><TAB><TAB><TAB>/(Sum(T.Plazo13) + Sum(T.Plazo15) + Sum(T.Plazo18) + Sum(T.Plazo24) + Sum(T.Plazo36))else 0 en<CONTINUA>
+SQL008=<CONTINUA>d, S.Tipo as TipoSuc<BR>FROM (SELECT VN.SucursalVenta, Sum(Precio) as Precio, VN.Agente, VN.UEN, SOD.Descripcion1, Ag2.Nombre as NombreSupervisor,<BR><TAB><TAB><TAB>Plazo13 = Sum(Case When VN.Documentos = 13 Then VN.Precio Else 0 End),<BR><TAB><TAB><TAB>Plazo15 = Sum(Case When VN.Documentos = 15 Then VN.Precio Else 0 End),<BR><TAB><TAB><TAB>Plazo18 = Sum(Case When VN.Documentos = 18 Then VN.Precio Else 0 End),<BR><TAB><TAB><TAB>Plazo24 = Sum(Case When VN.Documentos = 24 Then VN.Precio Else 0 End),<BR><TAB><TAB><TAB>Plazo36 = Sum(Case When VN.Documentos = 36 Then VN.Precio Else 0 End)<BR><TAB><TAB>FROM V_MaviVentasNetas VN<BR><TAB><TAB>LEFT JOIN SucursalOtrosDatos SOD ON VN.SucursalVenta = SOD.Sucursal<BR><TAB><TAB>LEFT JOIN Agente Ag2 ON SOD.Descripcion1 = Ag2.Agente<BR><TAB><TAB>LEFT JOIN<CONTINUA>
+SQL009=<CONTINUA> VentasCanalMavi CM ON CM.ID = VN.EnviarA <BR><TAB><TAB>WHERE VN.Origen in ({Si(Condatos(Mavi.TipoMovVtas),<BR>    Si(Mavi.TipomovVtas=<T>Solo Facturas<T>,<BR>        Comillas(<T>Factura<T>)+<T>,<T>+comillas(<T>Factura VIU<T>),<BR>         Si(Mavi.TipoMovVtas=<T>Solo Prestamos de Dinero<T>,<BR>             Comillas(<T>Credilana<T>)+<T> ,<T>+ comillas(<T>Prestamo Personal<T>),<BR>              Si(Mavi.TipoMovVtas=<T>Facturas y Prestamos de Dinero<T>,<BR>                  Comillas(<T>Factura<T>)+<T>,<T>+Comillas(<T>Factura VIU<T>)+<T>,<T>+Comillas(<T>Credilana<T>)+<T> ,<T>+ Comillas(<T>Prestamo Personale<T>),<BR>                   Si(Mavi.TipoMovVtas=<T>Seguros de Vida<T>,<BR>                   Comillas(<T>Seguro Vida<T>),<BR>                   Comillas(<T>Seguro Auto<T>))))))})<BR><TAB><TAB<CONTINUA>
+SQL010=<CONTINUA>><TAB>AND VN.Documentos in (13,15,18,24,36) -- para identificar que solo esos canales<BR><TAB><TAB><TAB>AND VN.Uen in (1,2) -- 1 para muebles america, 2 para viu<BR><TAB><TAB><TAB>{Si<BR>  (Condatos(Info.FechaD) y Condatos(Info.FechaA))<BR>Entonces<BR>  Si((ConDatos(Info.FechaD)) y (ConDatos(Info.FechaA)),<T>And VN.FechaMavi BETWEEN <T>+Comillas(FechaFormatoServidor(Info.FechaD)+<T> 00:00:00:000<T>)+<T> And <T>+Comillas(FechaFormatoServidor(Info.FechaA)+<T> 23:59:59:999<T>),<T><T>)<BR>Sino<BR>    Si<BR>  (Condatos(Info.FechaD) y Vacio(Info.FechaA))<BR>   Entonces<BR>  Si((ConDatos(Info.FechaD)) y (Vacio(Info.FechaA)),<T>And VN.FechaMavi BETWEEN <T>+Comillas(FechaFormatoServidor(Info.FechaD)+<T> 00:00:00:000<T>)+<T> And <T>+Comillas(FechaFormatoServidor(ultimodiaaño)+<T> 23:59:59:999<T>),<T<CONTINUA>
+SQL011=<CONTINUA>><T>)<BR>   Sino<BR>     Si<BR>      (Vacio(Info.FechaD) y ConDatos(Info.FechaA))<BR>     Entonces<BR>     Si((Vacio(Info.FechaD)) y (ConDatos(Info.FechaA)),<T>And VN.FechaMavi BETWEEN <T>+Comillas(FechaFormatoServidor(primerdiaaño)+<T> 00:00:00:000<T>)+<T> And <T>+Comillas(FechaFormatoServidor(Info.FechaA)+<T> 23:59:59:999<T>),<T><T>)<BR>     Sino<BR>     Si((Vacio(Info.FechaD)) y (Vacio(Info.FechaA)),<T>And VN.FechaMavi BETWEEN <T>+Comillas(FechaFormatoServidor(primerdiaaño)+<T> 00:00:00:000<T>)+<T> And <T>+Comillas(FechaFormatoServidor(ultimodiaaño)+<T> 23:59:59:999<T>),<T><T>)<BR>    Fin<BR>  Fin<BR>Fin }<BR>{Si(ConDatos(Mavi.CategoriasCanal),<T>AND CM.Categoria = (<T>+COMILLAS(Mavi.CategoriasCanal)+<T>)<T>,<T><T>)}<BR><TAB><TAB>GROUP BY VN.SucursalVenta,VN.Agente, VN.UEN, SOD.Descripc<CONTINUA>
+SQL012=<CONTINUA>ion1, Ag2.Nombre) T <BR>LEFT JOIN Agente Ag ON T.Agente = Ag.Agente<BR>LEFT JOIN UEN U ON T.Uen = U.Uen<BR>LEFT JOIN Sucursal S ON T.SucursalVenta = S.Sucursal<BR>{Si(ConDatos(Mavi.TipoSuc292),<T> WHERE S.Tipo = (<T>+COMILLAS(Mavi.TipoSuc292)+<T>)<T>,<T><T>)}<BR>GROUP BY S.Nombre, T.Agente, T.SucursalVenta, Ag.Nombre, T.UEN, U.Nombre, T.Descripcion1, T.NombreSupervisor, S.Tipo))MT<BR>Where MT.UEN <> null<BR><TAB><TAB><TAB>{SI(ConDatos(Mavi.UenC),<T> And MT.UEN = <T>+Mavi.UenC+<T> <T>, <T><T>)}<TAB><TAB><BR><TAB><TAB><TAB>{Si(ConDatos(Mavi.SucuXUEND),<T> And MT.SucursalVenta Between <T>+Mavi.SucuXUEND+<T> AND <T>+Mavi.SucuXUENA,<T><T>)}<BR><TAB><TAB><TAB>{SI(ConDatos(Mavi.AgenSucu),<T> And MT.TIPO = <T>+Comillas(Mavi.AgenSucu),<T><T>)}<TAB><TAB><TAB><BR><TAB><TAB><TAB>{Si(ConDatos(Mavi.CveT<CONTINUA>
+SQL013=<CONTINUA>ipoSuperv),<T> AND MT.Agente = <T>+Comillas(Mavi.CveTipoSuperv),<T><T>)}<TAB><BR>Order By MT.Importe DESC
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=8
+TipoDatos=Texto
+Tamano=8
+ClaveBDE=Tipo
+[SucursalVenta]
+Clave=SucursalVenta
+Nombre=SucursalVenta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=SucursalVenta
+[NombreSUC]
+Clave=NombreSUC
+Nombre=NombreSUC
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreSUC
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Agente
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=UEN
+[NombreUEN]
+Clave=NombreUEN
+Nombre=NombreUEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreUEN
+[NominaAgente]
+Clave=NominaAgente
+Nombre=NominaAgente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=NominaAgente
+[NombreSupervisor]
+Clave=NombreSupervisor
+Nombre=NombreSupervisor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreSupervisor
+[P13]
+Clave=P13
+Nombre=P13
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=P13
+FormatoValidacion=<T>$ <T>#,
+CondicionDespliege=P13 <> nulo
+[P15]
+Clave=P15
+Nombre=P15
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=P15
+FormatoValidacion=<T>$ <T>#,
+CondicionDespliege=P15 <> nulo
+[P18]
+Clave=P18
+Nombre=P18
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=P18
+FormatoValidacion=<T>$ <T>#,
+CondicionDespliege=P18 <> nulo
+[P24]
+Clave=P24
+Nombre=P24
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=P24
+FormatoValidacion=<T>$ <T>#,
+CondicionDespliege=P24 <> nulo
+[P36]
+Clave=P36
+Nombre=P36
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=P36
+FormatoValidacion=<T>$ <T>#,
+CondicionDespliege=P36
+[Importe]
+Clave=Importe
+Nombre=Importe
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Importe
+FormatoValidacion=<T>$ <T>#,
+CondicionDespliege=Importe
+[PP]
+Clave=PP
+Nombre=PP
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=PP
+[TipoSuc]
+Clave=TipoSuc
+Nombre=TipoSuc
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=TipoSuc

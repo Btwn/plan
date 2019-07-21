@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM1171AyudaTipoCteFinalVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=TipoBF
+SQL=SELECT DISTINCT TipoBF FROM VTASCTipoBF ORDER BY TipoBF
+[TipoBF]
+Clave=TipoBF
+Nombre=TipoBF
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=TipoBF

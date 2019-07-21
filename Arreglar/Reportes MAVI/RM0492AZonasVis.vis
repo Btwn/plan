@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0492AZonasVis
+Nombre=RM0492AZonasVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Zona
+SQL=Select Distinct Zona From ZonaCobranzaHis<BR>Order by Zona
+CamposBusquedaRapida=Zona
+[Zona]
+Clave=Zona
+Nombre=Zona
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Zona

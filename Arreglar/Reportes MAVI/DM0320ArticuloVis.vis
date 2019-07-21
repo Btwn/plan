@@ -1,0 +1,35 @@
+
+[Vista]
+Icono=0
+Clave=DM0320ArticuloVis
+Nombre=Artículos
+Modulos=(Todos)
+
+ListaCampos=Articulo<BR>Descripcion1
+VistaIndependiente=S
+CamposBusquedaRapida=Articulo
+
+SQL=SELECT<BR>   Articulo,<BR>   Descripcion1<BR><BR>FROM<BR>   Art<BR>   <BR>WHERE<BR>   Estatus IN (<T>ALTA<T>, <T>BLOQUEADO<T>, <T>DESCONTINUADO<T>)<BR>   AND Categoria = <T>VENTA<T><BR>   AND Tipo != <T>SERVICIO<T><BR><BR>ORDER BY<BR>   Articulo
+[Articulo]
+Clave=Articulo
+Visible=S
+ClaveBDE=Articulo
+
+
+
+
+
+TipoDatos=Texto
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Articulo
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[Descripcion1]
+Clave=Descripcion1
+Nombre=Descripcion1
+Visible=S
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion1

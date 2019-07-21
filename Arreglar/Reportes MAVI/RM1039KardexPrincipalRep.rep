@@ -1,0 +1,56 @@
+[Reporte]
+Clave=RM1039KardexPrincipalRep
+Nombre=RM1039 Kardex Monedero
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=RM1039MonPrincipalFrm
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+PosicionInicialAlturaCliente=749
+PosicionInicialAncho=1296
+Submenu=Vtas Generales Mavi
+[Vista]
+Icono=0
+Clave=RM1039KardexPrincipalRep
+VistaIndependiente=S
+ListaCampos=Uno
+SQL=SELECT Uno = 1
+[Uno]
+Clave=Uno
+Nombre=Uno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Uno
+
+[Formato]
+VentanaIzquierda=363
+VentanaArriba=174
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80

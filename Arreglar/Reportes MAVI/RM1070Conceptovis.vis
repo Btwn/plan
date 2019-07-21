@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1070Conceptovis
+Nombre=RM1070 Conceptos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Concepto
+CamposBusquedaRapida=Concepto
+SQL=Select Nombre As Concepto From TablaStD <BR>Where TablaSt = <T>RMS ANALITICO EDO RESULTADOS<T><BR>And Valor in ({Si(ConDatos(Mavi.RM1070Rubro), Reemplaza( Comillas(<T>,<T>), <T>,<T>, (Mavi.RM1070Rubro)),Comillas(<T><T>))})
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Concepto

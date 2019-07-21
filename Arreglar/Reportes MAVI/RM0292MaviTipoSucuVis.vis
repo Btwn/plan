@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0292MaviTipoSucuVis
+Nombre=Tipo Sucursal
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Tipo
+SQL=select  DISTINCT Tipo <BR>from sucursal <BR>WHERE WUEN IS NOT NULL and WUEN <> 3
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Tipo

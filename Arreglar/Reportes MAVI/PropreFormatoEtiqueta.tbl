@@ -1,0 +1,313 @@
+[Tabla]
+Icono=0
+Clave=PropreFormatoEtiqueta
+Nombre=PropreFormatoEtiqueta
+Archivo=PropreFormatoEtiqueta
+Modulos=(Todos)
+Singular=PropreFormatoEtiqueta
+TipoTabla=General
+ListaCampos=Codigo<BR>Nombre<BR>UEN<BR>ListaContado<BR>ListaPagoDiferidos<BR>ListaCredito<BR>ListaGarantia<BR>ListaGarantiaContado<BR>ListaExtra1<BR>ListaClave1<BR>ListaClave2<BR>ListaManoImpresion<BR>ListaNoImprimir<BR>TipoImpresion<BR>Precio1<BR>Precio2<BR>Precio3<BR>Abono1<BR>Abono2<BR>Abono3<BR>DisenoEtiqueta<BR>Archivo<BR>Texto1<BR>Texto2<BR>Texto3<BR>Texto4<BR>Texto5
+LlavePrimaria=Codigo
+CampoID=ID
+ListaRelaciones=Diseno<BR>UEN
+SQL=SELECT<BR>  Codigo,<BR>  Nombre,<BR>  UEN,<BR>  ListaContado,<BR>  ListaCredito,<BR>  ListaGarantia,<BR>  ListaGarantiaContado,<BR>  ListaExtra1,<BR>  ListaClave1,<BR>  ListaClave2,<BR>  ListaManoImpresion,<BR>  ListaNoImprimir,<BR>  TipoImpresion,<BR>  Precio1,<BR>  Precio2,<BR>  Precio3,<BR>  Abono1,<BR>  Abono2,<BR>  Abono3,<BR>  DisenoEtiqueta,<BR>  Archivo,<BR>  Texto1,<BR>  Texto2,<BR>  Texto3,<BR>  Texto4,<BR>  Texto5,<BR>  ListaPagoDiferidos<BR><BR>FROM<BR>  PropreFormatoEtiqueta
+[Codigo]
+Clave=Codigo
+Nombre=Codigo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Requerido=S
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=UENLista
+AyudaVista=UEN
+AyudaCampo=UEN.UEN
+ValidacionUsaTabla=S
+ValidacionTablas=UEN
+[ListaContado]
+Clave=ListaContado
+Nombre=Lista Contado
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>No existe la Lista<T>
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaContado) <> NULO
+[ListaCredito]
+Clave=ListaCredito
+Nombre=Lista Credito
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaCredito) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>
+TipoDatos=Texto
+[ListaGarantia]
+Clave=ListaGarantia
+Nombre=Lista Garantia
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaGarantia) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>
+TipoDatos=Texto
+[ListaGarantiaContado]
+Clave=ListaGarantiaContado
+Nombre=Garantia Contado
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaGarantiaContado) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>
+TipoDatos=Texto
+[ListaExtra1]
+Clave=ListaExtra1
+Nombre=Extra1
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaExtra1) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>
+TipoDatos=Texto
+[ListaClave1]
+Clave=ListaClave1
+Nombre=Clave1
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaClave1) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>
+TipoDatos=Texto
+[ListaClave2]
+Clave=ListaClave2
+Nombre=Clave2
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaClave2) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>
+TipoDatos=Texto
+[ListaManoImpresion]
+Clave=ListaManoImpresion
+Nombre=Mano Impresion
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaManoImpresion) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>
+TipoDatos=Texto
+[ListaNoImprimir]
+Clave=ListaNoImprimir
+Nombre=ListaNoImprimir
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaNoImprimir) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>
+TipoDatos=Texto
+[TipoImpresion]
+Clave=TipoImpresion
+Nombre=TipoImpresion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+ListaOpciones=P<BR>A<BR>TODOS
+TipoDatos=Texto
+[Precio1]
+Clave=Precio1
+Nombre=Precio
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[Precio2]
+Clave=Precio2
+Nombre=Precio
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[Precio3]
+Clave=Precio3
+Nombre=Precio
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[Abono1]
+Clave=Abono1
+Nombre=Abono
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[Abono2]
+Clave=Abono2
+Nombre=Abono
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[Abono3]
+Clave=Abono3
+Nombre=Abono
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[DisenoEtiqueta]
+Clave=DisenoEtiqueta
+Nombre=Diseño Etiqueta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=PropreDisenoEtiquetaLista
+AyudaVista=PropreDisenoEtiqueta
+AyudaCampo=PropreDisenoEtiqueta.Codigo
+ValidacionUsaTabla=S
+ValidacionTablas=PropreDisenoEtiqueta
+AyudaRefrescar=S
+[Archivo]
+Clave=Archivo
+Nombre=Archivo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+[Texto1]
+Clave=Texto1
+Nombre=Texto1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+[Texto2]
+Clave=Texto2
+Nombre=Texto2
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+[Texto3]
+Clave=Texto3
+Nombre=Texto3
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+[Texto4]
+Clave=Texto4
+Nombre=Texto4
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+[Texto5]
+Clave=Texto5
+Nombre=Texto5
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+[Relaciones.Diseno]
+TipoRelacion=Opcional
+LlaveLocal=DisenoEtiqueta
+Clave=Diseno
+TablaRemota=PropreDisenoEtiqueta
+LlaveRemota=Codigo
+[Relaciones.UEN]
+TipoRelacion=Opcional
+LlaveLocal=UEN
+Clave=UEN
+TablaRemota=UEN
+LlaveRemota=UEN
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=255
+Tamano=255
+TipoDatos=Texto
+[ListaPagoDiferidos]
+Clave=ListaPagoDiferidos
+Nombre=Lista Pagos Diferidos
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Alineacion=por Omisión
+AyudaEnCaptura=Vista
+AyudaForma=PropreListaLista
+AyudaVista=PropreLista
+AyudaCampo=PropreLista.Lista
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>SELECT Lista FROM PropreLista WHERE Lista = :tLista<T>,ListaPagoDiferidos) <> NULO
+ValidacionMensajeError=<T>No existe la Lista<T>

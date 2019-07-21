@@ -1,0 +1,115 @@
+[Forma]
+Clave=MaviDM0245ReporteRemesafrm
+Nombre=SP_MaviDM0245ReporteRemesafrm
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=(Variables)
+CarpetaPrincipal=(Variables)
+PosicionInicialAlturaCliente=92
+PosicionInicialAncho=478
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=btnOK1
+PosicionInicialIzquierda=229
+PosicionInicialArriba=238
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Info.FechaA<BR>Info.FechaD<BR>Info.Sucursal
+CarpetaVisible=S
+PermiteEditar=S
+[(Variables).Info.FechaA]
+Carpeta=(Variables)
+Clave=Info.FechaA
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[(Variables).Info.FechaD]
+Carpeta=(Variables)
+Clave=Info.FechaD
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[(Variables).Info.Sucursal]
+Carpeta=(Variables)
+Clave=Info.Sucursal
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.btnOK]
+Nombre=btnOK
+Boton=0
+NombreDesplegar=Buscar
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+[Acciones.btnOK1]
+Nombre=btnOK1
+Boton=108
+NombreEnBoton=S
+NombreDesplegar=Buscar
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Asignar<BR>Cerrar
+[btn2.Info.Sucursal]
+Carpeta=btn2
+Clave=Info.Sucursal
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.btnOK1.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.btnOK1.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+EjecucionCondicion=condatos(Info.FechaA) y condatos(Info.FechaD)
+EjecucionMensaje=Campo Vacio

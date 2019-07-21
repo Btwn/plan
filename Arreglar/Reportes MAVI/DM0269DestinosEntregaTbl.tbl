@@ -1,0 +1,26 @@
+[Tabla]
+Icono=0
+Clave=DM0269DestinosEntregaTbl
+Nombre=Destinos Entrega
+Archivo=DM0269DestinosEntrega
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=PoblacionEntrega<BR>OrdenEntrega
+LlavePrimaria=PoblacionEntrega
+SQL=SELECT<BR>  PoblacionEntrega,<BR>  OrdenEntrega<BR><BR>FROM<BR>  DM0269DestinosEntrega
+[PoblacionEntrega]
+Clave=PoblacionEntrega
+Nombre=PoblacionEntrega
+Visible=S
+TamanoValidacion=50
+Tamano=50
+UnicamenteLectura=S
+TipoDatos=Texto
+[OrdenEntrega]
+Clave=OrdenEntrega
+Nombre=OrdenEntrega
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=0
+CondicionEdicion=conDatos(PoblacionEntrega)

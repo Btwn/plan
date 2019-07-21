@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviCategoriasDeCanalesDeVentaVis
+Nombre=Categorias de Canales de Venta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Canal_de_Venta
+SQL=select Categoria as Canal_de_Venta<BR>from ventascanalMavi<BR>group by categoria<BR>order by categoria
+[Canal_de_Venta]
+Clave=Canal_de_Venta
+Nombre=Canal_de_Venta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Canal_de_Venta

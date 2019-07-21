@@ -1,0 +1,27 @@
+[Tabla]
+Icono=0
+Clave=DM0144ArtDPerfilesXAgrupador
+Nombre=ArtD Perfiles X Agrupador
+Archivo=DM0144ArtDPerfilesXAgrupador
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>GrupoTrabajo
+LlavePrimaria=ID
+CamposBusquedaRapida=ID
+SQL=SELECT<BR>  ID,<BR>  GrupoTrabajo<BR><BR>FROM<BR>  DM0144ArtDPerfilesXAgrupador
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+UnicamenteLectura=S
+[GrupoTrabajo]
+Clave=GrupoTrabajo
+Nombre=GrupoTrabajo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50

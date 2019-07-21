@@ -1,0 +1,69 @@
+[Tabla]
+Icono=0
+Clave=CodigoAgrupador
+Nombre=CodigoAgrupador
+Archivo=CodigoAgrupador
+Modulos=(Todos)
+Singular=CodigoAgrupador
+TipoTabla=Maestros
+ListaCampos=ClaveSAT<BR>Descripcion<BR>Definicion<BR>Rama<BR>ClaveSup<BR>EsAcumulativa<BR>Nivel
+LlavePrimaria=ClaveSAT
+CamposBusquedaRapida=ClaveSAT<BR>Descripcion<BR>Rama<BR>ClaveSup
+SQL=SELECT<BR>  ClaveSAT,<BR>  Descripcion,<BR>  Definicion,<BR>  Rama,<BR>  ClaveSup,<BR>  EsAcumulativa,<BR>  Nivel<BR><BR>FROM<BR>  CodigoAgrupador
+[ClaveSAT]
+Clave=ClaveSAT
+Nombre=Clave SAT
+Visible=S
+TamanoValidacion=40
+Tamano=40
+Mayusculas=S
+Requerido=S
+ConRefrescar=S
+ListaRefrescar=EsAcumulativa
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripción
+Visible=S
+Tamano=255
+TamanoValidacion=255
+[Definicion]
+Clave=Definicion
+Nombre=Definicion
+Visible=S
+TipoDatos=Memo
+[Rama]
+Clave=Rama
+Nombre=Rama
+Visible=S
+TamanoValidacion=20
+Tamano=40
+[ClaveSup]
+Clave=ClaveSup
+Nombre=Subcuenta de
+Visible=S
+TamanoValidacion=40
+Tamano=40
+Mayusculas=S
+Requerido=S
+ValorPorOmision=Def.Rama
+ConRefrescar=S
+ListaRefrescar=EsAcumulativa
+ValidacionConCondiciones=S
+ValidacionCondicion=(ClaveSAT<>ClaveSup)
+ValidacionMensajeError=<T>Posición Incorrecta<T>
+[EsAcumulativa]
+Clave=EsAcumulativa
+Nombre=Es Ac&umulativa
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ValorRefrescar=Si<BR>  Nivel = 1<BR>Entonces<BR>  1<BR>Sino<BR>  0<BR>Fin
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ConRefrescar=S
+ListaRefrescar=EsAcumulativa

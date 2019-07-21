@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0270tipovis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Tipo
+SQL=select distinct Tipo From DM0270CatalogoTipo
+CamposBusquedaRapida=Tipo
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Tipo

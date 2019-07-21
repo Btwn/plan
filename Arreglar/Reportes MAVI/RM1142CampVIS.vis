@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1142CampVIS
+Nombre=RM1142CampVIS
+Modulos=(Todos)
+VistaIndependiente=S
+ListaCampos=Nombre
+SQL=SELECT <BR>      Nombre <BR>FROM <BR>      RM1142ConfMensaje
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Nombre

@@ -1,0 +1,621 @@
+[Vista]
+Icono=0
+Clave=MAVIVentaF
+Nombre=MAVIVentaF
+Modulos=(Todos)
+ListaCampos=(Lista)
+ListaCalculados=(Lista)
+ListaTablas=Cxc
+TablaPrincipal=Cxc
+UsoReportes=S
+UsarJOIN=S
+
+SQL=(Lista)
+[MAVIFactura]
+Clave=MAVIFactura
+Tamano=20
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Factura
+Formula=Cxc.MovID
+
+[MAVIFecha1Abono]
+Clave=MAVIFecha1Abono
+TipoDatos=Fecha
+TipoCampo=Calculado
+FormatoValidacion=dd/mmm/aaaa
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha 1er Abono
+Formula=SQL( <T>SELECT dbo.fnFechaPrimerAbonoMAVI (:nID)<T>, Cxc.ID)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[MAVIMaxDiasV]
+Clave=MAVIMaxDiasV
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Max. Dias Vencidos Factura
+Cantidad=S
+FormatoValidacion=#,.##
+
+Formula=SQL(<T>SELECT ROUND(MaxDiasVencidosMAVI,2) FROM CxcMAVI WHERE ID = :nID<T>, Cxc.ID)
+[MAVIMaxDiasI]
+Clave=MAVIMaxDiasI
+TipoDatos=Numérico
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Max. Dias Inactivos Factura
+Cantidad=S
+FormatoValidacion=#,.##
+
+Formula=SQL( <T>SELECT isnull(MaxDiasInactivosMAVI,0) FROM CxcMavi cm WHERE id=:nFactura<T>, Cxc.ID)
+[MAVIDiasVencidos]
+Clave=MAVIDiasVencidos
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Dias Vencidos
+FormatoValidacion=#,0
+Cantidad=S
+
+Formula=//SQL(<T>SELECT isnull(DiasVencActMavi,0) FROM CxcMavi cm WHERE id = :nFactura<T>,Cxc.ID))<BR>SQL(<T>EXEC spSDKDiasVencActMAVI :nFactura<T>,Cxc.ID))
+[MAVICliente]
+Clave=MAVICliente
+Tamano=20
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Numero de Cuenta
+Formula=Cxc.Cliente
+
+[MAVIPlazo]
+Clave=MAVIPlazo
+Tamano=50
+TipoCampo=Calculado
+TamanoValidacion=50
+Alineacion=por Omisión
+Nombre=Plazo
+
+TipoDatos=Texto
+Formula=Cxc.Condicion
+[MAVIImporteUA]
+Clave=MAVIImporteUA
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Importe Ultimo Abono
+TipoDatos=NumMonetario
+Monetario=S
+Formula=SQL(<T>SELECT DBO.fnUltimoAbonoFacturaMAVI (:nID)<T>, Cxc.ID)
+
+[MAVIHMaxDiasV]
+Clave=MAVIHMaxDiasV
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Hist. Max. Dias Vencidos Cliente
+
+Formula=SQL( <T>SELECT DBO.fnHistoricoMaxDiasVencidosMAVI (:tCliente)<T>, Cxc.Cliente)
+[MAVIHMaxDiasI]
+Clave=MAVIHMaxDiasI
+TipoDatos=Numérico
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Hist. Max. Dias Inactivos Cliente
+
+Formula=SQL( <T>SELECT DBO.fnHistoricoMaxDiasInactivosMAVI (:tCliente)<T>, Cxc.Cliente)
+[MAVIFechaUltimoA]
+Clave=MAVIFechaUltimoA
+TipoDatos=Fecha
+TipoCampo=Calculado
+FormatoValidacion=dd/mmm/aaaa
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha Ultimo Abono
+Formula=SQL( <T>SELECT DBO.fnFechaUltimoAbonoMAVI  (:nID)<T>, Cxc.ID))
+
+[MAVIFechaTermina]
+Clave=MAVIFechaTermina
+TipoDatos=Fecha
+TipoCampo=Calculado
+FormatoValidacion=dd/mmm/aaaa
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha Termina
+Formula=SQL( <T>SELECT DBO.fnFechaTerminaMAVI (:nID)<T>, Cxc.ID)
+
+[MAVIAbono]
+Clave=MAVIAbono
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Abono Exigible
+TipoDatos=NumMonetario
+Monetario=S
+
+Formula=SQL( <T>SELECT dbo.fnImporteAbonoMensualMAVI (:nID)<T>, Cxc.ID)
+[MAVIIDFactCxc]
+Clave=MAVIIDFactCxc
+TipoDatos=Numérico
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=M
+Formula=SQL( <T>SELECT DBO.fnIDFactCXCMAVI(:nID)<T>, Cxc.ID)
+
+[MaviVentaTotal]
+Clave=MaviVentaTotal
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Importe
+Monetario=S
+Formula=Cxc.Importe + Cxc.Impuestos
+
+
+
+
+
+
+
+
+[Cxc.EnviarA]
+Clave=Cxc.EnviarA
+LigaTabla=Cxc
+LigaCampo=EnviarA
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=EnviarA
+[Cxc.Almacen]
+Clave=Cxc.Almacen
+LigaTabla=Cxc
+LigaCampo=Almacen
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Almacen
+
+
+[MaviCalificacionGlobal]
+Clave=MaviCalificacionGlobal
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Calificacion Global Cliente
+FormatoValidacion=0.00
+Formula=SQL( <T>SELECT CalificacionGlobal FROM CTE WHERE Cliente = (:tCliente)<T>, Cxc.Cliente)
+[MAVIDiasInactividad]
+Clave=MAVIDiasInactividad
+TipoDatos=Numérico
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Dias Inactivos
+FormatoValidacion=#,0
+Formula=SQL(<T>EXEC spDiasInactivosResumenMAVI :nFactura, :tFechaActual, :nEstacion<T>,Cxc.ID,{FechaFormatoServidor(FechaTrabajo)},{EstacionTrabajo}) 
+[MAVISaldoCapital]
+Clave=MAVISaldoCapital
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Saldo Capital
+Monetario=S
+Formula=Asigna(Temp.Numerico1,SQL(<T>SELECT dbo.fnSaldoCapitalMAVI (:nID)<T>, Cxc.ID))<BR>Asigna(Temp.Numerico2,SQL(<T>SELECT dbo.fnDevdeVentaPendiente_Saldo (:nID)<T>, Cxc.ID))<BR><BR>Si<BR>  (Temp.Numerico1 - Temp.Numerico2) > 0<BR>Entonces<BR>  //Temp.Numerico1 + SQL(<T>SELECT dbo.fnNCDevolMAVI(:nID)<T>, Cxc.ID)) - SQL(<T>SELECT dbo.fnDevdeVentaPendiente_Saldo (:nID)<T>, Cxc.ID)<BR>  Temp.Numerico1 - Temp.Numerico2<BR>Sino<BR>  0                 <BR>Fin
+[MAVI%TiempoDevengado]
+Clave=MAVI%TiempoDevengado
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+FormatoValidacion=#,.00
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Tiempo Devengado
+Formula=SQL( <T>SELECT dbo.fnPorcTiempoDevengadoMAVI  (:nID)<T>, Cxc.ID))
+[MAVI%PorcTiempoPagado]
+Clave=MAVI%PorcTiempoPagado
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+FormatoValidacion=#,.00
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Tiempo Pagado
+Formula=SQL( <T>SELECT dbo.fnPorcTiempoPagadoMAVI (:nID)<T>, Cxc.ID))
+[MAVI%AtrasoAdelanto]
+Clave=MAVI%AtrasoAdelanto
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+FormatoValidacion=0.00
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=% Atraso/Adelanto
+Formula=SQL( <T>SELECT dbo.fnPorcAtrasoAdelantoMAVI (:nID)<T>,Cxc.ID))
+[MAVI%TiempoUtilPagar]
+Clave=MAVI%TiempoUtilPagar
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+FormatoValidacion=0.00
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Tiempo Util p/Pagar
+Formula=SQL(<T>EXEC TiempoUtilPagarMAVI :nID<T>,Cxc.ID))
+[MAVIImpAtrasoAdelanto]
+Clave=MAVIImpAtrasoAdelanto
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Importe Atraso / Adelanto
+Monetario=S
+Formula=SQL( <T>SELECT dbo.fnImporteAtrasoAdelantoMAVI (:nID)<T>, Cxc.ID))
+[MAVI%PromGeneralAbono]
+Clave=MAVI%PromGeneralAbono
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+FormatoValidacion=0.00
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=% Prom. Gral. Abono
+Formula=SQL(<T>Select dbo.fnPorcGralTotMAVIMex(:nID)<T>,Cxc.ID)
+[MAVIPromAbono4UltMeses]
+Clave=MAVIPromAbono4UltMeses
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+FormatoValidacion=0.00
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=% Prom. Abono. 4ult. mes
+Formula=SQL( <T>SELECT dbo.fnPromAbono4UltMeses  (:nID)<T>, Cxc.ID))
+[MAVICapPagoPromGeneral]
+Clave=MAVICapPagoPromGeneral
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Cap. pago promedio Gral
+Monetario=S
+Formula=//Asigna(Info.Cantidad, SQL(<T>EXEC spPromGralMAVI :nID<T>, Cxc.ID))<BR>SQL(<T>Select dbo.fnCapacidadPorcGralTotMAVIMex (:nID)<T>,Cxc.ID)
+[MAVICapPagoProm4UltMeses]
+Clave=MAVICapPagoProm4UltMeses
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Cap.pago promedio 4meses
+Monetario=S
+Formula=SQL( <T>SELECT dbo.fnCapPagoProm4UltMesesMAVI(:nID)<T>, Cxc.ID))
+[MAVINotaCredCancDev]
+Clave=MAVINotaCredCancDev
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=N.Cred. por: Canc/Dev
+Monetario=S
+Formula=SQL( <T>SELECT dbo.fnNCDevolMAVI(:nID)<T>, Cxc.ID))+<BR>SQL( <T>SELECT dbo.fnDevdeVentaPendiente(:nID)<T>, Cxc.ID))
+[MAVINotaCredBoniAbon]
+Clave=MAVINotaCredBoniAbon
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Bonificación / o Abono
+Monetario=S
+Formula=SQL( <T>SELECT dbo.fnOtrasNotasCreditoMAVI(:nID)<T>, Cxc.ID))
+[MAVINotaCredAdjudicaciones]
+Clave=MAVINotaCredAdjudicaciones
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Adjudicaciones
+Monetario=S
+Formula=SQL( <T>SELECT dbo.fnNotasCreditoAdjMAVI(:nID)<T>, Cxc.ID))
+[MAVIMesesUtilPagar]
+Clave=MAVIMesesUtilPagar
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+FormatoValidacion=#,0.00
+Nombre=%  m
+Formula=SQL(<T>EXEC MesesUtilPagarMAVI :nID<T>,Cxc.ID))
+[MAVIMesesDevengados]
+Clave=MAVIMesesDevengados
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+FormatoValidacion=#,0.00
+Nombre=%  m
+Formula=SQL( <T>SELECT dbo.fnMesesDevengadosMAVI  (:nID)<T>, Cxc.ID))
+[MAVIMesesPagados]
+Clave=MAVIMesesPagados
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+FormatoValidacion=#,0.00
+Nombre=%  m
+;Formula=SQL( <T>SELECT dbo.fnNumAbonosPagadosMAVIEspcificSEnga(:nID)<T>, Cxc.ID))
+Formula=SQL( <T>SELECT dbo.fnNumAbonosPagadosMAVIEspcificSEnga_Aplica(:nID)<T>, Cxc.ID))
+[Cxc.ID]
+Clave=Cxc.ID
+LigaTabla=Cxc
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=AutoInc
+ClaveBDE=ID
+
+[Cxc.Empresa]
+Clave=Cxc.Empresa
+LigaTabla=Cxc
+LigaCampo=Empresa
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=5
+ClaveBDE=Empresa
+
+[Cxc.Mov]
+Clave=Cxc.Mov
+LigaTabla=Cxc
+LigaCampo=Mov
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Mov
+
+[Cxc.MovID]
+Clave=Cxc.MovID
+LigaTabla=Cxc
+LigaCampo=MovID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovID
+
+[Cxc.FechaEmision]
+Clave=Cxc.FechaEmision
+LigaTabla=Cxc
+LigaCampo=FechaEmision
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=FechaEmision
+
+[Cxc.Concepto]
+Clave=Cxc.Concepto
+LigaTabla=Cxc
+LigaCampo=Concepto
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto
+
+[Cxc.Estatus]
+Clave=Cxc.Estatus
+LigaTabla=Cxc
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus
+
+[Cxc.Cliente]
+Clave=Cxc.Cliente
+LigaTabla=Cxc
+LigaCampo=Cliente
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cliente
+
+[Cxc.Condicion]
+Clave=Cxc.Condicion
+LigaTabla=Cxc
+LigaCampo=Condicion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Condicion
+
+[Cxc.Importe]
+Clave=Cxc.Importe
+LigaTabla=Cxc
+LigaCampo=Importe
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=Importe
+
+[Cxc.Impuestos]
+Clave=Cxc.Impuestos
+LigaTabla=Cxc
+LigaCampo=Impuestos
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=Impuestos
+
+[Cxc.Saldo]
+Clave=Cxc.Saldo
+LigaTabla=Cxc
+LigaCampo=Saldo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=Saldo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Vista.ListaCampos]
+(Inicio)=Cxc.ID
+Cxc.ID=Cxc.Empresa
+Cxc.Empresa=Cxc.Mov
+Cxc.Mov=Cxc.MovID
+Cxc.MovID=Cxc.FechaEmision
+Cxc.FechaEmision=Cxc.Concepto
+Cxc.Concepto=Cxc.Estatus
+Cxc.Estatus=Cxc.Cliente
+Cxc.Cliente=Cxc.Condicion
+Cxc.Condicion=Cxc.Importe
+Cxc.Importe=Cxc.Impuestos
+Cxc.Impuestos=Cxc.Saldo
+Cxc.Saldo=(Fin)
+
+[Vista.SQL]
+(Inicio)=SELECT
+SELECT=Cxc.ID,
+Cxc.ID,=Cxc.Empresa,
+Cxc.Empresa,=Cxc.Mov,
+Cxc.Mov,=Cxc.MovID,
+Cxc.MovID,=Cxc.FechaEmision,
+Cxc.FechaEmision,=Cxc.Concepto,
+Cxc.Concepto,=Cxc.Estatus,
+Cxc.Estatus,=Cxc.Cliente,
+Cxc.Cliente,=Cxc.Condicion,
+Cxc.Condicion,=Cxc.Importe,
+Cxc.Importe,=Cxc.Impuestos,
+Cxc.Impuestos,=Cxc.Saldo
+Cxc.Saldo=FROM
+FROM=Cxc
+Cxc=(Fin)
+
+[Vista.ListaCalculados]
+(Inicio)=MAVIFactura
+MAVIFactura=MAVIFecha1Abono
+MAVIFecha1Abono=MAVIFechaTermina
+MAVIFechaTermina=MAVIFechaUltimoA
+MAVIFechaUltimoA=MAVIMaxDiasV
+MAVIMaxDiasV=MAVIMaxDiasI
+MAVIMaxDiasI=MAVIDiasVencidos
+MAVIDiasVencidos=MAVICliente
+MAVICliente=MAVIPlazo
+MAVIPlazo=MAVIAbono
+MAVIAbono=MAVIImporteUA
+MAVIImporteUA=MAVIHMaxDiasV
+MAVIHMaxDiasV=MAVIHMaxDiasI
+MAVIHMaxDiasI=MAVIIDFactCxc
+MAVIIDFactCxc=MaviVentaTotal
+MaviVentaTotal=MaviCalificacionGlobal
+MaviCalificacionGlobal=MAVIDiasInactividad
+MAVIDiasInactividad=MAVI%TiempoDevengado
+MAVI%TiempoDevengado=MAVISaldoCapital
+MAVISaldoCapital=MAVI%PorcTiempoPagado
+MAVI%PorcTiempoPagado=MAVI%AtrasoAdelanto
+MAVI%AtrasoAdelanto=MAVI%TiempoUtilPagar
+MAVI%TiempoUtilPagar=MAVIImpAtrasoAdelanto
+MAVIImpAtrasoAdelanto=MAVI%PromGeneralAbono
+MAVI%PromGeneralAbono=MAVIPromAbono4UltMeses
+MAVIPromAbono4UltMeses=MAVICapPagoPromGeneral
+MAVICapPagoPromGeneral=MAVICapPagoProm4UltMeses
+MAVICapPagoProm4UltMeses=MAVINotaCredCancDev
+MAVINotaCredCancDev=MAVINotaCredBoniAbon
+MAVINotaCredBoniAbon=MAVINotaCredAdjudicaciones
+MAVINotaCredAdjudicaciones=MAVIMesesUtilPagar
+MAVIMesesUtilPagar=MAVIMesesDevengados
+MAVIMesesDevengados=MAVIMesesPagados
+MAVIMesesPagados=(Fin)

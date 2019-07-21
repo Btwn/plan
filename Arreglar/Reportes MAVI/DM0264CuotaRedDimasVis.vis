@@ -1,0 +1,229 @@
+[Vista]
+Icono=0
+Clave=DM0264CuotaRedDimasVis
+Nombre=Cuotas Red Dimas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID<BR>Presentador<BR>Cuota<BR>CuotaJerarquiaDima<BR>Nivel1<BR>Dima1<BR>VtaEspXQN1<BR>ComisN1<BR>PagoComisN1<BR>Nivel2<BR>Dima2<BR>VtaEspXQN2<BR>ComisN2<BR>PagoComisN2<BR>Nivel3<BR>Dima3<BR>VtaEspXQN3<BR>ComisN3<BR>PagoComisN3<BR>Nivel4<BR>Dima4<BR>VtaEspXQN4<BR>ComisN4<BR>PagoComisN4<BR>Nivel5<BR>Dima5<BR>VtaEspXQN5<BR>ComisN5<BR>PagoComisN5
+SQL=Select * from DM0264CuotaDima<BR>order by Presentador
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+ClaveBDE=ID
+[Presentador]
+Clave=Presentador
+Nombre=Presentador
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Presentador
+[Cuota]
+Clave=Cuota
+Nombre=Cuota
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Cuota
+[CuotaJerarquiaDima]
+Clave=CuotaJerarquiaDima
+Nombre=Cuota Jerarquia Dima
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=CuotaJerarquiaDima
+[Nivel1]
+Clave=Nivel1
+Nombre=Nivel 1
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Nivel1
+[Dima1]
+Clave=Dima1
+Nombre=Dima 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Dima1
+[VtaEspXQN1]
+Clave=VtaEspXQN1
+Nombre=Vta Esp x Q N1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=VtaEspXQN1
+Monetario=S
+[ComisN1]
+Clave=ComisN1
+Nombre=% Comis N 1
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=ComisN1
+[PagoComisN1]
+Clave=PagoComisN1
+Nombre=Pago Comis N 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=PagoComisN1
+Monetario=S
+[Nivel2]
+Clave=Nivel2
+Nombre=Nivel 2
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Nivel2
+[Dima2]
+Clave=Dima2
+Nombre=Dima 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Dima2
+[VtaEspXQN2]
+Clave=VtaEspXQN2
+Nombre=Vta Esp X Q N 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=VtaEspXQN2
+Monetario=S
+[ComisN2]
+Clave=ComisN2
+Nombre=% Comis N 2
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=ComisN2
+[PagoComisN2]
+Clave=PagoComisN2
+Nombre=Pago Comis N 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=PagoComisN2
+Monetario=S
+[Nivel3]
+Clave=Nivel3
+Nombre=Nivel 3
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Nivel3
+[Dima3]
+Clave=Dima3
+Nombre=Dima 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Dima3
+[VtaEspXQN3]
+Clave=VtaEspXQN3
+Nombre=Vta Esp X Q N 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=VtaEspXQN3
+Monetario=S
+[ComisN3]
+Clave=ComisN3
+Nombre=% Comis N 3
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=ComisN3
+[PagoComisN3]
+Clave=PagoComisN3
+Nombre=Pago Comis N 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=PagoComisN3
+Monetario=S
+[Nivel4]
+Clave=Nivel4
+Nombre=Nivel 4
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Nivel4
+[Dima4]
+Clave=Dima4
+Nombre=Dima 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Dima4
+[VtaEspXQN4]
+Clave=VtaEspXQN4
+Nombre=Vta Esp X Q N 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=VtaEspXQN4
+Monetario=S
+[ComisN4]
+Clave=ComisN4
+Nombre=% Comis N 4
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=ComisN4
+[PagoComisN4]
+Clave=PagoComisN4
+Nombre=Pago Comis N 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=PagoComisN4
+Monetario=S
+[Nivel5]
+Clave=Nivel5
+Nombre=Nivel 5
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Nivel5
+[Dima5]
+Clave=Dima5
+Nombre=Dima 5
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Dima5
+[VtaEspXQN5]
+Clave=VtaEspXQN5
+Nombre=Vta Esp X Q N 5
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=VtaEspXQN5
+Monetario=S
+[ComisN5]
+Clave=ComisN5
+Nombre=% Comis N 5
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=ComisN5
+[PagoComisN5]
+Clave=PagoComisN5
+Nombre=Pago Comis N 5
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=PagoComisN5
+Monetario=S

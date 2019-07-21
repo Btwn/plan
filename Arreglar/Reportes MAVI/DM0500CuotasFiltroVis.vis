@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=DM0500CuotasFiltroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=TipoCuota
+SQL=Select TipoCuota <BR>From Comercializadora.dbo.cuotascobmenrango CMR  <BR>where tipocomision =<T>COBRANZA CAMPO<T> and <BR>TipoAgente=<T>COBRADOR<T><BR>Group By TipoCuota
+[TipoCuota]
+Clave=TipoCuota
+Nombre=TipoCuota
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=TipoCuota

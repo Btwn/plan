@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=RM0850UenVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=UEN<BR>NOMBRE
+SQL=SELECT UEN, NOMBRE<BR>FROM UEN<BR>WHERE UEN.UEN IN(1,2,3)
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=UEN
+[NOMBRE]
+Clave=NOMBRE
+Nombre=NOMBRE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NOMBRE

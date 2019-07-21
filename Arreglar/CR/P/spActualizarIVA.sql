@@ -1,0 +1,36 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spActualizarIVA
+
+AS
+BEGIN
+DECLARE @Empresa nvarchar(5),
+@Conteo int = 0,
+@Suma int = 0
+DECLARE crEmpresa CURSOR FOR
+SELECT Empresa
+FROM Empresa
+GROUP BY Empresa
+OPEN crEmpresa
+FETCH NEXT FROM crEmpresa INTO @Empresa
+WHILE @@FETCH_STATUS = 0
+BEGIN
+SELECT @Conteo = (SELECT COUNT(*) FROM Compra WHERE Empresa = @Empresa)
+IF @Conteo = 0
+SELECT @Conteo = (SELECT COUNT(*) FROM INV WHERE Empresa = @Empresa)
+IF @Conteo = 0
+UPDATE EmpresaGral
+SET DefImpuesto = 16.0
+WHERE Empresa = @Empresa
+FETCH NEXT FROM crEmpresa INTO @Empresa
+END
+CLOSE crEmpresa;
+DEALLOCATE crEmpresa
+END
+

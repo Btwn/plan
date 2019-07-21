@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0096VehiculoVIS
+Nombre=RM0096VehiculoVIS
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=vehiculo
+CamposBusquedaRapida=vehiculo
+SQL=select distinct  isnull(vehiculo,<T><T>) vehiculo <BR>from embarque where vehiculo <><T><T>
+[vehiculo]
+Clave=vehiculo
+Nombre=vehiculo
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=vehiculo

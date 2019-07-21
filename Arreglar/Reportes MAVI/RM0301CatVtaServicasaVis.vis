@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=RM0301CatVtaServicasaVis
+Nombre=RM0301 Categoría de Ventas Servicasa
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Categoria
+SQL=SELECT DISTINCT <BR> Categoria <BR>FROM dbo.VentasCanalMavi<BR>Where Categoria <> <T>MAYOREO<T>
+[Categoria]
+Clave=Categoria
+Nombre=Categoría de Canal de Venta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Categoria

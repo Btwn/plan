@@ -1,0 +1,41 @@
+[Tabla]
+Icono=0
+Clave=MaviCteCtoEstatus
+Nombre=MaviCteCtoEstatus
+Archivo=MaviCteCtoEstatus
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Estatus<BR>GeneraMovimiento<BR>Orden
+LlavePrimaria=Estatus
+CampoEstatus=Estatus
+SQL=SELECT<BR>  Estatus,<BR>  GeneraMovimiento,<BR>  Orden<BR><BR>FROM<BR>  MaviCteCtoEstatus
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[GeneraMovimiento]
+Clave=GeneraMovimiento
+Nombre=Genera Movimiento
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+OpcionesValidar=S
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico

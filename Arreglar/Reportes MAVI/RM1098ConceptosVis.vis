@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1098ConceptosVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Observaciones
+CamposBusquedaRapida=Observaciones
+SQL=Select Distinct LTRIM(D.Observaciones) As Observaciones  From Dinero D <BR>Inner Join CtaDinero C ON C.CtaDinero=D.CtaDinero<BR>Where C.Categoria=<T>BANCO<T> and D.Observaciones Is Not Null and D.Observaciones <> <T> <T> and D.Mov Not like <T>%Solicitud%<T><BR>{SI(ConDatos(Mavi.RM1098CtaBancaria), <T> And D.CtaDinero in (<T>+Mavi.RM1098CtaBancaria+<T>)<T>,<T><T>)}<BR>{SI(ConDatos(Mavi.RM1098NumCheque), <T> And D.MovID=<T>+Comillas(Mavi.RM1098NumCheque),<T><T>)}<BR>{SI(ConDatos(Mavi.RM1098Beneficiario),<T> And D.BeneficiarioNombre in (<T>+Mavi.RM1098Beneficiario+<T>)<T>,<T><T>)}<BR>Order By 1
+[Observaciones]
+Clave=Observaciones
+Nombre=Observaciones
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Observaciones

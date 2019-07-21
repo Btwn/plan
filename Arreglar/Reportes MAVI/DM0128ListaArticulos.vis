@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=DM0128ListaArticulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+Nombre=DM0128 Listado de Articulos
+ListaCampos=Articulo<BR>Descripcion
+CamposBusquedaRapida=Articulo
+SQL=select Articulo,descripcion1 as Descripcion from art <BR>where linea like <T>%Automoviles%<T> and categoria = <T>Venta<T>
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Articulo
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion

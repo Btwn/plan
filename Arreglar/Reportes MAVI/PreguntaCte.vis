@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=PreguntaCte
+Nombre=Registro de Preguntas Clientes
+Modulos=(Todos)
+Singular=Registro de Preguntas Clientes
+ListaTablas=PreguntaCte
+TablaPrincipal=PreguntaCte
+ListaCampos=PreguntaCte.ID<BR>PreguntaCte.Pregunta
+UsoCapturas=S
+UsoReportes=S
+SQL=SELECT<BR>  PreguntaCte.ID,<BR>  PreguntaCte.Pregunta<BR><BR>FROM<BR>  PreguntaCte
+[PreguntaCte.ID]
+Clave=PreguntaCte.ID
+LigaTabla=PreguntaCte
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=AutoInc
+ClaveBDE=ID
+[PreguntaCte.Pregunta]
+Clave=PreguntaCte.Pregunta
+LigaTabla=PreguntaCte
+LigaCampo=Pregunta
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=Pregunta

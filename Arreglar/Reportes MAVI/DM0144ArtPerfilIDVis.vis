@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0144ArtPerfilIDVis
+Nombre=ID
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID
+LlavePrimaria=ID
+CamposBusquedaRapida=ID
+SQL=Select ID From DM0144ArtPerfilesXAgrupador<BR>order by ID asc
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+ClaveBDE=ID

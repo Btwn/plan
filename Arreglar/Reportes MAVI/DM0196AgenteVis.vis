@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=DM0196AgenteVis
+Modulos=(Todos)
+Nombre=DM0196AgenteVis
+VistaIndependiente=S
+ListaCampos=Agente<BR>nivelcobranzamavi
+CamposBusquedaRapida=Agente
+LlavePrimaria=Agente
+TipoTabla=General
+SQL=SELECT<BR>Agente,<BR>nivelcobranzamavi  <BR>FROM<BR> agente<BR> where estatus = <T>Alta<T><BR> and tipo = <T>cobrador<T>
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Agente
+UnicamenteLectura=S
+Formula=SQLEnLista( <T> SELECT agente.Agente<BR>FROM<BR>  Agente<T>)
+[nivelcobranzamavi]
+Clave=nivelcobranzamavi
+Nombre=nivelcobranzamavi
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=nivelcobranzamavi
+UnicamenteLectura=S

@@ -1,0 +1,31 @@
+[Vista]
+Icono=0
+Clave=RM1068SucursalesInstVis
+Nombre=Sucursales Instituciones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sucursal<BR>Sucursalord
+CamposBusquedaRapida=Sucursal
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=select distinct Cast(sucursal As Varchar) as Sucursal, Sucursal as Sucursalord  <BR>from sucursal With(Nolock)<BR>where sucursal >=3901 order by Sucursalord
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Sucursal
+[Sucursalord]
+Clave=Sucursalord
+Nombre=Sucursalord
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursalord

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1150LineasArtVis
+Nombre=RM1150LineasArtVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea
+SQL=Exec SP_RM1150ArticulosdeVentaAsociadoslistas<BR>{Si(ConDatos(Mavi.RM1150FamsArt),Reemplaza(Comillas(<T>,<T>), <T>,<T>, Mavi.RM1150FamsArt),Comillas(<T><T>))}  <BR><BR>
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=LINEA

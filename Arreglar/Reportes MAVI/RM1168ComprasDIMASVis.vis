@@ -1,0 +1,46 @@
+
+[Vista]
+Icono=0
+Clave=RM1168ComprasDIMASVis
+Nombre=RM1168ComprasDIMASVisFrm
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Concepto<BR>exigible<BR>noExigible<BR>DepResponsable
+SQL=EXEC dbo.SPIRM1168_ResumenEjecutivo <T>DIMAS<T>
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto
+
+
+[exigible]
+Clave=exigible
+Nombre=Exigible
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=exigible
+
+[noExigible]
+Clave=noExigible
+Nombre=No Exigible
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=noExigible
+
+
+[DepResponsable]
+Clave=DepResponsable
+Nombre=Departamento Responsable
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=DepResponsable

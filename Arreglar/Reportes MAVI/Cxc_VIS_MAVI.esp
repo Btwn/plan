@@ -1,0 +1,199 @@
+;**** Ultima modificación:12-Ago-08
+;**** Modifico:Arly Rubio
+;**** Se modifico: Se agrego el campo CteEnviarA.Cadena, financiamiento
+
+;***** Modificacion: 09-Ene-09
+;***** Modifico: Judith Ramirez
+;***** Se modifico: Se agrego campo seenviaburocreditomavi para desarrollo buro credito
+
+;***** Modificacion: 13-Feb-09
+;***** Modifico: Edgar Montelongo
+;***** Se modifico: SE agregaron 3 campos para control de Politica de Enganche
+
+
+
+;**** Se agreagó nuevos campos: CteEnviarA.Cadena, Cxc.Financiamiento ****
+; EWQ. Agosto 2009. Inicio
+;***** Agrego campo NoCtaPago para cobro fiscal-no fiscal BVF 02062012
+[Cxc.vis/Vista.ListaCampos]
+Cxc.PedidoReferenciaID=Cxc.Financiamiento
+Cxc.Financiamiento=Cxc.SaldoDevueltoMAVI
+Cxc.SaldoDevueltoMAVI=Cxc.SaldoAplicadoMAVI
+Cxc.SaldoAplicadoMAVI=Cxc.RefAnticipoMAVI
+Cxc.RefAnticipoMAVI=CteEnviarA.Cadena
+CteEnviarA.Cadena=Cxc.SeEnviaBuroCreditoMavi
+Cxc.SeEnviaBuroCreditoMavi=Cxc.CondRef
+Cxc.CondRef=Cxc.CoincideMavi
+Cxc.CoincideMavi=Cxc.FacDesgloseIVA
+Cxc.FacDesgloseIVA=Cxc.NoCtaPago
+Cxc.NoCtaPago=Mon.TipoCambio
+
+[Cxc.vis/Vista.SQL]
+Cxc.PedidoReferenciaID,=Cxc.CoincideMavi,
+Cxc.CoincideMavi,=Cxc.CondRef,
+Cxc.CondRef,=Cxc.Financiamiento,
+Cxc.Financiamiento,=Cxc.SaldoDevueltoMAVI,
+Cxc.SaldoDevueltoMAVI,=Cxc.SaldoAplicadoMAVI,
+Cxc.SaldoAplicadoMAVI,=Cxc.RefAnticipoMAVI,
+Cxc.RefAnticipoMAVI,=Cxc.SeEnviaBuroCreditoMavi,
+Cxc.SeEnviaBuroCreditoMavi,=CteEnviarA.Cadena,
+CteEnviarA.Cadena,=Cxc.FacDesgloseIVA,
+Cxc.FacDesgloseIVA,=Cxc.NoCtaPago,
+Cxc.NoCtaPago,=Mon.TipoCambio,
+
+[Cxc.vis/Cxc.NoCtaPago]
+Clave=Cxc.NoCtaPago
+Nombre=NoCtaPago
+Visible=S
+TipoDatos=Texto
+ValorPorOmision=<T>No Identificado<T>
+ConRefrescar=S
+ListaRefrescar=Cxc.NoCtaPago
+ValorRefrescar=
+LigaTabla=Cxc
+LigaCampo=NoCtaPago
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=NoCtaPago
+Tamano=25
+
+[Cxc.vis/Cxc.CoincideMavi]
+Clave=Cxc.CoincideMavi
+Nombre=CoincideMavi
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=Cxc
+LigaCampo=CoincideMavi
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=CoincideMavi
+
+; EWQ. Agosto 2009. Fin
+
+;**** Nuevo Campor agregado ****
+[Cxc.vis/CteEnviarA.Cadena]
+Clave=CteEnviarA.Cadena
+Nombre=Cadena
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorRefrescar=SQL(<T>Select Cadena from VentasCanalMAVI where ID=:nClave<T>,ID)
+LigaTabla=CteEnviarA
+LigaCampo=Cadena
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Cadena
+
+
+;**** Nuevo Campor agregado ****
+[Cxc.vis/Cxc.Financiamiento]
+Clave=Cxc.Financiamiento
+Nombre=Financiamiento
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+UnicamenteLectura=S
+CondicionDespliege=Cxc.Origen en(<T>Credilana<T>,<T>Prestamo Personal<T>)
+LigaTabla=Cxc
+LigaCampo=Financiamiento
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Financiamiento
+
+
+
+;***** Campo Nuevo para desarrollo buro de credito *****
+[Cxc.vis/Cxc.SeEnviaBuroCreditoMavi]
+Clave=Cxc.SeEnviaBuroCreditoMavi
+LigaTabla=Cxc
+LigaCampo=SeEnviaBuroCreditoMavi
+ClaveBDE=SeEnviaBuroCreditoMavi
+Visible=S
+Ligado=S
+
+
+
+;***** Campos agregados para control de Politica de enganche
+;***** EM 13-Feb-09
+
+[Cxc.vis/Cxc.SaldoDevueltoMAVI]
+Clave=Cxc.SaldoDevueltoMAVI
+Nombre=SaldoDevueltoMAVI
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+LigaTabla=Cxc
+LigaCampo=SaldoDevueltoMAVI
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=SaldoDevueltoMAVI
+
+[Cxc.vis/Cxc.SaldoAplicadoMAVI]
+Clave=Cxc.SaldoAplicadoMAVI
+Nombre=SaldoAplicadoMAVI
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+LigaTabla=Cxc
+LigaCampo=SaldoAplicadoMAVI
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=SaldoAplicadoMAVI
+
+[Cxc.vis/Cxc.RefAnticipoMAVI]
+Clave=Cxc.RefAnticipoMAVI
+Nombre=RefAnticipoMAVI
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+LigaTabla=Cxc
+LigaCampo=RefAnticipoMAVI
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=RefAnticipoMAVI
+
+
+;*** ARC 22-May-09 Nuevo campo agregado - Desarrollo de Refinanciamiento
+[Cxc.vis/Cxc.CondRef]
+Clave=Cxc.CondRef
+Nombre=Condicion Refinanciamiento
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=Cxc.Mov = <T>Sol Refinanciamiento<T>
+CondicionEdicion=Cxc.Situacion en(EstatusPendiente)
+LigaTabla=Cxc
+LigaCampo=CondRef
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=CondRef
+
+;***** Agrego campo FacDesgloseIva para CFD
+[Cxc.vis/Cxc.FacDesgloseIVA]
+Clave=Cxc.FacDesgloseIVA
+Nombre=FacDesgloseIVA
+Visible=S
+TipoDatos=Lógico
+ValorPorOmision=si(Mov En(<T>Nota Cargo Mayoreo<T>,<T>Nota Credito Mayoreo<T>),Verdadero,Falso)
+ConRefrescar=S
+ListaRefrescar=Cxc.FacDesgloseIva
+ValorRefrescar=si(Mov En(<T>Nota Cargo Mayoreo<T>,<T>Nota Credito Mayoreo<T>),Verdadero,Falso)
+LigaTabla=Cxc
+LigaCampo=FacDesgloseIva
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=FacDesgloseIva
+

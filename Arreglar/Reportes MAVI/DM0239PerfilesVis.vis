@@ -1,0 +1,22 @@
+
+[Vista]
+Icono=0
+Clave=DM0239PerfilesVis
+Nombre=Perfiles
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Acceso
+
+SQL=SELECT DISTINCT<BR>  Acceso<BR>FROM Usuario<BR>WHERE GrupoTrabajo IN (<T>ADMINISTRADOR CD<T>, <T>OPERACION CD<T>, <T>FACTURACION<T>, <T>INVENTARIOS<T>, <T>DISTRIBUCION<T>, <T>COMPRAS<T>)<BR>AND Acceso <> <T><T><BR>AND Acceso IS NOT NULL<BR>ORDER BY Acceso ASC
+[Acceso]
+Clave=Acceso
+Nombre=Acceso
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Acceso

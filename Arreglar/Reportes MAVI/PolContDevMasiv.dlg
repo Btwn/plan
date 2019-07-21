@@ -1,0 +1,25 @@
+
+[Dialogo]
+Clave=PolContDevMasiv
+Nombre=Pólizas Contables a Devoluciones Masivas
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+
+ListaAcciones=PolContDevMasiv
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+PosicionInicialAlturaCliente=80
+PosicionInicialAncho=500
+[Acciones.PolContDevMasiv]
+Nombre=PolContDevMasiv
+Boton=0
+NombreDesplegar=Pólizas Contables a Devoluciones Masivas
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=CONTCDevolucionesActBandfrm
+Activo=S
+Visible=S

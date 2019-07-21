@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1140ListadoClienteVIS
+Nombre=Listado de Cliente
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=cliente
+SQL=SELECT C.cliente<BR>FROM Cte C WITH(NOLOCK)<BR>JOIN CteCto CO WITH(NOLOCK) ON C.Cliente = CO.Cliente<BR>JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.Cliente = CD.Cliente AND CO.ID = CD.ID<BR>WHERE CO.Tipo = <T>AVAL<T> AND CO.MaviEstatus = <T>Supervisado<T> AND CD.Tipo = <T>Particular<T> AND C.Cliente LIKE<T>C%<T><BR>GROUP BY C.cliente<BR>ORDER BY C.Cliente
+[cliente]
+Clave=cliente
+Nombre=cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=cliente

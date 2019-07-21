@@ -1,0 +1,182 @@
+
+[Vista]
+Icono=0
+Clave=RM1181COMSHPorcentajeApoyoSellInVis
+Modulos=(Todos)
+ListaTablas=RM1181COMSHPorcentajeApoyoSellInTbl<BR>Prov
+TablaPrincipal=RM1181COMSHPorcentajeApoyoSellInTbl
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=RM1181COMSHPorcentajeApoyoSellInTbl.IdPorcentajeApoyoSellIn<BR>RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor<BR>RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn1<BR>RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn2<BR>RM1181COMSHPorcentajeApoyoSellInTbl.FechaRegistro<BR>RM1181COMSHPorcentajeApoyoSellInTbl.FechaInicioDeVigencia<BR>RM1181COMSHPorcentajeApoyoSellInTbl.Usuario<BR>Prov.Nombre
+ListaRelaciones=RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor
+UsoCapturas=S
+
+
+
+
+
+SQL=SELECT<BR>RM1181COMSHPorcentajeApoyoSellInTbl.IdPorcentajeApoyoSellIn,<BR>RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor,<BR>RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn1,<BR>RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn2,<BR>RM1181COMSHPorcentajeApoyoSellInTbl.FechaRegistro,<BR>RM1181COMSHPorcentajeApoyoSellInTbl.FechaInicioDeVigencia,<BR>RM1181COMSHPorcentajeApoyoSellInTbl.Usuario,<BR>Prov.Nombre<BR>FROM COMSHPorcentajeApoyoSellIn RM1181COMSHPorcentajeApoyoSellInTbl<BR>JOIN Prov ON RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor=Prov.Proveedor<BR>ORDER BY RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor,<BR>RM1181COMSHPorcentajeApoyoSellInTbl.FechaRegistro
+[Prov.Nombre]
+Clave=Prov.Nombre
+Nombre=Nombre
+Tamano=100
+TamanoValidacion=50
+TipoDatos=Texto
+LigaTabla=Prov
+LigaCampo=Nombre
+ClaveBDE=Nombre
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+
+
+
+TipoCampo=Tabla
+[RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor]
+Clave=RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor
+Nombre=Proveedor
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+LigaTabla=RM1181COMSHPorcentajeApoyoSellInTbl
+LigaCampo=Proveedor
+ClaveBDE=Proveedor
+
+Alineacion=por Omisión
+AlCambiar=Asigna(Prov.Nombre,SQL(<T>SELECT Nombre FROM Prov WHERE Proveedor = :tProveedor<T>,RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor))<BR><BR>Asigna(RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn1,<BR>SQL(<T>SELECT TOP 1 ISNULL(PorcentajeApoyoSellIn1,0) FROM COMSHPorcentajeApoyoSellIn WHERE FechaInicioDeVigencia IN<BR>    (SELECT MAX(FechaInicioDeVigencia) FROM COMSHPorcentajeApoyoSellIn WHERE Proveedor = :tProveedor)<BR>     AND Proveedor = :tProveedor ORDER BY IdPorcentajeApoyoSellIn DESC<T>,<BR>     RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor,RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor))<BR><BR>Asigna(RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn2,<BR>SQL(<T>SELECT TOP 1 ISNULL(PorcentajeApoyoSellIn2,0) FROM COMSHPorcentajeApoyoSellIn WHERE FechaInicioDeVigencia IN<BR>    (SELECT MAX(FechaInicioDeVigencia) FROM COMSHPorcentajeApoyoSellIn WHERE Proveedor = :tProveedor)<BR>     AND Proveedor = :tProveedor ORDER BY IdPorcentajeApoyoSellIn DESC<T>,<BR>    RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor,RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor))
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Vista
+AyudaForma=RM1181COMSSeleccionarProveedorVisFrm
+AyudaVista=RM1181COMSSeleccionarProveedorVis
+AyudaCampo=Proveedor
+[RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn1]
+Clave=RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn1
+Nombre=% Porcentaje Apoyo Sell In 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+LigaTabla=RM1181COMSHPorcentajeApoyoSellInTbl
+LigaCampo=PorcentajeApoyoSellIn1
+ClaveBDE=PorcentajeApoyoSellIn1
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorMinimo=1
+ValorMaximo=10
+FormatoValidacion=0.0
+TipoCampo=Tabla
+[RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn2]
+Clave=RM1181COMSHPorcentajeApoyoSellInTbl.PorcentajeApoyoSellIn2
+Nombre=% Porcentaje Apoyo Sell In 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+LigaTabla=RM1181COMSHPorcentajeApoyoSellInTbl
+LigaCampo=PorcentajeApoyoSellIn2
+ClaveBDE=PorcentajeApoyoSellIn2
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorMinimo=0
+ValorMaximo=10
+
+FormatoValidacion=0.0
+TipoCampo=Tabla
+[RM1181COMSHPorcentajeApoyoSellInTbl.FechaInicioDeVigencia]
+Clave=RM1181COMSHPorcentajeApoyoSellInTbl.FechaInicioDeVigencia
+Nombre=Fecha inicio de vigencia
+Visible=S
+TamanoValidacion=10
+TipoDatos=FechaHora
+LigaTabla=RM1181COMSHPorcentajeApoyoSellInTbl
+LigaCampo=FechaInicioDeVigencia
+ClaveBDE=FechaInicioDeVigencia
+
+Alineacion=por Omisión
+AyudaEnCaptura=Calendario sin Hora
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+
+
+
+TipoCampo=Tabla
+[RM1181COMSHPorcentajeApoyoSellInTbl.FechaRegistro]
+Clave=RM1181COMSHPorcentajeApoyoSellInTbl.FechaRegistro
+LigaTabla=RM1181COMSHPorcentajeApoyoSellInTbl
+LigaCampo=FechaRegistro
+TipoDatos=FechaHora
+ClaveBDE=FechaRegistro
+
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha registro
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorPorOmision=SQL(<T>SELECT DATEADD(DD,0,DATEDIFF(DD,0,GETDATE()))<T>)
+[RM1181COMSHPorcentajeApoyoSellInTbl.Usuario]
+Clave=RM1181COMSHPorcentajeApoyoSellInTbl.Usuario
+LigaTabla=RM1181COMSHPorcentajeApoyoSellInTbl
+LigaCampo=Usuario
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Usuario
+
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorPorOmision=usuario
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+
+TipoCampo=Tabla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[RM1181COMSHPorcentajeApoyoSellInTbl.IdPorcentajeApoyoSellIn]
+Clave=RM1181COMSHPorcentajeApoyoSellInTbl.IdPorcentajeApoyoSellIn
+Nombre=IdPorcentajeApoyoSellIn
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=RM1181COMSHPorcentajeApoyoSellInTbl
+LigaCampo=IdPorcentajeApoyoSellIn
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=IdPorcentajeApoyoSellIn
+
+[Relaciones.RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor]
+Clave=RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor
+TablaRemota=Prov
+LlaveLocal=RM1181COMSHPorcentajeApoyoSellInTbl.Proveedor
+LlaveRemota=Proveedor
+TipoRelacion=Forzosa

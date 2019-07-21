@@ -1,0 +1,23 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnSincroISTablaSinonimo
+(
+@Tabla					varchar(50)
+)
+RETURNS varchar(50)
+
+AS BEGIN
+DECLARE
+@Resultado	varchar(50)
+SET @Resultado = NULL
+SELECT @Resultado = SinonimoTabla FROM SincroISTablaSinonimo WITH(NOLOCK) WHERE Tabla = @Tabla
+SET @Resultado = RTRIM(ISNULL(@Resultado,@Tabla))
+RETURN (@Resultado)
+END
+

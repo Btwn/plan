@@ -1,0 +1,90 @@
+[Vista]
+Icono=0
+Clave=RM0995CXCAreasMotorasVIS
+Nombre=RM0995FINAreasMotoras
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCalculados=Porcentaje
+ListaCampos=FechaEmision<BR>MueblesAmericaPiso<BR>MueblesAmericaCambaseo<BR>MueblesAmericaInstituciones<BR>MueblesAmericaReactivacion<BR>Viu<BR>Total<BR>DIMA
+SQL=SP_MAVIRM0995BitacoraBonifCob <T>C<T>,<BR>{si(condatos(Info.FechaD),comillas((FechaformatoServidor(Info.FechaD))),(Info.FechaD))},<BR>{si(condatos(Info.FechaA),comillas((FechaformatoServidor(Info.FechaA))),(Info.FechaA))},<BR>{Mes(Mavi.Mes)},<BR>{comillas(Info.Ano)},<T><T>,<T><T>,<T><T>,<T><T>
+[Porcentaje]
+Clave=Porcentaje
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Porcentaje
+Formula=SI SUMATOTAL(Total) >0<BR>Entonces<BR>(SUMATOTAL(Total)/Total)*100<BR><BR>SINO<BR>0<BR>FIN
+[FechaEmision]
+Clave=FechaEmision
+Nombre=FECHA EMISION
+Visible=S
+TamanoValidacion=100
+Tamano=11
+ClaveBDE=FechaEmision
+TipoDatos=Texto
+[MueblesAmericaPiso]
+Clave=MueblesAmericaPiso
+Nombre=MUEBLES AMERICA PISO
+Visible=S
+TamanoValidacion=102
+ClaveBDE=MueblesAmericaPiso
+Alineacion=Derecha
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[MueblesAmericaCambaseo]
+Clave=MueblesAmericaCambaseo
+Nombre=MUEBLES AMERICA AVANZADA
+Visible=S
+TamanoValidacion=102
+ClaveBDE=MueblesAmericaCambaseo
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[MueblesAmericaInstituciones]
+Clave=MueblesAmericaInstituciones
+Nombre=MUEBLES AMERICA INSTITUCIONES
+Visible=S
+TamanoValidacion=102
+ClaveBDE=MueblesAmericaInstituciones
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[MueblesAmericaReactivacion]
+Clave=MueblesAmericaReactivacion
+Nombre=MUEBLES AMERICA REACTIVACION
+Visible=S
+TamanoValidacion=102
+ClaveBDE=MueblesAmericaReactivacion
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[Viu]
+Clave=Viu
+Nombre=VIU
+Visible=S
+TamanoValidacion=102
+ClaveBDE=Viu
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[Total]
+Clave=Total
+Nombre=TOTAL
+Visible=S
+TamanoValidacion=100
+ClaveBDE=Total
+TipoDatos=NumFlotante
+Monetario=S
+Cantidad=S
+[DIMA]
+Clave=DIMA
+Nombre=DIMA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=DIMA

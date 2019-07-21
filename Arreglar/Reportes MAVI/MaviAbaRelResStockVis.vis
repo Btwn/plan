@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=MaviAbaRelResStockVis
+Nombre=RELACION DE RESURTIDO DE STOCK
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=DESCRIPCION1<BR>articulo
+SQL=SELECT <BR>ART.ARTICULO, <BR>ART.DESCRIPCION1 <BR>FROM ART <BR>WHERE ARTICULO BETWEEN <T>{Info.ArticuloD}<T> And <T>{Info.ArticuloA}<T>
+[DESCRIPCION1]
+Clave=DESCRIPCION1
+Nombre=DESCRIPCION1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=DESCRIPCION1
+[articulo]
+Clave=articulo
+Nombre=articulo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=ARTICULO

@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=Rm0000GerenciaInstvis
+Nombre=Gerencia Inst
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Agente
+SQL=SELECT Agente FROM dbo.Agente WHERE Agente LIKE <T>GERIn%<T>
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Agente

@@ -1,0 +1,18 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spWebSucActualizarHTML
+@Sucursal       int,
+@Nombre         varchar(50)
+
+AS BEGIN
+SET nocount ON
+UPDATE WebSucursalImagen SET Descripcion = dbo.fnWebArtQuitarTags(Descripcion,'<BODY>')
+WHERE Sucursal= @Sucursal AND Nombre = @Nombre
+END
+

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0042topxmarcasCvis
+Nombre=RM0042topxmarcasCvis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=FACTURA
+CamposBusquedaRapida=FACTURA
+SQL=<BR>SELECT FACTURA FROM (<BR>Select<BR> <BR> Factura = MCE.valor<BR><BR>From Soporte S<BR> Left Join MovCampoExtra MCE On MCE.ID=S.id<BR>)MCE<BR>Where MCE.FACTURA is not null and substring(MCE.FACTURA,1,7)=<T>Factura<T><BR>{Si(ConDatos(Info.Cliente),<T>AND S.Cliente=<T>+COMILLAS(Info.Cliente),<T><T>)}
+[FACTURA]
+Clave=FACTURA
+Nombre=FACTURA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=FACTURA

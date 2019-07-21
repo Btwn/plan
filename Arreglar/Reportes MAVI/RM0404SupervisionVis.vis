@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=RM0404SupervisionVis
+Nombre=Folio de Asignación
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Folio<BR>Movid
+CamposBusquedaRapida=Movid
+SQL=SELECT<BR>    Folio = Mov + <T> <T> + Movid, Movid<BR>FROM<BR>    MaviSupervision<BR>WHERE<BR>    Estatus = <T>PENDIENTE<T><BR>ORDER BY<BR>    Folio ASC
+[Folio]
+Clave=Folio
+Nombre=Folio
+Visible=S
+TamanoValidacion=35
+Tamano=41
+ClaveBDE=Folio
+[Movid]
+Clave=Movid
+Nombre=Movid
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Movid

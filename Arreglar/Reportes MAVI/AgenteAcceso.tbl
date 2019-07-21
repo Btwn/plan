@@ -1,0 +1,49 @@
+;****** Ultima Modificacion: 17-Dic-2008
+;****** Modifico: Edgar Montelongo
+
+
+
+;********* El archivo fue creado desde cero
+[Tabla]
+Icono=0
+Clave=AgenteAcceso
+Archivo=AgenteAcceso
+Modulos=(Todos)
+TipoTabla=Cuentas
+ListaCampos=Agente<BR>Usuario
+Nombre=Acceso Especifico
+Singular=Acceso Especifico
+ListaRelaciones=Usuario
+LlavePrimaria=Agente<BR>Usuario
+CampoUsuario=Usuario
+SQL=SELECT<BR>  Agente,<BR>  Usuario<BR><BR>FROM<BR>  AgenteAcceso
+
+
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+AyudaEnCaptura=Vista
+AyudaForma=UsuarioLista
+AyudaVista=Usuario
+AyudaCampo=Usuario.Usuario
+AyudaMultiple=S
+ValidacionUsaTabla=S
+ValidacionTablas=Usuario
+
+[Relaciones.Usuario]
+TipoRelacion=Forzosa
+LlaveLocal=Usuario
+Clave=Usuario
+TablaRemota=Usuario
+LlaveRemota=Usuario
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Agente

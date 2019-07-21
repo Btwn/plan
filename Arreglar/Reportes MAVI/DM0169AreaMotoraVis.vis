@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=DM0169AreaMotoraVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre<BR>Valor
+Nombre=Area Motora
+SQL=select Nombre, Valor from TablaStD WITH(NOLOCK) where TablaSt = <T>Areas Motoras<T> and Valor <> 0
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+TipoDatos=Texto
+[Valor]
+Clave=Valor
+Nombre=Valor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Valor

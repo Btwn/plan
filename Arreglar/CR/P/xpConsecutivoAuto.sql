@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE xpConsecutivoAuto
+@Sucursal		int		OUTPUT,
+@Empresa     	char(5)		OUTPUT,
+@Modulo		char(5)		OUTPUT,
+@Mov      		char(20)	OUTPUT,
+@Ejercicio	        int		OUTPUT,
+@Periodo	        int		OUTPUT,
+@Serie		varchar(50)	OUTPUT,
+@MovID		varchar(20)	OUTPUT,
+@Ok			int		OUTPUT,
+@OkRef		varchar(255)	OUTPUT,
+@CFD			bit		OUTPUT
+AS BEGIN
+RETURN
+END
+

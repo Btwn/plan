@@ -1,0 +1,108 @@
+[Tabla]
+Icono=0
+Clave=ContSATCFDCBB
+Nombre=ContSATCFDCBB
+Archivo=ContSATCFDCBB
+Modulos=(Todos)
+Singular=ContSATCFDCBB
+TipoTabla=General
+ListaCampos=ID<BR>Modulo<BR>ModuloID<BR>ContID<BR>SerieCFDCBB<BR>NumFolCFDCBB<BR>RFCBeneficiario<BR>MontoTotal<BR>Moneda<BR>TipoCambio
+ControlID=S
+CampoID=ID
+LlavePrimaria=ID
+SQL=SELECT<BR>  ID,<BR>  Modulo,<BR>  ModuloID,<BR>  ContID,<BR>  SerieCFDCBB,<BR>  NumFolCFDCBB,<BR>  RFCBeneficiario,<BR>  MontoTotal,<BR>  Moneda,<BR>  TipoCambio<BR><BR>FROM<BR>  ContSATCFDCBB
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Modulo]
+Clave=Modulo
+Nombre=Modulo
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Modulo
+[ModuloID]
+Clave=ModuloID
+Nombre=ModuloID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.Id
+[ContID]
+Clave=ContID
+Nombre=ContID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[SerieCFDCBB]
+Clave=SerieCFDCBB
+Nombre=Serie CFD-CBB
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+MascaraEdicion=>llllllllll
+CondicionEdicion=Info.Valor = <T>1<T>
+[NumFolCFDCBB]
+Clave=NumFolCFDCBB
+Nombre=Número de Folio CFD-CBB
+Visible=S
+TamanoValidacion=20
+Tamano=20
+TipoDatos=Texto
+MascaraEdicion=99999999999999999999
+CondicionEdicion=Info.Valor = <T>1<T>
+[RFCBeneficiario]
+Clave=RFCBeneficiario
+Nombre=RFC Beneficiario
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionEdicion=Info.Valor = <T>1<T>
+Mayusculas=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Incorrecto<T>
+ValidacionCondicion=SQL(<T>spRegistroOk :tCual, :tRegistro, :tEmpresa<T>, <T>RFC<T>, RFCBeneficiario, Empresa)
+[MontoTotal]
+Clave=MontoTotal
+Nombre=Monto Total
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionEdicion=Info.Valor = <T>1<T>
+Monetario=S
+AyudaEnCaptura=Calculadora
+[Moneda]
+Clave=Moneda
+Nombre=Moneda
+Visible=S
+TamanoValidacion=10
+Tamano=10
+CondicionEdicion=Info.Valor = <T>1<T>
+Mayusculas=S
+ConRefrescar=S
+ListaRefrescar=TipoCambio
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=TipoCambio
+AyudaEnCaptura=Vista
+AyudaForma=MonLista
+AyudaVista=Mon
+AyudaCampo=Mon.Clave
+AyudaRefrescar=S
+TipoDatos=Texto
+[TipoCambio]
+Clave=TipoCambio
+Nombre=Tipo de Cambio
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ValorRefrescar=SQL(<T>SELECT TipoCambio FROM Mon WHERE Clave = :tMoneda<T>,Moneda)
+RefrescarTotales=S
+CondicionEdicion=(Info.Valor = <T>1<T>) y (Moneda <> <T>MXN<T>) y (ConDatos(Moneda))

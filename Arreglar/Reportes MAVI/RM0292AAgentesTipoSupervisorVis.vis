@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=RM0292AAgentesTipoSupervisorVis
+Modulos=(Todos)
+TipoTabla=General
+Nombre=Agentes Tipo Supervisor
+VistaIndependiente=S
+ListaCampos=CveSupervisor<BR>NombreSupervisor
+SQL=SELECT <BR><TAB>CveSupervisor=Sod.Descripcion1,<BR><TAB>NombreSupervisor=Agt.Nombre<BR>FROM<BR><TAB>SucursalOtrosDatos Sod<BR><TAB>INNER JOIN Agente Agt ON Agt.Agente=Sod.Descripcion1<BR>GROUP BY Sod.Descripcion1,Agt.Nombre
+[CveSupervisor]
+Clave=CveSupervisor
+Nombre=CveSupervisor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=CveSupervisor
+[NombreSupervisor]
+Clave=NombreSupervisor
+Nombre=NombreSupervisor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreSupervisor

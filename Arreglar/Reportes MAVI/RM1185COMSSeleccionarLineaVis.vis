@@ -1,0 +1,19 @@
+
+[Vista]
+Icono=0
+Clave=RM1185COMSSeleccionarLineaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=SELECT DISTINCT Linea<BR>FROM Art WITH(NOLOCK)<BR>LEFT JOIN COMSCRM1185InvMinimoRequeridoPorLinea WITH(NOLOCK)<BR>ON Linea=LineaValida<BR>WHERE Grupo = <T>MERCANCIA DE LINEA<T><BR>AND Familia NOT IN (<T>VARIOS MERCANCIA DE LINEA<T>,<T>PRODUCTOS A VISTAS<T>)<BR>AND Linea NOT IN (<T>VISTAS<T>,<T>PRODUCTOS A VISTAS<T>)<BR>AND LEN(Linea)>0<BR>AND LineaValida IS NULL<BR>ORDER BY Linea
+[Linea]
+Clave=Linea
+Nombre=Linea(s) Seleccionada(s)
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

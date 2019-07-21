@@ -1,0 +1,177 @@
+[Vista]
+Icono=0
+Clave=RM0350ExpResMovConVencimientoVIS
+Nombre=RM0350 Resumen por Movimiento con Dias de Vencimiento y Agente
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=FechaFactura<BR>Agente<BR>NoFactura<BR>Movimiento<BR>NoCliente<BR>NombreDelCliente<BR>CondicionDePago<BR>ImporteFactura<BR>Fecha1erAbono<BR>FechaUltimoPago<BR>ImporteUltimoPago<BR>SaldoCapital<BR>Intereses<BR>SaldoTotal<BR>DíasSAbono<BR>DíasVencidos<BR>SaldoVencido<BR>DíasEnRuta<BR>fechaEmision<BR>Importe
+CamposBusquedaRapida=Agente
+SQL=select * from (<BR>select v.FechaEmision as FechaFactura,v.MovID as NoFactura,v.Mov as Movimiento, <BR><TAB><TAB>   v.Cliente as NoCliente,cte.Nombre as NombreDelCliente,<BR><TAB><TAB>   v.Condicion as CondicionDePago,<BR><TAB><TAB>   ImporteFactura=round(isnull(sum(c.importe),0),2),<BR><TAB><TAB>   min(c.Vencimiento)Fecha1erAbono, max(fn.fechaemision)as FechaUltimoPago,<BR><TAB><TAB>   round(ISNULL(max(c3.importe),0),2) as ImporteUltimoPago,<BR><TAB><TAB>  Abonos.Importe,<BR><TAB><TAB>   round(isnull(sum(c4.saldo),0),2)as SaldoCapital,<BR><TAB><TAB> Intereses=case when v.mov not in(<T>Seguro Vida<T>, <T>Seguro Auto<T>)<BR><TAB><TAB><TAB><TAB><TAB><TAB>  then<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>round(isnull(sum((c4.saldo*dbo.fnFactorIMMAVI(c4.id)*Ec.CxcMoratoriosTasa)<BR><TAB><TAB><<CONTINUA>
+SQL002=<CONTINUA>TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>+isnull(c4.INTERESESMORATORIOSMAVI,0)),0),2)<BR><TAB><TAB><TAB><TAB><TAB><TAB>  else 0 End,<BR><TAB><TAB>   SaldoTotal=(round(isnull(sum(c4.saldo),0),2))+<BR><TAB><TAB><TAB><TAB><TAB>  (case when v.mov not in(<T>Seguro Vida<T>, <T>Seguro Auto<T>)<BR><TAB><TAB><TAB><TAB><TAB><TAB>  then<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>round(isnull(sum((c4.saldo*dbo.fnFactorIMMAVI(c4.id)*Ec.CxcMoratoriosTasa)<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>+isnull(c4.INTERESESMORATORIOSMAVI,0)),0),2)<BR><TAB><TAB><TAB><TAB><TAB><TAB>  else  0 End),<BR><TAB><TAB>  isnull(max(dbo.fnDiasInactividadMAVI(c4.id)),0) as DíasSAbono,<BR><TAB><TAB>   dbo.Fn_MaviDV(v.mov,v.movid)as DíasVencidos,  <BR><TAB>      round(isnull(sum(c2.importe),0),2)<CONTINUA>
+SQL003=<CONTINUA> as SaldoVencido,<BR><TAB>      DATEDIFF(dd,max(e2.fechaemision),getdate())as DíasEnRuta, --Quedo pendiente las rutas  <BR><TAB><TAB>Agente=max(e.agente),fechaEmision=max(E.fechaEmision)<BR>from venta V<BR><TAB>inner join CTE on V.Cliente=CTE.Cliente <BR><TAB>inner join EmpresaCfg Ec on Ec.empresa= <T>mavi<T><BR><TAB>inner join cxc C on V.Mov=C.Origen and V.Movid=C.Origenid  and C.mov=<T>documento<T><BR><TAB>left join cxc C2 on C.mov=C2.mov and C.movid=C2.movid <BR><TAB><TAB><TAB><TAB><TAB>and C2.vencimiento <cast(floor(cast(getdate()as real)) as datetime) <BR><TAB>left join cxc c3 <BR><TAB><TAB><TAB>Cross Apply Fn_DocCobrableMayMavi(c3.Mov,c3.MovID) fn on c.mov=c3.mov and c.movid=c3.movid <BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>and fn.cobro<CONTINUA>
+SQL004=<CONTINUA>=<T>cobro<T><BR><TAB>LEFT JOIN cxc C4 on C.Mov=C4.Mov and C.Movid=C4.Movid   and c4.estatus=<T>pendiente<T><BR><TAB>left join cxc C5 on C4.Mov=C5.Mov and C4.Movid=C5.Movid  <BR><TAB><TAB>and C5.vencimiento <cast(floor(cast(getdate()as real)) as datetime) <TAB><BR><TAB>LEFT join embarquemov Em on c5.Mov=Em.Mov and C5.Movid=Em.Movid <BR><TAB>LEFT join embarque e on e.mov=<T>orden cobro<T> and Em.asignadoid=e.id<BR><TAB>LEFT join embarque e2 on e2.mov=<T>orden cobro<T> and Em.asignadoid=e2.id and e2.estatus=<T>pendiente<T><BR><TAB>LEFT JOIN<BR><TAB>(<BR><TAB><TAB>Select <BR><TAB><TAB>TD.Origen,<BR><TAB><TAB>TD.OrigenID,<BR><TAB><TAB><T>Importe<T>=Sum(C.Importe)<BR><TAB><TAB>from CxC C<BR><TAB><TAB>Inner Join CxCD CD on C.ID=CD.ID<BR><TAB><TAB>Left Join<BR><TAB><TAB>(<BR><TAB><TAB>Select <BR><<CONTINUA>
+SQL005=<CONTINUA>TAB><TAB>Mov,<BR><TAB><TAB>MovID,<BR><TAB><TAB>Origen,<BR><TAB><TAB>OrigenID<BR><TAB><TAB>From CxC<BR><TAB><TAB>Where Mov=<T>Documento<T><BR><TAB><TAB>) TD on CD.Aplica=TD.Mov and CD.AplicaID=TD.MovID<BR><TAB><TAB>Where C.Mov=<T>Cobro<T><BR><TAB><TAB>And C.Estatus=<T>Concluido<T><BR><TAB><TAB>And CD.Aplica=<T>Documento<T><BR><TAB><TAB>Group By TD.Origen,TD.OrigenID<BR><TAB>) Abonos on v.Mov = Abonos.Origen and v.MovID = Abonos.OrigenID<BR>where v.mov  in (<T>Factura<T>,<T>Factura Viu<T>,<T>Credilana<T>,<T>Prestamo Personal<T>,--Solo este tipo de movimientos<BR><TAB><T>Seguro Vida<T>,<T>Seguro Auto<T>,<T>Refinanciamiento<T>) and (v.estatus=<T>concluido<T> or v.estatus=<T>pendiente<T>)<BR><TAB>and c.mov  not in (<T>Factura<T>,<T>Factura Viu<T>,<T>Credilana<T>,<T>Prestamo Personal<T>,--Solo e<CONTINUA>
+SQL006=<CONTINUA>ste tipo de movimientos<BR><TAB><T>Seguro Vida<T>,<T>Seguro Auto<T>,<T>Refinanciamiento<T>)<BR><TAB>and c.clienteenviara in<BR><TAB>(<BR><TAB><TAB>select distinct(cte.id) from CteEnviarA cte where cte.seccioncobranzamavi=<T>CREDITO MENUDEO<T><BR><TAB>)<BR>Group by v.FechaEmision,v.MovID,v.Cliente,cte.Nombre,v.Condicion,v.mov,Ec.CxcMoratoriosTasa,v.agente, Abonos.Importe<BR><BR><BR>)T<BR>where  T.Agente is not null and T.agente in<BR><TAB>(<BR><TAB><TAB>select a.agente from agente a<BR><TAB><TAB>where a.Categoria=<T>Cobranza Menudeo<T> and a.tipo=<T>Cobrador<T> and<BR><TAB><TAB>a.estatus=<T>alta<T><BR><TAB>)<BR>Order By Agente
+[FechaFactura]
+Clave=FechaFactura
+Nombre=Fecha Factura
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaFactura
+[NoFactura]
+Clave=NoFactura
+Nombre=# Factura
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=NoFactura
+TipoDatos=Texto
+[Movimiento]
+Clave=Movimiento
+Nombre=Mov
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Movimiento
+TipoDatos=Texto
+[NombreDelCliente]
+Clave=NombreDelCliente
+Nombre=Nombre
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=NombreDelCliente
+TipoDatos=Texto
+[CondicionDePago]
+Clave=CondicionDePago
+Nombre=Pzo.
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=CondicionDePago
+TipoDatos=Texto
+[ImporteFactura]
+Clave=ImporteFactura
+Nombre=Imp-Factura
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=ImporteFactura
+FormatoValidacion=#,0.00
+Monetario=S
+[Fecha1erAbono]
+Clave=Fecha1erAbono
+Nombre=Fecha 1erAbo
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=Fecha1erAbono
+[FechaUltimoPago]
+Clave=FechaUltimoPago
+Nombre=Fecha Ult. Pago
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaUltimoPago
+[ImporteUltimoPago]
+Clave=ImporteUltimoPago
+Nombre=Importe Ult. Pago
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=ImporteUltimoPago
+FormatoValidacion=#,0.00
+Monetario=S
+[SaldoCapital]
+Clave=SaldoCapital
+Nombre=SdoCap
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=SaldoCapital
+FormatoValidacion=#,0.00
+Monetario=S
+[Intereses]
+Clave=Intereses
+Nombre=Intereses
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Intereses
+FormatoValidacion=#,0.00
+Monetario=S
+[SaldoTotal]
+Clave=SaldoTotal
+Nombre=SdoTot
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=SaldoTotal
+FormatoValidacion=#,0.00
+Monetario=S
+[DíasSAbono]
+Clave=DíasSAbono
+Nombre=Días S/Abo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=DíasSAbono
+[DíasVencidos]
+Clave=DíasVencidos
+Nombre=Días Ven
+Visible=S
+TamanoValidacion=120
+Tamano=120
+ClaveBDE=DíasVencidos
+TipoDatos=Texto
+[SaldoVencido]
+Clave=SaldoVencido
+Nombre=SdoVen
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=SaldoVencido
+FormatoValidacion=#,0.00
+Monetario=S
+[DíasEnRuta]
+Clave=DíasEnRuta
+Nombre=Días en Ruta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=DíasEnRuta
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Agente
+[fechaEmision]
+Clave=fechaEmision
+Nombre=Fecha Emision
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=fechaEmision
+[NoCliente]
+Clave=NoCliente
+Tamano=10
+ClaveBDE=NoCliente
+TamanoValidacion=10
+Nombre=Cta.
+TipoDatos=Texto
+[Importe]
+Clave=Importe
+Nombre=Importe Total Abonos
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Importe
+FormatoValidacion=#,0.00
+Monetario=S

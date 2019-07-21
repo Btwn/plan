@@ -1,0 +1,45 @@
+[Dialogo]
+Clave=DM0155SubContabilidad
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Contabilidad<BR>CFDs<BR>ExploradorCFDI
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.Contabilidad]
+Nombre=Contabilidad
+Boton=0
+NombreDesplegar=Contabilidad
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarCont
+Activo=S
+Visible=S
+[Acciones.CFDs]
+Nombre=CFDs
+Boton=0
+NombreDesplegar=CFD´s
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarCFD
+Activo=S
+Visible=S
+
+[Acciones.ExploradorCFDI]
+Nombre=ExploradorCFDI
+Boton=0
+NombreDesplegar=Capturar Importe/UUID a CFDI de Egreso
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0332PreviaExploradorCFDIFrm
+Activo=S
+Visible=S

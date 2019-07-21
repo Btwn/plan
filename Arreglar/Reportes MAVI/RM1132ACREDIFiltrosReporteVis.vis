@@ -1,0 +1,181 @@
+
+[Vista]
+Icono=0
+Clave=RM1132ACREDIFiltrosReporteVis
+Modulos=(Todos)
+ListaTablas=RM1132ACREDIFiltrosReporteTbl
+TablaPrincipal=RM1132ACREDIFiltrosReporteTbl
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=RM1132ACREDIFiltrosReporteTbl.IdTablaPasoConfiguracionBF<BR>RM1132ACREDIFiltrosReporteTbl.Spid<BR>RM1132ACREDIFiltrosReporteTbl.SaldoActual<BR>RM1132ACREDIFiltrosReporteTbl.Movimientos<BR>RM1132ACREDIFiltrosReporteTbl.Meses<BR>RM1132ACREDIFiltrosReporteTbl.MontoAbonos<BR>RM1132ACREDIFiltrosReporteTbl.DValDia<BR>RM1132ACREDIFiltrosReporteTbl.MHDV<BR>RM1132ACREDIFiltrosReporteTbl.MHDVxPeriodo<BR>RM1132ACREDIFiltrosReporteTbl.ApoyoCobranza
+
+
+
+
+
+
+
+
+
+
+SQL=SELECT<BR>RM1132ACREDIFiltrosReporteTbl.IdTablaPasoConfiguracionBF,<BR>RM1132ACREDIFiltrosReporteTbl.Spid,<BR>RM1132ACREDIFiltrosReporteTbl.SaldoActual,<BR>RM1132ACREDIFiltrosReporteTbl.Movimientos,<BR>RM1132ACREDIFiltrosReporteTbl.Meses,<BR>RM1132ACREDIFiltrosReporteTbl.MontoAbonos,<BR>RM1132ACREDIFiltrosReporteTbl.DValDia,<BR>RM1132ACREDIFiltrosReporteTbl.MHDV,<BR>RM1132ACREDIFiltrosReporteTbl.MHDVxPeriodo,<BR>RM1132ACREDIFiltrosReporteTbl.ApoyoCobranza<BR>FROM CREDIDTablaPasoConfiguracionBF RM1132ACREDIFiltrosReporteTbl
+[RM1132ACREDIFiltrosReporteTbl.SaldoActual]
+Clave=RM1132ACREDIFiltrosReporteTbl.SaldoActual
+Nombre=Saldo Actual
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=SaldoActual
+ClaveBDE=SaldoActual
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT SaldoActual<BR>FROM CREDIDTablaConfiguracionBF<BR>WHERE LEN(SaldoActual)>0<T>)
+[RM1132ACREDIFiltrosReporteTbl.Movimientos]
+Clave=RM1132ACREDIFiltrosReporteTbl.Movimientos
+Nombre=A partir de N movimientos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=Movimientos
+ClaveBDE=Movimientos
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT Movimientos<BR>FROM CREDIDTablaConfiguracionBF<BR>WHERE LEN(Movimientos)>0<BR>ORDER BY CAST(Movimientos AS INT) ASC<T>)
+[RM1132ACREDIFiltrosReporteTbl.Meses]
+Clave=RM1132ACREDIFiltrosReporteTbl.Meses
+Nombre=En los ultimos (N) meses
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=Meses
+ClaveBDE=Meses
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT Meses<BR>FROM CREDIDTablaConfiguracionBF<BR>WHERE LEN(Meses)>0<BR>ORDER BY CAST(Meses AS INT) ASC<T>)
+[RM1132ACREDIFiltrosReporteTbl.MontoAbonos]
+Clave=RM1132ACREDIFiltrosReporteTbl.MontoAbonos
+Nombre=Importe minimo de abonos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=MontoAbonos
+ClaveBDE=MontoAbonos
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT MontoAbonos<BR>FROM CREDIDTablaConfiguracionBF<BR>WHERE LEN(MontoAbonos)>0<BR>ORDER BY CAST(MontoAbonos AS MONEY) ASC<T>)
+[RM1132ACREDIFiltrosReporteTbl.DValDia]
+Clave=RM1132ACREDIFiltrosReporteTbl.DValDia
+Nombre=Menor a (N) DV actual
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=DValDia
+ClaveBDE=DValDia
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DValDia<BR>FROM CREDIDTablaConfiguracionBF<BR>WHERE LEN(DValDia)>0<BR>ORDER BY CAST(DValDia AS INT) ASC<T>)
+[RM1132ACREDIFiltrosReporteTbl.MHDV]
+Clave=RM1132ACREDIFiltrosReporteTbl.MHDV
+Nombre=Máximo histórico hasta (N) DV
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=MHDV
+ClaveBDE=MHDV
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT MHDV<BR>FROM CREDIDTablaConfiguracionBF<BR>WHERE LEN(MHDV)>0<BR>ORDER BY CAST(MHDV AS INT) ASC<T>)
+[RM1132ACREDIFiltrosReporteTbl.MHDVxPeriodo]
+Clave=RM1132ACREDIFiltrosReporteTbl.MHDVxPeriodo
+Nombre=Maximo historico DV X periodo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=MHDVxPeriodo
+ClaveBDE=MHDVxPeriodo
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT MHDVxPeriodo<BR>FROM CREDIDTablaConfiguracionBF<BR>WHERE LEN(MHDVxPeriodo)>0<BR>ORDER BY CAST(MHDVxPeriodo AS INT) ASC<T>)
+[RM1132ACREDIFiltrosReporteTbl.ApoyoCobranza]
+Clave=RM1132ACREDIFiltrosReporteTbl.ApoyoCobranza
+Nombre=Apoyo Cobranza
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=ApoyoCobranza
+ClaveBDE=ApoyoCobranza
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+
+
+
+
+
+
+
+Formula=SQLEnLista(<T>SELECT ApoyoCobranza<BR>FROM CREDIDTablaConfiguracionBF<BR>WHERE LEN(ApoyoCobranza)>0<BR>ORDER BY ApoyoCobranza<T>)
+[RM1132ACREDIFiltrosReporteTbl.IdTablaPasoConfiguracionBF]
+Clave=RM1132ACREDIFiltrosReporteTbl.IdTablaPasoConfiguracionBF
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=IdTablaPasoConfiguracionBF
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=AutoInc
+ClaveBDE=IdTablaPasoConfiguracionBF
+
+[RM1132ACREDIFiltrosReporteTbl.Spid]
+Clave=RM1132ACREDIFiltrosReporteTbl.Spid
+Visible=S
+LigaTabla=RM1132ACREDIFiltrosReporteTbl
+LigaCampo=Spid
+Ligado=S
+ClaveBDE=Spid

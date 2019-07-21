@@ -1,0 +1,254 @@
+
+[Tabla]
+Icono=0
+Clave=ParPolizasSAT
+Nombre=ParPolizasSAT
+Archivo=ParPolizasSAT
+Modulos=(Todos)
+Singular=ParPolizasSAT
+TipoTabla=General
+
+ListaCampos=Estacion<BR>Ejercicio<BR>Periodo<BR>TipoSolicitud<BR>TipoArchivo<BR>CuentaA<BR>CuentaD<BR>ProvA<BR>ProvD<BR>CteA<BR>CteD<BR>AcreedorA<BR>AcreedorD<BR>CasatA<BR>CasatD<BR>NoSolicitud<BR>Empresa<BR>Usuario
+LlavePrimaria=Estacion
+SQL=SELECT <BR>Estacion,<TAB><TAB><BR>Empresa,<TAB><TAB><BR>Ejercicio,<TAB><TAB><BR>Periodo,<TAB><TAB><TAB><BR>TipoSolicitud,<TAB><BR>TipoArchivo,<TAB><TAB><BR>NoSolicitud,<TAB><BR>CuentaD,<TAB><TAB><TAB><BR>CuentaA,<TAB><TAB><TAB><BR>ProvD,<TAB><TAB><TAB><BR>ProvA,<TAB><TAB><TAB><BR>CteD,<TAB><TAB><TAB><BR>CteA,<TAB><TAB><TAB><BR>AcreedorD,<BR>AcreedorA,<TAB><TAB><BR>CasatD,<TAB><TAB><TAB><BR>CasatA,<TAB><TAB><TAB><BR>Usuario<BR>FROM ParPolizasSAT
+[Estacion]
+Clave=Estacion
+Nombre=Estacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorPorOmision=EstacionTrabajo
+[Ejercicio]
+Clave=Ejercicio
+Nombre=Ejercicio
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+Requerido=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesLlave=Opción
+OpcionesColumnas=1
+OpcionesPredefinidas=Años
+OpcionesRenglones=8
+AlCambiar=Asigna(Info.Ejercicio, Ejercicio)
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=TipoSolicitud
+[Periodo]
+Clave=Periodo
+Nombre=Periodo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+Requerido=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesLlave=Opción
+OpcionesColumnas=1
+OpcionesPredefinidas=Meses Num.
+OpcionesRenglones=8
+OpcionesValidar=S
+AlCambiar=Asigna(Info.Periodo, Periodo)
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=TipoSolicitud
+[TipoSolicitud]
+Clave=TipoSolicitud
+Nombre=Tipo de Solicitud
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+Requerido=S
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=CuentaD<BR>ProvD<BR>CteD<BR>AcreedorD<BR>CasatD
+AlCambiar=Si<BR>    TipoSolicitud = 1<BR>Entonces<BR>    Asigna(Info.Tipo, <T>AF<T>)<BR>Sino<BR>    Si<BR>        TipoSolicitud = 2<BR>    Entonces<BR>        Asigna(Info.Tipo, <T>FC<T>)<BR>    Sino<BR>        Si<BR>            TipoSolicitud = 3<BR>        Entonces<BR>            Asigna(Info.Tipo, <T>DE<T>)<BR>        Sino<BR>            Si<BR>                TipoSolicitud = 4<BR>            Entonces<BR>                Asigna(Info.Tipo, <T>CO<T>)<BR>            Sino<BR>                Asigna(Info.Tipo, Nulo)<BR>            Fin<BR>        Fin<BR>    Fin<BR>Fin
+CondicionEdicion=ConDatos(Info.Ejercicio) y ConDatos(Info.Periodo)
+AyudaEnCaptura=Lista de Opciones
+OpcionesLlave=Número del Renglón
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+OpcionesUnicamente=S
+OpcionesValidar=S
+ListaOpciones=Acto de Fiscalización<BR>Fiscalización Compulsa<BR>Devolución<BR>Compensación
+[TipoArchivo]
+Clave=TipoArchivo
+Nombre=Tipo de Archivo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+Requerido=S
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=Archivo General<BR>Auxiliar Folios<BR>Auxiliar Cuentas
+OpcionesLlave=Número del Renglón
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+[CuentaA]
+Clave=CuentaA
+Nombre=A la cuenta
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+CondicionEdicion=ConDatos(Info.Tipo)
+AyudaEnCaptura=Vista
+AyudaForma=CtaLista
+AyudaVista=CtaLista
+AyudaCampo=CtaLista.Cuenta
+[CuentaD]
+Clave=CuentaD
+Nombre=De la cuenta
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=CuentaA
+CondicionEdicion=ConDatos(Info.Tipo)
+AyudaEnCaptura=Vista
+AyudaForma=CtaLista
+AyudaVista=CtaLista
+AyudaCampo=CtaLista.Cuenta
+[ProvA]
+Clave=ProvA
+Nombre=Al Proveedor
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+CondicionEdicion=ConDatos(Info.Tipo)
+AyudaEnCaptura=Vista
+AyudaForma=ProvLista
+AyudaVista=Prov
+AyudaCampo=Prov.Proveedor
+[ProvD]
+Clave=ProvD
+Nombre=Del Proveedor
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+ConRefrescarCondiciones=S
+CondicionEdicion=ConDatos(Info.Tipo)
+ListaRefrescarCondiciones=ProvA
+AyudaEnCaptura=Vista
+AyudaForma=ProvLista
+AyudaVista=Prov
+AyudaCampo=Prov.Proveedor
+[CteA]
+Clave=CteA
+Nombre=Al Cliente
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+CondicionEdicion=ConDatos(Info.Tipo)
+AyudaEnCaptura=Vista
+AyudaForma=CteLista
+AyudaVista=CteA
+AyudaCampo=Cte.Cliente
+[CteD]
+Clave=CteD
+Nombre=Del Cliente
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+ConRefrescarCondiciones=S
+CondicionEdicion=ConDatos(Info.Tipo)
+ListaRefrescarCondiciones=CteA
+AyudaEnCaptura=Vista
+AyudaForma=CteLista
+AyudaVista=CteA
+AyudaCampo=Cte.Cliente
+[AcreedorA]
+Clave=AcreedorA
+Nombre=Al Acreedor
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+CondicionEdicion=ConDatos(Info.Tipo)
+AyudaEnCaptura=Vista
+AyudaForma=AcreedorLista
+AyudaVista=Prov
+AyudaCampo=Prov.Proveedor
+[AcreedorD]
+Clave=AcreedorD
+Nombre=Del Acreedor
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+ConRefrescarCondiciones=S
+CondicionEdicion=ConDatos(Info.Tipo)
+ListaRefrescarCondiciones=AcreedorA
+AyudaEnCaptura=Vista
+AyudaForma=AcreedorLista
+AyudaVista=Prov
+AyudaCampo=Prov.Proveedor
+[CasatA]
+Clave=CasatA
+Nombre=Al Casat
+Visible=S
+TamanoValidacion=40
+TipoDatos=Texto
+Tamano=40
+
+CondicionEdicion=ConDatos(Info.Tipo)
+AyudaEnCaptura=Vista
+AyudaForma=CodigoAgrupadorLista
+AyudaVista=CodigoAgrupadorLista
+AyudaCampo=CodigoAgrupador.ClaveSAT
+[CasatD]
+Clave=CasatD
+Nombre=Del Casat
+Visible=S
+TamanoValidacion=40
+TipoDatos=Texto
+Tamano=40
+ConRefrescarCondiciones=S
+CondicionEdicion=ConDatos(Info.Tipo)
+ListaRefrescarCondiciones=CasatA
+AyudaEnCaptura=Vista
+AyudaForma=CodigoAgrupadorLista
+AyudaVista=CodigoAgrupadorLista
+AyudaCampo=CodigoAgrupador.ClaveSAT
+
+[NoSolicitud]
+Clave=NoSolicitud
+Nombre=No. Orden / No. Trámite
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+ValorPorOmision=Empresa
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ValorPorOmision=Usuario

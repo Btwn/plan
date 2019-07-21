@@ -1,0 +1,136 @@
+[Forma]
+Clave=MaviRegPatronalRHVisFrm
+Nombre=Registro Patronal
+Icono=579
+Modulos=(Todos)
+ListaCarpetas=MaviRegPatronalRHVis
+CarpetaPrincipal=MaviRegPatronalRHVis
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaBloquearAjuste=S
+VentanaAvanzaTab=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=493
+PosicionInicialArriba=361
+PosicionInicialAlturaCliente=275
+PosicionInicialAncho=294
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar
+[Acciones.SelAll]
+Nombre=SelAll
+Boton=0
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+E
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.QuitarSel]
+Nombre=QuitarSel
+Boton=0
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+R
+NombreDesplegar=&Quitar Selección
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[MaviRegPatronalRHVis]
+Estilo=Iconos
+Clave=MaviRegPatronalRHVis
+BusquedaRapidaControles=S
+MenuLocal=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=MaviRegPatronalRHVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+ListaAcciones=SelAll<BR>QuitarSel
+CarpetaVisible=S
+ListaEnCaptura=Prima<BR>Estado
+IconosSubTitulo=<T>Registro Patronal<T>
+IconosNombre=MaviRegPatronalRHVis:RegPatronal
+IconosConRejilla=S
+[MaviRegPatronalRHVis.Columnas]
+0=115
+1=63
+2=103
+3=-2
+[Acciones.Seleccionar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=Asigna<BR>Registra<BR>Seleccion
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Registra]
+Nombre=Registra
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Seleccion]
+Nombre=Seleccion
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Expresion=SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+Activo=S
+Visible=S
+[MaviRegPatronalRHVis.Prima]
+Carpeta=MaviRegPatronalRHVis
+Clave=Prima
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[MaviRegPatronalRHVis.Estado]
+Carpeta=MaviRegPatronalRHVis
+Clave=Estado
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+

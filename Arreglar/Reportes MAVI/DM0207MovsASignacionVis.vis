@@ -1,0 +1,55 @@
+[Vista]
+Icono=0
+Clave=DM0207MovsASignacionVis
+Nombre=DM0207MovsASignacionVis
+Modulos=(Todos)
+ListaTablas=DM0207MovsASignacion
+TablaPrincipal=DM0207MovsASignacion
+ListaCampos=DM0207MovsASignacion.Mov<BR>DM0207MovsASignacion.TipoOrden<BR>DM0207MovsASignacion.Orden
+UsoCapturas=S
+UsoReportes=S
+CamposBusquedaRapida=DM0207MovsASignacion.Mov
+UsarJOIN=S
+SQL=SELECT<BR>  DM0207MovsASignacion.Mov,<BR>  DM0207MovsASignacion.TipoOrden,<BR>  DM0207MovsASignacion.Orden<BR><BR>FROM<BR>  DM0207MovsASignacion
+[DM0207MovsASignacion.Mov]
+Clave=DM0207MovsASignacion.Mov
+LigaTabla=DM0207MovsASignacion
+LigaCampo=Mov
+Tamano=20
+ClaveBDE=Mov
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Formula=SQLEnLista( <T>Select mov from movmavi order by Mov<T> )
+[DM0207MovsASignacion.TipoOrden]
+Clave=DM0207MovsASignacion.TipoOrden
+LigaTabla=DM0207MovsASignacion
+LigaCampo=TipoOrden
+Tamano=20
+ClaveBDE=TipoOrden
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaEnCaptura=Lista de Opciones
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+OpcionesUnicamente=S
+ListaOpciones=CAPITAL<BR>CAPITAL VENCIDO<BR>DIAS VENCIDOS<BR>DIAS INACTIVOS
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+[DM0207MovsASignacion.Orden]
+Clave=DM0207MovsASignacion.Orden
+Nombre=Orden
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0207MovsASignacion
+LigaCampo=Orden
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Orden

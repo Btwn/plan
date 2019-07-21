@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0074TipoUnidadVehicularVis
+Nombre=Tipo de Unidad
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=TipoUnidadVehicular
+SQL=Select TipoUnidadVehicular<BR>From Vehiculo<BR>Where TipoUnidadVehicular Is Not Null<BR> And TipoUnidadVehicular <> <T><T><BR>Group By TipoUnidadVehicular<BR>Order By TipoUnidadVehicular
+CamposBusquedaRapida=TipoUnidadVehicular
+[TipoUnidadVehicular]
+Clave=TipoUnidadVehicular
+Nombre=TipoUnidadVehicular
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=TipoUnidadVehicular

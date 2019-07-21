@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM0497ENivelCobranzaVis
+Nombre=RM0497E NivelCobranza
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Nombre
+SQL=Select * from (SELECT Nombre FROM NivelesEspecialesCobranzaMavi UNION SELECT Nombre FROM NivelCobranzaMavi)todo
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

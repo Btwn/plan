@@ -1,0 +1,52 @@
+[Dialogo]
+Clave=BonificacionesMavi
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Bonificaciones<BR>ConfBonificaciones<BR>Test<BR>DM0133AFactorPzoEje
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+
+[Acciones.Bonificaciones]
+Nombre=Bonificaciones
+Boton=0
+NombreDesplegar=Bonificaciones
+TipoAccion=Formas
+ClaveAccion=MaviBonificacionCat
+
+[Acciones.ConfBonificaciones]
+Nombre=ConfBonificaciones
+Boton=0
+NombreDesplegar=Bonificaciones de Cobranza
+EnMenu=S
+EnBarraAcciones=S
+EspacioPrevio=S
+TipoAccion=Formas
+ClaveAccion=MaviBonificacionConf
+Activo=S
+Visible=S
+
+[Acciones.Test]
+Nombre=Test
+Boton=0
+NombreDesplegar=Test
+TipoAccion=Formas
+ClaveAccion=MaviBonificacionCxctest
+
+[Acciones.DM0133AFactorPzoEje]
+Nombre=DM0133AFactorPzoEje
+Boton=0
+NombreDesplegar=Factores Venta Plazo Eje
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0133AHistFactVtaPzoEjeVisFrm
+Activo=S
+Visible=S
+EspacioPrevio=S

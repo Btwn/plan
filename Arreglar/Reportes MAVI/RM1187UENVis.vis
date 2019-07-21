@@ -1,0 +1,33 @@
+
+[Vista]
+Icono=0
+Clave=RM1187UENVis
+Nombre=Listado UEN
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=UEN<BR>Nombre
+CamposBusquedaRapida=UEN<BR>Nombre
+LlavePrimaria=UEN
+SQL=SELECT UEN,Nombre from UEN<BR><TAB>WHERE Nombre <> <T>MAVI<T>
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=UEN
+
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

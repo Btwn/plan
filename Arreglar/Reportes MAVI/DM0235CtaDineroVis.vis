@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=DM0235CtaDineroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cuenta
+SQL=select CtaDinero AS Cuenta from CtaDinero With(NoLock) <BR>Where Categoria=<T>BANCO<T> and Institucion in ({Mavi.DM0235Banco})
+[Cuenta]
+Clave=Cuenta
+Nombre=Cuenta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cuenta

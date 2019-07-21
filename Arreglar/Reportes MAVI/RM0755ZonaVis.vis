@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0755ZonaVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=zona
+Nombre=Tipos de Agente
+SQL=Select zona from (select zona from zona where tipo=<T>COB MAYOREO<T> union select <T>SIN ZONA<T>)x<BR>{Si(Mavi.AnalitCondenExtr=<T>Analítico x Ruta Cob May<T>,<T> where 1=1<T>,<T> where 1=2<T>)}
+[zona]
+Clave=zona
+Nombre=zona
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=zona

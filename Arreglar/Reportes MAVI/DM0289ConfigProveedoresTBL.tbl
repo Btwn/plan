@@ -1,0 +1,29 @@
+[Tabla]
+Icono=0
+Clave=DM0289ConfigProveedoresTBL
+Archivo=DM0289ConfigProveedores
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Proveedor
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  Proveedor<BR><BR>FROM<BR>  DM0289ConfigProveedores
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Proveedor]
+Clave=Proveedor
+Nombre=Proveedor
+Visible=S
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Expresion
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista( <T>Select Proveedor from Prov Order by Proveedor<T> )

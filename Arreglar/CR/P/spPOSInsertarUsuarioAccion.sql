@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spPOSInsertarUsuarioAccion
+@Estacion     int,
+@Usuario      varchar(10)
+
+AS
+BEGIN
+DELETE POSUsuarioAccionTemp WHERE Estacion = @Estacion
+INSERT POSUsuarioAccionTemp (
+Estacion,  Accion, Usuario)
+SELECT
+@Estacion, Accion, @Usuario
+FROM POSAccion
+WHERE Accion NOT IN (SELECT Accion FROM POSUsuarioAccion WHERE Usuario = @Usuario)
+GROUP BY Accion
+END
+

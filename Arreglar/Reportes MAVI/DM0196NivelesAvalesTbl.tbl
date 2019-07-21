@@ -1,0 +1,35 @@
+[Tabla]
+Icono=0
+Clave=DM0196NivelesAvalesTbl
+Nombre=DM0196NivelesAvalesTbl
+Archivo=DM0196NivelesAvales
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=NIVEL<BR>DV<BR>DI
+LlavePrimaria=NIVEL
+SQL=SELECT<BR>  NIVEL,<BR>  DV,<BR>  DI<BR><BR>FROM<BR>  DM0196NivelesAvales
+[NIVEL]
+Clave=NIVEL
+Nombre=NIVEL
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AlCambiar=si (sql(<T>Select count(nombre) from nivelcobranzamavi where nombre = :Tnivel<T>,nivel)>0)<BR>entonces<BR>nivel //para que no marque error pero no hace nada esta linea                                                                           <BR>sino<BR> informacion(<T>Escoja un Nivel de la lista<T>)<BR>  Forma.RegistroCancelar(<T>DM0196NivelesAvalesvis<T> )<BR>  Forma.Accion( <T>nuevo<T> )  <BR>Fin
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>Select nombre from Nivelcobranzamavi<T>)
+[DV]
+Clave=DV
+Nombre=DV
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AlCambiar=si di <> nulo<BR>entonces<BR>nivel //para que no marque error pero no hace nada esta linea<BR>sino<BR> informacion(<T>Escoja un Nivel de la lista<T>)<BR>  Forma.RegistroCancelar(<T>DM0196NivelesAvalesvis<T> )<BR> // Forma.Accion( <T>nuevo<T> )<BR><BR>Fin
+[DI]
+Clave=DI
+Nombre=DI
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AlCambiar=si longitud(nivel)>0<BR>entonces<BR>di //para que no marque error pero no hace nada esta linea<BR>sino<BR> informacion(<T>Escoja un Nivel de la lista<T>)<BR>  Forma.RegistroCancelar(<T>DM0196NivelesAvalesvis<T> )<BR>  Forma.Accion( <T>nuevo<T> )<BR><BR>Fin

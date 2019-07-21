@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviArtLinLigLin
+Nombre=Lineas de Articulo
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Linea
+SQL=select <BR>distinct(Linea) <BR>from art <BR>Where <BR>Art.LINEA is not null<BR>AND LEN(Art.LINEA)>0<BR>{SI(CONDATOS(Mavi.ArtFamLigLin),<T>AND Familia=<T>+COMILLAS(Mavi.ArtFamLigLin),<T><T>)}<BR>order by LINEA asc
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

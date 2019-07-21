@@ -1,0 +1,77 @@
+
+[Tabla]
+Icono=0
+Clave=CXCDDM0102PropreListaEspecialtblTemporal
+Archivo=CXCDPropreListaEspecialtblTemporal
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Usuario<BR>Fecha<BR>EstacionTrabajoMod<BR>Spid<BR>Articulo<BR>PrecioAsignado<BR>Almacen
+LlavePrimaria=Articulo
+ControlUsuarios=S
+CampoUsuario=Usuario
+SQL=SELECT<BR>  Usuario,<BR>  Fecha,<BR>  EstacionTrabajoMod,<BR>  Spid,<BR>  Articulo,<BR>  PrecioAsignado,<BR>  Almacen<BR><BR>  FROM CXCDPropreListaEspecialtblTemporal
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+ValorPorOmision=sql(<T>select getdate()<T>)
+ValorRefrescar=sql(<T>select getdate()<T>)
+AlCambiar=sql(<T>select getdate()<T>)
+[EstacionTrabajoMod]
+Clave=EstacionTrabajoMod
+Nombre=EstacionTrabajoMod
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorPorOmision=EstacionTrabajo
+ValorRefrescar=EstacionTrabajo
+[Spid]
+Clave=Spid
+Nombre=Spid
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorPorOmision=SQL(<T>SELECT @@SPID<T>)
+ValorRefrescar=SQL(<T>SELECT @@SPID<T>)
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+[PrecioAsignado]
+Clave=PrecioAsignado
+Nombre=PrecioAsignado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10

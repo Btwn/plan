@@ -1,0 +1,79 @@
+[Dialogo]
+Clave=MenuHerramientaPropre
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialIzquierda=594
+PosicionInicialArriba=304
+PosicionInicialAlturaCliente=176
+PosicionInicialAncho=205
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+ListaAcciones=Catalogos<BR>Configuracion<BR>Articulos<BR>Listas de Precios<BR>Procesos
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+
+[Acciones.Catalogos]
+Nombre=Catalogos
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Catálogos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+Activo=S
+Visible=S
+ClaveAccion=MenuHerrCatalogosPropre
+
+[Acciones.Configuracion]
+Nombre=Configuracion
+Boton=0
+NombreDesplegar=Configuración
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+Activo=S
+Visible=S
+NombreEnBoton=S
+ClaveAccion=MenuHerrConfiguracionPropre
+
+[Acciones.Articulos]
+Nombre=Articulos
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Artículos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+Activo=S
+Visible=S
+ClaveAccion=MenuHerrArticulosPropre
+
+[Acciones.Listas de Precios]
+Nombre=Listas de Precios
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Listas de Precios
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+Activo=S
+Visible=S
+ClaveAccion=MenuHerrListasPrecioPropre
+
+[Acciones.Procesos]
+Nombre=Procesos
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Procesos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+Activo=S
+Visible=S
+ClaveAccion=MenuHerrProcesosPropre

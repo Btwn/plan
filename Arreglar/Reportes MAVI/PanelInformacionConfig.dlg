@@ -1,0 +1,22 @@
+[Dialogo]
+Clave=PanelInformacionConfig
+Nombre=Tabla Configuracion Panel
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=PanelTablaConfig
+[Acciones.PanelTablaConfig]
+Nombre=PanelTablaConfig
+Boton=0
+NombreDesplegar=Tabla Configuración
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Expresion=Ejecutar(<T>PlugIns\PanelInformacion.exe <T>+<T>1<T>)
+Activo=S
+Visible=S

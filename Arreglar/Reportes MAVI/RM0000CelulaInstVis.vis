@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0000CelulaInstVis
+Nombre=RM0000 Celula de instituciones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Equipo
+SQL=select distinct Equipo <BR>from equipoagente <BR>where equipo like <T>CELI%<T>
+[Equipo]
+Clave=Equipo
+Nombre=Equipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Equipo

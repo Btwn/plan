@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MovCxC
+Nombre=MovimientosCxC
+Modulos=(Todos)
+Singular=MovimientosCxC
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Mov
+SQL=SELECT <BR>  Mov <BR>FROM <BR>  MovTipo<BR>WHERE <BR>  Modulo=<T>CxC<T><BR>  AND Mov IN (<T>Anticipo Contado<T>, <T>Anticipo Mayoreo<T>, <T>Apartado<T>, <BR>       <T>Cobro<T>, <T>Cobro Instituciones<T>, <T>Devolucion<T>, <T>Cheque Devuelto<T>)
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Mov

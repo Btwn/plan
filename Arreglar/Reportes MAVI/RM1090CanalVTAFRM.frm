@@ -1,0 +1,133 @@
+[Forma]
+Clave=RM1090CanalVTAFRM
+Nombre=RM1090 Canal Venta
+Icono=49
+Modulos=(Todos)
+MovModulo=(Todos)
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialAlturaCliente=391
+PosicionInicialAncho=278
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+ListaCarpetas=RM1090CanalVTAVIS
+CarpetaPrincipal=RM1090CanalVTAVIS
+PosicionInicialIzquierda=501
+PosicionInicialArriba=297
+ListaAcciones=Seleccionar<BR>Cerrar
+[RM1090CanalVTAVIS]
+Estilo=Iconos
+Clave=RM1090CanalVTAVIS
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1090CanalVTAVIS
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosSubTitulo=<T>Canal<T>
+IconosNombreNumerico=S
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+IconosCambiarOrden=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Categoria
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+CarpetaVisible=S
+MenuLocal=S
+IconosNombre=RM1090CanalVTAVIS:ID
+ListaAcciones=Seleccionar Todo<BR>Quitar Seleccion
+[RM1090CanalVTAVIS.Categoria]
+Carpeta=RM1090CanalVTAVIS
+Clave=Categoria
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[RM1090CanalVTAVIS.Columnas]
+0=64
+1=175
+[Acciones.Seleccionar.Variables Asignar]
+Nombre=Variables Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=Variables Asignar<BR>Expresion<BR>Seleccionar/Resultado
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Expresion]
+Nombre=Expresion
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Seleccionar.Seleccionar/Resultado]
+Nombre=Seleccionar/Resultado
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>)
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=36
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+EspacioPrevio=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Seleccionar Todo]
+Nombre=Seleccionar Todo
+Boton=0
+NombreDesplegar=Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.Quitar Seleccion]
+Nombre=Quitar Seleccion
+Boton=0
+NombreDesplegar=Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+

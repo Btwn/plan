@@ -1,0 +1,23 @@
+[Tabla]
+Icono=0
+Clave=DM0270CatMarcastbl
+Archivo=DM0270CatalogoMarcas
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Marca<BR>Comentarios
+LlavePrimaria=Marca
+SQL=SELECT<BR>  Marca,<BR>  Comentarios<BR><BR>FROM<BR>  DM0270CatalogoMarcas
+[Marca]
+Clave=Marca
+Nombre=Marca
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AlCambiar=AvanzarCaptura
+Mayusculas=S
+[Comentarios]
+Clave=Comentarios
+Nombre=Comentarios
+Visible=S
+TamanoValidacion=100
+Tamano=100

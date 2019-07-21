@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RelIngresosTipoMov
+Nombre=Tipo de Movimiento de Ingreso
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Tipo Movimiento
+VistaIndependiente=S
+SQL=SELECT DISTINCT <BR>  TipoMov AS <T>Tipo Movimiento<T> <BR><BR>FROM<BR>  RelIngresosTipoMov<BR><BR><BR>--EXEC spRelingresosTipoMovMavi <T>{RelIngresos.VtasAbonoIng}<T>
+[Tipo Movimiento]
+Clave=Tipo Movimiento
+Nombre=Tipo Movimiento
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Tipo Movimiento

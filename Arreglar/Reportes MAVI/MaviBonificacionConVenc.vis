@@ -1,0 +1,63 @@
+[Vista]
+Icono=0
+Clave=MaviBonificacionConVenc
+Nombre=MaviBonificacionConVenc
+Modulos=(Todos)
+ListaTablas=MaviBonificacionConVenc
+TablaPrincipal=MaviBonificacionConVenc
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=MaviBonificacionConVenc.IdBonificacion<BR>MaviBonificacionConVenc.MaxDV<BR>MaviBonificacionConVenc.PorcBon<BR>MaviBonificacionConVenc.PorcBon2
+CamposBusquedaRapida=MaviBonificacionConVenc.IdBonificacion
+SQL=SELECT<BR>  MaviBonificacionConVenc.IdBonificacion,<BR>  MaviBonificacionConVenc.MaxDV ,<BR>  MaviBonificacionConVenc.PorcBon,<BR>  MaviBonificacionConVenc.PorcBon2<BR><BR>FROM<BR>  MaviBonificacionConVencimiento MaviBonificacionConVenc
+[MaviBonificacionConVenc.MaxDV]
+Clave=MaviBonificacionConVenc.MaxDV
+Nombre=MaxDV
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=MaviBonificacionConVenc
+LigaCampo=MaxDV
+ClaveBDE=MaxDV
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+CondicionEdicion=Info.MaviBonificacion = <T>Bonificacion Pago Puntual<T>
+ListaRefrescar=MaviBonificacionConVenc.PorcBon<BR>MaviBonificacionConVenc.PorcBon2
+ConRefrescar=S
+[MaviBonificacionConVenc.PorcBon]
+Clave=MaviBonificacionConVenc.PorcBon
+Nombre=PorcBon
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+LigaTabla=MaviBonificacionConVenc
+LigaCampo=PorcBon
+ClaveBDE=PorcBon
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+CondicionEdicion=Info.MaviBonificacion = <T>Bonificacion Pago Puntual<T>
+ValorRefrescar=si   MaviBonificacionConVenc.MaxDV = 0<BR>   entonces 0<BR><BR>   sino<BR>        si  MaviBonificacionConVenc.MaxDV = nulo<BR>         entonces<BR>          0<BR>           sino<BR>           MaviBonificacionConVenc.PorcBon<BR>          fin<BR>     fin
+[MaviBonificacionConVenc.IdBonificacion]
+Clave=MaviBonificacionConVenc.IdBonificacion
+LigaTabla=MaviBonificacionConVenc
+LigaCampo=IdBonificacion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=IdBonificacion
+[MaviBonificacionConVenc.PorcBon2]
+Clave=MaviBonificacionConVenc.PorcBon2
+Nombre=PorcBon Cte Nuevo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+LigaTabla=MaviBonificacionConVenc
+LigaCampo=PorcBon2
+ClaveBDE=PorcBon2
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+CondicionEdicion=Info.MaviBonificacion = <T>Bonificacion Pago Puntual<T>
+ValorRefrescar=si   MaviBonificacionConVenc.MaxDV = 0<BR>   entonces 0<BR><BR>   sino<BR>        si  MaviBonificacionConVenc.MaxDV = nulo<BR>         entonces<BR>          0<BR>           sino<BR>            MaviBonificacionConVenc.PorcBon2<BR>          fin<BR>     fin

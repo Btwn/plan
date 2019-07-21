@@ -1,0 +1,31 @@
+[Vista]
+Icono=0
+Clave=RM0755CCanalVtaVis
+Nombre=Canal de Venta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID<BR>CADENA
+ControlSucursal=S
+CampoSucursal=ID
+CamposBusquedaRapida=ID<BR>CADENA
+SQL=SELECT ID,CADENA FROM (SELECT ID,CADENA,CATEGORIA FROM VENTASCANALMAVI UNION SELECT 0,<T>SIN CANAL<T>,<T>SIN CATEGORIA<T>)X<BR>WHERE 1=1<BR><BR>--{Si(ConDatos(Mavi.RM0755CategoriaCanalVta) ,<T>And categoria in (<T>+Mavi.RM0755CategoriaCanalVta+<T>)<T>,<T><T>)}<BR><BR>--{Si(ConDatos(Mavi.RM0755CategoriaCanalVta) ,<T>And categoria= <T>+Comillas(Mavi.RM0755CategoriaCanalVta),<T><T>)}
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID
+[CADENA]
+Clave=CADENA
+Nombre=CADENA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CADENA

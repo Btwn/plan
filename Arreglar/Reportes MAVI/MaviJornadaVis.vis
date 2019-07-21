@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=MaviJornadaVis
+Nombre=Listado de Jornadas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Jornada
+CamposBusquedaRapida=Jornada
+SQL=select Jornada from Jornada
+[Jornada]
+Clave=Jornada
+Nombre=Jornada
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Jornada

@@ -1,0 +1,26 @@
+[Vista]
+Icono=0
+Clave=RM1152Estadosvis
+Nombre=Estados Republica
+Modulos=(Todos)
+ListaCampos=Sucursal.Estado
+VistaIndependiente=S
+LlavePrimaria=Sucursal.Estado
+CamposBusquedaRapida=Sucursal.Estado
+SQL=SELECT DISTINCT <BR>  Sucursal.Estado<BR>FROM<BR>  Sucursal<BR>WHERE<BR>isnull(estado,<T><T>)<><T><T> and sucursal < 2900
+[Sucursal.Estado]
+Clave=Sucursal.Estado
+Nombre=Estado
+Tamano=30
+TamanoValidacion=30
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=PaisEstadoMexico
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Consulta opcional
+TipoDatos=Texto
+LigaTabla=Sucursal
+LigaCampo=Estado
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Estado

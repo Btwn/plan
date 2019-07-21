@@ -1,0 +1,98 @@
+
+[Tabla]
+Icono=0
+Clave=TarjetaMonederoMAVI
+Nombre=TarjetaMonederoMAVI
+Archivo=TarjetaMonederoMAVI
+Modulos=(Todos)
+Singular=TarjetaMonederoMAVI
+TipoTabla=Cuentas
+
+ListaCampos=Empresa<BR>Serie<BR>Estatus<BR>TieneMovimientos<BR>Usuario<BR>FechaAlta<BR>UsuarioActivacion<BR>FechaActivacion<BR>FechaBaja
+LlavePrimaria=Empresa<BR>Serie
+ControlEstatus=S
+ControlUsuarios=S
+CampoEstatus=Estatus
+CampoUsuario=Usuario
+CampoEmpresa=Empresa
+EstatusDefault=ALTA
+SQL=SELECT<BR>  Empresa,<BR>  Serie,<BR>  Estatus,<BR>  TieneMovimientos,<BR>  Usuario,<BR>  FechaAlta,<BR>  UsuarioActivacion,<BR>  FechaActivacion,<BR>  FechaBaja<BR><BR>  FROM TarjetaMonederoMAVI
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+ValorPorOmision=Empresa
+[Serie]
+Clave=Serie
+Nombre=No. Monedero
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+CondicionEdicion=no TieneMovimientos
+ConRefrescar=S
+ListaRefrescar=FechaAlta
+Mayusculas=S
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+
+[TieneMovimientos]
+Clave=TieneMovimientos
+Nombre=Tiene Movimientos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+ValorPorOmision=Falso
+[Usuario]
+Clave=Usuario
+Nombre=Usuario Alta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+ValorPorOmision=Usuario
+[FechaAlta]
+Clave=FechaAlta
+Nombre=Fecha de Alta
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+ValorPorOmision=Hoy
+[UsuarioActivacion]
+Clave=UsuarioActivacion
+Nombre=Usuario Activacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+[FechaActivacion]
+Clave=FechaActivacion
+Nombre=Fecha de Activacion
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+FormatoValidacion=dd/mmmm/aaaa
+CondicionDespliege=Estatus en (<T>ACTIVA<T>,<T>BAJA<T>)
+[FechaBaja]
+Clave=FechaBaja
+Nombre=Fecha de Baja
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmmm/aaaa
+CondicionDespliege=Estatus = <T>BAJA<T>

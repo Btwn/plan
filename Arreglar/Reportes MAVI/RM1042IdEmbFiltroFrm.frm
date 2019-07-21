@@ -1,0 +1,119 @@
+[Forma]
+Clave=RM1042IdEmbFiltroFrm
+Nombre=Id de Embarque
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Vista
+CarpetaPrincipal=Vista
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+VentanaEscCerrar=S
+[Vista]
+Estilo=Iconos
+Clave=Vista
+BusquedaRapidaControles=S
+MenuLocal=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1042IdEmbFiltroVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosSubTitulo=<T>ID<T>
+ElementosPorPagina=200
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=IDDEMBARQUE
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+CarpetaVisible=S
+IconosSeleccionMultiple=S
+ListaAcciones=SelTodo<BR>Quitar
+IconosNombre=RM1042IdEmbFiltroVis:IDDEMBARQUE
+[Vista.IDDEMBARQUE]
+Carpeta=Vista
+Clave=IDDEMBARQUE
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=30
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=Asigna<BR>Regis<BR>Selec
+[Acciones.Seleccionar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Regis]
+Nombre=Regis
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Seleccionar.Selec]
+Nombre=Selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM1042IdEmbFiltro,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Vista.Columnas]
+0=-2
+1=-2
+[Acciones.SelTodo]
+Nombre=SelTodo
+Boton=0
+NombreDesplegar=&Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+Activo=S
+Visible=S
+ClaveAccion=Seleccionar Todo
+UsaTeclaRapida=S
+[Acciones.Quitar]
+Nombre=Quitar
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+

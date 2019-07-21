@@ -1,0 +1,243 @@
+[Vista]
+Icono=0
+Clave=RM0995CXCBitacoraComparativoVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Mes<BR>NoDeRecibosCred<BR>NoDeRecibosInst<BR>ImporteIvaCred<BR>ImporteIvaInst<BR>PisoVentExtCC<BR>CrediPisoCC<BR>VtasExtNoAtraso<BR>InstCC<BR>TotalCCyNoAtra<BR>PisoyVtasAdelaPagos<BR>PisosVtasExtNoAtraso<BR>InstAdelaPagos<BR>TotalAdelaPagoNoAtraso<BR>TotalCCAdelaPagSinNoAtra<BR>TotalCCAdelaPagNoAtraso<BR>TotalCCAdelaPagConySinNoAtraso<BR>DismiCartera<BR>PisosPagPunt<BR>VtasExtPagoPunt<BR>PisosVtaExtPagPunt<BR>Año<BR>DebidoACC<BR>DebidoAdelaPago<BR>DebidoNoAtrasoCCAdelaPag<BR>DebidoACCAdelaPagConySinNoAtra<BR>DebidoCCAdelaPagConSinAtraso
+SQL=SP_MAVIRM0995BitacoraBonifCob <T>D<T>,<BR>{si(condatos(Info.FechaD),comillas((FechaformatoServidor(Info.FechaD))),(Info.FechaD))},<BR>{si(condatos(Info.FechaA),comillas((FechaformatoServidor(Info.FechaA))),(Info.FechaA))},<BR>{Mes(Mavi.Mes)},<BR>{comillas(Info.Ano)},<BR>{comillas(Mavi.RM0995mesescomp)},<BR>{comillas(Mavi.RM0995anioscomp)},<T><T>,<T><T>
+[Mes]
+Clave=Mes
+Nombre=MES
+Visible=S
+TamanoValidacion=60
+Tamano=60
+ClaveBDE=Mes
+TipoDatos=Texto
+[NoDeRecibosCred]
+Clave=NoDeRecibosCred
+Nombre=NUM REC CRED
+Visible=S
+TamanoValidacion=30
+Tamano=0
+ClaveBDE=NoDeRecibosCred
+TipoDatos=Numérico
+[NoDeRecibosInst]
+Clave=NoDeRecibosInst
+Nombre=NUM REC INST
+Visible=S
+TamanoValidacion=30
+Tamano=0
+ClaveBDE=NoDeRecibosInst
+TipoDatos=Numérico
+[ImporteIvaCred]
+Clave=ImporteIvaCred
+Nombre=IMPORTE CRED MEN
+Visible=S
+TamanoValidacion=32
+ClaveBDE=ImporteIvaCred
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[ImporteIvaInst]
+Clave=ImporteIvaInst
+Nombre=IMPORTE INST
+Visible=S
+TamanoValidacion=32
+ClaveBDE=ImporteIvaInst
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[PisoVentExtCC]
+Clave=PisoVentExtCC
+Nombre=IMPORTE CRED-INST
+Visible=S
+TamanoValidacion=32
+ClaveBDE=PisoVentExtCC
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[CrediPisoCC]
+Clave=CrediPisoCC
+Nombre=CRED PISOS Y EXT CC
+Visible=S
+TamanoValidacion=32
+ClaveBDE=CrediPisoCC
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[VtasExtNoAtraso]
+Clave=VtasExtNoAtraso
+Nombre=C.C. PISOS Y EXT NA
+Visible=S
+TamanoValidacion=30
+ClaveBDE=VtasExtNoAtraso
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[InstCC]
+Clave=InstCC
+Nombre=INST CC
+Visible=S
+TamanoValidacion=32
+ClaveBDE=InstCC
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[TotalCCyNoAtra]
+Clave=TotalCCyNoAtra
+Nombre=TOTAL CC
+Visible=S
+TamanoValidacion=30
+ClaveBDE=TotalCCyNoAtra
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[PisoyVtasAdelaPagos]
+Clave=PisoyVtasAdelaPagos
+Nombre=CRED PISOS EXT AP
+Visible=S
+TamanoValidacion=32
+ClaveBDE=PisoyVtasAdelaPagos
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[PisosVtasExtNoAtraso]
+Clave=PisosVtasExtNoAtraso
+Nombre=CRED PISOS-EXT NA
+Visible=S
+TamanoValidacion=32
+ClaveBDE=PisosVtasExtNoAtraso
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[InstAdelaPagos]
+Clave=InstAdelaPagos
+Nombre=INST AP
+Visible=S
+TamanoValidacion=32
+ClaveBDE=InstAdelaPagos
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[TotalAdelaPagoNoAtraso]
+Clave=TotalAdelaPagoNoAtraso
+Nombre=TOTAL AP Y NA
+Visible=S
+TamanoValidacion=32
+ClaveBDE=TotalAdelaPagoNoAtraso
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[TotalCCAdelaPagSinNoAtra]
+Clave=TotalCCAdelaPagSinNoAtra
+Nombre=TOTAL CC Y AP
+Visible=S
+TamanoValidacion=32
+ClaveBDE=TotalCCAdelaPagSinNoAtra
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[TotalCCAdelaPagNoAtraso]
+Clave=TotalCCAdelaPagNoAtraso
+Nombre=TOTAL  NA Y PP
+Visible=S
+TamanoValidacion=32
+ClaveBDE=TotalCCAdelaPagNoAtraso
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[TotalCCAdelaPagConySinNoAtraso]
+Clave=TotalCCAdelaPagConySinNoAtraso
+Nombre=TOTAL CC AP NA Y PP
+Visible=S
+TamanoValidacion=32
+ClaveBDE=TotalCCAdelaPagConySinNoAtraso
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[DismiCartera]
+Clave=DismiCartera
+Nombre=DISMIN CARTERA 
+Visible=S
+TamanoValidacion=32
+ClaveBDE=DismiCartera
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[PisosPagPunt]
+Clave=PisosPagPunt
+Nombre=CRED PISOS PP
+Visible=S
+TamanoValidacion=32
+ClaveBDE=PisosPagPunt
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[VtasExtPagoPunt]
+Clave=VtasExtPagoPunt
+Nombre=CRED EXT PP
+Visible=S
+TamanoValidacion=32
+ClaveBDE=VtasExtPagoPunt
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[PisosVtaExtPagPunt]
+Clave=PisosVtaExtPagPunt
+Nombre=TOTAL PP
+Visible=S
+TamanoValidacion=32
+ClaveBDE=PisosVtaExtPagPunt
+TipoDatos=NumMonetario
+Monetario=S
+Cantidad=S
+[Año]
+Clave=Año
+Nombre=AÑO
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Año
+[DebidoACC]
+Clave=DebidoACC
+Nombre=DISMIN POR CC
+Visible=S
+TamanoValidacion=32
+Tamano=32
+ClaveBDE=DebidoACC
+TipoDatos=Texto
+[DebidoAdelaPago]
+Clave=DebidoAdelaPago
+Nombre=DISMIN POR AP
+Visible=S
+TamanoValidacion=32
+Tamano=32
+ClaveBDE=DebidoAdelaPago
+TipoDatos=Texto
+[DebidoNoAtrasoCCAdelaPag]
+Clave=DebidoNoAtrasoCCAdelaPag
+Nombre=DISMIN POR PP NA
+Visible=S
+TamanoValidacion=32
+Tamano=32
+ClaveBDE=DebidoNoAtrasoCCAdelaPag
+TipoDatos=Texto
+[DebidoACCAdelaPagConySinNoAtra]
+Clave=DebidoACCAdelaPagConySinNoAtra
+Nombre=DISMIN POR CC AP NA PP
+Visible=S
+TamanoValidacion=32
+Tamano=32
+ClaveBDE=DebidoACCAdelaPagConySinNoAtra
+TipoDatos=Texto
+[DebidoCCAdelaPagConSinAtraso]
+Clave=DebidoCCAdelaPagConSinAtraso
+Nombre=DebidoCCAdelaPagConSinAtraso
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=32
+TipoDatos=Texto
+Tamano=32
+ClaveBDE=DebidoCCAdelaPagConSinAtraso

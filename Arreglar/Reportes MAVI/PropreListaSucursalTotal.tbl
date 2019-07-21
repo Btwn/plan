@@ -1,0 +1,25 @@
+[Tabla]
+Icono=0
+Clave=PropreListaSucursalTotal
+Archivo=PropreListaSucursalTotal
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Lista<BR>Cantidad
+SQL=SELECT<BR>  Lista,<BR>  Cantidad<BR><BR>FROM<BR>  PropreListaSucursalTotal
+LlavePrimaria=Lista
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[Cantidad]
+Clave=Cantidad
+Nombre=# Sucursales
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S

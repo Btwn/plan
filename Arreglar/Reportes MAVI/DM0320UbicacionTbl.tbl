@@ -1,0 +1,98 @@
+
+[Tabla]
+Icono=0
+Clave=DM0320UbicacionTbl
+Archivo=TrIDM0320_Ubicacion
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Id<BR>Articulo<BR>Descripcion<BR>Modulo<BR>Rack<BR>Nivel<BR>Otros<BR>Ubicacion
+LlavePrimaria=Id
+ControlID=S
+CampoID=Id
+CamposBusquedaRapida=Articulo
+SQL=SELECT<BR>  Id,<BR>  Articulo,<BR>  Descripcion,<BR>  Modulo,<BR>  Rack,<BR>  Nivel,<BR>  Otros,<BR>  Ubicacion<BR><BR>  FROM TrIDM0320_Ubicacion
+[Id]
+Clave=Id
+Nombre=Id
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+ListaRefrescar=Ubicacion
+[Articulo]
+Clave=Articulo
+Nombre=Artículo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+AyudaEnCaptura=Vista
+AyudaForma=DM0320ArtFrm
+AyudaVista=DM0320ArticuloVis
+AyudaCampo=Articulo
+ConRefrescar=S
+ListaRefrescar=Descripcion
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripción
+Visible=S
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+
+ValorRefrescar=SQL(<T>SELECT Descripcion1 FROM Art WHERE Articulo = :tArticulo<T>,Articulo)
+[Modulo]
+Clave=Modulo
+Nombre=Módulo
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnlista(<T>SELECT Modulo FROM TcIDM0320_ConfigLayout WHERE Modulo IS NOT NULL ORDER BY Modulo ASC<T>)
+[Rack]
+Clave=Rack
+Nombre=Rack
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnlista(<T>SELECT Rack FROM TcIDM0320_ConfigLayout WHERE Rack IS NOT NULL ORDER BY Rack ASC<T>)
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnlista(<T>SELECT Nivel FROM TcIDM0320_ConfigLayout WHERE Nivel IS NOT NULL ORDER BY Nivel ASC<T>)
+[Otros]
+Clave=Otros
+Nombre=Otros
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+
+[Ubicacion]
+Clave=Ubicacion
+Nombre=Ubicacion
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas

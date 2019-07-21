@@ -1,0 +1,90 @@
+[Forma]
+Clave=RM0555CobHistPromCobraFrm
+Nombre=RM0555 Historial de Promocion de Cobranza
+Icono=152
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=(Variables)
+CarpetaPrincipal=(Variables)
+PosicionInicialIzquierda=519
+PosicionInicialArriba=456
+PosicionInicialAlturaCliente=74
+PosicionInicialAncho=242
+ListaAcciones=Preliminar<BR>Cerrar<BR>Refresh
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+VentanaAvanzaTab=S
+VentanaBloquearAjuste=S
+ExpresionesAlMostrar=asigna(info.cliente,nulo)    <BR>asigna(mavi.clientefactura,nulo)<BR>asigna(mavi.ban,0)
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Info.Cliente
+CarpetaVisible=S
+FichaEspacioEntreLineas=0
+FichaEspacioNombres=0
+FichaColorFondo=Plata
+PermiteEditar=S
+AutoRefrescar=S
+TiempoRefrescar=00:01
+[(Variables).Info.Cliente]
+Carpeta=(Variables)
+Clave=Info.Cliente
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=30
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Preliminar]
+Nombre=Preliminar
+Boton=6
+NombreEnBoton=S
+NombreDesplegar=&Preliminar
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+GuardarAntes=S
+ConCondicion=S
+EjecucionConError=S
+EjecucionCondicion=info.cliente <> nulo
+EjecucionMensaje=<T>Seleccione un Cliente<T>
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Refresh]
+Nombre=Refresh
+Boton=0
+GuardarAntes=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+ConAutoEjecutar=S
+NombreDesplegar=&Refresh
+EnBarraHerramientas=S
+NombreEnBoton=S
+AutoEjecutarExpresion=1
+
+

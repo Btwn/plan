@@ -1,0 +1,145 @@
+
+[Vista]
+Icono=0
+Clave=DM0221CREDIBloqueoDIMAVis
+Nombre=BloqueoDIMA
+Modulos=(Todos)
+ListaTablas=DM0221CREDIBloqueoDIMATbl
+TablaPrincipal=DM0221CREDIBloqueoDIMATbl
+UsoCapturas=S
+UsoReportes=S
+
+ListaCampos=DM0221CREDIBloqueoDIMATbl.IdBloqueoDIMAEP<BR>DM0221CREDIBloqueoDIMATbl.Periodo<BR>DM0221CREDIBloqueoDIMATbl.PorcAtraso<BR>DM0221CREDIBloqueoDIMATbl.DiasBloqueo<BR>DM0221CREDIBloqueoDIMATbl.DismBloqueo<BR>DM0221CREDIBloqueoDIMATbl.PorcDismLC<BR>DM0221CREDIBloqueoDIMATbl.BloqueoCanc<BR>DM0221CREDIBloqueoDIMATbl.Saldo<BR>DM0221CREDIBloqueoDIMATbl.Activo
+
+
+
+
+
+
+
+
+
+SQL=SELECT<BR>DM0221CREDIBloqueoDIMATbl.IdBloqueoDIMAEP,<BR>DM0221CREDIBloqueoDIMATbl.Periodo,<BR>DM0221CREDIBloqueoDIMATbl.PorcAtraso,<BR>DM0221CREDIBloqueoDIMATbl.DiasBloqueo,<BR>DM0221CREDIBloqueoDIMATbl.DismBloqueo,<BR>DM0221CREDIBloqueoDIMATbl.PorcDismLC,<BR>DM0221CREDIBloqueoDIMATbl.BloqueoCanc,<BR>DM0221CREDIBloqueoDIMATbl.Saldo,<BR>DM0221CREDIBloqueoDIMATbl.Activo<BR>FROM CREDICBloqueoDIMAEP DM0221CREDIBloqueoDIMATbl
+[DM0221CREDIBloqueoDIMATbl.IdBloqueoDIMAEP]
+Clave=DM0221CREDIBloqueoDIMATbl.IdBloqueoDIMAEP
+Nombre=IdBloqueoDIMAEP
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=IdBloqueoDIMAEP
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=IdBloqueoDIMAEP
+
+[DM0221CREDIBloqueoDIMATbl.Periodo]
+Clave=DM0221CREDIBloqueoDIMATbl.Periodo
+Nombre=Periodo Evaluación
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=Periodo
+ClaveBDE=Periodo
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0221CREDIBloqueoDIMATbl.PorcAtraso]
+Clave=DM0221CREDIBloqueoDIMATbl.PorcAtraso
+Nombre=% Atraso
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=PorcAtraso
+ClaveBDE=PorcAtraso
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0221CREDIBloqueoDIMATbl.DiasBloqueo]
+Clave=DM0221CREDIBloqueoDIMATbl.DiasBloqueo
+Nombre=Días Bloqueo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=DiasBloqueo
+ClaveBDE=DiasBloqueo
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0221CREDIBloqueoDIMATbl.DismBloqueo]
+Clave=DM0221CREDIBloqueoDIMATbl.DismBloqueo
+Nombre=Bloq. Disminución
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=DismBloqueo
+ClaveBDE=DismBloqueo
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0221CREDIBloqueoDIMATbl.PorcDismLC]
+Clave=DM0221CREDIBloqueoDIMATbl.PorcDismLC
+Nombre=% Disminución LC
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=PorcDismLC
+ClaveBDE=PorcDismLC
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0221CREDIBloqueoDIMATbl.BloqueoCanc]
+Clave=DM0221CREDIBloqueoDIMATbl.BloqueoCanc
+Nombre=Bloq. Cancelación
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=BloqueoCanc
+ClaveBDE=BloqueoCanc
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0221CREDIBloqueoDIMATbl.Saldo]
+Clave=DM0221CREDIBloqueoDIMATbl.Saldo
+Nombre=Saldo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=Saldo
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Saldo
+
+[DM0221CREDIBloqueoDIMATbl.Activo]
+Clave=DM0221CREDIBloqueoDIMATbl.Activo
+Nombre=Activo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+LigaTabla=DM0221CREDIBloqueoDIMATbl
+LigaCampo=Activo
+ClaveBDE=Activo
+AyudaEnCaptura=Lista de Opciones
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+OpcionesValidar=S

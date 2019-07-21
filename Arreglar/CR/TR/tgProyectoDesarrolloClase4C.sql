@@ -1,0 +1,23 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgProyectoDesarrolloClase4C ON ProyectoDesarrolloClase4
+
+FOR UPDATE
+AS BEGIN
+DECLARE
+@Clase4N            varchar(50),
+@Clase4A            varchar(50)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @Clase4N = Clase4 FROM Inserted
+SELECT @Clase4A = Clase4 FROM Deleted
+IF @Clase4N <> @Clase4A
+UPDATE ProyectoDesarrolloClase5 SET Clase4 = @Clase4N WHERE Clase4 = @Clase4A
+RETURN
+END
+

@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=ArtAlmTodosAlmacenesVis
+Nombre=Almacenes en particular
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Almacen
+CamposBusquedaRapida=Almacen
+SQL=Select Distinct Almacen<BR>From Alm<BR>Where Estatus = <T>Alta<T> And Tipo = <T>Normal<T><BR>      And (Exclusivo = <T>Venta<T> Or exclusivo = <T>Compra/Venta<T>)
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Almacen

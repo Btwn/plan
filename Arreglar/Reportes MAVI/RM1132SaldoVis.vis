@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1132SaldoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SaldoActual
+SQL=Select Distinct SaldoActual From RM1132Parametros Where SaldoActual Is Not  null
+[SaldoActual]
+Clave=SaldoActual
+Nombre=SaldoActual
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=SaldoActual

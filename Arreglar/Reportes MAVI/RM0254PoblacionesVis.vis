@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM0254PoblacionesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Poblacion
+CamposBusquedaRapida=Poblacion
+SQL=select Distinct Poblacion From Sucursal With(Nolock)<BR>Where Tipo=<T>Piso<T>
+[Poblacion]
+Clave=Poblacion
+Nombre=Poblacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Poblacion

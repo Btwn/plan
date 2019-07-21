@@ -1,0 +1,28 @@
+;Modifico: ARC
+;Ultima Modificacion: 28-02-09
+
+
+
+;**** Nuevos campos agregados: ComisionChoferesMAVI ****
+[Departamento.tbl/Tabla.ListaCampos]
+CtaDinero=ComisionChoferesMAVI
+ComisionChoferesMAVI=(Fin)
+
+[Departamento.tbl/Tabla.SQL]
+ReferenciaIntelisisService,=CtaDinero,
+CtaDinero,=ComisionChoferesMAVI
+ComisionChoferesMAVI=FROM Departamento
+
+
+;**** Nuevo campo agregado ARC 28-02-09 ****
+[Departamento.tbl/ComisionChoferesMAVI]
+Clave=ComisionChoferesMAVI
+Nombre=Comisión Choferes
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+
+
+
+

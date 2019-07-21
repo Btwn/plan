@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=DM0232EstatusVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Estatus
+SQL=Select Estatus From DM0174EmbEmbarquePisoTbl <BR>Group By Estatus
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Estatus

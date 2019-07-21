@@ -1,0 +1,81 @@
+[Tabla]
+Icono=0
+Clave=MaviCteCtoBanco
+Nombre=MaviCteCtoBanco
+Archivo=MaviCteCtoBanco
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Cliente<BR>ID<BR>IDInterno<BR>Banco<BR>TipoCuenta<BR>NumeroCuenta<BR>Telefono<BR>AntiguaedadCuenta<BR>NombreEjecutivo<BR>Sucursal
+LlavePrimaria=Cliente<BR>ID<BR>IDInterno
+ControlID=S
+CampoID=IDInterno
+CampoSucursal=Sucursal
+SQL=SELECT<BR>  Cliente,<BR>  ID,<BR>  IDInterno,<BR>  Banco,<BR>  TipoCuenta,<BR>  NumeroCuenta,<BR>  Telefono,<BR>  AntiguaedadCuenta,<BR>  NombreEjecutivo,<BR>  Sucursal<BR><BR>FROM<BR>  MaviCteCtoBanco
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Cliente
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.ID
+[IDInterno]
+Clave=IDInterno
+Nombre=IDInterno
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Banco]
+Clave=Banco
+Nombre=* Banco
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+[TipoCuenta]
+Clave=TipoCuenta
+Nombre=* Tipo de Cuenta
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+[NumeroCuenta]
+Clave=NumeroCuenta
+Nombre=* Número de Cuenta
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[Telefono]
+Clave=Telefono
+Nombre=* Teléfono
+Visible=S
+TamanoValidacion=40
+Tamano=40
+ValidacionConCondiciones=S
+ValidacionCondicion=Si<BR>  SQL(<T>Select dbo.fn_ValidaTelefonosMaviExtra(<T>&comillas(Telefono)&<T>)<T>)=1<BR>Entonces<BR>  SQL(<T>Select dbo.fn_ValidaTelefonosMaviExtra(<T>&comillas(Telefono)&<T>)<T>)<BR>Sino<BR>  1=1<BR>Fin
+ValidacionMensajeError=<T>Telefono Incorrecto<T>
+[AntiguaedadCuenta]
+Clave=AntiguaedadCuenta
+Nombre=Antigüedad Cuenta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[NombreEjecutivo]
+Clave=NombreEjecutivo
+Nombre=Nombre Ejecutivo
+Visible=S
+TamanoValidacion=100
+Tamano=100
+Mayusculas=S
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=20
+Tamano=20

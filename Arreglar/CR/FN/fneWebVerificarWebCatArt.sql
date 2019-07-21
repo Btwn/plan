@@ -1,0 +1,21 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fneWebVerificarWebCatArt
+(@ID   int)
+RETURNS varchar(255)
+
+AS BEGIN
+DECLARE
+@Resultado  varchar(255)
+SET @Resultado = NULL
+IF EXISTS(SELECT * FROM WebCatArt WHERE ID = @ID AND ID IN(SELECT Rama FROM WebCatArt))SET @Resultado = 'Tiene Descendientes, No se Puede Eliminar'
+IF EXISTS(SELECT * FROM WebCatArt_Art WHERE IDWebCatArt = @ID )SET @Resultado = 'Tiene Articulos Asociados, No se Puede Eliminar'
+RETURN(@Resultado)
+END
+

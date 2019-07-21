@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1097LocalizacionVis
+Nombre=Localizacion
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Localizacion
+CamposBusquedaRapida=Localizacion
+SQL=Select Distinct Localizacion From ActivoF Where Localizacion <> <T> <T><BR>{SI(ConDatos(Mavi.RM1097Categoria),<T> And Categoria in (<T>+Mavi.RM1097Categoria+<T>)<T>,<T> <T>)}<BR>{SI(ConDatos(Mavi.RM1097Linea), <T> And Observaciones in (<T>+Mavi.RM1097Linea+<T>)<T>,<T> <T>)}<BR>{SI(ConDatos(Mavi.RM1097Familia), <T> And Almacen in (<T>+Mavi.RM1097Familia+<T>)<T>,<T> <T>)}<BR>Order By Localizacion
+[Localizacion]
+Clave=Localizacion
+Nombre=Localizacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Localizacion

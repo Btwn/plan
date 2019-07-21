@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0500ANOMNivelesCobranzaVis
+Nombre=Niveles de Cobranza
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=nivelcobranza
+CamposBusquedaRapida=Nombre
+SQL=SELECT distinct nivelcobranza FROM V_mavicuotascobmenrango where tipocomision=<T>Cobranza Campo<T>
+[nivelcobranza]
+Clave=nivelcobranza
+Nombre=nivelcobranza
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=nivelcobranza

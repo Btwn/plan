@@ -1,0 +1,52 @@
+[Tabla]
+Icono=0
+Clave=DM0287LineasCredTbl
+Archivo=DM0287configuracion
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>UEN<BR>Rangoinicial<BR>Rangofinal<BR>LineaBuro<BR>AsignarLCAXSI
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  UEN,<BR>  Rangoinicial,<BR>  Rangofinal,<BR>  LineaBuro,<BR>  AsignarLCAXSI<BR><BR>FROM<BR>  DM0287configuracion
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Rangoinicial]
+Clave=Rangoinicial
+Nombre=Rango inicial
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[Rangofinal]
+Clave=Rangofinal
+Nombre=Rango final
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[LineaBuro]
+Clave=LineaBuro
+Nombre=Linea Buro
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[AsignarLCAXSI]
+Clave=AsignarLCAXSI
+Nombre=Asignar LCAXSI
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas

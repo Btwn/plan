@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RelIngresosMovOrigen
+Nombre=Movimiento Origen
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Movimiento Origen
+SQL=EXEC spRelIngresosSeparaCadenaMavi <T>{RelIngresos.MovIng}<T>, NULL, <T>Mov<T><BR><BR><BR><BR>/*SELECT DISTINCT  <BR>  MovOrigen  <BR><BR>FROM <BR>  RelIngresosTipoMov <BR><BR>WHERE <BR>  MovOrigen IS NOT NULL<BR><BR><BR>{Si(ConDatos(RelIngresos.TipoMovIng),<BR>  <T>  AND TipoMov IN (<T> +RelIngresos.TipoMovIng+ <T>)<T>,<BR>  <T>  AND Tipomov =<T> +Comillas()  )}<BR>{si(ConDatos(RelIngresos.MovIng),<BR>  <T>  AND Mov IN (<T> +RelIngresos.MovIng+ <T>)<T>,<BR>  <T>  AND mov =<T> +Comillas()  )}*/
+[Movimiento Origen]
+Clave=Movimiento Origen
+Nombre=Movimiento Origen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Movimiento Origen

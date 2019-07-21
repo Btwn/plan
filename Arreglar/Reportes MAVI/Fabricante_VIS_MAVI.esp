@@ -1,0 +1,29 @@
+[Fabricante.vis/Vista]
+CamposBusquedaRapida=Fabricante.Fabricante
+
+[Fabricante.vis/Vista.ListaCampos]
+Fabricante.POSAgenteDetalle=Fabricante.Grupo
+Fabricante.Grupo=(Fin)
+
+[Fabricante.vis/Vista.SQL]
+Fabricante.Notas,=Fabricante.POSAgenteDetalle,
+Fabricante.POSAgenteDetalle,=Fabricante.Grupo
+Fabricante.Grupo=FROM Fabricante
+
+[Fabricante.vis/Fabricante.Grupo]
+Clave=Fabricante.Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=<BR>MARCAS<BR>MULTIMARCAS
+OpcionesPredefinidas=Ninguna
+LigaTabla=Fabricante
+LigaCampo=Grupo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Grupo

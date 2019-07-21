@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=RM1025PrefijoArticulosVis
+Nombre=Prefijo de Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Fabricante<BR>Prefijo
+CamposBusquedaRapida=Fabricante
+SQL=Select Distinct left(articulo,4) as Prefijo ,Fabricante<BR>From Art<BR>Where Fabricante <> <T><T><BR>Order By left(articulo,4) Asc
+[Fabricante]
+Clave=Fabricante
+Nombre=Fabricante
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Fabricante
+[Prefijo]
+Clave=Prefijo
+Nombre=Prefijo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=4
+TipoDatos=Texto
+Tamano=4
+ClaveBDE=Prefijo

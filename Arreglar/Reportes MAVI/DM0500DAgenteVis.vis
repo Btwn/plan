@@ -1,0 +1,23 @@
+
+[Vista]
+Icono=0
+Clave=DM0500DAgenteVis
+Nombre=DM0500D Agente
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=AgenteCobrador
+
+CamposBusquedaRapida=AgenteCobrador
+SQL=SELECT DISTINCT AgenteCobrador<BR>FROM DM0207MaviRecuperacionCteFinal WITH(NOLOCK)<BR>WHERE ApoyoDima = 1 AND AgenteCobrador<><T>SIN AGENTE<T>
+[AgenteCobrador]
+Clave=AgenteCobrador
+Nombre=AgenteCobrador
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=AgenteCobrador

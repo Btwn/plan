@@ -1,0 +1,18 @@
+[Tabla]
+Icono=0
+Clave=DM0158EMBFACTORSEGUROFLETETBL
+Nombre=DM0158EMBFACTORSEGUROFLETETBL
+Archivo=DM0158EMBFACTORSEGUROFLETETBL
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=FactorSeguroFlete
+LlavePrimaria=FactorSeguroFlete
+SQL=SELECT<BR>  FactorSeguroFlete<BR><BR>FROM<BR>  DM0158EMBFACTORSEGUROFLETETBL
+[FactorSeguroFlete]
+Clave=FactorSeguroFlete
+Nombre=<T>% Factor Seguro Flete<T>
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+AyudaEnCaptura=Calculadora

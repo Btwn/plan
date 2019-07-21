@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=DM0246SucursalesVis
+Nombre=DM0246SucursalesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=sucursal
+SQL=select sucursal from sucursal where tipo=<T>INSTITUCIONES<T> and sucursal <> 39
+[sucursal]
+Clave=sucursal
+Nombre=sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=sucursal

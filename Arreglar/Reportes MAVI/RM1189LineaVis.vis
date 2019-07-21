@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM1189LineaVis
+Nombre=Muestra lineas
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Linea
+VistaIndependiente=S
+SQL=SELECT DISTINCT Linea <BR>FROM Art WITH(NOLOCK)<BR>WHERE Categoria = <T>Venta<T> AND Linea <> <T><T> AND Linea IS NOT NULL AND Grupo = <T>MERCANCIA DE LINEA<T><BR>And Familia Not in (<T>ARTICULOS DE ESCRITORIO<T>,<T>GASTOS DE COBRANZA<T>,<BR>                  <T>INCOBRABLES<T>,<T>SEGUROS DE VIDA<T>,<T>SEGUROS DE AUTOMOVILES<T>,<BR>                  <T>VALERAS<T>,<T>VARIOS FINANCIEROS<T>,<T>VARIOS INTANGIBLES<T>)<BR>{Si(ConDatos(Mavi.RM1189Familia), <T>And Familia IN(<T>+Mavi.RM1189Familia+<T>)<T>, <T><T>)}<BR>ORDER BY Linea ASC
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

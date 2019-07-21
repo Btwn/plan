@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM1132MontoAbonosVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MontoAbonos
+SQL=select Distinct MontoAbonos From RM1132Parametros Where MontoAbonos is not null
+[MontoAbonos]
+Clave=MontoAbonos
+Nombre=MontoAbonos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=MontoAbonos

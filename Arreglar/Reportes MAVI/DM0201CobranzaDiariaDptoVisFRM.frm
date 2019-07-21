@@ -1,0 +1,492 @@
+[Forma]
+Clave=DM0201CobranzaDiariaDptoVisFRM
+Nombre=DM0201 Cobranza Diaria por Departamento
+Icono=35
+Modulos=(Todos)
+ListaCarpetas=(Variables)<BR>SQL
+CarpetaPrincipal=(Variables)
+PosicionInicialAlturaCliente=706
+PosicionInicialAncho=1382
+PosicionSec1=46
+PosicionInicialIzquierda=-8
+PosicionInicialArriba=-8
+Totalizadores=S
+PosicionSec2=546
+Menus=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Actualizar<BR>Excel<BR>Txt<BR>Salir
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEstadoInicial=Normal
+MenuPrincipal=Menu
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Info.FechaD<BR>Info.FechaA
+CarpetaVisible=S
+[(Variables).Info.FechaD]
+Carpeta=(Variables)
+Clave=Info.FechaD
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[(Variables).Info.FechaA]
+Carpeta=(Variables)
+Clave=Info.FechaA
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+Editar=S
+[SQL]
+Estilo=Iconos
+Clave=SQL
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=B1
+Vista=DM0201CobranzaDiariaDptoVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosSubTitulo=<T>Fecha<T>
+ListaEnCaptura=RecibosCredMe<BR>CapitalCredMe<BR>PorcCredMe<BR>RecibosInst<BR>CapitalInst<BR>PorcInst<BR>RecibosAsoc<BR>CapitalAsoc<BR>PorcAsoc<BR>TotalRec<BR>TotalCapital<BR>TotalPorc
+ElementosPorPagina=200
+IconosNombre=DM0201CobranzaDiariaDptoVis:Fecha
+[SQL.Columnas]
+0=64
+1=-2
+2=-2
+3=-2
+4=-2
+5=82
+6=-2
+7=-2
+8=76
+9=-2
+10=-2
+11=99
+12=78
+[SQL.RecibosCredMe]
+Carpeta=SQL
+Clave=RecibosCredMe
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.CapitalCredMe]
+Carpeta=SQL
+Clave=CapitalCredMe
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.PorcCredMe]
+Carpeta=SQL
+Clave=PorcCredMe
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.RecibosInst]
+Carpeta=SQL
+Clave=RecibosInst
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.CapitalInst]
+Carpeta=SQL
+Clave=CapitalInst
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.PorcInst]
+Carpeta=SQL
+Clave=PorcInst
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.TotalRec]
+Carpeta=SQL
+Clave=TotalRec
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.TotalCapital]
+Carpeta=SQL
+Clave=TotalCapital
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.TotalPorc]
+Carpeta=SQL
+Clave=TotalPorc
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[(Carpeta Totalizadores)]
+Clave=(Carpeta Totalizadores)
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=C1
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=48
+FichaEspacioNombresAuto=S
+FichaNombres=Clasico
+FichaAlineacion=Derecha
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+Totalizadores1=Credito<BR>Cred$<BR>Cred%<BR>Instituciones<BR>Ins$<BR>Ins%<BR>Asociados<BR>Asoc$<BR>Asoc%<BR>PromCred<BR>PromCred$<BR>PromInst<BR>PromInst$<BR>PromAsoc<BR>PromAsoc$<BR>PromTotal<BR>PromTotal$<BR>TotalRec<BR>Total$
+Totalizadores2=SUMATOTAL(DM0201CobranzaDiariaDptoVis:RecibosCredMe)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:CapitalCredMe)<BR>(SUMATOTAL(DM0201CobranzaDiariaDptoVis:CapitalCredMe)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:TotalCapital))*100<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:RecibosInst)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:CapitalInst)<BR>(SUMATOTAL(DM0201CobranzaDiariaDptoVis:CapitalInst)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:TotalCapital))*100<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:RecibosAsoc)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:CapitalAsoc)<BR>(SUMATOTAL(DM0201CobranzaDiariaDptoVis:CapitalAsoc)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:TotalCapital))*100<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:RecibosCredMe)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:DiasTrans)<BR>SUMATOTAL(DM0201CobranzaDiari<CONTINUA>
+Totalizadores3=<BR>(Monetario)<BR>0.00<T>%<BR><BR>(Monetario)<BR>0.00<T>%<BR><BR>(Monetario)<BR>0.00<T>%<BR>0.00<BR>(Monetario)<BR>0.00<BR>(Monetario)<BR>0.00<BR>(Monetario)<BR>0.00<BR>(Monetario)<BR><BR>(Monetario)
+Totalizadores=S
+CampoColorLetras=Negro
+CampoColorFondo=Plata
+ListaEnCaptura=Credito<BR>Cred$<BR>Cred%<BR>Instituciones<BR>Ins$<BR>Ins%<BR>Asociados<BR>Asoc$<BR>Asoc%<BR>TotalRec<BR>Total$<BR>PromCred<BR>PromCred$<BR>PromInst<BR>PromInst$<BR>PromAsoc<BR>PromAsoc$<BR>PromTotal$<BR>PromTotal
+CarpetaVisible=S
+TotCarpetaRenglones=SQL
+TotExpresionesEnSumas=S
+TotAlCambiar=S
+Totalizadores2002=<CONTINUA>aDptoVis:CapitalCredMe)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:DiasTrans)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:RecibosInst)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:DiasTrans)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:CapitalInst)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:DiasTrans)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:RecibosAsoc)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:DiasTrans)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:CapitalAsoc)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:DiasTrans)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:TotalRec)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:DiasTrans)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:TotalCapital)/SUMATOTAL(DM0201CobranzaDiariaDptoVis:DiasTrans)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:TotalRec)<BR>SUMATOTAL(DM0201CobranzaDiariaDptoVis:TotalCapital)
+Totalizadores2003=<CONTINUA>tal)
+[(Carpeta Totalizadores).Credito]
+Carpeta=(Carpeta Totalizadores)
+Clave=Credito
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).Cred$]
+Carpeta=(Carpeta Totalizadores)
+Clave=Cred$
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).Cred%]
+Carpeta=(Carpeta Totalizadores)
+Clave=Cred%
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=8
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).Instituciones]
+Carpeta=(Carpeta Totalizadores)
+Clave=Instituciones
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).Ins$]
+Carpeta=(Carpeta Totalizadores)
+Clave=Ins$
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).Ins%]
+Carpeta=(Carpeta Totalizadores)
+Clave=Ins%
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=8
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).PromCred]
+Carpeta=(Carpeta Totalizadores)
+Clave=PromCred
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=8
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).PromCred$]
+Carpeta=(Carpeta Totalizadores)
+Clave=PromCred$
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).PromInst]
+Carpeta=(Carpeta Totalizadores)
+Clave=PromInst
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=8
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).PromInst$]
+Carpeta=(Carpeta Totalizadores)
+Clave=PromInst$
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).PromTotal]
+Carpeta=(Carpeta Totalizadores)
+Clave=PromTotal
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=8
+ColorFondo=Gris
+ColorFuente=Negro
+[(Carpeta Totalizadores).PromTotal$]
+Carpeta=(Carpeta Totalizadores)
+Clave=PromTotal$
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Gris
+ColorFuente=Negro
+[(Carpeta Totalizadores).TotalRec]
+Carpeta=(Carpeta Totalizadores)
+Clave=TotalRec
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Gris
+ColorFuente=Negro
+[(Carpeta Totalizadores).Total$]
+Carpeta=(Carpeta Totalizadores)
+Clave=Total$
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Gris
+ColorFuente=Negro
+LineaNueva=N
+[Acciones.Salir]
+Nombre=Salir
+Boton=0
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+S
+NombreDesplegar=&Salir
+EnMenu=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+Menu=Menu
+[Acciones.Actualizar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Actualizar.Update]
+Nombre=Update
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Vista
+Activo=S
+Visible=S
+[Acciones.Actualizar]
+Nombre=Actualizar
+Boton=0
+Menu=Menu
+NombreDesplegar=&Actualizar
+Multiple=S
+EnMenu=S
+ListaAccionesMultiples=Asigna<BR>Update
+Activo=S
+Visible=S
+UsaTeclaRapida=S
+TeclaRapida=F5
+[Acciones.Excel]
+Nombre=Excel
+Boton=0
+NombreDesplegar=&Excel
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Menu=Menu
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+E
+Expresion=Forma.EnviarExcel(<T>SQL<T>)
+[SQL.RecibosAsoc]
+Carpeta=SQL
+Clave=RecibosAsoc
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.CapitalAsoc]
+Carpeta=SQL
+Clave=CapitalAsoc
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[SQL.PorcAsoc]
+Carpeta=SQL
+Clave=PorcAsoc
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[(Carpeta Totalizadores).Asociados]
+Carpeta=(Carpeta Totalizadores)
+Clave=Asociados
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).Asoc$]
+Carpeta=(Carpeta Totalizadores)
+Clave=Asoc$
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).Asoc%]
+Carpeta=(Carpeta Totalizadores)
+Clave=Asoc%
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).PromAsoc]
+Carpeta=(Carpeta Totalizadores)
+Clave=PromAsoc
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[(Carpeta Totalizadores).PromAsoc$]
+Carpeta=(Carpeta Totalizadores)
+Clave=PromAsoc$
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Plata
+ColorFuente=Negro
+[Acciones.Txt]
+Nombre=Txt
+Boton=0
+NombreDesplegar=&Generar Detalle TXT
+EnMenu=S
+TipoAccion=Reportes Impresora
+ClaveAccion=DM0201DetalleCobrosRepTxt
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Asignar<BR>Txt
+Menu=Menu
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+T
+[Acciones.Txt.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Txt.Txt]
+Nombre=Txt
+Boton=0
+TipoAccion=Reportes Impresora
+ClaveAccion=DM0201DetalleCobrosRepTxt
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionCondicion=Si Diferencia(Año(Info.FechaD),Año(Info.FechaA)) = 0<BR>Entonces<BR>    Si Diferencia(Mes(Info.FechaD),Mes(Info.FechaA)) > 2<BR>    Entonces<BR>        Error(<T>Solo se pueden consultar 2 meses como maximo<T>)<BR>        AbortarOperacion<BR>    Sino<BR>        Si Diferencia(Dia(Info.FechaD),Dia(Info.FechaA)) > 62<BR>        Entonces<BR>            Error(<T>Solo se pueden consultar 2 meses como maximo<T>)<BR>            AbortarOperacion<BR>        Fin<BR>    Fin<BR>Sino<BR>    Error(<T>Solo se pueden consultar 2 meses como maximo<T>)<BR>    AbortarOperacion<BR>Fin
+

@@ -1,0 +1,19 @@
+
+[Vista]
+Icono=0
+Clave=MovimientoCFDFlex
+Nombre=MovimientoCFDFlex
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=Mov
+SQL=SELECT<BR>  Mov <BR>FROM <BR>  MovTipoCFDFlex<BR><BR>/*WHERE<BR>Modulo=<T>{Info.ModuloCFDFlex}<T>*/
+[Mov]
+Clave=Mov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Mov

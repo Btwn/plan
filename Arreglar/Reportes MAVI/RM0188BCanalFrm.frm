@@ -1,0 +1,80 @@
+[Forma]
+Clave=RM0188BCanalFrm
+Nombre=RM0188 Canales Venta
+Icono=0
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=canal
+CarpetaPrincipal=canal
+PosicionInicialIzquierda=384
+PosicionInicialArriba=218
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+ListaAcciones=Seleccionar
+[canal]
+Estilo=Iconos
+Clave=canal
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM0188BCanalVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosNombre=RM0188BCanalVis:ID
+IconosSubTitulo=<T>Canal<T>
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Cadena
+CarpetaVisible=S
+[canal.Cadena]
+Carpeta=canal
+Clave=Cadena
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[canal.Columnas]
+0=-2
+1=-2
+[Acciones.Seleccionar.asign]
+Nombre=asign
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.exp]
+Nombre=exp
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Canal<T>)
+Activo=S
+Visible=S
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=asign<BR>exp<BR>selec
+Activo=S
+Visible=S
+[Acciones.Seleccionar.selec]
+Nombre=selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM0188BCanalVta,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)

@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=DM0235IdPadreVis
+Nombre=DM0235ID
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID
+SQL=Select Distinct IDpadre AS ID From DM0235ControladorDepyDisp With(NoLock)
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID

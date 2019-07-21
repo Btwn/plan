@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=RM1134nombreEmisorVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=NombreEmisor
+CamposBusquedaRapida=NombreEmisor
+SQL=Select Distinct NombreEmisor From RM1100RepXmlGasto
+[NombreEmisor]
+Clave=NombreEmisor
+Nombre=Nombre Emisor
+Visible=S
+TamanoValidacion=150
+Tamano=150
+ClaveBDE=NombreEmisor

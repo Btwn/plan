@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=MaviCategoriaVentaServicasaVis
+Nombre=RM301 Categoría de Ventas Servicasa
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=categoria
+SQL=select distinct Categoria from ventascanalmavi<BR>where categoria<><T>MAYOREO<T>
+[categoria]
+Clave=categoria
+Nombre=Categoría de Venta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=categoria

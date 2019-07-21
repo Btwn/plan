@@ -1,0 +1,55 @@
+[Dialogo]
+Clave=MaviNvaConsultaFrmDlg
+Nombre=Nueva Consulta
+Icono=447
+TipoMensaje=General
+TipoDialogo=Mensaje
+Modulos=(Todos)
+ConFuenteEspecial=S
+Fuente={Tahoma, 10, Negro, [Negritas]}
+AccionesTamanoBoton=15x5
+ListaAcciones=Si<BR>No
+PosicionInicialAlturaCliente=81
+PosicionInicialAncho=289
+PosicionInicialIzquierda=475
+PosicionInicialArriba=203
+AccionesCentro=S
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=por Diseño
+VentanaConIcono=S
+VentanaEstadoInicial=Normal
+Mensaje=<T>¿Desea consultar de nuevo?<T>
+[Acciones.Si.Expresion]
+Nombre=Expresion
+Boton=0
+TipoAccion=Expresion
+Expresion=Forma(Mavi.Reporte)
+Activo=S
+Visible=S
+[Acciones.Si.Aceptar]
+Nombre=Aceptar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Aceptar
+Activo=S
+Visible=S
+[Acciones.Si]
+Nombre=Si
+Boton=0
+NombreDesplegar=&Si
+Multiple=S
+EnBarraAcciones=S
+ListaAccionesMultiples=Expresion<BR>Aceptar
+Activo=S
+Visible=S
+NombreEnBoton=S
+[Acciones.No]
+Nombre=No
+Boton=0
+NombreDesplegar=&No
+EnBarraAcciones=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+NombreEnBoton=S

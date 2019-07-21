@@ -1,0 +1,25 @@
+[Tabla]
+Icono=0
+Clave=RM1142LadasTbl
+Archivo=RM1142Ladas
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=LADA<BR>UEN
+SQL=SELECT<BR>  LADA,<BR>  UEN<BR><BR>FROM<BR>  RM1142Ladas
+LlavePrimaria=LADA<BR>UEN
+[LADA]
+Clave=LADA
+Nombre=LADA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico

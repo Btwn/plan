@@ -1,0 +1,120 @@
+[Forma]
+Clave=DM0153ActualizarAccesosFrm
+Nombre=DM0153ActualizarAccesosFrm
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=DM0153ActualizarAccesos
+CarpetaPrincipal=DM0153ActualizarAccesos
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+PosicionInicialIzquierda=115
+PosicionInicialArriba=206
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Actualizar
+EsConsultaExclusiva=S
+[DemandaPendiente.Columnas]
+Nombre=304
+0=-2
+[Acciones.seleccionar Todo]
+Nombre=seleccionar Todo
+Boton=0
+NombreDesplegar=Seleccionar Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.quitar Seleccion]
+Nombre=quitar Seleccion
+Boton=0
+NombreDesplegar=Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=quitar Seleccion
+Activo=S
+Visible=S
+[Acciones.Actualizar]
+Nombre=Actualizar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=Asignar<BR>Registra<BR>expresion
+[Acciones.Actualizar.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Controles Captura
+Activo=S
+Visible=S
+ClaveAccion=Variables Asignar
+[Acciones.Actualizar.Registra]
+Nombre=Registra
+Boton=0
+TipoAccion=expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Actualizar.expresion]
+Nombre=expresion
+Boton=0
+TipoAccion=ventana
+Activo=S
+Visible=S
+ClaveAccion=Seleccionar/Resultado
+Expresion=Asigna(Mavi.DM0153Accesos,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>)
+[DM0153ActualizarAccesos]
+Estilo=Iconos
+PestanaNombre=Accesos
+Clave=DM0153ActualizarAccesos
+MenuLocal=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0153ActualizarAccesosVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Nombre
+ListaAcciones=seleccionar Todo<BR>quitar Seleccion
+CarpetaVisible=S
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+RefrescarAlEntrar=S
+Pestana=S
+PestanaOtroNombre=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionPorLlave=S
+IconosSeleccionMultiple=S
+[DM0153ActualizarAccesos.Nombre]
+Carpeta=DM0153ActualizarAccesos
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[DM0153ActualizarAccesos.Columnas]
+0=-2

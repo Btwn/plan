@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM0229IdRutaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID
+Nombre=Rutas disponibles
+SQL=Select DISTINCT ID = <T><T>+ID from embarque <BR>where Estatus = {Si(Mavi.RM0229EstatusRutaEmb=<T>PENDIENTE<T>,Comillas(<T>PENDIENTE<T>),Comillas(<T>SINAFECTAR<T>))}<BR>{Si(ConDatos(Mavi.RM0229MovEmbarque),<T> And MovID = <T>+Comillas(Mavi.RM0229MovEmbarque),<T><T>)}<BR>{Si(ConDatos(Info.Fecha),<T> And FechaEmision = <T>+Comillas(Fechaformatoservidor(Info.Fecha)),<T><T>)}<BR>{Si(ConDatos(Mavi.RM0229Vehiculos),<T> And Vehiculo = <T>+Comillas(Mavi.RM0229Vehiculos),<T><T>)}<BR>{Si(ConDatos(Mavi.RM0229RutaDestinos),<T> And Ruta = <T>+Comillas(Mavi.Rm0229RutaDestinos),<T><T>)}<BR>{Si(ConDatos(Mavi.Rm0229EmbMovTipo),<T> And Mov = <T>+Comillas(Mavi.RM0229EmbMovTipo),<T><T>)}<BR>Order by ID
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+ClaveBDE=ID

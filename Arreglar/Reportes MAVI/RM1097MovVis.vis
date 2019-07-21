@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1097MovVis
+Nombre=Movimientos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Mov
+SQL=Select Distinct Mov From Activofijo Where Mov in (<T>Asignacion<T>,<T>Reparacion<T>,<T>Devolucion<T>)<BR>Order By Mov
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Mov

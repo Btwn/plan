@@ -1,0 +1,25 @@
+[Tabla]
+Icono=0
+Clave=MaviBonificacionExcluye
+Nombre=MaviBonificacionExcluye
+Archivo=MaviBonificacionExcluye
+Modulos=(Todos)
+Singular=MaviBonificacionExcluye
+TipoTabla=General
+ListaCampos=BonificacionNo<BR>IdBonificacion
+LlavePrimaria=IdBonificacion<BR>BonificacionNo
+SQL=SELECT<BR>  IdBonificacion,<BR>  BonificacionNo<BR><BR>FROM<BR>  MaviBonificacionExcluye
+[BonificacionNo]
+Clave=BonificacionNo
+Nombre=Excluye
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>Select Bonificacion from MaviBonificacionCat<T>)
+[IdBonificacion]
+Clave=IdBonificacion
+Nombre=IdBonificacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico

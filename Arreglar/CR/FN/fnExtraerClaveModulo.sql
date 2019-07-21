@@ -1,0 +1,27 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnExtraerClaveModulo (@Clave varchar(20))
+RETURNS char(5)
+
+AS BEGIN
+DECLARE
+@p		int,
+@c		char(1),
+@Modulo	varchar(5)
+SELECT @Modulo = ''
+SELECT @p = 1
+WHILE @p <= LEN(@Clave)
+BEGIN
+SELECT @c = SUBSTRING(@Clave, @p, 1)
+IF dbo.fnEsNumerico(@c) = 0 SELECT @Modulo = @Modulo + @c ELSE BREAK
+SELECT @p = @p + 1
+END
+RETURN (NULLIF(@Modulo, ''))
+END
+

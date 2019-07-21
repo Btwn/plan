@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=RM1014AlmacenesVis
+Nombre=RM1014 Almacenes
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Almacen<BR>Nombre
+CamposBusquedaRapida=Almacen<BR>Nombre
+SQL=SELECT Almacen,Nombre=SUBSTRING(Nombre,8,30) <BR>FROM dbo.Alm WHERE Almacen LIKE <T>V%<T><BR>order by almacen
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Almacen
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Nombre

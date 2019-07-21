@@ -1,0 +1,23 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnFiscalImporte (@TipoImporte varchar(20), @Importe float, @Tasa float)
+RETURNS float
+
+AS BEGIN
+DECLARE
+@Resultado    float
+IF UPPER(@TipoImporte) IN ('OBLIGACION FISCAL', '- OBLIGACION FISCAL')
+SELECT @Resultado = (@Importe*100.0)/NULLIF(@Tasa, 0.0)
+ELSE
+SELECT @Resultado = @Importe
+IF SUBSTRING(@TipoImporte, 1, 1) = '-'
+SELECT @Resultado = -@Resultado
+RETURN (@Resultado)
+END
+

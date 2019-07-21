@@ -1,0 +1,114 @@
+[Forma]
+Clave=ArtAlmTodosAlmacenesFrm
+Nombre=<T>Almacenes en particular<T>
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=ArtAlmTodosAlmacenes
+CarpetaPrincipal=ArtAlmTodosAlmacenes
+PosicionInicialIzquierda=843
+PosicionInicialArriba=48
+PosicionInicialAlturaCliente=413
+PosicionInicialAncho=258
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+[ArtAlmTodosAlmacenes]
+Estilo=Iconos
+Clave=ArtAlmTodosAlmacenes
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=ArtAlmTodosAlmacenesVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+PestanaOtroNombre=S
+PestanaNombre=Almacenes en particular
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+RefrescarAlEntrar=S
+Pestana=S
+IconosSubTitulo=<T>Almacen<T>
+IconosNombre=ArtAlmTodosAlmacenesVis:Almacen
+[ArtAlmTodosAlmacenes.Columnas]
+0=317
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=Selec<BR>Regis<BR>Asig
+[Acciones.Seleccionar.Selec]
+Nombre=Selec
+Boton=0
+TipoAccion=controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Regis]
+Nombre=Regis
+Boton=0
+TipoAccion=expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Seleccionar.Asig]
+Nombre=Asig
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.ArtAlmTodosAlmacenes,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T> + EstacionTrabajo + <T>, 2<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T> + EstacionTrabajo + <T>, 2<T>)
+[Acciones.SelT]
+Nombre=SelT
+Boton=0
+UsaTeclaRapida=S
+TeclaRapida=F11
+NombreDesplegar=&Seleccionar Todos
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.QuiT]
+Nombre=QuiT
+Boton=0
+UsaTeclaRapida=S
+TeclaRapida=F12
+NombreDesplegar=&Quitar Selección
+EnMenu=S
+TipoAccion=controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+

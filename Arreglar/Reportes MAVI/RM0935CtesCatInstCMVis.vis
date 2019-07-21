@@ -1,0 +1,98 @@
+[Vista]
+Icono=0
+Clave=RM0935CtesCatInstCMVis
+Nombre=Clientes Credito Menudeo
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cliente<BR>Nombre<BR>SeccionCobranza<BR>UltimaModificacion<BR>FechaUltimaModificacion<BR>CanalVenta<BR>Categoria<BR>Clave<BR>NombreCanal<BR>Reg
+CamposBusquedaRapida=Cliente<BR>Nombre
+LlavePrimaria=Cliente
+SQL=SELECT cliente,Nombre,CanalVenta,SeccionCobranza,UltimaModificacion,FechaUltimaModificacion,NombreCanal,Categoria,Clave,Reg FROM(<BR>SELECT *,ORDEN = MAX(FechaUltimaModificacion) OVER (PARTITION BY CLIENTE) FROM(<BR>SELECT<BR><TAB>CEA.Cliente,<BR><TAB>Nombre = CEA.Nombre,<BR><TAB>CanalVenta = VCM.ID,<BR><TAB>SeccionCobranza = CEA.SeccionCobranzaMavi,<BR><TAB>UltimaModificacion = ISNULL(BHM.Usuario , CEA.UsuarioModif),<BR><TAB>FechaUltimaModificacion = ISNULL(MAX(BHM.Fecha), CEA.UltimoCambio),<BR><TAB>NombreCanal=VCM.Cadena,<BR><TAB>VCM.Clave,<BR><TAB>VCM.Categoria,<BR><TAB>CM.Reg<BR>FROM CteEnviarA CEA<BR>INNER JOIN VentasCanalMavi VCM ON CEA.ID = VCM.ID<BR>LEFT JOIN MaviHistModifSeccionCobCte BHM ON CEA.Cliente = BHM.Cliente<BR>LEFT JOIN (SELECT Cliente, Reg=COUNT(ID), SeccionCobranzaMavi<CONTINUA>
+SQL002=<CONTINUA><BR><TAB><TAB><TAB><TAB><TAB> FROM dbo.MaviHistModifSeccionCobCte<BR><TAB><TAB><TAB><TAB><TAB> WHERE SeccionCobranzaMavi = <T>CREDITO MENUDEO<T><BR><TAB><TAB><TAB><TAB><TAB> GROUP BY Cliente, SeccionCobranzaMavi<BR><TAB><TAB>   ) AS CM ON CEA.Cliente = CM.Cliente<BR>WHERE VCM.Categoria = <T>INSTITUCIONES<T> AND CEA.SeccionCobranzaMavi = <T>CREDITO MENUDEO<T> <BR><TAB>  AND LEFT(CEA.Cliente,1) = <T>C<T> AND CEA.CLIENTE NOT LIKE <T>C99999%<T><BR><TAB>  {Si(ConDatos(Mavi.NumCanalVenta),<T>AND VCM.ID=<T>+Mavi.NumCanalVenta,<T><T>)}<BR>GROUP BY CEA.Cliente,CEA.Nombre,VCM.ID,CEA.SeccionCobranzaMavi,BHM.SeccionCobranzaMavi,BHM.Usuario,CEA.UsuarioModif,CEA.UltimoCambio,<BR><TAB><TAB>VCM.Cadena,VCM.Clave,VCM.Categoria,CM.Reg<BR>)S<BR>)TODO<BR>WHERE ORDEN = FechaUltimaModificacion<BR>{Si((ConDatos(i<CONTINUA>
+SQL003=<CONTINUA>nfo.FechaD) y ConDatos(info.FechaD)),<T> AND FechaUltimaModificacion Between <T>+comillas(fechaformatoservidor(info.FechaD)+ <T> 00:00:00<T>)+<T> AND <T>+comillas(fechaformatoservidor(info.FechaA)+ <T> 23:59:59<T>),<T><T>)}
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=cliente
+[Nombre]
+Clave=Nombre
+Nombre=Nombre del Cliente
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+TipoDatos=Texto
+[SeccionCobranza]
+Clave=SeccionCobranza
+Nombre=Sección de Cobranza
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=SeccionCobranza
+TipoDatos=Texto
+[UltimaModificacion]
+Clave=UltimaModificacion
+Nombre=Usuario que Modifica
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=UltimaModificacion
+TipoDatos=Texto
+[FechaUltimaModificacion]
+Clave=FechaUltimaModificacion
+Nombre=Fecha de Última Modificación
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaUltimaModificacion
+FormatoValidacion=dd/mmm/aaaa   hh:nn:ss ampm
+[CanalVenta]
+Clave=CanalVenta
+Nombre=Canal de Venta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=CanalVenta
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria
+[Clave]
+Clave=Clave
+Nombre=Clave
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Clave
+[NombreCanal]
+Clave=NombreCanal
+Nombre=Nombre de Canal de Venta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=NombreCanal
+TipoDatos=Texto
+[Reg]
+Clave=Reg
+Nombre=No. Cambios
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Reg
+Tamano=0

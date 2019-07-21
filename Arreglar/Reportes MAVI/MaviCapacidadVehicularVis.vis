@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviCapacidadVehicularVis
+Nombre=Capacidad de Vehiculos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Capacidad
+CamposBusquedaRapida=Capacidad
+SQL=Select Capacidad <BR>From (Select Distinct Volumen As Capacidad<BR>From Vehiculo<BR>Where Volumen Is Not Null) VV
+[Capacidad]
+Clave=Capacidad
+Nombre=Capacidad
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Capacidad

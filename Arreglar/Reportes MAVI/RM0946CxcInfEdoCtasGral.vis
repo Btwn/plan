@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0946CxcInfEdoCtasGral
+Nombre=RM0946CxcInfEdoCtasGral
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=cliente
+SQL=EXEC sp_MAVIRM0946InfEdoCtas<BR>                             <T>{Mavi.RM0946tipocliente}<T>,<BR>                             <T>{Mavi.RM0946tipomovimiento}<T>,<BR>                              {Mavi.RM0946did},<BR>                              {Mavi.RM0946dih},<BR>                              {Mavi.RM0946dvd},<BR>                              {Mavi.RM0946dvh},<BR>                              {info.ano} ,<BR>                              <T>{Mavi.RM0000quincena}<T>,<BR>                              {estaciontrabajo}
+[cliente]
+Clave=cliente
+Nombre=cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=cliente

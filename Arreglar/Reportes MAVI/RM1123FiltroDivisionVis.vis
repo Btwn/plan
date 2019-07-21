@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1123FiltroDivisionVis
+Nombre=RM1123 Filtro Division
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Division
+CamposBusquedaRapida=Division
+SQL=SELECT DISTINCT Division FROM ZonaCobranzaHis WHERE Division is not null
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=40
+TipoDatos=Texto
+Tamano=40
+ClaveBDE=Division

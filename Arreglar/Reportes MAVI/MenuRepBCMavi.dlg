@@ -1,0 +1,88 @@
+[Dialogo]
+Clave=MenuRepBCMavi
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialAlturaCliente=200
+PosicionInicialAncho=188
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=por Omisión
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=44
+PosicionInicialArriba=58
+ListaAcciones=DepuracionBCTotMAVI<BR>FechaIncum<BR>LayoutINTF<BR>ResumenINTF<BR>MaviLayoutBC<BR>Desactivarctasviejas
+
+[Acciones.DepuracionBCTotMAVI]
+Nombre=DepuracionBCTotMAVI
+Boton=0
+NombreDesplegar=Depuración de Información
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=DepuracionBCTotMAVI
+Activo=S
+Visible=S
+
+[Acciones.ResumenINTF]
+Nombre=ResumenINTF
+Boton=0
+NombreDesplegar=Resumen INTF
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=ReporteFinalMavi
+Activo=S
+Visible=S
+
+[Acciones.FechaIncum]
+Nombre=FechaIncum
+Boton=0
+NombreDesplegar=Fecha Incumplimiento
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=FechaIncumplimientoBuro
+Activo=S
+Visible=S
+
+[Acciones.LayoutINTF]
+Nombre=LayoutINTF
+Boton=0
+NombreDesplegar=Layout INTF
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CreacionLayoutINTF
+;TipoAccion=Expresion
+;Expresion=EjecutarSQL(<T> sp_FormatoINTFMAVI <T>)
+Activo=S
+Visible=S
+
+[Acciones.MaviLayoutBC]
+Nombre=MaviLayoutBC
+Boton=0
+NombreDesplegar=Layout Buró de Credito de Cobros
+EnMenu=S
+EnBarraAcciones=S
+EspacioPrevio=S
+TipoAccion=Formas
+ClaveAccion=MaviCreacionLayoutINTFFrm
+Activo=S
+Visible=S
+[Acciones.Desactivarctasviejas]
+Nombre=Desactivarctasviejas
+Boton=0
+NombreDesplegar=Desactivar Cuentas viejas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=BuroCtasyanoenviar
+Activo=S
+Visible=S
+EspacioPrevio=S

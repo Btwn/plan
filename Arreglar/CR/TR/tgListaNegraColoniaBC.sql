@@ -1,0 +1,26 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgListaNegraColoniaBC ON ListaNegraColonia
+
+FOR UPDATE, DELETE
+AS BEGIN
+DECLARE
+@ColoniaN  	varchar(50),
+@ColoniaA	varchar(50)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @ColoniaN = Colonia FROM Inserted
+SELECT @ColoniaA = Colonia FROM Deleted
+IF @ColoniaN = @ColoniaA RETURN
+IF @ColoniaN IS NULL
+DELETE ListaNegraCalle WHERE Colonia = @ColoniaA
+ELSE BEGIN
+UPDATE ListaNegraCalle SET Colonia = @ColoniaN WHERE Colonia = @ColoniaA
+END
+END
+

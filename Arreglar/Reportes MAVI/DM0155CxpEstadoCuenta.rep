@@ -1,0 +1,46 @@
+[Reporte]
+Clave=DM0155CxpEstadoCuenta
+Nombre=Estado Cuenta Cxp
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+Submenu=CXP Mavi
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=RepCxpEstadoCuenta
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+[Vista]
+Icono=0
+Clave=DM0155CxpEstadoCuenta
+VistaIndependiente=S
+ListaCampos=Uno
+SQL=SELECT Uno = 1
+[Uno]
+Clave=Uno
+Nombre=Uno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Uno

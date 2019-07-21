@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=RM1133DimaRVis
+Nombre=Dima Recomendador
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=DimaR<BR>Nombre
+SQL=SELECT DISTINCT F.RECOMENDADOR AS DimaR, C.Nombre <BR>FROM(<BR><TAB>    SELECT DISTINCT <BR><TAB><TAB><TAB>RECOMENDADOR = D.ComisionN1 <BR><TAB>    FROM DM0264RedDimas D<BR><TAB>    LEFT JOIN DM0264RedDimas D1 ON D.ComisionN1 = D1.ComisionN1<BR>            WHERE D.ComisionN1 IS NOT NULL <BR>            )F<BR>INNER JOIN Cte C WITH(NOLOCK) ON C.Cliente = F.RECOMENDADOR
+[DimaR]
+Clave=DimaR
+Nombre=DimaR
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=DimaR
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

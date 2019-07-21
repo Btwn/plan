@@ -1,0 +1,171 @@
+;**** Modificación: 30-Ene-09
+;**** Modifico: Edgar Montelongo
+;**** Se modifico: Campos Delegacion, Colonia, CodigoPostal, Poblacion
+
+;**** Modificación: 26-Ago-08
+;**** Modifico:Leticia Quezada
+;**** Se modifico: Se agregaron 2 campos adicionales TipoOperacion y TipoTercero para reporte de DIOT
+
+;**** Modificación: 28-May-08  
+;**** Modifico:Arly Rubio
+;**** Se modifico:
+
+
+;****  Adicion de los campos TipoOperacion y TipoTercero para reporte de DIOT
+[Prov.tbl/Tabla.ListaCampos]
+CentroCostos=TipoTercero
+TipoTercero=TipoOperacion
+TipoOperacion=NotasPlaneador
+NotasPlaneador=LocalidadCNBV
+LocalidadCNBV=(Fin)
+
+[Prov.tbl/Tabla.SQL]
+ClaveTipoOperacion,=CentroCostos,
+CentroCostos,=TipoTercero,
+TipoTercero,=TipoOperacion,
+TipoOperacion,=NotasPlaneador,
+NotasPlaneador,=LocalidadCNBV
+LocalidadCNBV=FROM Prov
+
+[Prov.tbl/Tabla.ListaRelaciones]
+CentroCostos=LocalidadCNBV
+LocalidadCNBV=Dinero
+Dinero=(Fin)
+
+
+[Prov.tbl/TipoTercero]
+Clave=TipoTercero
+Nombre=Tipo Tercero
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=5
+TamanoValidacion=5
+Tamano=5
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+OpcionesUnicamente=S
+ListaOpciones=04<BR>05<BR>15
+
+[Prov.tbl/TipoOperacion]
+Clave=TipoOperacion
+Nombre=Tipo Operacion
+Visible=S
+TamanoValidacion=5
+Tamano=5
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ListaOpciones=03<BR>06<BR>85
+
+[Prov.tbl/NotasPlaneador]
+Clave=NotasPlaneador
+Nombre=Notas
+Visible=S
+TamanoValidacion=255
+Tamano=255
+UnicamenteLectura=S
+
+;****Modificacion del campo para que refrescara todas las condiciones de despliegue en la forma****
+[Prov.tbl/Familia]
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+
+;**** Modificacion a los campos Colonia, Poblacion, CodigoPostal y Delegacion
+;**** para hacerlos requeridos
+
+[Prov.tbl/Colonia]
+ValorRefrescar=Si(Info.Copiar, Info.Colonia, Colonia)
+ConRefrescar=S
+;ListaRefrescar=Delegacion<BR>CodigoPostal<BR>Estado<BR>Pais<BR>Poblacion<BR>LocalidadCNBV<BR>Ruta<BR>
+Requerido=S
+ValidacionCondicion=
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.Colonia
+
+[Prov.tbl/Poblacion]
+ValorPorOmision=Delegacion
+CondicionEdicion=1=2
+ValorRefrescar=Delegacion
+ValidacionCondicion=
+AyudaEnCaptura=
+AyudaForma=
+AyudaVista=
+AyudaCampo=
+
+[Prov.tbl/CodigoPostal]
+ValorRefrescar=Si(Info.Copiar, Info.CodigoPostal, CodigoPostal)
+ConRefrescar=S
+;ListaRefrescar=Colonia<BR>Delegacion<BR>Estado<BR>Pais<BR>Poblacion<BR>LocalidadCNBV<BR>Ruta
+Requerido=S
+ValidacionCondicion=
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.CodigoPostal
+
+[Prov.tbl/Delegacion]
+ValorRefrescar=Si(Info.Copiar, Info.Delegacion, Delegacion)
+ConRefrescar=S
+;ListaRefrescar=Colonia<BR>CodigoPostal<BR>Estado<BR>Pais<BR>Poblacion<BR>LocalidadCNBV<BR>Ruta
+AyudaEnCaptura=No
+CondicionEdicion=1=2
+Requerido=S
+ValidacionCondicion=
+AyudaEnCaptura=Vista
+AyudaForma=CodigoPostalLista
+AyudaVista=CodigoPostal
+AyudaCampo=CodigoPostal.Delegacion
+
+
+[Prov.tbl/Estado]
+ConRefrescar=S
+;ListaRefrescar=LocalidadCNBV<BR>Ruta
+ValidacionCondicion=
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=PaisEstadoMexico
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+
+[Prov.tbl/LocalidadCNBV]
+Clave=LocalidadCNBV
+Nombre=LocalidadCNBV
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorRefrescar=Si(Info.Copiar,Info.Localidad,<T>X<T>)
+AyudaEnCaptura=Vista
+AyudaForma=LocalidadCNBVLista
+AyudaVista=LocalidadCNBV
+AyudaCampo=LocalidadCNBV.LocalidadCNBV
+ValidacionUsaTabla=S
+ValidacionTablas=LocalidadCNBV
+
+[Prov.tbl/Relaciones.LocalidadCNBV]
+TipoRelacion=Opcional
+LlaveLocal=LocalidadCNBV
+Clave=LocalidadCNBV
+TablaRemota=LocalidadCNBV
+LlaveRemota=LocalidadCNBV
+
+[Prov.tbl/Relaciones.Dinero]
+TipoRelacion=Opcional
+LlaveLocal=Proveedor
+Clave=Dinero
+TablaRemota=Dinero
+LlaveRemota=Contacto
+
+[Prov.tbl/Pais]
+ValidacionCondicion=
+
+[Prov.tbl/FiscalRegimen]
+OpcionesColumnas=1
+OpcionesRenglones=8
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ListaOpciones=Persona Fisica<BR>Persona Moral<BR>PECOS<BR>Sociedad Civil<BR>Extranjero
+AyudaForma=
+AyudaVista=
+AyudaCampo=

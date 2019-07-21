@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0194SeccCobVis
+Nombre=DM0194 Seccion Cobranza
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SeccionCobranzaMavi
+SQL=SELECT DISTINCT CE.SeccionCobranzaMavi<TAB><BR>FROM CteEnviarA CE<BR><TAB>INNER JOIN CXC C WITH(NOLOCK)ON C.Cliente = Ce.Cliente<BR><TAB>INNER JOIN VentasCanalMavi VC WITH(NOLOCK)ON VC.ID = c.ClienteEnviarA<BR>WHERE VC.Categoria = <T>INSTITUCIONES<T>
+[SeccionCobranzaMavi]
+Clave=SeccionCobranzaMavi
+Nombre=SeccionCobranzaMavi
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=SeccionCobranzaMavi

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviArtFamLigLin
+Nombre=Familia Articulos
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Familia
+SQL=select <BR>distinct(Familia) <BR>from art <BR>Where <BR>Art.Familia is not null<BR>AND LEN(Art.Familia)>0<BR>{SI(CONDATOS(Mavi.ArtGrupLigFam),<T>AND Art.Grupo=<T>+COMILLAS(Mavi.ArtGrupLigFam),<T><T>)}<BR>order by Familia asc
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

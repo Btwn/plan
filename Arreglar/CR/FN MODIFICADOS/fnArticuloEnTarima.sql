@@ -1,0 +1,21 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnArticuloEnTarima (@Empresa varchar(5), @Tarima varchar(20))
+RETURNS varchar(20)
+
+AS BEGIN
+DECLARE
+@Resultado	varchar(20)
+SELECT @Resultado = NULL
+SELECT @Resultado = NULLIF(RTRIM(MIN(Articulo)), '')
+FROM ArtExistenciaTarima WITH (NOLOCK)
+WHERE Empresa = @Empresa AND Tarima = @Tarima AND ROUND(ISNULL(Existencia, 0.0), 2) <> 0.0
+RETURN(@Resultado)
+END
+

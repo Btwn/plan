@@ -1,0 +1,25 @@
+[Tabla]
+Icono=0
+Clave=DM0213CatServRefacTbl
+Nombre=DM0213CatServRefacTbl
+Archivo=DM0213CatalogoServRefac
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ServicioRefaccion<BR>Descripcion
+LlavePrimaria=ServicioRefaccion
+CamposBusquedaRapida=ServicioRefaccion
+SQL=SELECT<BR>  ServicioRefaccion,<BR>  Descripcion<BR><BR>FROM<BR>  DM0213CatalogoServRefac
+[ServicioRefaccion]
+Clave=ServicioRefaccion
+Nombre=ServicioRefaccion
+Visible=S
+TamanoValidacion=200
+Tamano=50
+Mayusculas=S
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+TamanoValidacion=200
+Tamano=200
+Mayusculas=S

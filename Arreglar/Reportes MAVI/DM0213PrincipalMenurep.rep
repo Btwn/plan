@@ -1,0 +1,72 @@
+[Reporte]
+Clave=DM0213PrincipalMenurep
+Icono=0
+Tipo=Reporte
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+Submenu=Embarques Mavi
+ConFormaPrevia=S
+FormaPrevia=DM0213FormMainFrm
+PosicionInicialAlturaCliente=421
+PosicionInicialAncho=630
+PosicionSeparador=100
+VistaEspecial=S
+SubmenuPreliminar=S
+Menus=S
+Nombre=Catalogo Vehiculos-Proveedores
+ListaAcciones=Cerrar
+[Formato]
+VentanaIzquierda=0
+VentanaArriba=12
+VentanaAltura=1000
+VentanaAncho=1296
+PanelArriba=120
+PanelBotones=80
+[Vista]
+Icono=0
+Clave=DM0213PrincipalMenurep
+VistaIndependiente=S
+ListaCampos=uno
+SQL=Select uno = 1
+[uno]
+Clave=uno
+Nombre=uno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=uno
+[Acciones.Cerrar.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Reportes Pantalla
+Activo=S
+Visible=S
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=0
+NombreDesplegar=&Cerrar
+Multiple=S
+EnMenu=S
+ListaAccionesMultiples=Cerrar
+Activo=S
+Visible=S

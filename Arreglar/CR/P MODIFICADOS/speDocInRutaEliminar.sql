@@ -1,0 +1,20 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE speDocInRutaEliminar
+@eDocIn     varchar(50),
+@Ruta       varchar(50)
+
+AS BEGIN
+DELETE eDocInRuta WHERE eDocIn = @eDocIn AND Ruta = @Ruta
+DELETE eDocInRutaD WHERE eDocIn = @eDocIn AND Ruta = @Ruta
+DELETE eDocInRutaDCondicion WHERE eDocIn = @eDocIn AND Ruta = @Ruta
+DELETE eDocInRutaTabla WHERE eDocIn = @eDocIn AND Ruta = @Ruta
+DELETE eDocInRutaTabla WHERE eDocIn = @eDocIn AND Ruta = @Ruta
+END
+

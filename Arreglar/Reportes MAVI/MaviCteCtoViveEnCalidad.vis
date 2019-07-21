@@ -1,0 +1,23 @@
+[Vista]
+Icono=0
+Clave=MaviCteCtoViveEnCalidad
+Nombre=MaviCteCtoViveEnCalidad
+Modulos=(Todos)
+ListaTablas=MaviCteCtoViveEnCalidad
+TablaPrincipal=MaviCteCtoViveEnCalidad
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=MaviCteCtoViveEnCalidad.ViveEnCalidad
+SQL=SELECT<BR>  MaviCteCtoViveEnCalidad.ViveEnCalidad<BR><BR>FROM<BR>  MaviCteCtoViveEnCalidad
+[MaviCteCtoViveEnCalidad.ViveEnCalidad]
+Clave=MaviCteCtoViveEnCalidad.ViveEnCalidad
+Nombre=Vive En Calidad
+Visible=S
+TamanoValidacion=50
+Tamano=50
+LigaTabla=MaviCteCtoViveEnCalidad
+LigaCampo=ViveEnCalidad
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=ViveEnCalidad

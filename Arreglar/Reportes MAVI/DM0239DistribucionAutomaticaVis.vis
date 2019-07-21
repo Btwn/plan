@@ -1,0 +1,113 @@
+[Vista]
+Icono=0
+Clave=DM0239DistribucionAutomaticaVis
+Nombre=DM0239DistribucionAutomaticaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Articulo<BR>Pedido<BR>Sucursal<BR>Surtir<BR>Descripcion1<BR>DisponibleCD<BR>MciaFacturada<BR>Grupo<BR>Familia<BR>Linea<BR>ExisSuc<BR>Salidas x venta
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=EXEC SP_DM0239DistribucionAutomatica {Comillas(Mavi.DM0239AlmacenVenta)},<BR>                                     {Comillas(Info.Dato)}
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=Articulo
+[Pedido]
+Clave=Pedido
+Nombre=Pedido
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Pedido
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal Destino
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal
+[Surtir]
+Clave=Surtir
+Nombre=Cantidad Sugerida
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Surtir
+[Descripcion1]
+Clave=Descripcion1
+Nombre=Descripcion
+Visible=S
+TamanoValidacion=50
+Tamano=1
+ClaveBDE=Descripcion1
+TipoDatos=Texto
+[DisponibleCD]
+Clave=DisponibleCD
+Nombre=Existencia en CD
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=DisponibleCD
+[MciaFacturada]
+Clave=MciaFacturada
+Nombre=Mercancia por Facturar
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=MciaFacturada
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=Grupo
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=Familia
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=Linea
+[ExisSuc]
+Clave=ExisSuc
+Nombre=Existencias Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=ExisSuc
+
+[Salidas x venta]
+Clave=Salidas x venta
+Nombre=Salidas x venta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Salidas x venta

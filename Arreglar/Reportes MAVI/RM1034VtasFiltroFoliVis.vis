@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1034VtasFiltroFoliVis
+Nombre=RM1034VtasFoliVis
+Modulos=(Todos)
+Singular=RM1034VtasFoliVis
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Folio
+CamposBusquedaRapida=Folio
+SQL=SELECT <BR><TAB>Folio = Foli <BR>FROM fd_mfact A WITH(NOLOCK)<BR>GROUP BY Foli
+[Folio]
+Clave=Folio
+Nombre=Folio
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Folio

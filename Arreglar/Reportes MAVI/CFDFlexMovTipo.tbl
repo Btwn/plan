@@ -1,0 +1,586 @@
+[Tabla]
+Icono=0
+Clave=CFDFlexMovTipo
+Archivo=MovTipo
+Modulos=(Todos)
+TipoTabla=Configuracion
+ListaCampos=Modulo<BR>Mov<BR>Orden<BR>Clave<BR>ConsecutivoModulo<BR>ConsecutivoMov<BR>CFD<BR>CFD_tipoDeComprobante<BR>CFD_Reporte<BR>eDocEstatus<BR>eDoc<BR>CFDFlex<BR>CFDReporteJasper<BR>SAT_MN<BR>CFDEsParcialidad
+Nombre=Tipos de Movimientos
+Singular=Tipo de Movimiento
+LlavePrimaria=Modulo<BR>Mov
+ListaRelaciones=MovClave<BR>MovSubClave
+SQL=SELECT<BR>Modulo,<BR>Mov,<BR>Orden,<BR>Clave,<BR>--SubClave,<BR>ConsecutivoModulo,<BR>ConsecutivoMov,<BR>CFD,<BR>CFD_tipoDeComprobante,<BR>CFD_Reporte,<BR>eDocEstatus,<BR>eDoc,<BR>CFDFlex,<BR>CFDReporteJasper,<BR>SAT_MN,<BR>CFDEsParcialidad<BR>FROM MovTipo
+
+[Mov]
+Clave=Mov
+Nombre=Nombre
+Tamano=20
+TamanoValidacion=20
+ConRefrescar=S
+ListaRefrescar=ConsecutivoMov
+TipoDatos=Texto
+
+
+CondicionEdicion=1=2
+UnicamenteLectura=S
+[Modulo]
+Clave=Modulo
+Nombre=Módulo
+Tamano=5
+TamanoValidacion=5
+ValorPorOmision=Info.Modulo
+TipoDatos=Texto
+
+CondicionEdicion=1=2
+UnicamenteLectura=S
+[Clave]
+Clave=Clave
+Nombre=Clave Afectación
+TamanoValidacion=20
+Tamano=20
+ConRefrescarCondiciones=S
+Mayusculas=S
+RefrescarTodoCondiciones=S
+ConRefrescar=S
+ListaRefrescar=Factor
+TipoDatos=Texto
+CondicionEdicion=1=2
+UnicamenteLectura=S
+
+[Relaciones.MovClave]
+TipoRelacion=Opcional
+LlaveLocal=Modulo<BR>Clave
+Clave=MovClave
+TablaRemota=MovClave
+LlaveRemota=Modulo<BR>Clave
+
+[CFD]
+Clave=CFD
+Nombre=CFD
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionDespliege=Empresa.CFD
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+ValorPorOmision=Falso
+
+[CFD_tipoDeComprobante]
+Clave=CFD_tipoDeComprobante
+Nombre=Tipo de Comprobante
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+TipoDatos=Texto
+CondicionDespliege=CFD o CFDFlex
+ListaOpciones=ingreso<BR>egreso<BR>traslado
+
+
+[CFD_Reporte]
+Clave=CFD_Reporte
+Nombre=Reporte (Parámetro ID)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+TipoDatos=Texto
+CondicionDespliege=CFD o CFDFlex
+Formula=ListaReportes
+
+[SubClave]
+Clave=SubClave
+Nombre=Sub Clave
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+TipoDatos=Texto
+CondicionEdicion=1=2
+UnicamenteLectura=S
+
+[Relaciones.MovSubClave]
+TipoRelacion=Opcional
+LlaveLocal=Modulo<BR>SubClave
+Clave=MovSubClave
+TablaRemota=MovSubClave
+LlaveRemota=Modulo<BR>Clave
+
+[ConsecutivoPorEmpresa.ListaOpciones]
+(Inicio)=Si
+Si=No
+No=Grupo
+Grupo=(Fin)
+
+
+
+[GenerarParalelo.ListaOpciones]
+(Inicio)=No
+No=Atencion Clientes
+Atencion Clientes=Atencion Proveedores
+Atencion Proveedores=Atencion Personal
+Atencion Personal=Proyectos
+Proyectos=Servicios Internos
+Servicios Internos=(Fin)
+
+[EstatusContabilizar.ListaOpciones]
+(Inicio)=(por Omision)
+(por Omision)=PENDIENTE
+PENDIENTE=VIGENTE
+VIGENTE=PROCESAR
+PROCESAR=CONCLUIDO
+CONCLUIDO=CONCILIADO
+CONCILIADO=(Fin)
+
+[TipoPago.ListaOpciones]
+(Inicio)=Efectivo
+Efectivo=Documentos
+Documentos=(Fin)
+
+[NomAutoTipo.ListaOpciones]
+(Inicio)=Normal
+Normal=Ajuste
+Ajuste=Vacaciones
+Vacaciones=Finiquito
+Finiquito=Liquidacion
+Liquidacion=Aguinaldo
+Aguinaldo=PTU
+PTU=Liquidacion Fondo Ahorro
+Liquidacion Fondo Ahorro=Liquidacion Caja Ahorro
+Liquidacion Caja Ahorro=Ajuste Anual
+Ajuste Anual=H.Profesional
+H.Profesional=H.Asimilable
+H.Asimilable=SDI
+SDI=(Fin)
+
+[NomAutoCxc.ListaOpciones]
+(Inicio)=No
+No=Parciales
+Parciales=Completas
+Completas=(Fin)
+
+[ProyectoContactoTipo.ListaOpciones]
+(Inicio)=Prospecto
+Prospecto=Cliente
+Cliente=Proveedor
+Proveedor=Personal
+Personal=Agente
+Agente=(Fin)
+
+[AfectarPresupuesto.ListaOpciones]
+(Inicio)=(por Omision)
+(por Omision)=No
+No=Asignar
+Asignar=Desasignar
+Desasignar=Reservar
+Reservar=Desreservar
+Desreservar=Ejercer Reservado
+Ejercer Reservado=Desejercer Reservado
+Desejercer Reservado=Ejercer Directo
+Ejercer Directo=Desejercer Directo
+Desejercer Directo=(Fin)
+
+
+[ProyectoSugerir.ListaOpciones]
+(Inicio)=Abierto
+Abierto=Movimiento
+Movimiento=Catalogo
+Catalogo=(Fin)
+
+
+
+[ObligacionFiscalTipoImporte.ListaOpciones]
+(Inicio)=Base
+Base=- Base
+- Base=Obligacion Fiscal
+Obligacion Fiscal=- Obligacion Fiscal
+- Obligacion Fiscal=(Fin)
+
+[TipoConsecutivo.ListaRefrescarCondiciones]
+(Inicio)=ConsecutivoModulo
+ConsecutivoModulo=ConsecutivoMov
+ConsecutivoMov=ConsecutivoPorPeriodo
+ConsecutivoPorPeriodo=ConsecutivoPorEjercicio
+ConsecutivoPorEjercicio=ConsecutivoPorEmpresa
+ConsecutivoPorEmpresa=ConsecutivoSucursalEsp
+ConsecutivoSucursalEsp=ConsecutivoControl
+ConsecutivoControl=ConsecutivoFEA
+ConsecutivoFEA=ConsecutivoGeneral
+ConsecutivoGeneral=(Fin)
+
+[TipoConsecutivo.ListaOpciones]
+(Inicio)=Modulo
+Modulo=General
+General=(Fin)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[AnticiposCP.ListaOpciones]
+(Inicio)=No
+No=Si
+Si=Desanticipar
+Desanticipar=(Fin)
+
+
+
+
+
+
+
+
+[AfectarCP.ListaOpciones]
+(Inicio)=No
+No=Presupuesto
+Presupuesto=Comprometido
+Comprometido=Comprometido 2
+Comprometido 2=Devengado
+Devengado=Devengado 2
+Devengado 2=Ejercido
+Ejercido=Ejercido Pagado
+Ejercido Pagado=Remanente Disp.
+Remanente Disp.=Sobrante
+Sobrante=Anticipos
+Anticipos=(Fin)
+
+[AplicarCP.ListaOpciones]
+(Inicio)=No
+No=Presupuesto
+Presupuesto=Comprometido
+Comprometido=Comprometido 2
+Comprometido 2=Devengado
+Devengado=Devengado 2
+Devengado 2=Ejercido
+Ejercido=Ejercido Pagado
+Ejercido Pagado=Remanente Disp.
+Remanente Disp.=Sobrante
+Sobrante=Anticipos
+Anticipos=(Fin)
+
+
+
+
+
+
+
+
+[ReservarCP.ListaOpciones]
+(Inicio)=No
+No=Si
+Si=Desreservar
+Desreservar=Ajustar TC
+Ajustar TC=(Fin)
+
+
+
+
+
+
+
+
+
+
+
+
+[AfectarFiscal.ListaRefrescarCondiciones]
+(Inicio)=ObligacionFiscal
+ObligacionFiscal=ObligacionFiscalTasa
+ObligacionFiscalTasa=ObligacionFiscalTipoImporte
+ObligacionFiscalTipoImporte=FactorFiscalEsp
+FactorFiscalEsp=FactorFiscal
+FactorFiscal=(Fin)
+
+[eDocEstatus]
+Clave=eDocEstatus
+Nombre=Estatus Documento Electrónico
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+AyudaEnCaptura=Expresion
+
+AyudaMemRenglones=8
+AyudaMemEnBlanco=S
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>SELECT :tPENDIENTE CAMPO UNION SELECT :tVIGENTE CAMPO UNION SELECT :tPROCESAR CAMPO UNION SELECT :tCONCLUIDO CAMPO UNION SELECT :tCONCILIADO<T>, <T>PENDIENTE<T>, <T>VIGENTE<T>, <T>PROCESAR<T>, <T>CONCLUIDO<T>, <T>CONCILIADO<T>)
+[eDoc]
+Clave=eDoc
+Nombre=Documento Electrónico
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLENLISTA(<T>SELECT eDoc FROM eDoc WHERE Modulo = :tModulo<T>,Modulo)
+
+[CFDFlex]
+Clave=CFDFlex
+Nombre=CFD Flexible
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionDespliege=(General.CFDFlex) y (General.eDoc)
+AlCambiar=Forma.ActualizarControles
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=CFD_tipoDeComprobante<BR>CFD_Reporte<BR>SAT_MN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[eDocEstatus.ListaOpciones]
+(Inicio)=PENDIENTE
+PENDIENTE=VIGENTE
+VIGENTE=PROCESAR
+PROCESAR=CONCLUIDO
+CONCLUIDO=CONCILIADO
+CONCILIADO=(Fin)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[CFDReporteJasper]
+Clave=CFDReporteJasper
+Nombre=Reporte Jasper
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+CondicionDespliege=CFDFlex y SQL(<T>SELECT Jasper FROM EmpresaCFD WHERE Empresa = :tEmpresa<T>, Empresa)
+
+
+
+
+
+
+
+
+Formula=SQLEnLista(<T>SELECT Reporte FROM EmpresaCFDJasperReports WHERE Empresa = :tEmpresa AND Modulo = :tModulo<T>, Empresa, Info.Modulo)
+
+
+[SAT_MN]
+Clave=SAT_MN
+Nombre=Información del SAT en Moneda Nacional
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionDespliege=CFDFlex
+
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+
+
+
+
+CondicionEdicion=1=2
+UnicamenteLectura=S
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ConsecutivoModulo]
+Clave=ConsecutivoModulo
+Nombre=ConsecutivoModulo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+[ConsecutivoMov]
+Clave=ConsecutivoMov
+Nombre=ConsecutivoMov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+
+
+
+
+
+
+
+
+
+
+
+
+[CFDEsParcialidad]
+Clave=CFDEsParcialidad
+Nombre=CFD Es Parcialidad
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+CondicionDespliege=Info.Modulo = <T>CXC<T> Y CFDFlex
+
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=Modulo
+Modulo=Mov
+Mov=Orden
+Orden=Clave
+Clave=SubClave
+SubClave=ConsecutivoModulo
+ConsecutivoModulo=ConsecutivoMov
+ConsecutivoMov=CFD
+CFD=CFD_tipoDeComprobante
+CFD_tipoDeComprobante=CFD_Reporte
+CFD_Reporte=eDocEstatus
+eDocEstatus=eDoc
+eDoc=CFDFlex
+CFDFlex=CFDReporteJasper
+CFDReporteJasper=SAT_MN
+SAT_MN=CFDEsParcialidad
+CFDEsParcialidad=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=Modulo,
+Modulo,=Mov,
+Mov,=Orden,
+Orden,=Clave,
+Clave,=SubClave,
+SubClave,=ConsecutivoModulo,
+ConsecutivoModulo,=ConsecutivoMov,
+ConsecutivoMov,=CFD,
+CFD,=CFD_tipoDeComprobante,
+CFD_tipoDeComprobante,=CFD_Reporte,
+CFD_Reporte,=eDocEstatus,
+eDocEstatus,=eDoc,
+eDoc,=CFDFlex,
+CFDFlex,=CFDReporteJasper,
+CFDReporteJasper,=SAT_MN,
+SAT_MN,=CFDEsParcialidad
+CFDEsParcialidad=FROM MovTipo
+FROM MovTipo=(Fin)
+
+

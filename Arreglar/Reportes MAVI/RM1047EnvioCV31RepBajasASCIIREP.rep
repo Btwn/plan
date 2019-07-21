@@ -1,0 +1,95 @@
+[Reporte]
+Clave=RM1047EnvioCV31RepBajasASCIIREP
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=250
+Renglones=99999
+MargenInferior=2
+TamanoPagina=1
+AnchoPagina=46.5
+LargoPagina=35.6
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+Nombre=MAGISTERIO SECCION 21 FEDERAL NUEVO LEON
+PreliminarColores=S
+PosicionInicialAlturaCliente=962
+PosicionInicialAncho=1296
+BarraHerramientas=S
+FormatoAscii=S
+AsciiPorOmision=S
+[Vista]
+Icono=0
+Clave=RM1047EnvioCV31RepBajasASCIIREP
+VistaIndependiente=S
+ListaCampos=TXT
+SQL=Select <BR><TAB>TXT=FILA+<T>,<T>+FILA2+<T>,<T>+FILA3+<T>,<T>+<BR><TAB>(CASE WHEN FECHAM in (<T>1<T>,<T>2<T>,<T>3<T>,<T>4<T>,<T>5<T>,<T>6<T>,<T>7<T>,<T>8<T>,<T>9<T>,<T>0<T>)  THEN <T>0<T>+ FECHAM ELSE FECHAM END)+<T>-<T>+convert(varchar,year(FECHA))+<T>,<T>+<BR><TAB>(CASE WHEN FECHAF in (<T>1<T>,<T>2<T>,<T>3<T>,<T>4<T>,<T>5<T>,<T>6<T>,<T>7<T>,<T>8<T>,<T>9<T>,<T>0<T>)  THEN <T>0<T>+ FECHAF ELSE FECHAF END)+<T>-<T>+convert(varchar,year(NODOC))+<T>,<T>+<BR><TAB>convert(varchar,ROUND(IMPORTET, 2, 1))+<T>,<T>+<BR><TAB>convert(varchar,ROUND(SALDOT, 2, 1))+<T>,<T>+<BR><TAB><T>MUEBLES AMERICA<T> <BR>From(<BR><TAB>SELECT <BR><TAB><TAB>MEDE.TIPOENVIO,<BR><TAB><TAB>FILA = CteEA.RFCInstitucion,<BR><TAB><TAB>FILA2=LEFT(Cte.Nombre,28),<BR><TAB><TAB>FILA3=LEFT(V.MovId+<T>_<T>+A.Descripcion1,26),<BR><TAB><<CONTINUA>
+SQL002=<CONTINUA>TAB>FECHA=MEDE.FechaEmision,<BR><TAB><TAB>FECHAM= convert(varchar,(convert(int,dbo.Fn_MaviNumQuincena(MEDE.FechaEmision))+2)),<BR><TAB><TAB>FECHAF= convert(varchar,(convert(int,dbo.Fn_MaviNumQuincena(DAteADD(mm,MEDE.NoDocs,MEDE.FechaEmision)))+2)),<BR><TAB><TAB>NODOC=DAteADD(mm,MEDE.NoDocs,MEDE.FechaEmision),<BR><TAB><TAB>IMPORTET=MEDE.DescCte/2,<BR><TAB><TAB>SALDOT=MEDE.SaldoMOV,<BR><TAB><TAB>ORDENAR = Max(VD.Precio) OVER(PARTITION BY V.Movid),<BR><TAB><TAB>V.ID,<BR><TAB><TAB>PRECIOM=Max(VD.Precio),<BR><TAB><TAB>MEDE.DescCte,<BR><TAB><TAB>MEDE.NoDocs<BR><TAB>FROM MaviEnvDispElectHist MEDE<TAB><TAB><TAB><BR><TAB><TAB>INNER JOIN CteEnviarA CteEA ON CteEA.Id=MEDE.IdCanalVenta AND CteEA.Cliente = MEDE.Cliente<BR><TAB><TAB>INNER JOIN Cte Cte ON Cte.Cliente = MEDE.Cliente<BR><TAB><TAB>INNER JOI<CONTINUA>
+SQL003=<CONTINUA>N Venta V ON V.MovId=MEDE.MovId<BR><TAB><TAB>INNER JOIN Ventad VD ON VD.id = V.ID<BR><TAB><TAB>INNER JOIN Art A ON A.articulo=VD.articulo<BR><TAB>WHERE MEDE.IDCanalVenta=31<TAB><BR>                {Si(ConDatos(Info.Ejercicio),<T> And MEDE.Ejercicio=<T>+Info.Ejercicio,<T><T>)}<BR><TAB><TAB>{Si(ConDatos(Info.Periodo),<T> And MEDE.Periodo=<T>+Info.Periodo,<T><T>)}<BR><TAB><TAB>{Si(ConDatos(Info.Quincena),<T> And MEDE.Quincena=<T>+Info.Quincena,<T><T>)}<BR><BR><TAB>GROUP BY  CteEA.RFCInstitucion,<BR><TAB><TAB> Cte.Nombre,<BR><TAB><TAB> V.MovId,<BR><TAB><TAB> A.Descripcion1,<BR><TAB><TAB> V.ID,<BR><TAB><TAB> VD.Precio,<BR><TAB><TAB> MEDE.SaldoMOV,<BR><TAB><TAB> MEDE.DescCte,<BR><TAB><TAB> MEDE.FechaEmision,<BR><TAB><TAB> MEDE.NoDocs,<BR><TAB><TAB> MEDE.TipoEnvio<BR>) X<BR>WHERE ORDENAR =PRECIOM<CONTINUA>
+SQL004=<CONTINUA> and TIPOENVIO=<T>B<T><BR>ORDER BY FILA
+[Formato]
+ListaLineas=Encabezado<BR>Detalle
+VentanaIzquierda=0
+VentanaArriba=12
+VentanaAltura=1000
+VentanaAncho=1296
+PanelArriba=120
+PanelBotones=80
+[Linea1]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.372
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+Objetos=1
+Marco=S
+EstiloMarco=1
+[TXT]
+Clave=TXT
+Nombre=TXT
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=TXT
+[Linea2]
+Clave=Detalle
+Objetos=1
+Seccion=Detalle
+AltoEnCm=0.372
+Renglones=1
+[A2]
+Celda=A2
+Alineacion=Izquierda
+AnchoEnCm=42.036
+AnchoTexto=226
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=TXT
+[A1]
+Celda=A1
+Alineacion=Derecha
+AnchoEnCm=2.976
+AnchoTexto=16
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)

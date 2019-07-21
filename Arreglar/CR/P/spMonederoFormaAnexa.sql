@@ -1,0 +1,29 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spMonederoFormaAnexa
+@Codigo		varchar(50),
+@ID			Int,
+@Empresa	varchar(5)
+
+AS
+BEGIN
+DECLARE
+@Redime		Bit,
+@Forma		Varchar(50),
+@Ok			Int
+SELECT @Forma = NULL
+SET @Redime = 1
+IF @Redime = 1
+BEGIN
+SELECT @Forma = Objeto FROM FormaCobroMon
+WHERE Empresa = @Empresa AND FormaCobro = @Codigo
+END
+SELECT @Forma
+END
+

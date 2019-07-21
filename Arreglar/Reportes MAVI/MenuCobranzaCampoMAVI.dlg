@@ -1,0 +1,85 @@
+[Dialogo]
+Clave=MenuCobranzaCampoMAVI
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Comic Sans MS, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=RM0500B<BR>DM0500bconf<BR>DM0500BCuotas<BR>DM0500LCuotasLoc<BR>DM0500LConf<BR>DM0500LConfBF
+PosicionInicialAlturaCliente=128
+PosicionInicialAncho=500
+PosicionInicialIzquierda=482
+PosicionInicialArriba=302
+[Acciones.RM0500B]
+Nombre=RM0500B
+Boton=0
+NombreDesplegar=DM0500B &Cuotas Perifericas
+TipoAccion=Formas
+Activo=S
+ClaveAccion=DM0500BCuotasPerifericasFrm
+EnMenu=S
+EnBarraAcciones=S
+VisibleCondicion=SQL( <T>select COUNT(U.USUARIO)from USUARIO  U<BR>INNER JOIN TABLASTD T ON T.NOMBRE=U.ACCESO AND T.TABLAST=:tc<BR>WHERE T.VALOR LIKE :tV AND U.USUARIO =:tU<T>,<T>CFG MVTOS RM500A<T>,<T>%R%<T>, Usuario  ) =1
+[Acciones.DM0500bconf]
+Nombre=DM0500bconf
+Boton=0
+NombreDesplegar=Configuración de Cuotas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=formas
+ClaveAccion=DM0500BCONFCUOTASTBLFRM
+Activo=S
+VisibleCondicion=SQL( <T>select COUNT(U.USUARIO)from USUARIO  U<BR>INNER JOIN TABLASTD T ON T.NOMBRE=U.ACCESO AND T.TABLAST=:tc<BR>WHERE T.VALOR LIKE :tV AND U.USUARIO =:tU<T>,<T>CFG MVTOS RM500A<T>,<T>%c%<T>, Usuario  ) =1
+
+[Acciones.DM0500BCuotas]
+Nombre=DM0500BCuotas
+Boton=0
+TipoAccion=Formas
+ClaveAccion=CuotasCobMenRangoConsultaFRM
+Activo=S
+
+NombreDesplegar=DM0500B Cuotas Cobranza Menudeo
+VisibleCondicion=SQL( <T>select COUNT(U.USUARIO)from USUARIO  U<BR>INNER JOIN TABLASTD T ON T.NOMBRE=U.ACCESO AND T.TABLAST=:tc<BR>WHERE T.VALOR LIKE :tV AND U.USUARIO =:tU<T>,<T>CFG MVTOS RM500A<T>,<T>%R%<T>, Usuario  ) =1
+
+[Acciones.DM0500LCuotasLoc]
+Nombre=DM0500LCuotasLoc
+Boton=0
+TipoAccion=Formas
+ClaveAccion=DM0500LCuotasLoc
+Activo=S
+NombreDesplegar=DM0500LCuotas Localizacion
+EnMenu=S
+EnBarraAcciones=S
+Visible=S
+
+[Dialogo.ListaAcciones]
+(Inicio)=RM0500B
+RM0500B=DM0500bconf
+DM0500bconf=DM0500BCuotas
+DM0500BCuotas=(Fin)
+
+[Acciones.DM0500LConf]
+Nombre=DM0500LConf
+Boton=0
+NombreDesplegar=DM0500LConfiguracion  CuotasLoc
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0500LDVActualizar
+Activo=S
+Visible=S
+
+[Acciones.DM0500LConfBF]
+Nombre=DM0500LConfBF
+Boton=0
+NombreDesplegar=DM0500LConfiguracion  CuotasLocBF
+EnMenu=S
+EnBarraAcciones=S
+Activo=S
+Visible=S
+TipoAccion=Formas
+ClaveAccion=DM0500LCXCConfCuotasLocBFFrm

@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=RM0042MesFiltroVis
+Nombre=RM0042MesFiltroVis
+Modulos=(Todos)
+Singular=RM1042 Grupos
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=FechaMes
+LlavePrimaria=FechaMes
+SQL=select FechaMes = case when month(FechaEmision) = 1 then <T>ENERO<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 2 then <T>FEBRERO<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 3 then <T>MARZO<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 4 then <T>ABRIL<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 5 then <T>MAYO<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 6 then <T>JUNIO<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 7 then <T>JULIO<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(Fe<CONTINUA>
+SQL002=<CONTINUA>chaEmision) = 8 then <T>AGOSTO<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 9 then <T>SEPTIEMBRE<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 10 then <T>OCTUBRE<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 11 then <T>NOVIEMBRE<T><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>when month(FechaEmision) = 12 then <T>DICIEMBRE<T> END<BR> from soporte<BR>group by month(FechaEmision)<BR>order by month(FechaEmision)<BR>--{Si(ConDatos(Info.Cliente),<T>AND S.Cliente=<T>+COMILLAS(Info.Cliente),<T><T>)}
+[FechaMes]
+Clave=FechaMes
+Nombre=FechaMes
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+ClaveBDE=FechaMes
+Tamano=10

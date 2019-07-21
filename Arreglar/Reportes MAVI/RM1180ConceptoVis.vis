@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM1180ConceptoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Concepto
+SQL=SELECT <T>POLIZA COBRO<T> AS Concepto<BR>UNION<BR>SELECT <T>COBRO INSTITUCIONES<T>
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=19
+TipoDatos=Texto
+Tamano=19
+ClaveBDE=Concepto

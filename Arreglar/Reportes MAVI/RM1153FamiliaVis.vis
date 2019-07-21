@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1153FamiliaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=familia
+SQL=select distinct familia from art<BR>WHERE familia is NOT NULL <BR>AND Categoria = <T>VENTA<T><BR>order by Familia
+[familia]
+Clave=familia
+Nombre=familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=familia

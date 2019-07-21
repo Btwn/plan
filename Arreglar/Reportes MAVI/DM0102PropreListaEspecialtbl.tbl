@@ -1,0 +1,76 @@
+[Tabla]
+Icono=0
+Clave=DM0102PropreListaEspecialtbl
+Archivo=DM0102PropreListaEspecialtbl
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Articulo<BR>PrecioAsignado<BR>Fecha<BR>Usuario<BR>EstacionTrabajoMod<BR>Almacen
+LlavePrimaria=Articulo<BR>Almacen
+ControlUsuarios=S
+CampoUsuario=Usuario
+ListaRelaciones=Arti
+CampoUsuarioCambio=Usuario
+ControlUsuarioCambio=S
+CampoUltimoCambio=Fecha
+SQL=SELECT<BR>  Articulo,<BR>  PrecioAsignado,<BR>  Fecha,<BR>  Usuario,<BR>  EstacionTrabajoMod,<BR>  Almacen<BR><BR>FROM<BR>  DM0102PropreListaEspecialtbl
+[Articulo]
+Clave=Articulo
+Nombre=Artículo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ValorPorOmision=Info.Articulo
+TipoDatos=Texto
+[PrecioAsignado]
+Clave=PrecioAsignado
+Nombre=Precio Asignado
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ConRefrescar=S
+ListaRefrescar=Usuario<BR>Articulo<BR>Fecha<BR>EstacionTrabajoMod<BR>PrecioAsignado
+Monetario=S
+RefrescarTotales=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Favor de Introducir un Precio Positivo y Mayor a Cero<T>
+ValidacionCondicion=PrecioAsignado>=0.1
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa
+Alineacion=Derecha
+ValorPorOmision=sql(<T>select getdate()<T>)
+ValorRefrescar=sql(<T>select getdate()<T>)
+AlCambiar=sql(<T>select getdate()<T>)
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorRefrescar=Usuario
+TipoDatos=Texto
+[Relaciones.Arti]
+TipoRelacion=Opcional
+LlaveLocal=Articulo
+Clave=Arti
+TablaRemota=Art
+LlaveRemota=Articulo
+[EstacionTrabajoMod]
+Clave=EstacionTrabajoMod
+Nombre=Estación de Trabajo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=EstacionTrabajo
+ValorRefrescar=EstacionTrabajo
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Almacen

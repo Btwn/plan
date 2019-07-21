@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0074UsoVehicularVis
+Nombre=Uso Vehicular
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=UsoVehicular
+CamposBusquedaRapida=UsoVehicular
+SQL=Select UsoVehicular <BR>From(<BR>Select Distinct Descripcion5 As UsoVehicular<BR>From Vehiculo<BR>Where Descripcion5 Is Not Null) UV<BR>Order By UsoVehicular
+[UsoVehicular]
+Clave=UsoVehicular
+Nombre=UsoVehicular
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=UsoVehicular

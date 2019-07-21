@@ -1,0 +1,27 @@
+[Tabla]
+Icono=0
+Clave=DM0238TablaCorreosTbl
+Archivo=DM0238TablaCorreos
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Correo<BR>Valor
+LlavePrimaria=Correo
+SQL=SELECT<BR>  Correo,<BR>  Valor<BR><BR>FROM<BR>  DM0238TablaCorreos
+[Correo]
+Clave=Correo
+Nombre=Correo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+[Valor]
+Clave=Valor
+Nombre=Dias Faltantes
+Visible=S
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+Formula=Lista(<T>0<T>,<T>1<T>,<T>30<T>,<T>60<T>)

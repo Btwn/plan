@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1100RFCEmisorVis
+Nombre=RFCEmisor
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=RFCEmisor
+CamposBusquedaRapida=RFCEmisor
+SQL=select Distinct RFCEmisor from RM1100RepXmlGasto<BR>order by 1
+[RFCEmisor]
+Clave=RFCEmisor
+Nombre=RFCEmisor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=13
+TipoDatos=Texto
+Tamano=13
+ClaveBDE=RFCEmisor

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0946CxctipomovimientoVis
+Nombre=movimiento
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=tipomovimiento
+SQL=select <T>Facturas<T> as tipomovimiento<BR>union<BR>select <T>Prestamos<T> as tipomovimiento<BR>union<BR>select <T>Seguros de Vida<T> as tipomovimiento<BR>union<BR>select <T>Seguros de Auto<T> as tipomovimiento<BR>union<BR>select <T>Notas de Cargo<T> as tipomovimiento<BR>union<BR>select <T>Notas de Credito<T> as tipomovimiento
+[tipomovimiento]
+Clave=tipomovimiento
+Nombre=tipomovimiento
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=9
+TipoDatos=Texto
+Tamano=9
+ClaveBDE=tipomovimiento

@@ -1,0 +1,22 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgExcelC ON Excel
+
+FOR UPDATE
+AS BEGIN
+DECLARE
+@PlantillaN	varchar(50),
+@PlantillaA	varchar(50)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @PlantillaN = Plantilla FROM Inserted
+SELECT @PlantillaA = Plantilla FROM Deleted
+IF @PlantillaN <> @PlantillaA
+UPDATE ExcelD SET Plantilla = @PlantillaN WHERE Plantilla = @PlantillaA
+END
+

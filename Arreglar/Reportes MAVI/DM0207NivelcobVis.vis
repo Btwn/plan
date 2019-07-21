@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0207NivelcobVis
+Nombre=DM0207NivelcobVis
+VistaIndependiente=S
+ListaCampos=Nivelcobranza
+LlavePrimaria=Nivelcobranza
+CamposBusquedaRapida=Nivelcobranza
+SQL=Select Distinct Nivelcobranza From DM0207CriteriosAsignacion order by Nivelcobranza
+[Nivelcobranza]
+Clave=Nivelcobranza
+Nombre=Nivelcobranza
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=40
+TipoDatos=Texto
+Tamano=40
+ClaveBDE=Nivelcobranza

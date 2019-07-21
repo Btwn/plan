@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1041CtaMonederoVis
+Nombre=RM1041CtaMonedero
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cuenta
+CamposBusquedaRapida=Cuenta
+SQL=Select Cuenta=<T>(Todos)<T><BR>UNION<BR>Select Distinct ap.Cuenta<BR>FROM AUXILIARP ap<TAB>
+[Cuenta]
+Clave=Cuenta
+Nombre=Cuenta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cuenta

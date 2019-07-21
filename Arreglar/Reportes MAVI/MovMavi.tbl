@@ -1,0 +1,33 @@
+[Tabla]
+Icono=0
+Clave=MovMavi
+Nombre=MovMavi
+Archivo=MovMavi
+Modulos=(Todos)
+Singular=MovMavi
+TipoTabla=General
+ListaCampos=ID<BR>Mov
+LlavePrimaria=ID
+ControlID=S
+ControlMov=S
+CampoID=ID
+CampoMov=Mov
+SQL=SELECT<BR>  ID,<BR>  Mov<BR><BR>FROM<BR>  MovMavi
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Mov]
+Clave=Mov
+Nombre=Movimientos
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=30
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista( <T>EXEC spMovMavi<T>)

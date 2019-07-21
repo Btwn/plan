@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0755CategoCanalVtaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CATEGORIA
+Nombre=Categoria
+SQL=SELECT DISTINCT CATEGORIA FROM (SELECT CATEGORIA FROM VENTASCANALMAVI UNION SELECT <T>NA<T>)X
+[CATEGORIA]
+Clave=CATEGORIA
+Nombre=CATEGORIA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CATEGORIA

@@ -1,0 +1,84 @@
+;**** Ultima modificación:24-Jun-08
+;**** Modifico:Arly Rubio
+;**** Se modifico:Se modifico la condicion de despliegue del campo proveedor.nombre
+
+
+
+;*********************************************************************************
+;************************* Desarrollo I04 ****************************************
+
+;**** Se agregaron nuevos campos a la vista: Soporte.Destino, Soporte.SoporteSucursal****
+[Soporte.vis/Vista.ListaCampos]
+Soporte.Avance=Soporte.Destino
+Soporte.Destino=Soporte.SoporteSucursal
+Soporte.SoporteSucursal=MovTipo.Modulo
+
+[Soporte.vis/Vista.SQL]
+Soporte.Avance,=Soporte.Destino,
+Soporte.Destino,=Soporte.SoporteSucursal,
+Soporte.SoporteSucursal,=MovTipo.Modulo,
+
+
+;***** Se modifico el tamaño del campo *****
+[Soporte.vis/Soporte.SerieLote]
+Tamano=50
+
+
+;***** Nuevo Campo Agregado *****
+[Soporte.vis/Soporte.Destino]
+Clave=Soporte.Destino
+Nombre=Salida Servicio
+Visible=S
+TamanoValidacion=50
+Tamano=50
+LigaTabla=Soporte
+LigaCampo=Destino
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Destino
+
+
+;*****************************************************************************************
+;************************* Termina Desarrollo I04 ****************************************
+
+
+;***** Nuevo campo agregado ******
+[Soporte.vis/Soporte.SoporteSucursal]
+Clave=Soporte.SoporteSucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Sucursal
+AyudaEnCaptura=Vista
+AyudaForma=SucursalLista
+AyudaVista=Sucursal
+AyudaCampo=Sucursal.Sucursal
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>Select count(Sucursal) from Sucursal where Sucursal =:nSuc<T>,Soporte.SoporteSucursal)>0
+ValidacionMensajeError=<T>Seleccione una sucursal correcta<T>
+LigaTabla=Soporte
+LigaCampo=SoporteSucursal
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=SoporteSucursal
+
+
+;**** Se modifico la condición de despliegue, por que aparecian en el modulo de servicios internos****
+[Soporte.vis/Cte.Nombre]
+CondicionDespliege=Info.SubModuloST noen (<T>STPRO<T>, <T>STPER<T>,  <T>SI<T>)
+
+
+
+;**** Se modifico la condición de despliegue, por que aparecian en el modulo de servicios internos****
+[Soporte.vis/CteEnviarA.Nombre]
+CondicionDespliege=Info.SubModuloST noen (<T>STPRO<T>, <T>STPER<T>,  <T>SI<T>)
+
+
+
+;**** Se modifico la condición de despliegue****
+[Soporte.vis/Prov.Nombre]
+CondicionDespliege=(Info.SubModuloST En(<T>STPRO<T>, <T>PROY<T>, <T>SI<T>)) o (Soporte.Mov En(<T>Reporte Servicio<T>,<T>Queja Servicio<T>))
+
+

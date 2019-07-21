@@ -1,0 +1,68 @@
+[Tabla]
+Icono=0
+Clave=NivelCobranzaHistMavi
+Nombre=NivelCobranzaHistMavi
+Archivo=NivelCobranzaHistMavi
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Nivel<BR>Nombre<BR>InactividadInicio<BR>InactividadFin<BR>VencimientoInicio<BR>VencimientoFin<BR>Usuario<BR>FechaModificacion
+LlavePrimaria=Nombre
+ControlUsuarios=S
+CampoEstatus=Estatus
+CampoUsuario=Usuario
+SQL=SELECT<BR>  Nivel,<BR>  Nombre,<BR>  InactividadInicio,<BR>  InactividadFin,<BR>  VencimientoInicio,<BR>  VencimientoFin,<BR>  Usuario,<BR>  FechaModificacion<BR><BR>FROM<BR>  NivelCobranzaHistMavi
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+[InactividadInicio]
+Clave=InactividadInicio
+Nombre=Inactividad Inicio
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[InactividadFin]
+Clave=InactividadFin
+Nombre=Inactividad Fin
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VencimientoInicio]
+Clave=VencimientoInicio
+Nombre=Vencimiento Inicio
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VencimientoFin]
+Clave=VencimientoFin
+Nombre=Vencimiento Fin
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+[FechaModificacion]
+Clave=FechaModificacion
+Nombre=Fecha Modificación
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmmm/aaaa hh:mm:ss

@@ -1,0 +1,35 @@
+SET DATEFIRST 7
+SET ANSI_NULLS ON
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET ANSI_WARNINGS ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spNOIActualizarConcepto
+@Empresa        varchar(5)
+
+AS BEGIN
+DECLARE
+@ConceptoDIN       varchar(50),
+@Ok                int
+DECLARE crDetalle CURSOR FOR
+SELECT   ConceptoDIN
+FROM InterfaseAspelNOI
+WHERE Empresa = @Empresa
+OPEN crDetalle
+FETCH NEXT FROM crDetalle INTO   @ConceptoDIN
+WHILE @@FETCH_STATUS = 0 AND @Ok IS NULL
+BEGIN
+IF @ConceptoDIN IS NOT NULL
+BEGIN
+IF EXISTS(SELECT * FROM NominaConcepto WHERE  NominaConcepto = @ConceptoDIN AND ConceptoNOI = 0)
+UPDATE  NominaConcepto SET   ConceptoNOI = 1   WHERE  NominaConcepto = @ConceptoDIN
+END
+FETCH NEXT FROM crDetalle INTO   @ConceptoDIN
+END
+CLOSE crDetalle
+DEALLOCATE crDetalle
+END
+

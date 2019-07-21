@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1077RubroFiltroVis
+Nombre=RM1077RubroFiltroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Rubro
+SQL=Select Distinct Rubro From RMSAnaliticoBalance<BR>Where cuenta in ({si(condatos(Mavi.RM1077CuentaFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1077CuentaFiltro)),comillas(<T><T>))})
+CamposBusquedaRapida=Rubro
+[Rubro]
+Clave=Rubro
+Nombre=Rubro
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Rubro

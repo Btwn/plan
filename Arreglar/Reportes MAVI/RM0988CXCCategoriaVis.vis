@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0988CXCCategoriaVis
+Nombre=Categoria Canal Venta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CATEGORIA
+SQL=SELECT DISTINCT CATEGORIA FROM dbo.VentasCanalMAVI<BR>UNION ALL<BR>SELECT <T>NULO<T>
+[CATEGORIA]
+Clave=CATEGORIA
+Nombre=SECCION COBRANZA
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CATEGORIA

@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=DM0112CitaSupervisionVis
+Nombre=DM0112CitaSupervision
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Cita Supervisión
+SQL=Exec SP_MaviDM0112ServicasaservicredCitaSup {Info.ID}
+[Cita Supervisión]
+Clave=Cita Supervisión
+Nombre=Cita Supervisión
+Visible=S
+TamanoValidacion=255
+Tamano=255
+ClaveBDE=Cita Supervisión
+AdvMemoEstilo=Expresion

@@ -1,0 +1,20 @@
+[Tabla]
+Icono=0
+Clave=DM0214Regiones
+Archivo=DM0214Regiones
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Region
+Nombre=DM0214Regiones
+CamposBusquedaRapida=Region
+LlavePrimaria=Region
+SQL=SELECT<BR>  Region<BR><BR>FROM<BR>  DM0214Regiones
+[Region]
+Clave=Region
+Nombre=Region
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+AlCambiar=SI Region =  <T>nulo<T><BR>ENTONCES<BR> informacion(<T>h<T>) <BR>fin
+TipoDatos=Texto

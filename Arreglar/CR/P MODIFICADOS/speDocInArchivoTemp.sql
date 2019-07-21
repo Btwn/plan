@@ -1,0 +1,41 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE speDocInArchivoTemp
+@Estacion         int,
+@ID               int
+
+AS BEGIN
+DECLARE
+@XML          xml,
+@XML2         varchar(max),
+@Documento    xml,
+@Ruta         varchar(255),
+@Nodo         varchar(255)
+DELETE eDocInArchivoTemp WHERE Estacion = @Estacion
+SELECT @XML2 = Solicitud FROM IntelisisService WHERE ID = @ID
+SELECT @XML = CONVERT(xml,@XML2)
+SET ANSI_NULLS ON
+SET ANSI_WARNINGS ON
+SET QUOTED_IDENTIFIER ON
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_PADDING ON
+EXEC speDocInRutaNodos @XML, @Ruta OUTPUT
+EXEC spDocInXmlNSListarNodo2 @XML2, @Ruta,@Estacion,@Nodo OUTPUT
+SELECT @Nodo = ISNULL(NULLIF(@Nodo,''),@Ruta)
+EXEC speDocInRutaRemoverNodos @XML2, @Nodo, @Documento OUTPUT
+SET ANSI_NULLS OFF
+SET ANSI_WARNINGS OFF
+SET QUOTED_IDENTIFIER OFF
+SET CONCAT_NULL_YIELDS_NULL OFF
+SET ANSI_PADDING OFF
+IF @ID IS NOT NULL AND @Documento IS NOT  NULL
+INSERT eDocInArchivoTemp (RID, Estacion,   Documento)
+SELECT                    @ID, @Estacion, CONVERT(varchar(max),@Documento)
+END
+

@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=DM0102AlmacenesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Almacen
+ListaCampos002=<CONTINUA>R>TieneCaducidad<BR>BasculaPesar<BR>SeProduce<BR>Situacion<BR>SituacionFecha<BR>SituacionUsuario<BR>SituacionNota<BR>EstatusPrecio<BR>wMostrar<BR>Merma<BR>Desperdicio<BR>SeCompra<BR>SeVende<BR>EsFormula<BR>TiempoEntrega<BR>TiempoEntregaUnidad<BR>TiempoEntregaSeg<BR>TiempoEntregaSegUnidad<BR>LoteOrdenar<BR>CantidadOrdenar<BR>MultiplosOrdenar<BR>InvSeguridad<BR>ProdRuta<BR>AlmacenROP<BR>CategoriaProd<BR>ProdCantidad<BR>ProdUsuario<BR>ProdPasoTotal<BR>ProdMovGrupo<BR>ProdEstacion<BR>ProdOpciones<BR>ProdVerConcentracion<BR>ProdVerCostoAcumulado<BR>ProdVerMerma<BR>ProdVerDesperdicio<BR>ProdVerPorcentaje<BR>RevisionUltima<BR>RevisionUsuario<BR>RevisionFrecuencia<BR>RevisionFrecuenciaUnidad<BR>RevisionSiguiente<BR>ProdMov<BR>TipoCompra<BR>TieneMovimientos<BR>Registro1<BR>Registro1Vencimiento<BR>A<CONTINUA>
+ListaCampos003=<CONTINUA>lmacenEspecificoVenta<BR>AlmacenEspecificoVentaMov<BR>RutaDistribucion<BR>CostoEstandar<BR>CostoReposicion<BR>EstatusCosto<BR>Margen<BR>Proveedor<BR>NivelAcceso<BR>Temporada<BR>SolicitarPrecios<BR>AutoRecaudacion<BR>Concepto<BR>Cuenta<BR>Retencion1<BR>Retencion2<BR>Retencion3<BR>Espacios<BR>EspaciosEspecificos<BR>EspaciosSobreventa<BR>EspaciosNivel<BR>EspaciosMinutos<BR>EspaciosBloquearAnteriores<BR>EspaciosHoraD<BR>EspaciosHoraA<BR>SerieLoteInfo<BR>CantidadMinimaVenta<BR>CantidadMaximaVenta<BR>EstimuloFiscal<BR>OrigenPais<BR>OrigenLocalidad<BR>Incentivo<BR>FactorCompra<BR>Horas<BR>ISAN<BR>ExcluirDescFormaPago<BR>EsDeducible<BR>Peaje<BR>CodigoAlterno<BR>TipoCatalogo<BR>AnexosAlFacturar<BR>CaducidadMinima<BR>Actividades<BR>ValidarPresupuestoCompra<BR>SeriesLotesAutoOrden<BR>LotesFijos<BR>Lo<CONTINUA>
+ListaCampos004=<CONTINUA>tesAuto<BR>Consecutivo<BR>TipoEmpaque<BR>Modelo<BR>Version<BR>TieneDireccion<BR>Direccion<BR>DireccionNumero<BR>DireccionNumeroInt<BR>EntreCalles<BR>Plano<BR>Observaciones<BR>Colonia<BR>Delegacion<BR>Poblacion<BR>Estado<BR>Pais<BR>CodigoPostal<BR>Ruta<BR>Codigo<BR>ClaveVehicular<BR>TipoVehiculo<BR>DiasLibresIntereses<BR>PrecioLiberado<BR>ValidarCodigo<BR>Presentacion<BR>GarantiaPlazo<BR>CostoIdentificado<BR>CantidadTarima<BR>UnidadTarima<BR>MinimoTarima<BR>DepartamentoDetallista<BR>TratadoComercial<BR>CuentaPresupuesto<BR>ProgramaSectorial<BR>PedimentoClave<BR>PedimentoRegimen<BR>Permiso<BR>PermisoRenglon<BR>Cuenta2<BR>Cuenta3<BR>Impuesto1Excento<BR>CalcularPresupuesto<BR>InflacionPresupuesto<BR>Excento2<BR>Excento3<BR>SincroID<BR>SincroC<BR>Capital<BR>FechaUltimoMov<BR>UltimoMov
+SQL=SELECT<BR>  <BR>  distinct(ArtDisponible.Almacen)<BR><BR><BR>FROM<BR>  Art<BR>  left JOIN ArtDisponible ON ArtDisponible.Articulo=Art.Articulo<BR>where <BR> Grupo=<T>MERCANCIA ESPECIAL<T> and CATEGORIA=<T>VENTA<T>and ArtDisponible.Almacen is not null<BR><BR>order by ArtDisponible.Almacen asc
+CamposBusquedaRapida=Almacen
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Almacen

@@ -1,0 +1,34 @@
+[Dialogo]
+Clave=MenuHerramientasCXCCT
+Nombre=Cobranza Telefonica
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Cata<BR>RecuperacionTel
+PosicionInicialAlturaCliente=128
+PosicionInicialAncho=500
+[Acciones.Cata]
+Nombre=Cata
+Boton=0
+NombreDesplegar=Catalogos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+ClaveAccion=MenuHerramientaCXCCobTelCatalogos
+Activo=S
+Visible=S
+[Acciones.RecuperacionTel]
+Nombre=RecuperacionTel
+Boton=0
+NombreDesplegar=&Recuperación Telefónica
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0230RecuperacionTelFRM
+Activo=S
+Visible=S

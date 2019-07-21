@@ -1,0 +1,202 @@
+[Vista]
+Icono=0
+Clave=RecuperacionCredilanasPPMAVID
+Nombre=RecuperacionCredilanasPPMAVID
+Modulos=(Todos)
+Singular=RecuperacionCredilanasPPMAVID
+VistaIndependiente=S
+ListaCampos=Recuperacion.ID<BR>Recuperacion.CobroID<BR>Recuperacion.Renglon<BR>Recuperacion.CxcRenglon<BR>Recuperacion.CxcMov<BR>Recuperacion.CxcMovID<BR>Recuperacion.CxcImporte<BR>Recuperacion.CobroEmision<BR>Cxc.ID<BR>Cxc.Mov<BR>Cxc.MovID<BR>Cxc.FechaEmision<BR>Cxc.MovAplica<BR>Cxc.MovAplicaID<BR>Recuperacion.EsNC<BR>Recuperacion.NCImporte
+ListaCalculados=Movimiento<BR>MovAplica<BR>FinCobros<BR>FinCreditos<BR>Financiamiento<BR>FinanciamientoCalc
+SQL=SELECT<BR>  RecuperacionCredilanasPPMAVID.ID as <T>Recuperacion.ID<T>,<BR>  RecuperacionCredilanasPPMAVID.CobroID as <T>Recuperacion.CobroID<T>,<BR>  RecuperacionCredilanasPPMAVID.Renglon as <T>Recuperacion.Renglon<T>,<BR>  RecuperacionCredilanasPPMAVID.CxcRenglon as <T>Recuperacion.CxcRenglon<T>,<BR>  RecuperacionCredilanasPPMAVID.CxcMov as <T>Recuperacion.CxcMov<T>,<BR>  RecuperacionCredilanasPPMAVID.CxcMovID as <T>Recuperacion.CxcMovID<T>,<BR>  RecuperacionCredilanasPPMAVID.CxcImporte as <T>Recuperacion.CxcImporte<T>,<BR>  RecuperacionCredilanasPPMAVID.CobroEmision as <T>Recuperacion.CobroEmision<T>,<BR>  RecuperacionCredilanasPPMAVID.EsNC as <T>Recuperacion.EsNC<T>,<BR>  RecuperacionCredilanasPPMAVID.NCImporte as <T>Recuperacion.NCImporte<T>,<BR>  Cxc.ID as <T>Cxc.ID<T>,<BR>  Cxc.Mov a<CONTINUA>
+SQL002=<CONTINUA>s <T>Cxc.Mov<T>,<BR>  Cxc.MovID as <T>Cxc.MovID<T>,<BR>  Cxc.FechaEmision as <T>Cxc.FechaEmision<T>,<BR>  Cxc.MovAplica as <T>Cxc.MovAplica<T>,<BR>  Cxc.MovAplicaID as <T>Cxc.MovAplicaID<T><BR><BR>FROM<BR>  RecuperacionCredilanasPPMAVID<BR>JOIN Cxc ON RecuperacionCredilanasPPMAVID.CobroID = Cxc.ID
+[Recuperacion.ID]
+Clave=Recuperacion.ID
+Nombre=Recuperacion.ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Recuperacion.ID
+[Recuperacion.CobroID]
+Clave=Recuperacion.CobroID
+Nombre=Recuperacion.CobroID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Recuperacion.CobroID
+[Recuperacion.Renglon]
+Clave=Recuperacion.Renglon
+Nombre=Recuperacion.Renglon
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Recuperacion.Renglon
+[Recuperacion.CxcRenglon]
+Clave=Recuperacion.CxcRenglon
+Nombre=Recuperacion.CxcRenglon
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Recuperacion.CxcRenglon
+[Recuperacion.CxcMov]
+Clave=Recuperacion.CxcMov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Recuperacion.CxcMov
+TipoDatos=Texto
+[Recuperacion.CxcMovID]
+Clave=Recuperacion.CxcMovID
+Nombre=Mov ID
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Recuperacion.CxcMovID
+TipoDatos=Texto
+[Recuperacion.CxcImporte]
+Clave=Recuperacion.CxcImporte
+Nombre=Importe Cobrado/Aplicado
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Recuperacion.CxcImporte
+Monetario=S
+[Recuperacion.CobroEmision]
+Clave=Recuperacion.CobroEmision
+Nombre=Recuperacion.CobroEmision
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=Recuperacion.CobroEmision
+[Cxc.ID]
+Clave=Cxc.ID
+Nombre=Cxc.ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+ClaveBDE=Cxc.ID
+[Cxc.Mov]
+Clave=Cxc.Mov
+Nombre=Cxc.Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cxc.Mov
+[Cxc.MovID]
+Clave=Cxc.MovID
+Nombre=Cxc.MovID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cxc.MovID
+[Cxc.FechaEmision]
+Clave=Cxc.FechaEmision
+Nombre=Fecha Emision
+Visible=S
+TamanoValidacion=15 
+TipoDatos=FechaHora
+ClaveBDE=Cxc.FechaEmision
+FormatoValidacion=dd/mmm/aa
+[Movimiento]
+Clave=Movimiento
+Tamano=40
+TipoCampo=Calculado
+TamanoValidacion=40
+Alineacion=por Omisión
+Nombre=Aplico En
+Formula=Cxc.Mov+<T> <T>+Cxc.MovID
+[Financiamiento]
+Clave=Financiamiento
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Financiamiento
+Formula=Caso  Recuperacion.EsNC<BR>  Es Verdadero Entonces FinCreditos<BR>Sino<BR>  FinCobros<BR>Fin
+[Cxc.MovAplica]
+Clave=Cxc.MovAplica
+Nombre=Cxc.MovAplica
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cxc.MovAplica
+[Cxc.MovAplicaID]
+Clave=Cxc.MovAplicaID
+Nombre=Cxc.MovAplicaID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cxc.MovAplicaID
+[MovAplica]
+Clave=MovAplica
+Tamano=40
+TipoCampo=Calculado
+TamanoValidacion=40
+Alineacion=por Omisión
+Nombre=Mov a Aplicar
+Formula=Cxc.MovAplica+<T> <T>+Cxc.MovAplicaID
+[Recuperacion.EsNC]
+Clave=Recuperacion.EsNC
+Nombre=NC
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ClaveBDE=Recuperacion.EsNC
+[Recuperacion.NCImporte]
+Clave=Recuperacion.NCImporte
+Nombre=Creditos
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Recuperacion.NCImporte
+Monetario=S
+[FinCobros]
+Clave=FinCobros
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=FinCobros
+Formula=vacio(Info.PorcentajeFinanciamientoCPP,0)* vacio(Recuperacion.CxcImporte,0)
+[FinCreditos]
+Clave=FinCreditos
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=FinCreditos
+Formula=vacio(Info.PorcentajeFinanciamientoCPP,0)* vacio(Recuperacion.NCImporte,0)
+[FinanciamientoCalc]
+Clave=FinanciamientoCalc
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Importe Cobrado/Aplicado
+Monetario=S
+Formula=Si(Recuperacion.EsNC = Verdadero, Recuperacion.NCImporte, Recuperacion.CxcImporte)

@@ -1,0 +1,25 @@
+[Tabla]
+Icono=0
+Clave=RM1110No_AjustesCorreoTbl
+Archivo=RM1110NO_AJUSTESCORREO
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=NO_AJUSTES<BR>DIAS
+SQL=SELECT<BR>  NO_AJUSTES,<BR>  DIAS<BR><BR>FROM<BR>  RM1110NO_AJUSTESCORREO
+LlavePrimaria=NO_AJUSTES
+[NO_AJUSTES]
+Clave=NO_AJUSTES
+Nombre=NO_AJUSTES
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[DIAS]
+Clave=DIAS
+Nombre=DIAS
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico

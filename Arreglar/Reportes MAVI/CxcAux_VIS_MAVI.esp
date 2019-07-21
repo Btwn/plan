@@ -1,0 +1,4 @@
+[CxcAux.vis/Vista.SQL]
+'CxcAux.Fecha'   <IGUAL>	  CxcAux.Fecha,='CxcAux.Cargo'   <IGUAL>	  CASE WHEN CxcAux.Fecha  ><IGUAL>  CONVERT(DATETIME,{comillas(Info.FechaD)},103) AND CxcAux.Fecha  <<IGUAL>  CONVERT(DATETIME,{comillas(Info.FechaA)},103) THEN CxcAux.Cargo ELSE 0 END,
+'CxcAux.Cargo'   <IGUAL>	  CASE WHEN CxcAux.Fecha  ><IGUAL>  CONVERT(DATETIME,{comillas(Info.FechaD)},103) AND CxcAux.Fecha  <<IGUAL>  CONVERT(DATETIME,{comillas(Info.FechaA)},103) THEN CxcAux.Cargo ELSE 0 END,='CxcAux.Abono'   <IGUAL>	  CASE WHEN CxcAux.Fecha  ><IGUAL>  CONVERT(DATETIME,{comillas(Info.FechaD)},103) AND CxcAux.Fecha  <<IGUAL>  CONVERT(DATETIME,{comillas(Info.FechaA)},103) THEN CxcAux.Abono ELSE 0 END,
+'CxcAux.Abono'   <IGUAL>	  CASE WHEN CxcAux.Fecha  ><IGUAL>  CONVERT(DATETIME,{comillas(Info.FechaD)},103) AND CxcAux.Fecha  <<IGUAL>  CONVERT(DATETIME,{comillas(Info.FechaA)},103) THEN CxcAux.Abono ELSE 0 END,='CxcAux.Aplica'  <IGUAL>	  CxcAux.Aplica,

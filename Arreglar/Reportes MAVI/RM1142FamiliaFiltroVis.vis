@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1142FamiliaFiltroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Familia
+CamposBusquedaRapida=Familia
+SQL=select DISTINCT familia from Familias_validas_tdavirtual with (nolock)
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

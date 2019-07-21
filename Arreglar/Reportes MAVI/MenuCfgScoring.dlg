@@ -1,0 +1,36 @@
+[Dialogo]
+Clave=MenuCfgScoring
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=ParametrosScoring<BR>Parametrosintescor605
+PosicionInicialIzquierda=186
+PosicionInicialArriba=110
+PosicionInicialAlturaCliente=97
+PosicionInicialAncho=500
+[Acciones.ParametrosScoring]
+Nombre=ParametrosScoring
+Boton=0
+NombreDesplegar=Parametros &SCORING Android
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Visible=S
+Expresion=Ejecutar(<T>PlugIns\FormatosParametrizables.exe <T>+Usuario+<T>)
+ActivoCondicion=SQL( <T>SELECT COUNT(NOMBRE) FROM TABLASTD WHERE TablaSt=:ttABL AND Nombre=:tUS<T>,<T>ACCESOS PARAMETROS SCORING<T>,Usuario )=1
+[Acciones.Parametrosintescor605]
+Nombre=Parametrosintescor605
+Boton=0
+NombreDesplegar=Configurar SCORING (intscor605) 
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=Ejecutar(<T>PlugIns\Inte205.exe<T>)

@@ -1,0 +1,151 @@
+[Tabla]
+Icono=0
+Clave=ComisionesChoferesMAVI
+Nombre=ComisionesChoferesMAVI
+Archivo=ComisionesChoferesMAVI
+Modulos=(Todos)
+Singular=ComisionesChoferesMAVI
+TipoTabla=Movimientos
+ListaCampos=ID<BR>Periodo<BR>Ejercicio<BR>Quincena<BR>FechaD<BR>FechaA<BR>Estatus<BR>Usuario<BR>FechaEmision<BR>PorcentajeProductividad<BR>Productividad<BR>NoEntregasMin<BR>DiasEvaluados<BR>PromedioTraspaso
+LlavePrimaria=ID
+TipoPeriodo=Mensual
+ControlID=S
+ControlEstatus=S
+ControlPeriodos=S
+CampoID=ID
+CampoEstatus=Estatus
+CampoPeriodo=Periodo
+CampoEjercicio=Ejercicio
+EstatusDefault=SINAFECTAR
+ControlUsuarios=S
+CampoUsuario=Usuario
+ControlEjercicios=S
+SQL=SELECT<BR>  ID,<BR>  Periodo,<BR>  Ejercicio,<BR>  Quincena,<BR>  FechaD,<BR>  FechaA,<BR>  Estatus,<BR>  Usuario,<BR>  FechaEmision,<BR>  PorcentajeProductividad,<BR>  Productividad,<BR>  NoEntregasMin,<BR>  DiasEvaluados,<BR>  PromedioTraspaso<BR><BR>FROM<BR>  ComisionesChoferesMAVI
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Periodo]
+Clave=Periodo
+Nombre=Mes
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=10
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Meses Num.
+OpcionesValidar=S
+Requerido=S
+[Ejercicio]
+Clave=Ejercicio
+Nombre=Ejercicio
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=15
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Años
+OpcionesValidar=S
+Requerido=S
+ValorPorOmision=Ejercicio
+FormatoValidacion=0
+OpcionesLlave=Opción
+[Quincena]
+Clave=Quincena
+Nombre=Quincena
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+Requerido=S
+ValorPorOmision=1
+ListaOpciones=1<BR>2
+[FechaD]
+Clave=FechaD
+Nombre=De
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+CondicionDespliege=Estatus en(EstatusConcluido, EstatusPendiente, EstatusCancelado)
+FormatoValidacion=dd/mmm/aaaa
+[FechaA]
+Clave=FechaA
+Nombre=A
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+CondicionDespliege=Estatus en(EstatusConcluido, EstatusPendiente, EstatusCancelado)
+FormatoValidacion=dd/mmm/aaaa
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+TamanoValidacion=15
+Tamano=15
+TipoDatos=Texto
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[FechaEmision]
+Clave=FechaEmision
+Nombre=Fecha Emisión
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa hh:mm:ss
+AyudaEnCaptura=Calendario c/Horas
+ValorPorOmision=Ahora
+[PorcentajeProductividad]
+Clave=PorcentajeProductividad
+Nombre=% Product.
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+CondicionDespliege=Estatus en(EstatusConcluido, EstatusPendiente, EstatusCancelado)
+FormatoValidacion=0,.00
+[Productividad]
+Clave=Productividad
+Nombre=Productividad
+Visible=S
+TamanoValidacion=20
+Tamano=20
+CondicionDespliege=Estatus en(EstatusConcluido, EstatusPendiente, EstatusCancelado) 
+TipoDatos=Texto
+[NoEntregasMin]
+Clave=NoEntregasMin
+Nombre=No Entregas Min.
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[DiasEvaluados]
+Clave=DiasEvaluados
+Nombre=Dias Evaluados
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[PromedioTraspaso]
+Clave=PromedioTraspaso
+Nombre=Prom/Traspaso
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S

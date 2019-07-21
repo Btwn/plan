@@ -1,0 +1,522 @@
+[Tabla]
+Icono=0
+Clave=DM0257ListaNegra
+Nombre=Lista Negra
+Archivo=DM0257ListaNegra
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Activo<BR>InfoAdicional<BR>Movimiento<BR>Sucursal<BR>Calificaciones<BR>Observaciones<BR>Cliente<BR>NombreCliente<BR>DomicilioCliente<BR>ColoniaCliente<BR>CrucesCliente<BR>PoblacionCliente<BR>EstadoYCPCliente<BR>TelefonoCliente<BR>EstadoCivilCliente<BR>FechaNacimientoCliente<BR>TipoContacto<BR>NombreConyuge<BR>DomicilioConyuge<BR>ColoniaConyuge<BR>CrucesConyuge<BR>PoblacionConyuge<BR>EstadoYCPConyuge<BR>TelefonoConyuge<BR>FechaNacimientoConyuge<BR>TipoContacto1<BR>NombreAval<BR>DomicilioAval<BR>ColoniaAval<BR>CrucesAval<BR>PoblacionAval<BR>EstadoYCPAval<BR>TelefonoAval<BR>FechaNacimientoAval<BR>TipoContacto2<BR>NombreConyugeAval<BR>DomicilioConyugeAval<BR>ColoniaConyugeAval<BR>CrucesConyugeAval<BR>PoblacionConyugeAval<BR>EstadoYCPConyugeAval<BR>TelefonoConyugeAval<BR>FechaNacimientoCo<CONTINUA>
+ListaCampos002=<CONTINUA>nyugeAval<BR>TipoContacto3<BR>NombreCtoRef1<BR>ParentescoCtoRef1<BR>FechaNacimientoCtoRef1<BR>DireccionCtoRef1<BR>ColoniaCtoRef1<BR>PoblacionCtoRef1<BR>EstadoCtoRef1<BR>TelefonoCtoRef1<BR>TipoContacto4<BR>NombreCtoRef2<BR>ParentescoCtoRef2<BR>FechaNacimientoCtoRef2<BR>DireccionCtoRef2<BR>ColoniaCtoRef2<BR>PoblacionCtoRef2<BR>EstadoCtoRef2<BR>TelefonoCtoRef2<BR>Procedencia
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=SELECT<BR>  ID,<BR>  Activo,<BR>  InfoAdicional,<BR>  Movimiento,<BR>  Sucursal,<BR>  Calificaciones,<BR>  Observaciones,<BR>  Cliente,<BR>  NombreCliente,<BR>  DomicilioCliente,<BR>  ColoniaCliente,<BR>  CrucesCliente,<BR>  PoblacionCliente,<BR>  EstadoYCPCliente,<BR>  TelefonoCliente,<BR>  EstadoCivilCliente,<BR>  FechaNacimientoCliente,<BR>  TipoContacto,<BR>  NombreConyuge,<BR>  DomicilioConyuge,<BR>  ColoniaConyuge,<BR>  CrucesConyuge,<BR>  PoblacionConyuge,<BR>  EstadoYCPConyuge,<BR>  TelefonoConyuge,<BR>  FechaNacimientoConyuge,<BR>  TipoContacto1,<BR>  NombreAval,<BR>  DomicilioAval,<BR>  ColoniaAval,<BR>  CrucesAval,<BR>  PoblacionAval,<BR>  EstadoYCPAval,<BR>  TelefonoAval,<BR>  FechaNacimientoAval,<BR>  TipoContacto2,<BR>  NombreConyugeAval,<BR>  DomicilioConyugeAval,<BR>  Colon<CONTINUA>
+SQL002=<CONTINUA>iaConyugeAval,<BR>  CrucesConyugeAval,<BR>  PoblacionConyugeAval,<BR>  EstadoYCPConyugeAval,<BR>  TelefonoConyugeAval,<BR>  FechaNacimientoConyugeAval,<BR>  TipoContacto3,<BR>  NombreCtoRef1,<BR>  ParentescoCtoRef1,<BR>  FechaNacimientoCtoRef1,<BR>  DireccionCtoRef1,<BR>  ColoniaCtoRef1,<BR>  PoblacionCtoRef1,<BR>  EstadoCtoRef1,<BR>  TelefonoCtoRef1,<BR>  TipoContacto4,<BR>  NombreCtoRef2,<BR>  ParentescoCtoRef2,<BR>  FechaNacimientoCtoRef2,<BR>  DireccionCtoRef2,<BR>  ColoniaCtoRef2,<BR>  PoblacionCtoRef2,<BR>  EstadoCtoRef2,<BR>  TelefonoCtoRef2,<BR>  Procedencia<BR><BR>FROM<BR>  DM0257ListaNegra
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Activo]
+Clave=Activo
+Nombre=Activo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=1
+[InfoAdicional]
+Clave=InfoAdicional
+Nombre=Info Adicional
+Visible=S
+TamanoValidacion=150
+Tamano=150
+[Movimiento]
+Clave=Movimiento
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=SucursalLista
+AyudaVista=Sucursal
+AyudaCampo=Sucursal.Sucursal
+[Calificaciones]
+Clave=Calificaciones
+Nombre=Calificaciones
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0257ClaveFrm
+AyudaVista=DM0257ClavesVis
+AyudaCampo=Clave
+ListaRefrescar=Observaciones
+[Observaciones]
+Clave=Observaciones
+Nombre=Observaciones
+Visible=S
+TamanoValidacion=200
+Tamano=200
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=15
+Tamano=15
+AyudaForma=DM0257ClientesFrm
+AyudaVista=DM0257ClientesVis
+AyudaCampo=Cliente
+AyudaEnCaptura=Vista
+[NombreCliente]
+Clave=NombreCliente
+Nombre=Nombre Cliente
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[DomicilioCliente]
+Clave=DomicilioCliente
+Nombre=Domicilio Cliente
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[ColoniaCliente]
+Clave=ColoniaCliente
+Nombre=Colonia Cliente
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[CrucesCliente]
+Clave=CrucesCliente
+Nombre=Cruces Cliente
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[PoblacionCliente]
+Clave=PoblacionCliente
+Nombre=Poblacion Cliente
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+TipoDatos=Texto
+[EstadoYCPCliente]
+Clave=EstadoYCPCliente
+Nombre=Estado y CP Cliente
+Visible=S
+TamanoValidacion=20
+Tamano=20
+TipoDatos=Texto
+[TelefonoCliente]
+Clave=TelefonoCliente
+Nombre=Telefono Cliente
+Visible=S
+TamanoValidacion=15
+Tamano=15
+TipoDatos=Texto
+[EstadoCivilCliente]
+Clave=EstadoCivilCliente
+Nombre=Estado Civil Cliente
+Visible=S
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Vista
+AyudaForma=DM0257EstadoCivilFrm
+AyudaVista=DM0257EstadoCivilVis
+AyudaCampo=EstadocivilMavi
+TipoDatos=Texto
+[FechaNacimientoCliente]
+Clave=FechaNacimientoCliente
+Nombre=Fecha Nacimiento Cliente
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+[TipoContacto]
+Clave=TipoContacto
+Nombre=Tipo Contacto
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=DM0257TipoContactoFrm
+AyudaVista=DM0257TipoContactoVis
+AyudaCampo=TIPO
+ValorPorOmision=<T>Conyuge<T>
+[NombreConyuge]
+Clave=NombreConyuge
+Nombre=Nombre Conyuge
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[DomicilioConyuge]
+Clave=DomicilioConyuge
+Nombre=Domicilio Conyuge
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[ColoniaConyuge]
+Clave=ColoniaConyuge
+Nombre=Colonia Conyuge
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[CrucesConyuge]
+Clave=CrucesConyuge
+Nombre=Cruces Conyuge
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[PoblacionConyuge]
+Clave=PoblacionConyuge
+Nombre=Poblacion Conyuge
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+TipoDatos=Texto
+[EstadoYCPConyuge]
+Clave=EstadoYCPConyuge
+Nombre=Estado y CP Conyuge
+Visible=S
+TamanoValidacion=25
+Tamano=25
+TipoDatos=Texto
+[TelefonoConyuge]
+Clave=TelefonoConyuge
+Nombre=Telefono Conyuge
+Visible=S
+TamanoValidacion=15
+Tamano=15
+TipoDatos=Texto
+[FechaNacimientoConyuge]
+Clave=FechaNacimientoConyuge
+Nombre=Fecha Nacimiento Conyuge
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+[TipoContacto1]
+Clave=TipoContacto1
+Nombre=Tipo Contacto
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=DM0257TipoContactoFrm
+AyudaVista=DM0257TipoContactoVis
+AyudaCampo=TIPO
+ValorPorOmision=<T>Aval<T>
+[NombreAval]
+Clave=NombreAval
+Nombre=Nombre Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[DomicilioAval]
+Clave=DomicilioAval
+Nombre=Domicilio Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[ColoniaAval]
+Clave=ColoniaAval
+Nombre=Colonia Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[CrucesAval]
+Clave=CrucesAval
+Nombre=Cruces Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[PoblacionAval]
+Clave=PoblacionAval
+Nombre=Poblacion Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+TipoDatos=Texto
+[EstadoYCPAval]
+Clave=EstadoYCPAval
+Nombre=Estado y CP Aval
+Visible=S
+TamanoValidacion=25
+Tamano=25
+TipoDatos=Texto
+[TelefonoAval]
+Clave=TelefonoAval
+Nombre=Telefono Aval
+Visible=S
+TamanoValidacion=15
+Tamano=15
+TipoDatos=Texto
+[FechaNacimientoAval]
+Clave=FechaNacimientoAval
+Nombre=Fecha Nacimiento Aval
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+[TipoContacto2]
+Clave=TipoContacto2
+Nombre=Tipo Contacto
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=DM0257TipoContactoFrm
+AyudaVista=DM0257TipoContactoVis
+AyudaCampo=TIPO
+ValorPorOmision=<T>Conyuge del Aval<T>
+[NombreConyugeAval]
+Clave=NombreConyugeAval
+Nombre=Nombre Conyuge Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[DomicilioConyugeAval]
+Clave=DomicilioConyugeAval
+Nombre=Domicilio Conyuge Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[ColoniaConyugeAval]
+Clave=ColoniaConyugeAval
+Nombre=Colonia Conyuge Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[CrucesConyugeAval]
+Clave=CrucesConyugeAval
+Nombre=Cruces Conyuge Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[PoblacionConyugeAval]
+Clave=PoblacionConyugeAval
+Nombre=Poblacion Conyuge Aval
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+TipoDatos=Texto
+[EstadoYCPConyugeAval]
+Clave=EstadoYCPConyugeAval
+Nombre=Estado y CP Conyuge Aval
+Visible=S
+TamanoValidacion=25
+Tamano=25
+TipoDatos=Texto
+[TelefonoConyugeAval]
+Clave=TelefonoConyugeAval
+Nombre=Telefono Conyuge Aval
+Visible=S
+TamanoValidacion=15
+Tamano=15
+TipoDatos=Texto
+[FechaNacimientoConyugeAval]
+Clave=FechaNacimientoConyugeAval
+Nombre=Fecha Nacimiento Conyuge Aval
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+[TipoContacto3]
+Clave=TipoContacto3
+Nombre=Tipo Contacto
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=DM0257TipoContactoFrm
+AyudaVista=DM0257TipoContactoVis
+AyudaCampo=TIPO
+TipoDatos=Texto
+[NombreCtoRef1]
+Clave=NombreCtoRef1
+Nombre=Nombre Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[ParentescoCtoRef1]
+Clave=ParentescoCtoRef1
+Nombre=Parentesco Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[FechaNacimientoCtoRef1]
+Clave=FechaNacimientoCtoRef1
+Nombre=Fecha Nacimiento Contacto Referencia
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+[DireccionCtoRef1]
+Clave=DireccionCtoRef1
+Nombre=Direccion Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[ColoniaCtoRef1]
+Clave=ColoniaCtoRef1
+Nombre=Colonia Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[PoblacionCtoRef1]
+Clave=PoblacionCtoRef1
+Nombre=Poblacion Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+AyudaRefrescar=S
+TipoDatos=Texto
+[EstadoCtoRef1]
+Clave=EstadoCtoRef1
+Nombre=Estado contacto Referencia
+Visible=S
+TamanoValidacion=25
+Tamano=25
+AyudaEnCaptura=Vista
+AyudaForma=DM0257EstadoFrm
+AyudaVista=DM0257EstadoVis
+AyudaCampo=ESTADO
+TipoDatos=Texto
+[TelefonoCtoRef1]
+Clave=TelefonoCtoRef1
+Nombre=Telefono contacto Referencia
+Visible=S
+TamanoValidacion=15
+Tamano=15
+TipoDatos=Texto
+[TipoContacto4]
+Clave=TipoContacto4
+Nombre=Tipo Contacto
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=DM0257TipoContactoFrm
+AyudaVista=DM0257TipoContactoVis
+AyudaCampo=TIPO
+TipoDatos=Texto
+[NombreCtoRef2]
+Clave=NombreCtoRef2
+Nombre=Nombre Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[ParentescoCtoRef2]
+Clave=ParentescoCtoRef2
+Nombre=Parentesco Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[FechaNacimientoCtoRef2]
+Clave=FechaNacimientoCtoRef2
+Nombre=Fecha Nacimiento Contacto Referencia
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+[DireccionCtoRef2]
+Clave=DireccionCtoRef2
+Nombre=Direccion Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[ColoniaCtoRef2]
+Clave=ColoniaCtoRef2
+Nombre=Colonia Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[PoblacionCtoRef2]
+Clave=PoblacionCtoRef2
+Nombre=Poblacion Contacto Referencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+TipoDatos=Texto
+[EstadoCtoRef2]
+Clave=EstadoCtoRef2
+Nombre=Estado Contacto Referencia
+Visible=S
+TamanoValidacion=25
+Tamano=25
+AyudaEnCaptura=Vista
+AyudaForma=DM0257EstadoFrm
+AyudaVista=DM0257EstadoVis
+AyudaCampo=ESTADO
+TipoDatos=Texto
+[TelefonoCtoRef2]
+Clave=TelefonoCtoRef2
+Nombre=Telefono contacto Referencia
+Visible=S
+TamanoValidacion=15
+Tamano=15
+TipoDatos=Texto
+[Procedencia]
+Clave=Procedencia
+Nombre=Procedencia
+Visible=S
+TamanoValidacion=25
+Tamano=25
+ValorPorOmision=<T>Manual<T>

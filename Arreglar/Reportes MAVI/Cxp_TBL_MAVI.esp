@@ -1,0 +1,68 @@
+[Cxp.tbl/Tabla.ListaCampos]
+EmidaRequestId=VencimientoProveedor
+VencimientoProveedor=(Fin)
+
+[Cxp.tbl/Tabla.SQL]
+EmidaCarrierID,=EmidaRequestId,
+EmidaRequestId,=ProveedorSucursal,
+ProveedorSucursal,=VencimientoProveedor
+VencimientoProveedor=FROM Cxp
+
+
+;**** 26-Dic-08 ALQG Se agrego la condicion para que solo muestre aquellas en las que tiene acceso ***
+; **** 18-Ago-09 JR Se agregon lineas de ayudarefrescar, ayudamemopc y se cambio linea de formula para que la condicion muestre solo las que tiene acceso el ususario
+[Cxp.tbl/Condicion]
+AyudaEnCaptura=Expresion
+;Formula=SQLEnLista(<T>SELECT Condicion FROM Condicion WHERE NivelAcceso is NULL UNION SELECT Condicion FROM CondicionAccesoMAVI WHERE Usuario =:tusuario<T> , Usuario.Usuario)
+Formula=Si<BR>   Vacio(Origen) <BR>Entonces<BR>    Si Estatus = (<T>SINAFECTAR<T>)<BR>    Entonces<BR>        SQLEnLista(<T>EXEC spCondicionNivelAcceso :tusuario<T>, Usuario)<BR>    Fin<BR>Sino<BR>    SQLEnLista(<T>SELECT Condicion FROM Condicion<T>)<BR>Fin    
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+
+
+;*** 16-Feb-08  ALQG se puso visible el campo de impuestos.
+[Cxp.tbl/Impuestos]
+CondicionDespliege=MovTipoEn(<T>CXP<T>, Mov, (CXP.F,CXP.FAC,CXP.NC,CXP.CA,CXP.A,CXP.AA,CXP.DE,CXP.CAP,CXP.NCF))
+ValorRefrescar=Caso MovTipo(<T>CXP<T>, Mov)<BR>  Es CXP.FAC Entonces Impuestos<BR>Sino<BR>  Si(MovTipoEn(<T>CXP<T>, Mov, (CXP.F,CXP.NC,CXP.CA,CXP.A,CXP.AA,CXP.DE,CXP.NCF)), Importe*(ImpuestoZona(Def.CxImpuesto, Cxp:Prov.ZonaImpuesto)/100), 0.0)<BR>Fin
+
+[Cxp.tbl/TipoCambio]
+CondicionEdicion=(no Usuario.BloquearMoneda)
+
+;Modificacion para acomodar el Nivel de Acceso ALQG - 15/06/2010
+[Cxp.tbl/Cajero]
+ValidacionUsaTabla=N
+ValidacionTablas=
+
+[Cxp.tbl/Mov]
+ListaRefrescar=Concepto<BR>AplicaManual<BR>Proveedor
+
+
+[Cxp.tbl/Proveedor]
+CondicionEdicion=si Mov = <T>Acuerdo Proveedor<T><BR>    Entonces<BR>        Si<BR>            SQL(<T>SELECT Origen FROM Cxp WHERE ID=:nID<T>,ID)='Sol Acuerdo Prov'<BR>        Entonces<BR>            Falso<BR>        Sino<BR>            Verdadero<BR>          Fin<BR>    Sino<BR>        Si<BR>            SQL(<T>select dbo.fn_MaviDM0169CXPProveedor(:tMov,:tUsr)<T>,Mov,Usuario)=0<BR>        Entonces<BR>            Verdadero<BR>        Sino<BR>            Falso<BR>        Fin<BR><BR>Fin
+ValorPorOmision=Si<BR> SQL(<T>select dbo.fn_MaviDM0169CXPProveedor(:tMov,:tUsr)<T>,Mov,Usuario)=0<BR>Entonces<BR>    Vacio(Filtro.Proveedor, Def.Proveedor)<BR><BR> SINO           <BR>    <T>A00002<T><BR><BR>Fin
+
+[Cxp.tbl/Vencimiento]
+CondicionDespliege=MovTipoEn(<T>CXP<T>, Mov, (CXP.F,CXP.CA,CXP.CAD,CXP.AF,CXP.CAP,CXP.CD,CXP.D,CXP.DM,CXP.PAG,CXP.DA,CXP.DP,CXP.NCP,CXP.P)) <BR>o ((MovTipo(<T>CXP<T>, Mov) en (CXP.FAC, CXP.DAC)) y (Estatus noen (EstatusSinAfectar, EstatusPorConfirmar)))
+CondicionEdicion=((Condicion=<T>(Fecha)<T>) y (Estatus en (EstatusSinAfectar, EstatusPorConfirmar))) o ((Estatus=EstatusPendiente) y Usuario.ModificarVencimientos)
+;ValorRefrescar=Si((Mov=<T>Sol Acuerdo Prov<T>) o (Mov=<T>Acuerdo Proveedor<T>),Vencimiento,SQL(<T>spVerVencimiento :tModulo, :Empresa, :tContacto, :tCondicion, :fFecha<T>, <T>CXP<T>, Empresa, Proveedor, Condicion, FechaEmision))
+ValorRefrescar=Cxp:cxp.vencimiento
+ValorPorOmision=Cxp:cxp.vencimiento
+
+
+[Cxp.tbl/VencimientoProveedor]
+Clave=VencimientoProveedor
+Nombre=Vencimiento Proveedor
+Visible=S
+ValorPorOmision=NULO
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmmm/aaaa
+AyudaEnCaptura=Calendario sin Hora
+CondicionDespliege=Si<BR> (Mov=<T>Sol Acuerdo Prov<T>) o (Mov=<T>Acuerdo Proveedor<T>)<BR>Entonces<BR>    Verdadero<BR>Sino<BR>    Falso<BR>Fin
+CondicionEdicion=Si<BR>(Mov=<T>Sol Acuerdo Prov<T>) o ((Mov=<T>Acuerdo Proveedor<T>)y ((Estatus = (<T>SINAFECTAR<T>)) o (Estatus = (<T>PENDIENTE<T>))))<BR>Entonces<BR>    Verdadero<BR>Sino<BR>    Falso<BR>Fin
+ValorRefrescar=Cxp:cxp.vencimientoProveedor
+ValorPorOmision=Cxp:cxp.vencimientoProveedor
+
+; **** Se modifico el campo para que tomara la uen de la sucursal por default y para que no fuera editable 02/10/09  ALQG****
+[Cxp.tbl/UEN]
+ValorPorOmision=Sucursal.wUEN
+CondicionEdicion=Falso

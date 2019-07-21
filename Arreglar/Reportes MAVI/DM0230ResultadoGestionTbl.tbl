@@ -1,0 +1,40 @@
+[Tabla]
+Icono=0
+Clave=DM0230ResultadoGestionTbl
+Nombre=Resultado de Gestion
+Archivo=DM0230ResultadoGestionTbl
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Resultado<BR>Recuperacion<BR>Especial
+LlavePrimaria=Resultado
+SQL=SELECT<BR>  Resultado,<BR>  Recuperacion,<BR>  Especial<BR><BR>FROM<BR>  DM0230ResultadoGestionTbl
+[Resultado]
+Clave=Resultado
+Nombre=Resultado
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[Recuperacion]
+Clave=Recuperacion
+Nombre=Recuperacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+ValorPorOmision=0
+[Especial]
+Clave=Especial
+Nombre=Especial
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+ValorPorOmision=0

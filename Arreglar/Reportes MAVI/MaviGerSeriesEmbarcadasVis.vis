@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviGerSeriesEmbarcadasVis
+Nombre=Embarques
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MovID
+CamposBusquedaRapida=MovID
+SQL=select <BR><TAB>distinct (E.MovID)<BR><TAB><TAB><BR><TAB>from maviembarquefisicoalmacen EFA<BR><TAB>Inner Join Embarque E On EFA.IdEmbarque=E.ID<BR><TAB>Where EFA.idembarque is not null --AND E.Estatus=<T>Concluido<T> <BR>{Si((ConDatos(Info.FechaD)) y (ConDatos(Info.FechaA)),<T>And (Cast(FLOOR(CAST(efa.FechaRegistro AS real))as DateTime)) BETWEEN <T>+Comillas(FechaFormatoServidor(Info.FechaD))+<T> And <T>+Comillas(FechaFormatoServidor(Info.FechaA)),<T><T>)}<BR>{Si(ConDatos(Mavi.MovimientoEmb), <T>and e.Mov   in (<T>+Mavi.MovimientoEmb+<T>)<T>,<T><T>)}
+[MovID]
+Clave=MovID
+Nombre=MovID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovID

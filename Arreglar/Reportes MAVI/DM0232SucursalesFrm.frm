@@ -1,0 +1,113 @@
+[Forma]
+Clave=DM0232SucursalesFrm
+Nombre=Sucursales
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Sucursales
+CarpetaPrincipal=Sucursales
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccion
+[Acciones.Todo]
+Nombre=Todo
+Boton=0
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+EspacioPrevio=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.Quitar]
+Nombre=Quitar
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+EspacioPrevio=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Sucursales]
+Estilo=Iconos
+Clave=Sucursales
+BusquedaRapidaControles=S
+MenuLocal=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0232SucursalesVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+FiltroIgnorarEmpresas=S
+ListaAcciones=Todo<BR>Quitar
+CarpetaVisible=S
+ListaEnCaptura=Sucursal
+IconosSeleccionMultiple=S
+[Sucursales.Sucursal]
+Carpeta=Sucursales
+Clave=Sucursal
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[Sucursales.Columnas]
+0=-2
+[Acciones.Seleccion.asign]
+Nombre=asign
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccion.exp]
+Nombre=exp
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Sucursales<T>)
+Activo=S
+Visible=S
+[Acciones.Seleccion]
+Nombre=Seleccion
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+ListaAccionesMultiples=asign<BR>exp<BR>selwe
+Activo=S
+Visible=S
+[Acciones.Seleccion.selwe]
+Nombre=selwe
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Expresion=Asigna(Mavi.DM0232Sucursales,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+Activo=S
+Visible=S

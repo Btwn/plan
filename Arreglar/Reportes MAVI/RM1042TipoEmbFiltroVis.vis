@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=RM1042TipoEmbFiltroVis
+Nombre=TipoEmbFiltro
+Modulos=(Todos)
+Singular=Tipo de Embarque
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=TipoEMB
+LlavePrimaria=TipoEMB
+CamposBusquedaRapida=TipoEMB
+SQL=EXEC SP_RM1042ArmRutasTipoEmb_Filtro<BR><BR><BR> <T>{FechaFormatoServidor(Info.FechaD)}<T>, <BR> <T>{FechaFormatoServidor(Info.FechaA)}<T>,<BR>  {si(condatos(Mavi.RM1042FamiliaFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042FamiliaFiltro)),comillas(<T><T>))},<BR>  {si(condatos(Mavi.RM1042OrdTraspasoPrincipal), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042OrdTraspasoPrincipal)),comillas(<T><T>))},<BR>  {si(condatos(Mavi.RM1042IdEmbFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042IdEmbFiltro)),comillas(<T><T>))}
+[TipoEMB]
+Clave=TipoEMB
+Nombre=TipoEMB
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=TipoEMB

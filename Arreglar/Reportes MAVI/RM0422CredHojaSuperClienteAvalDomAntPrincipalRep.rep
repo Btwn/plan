@@ -1,0 +1,54 @@
+[Reporte]
+Clave=RM0422CredHojaSuperClienteAvalDomAntPrincipalRep
+Nombre=RM0422E Hoja de Supervisión Cliente - Aval Domicilio Anterior
+Icono=533
+Tipo=Reporte
+Submenu=Supervisiones Mavi
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=RM0422CredHojaSuperClienteAvalDomAntFrm
+BarraHerramientas=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+VistaEspecial=S
+[Vista]
+Icono=0
+Clave=MaviCredHojaSuperRep
+VistaIndependiente=S
+ListaCampos=Uno
+SQL=Select Uno=1
+[Uno]
+Clave=Uno
+Nombre=Uno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Uno
+[Formato]
+VentanaIzquierda=360
+VentanaArriba=174
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80

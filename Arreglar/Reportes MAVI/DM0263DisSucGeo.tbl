@@ -1,0 +1,26 @@
+[Tabla]
+Icono=0
+Clave=DM0263DisSucGeo
+Archivo=DM0263DisSucGeo
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=IDSucursal<BR>Zona
+Nombre=DM0263DisSucGeo
+Singular=DM0263DisSucGeo
+LlavePrimaria=IDSucursal
+SQL=SELECT<BR>  IDSucursal,<BR>  Zona<BR><BR>FROM<BR>  DM0263DisSucGeo
+[IDSucursal]
+Clave=IDSucursal
+Nombre=IDSucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AlCambiar=SI<BR>    SQL(<T>select COUNT(sucursal) from Sucursal where Sucursal = :nSuc<T>,IDSucursal)=0<BR>ENTONCES<BR>    INFORMACION(<T>La sucursal capturada no existe. Favor de rectificar<T>)<BR>    Asigna(IDSucursal,NULO)<BR>    AbortarOperacion<BR>SINO<BR>    SI<BR>        SQL(<T>SELECT COUNT(IDSucursal) FROM DM0263DisSucGeo C WHERE C.IDSucursal =:nSuc <T>,IDSucursal)>0<BR>    ENTONCES<BR>        INFORMACION](<T>La sucursal ya ha sido capturada con anterioridad. Favor de rectificar.<T>)<BR>        Asigna(IDSucursal,NULO)<BR>        AbortarOperacion<BR>     FIN<BR>FIN<BR>Asigna(Temp.Numerico3,1)
+[Zona]
+Clave=Zona
+Nombre=Zona
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+AlCambiar=Asigna(Temp.Numerico3,1)

@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=Mavidm0173CampanasMonederoArticulo
+Nombre=Articulo Campanas Monedero
+Modulos=(Todos)
+ListaTablas=MaviDm0173CampanasMonederoArticulo
+TablaPrincipal=MaviDm0173CampanasMonederoArticulo
+UsoCapturas=S
+UsarJOIN=S
+ListaCampos=MaviDm0173CampanasMonederoArticulo.Id<BR>MaviDm0173CampanasMonederoArticulo.Articulo
+CamposBusquedaRapida=MaviDm0173CampanasMonederoArticulo.Articulo
+UsoReportes=S
+SQL=SELECT<BR>  MaviDm0173CampanasMonederoArticulo.Id,<BR>  MaviDm0173CampanasMonederoArticulo.Articulo<BR><BR>FROM<BR>  MaviDM0173CampanasMonederoArticulo MaviDm0173CampanasMonederoArticulo
+CamposPropiedades=MaviDm0173CampanasMonederoArticulo.Id<BR>MaviDm0173CampanasMonederoArticulo.Articulo
+[MaviDm0173CampanasMonederoArticulo.Id]
+Clave=MaviDm0173CampanasMonederoArticulo.Id
+Visible=S
+LigaTabla=MaviDm0173CampanasMonederoArticulo
+LigaCampo=Id
+Ligado=S
+ClaveBDE=Id
+[MaviDm0173CampanasMonederoArticulo.Articulo]
+Clave=MaviDm0173CampanasMonederoArticulo.Articulo
+Visible=S
+LigaTabla=MaviDm0173CampanasMonederoArticulo
+LigaCampo=Articulo
+Ligado=S
+ClaveBDE=Articulo

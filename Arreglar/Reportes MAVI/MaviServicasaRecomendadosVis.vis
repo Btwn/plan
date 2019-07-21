@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviServicasaRecomendadosVis
+Nombre=Recomendado Servicasa
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cliente
+SQL=Select Distinct(Cliente) from cte where MaviRecomendadoPor=<T>{Info.Cliente}<T>
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cliente

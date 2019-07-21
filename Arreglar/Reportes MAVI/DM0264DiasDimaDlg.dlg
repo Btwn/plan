@@ -1,0 +1,32 @@
+
+[Dialogo]
+Clave=DM0264DiasDimaDlg
+Nombre=Mensaje
+Icono=20
+TipoMensaje=General
+TipoDialogo=Mensaje
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+
+ListaAcciones=Aceptar
+PosicionInicialAlturaCliente=80
+PosicionInicialAncho=146
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=Centrado
+VentanaSinIconosMarco=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=564
+PosicionInicialArriba=453
+AccionesCentro=S
+Mensaje=<T>Configuración guardada.<T>
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=&Aceptar
+EnBarraAcciones=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

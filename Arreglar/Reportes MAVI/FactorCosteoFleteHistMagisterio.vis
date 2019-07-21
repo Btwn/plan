@@ -1,0 +1,37 @@
+[Vista]
+Icono=0
+Clave=FactorCosteoFleteHistMagisterio
+Nombre=FactorCosteoFleteHistMagisterio
+Modulos=(Todos)
+Singular=FactorCosteoFleteHistMagisterio
+ListaTablas=FactorCosteoFleteHistMagisterio
+TablaPrincipal=FactorCosteoFleteHistMagisterio
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=FactorCosteoFleteHistMagisterio.FactorCosteoMagisterio<BR>FactorCosteoFleteHistMagisterio.Fecha
+SQL=SELECT<BR>  FactorCosteoFleteHistMagisterio.FactorCosteoMagisterio,<BR>  FactorCosteoFleteHistMagisterio.Fecha<BR><BR>FROM<BR>  FactorCosteoFleteHistMagisterio
+[FactorCosteoFleteHistMagisterio.FactorCosteoMagisterio]
+Clave=FactorCosteoFleteHistMagisterio.FactorCosteoMagisterio
+Nombre=%Costeo Flete Magisterio
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+LigaTabla=FactorCosteoFleteHistMagisterio
+LigaCampo=FactorCosteoMagisterio
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=FactorCosteoMagisterio
+[FactorCosteoFleteHistMagisterio.Fecha]
+Clave=FactorCosteoFleteHistMagisterio.Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aa hh:mm:ss
+LigaTabla=FactorCosteoFleteHistMagisterio
+LigaCampo=Fecha
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Fecha

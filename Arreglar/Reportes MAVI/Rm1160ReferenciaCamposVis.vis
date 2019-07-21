@@ -1,0 +1,28 @@
+
+[Vista]
+Icono=0
+Clave=Rm1160ReferenciaCamposVis
+Nombre=Referencia
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=IDENTIFICADOR<BR>CAMPOS A PRESENTAR
+SQL=SELECT X.a AS IDENTIFICADOR, X.b AS <T>CAMPOS A PRESENTAR<T><BR>FROM (VALUES(<T>*1<T> , <T>Apellido<T>),<BR><TAB>    (<T>*2<T> , <T>Importe<T>),<BR>            (<T>*3<T> , <T>Convenio <T>) ,<BR><TAB>    (<T>*4<T> , <T>Referencia<T>) ,<BR><TAB>    (<T>*5<T> , <T>Fecha de Vencimiento<T>))AS X (a,b)
+[IDENTIFICADOR]
+Clave=IDENTIFICADOR
+Nombre=Identificador
+Visible=S
+TamanoValidacion=2
+TipoDatos=Texto
+Tamano=2
+ClaveBDE=IDENTIFICADOR
+
+[CAMPOS A PRESENTAR]
+Clave=CAMPOS A PRESENTAR
+Nombre=Campos a presentar
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=CAMPOS A PRESENTAR

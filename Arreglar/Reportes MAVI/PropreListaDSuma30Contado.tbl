@@ -1,0 +1,48 @@
+[Tabla]
+Icono=0
+Clave=PropreListaDSuma30Contado
+Nombre=PropreListaDSuma30Contado
+Archivo=PropreListaDSuma30Contado
+Modulos=(Todos)
+Singular=PropreListaDSuma30Contado
+TipoTabla=General
+ListaCampos=Lista<BR>CostoXVentas30Dias<BR>PContadoXVentas30Dias<BR>MargenSobreVentas<BR>MargenSobreCosto
+LlavePrimaria=Lista
+SQL=SELECT<BR>  Lista,<BR>  CostoXVentas30Dias,<BR>  PContadoXVentas30Dias,<BR>  MargenSobreVentas,<BR>  MargenSobreCosto<BR><BR>FROM<BR>  PropreListaDSuma30Contado
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[CostoXVentas30Dias]
+Clave=CostoXVentas30Dias
+Nombre=Costo X Ventas 30 Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+[PContadoXVentas30Dias]
+Clave=PContadoXVentas30Dias
+Nombre=P. Contado X Ventas 30 Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+[MargenSobreVentas]
+Clave=MargenSobreVentas
+Nombre=Margen Sobre Ventas
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.000
+[MargenSobreCosto]
+Clave=MargenSobreCosto
+Nombre=Margen Sobre Costo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.000

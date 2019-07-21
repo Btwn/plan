@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviGrupoVehiculoVis
+Nombre=Grupo Vehiculo
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=GrupoVehiculo
+CamposBusquedaRapida=GrupoVehiculo
+SQL=Select GrupoVehiculo <BR>From (<BR>Select Distinct Descripcion1 As GrupoVehiculo<BR>From Vehiculo<BR>Where Descripcion1 is not Null ) GV
+[GrupoVehiculo]
+Clave=GrupoVehiculo
+Nombre=GrupoVehiculo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=GrupoVehiculo

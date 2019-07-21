@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM0534CanalesVis
+Nombre=Canales
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Canal_Venta
+SQL=SELECT DISTINCT ClienteEnviarA Canal_Venta FROM CXC WHERE CLIENTEENVIARA IN (3,4,7,76)
+[Canal_Venta]
+Clave=Canal_Venta
+Nombre=Canal_Venta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Canal_Venta

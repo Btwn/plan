@@ -1,0 +1,159 @@
+[Vista]
+Icono=0
+Clave=RM1160TempConfigMensajeVis
+Modulos=(Todos)
+ListaTablas=RM1160TempConfMensajeTbl
+TablaPrincipal=RM1160TempConfMensajeTbl
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=RM1160TempConfMensajeTbl.Titulo<BR>RM1160TempConfMensajeTbl.Nombre<BR>RM1160TempConfMensajeTbl.MinimoDV<BR>RM1160TempConfMensajeTbl.MaximoDV<BR>RM1160TempConfMensajeTbl.Uen<BR>RM1160TempConfMensajeTbl.TextoMensaje<BR>RM1160TempConfMensajeTbl.TextoSalida<BR>RM1160TempConfMensajeTbl.Usuario<BR>RM1160TempConfMensajeTbl.Fecha<BR>RM1160TempConfMensajeTbl.ID<BR>RM1160TempConfMensajeTbl.Tipo
+
+
+
+
+SQL=SELECT<BR>RM1160TempConfMensajeTbl.Titulo,<BR>RM1160TempConfMensajeTbl.Nombre,<BR>RM1160TempConfMensajeTbl.MinimoDV,<BR>RM1160TempConfMensajeTbl.MaximoDV,<BR>RM1160TempConfMensajeTbl.Uen,<BR>RM1160TempConfMensajeTbl.TextoMensaje,<BR>RM1160TempConfMensajeTbl.TextoSalida,<BR>RM1160TempConfMensajeTbl.Usuario,<BR>RM1160TempConfMensajeTbl.Fecha,<BR>RM1160TempConfMensajeTbl.ID,<BR>RM1160TempConfMensajeTbl.Tipo<BR>FROM RM1160ConfMensajeTemp RM1160TempConfMensajeTbl
+[RM1160TempConfMensajeTbl.Uen]
+Clave=RM1160TempConfMensajeTbl.Uen
+Nombre=Uen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=Uen
+ClaveBDE=Uen
+Alineacion=por Omisión
+AyudaEnCaptura=Lista de Opciones
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+OpcionesPredefinidas=Ninguna
+OpcionesUnicamente=S
+ValorRefrescar=Si<BR>    RM1160TempConfMensajeTbl.Tipo = <T>Pago Referenciado<T><BR>Entonces<BR>    1<BR>Fin
+CondicionEdicion=RM1160TempConfMensajeTbl.Tipo = <T>Cobranza<T>
+
+
+ListaOpciones=MUEBLES AMERICA (UEN 1)<BR>VIU (UEN 2)<BR>AMBOS( 3 )
+[RM1160TempConfMensajeTbl.MinimoDV]
+Clave=RM1160TempConfMensajeTbl.MinimoDV
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=MinimoDV
+TipoDatos=Numérico
+ClaveBDE=MinimoDV
+
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorRefrescar=Si<BR>    RM1160TempConfMensajeTbl.Tipo = <T>Pago Referenciado<T><BR>Entonces<BR>    0<BR>Fin
+CondicionEdicion=RM1160TempConfMensajeTbl.Tipo = <T>Cobranza<T>
+[RM1160TempConfMensajeTbl.MaximoDV]
+Clave=RM1160TempConfMensajeTbl.MaximoDV
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=MaximoDV
+TipoDatos=Numérico
+ClaveBDE=MaximoDV
+
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=Si<BR>    RM1160TempConfMensajeTbl.Tipo = <T>Pago Referenciado<T><BR>Entonces<BR>    0<BR>Fin
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+
+
+
+
+
+CondicionEdicion=RM1160TempConfMensajeTbl.Tipo = <T>Cobranza<T>
+[RM1160TempConfMensajeTbl.Tipo]
+Clave=RM1160TempConfMensajeTbl.Tipo
+Nombre=Tipo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=25
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=Tipo
+ClaveBDE=Tipo
+Alineacion=por Omisión
+AyudaEnCaptura=Lista de Opciones
+AyudaMemRenglones=8
+AyudaMemOpc=Consulta opcional
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+OpcionesValidar=S
+ListaRefrescar=RM1160TempConfMensajeTbl.MinimoDV<BR>RM1160TempConfMensajeTbl.MaximoDV<BR>RM1160TempConfMensajeTbl.Uen
+ConRefrescar=S
+
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=RM1160TempConfMensajeTbl.MinimoDV<BR>RM1160TempConfMensajeTbl.MaximoDV<BR>RM1160TempConfMensajeTbl.Uen
+ListaOpciones=Cobranza<BR>Pago Referenciado
+[RM1160TempConfMensajeTbl.Titulo]
+Clave=RM1160TempConfMensajeTbl.Titulo
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=Titulo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Titulo
+
+[RM1160TempConfMensajeTbl.Nombre]
+Clave=RM1160TempConfMensajeTbl.Nombre
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=Nombre
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Nombre
+
+[RM1160TempConfMensajeTbl.TextoMensaje]
+Clave=RM1160TempConfMensajeTbl.TextoMensaje
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=TextoMensaje
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=TextoMensaje
+
+[RM1160TempConfMensajeTbl.TextoSalida]
+Clave=RM1160TempConfMensajeTbl.TextoSalida
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=TextoSalida
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=TextoSalida
+
+[RM1160TempConfMensajeTbl.Usuario]
+Clave=RM1160TempConfMensajeTbl.Usuario
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=Usuario
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=12
+ClaveBDE=Usuario
+
+[RM1160TempConfMensajeTbl.Fecha]
+Clave=RM1160TempConfMensajeTbl.Fecha
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=Fecha
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=Fecha
+
+[RM1160TempConfMensajeTbl.ID]
+Clave=RM1160TempConfMensajeTbl.ID
+LigaTabla=RM1160TempConfMensajeTbl
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=AutoInc
+ClaveBDE=ID

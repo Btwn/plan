@@ -1,0 +1,81 @@
+[Forma]
+Clave=DM0192InsertImporteLineaCredFrm
+Nombre=Insertar importe linea de credito
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Importe
+CarpetaPrincipal=Importe
+PosicionInicialAlturaCliente=472
+PosicionInicialAncho=283
+PosicionInicialIzquierda=245
+PosicionInicialArriba=188
+BarraAcciones=S
+AccionesTamanoBoton=15x5
+ListaAcciones=Aceptar
+AccionesCentro=S
+AccionesDivision=S
+[Importe]
+Estilo=Hoja
+Clave=Importe
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0192ImporteLineaCredVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=DM0192ImporteLineaCredtbl.Importe
+CarpetaVisible=S
+PermiteEditar=S
+OtroOrden=S
+ListaOrden=DM0192ImporteLineaCredtbl.Importe<TAB>(Acendente)
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+[Importe.DM0192ImporteLineaCredtbl.Importe]
+Carpeta=Importe
+Clave=DM0192ImporteLineaCredtbl.Importe
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[Importe.Columnas]
+0=-2
+1=-2
+2=-2
+ID=30
+Importe=172
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=23
+NombreDesplegar=&Guardar
+EnBarraAcciones=S
+TipoAccion=Controles Captura
+ClaveAccion=Guardar Cambios
+Activo=S
+Visible=S
+RefrescarDespues=S
+NombreEnBoton=S
+Multiple=S
+ListaAccionesMultiples=Guardar Cambios<BR>Cerrar
+[Acciones.Aceptar.Guardar Cambios]
+Nombre=Guardar Cambios
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Guardar Cambios
+Activo=S
+Visible=S
+[Acciones.Aceptar.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

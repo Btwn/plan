@@ -1,0 +1,37 @@
+
+[Tabla]
+Icono=0
+Clave=Dm0173MoneRefciastbl
+Nombre=Referencias Monedero
+Archivo=TablaStD
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=TablaSt<BR>Nombre<BR>Valor
+LlavePrimaria=TablaSt
+SQL=SELECT<BR>  TablaSt,<BR>  Nombre,<BR>  Valor<BR>  FROM TablaStD<BR>WHERE tablast = <T>REFERENCIA MOV MONEDERO<T>
+[TablaSt]
+Clave=TablaSt
+Nombre=TablaSt
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+[Valor]
+Clave=Valor
+Nombre=Referencia
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50

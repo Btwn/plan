@@ -1,0 +1,43 @@
+[Dialogo]
+Clave=DM0237HerramientasAgente
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+
+ListaAcciones=(Lista)
+PosicionInicialIzquierda=318
+PosicionInicialArriba=298
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.DM0237HerramientaAgente]
+Nombre=DM0237HerramientaAgente
+Boton=0
+NombreDesplegar=Herramienta Agente
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0237HerramientaEstructuraAgtFrm
+Activo=S
+Visible=S
+
+[Acciones.DM0237HerramientaReportaA]
+Nombre=DM0237HerramientaReportaA
+Boton=0
+NombreDesplegar=Herramienta Reporta A
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0237HerramientaReportaAFrm
+Activo=S
+Visible=S
+
+[Dialogo.ListaAcciones]
+(Inicio)=DM0237HerramientaAgente
+DM0237HerramientaAgente=DM0237HerramientaReportaA
+DM0237HerramientaReportaA=(Fin)

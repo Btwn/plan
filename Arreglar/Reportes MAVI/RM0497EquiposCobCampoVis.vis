@@ -1,0 +1,37 @@
+[Vista]
+Icono=0
+Clave=RM0497EquiposCobCampoVis
+Nombre=Equipos de Cobranza de Campo
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Equipo<BR>NomEquipo<BR>NivelCobranzaMAVI
+CamposBusquedaRapida=Equipo<BR>NomEquipo
+SQL=Select distinCt T.Equipo, T.NomEquipo, T.NivelCobranzaMAVI<BR>From(<BR>Select Q.Equipo, NomEquipo=NQ.Nombre, A.Agente, A.Nombre, A.NivelCobranzaMAVI<BR>From EquipoAgente Q<BR>Inner Join Agente A ON Q.Agente=A.Agente<BR>Inner Join Agente NQ ON Q.Equipo=NQ.Agente<BR>Where A.Categoria = <T>COBRANZA MENUDEO<T> <BR>And A.Tipo = <T>COBRADOR<T><BR>And A.Familia = <T>COB CAMPO<T><BR>) AS T
+[Equipo]
+Clave=Equipo
+Nombre=Equipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Equipo
+[NomEquipo]
+Clave=NomEquipo
+Nombre=Nombre del Equipo
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=NomEquipo
+[NivelCobranzaMAVI]
+Clave=NivelCobranzaMAVI
+Nombre=NivelCobranzaMAVI
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NivelCobranzaMAVI

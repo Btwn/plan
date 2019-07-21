@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=MaviAlmacenesVenta
+Nombre=Almacenes de Venta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Almacen<BR>Nombre
+SQL=select Almacen,Nombre from alm where almacen like <T>V%<T>
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Almacen
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

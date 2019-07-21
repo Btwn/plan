@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0144ArtPrefijoVis
+Nombre=Prefijo
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre
+SQL=Select Nombre from tablastd where tablast = <T>PREFIJOS ARTICULOS COBRANZA<T>
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Nombre

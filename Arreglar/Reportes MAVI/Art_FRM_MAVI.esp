@@ -1,0 +1,497 @@
+;**** Ultima modificación:18-Jul-08
+;**** Modifico:Arly Rubio
+;**** Se modifico:Se agrego el campo Capital
+
+
+
+;**** Integracion de modificacion de la forma para desarrollo DM0144 Catalogo Articulos dentro del paquete DM0144_30082011. JR 31-Ago-2011. ****
+;**** CQ DM0144 No se permitira copiar Dctos, se quitó el botón "Copiar" de Tablero de Control de Artículos. (22/08/2011)
+[Art.frm/Forma]
+;PermiteCopiarDoc=S
+PermiteCopiarDoc=N
+PosicionInicialAncho=900
+
+[Art.frm/Forma.ListaCarpetas]
+LDI=Ecommerce
+Ecommerce=(Fin)
+
+[Art.frm/Forma.ListaAcciones]
+Otros9=CatMarcas
+CatMarcas=Cattipo
+Cattipo=accionSEO
+accionSEO=ImpreEtiqAdjud
+ImpreEtiqAdjud=ACW00042FichaTecnica
+ACW00042FichaTecnica=(Fin)
+
+[Art.frm/Detalle.ListaEnCaptura]
+Art.Linea=ClaveSAT
+ClaveSAT=Art.Fabricante
+
+;***** ELIAS ******
+[Art.frm/(Carpeta Abrir)]
+IconosConPaginas=S
+
+
+[Art.frm/Opciones.ListaEnCaptura]
+Art.TieneDireccion=Art.Mensaje
+
+; **** Se modifico la lista en captura para agregar el campo: "Art.InvSeguridad", Art.UltimoMov, Art.FechaUltimoMov ****
+[Art.frm/Plan.ListaEnCaptura]
+Art.TipoCompra=Art.InvSeguridad
+Art.InvSeguridad=Art.Proveedor
+Art.AlmacenROP=Art.CtaCliente
+Art.CtaCliente=Art.TipoEntradaMavi
+Art.TipoEntradaMavi=Art.RutaDistribucion
+Art.RutaDistribucion=Art.FechaUltimoMov
+Art.FechaUltimoMov=Art.UltimoMov
+Art.UltimoMov=Art.AlmMesComs
+Art.StockMaximo=Art.FechaLanzamiento
+Art.FechaLanzamiento=Art.FechaVigencia
+Art.FechaVigencia=(Fin)
+
+; **** Nuevo campo agregado: Art.InvSeguridad ****
+[Art.frm/Plan.Art.InvSeguridad]
+Carpeta=Plan
+Clave=Art.InvSeguridad
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+Efectos=[Negritas]
+
+
+
+;*****Nuevo campo agregado 26-Ago-08(Arly)****
+[Art.frm/Plan.Art.FechaUltimoMov]
+Carpeta=Plan
+Clave=Art.FechaUltimoMov
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Plata
+ColorFuente=Negro
+Tamano=20
+EspacioPrevio=S
+
+
+;*****Nuevo campo agregado 26-Ago-08(Arly)****
+[Art.frm/Plan.Art.UltimoMov]
+Carpeta=Plan
+Clave=Art.UltimoMov
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Plata
+ColorFuente=Negro
+
+
+;**** Se modificaron la lista de datos en captura y la condicion de despliegue, asi como el nombre de la pestaña ****
+[Art.frm/VIN]
+PestanaNombre=Vehiculos
+CondicionVisible=Art:Art.Categoria = <T>VEHICULOS<T>
+
+[Art.frm/VIN.ListaEnCaptura]
+Art.TipoVehiculo=Art.Modelo
+Art.ClaveVehicular=(Fin)
+
+
+
+
+;***** Se agrego en la pestaña Precios nuevos campos: Art.Capital *****
+[Art.frm/Precios.ListaEnCaptura]
+Art.PrecioLista=Art.Capital
+Art.Capital=Art.Precio2
+
+[Art.frm/Precios.Art.Capital]
+Carpeta=Precios
+Clave=Art.Capital
+Editar=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+Tamano=23
+
+[Art.frm/Detalle.Art.NombreCorto]
+Carpeta=Detalle
+Clave=Art.NombreCorto
+Editar=S
+ValidaNombre=S
+3D=S
+Tamano=64
+ColorFondo=Blanco
+ColorFuente=Negro
+LineaNueva=S
+
+
+
+[Art.frm/Ecommerce]
+Estilo=Ficha
+Pestana=S
+PestanaOtroNombre=S
+PestanaNombre=Ecommerce
+Clave=Ecommerce
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=Art
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Arriba
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Art.MarcaE<BR>Art.ModeloE<BR>Art.LineaE<BR>Art.CodigoAlterno<BR>Art.codigopadre<BR>Art.espadre
+
+[Art.frm/Ecommerce.Art.MarcaE]
+Carpeta=Ecommerce
+Clave=Art.MarcaE
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Art.frm/Ecommerce.Art.ModeloE]
+Carpeta=Ecommerce
+Clave=Art.ModeloE
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Art.frm/Ecommerce.Art.LineaE]
+Carpeta=Ecommerce
+Clave=Art.LineaE
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+
+[Art.frm/Ecommerce.Art.CodigoAlterno]
+Carpeta=Ecommerce
+Clave=Art.CodigoAlterno
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+
+
+
+;********************************************************* ACCIONES ***********************************************************
+;******************************************************************************************************************************
+
+
+;**** Se modifico la acción para que no estuviera activo si el check de Espacios no esta encendido en la configuración General ****
+;**** Esta acción aparece en el menú ver como "Plan"
+[Art.frm/Acciones.Plan]
+ActivoCondicion=General.Espacios y Art:Art.Espacios o (no Art:Art.EsFormula)
+
+
+
+;**** Se modifico la acción para que no estuviera activo si el check de Espacios no esta encendido en la configuración General ****
+;**** Esta acción aparece en el menú Edición como "Fechas Válidas"
+[Art.frm/Acciones.ArtFecha]
+ActivoCondicion=Art:Art.Espacios y General.Espacios
+
+
+
+
+;**** Se modifico la acción para que no estuviera activo si el check de Espacios no esta encendido en la configuración General ****
+;**** Esta acción aparece en el menú Edición como "Espacios Específicos"
+[Art.frm/Acciones.ArtEspacio]
+ActivoCondicion=Art:Art.Espacios y Art:Art.EspaciosEspecificos y General.Espacios
+
+[Art.frm/Acciones.ArtAlm]
+ClaveAccion=ArtAlmPrincipalfrm
+AntesExpresiones=Asigna(Info.Articulo,Art:Art.Articulo)<BR>Asigna(Info.Descripcion, Art:Art.Descripcion1)<BR>Asigna(Info.ArtTipo, Art:Art.Tipo)<BR>Asigna(Info.ArtTipoOpcion, Art:Art.TipoOpcion)<BR>Asigna(Info.SubCuenta, Nulo)<BR>Asigna(Info.Empresa, Empresa)
+
+
+;**** Integracion de accion Guardar para desarrollo DM0144 Catalogo Articulos dentro del paquete DM0144_30082011. JR 31-Ago-2011. ****
+;**** CQ DM0144 Se condiciono la ejecución de botón Guardar. (24/08/2011)
+; ****  Modificacion de EjecucionCondicion, Se cambia la categoria para el llamado de la forma, JDelToroA 07-12-2012. JR 10-Dic-2012. ****
+[Art.frm/Acciones.Guardar]
+ConCondicion=S
+EjecucionConError=S
+;EjecucionCondicion=(((SQL(<T>SELECT CATEGORIA FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =<BR>  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))=<T>ADJUDICACION<T>) Y<BR>  ((SQL(<T>SELECT GRUPO FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =<BR>  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))=<T>MERCANCIA ESPECIAL<T>) Y<BR><BR>((Izquierda(Art:Art.Articulo,4)=<T>ESPE<T>)  o<BR>(Izquierda(Art:Art.Articulo,4)=<T>SEGU<T>) o<BR>(Izquierda(Art:Art.Articulo,4)=<T>NVO+<T>))<BR><BR><BR><BR><BR>) O<BR>  (((SQL(<T>SELECT CATEGORIA FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =<BR>  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>ADJUDICACION<T>) Y<BR>  ((SQL(<T>SELECT GRUPO FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144A;rtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =<BR>  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>MERCANCIA ESPECIAL<T>))
+EjecucionMensaje=<T>Clave incorrecta, presiona Nuevo y vuelve a capturar los Datos<T>
+EjecucionCondicion=(((SQL(<T>SELECT CATEGORIA FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =<BR>  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))=<T>ADJUDICACION<T>) Y<BR>  ((SQL(<T>SELECT GRUPO FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =<BR>  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))=<T>MERCANCIA ESPECIAL<T>) Y<BR><BR>((Izquierda(Art:Art.Articulo,4)=<T>ESPE<T>)  o<BR>(Izquierda(Art:Art.Articulo,4)=<T>SEGU<T>) o<BR>(Izquierda(Art:Art.Articulo,4)=<T>NVO+<T>))<BR><BR><BR><BR><BR>) O<BR>  (((SQL(<T>SELECT CATEGORIA FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =<BR>  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>ADJUDICACION<T>) Y<BR>  ((SQL(<T>SELECT GRUPO FROM DM0144ArtdPerfilesXAgrupador GT INNER JOIN DM0144ArtPerfilesXAgrupador P ON GT.ID = P.ID WHERE GT.GrupoTrabajo =<BR>  (SELECT GrupoTrabajo FROM USUARIO WHERE USUARIO={COMILLAS(USUARIO)})<T>))<><T>MERCANCIA ESPECIAL<T>))<BR><BR><BR>Si<BR>    ConDatos(Art:Art.FechaLanzamiento) y ConDatos(Art:Art.FechaVigencia)<BR>Entonces<BR><BR>    Si<BR>       Art:Art.FechaVigencia < Art:Art.FechaLanzamiento<BR>    Entonces<BR>       Error(<T>Rango de Fechas no Valido<T>)<BR>       AbortarOperacion<BR>    Sino<BR>       Verdadero<BR>    Fin<BR>Fin<BR><BR><BR>Si<BR>     Vacio(Art:Art.FechaLanzamiento) y SQL(<T>SELECT COUNT(Nombre) FROM TablaSTD WITH(NOLOCK) WHERE TablaST=:tTabla AND Nombre=:tNom<T>, <T>TIEMPO VIDA ARTICULOS<T>,Art:Art.Linea)>0<BR>       y SQL(<T>SELECT COUNT(Valor) FROM TablaSTD WITH(NOLOCK) WHERE TablaST=:tTabla AND Valor=:tValor<T>, <T>TIEMPO VIDA ARTICULOS<T>,Art:Art.Familia)>0<BR>Entonces<BR>     Error(<T>El campo fecha Lanzamiento es obligatorio<T>)<BR>     AbortarOperacion<BR>Sino<BR>     Verdadero<BR>Fin<BR>                       <BR>Si<BR>      Vacio(Art:Art.FechaVigencia) y SQL(<T>SELECT COUNT(Nombre) FROM TablaSTD WITH(NOLOCK) WHERE TablaST=:tTabla AND Nombre=:tNom<T>, <T>TIEMPO VIDA ARTICULOS<T>,Art:Art.Linea)>0<BR>       y SQL(<T>SELECT COUNT(Valor) FROM TablaSTD WITH(NOLOCK) WHERE TablaST=:tTabla AND Valor=:tValor<T>, <T>TIEMPO VIDA ARTICULOS<T>,Art:Art.Familia)>0<BR>Entonces<BR>     Error(<T>El campo fecha Vigencia es obligatorio<T>)<BR>     AbortarOperacion<BR>Sino<BR>     Verdadero<BR>Fin
+Antes=S
+AntesExpresiones=SI<BR>    Art:Art.Grupo = <T>MERCANCIA DE LINEA<T><BR>ENTONCES<BR>        SI<BR>            SQL(<T>SELECT COUNT(Familia) FROM ArtLinea WHERE Linea =:tlin AND Familia =:tfam<T>, Art:Art.Linea,Art:Art.Familia) >0<BR>        ENTONCES<BR>            SI<BR>                 SQL(<T>SELECT COUNT(Linea) FROM ArtLinea WHERE Linea =:tlin AND Familia =:tfam<T>, Art:Art.Linea,Art:Art.Familia) >0<BR>            ENTONCES<BR>                VERDADERO<BR>            SINO<BR>                PRECAUCION(<T>Esta linea no corresponde a la familia<T>)<BR>                ABORTAROPERACION<BR>            FIN  <BR>        SINO<BR>            PRECAUCION(<T>Esta familia no corresponde a la linea<T>)<BR>            ABORTAROPERACION<BR>        FIN<BR>SINO<BR>    VERDADERO<BR>FIN<BR><CONTINUA>
+AntesExpresiones002=Si SQL(<T>SELECT COUNT(TablaSt) FROM TablaStd WHERE TablaSt = :tTabla AND Nombre = :tLinea AND Valor = :tFamilia<T>,<T>FAMILIA LINEA DESPIEZAR ARTICULOS<T>,Art:Art.Linea,Art:Art.Familia)>0<BR>Entonces<BR> Si Art:Art.espadre = <T>True<T> y ConDatos(Art:Art.codigopadre)<BR> Entonces Error(<T>No pueden llenarse los campos código padre y es padre a la vez<T>) AbortarOperacion<BR> Sino<BR>   Si Art:Art.espadre = <T>False<T> y Vacio(Art:Art.codigopadre)<BR>   Entonces Error(<T>Se requiere ingresar el código padre<T>) AbortarOperacion<BR>   Fin <BR>Fin<BR><BR>Si SQL(<T>SELECT COUNT(TablaSt) FROM TablaStd WHERE TablaSt = :tTabla AND Nombre = :tLinea AND Valor = :tFamilia<T>,<T>FAMILIA LINEA DESPIEZAR ARTICULOS<T>,Art:Art.Linea,Art:Art.Familia)>0<BR>Entonces<BR>  Si Art:Art.espadre = <T>True<T><BR><CONTINUA>
+AntesExpresiones003=<CONTINUA>  Entonces Verdadero<BR>  Sino     <BR>    Si SQL(<T>SELECT COUNT(A.Articulo) FROM Art A INNER JOIN TablaSTD T ON T.Valor=A.Familia WHERE Estatus=:tEstatus AND T.TablaSt=:tTabla AND A.Articulo=:tArt<T>,<T>ALTA<T>,<T>FAMILIA LINEA DESPIEZAR ARTICULOS<T>,Art:Art.codigopadre)>0<BR>    Entonces Verdadero<BR>    Sino Error(<T>La familia del código padre no corresponde con la del articulo<T>) AbortarOperacion<BR>    Fin<BR>  Fin<BR>Fin
+
+
+;**** Integracion de accion Nuevo para desarrollo DM0144 Catalogo Articulos dentro del paquete DM0144_30082011. JR 31-Ago-2011. ****
+;***** JAVT DM0144 Varios cambios, al generarse un nuevo documento te pide el prefijo
+[Art.frm/Acciones.Nuevo]
+Nombre=Nuevo
+Boton=1
+NombreDesplegar=&Nuevo
+EnBarraHerramientas=S
+EnBarraAcciones=S
+TipoAccion=Controles Captura
+ClaveAccion=Documento Nuevo
+Visible=S
+Activo=S
+Menu=&Archivo
+EnMenu=S
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+N
+Multiple=S
+ListaAccionesMultiples=Nvo<BR>Exp
+
+[Art.frm/Acciones.Nuevo.Nvo]
+Nombre=Nvo
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Documento Nuevo
+Activo=S
+Visible=S
+
+
+
+; **** Modificacion de Expresion Se cambia la categoria para el llamado de la forma. JDelToroA 07-12-2012. JR 10-Dic-2012. ****
+[Art.frm/Acciones.Nuevo.Exp]
+Nombre=Exp
+Boton=0
+TipoAccion=Expresion
+;Expresion=Asigna(Info.numero,0)<BR>Si SQL(<T>SELECT CASE WHEN<BR>(SELECT CASE WHEN CATEGORIA=<T>+comillas(<T> <T>)+<T> THEN <T>+comillas(<T><T>)+<T> ELSE CATEGORIA END<BR>FROM DM0144ArtPerfilesXAgrupador WHERE ID =<BR>(SELECT ARTD.ID FROM DM0144ArtDPerfilesXAgrupador ARTD<BR>WHERE ARTD.GRUPOTRABAJO =<BR>(SELECT U.GRUPOTRABAJO FROM USUARIO U WHERE U.USUARIO = <T>+comillas(usuario)+<T>)))=<T>+comillas(<T>ADJUDICACION<T>)+<T><BR>AND<BR>(SELECT CASE WHEN GRUPO=<T>+comillas(<T> <T>)+<T> THEN <T>+comillas(<T><T>)+<T> ELSE GRUPO END<BR>FROM DM0144ArtPerfilesXAgrupador WHERE ID =<BR>(SELECT ARTD.ID FROM DM0144ArtDPerfilesXAgrupador ARTD<BR>WHERE ARTD.GRUPOTRABAJO =<BR>(SELECT U.GRUPOTRABAJO FROM USUARIO U WHERE U.USUARIO = <T>+comillas(usuario)+<T>)))=<T>+comillas(<T>MERCANCIA ESPECIAL<T>)+<T><BR> THEN 1 EL<CONTINUA>
+;Expresion002=<CONTINUA>SE 0 END<T>)=1<BR> entonces<BR>   si FormaModal(<T>DM0144ArtPrefijosMainFrm<T>)<BR>    entonces<BR>     asigna(Art:Art.Articulo,sql(<T>Exec SP_MaviDM0144GeneraArticulo :tpre<T>,Mavi.DM0144Prefijo))<BR>    fin<BR> fin
+Activo=S
+Visible=S
+Expresion=Asigna(Info.numero,0)<BR>Si SQL(<T>SELECT CASE WHEN<BR>(SELECT CASE WHEN CATEGORIA=<T>+comillas(<T> <T>)+<T> THEN <T>+comillas(<T><T>)+<T> ELSE CATEGORIA END<BR>FROM DM0144ArtPerfilesXAgrupador WHERE ID =<BR>(SELECT ARTD.ID FROM DM0144ArtDPerfilesXAgrupador ARTD<BR>WHERE ARTD.GRUPOTRABAJO =<BR>(SELECT U.GRUPOTRABAJO FROM USUARIO U WHERE U.USUARIO = <T>+comillas(usuario)+<T>)))=<T>+comillas(<T>VENTA<T>)+<T><BR>AND<BR>(SELECT CASE WHEN GRUPO=<T>+comillas(<T> <T>)+<T> THEN <T>+comillas(<T><T>)+<T> ELSE GRUPO END<BR>FROM DM0144ArtPerfilesXAgrupador WHERE ID =<BR>(SELECT ARTD.ID FROM DM0144ArtDPerfilesXAgrupador ARTD<BR>WHERE ARTD.GRUPOTRABAJO =<BR>(SELECT U.GRUPOTRABAJO FROM USUARIO U WHERE U.USUARIO = <T>+comillas(usuario)+<T>)))=<T>+comillas(<T>MERCANCIA ESPECIAL<T>)+<T><BR> THEN 1 EL<CONTINUA>
+Expresion002=<CONTINUA>SE 0 END<T>)=1<BR> entonces<BR>   si FormaModal(<T>DM0144ArtPrefijosMainFrm<T>)<BR>    entonces<BR>     asigna(Art:Art.Articulo,sql(<T>Exec SP_MaviDM0144GeneraArticulo :tpre<T>,Mavi.DM0144Prefijo))<BR>    fin<BR> fin
+
+
+;**** Integracion de acciones de menu para desarrollo DM0144 Catalogo Arsticulos dentro del paquete DM0144_30082011. JR 31-Ago-2011. ****
+;***** JAVT DM0144 Comienza condicionamiento del menu de maestros
+[Art.frm/Acciones.ArtCat]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtGrupo]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtFam]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.Fabricante]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ActivoFCat]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtCatProd]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtComision]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtArancel]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtColumna]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtRenglon]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtLinea]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.Temporadas]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.TipoEmpaque]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtModelo]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.ArtVersion]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.Presentacion]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.DepartamentoDetallista]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+[Art.frm/Acciones.TarjetaPuntos]
+Activo=
+ActivoCondicion=SQL(<T>select case when (select Acceso From Usuario Where Usuario=<T>+comillas(usuario)+<T>)<BR>In (Select Nombre From TablaStD Where TablaSt = <T>+comillas(<T>PERFILES MAESTROS ART/AGTE<T>)+<T>)<BR>then 1 else 0 End<T>)=1
+
+;***** JAVT DM0144 Termina condicionamiento del menu de maestros
+
+[Art.frm/Acciones.CatMarcas]
+Nombre=CatMarcas
+Boton=0
+NombreEnBoton=S
+Menu=&Maestros
+NombreDesplegar=Catalagos de Marcas 
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0270CatMarcasfrm
+Activo=S
+Visible=S
+[Art.frm/Acciones.Cattipo]
+Nombre=Cattipo
+Boton=0
+Menu=&Maestros
+NombreDesplegar=Catalago de Tipos
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0270CattiposFrm
+Activo=S
+Visible=S
+
+
+[Art.frm/Acciones.accionSEO]
+Nombre=accionSEO
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=SEO
+EnBarraHerramientas=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=Ejecutar(<T>PlugIns\eComerce.exe <T>+Art:Art.Articulo+<T> <T>+1+<T> <T>+Usuario )
+
+[Art.frm/Plan.Art.CtaCliente]
+Carpeta=Plan
+Clave=Art.CtaCliente
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=12
+ColorFondo=Blanco
+ColorFuente=Negro
+
+[Art.frm/Plan.Art.TipoEntradaMavi]
+Carpeta=Plan
+Clave=Art.TipoEntradaMavi
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Blanco
+ColorFuente=Negro
+
+
+[Art.frm/Acciones.ImpreEtiqAdjud]
+Nombre=ImpreEtiqAdjud
+Boton=46
+NombreEnBoton=S
+NombreDesplegar=Imprime Etiqueta Adjudica    
+EnBarraHerramientas=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+EspacioPrevio=S
+Expresion=Ejecutar(<T>Plugins\EtiquetasAdjudicaciones.exe <T> +Usuario+<T> <T>+Art:Art.Articulo+<T> <T>+1)
+EjecucionCondicion=Art:Art.Grupo=<T>MERCANCIA ESPECIAL<T>
+EjecucionMensaje=<T>Solo Grupos Mercancia Especial<T>
+
+[Art.frm/Acciones.ACW00042FichaTecnica]
+Nombre=ACW00042FichaTecnica
+Boton=109
+EnBarraHerramientas=S
+EnMenu=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+NombreEnBoton=S
+NombreDesplegar=Ficha técnica
+EspacioPrevio=S
+Expresion=Ejecutar(<T>PlugIns\FichasTecnicasxArt\FichasTecnicasSIP.exe <T>+ usuario)
+
+[Art.frm/Ecommerce.Art.codigopadre]
+Carpeta=Ecommerce
+Clave=Art.codigopadre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=11
+ColorFondo=Blanco
+ColorFuente=Negro
+
+[Art.frm/Ecommerce.Art.espadre]
+Carpeta=Ecommerce
+Clave=Art.espadre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+
+[Art.frm/Detalle.ClaveSAT]
+Carpeta=Detalle
+Clave=ClaveSAT
+Editar=N
+LineaNueva=N
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+Tamano=15
+
+[Art.frm/Plan.Art.FechaLanzamiento]
+Carpeta=Plan
+Clave=Art.FechaLanzamiento
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+EspacioPrevio=S
+Tamano=20
+
+[Art.frm/Plan.Art.FechaVigencia]
+Carpeta=Plan
+Clave=Art.FechaVigencia
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+Tamano=20

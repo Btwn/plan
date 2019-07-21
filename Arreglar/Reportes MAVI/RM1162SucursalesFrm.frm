@@ -1,0 +1,121 @@
+[Forma]
+Clave=RM1162SucursalesFrm
+Nombre=Sucursales
+Icono=94
+Modulos=(Todos)
+ListaCarpetas=Sucursales
+CarpetaPrincipal=Sucursales
+PosicionInicialIzquierda=450
+PosicionInicialArriba=212
+PosicionInicialAlturaCliente=589
+PosicionInicialAncho=324
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+BarraHerramientas=S
+ListaAcciones=Seleccionar
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+VentanaAjustarZonas=S
+VentanaBloquearAjuste=S
+[Acciones.Select]
+Nombre=Select
+Boton=0
+NombreDesplegar=Seleccionar todo
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+EnMenu=S
+[Acciones.QuitarSeleccion]
+Nombre=QuitarSeleccion
+Boton=0
+NombreDesplegar=Quitar selección
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Sucursales]
+Estilo=Iconos
+Clave=Sucursales
+MenuLocal=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1162SucursalesVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaAcciones=Select<BR>QuitarSeleccion
+CarpetaVisible=S
+ListaEnCaptura=Nombre
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+IconosNombre=RM1162SucursalesVis:Sucursal
+[Sucursales.Nombre]
+Carpeta=Sucursales
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+[Sucursales.Columnas]
+0=-2
+1=314
+Nombre=604
+Sucursal=64
+2=-2
+[Acciones.Seleccionar.Variables]
+Nombre=Variables
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>sucursales<T>)
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreDesplegar=Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=Variables<BR>Asignar<BR>Seleccion
+Activo=S
+Visible=S
+NombreEnBoton=S
+[Acciones.Seleccionar.Seleccion]
+Nombre=Seleccion
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM1162Sucursales,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)<BR>Reemplaza( Comillas(<T>,<T>),<T>,<T>, Mavi.RM1162Sucursales)
+

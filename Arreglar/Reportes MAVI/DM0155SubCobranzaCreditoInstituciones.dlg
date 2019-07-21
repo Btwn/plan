@@ -1,0 +1,73 @@
+[Dialogo]
+Clave=DM0155SubCobranzaCreditoInstituciones
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialAlturaCliente=176
+PosicionInicialAncho=500
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+ListaAcciones=RM0755<BR>RM0936<BR>RM0948<BR>RM0949<BR>RM1109
+PosicionInicialIzquierda=538
+PosicionInicialArriba=313
+[Acciones.RM0755]
+Nombre=RM0755
+Boton=0
+NombreDesplegar=RM0755B Auixliar Saldos de Clientes Instituciones
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0755BCxcForAnaCarteraFrm
+Activo=S
+Antes=S
+Visible=S
+AntesExpresiones=Asigna(Info.Conteo,1)
+[Acciones.RM0936]
+Nombre=RM0936
+Boton=0
+NombreDesplegar=RM0936 Documentos Pendientes de Envío a Cobro Instituciones
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0936DoctosPendEnvioCobroInstitucionesFrm
+Activo=S
+Visible=S
+[Acciones.RM0948]
+Nombre=RM0948
+Boton=0
+NombreDesplegar=RM0948 Análisis de Enteros de Instituciones
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0948CxcAnEntInstFrm
+Activo=S
+Antes=S
+Visible=S
+AntesExpresiones=Asigna(Info.Conteo,1)
+[Acciones.RM0949]
+Nombre=RM0949
+Boton=0
+NombreDesplegar=RM0949 Control de Envíos a Cobros Instituciones
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0949CxcCtrlEnvCobInstFrm
+Activo=S
+Antes=S
+Visible=S
+AntesExpresiones=Asigna(Info.Bloqueado,Verdadero)
+
+[Acciones.RM1109]
+Nombre=RM1109
+Boton=0
+NombreDesplegar=RM1109 Validacion envio a cobro
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1109ValidacionEnvioCobroFrm
+Activo=S
+Visible=S

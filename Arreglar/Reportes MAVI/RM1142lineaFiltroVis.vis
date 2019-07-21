@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1142lineaFiltroVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=Select distinct Linea From Art With(NoLock)<BR>Where Categoria=<T>Venta<T> and linea is not null and linea <> <T> <T> AND grupo = <T>MERCANCIA DE LINEA<T><BR>{Si(ConDatos(Mavi.RM1142FamArt), <T> And Familia IN(<T>+Mavi.RM1142FamArt+<T>)<T>, <T><T>)}<BR>order By Linea
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

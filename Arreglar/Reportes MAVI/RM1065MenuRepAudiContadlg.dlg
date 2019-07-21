@@ -1,0 +1,291 @@
+[Dialogo]
+Clave=RM1065MenuRepAudiContadlg
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=RM1065<BR>RM1069<BR>RM1070<BR>RM1071<BR>RM1143<BR>RM1143Acuerdos<BR>RM1143Ventas<BR>RM1143Revision<BR>RM1143Anexos<BR>RM1143Cedula<BR>RM1143Combus<BR>RM1143H1<BR>RM1143C1<BR>RM1143C2<BR>RM1143Otros<BR>RM1143Gastos<BR>RM1143I1<BR>RM1143G1<BR>RM1143E1<BR>RM1143E2<BR>RM1143F1<BR>RM1143F2<BR>RM1066<BR>RM1067<BR>RM1076<BR>RM1077
+PosicionInicialAlturaCliente=248
+PosicionInicialAncho=500
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+[Acciones.RM1065]
+Nombre=RM1065
+Boton=0
+NombreDesplegar=RM1065 Resumen Cuentas de Resultado Operativo
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1065ResumenCtasResulOperativasrep
+Activo=S
+Visible=S
+[Acciones.RM1066]
+Nombre=RM1066
+Boton=0
+NombreDesplegar=RM1066 Resumen Cuentas de Balance Operativo
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1066ResumenCtasBalanceOperativorep
+Activo=S
+Visible=S
+EspacioPrevio=S
+[Acciones.RM1067]
+Nombre=RM1067
+Boton=0
+NombreDesplegar=RM1067 Resumen Cuentas de Balance Contable
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1067ResumenCtasBalanceContablerep
+Activo=S
+Visible=S
+[Acciones.RM1069]
+Nombre=RM1069
+Boton=0
+NombreDesplegar=RM1069 Resumen Cuentas de Resultado Contable
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1069ResumenCtasResulContablerep
+Activo=S
+Visible=S
+[Acciones.RM1070]
+Nombre=RM1070
+Boton=0
+NombreDesplegar=RM1070 Analitico Cuentas de Resultado Operativo
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1070AnaliticoCtasResulOperep
+Activo=S
+Visible=S
+[Acciones.RM1071]
+Nombre=RM1071
+Boton=0
+NombreDesplegar=RM1071 Analitico Cuentas  de  Resultado Contable
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1071AnaliticoCtasResulContablerep
+Activo=S
+Visible=S
+[Acciones.RM1076]
+Nombre=RM1076
+Boton=0
+NombreDesplegar=RM1076 Analitico Cuentas de Balance Operativo
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1076AnaliticoBalanceOpeRep
+Activo=S
+Visible=S
+[Acciones.RM1077]
+Nombre=RM1077
+Boton=0
+NombreDesplegar=RM1077 Analitico Cuentas de Balance Contable
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1077AnaliticoctasBalanceContablerep
+Activo=S
+Visible=S
+
+[Acciones.RM1143]
+Nombre=RM1143
+Boton=0
+NombreDesplegar=RM1143 Concentradora
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143PrincipalFrm
+Activo=S
+Visible=S
+EspacioPrevio=S
+[Acciones.RM1143Acuerdos]
+Nombre=RM1143Acuerdos
+Boton=0
+NombreDesplegar=RM1143 Acuerdos Proveedores
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143ReportesAnalisis01Frm
+Activo=S
+Visible=S
+[Acciones.RM1143Ventas]
+Nombre=RM1143Ventas
+Boton=0
+NombreDesplegar=RM1143 Ventas Administrativas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143ReportesAnalisis02Frm
+Activo=S
+Visible=S
+[Acciones.RM1143Revision]
+Nombre=RM1143Revision
+Boton=0
+NombreDesplegar=RM1143 Revisión Gastos MAVI
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143ReportesAnalisis03Frm
+Activo=S
+Visible=S
+[Acciones.RM1143Anexos]
+Nombre=RM1143Anexos
+Boton=0
+NombreDesplegar=RM1143 Anexos Análisis
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143ReportesAnalisis04Frm
+Activo=S
+Visible=S
+[Acciones.RM1143Cedula]
+Nombre=RM1143Cedula
+Boton=0
+NombreDesplegar=RM1143 Cedula Costos Venta
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143CedulaCostoVentaFrm
+Activo=S
+Visible=S
+
+[Acciones.RM1143C1]
+Nombre=RM1143C1
+Boton=0
+NombreDesplegar=RM1143 Revisión Gastos Comer
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143CRevisionGastosCMA
+Activo=S
+Visible=S
+EspacioPrevio=S
+
+[Acciones.RM1143C2]
+Nombre=RM1143C2
+Boton=0
+NombreDesplegar=RM1143 Provisión Combustible Comer
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143CCostoRAMValesGAS
+Activo=S
+Visible=S
+[Acciones.RM1143Combus]
+Nombre=RM1143Combus
+Boton=0
+NombreDesplegar=RM1143 Provisión Combustible MAVI
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143RepProviCombustibleFrm
+Activo=S
+Visible=S
+[Acciones.RM1143Otros]
+Nombre=RM1143Otros
+Boton=0
+NombreDesplegar=RM1143 Otros Ingresos Nomina
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143RepOtrosIngresosFrm        
+Activo=S
+Visible=S
+[Acciones.RM1143Gastos]
+Nombre=RM1143Gastos
+Boton=0
+NombreDesplegar=RM1143 Gastos Nomina
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1143GastosNominaRep      
+Activo=S
+Visible=S
+
+[Acciones.RM1143E1]
+Nombre=RM1143E1
+Boton=0
+NombreDesplegar=RM1143 Explorador de Plazas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143PlazaFrm
+Activo=S
+Visible=S
+[Acciones.RM1143E2]
+Nombre=RM1143E2
+Boton=0
+NombreDesplegar=RM1143 Historial de Personal
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143EPrincipalGastos
+Activo=S
+Visible=S
+
+[Acciones.RM1143F1]
+Nombre=RM1143F1
+Boton=0
+NombreDesplegar=RM1143 Estatus Monedero
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143EstatusMonederoFrm
+Activo=S
+Visible=S
+EspacioPrevio=S
+[Acciones.RM1143F2]
+Nombre=RM1143F2
+Boton=0
+NombreDesplegar=RM1143 Provision Monedero Por AM
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143IniProvMonXAMFrm
+Activo=S
+Visible=S
+
+[Acciones.RM1143G1]
+Nombre=RM1143G1
+Boton=0
+NombreDesplegar=RM1143 Explorador de Sucursales
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143ExploradorSucursalesFrm
+Activo=S
+Visible=S
+EspacioPrevio=S
+
+[Acciones.RM1143H1]
+Nombre=RM1143H1
+Boton=0
+NombreDesplegar=RM1143 Cobranza Seguros de Vida
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143CobranzaSegurosDeVidaFrm
+Activo=S
+Visible=S
+
+[Acciones.RM1143I1]
+Nombre=RM1143I1
+Boton=0
+NombreDesplegar=RM1143 Auditoria Nomina
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1143AuditoriaNominaFrm
+Activo=S
+Visible=S
+

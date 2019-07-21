@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=DM0243UsAplicaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nota
+SQL=Select Nota From Cxc Where FormaCobro=<T>DEPOSITO EN CTA<T> and Nota is not null<BR>GROUP BY Nota
+[Nota]
+Clave=Nota
+Nombre=Usuario
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nota
+TipoDatos=Texto

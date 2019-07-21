@@ -1,0 +1,163 @@
+[Forma]
+Clave=DM0277ImportaCtaIncobrableFrm
+Nombre=Importador de Cuentas Incobrables
+Icono=464
+Modulos=(Todos)
+ListaCarpetas=Vista
+CarpetaPrincipal=Vista
+PosicionInicialAlturaCliente=702
+PosicionInicialAncho=336
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaBloquearAjuste=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=472
+PosicionInicialArriba=142
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Importar<BR>Procesar<BR>Cerrar      
+ExpresionesAlCerrar=EjecutarSQL(<T>EXEC SP_DM0277TruncaTabla<T>)
+[Vista]
+Estilo=Hoja
+Clave=Vista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0277ImportaCtaIncobrableVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+Detalle=S
+PermiteEditar=S
+PestanaNombre=Cuentas a Importar
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+Pestana=S
+PestanaOtroNombre=S
+HojaTitulosEnBold=S
+ListaEnCaptura=DM0277ImportaCtaIncobrableTbl.Cuenta<BR>DM0277ImportaCtaIncobrableTbl.Concepto
+[Vista.Columnas]
+0=103
+1=104
+2=80
+3=122
+4=85
+5=151
+ID=64
+Fecha=94
+Cliente=124
+Movimiento=124
+Saldo=64
+Concepto=165
+Mov=124
+MovID=124
+Cuenta=114
+Consecutivo=100
+Validacion=89
+[Acciones.Cerrar]
+Nombre=Cerrar 
+Boton=5
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+EspacioPrevio=S
+[Acciones.Importar]
+Nombre=Importar
+Boton=115
+NombreEnBoton=S
+NombreDesplegar=&Importar
+EnBarraHerramientas=S
+Carpeta=Vista
+TipoAccion=Controles Captura
+ClaveAccion=Enviar/Recibir Excel
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Importar<BR>Guardar<BR>Actualiza
+[Acciones.Procesar]
+Nombre=Procesar
+Boton=7
+NombreEnBoton=S
+NombreDesplegar=&Procesar
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+EspacioPrevio=S
+Multiple=S
+ListaAccionesMultiples=Importar<BR>Refrescar<BR>Cerrar
+ConCondicion=S
+EjecucionCondicion=Si<BR>    SQL(<T>SELECT COUNT(*) FROM DM0277ImportaCtaIncobrable<T>) > 0<BR>Entonces<BR>    Verdadero<BR>Sino<BR>    Error(<T>SIN DATOS A IMPORTAR<T>)<BR>    AbortarOperacion<BR>Fin
+[Acciones.Importar.Actualiza]
+Nombre=Actualiza
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Activo=S
+Visible=S
+[Acciones.Importar.Importar]
+Nombre=Importar
+Boton=0
+Carpeta=(Carpeta principal)
+TipoAccion=Controles Captura
+ClaveAccion=Enviar/Recibir Excel
+[Acciones.Importar.Guardar]
+Nombre=Guardar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Guardar Cambios
+[Acciones.Procesar.Refrescar]
+Nombre=Refrescar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Activo=S
+Visible=S
+[Acciones.Procesar.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Procesar.Importar]
+Nombre=Importar
+Boton=0
+TipoAccion=Expresion
+Activo=S
+ConCondicion=S
+Visible=S
+Expresion=EjecutarSQL(<T>EXEC SP_DM0277InsertarImportados <T>+COMILLAS(Usuario)+<T>)
+EjecucionCondicion=Asigna(Mavi.DM0169Dialogo,SQL(<T>SELECT dbo.FN_DM0277ValidaImportados()<T>))<BR>Si<BR>   Mavi.DM0169Dialogo<><T>NO<T><BR>Entonces<BR>   Error(Mavi.DM0169Dialogo)<BR>   AbortarOperacion<BR>Sino<BR>   Informacion(<T>DATOS IMPORTADOS CORRECTAMENTE<T>)<BR>   Verdadero<BR>Fin
+[Vista.DM0277ImportaCtaIncobrableTbl.Cuenta]
+Carpeta=Vista
+Clave=DM0277ImportaCtaIncobrableTbl.Cuenta
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Blanco
+ColorFuente=Negro
+[Vista.DM0277ImportaCtaIncobrableTbl.Concepto]
+Carpeta=Vista
+Clave=DM0277ImportaCtaIncobrableTbl.Concepto
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+

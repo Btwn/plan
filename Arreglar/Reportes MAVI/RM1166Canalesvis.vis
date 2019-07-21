@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1166Canalesvis
+Nombre=Canales
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID
+SQL=select ID From VentasCanalMAVI With(Nolock)<BR>Where ID in (3,4,7)
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID

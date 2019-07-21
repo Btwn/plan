@@ -1,0 +1,23 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spWebPaginaParam
+@SesionID	uniqueidentifier,
+@Pagina		varchar(20),
+@Mensaje	varchar(255)	= NULL OUTPUT
+
+AS BEGIN
+SELECT @Mensaje = NULL
+SELECT p.*
+FROM WebPaginaParam p
+LEFT OUTER JOIN WebPaginaParamGrupo g ON g.Pagina = p.Pagina AND g.Grupo = p.Grupo
+WHERE p.Pagina = @Pagina
+ORDER BY g.Orden, p.Orden
+RETURN
+END
+

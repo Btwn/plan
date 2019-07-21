@@ -1,0 +1,22 @@
+;***** Modificacion Edgar Montelongo
+;***** 30-Feb-2009
+
+[Personal.frm/Forma]
+ExpresionesAlMostrar=Asigna(Info.Copiar,Falso)
+
+;*** Desarrollo de Campañas 27/08/09, Modifico:Joel García (Mex), se agrego un campo adicional. 
+[Personal.frm/OtrosDatos.ListaEnCaptura]
+Personal.Confidencial=Personal.Sembrado
+Personal.Sembrado=(Fin)
+
+[Personal.frm/OtrosDatos.Personal.Sembrado]
+Carpeta=OtrosDatos
+Clave=Personal.Sembrado
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+
+; *** Fin desarrollo de campañas.

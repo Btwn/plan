@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM1197COMSFiltroLineaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=SELECT DISTINCT<BR>  Linea<BR>FROM (SELECT<BR>  Al.Familia,<BR>  Al.Linea<BR>FROM ArtLinea Al WITH(NOLOCK)<BR>JOIN Art A WITH (NOLOCK)<BR>ON A.Familia = Al.Familia<BR>AND A.Linea = Al.Linea<BR>WHERE LEN(Al.Familia) > 0<BR>AND LEN(Al.Linea) > 0<BR>AND Grupo = <T>MERCANCIA DE LINEA<T><BR>{Si(ConDatos(Mavi.RM1197Familia),<T> AND Al.Familia IN (<T>+Mavi.RM1197Familia+<T>)<T>,<T><T>)}<BR>) tablaDerivada<BR>ORDER BY Linea
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

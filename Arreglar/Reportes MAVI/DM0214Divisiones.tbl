@@ -1,0 +1,47 @@
+[Tabla]
+Icono=0
+Clave=DM0214Divisiones
+Archivo=DM0214Divisiones
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Division<BR>Region<BR>Categoria
+LlavePrimaria=Division<BR>Region
+ListaRelaciones=region
+SQL=SELECT<BR>  Division,<BR>  Region,<BR>  Categoria<BR><BR>FROM<BR>  DM0214Divisiones
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+[Region]
+Clave=Region
+Nombre=Region
+Visible=S
+TamanoValidacion=30
+Tamano=30
+AyudaMemAvanzada=S
+AyudaMemOpc=Unicamente opciones listadas
+AyudaMemTabla=dm0214regiones
+TipoDatos=Texto
+[Relaciones.region]
+TipoRelacion=Opcional
+LlaveLocal=Region
+Clave=region
+TablaRemota=DM0214Regiones
+LlaveRemota=Region
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=60
+Tamano=60
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+OpcionesUnicamente=S
+ListaOpciones=CREDITO MENUDEO<BR>DIMAS<BR>INSTITUCIONES

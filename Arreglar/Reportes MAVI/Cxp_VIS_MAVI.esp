@@ -1,0 +1,31 @@
+
+;*** 16-Feb-08  ALQG se puso visible el campo de importe total en el movimiento de acuerdo proveedor.
+
+[Cxp.vis/ImporteTotal]
+CondicionDespliege=MovTipoEn(<T>CXP<T>, Cxp.Mov,(CXP.F,CXP.FAC,CXP.NC,CXP.CA, CXP.A, CXP.AA, CXP.DE, CXP.CAP,CXP.NCF))
+
+[Cxp.vis/Vista.ListaCampos]
+Cxp.EmidaRequestId=Cxp.VencimientoProveedor
+Cxp.VencimientoProveedor=MovTipo.Modulo
+
+[Cxp.vis/Vista.SQL]
+Cxp.EmidaRequestId,=Cxp.VencimientoProveedor,
+Cxp.VencimientoProveedor,=MovTipo.Modulo,
+
+
+[Cxp.vis/Cxp.VencimientoProveedor]
+Clave=Cxp.VencimientoProveedor
+Nombre=Vencimiento Proveedor
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+CondicionDespliege=Si<BR> (Cxp.Mov=<T>Sol Acuerdo Prov<T>) o (Cxp.Mov=<T>Acuerdo Proveedor<T>)<BR>Entonces<BR>    Verdadero<BR>Sino<BR>    Falso<BR>Fin
+CondicionEdicion=Si<BR>(Cxp.Mov=<T>Sol Acuerdo Prov<T>) o ((Cxp.Mov=<T>Acuerdo Proveedor<T>)y ((Estatus = (<T>SINAFECTAR<T>)) o (Estatus = (<T>PENDIENTE<T>))))<BR>Entonces<BR>    Verdadero<BR>Sino<BR>    Falso<BR>Fin
+FormatoValidacion=dd/mmmm/aaaa
+ValorPorOmision=Nulo
+LigaTabla=Cxp
+LigaCampo=VencimientoProveedor
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=VencimientoProveedor

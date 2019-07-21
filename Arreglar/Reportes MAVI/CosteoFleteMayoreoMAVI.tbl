@@ -1,0 +1,94 @@
+[Tabla]
+Icono=0
+Clave=CosteoFleteMayoreoMAVI
+Nombre=Costeo Flete Mayoreo
+Archivo=CosteoFleteMayoreoMAVI
+Modulos=(Todos)
+Singular=Costeo Flete Mayoreo
+TipoTabla=Maestros
+ListaCampos=TipoUnidadVehicular<BR>AsistenteCostoFlete<BR>CostoManiobra<BR>CostoDestino<BR>DestinoSinCosto<BR>MagisCostoxKm<BR>MagisCostoEntrega<BR>MagisEntregaSinCosto<BR>SucCostoxSuc
+LlavePrimaria=TipoUnidadVehicular
+SQL=SELECT<BR>  TipoUnidadVehicular,<BR>  AsistenteCostoFlete,<BR>  CostoManiobra,<BR>  CostoDestino,<BR>  DestinoSinCosto,<BR>  MagisCostoxKm,<BR>  MagisCostoEntrega,<BR>  MagisEntregaSinCosto,<BR>  SucCostoxSuc<BR><BR>FROM<BR>  CosteoFleteMayoreoMAVI
+[TipoUnidadVehicular]
+Clave=TipoUnidadVehicular
+Nombre=Tipo Unidad Vehicular
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>Select TipoUnidad from TipoUnidadVehicularMAVI<T>)
+TipoDatos=Texto
+[AsistenteCostoFlete]
+Clave=AsistenteCostoFlete
+Nombre=Asistente Costo Flete
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+OpcionesValidar=S
+Requerido=S
+ValorPorOmision=<T>Tabular<T>
+ListaOpciones=Tabular<BR>Captura Usuario
+TipoDatos=Texto
+[CostoManiobra]
+Clave=CostoManiobra
+Nombre=Costo Maniobra
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorPorOmision=0
+[CostoDestino]
+Clave=CostoDestino
+Nombre=Costo Destino
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorPorOmision=0
+[DestinoSinCosto]
+Clave=DestinoSinCosto
+Nombre=Destinos Sin Costo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=1
+Cantidad=S
+[MagisCostoxKm]
+Clave=MagisCostoxKm
+Nombre=Mag. Costo x Km
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorPorOmision=0
+[MagisCostoEntrega]
+Clave=MagisCostoEntrega
+Nombre=Mag. Costo Entrega
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorPorOmision=0
+[MagisEntregaSinCosto]
+Clave=MagisEntregaSinCosto
+Nombre=Mag. Entregas Sin Costo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+ValorPorOmision=1
+[SucCostoxSuc]
+Clave=SucCostoxSuc
+Nombre=Costo x Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorPorOmision=0

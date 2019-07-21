@@ -1,0 +1,60 @@
+[Dialogo]
+Clave=RM1110FaltInvMenu
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialAlturaCliente=152
+PosicionInicialAncho=330
+ListaAcciones=FaltInvVendFrm<BR>DiasFrm<BR>No_AjustesCorreoFrm<BR>EmailAjustesFrm
+PosicionInicialIzquierda=518
+PosicionInicialArriba=284
+[Acciones.DiasFrm]
+Nombre=DiasFrm
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=RM1110 Ajuste Dias
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1110DiasFrm
+Activo=S
+Visible=S
+[Acciones.No_AjustesCorreoFrm]
+Nombre=No_AjustesCorreoFrm
+Boton=0
+NombreDesplegar=RM1110 Envio de Correos por numero de ajustes
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1110No_AjustesCorreoFrm
+Activo=S
+Visible=S
+NombreEnBoton=S
+[Acciones.EmailAjustesFrm]
+Nombre=EmailAjustesFrm
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=RM1110 Email Ajustes
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1110EmailAjustesFrm
+Activo=S
+Visible=S
+[Acciones.FaltInvVendFrm]
+Nombre=FaltInvVendFrm
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=RM1110 Faltantes Inventario
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM1110FaltInvVendFrm
+Activo=S
+Visible=S

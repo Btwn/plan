@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=PropiedadesListaMAVI
+Nombre=PropiedadesListaMAVI
+Modulos=(Todos)
+Singular=PropiedadesListaMAVI
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Propiedad
+SQL=SELECT DISTINCT<BR> <T>Propiedad<T> = Tipo<BR>FROM <BR>  Prop<BR>WHERE Rama = <T>INV<T> AND Tipo NOT IN(<T>{Mapeo.Prop1}<T>,<T>{Mapeo.Prop2}<T>,<T>{Mapeo.Prop3}<T>,<T>{Mapeo.Prop4}<T>,<T>{Mapeo.Prop5}<T>)
+[Propiedad]
+Clave=Propiedad
+Nombre=Propiedad
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Propiedad

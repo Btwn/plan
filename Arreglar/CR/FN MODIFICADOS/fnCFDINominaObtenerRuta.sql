@@ -1,0 +1,34 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnCFDINominaObtenerRuta(
+@Archivo		varchar(255)
+)
+RETURNS varchar(255)
+AS
+BEGIN
+DECLARE @Auxiliar		int,
+@AuxiliarAnt	int,
+@Ruta			varchar(255)
+SELECT @AuxiliarAnt = 0
+WHILE(1=1)
+BEGIN
+SELECT @Auxiliar = CHARINDEX('\', @Archivo, @AuxiliarAnt)
+IF NULLIF(@Auxiliar, 0) IS NULL
+BEGIN
+IF @AuxiliarAnt <> 0
+SELECT @Ruta = SUBSTRING(@Archivo, 1, @AuxiliarAnt-2)
+ELSE
+SELECT @Ruta = @Archivo
+BREAK
+END
+SELECT @AuxiliarAnt = @Auxiliar + 1
+END
+RETURN @Ruta
+END
+

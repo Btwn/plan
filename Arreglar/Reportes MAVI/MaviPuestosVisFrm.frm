@@ -1,0 +1,125 @@
+[Forma]
+Clave=MaviPuestosVisFrm
+Nombre=Puestos
+Icono=599
+Modulos=(Todos)
+ListaCarpetas=Vista
+CarpetaPrincipal=Vista
+PosicionInicialAlturaCliente=383
+PosicionInicialAncho=320
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaBloquearAjuste=S
+VentanaAvanzaTab=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=480
+PosicionInicialArriba=307
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar
+[Vista]
+Estilo=Iconos
+Clave=Vista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=MaviPuestosVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Descripcion
+CarpetaVisible=S
+MenuLocal=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosSubTitulo=<T>Puesto<T>
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+ListaAcciones=SelAll<BR>QuitarSel
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaEnLinea=S
+IconosNombre=MaviPuestosVis:puesto
+[Vista.Columnas]
+Puesto=82
+Descripcion=350
+0=-2
+1=246
+2=-2
+[Vista.Descripcion]
+Carpeta=Vista
+Clave=Descripcion
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Seleccionar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Asigna<BR>Registra<BR>Seleccionar
+[Acciones.SelAll]
+Nombre=SelAll
+Boton=0
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+E
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.QuitarSel]
+Nombre=QuitarSel
+Boton=0
+UsaTeclaRapida=S
+NombreDesplegar=&Quitar Selección
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Registra]
+Nombre=Registra
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Seleccionar]
+Nombre=Seleccionar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+

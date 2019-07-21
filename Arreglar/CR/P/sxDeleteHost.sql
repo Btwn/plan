@@ -1,0 +1,21 @@
+SET DATEFIRST 7
+SET ANSI_NULLS ON
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER ON
+SET NOCOUNT ON
+SET ANSI_WARNINGS ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE sxDeleteHost
+@external_id VARCHAR(50),
+@group_id VARCHAR(50)
+AS
+BEGIN
+DELETE FROM sx_node WHERE node_id = @external_id
+DELETE FROM sx_node_host WHERE node_id = @external_id
+DELETE FROM sx_node_security WHERE node_id = @external_id
+IF NOT EXISTS(SELECT node_id FROM sx_node WHERE node_group_id = @group_id)
+DELETE FROM sx_node_group WHERE node_group_id = @group_id
+END
+

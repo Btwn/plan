@@ -1,0 +1,45 @@
+
+[Tabla]
+Icono=0
+Clave=DM0221VTASCLibMaxMVtbl
+Nombre=VTASCLibMaxMV
+Archivo=VTASCLibMaxMV
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IdLibMaxMV<BR>UEN<BR>Monto
+LlavePrimaria=IdLibMaxMV
+ControlID=S
+CampoID=IdLibMaxMV
+SQL=SELECT<BR>  IdLibMaxMV,<BR>  UEN,<BR>  Monto<BR><BR>  FROM VTASCLibMaxMV
+[IdLibMaxMV]
+Clave=IdLibMaxMV
+Nombre=IdLibMaxMV
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+AyudaEnCaptura=Vista
+AyudaForma=DM0221MuestraUENfrm
+AyudaVista=DM0221MuestraUENvis
+AyudaCampo=UEN
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>No se puede repetir la UEN<T>
+ValidacionCondicion=Si<BR>    SQL(<T>SELECT COUNT(UEN) FROM VTASCLibMaxMV WHERE UEN = :nUEN<T>,UEN)>0<BR>Entonces<BR>    Falso<BR>Sino<BR>    Verdadero<BR>Fin
+[Monto]
+Clave=Monto
+Nombre=Monto
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+AyudaEnCaptura=Calculadora
+Requerido=S

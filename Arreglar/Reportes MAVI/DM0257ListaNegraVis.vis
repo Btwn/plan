@@ -1,0 +1,771 @@
+[Vista]
+Icono=0
+Clave=DM0257ListaNegraVis
+Nombre=Lista Negra
+Modulos=(Todos)
+ListaTablas=DM0257ListaNegra
+TablaPrincipal=DM0257ListaNegra
+ListaCampos=DM0257ListaNegra.ID<BR>DM0257ListaNegra.Activo<BR>DM0257ListaNegra.InfoAdicional<BR>DM0257ListaNegra.Movimiento<BR>DM0257ListaNegra.Sucursal<BR>DM0257ListaNegra.Calificaciones<BR>DM0257ListaNegra.Observaciones<BR>DM0257ListaNegra.Cliente<BR>DM0257ListaNegra.NombreCliente<BR>DM0257ListaNegra.DomicilioCliente<BR>DM0257ListaNegra.ColoniaCliente<BR>DM0257ListaNegra.CrucesCliente<BR>DM0257ListaNegra.PoblacionCliente<BR>DM0257ListaNegra.EstadoYCPCliente<BR>DM0257ListaNegra.TelefonoCliente<BR>DM0257ListaNegra.EstadoCivilCliente<BR>DM0257ListaNegra.FechaNacimientoCliente<BR>DM0257ListaNegra.TipoContacto<BR>DM0257ListaNegra.NombreConyuge<BR>DM0257ListaNegra.DomicilioConyuge<BR>DM0257ListaNegra.ColoniaConyuge<BR>DM0257ListaNegra.CrucesConyuge<BR>DM0257ListaNegra.PoblacionConyuge<BR>DM0257ListaNegra.<CONTINUA>
+ListaCampos002=<CONTINUA>EstadoYCPConyuge<BR>DM0257ListaNegra.TelefonoConyuge<BR>DM0257ListaNegra.FechaNacimientoConyuge<BR>DM0257ListaNegra.TipoContacto1<BR>DM0257ListaNegra.NombreAval<BR>DM0257ListaNegra.DomicilioAval<BR>DM0257ListaNegra.ColoniaAval<BR>DM0257ListaNegra.CrucesAval<BR>DM0257ListaNegra.PoblacionAval<BR>DM0257ListaNegra.EstadoYCPAval<BR>DM0257ListaNegra.TelefonoAval<BR>DM0257ListaNegra.FechaNacimientoAval<BR>DM0257ListaNegra.TipoContacto2<BR>DM0257ListaNegra.NombreConyugeAval<BR>DM0257ListaNegra.DomicilioConyugeAval<BR>DM0257ListaNegra.ColoniaConyugeAval<BR>DM0257ListaNegra.CrucesConyugeAval<BR>DM0257ListaNegra.PoblacionConyugeAval<BR>DM0257ListaNegra.EstadoYCPConyugeAval<BR>DM0257ListaNegra.TelefonoConyugeAval<BR>DM0257ListaNegra.FechaNacimientoConyugeAval<BR>DM0257ListaNegra.TipoContacto3<BR>DM025<CONTINUA>
+ListaCampos003=<CONTINUA>7ListaNegra.NombreCtoRef1<BR>DM0257ListaNegra.ParentescoCtoRef1<BR>DM0257ListaNegra.FechaNacimientoCtoRef1<BR>DM0257ListaNegra.DireccionCtoRef1<BR>DM0257ListaNegra.ColoniaCtoRef1<BR>DM0257ListaNegra.PoblacionCtoRef1<BR>DM0257ListaNegra.EstadoCtoRef1<BR>DM0257ListaNegra.TelefonoCtoRef1<BR>DM0257ListaNegra.TipoContacto4<BR>DM0257ListaNegra.NombreCtoRef2<BR>DM0257ListaNegra.ParentescoCtoRef2<BR>DM0257ListaNegra.FechaNacimientoCtoRef2<BR>DM0257ListaNegra.DireccionCtoRef2<BR>DM0257ListaNegra.ColoniaCtoRef2<BR>DM0257ListaNegra.PoblacionCtoRef2<BR>DM0257ListaNegra.EstadoCtoRef2<BR>DM0257ListaNegra.TelefonoCtoRef2<BR>DM0257ListaNegra.Procedencia
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+SQL=SELECT<BR>  DM0257ListaNegra.ID,<BR>  DM0257ListaNegra.Activo,<BR>  DM0257ListaNegra.InfoAdicional,<BR>  DM0257ListaNegra.Movimiento,<BR>  DM0257ListaNegra.Sucursal,<BR>  DM0257ListaNegra.Calificaciones,<BR>  DM0257ListaNegra.Observaciones,<BR>  DM0257ListaNegra.Cliente,<BR>  DM0257ListaNegra.NombreCliente,<BR>  DM0257ListaNegra.DomicilioCliente,<BR>  DM0257ListaNegra.ColoniaCliente,<BR>  DM0257ListaNegra.CrucesCliente,<BR>  DM0257ListaNegra.PoblacionCliente,<BR>  DM0257ListaNegra.EstadoYCPCliente,<BR>  DM0257ListaNegra.TelefonoCliente,<BR>  DM0257ListaNegra.EstadoCivilCliente,<BR>  DM0257ListaNegra.FechaNacimientoCliente,<BR>  DM0257ListaNegra.TipoContacto,<BR>  DM0257ListaNegra.NombreConyuge,<BR>  DM0257ListaNegra.DomicilioConyuge,<BR>  DM0257ListaNegra.ColoniaConyuge,<BR>  DM0257ListaNe<CONTINUA>
+SQL002=<CONTINUA>gra.CrucesConyuge,<BR>  DM0257ListaNegra.PoblacionConyuge,<BR>  DM0257ListaNegra.EstadoYCPConyuge,<BR>  DM0257ListaNegra.TelefonoConyuge,<BR>  DM0257ListaNegra.FechaNacimientoConyuge,<BR>  DM0257ListaNegra.TipoContacto1,<BR>  DM0257ListaNegra.NombreAval,<BR>  DM0257ListaNegra.DomicilioAval,<BR>  DM0257ListaNegra.ColoniaAval,<BR>  DM0257ListaNegra.CrucesAval,<BR>  DM0257ListaNegra.PoblacionAval,<BR>  DM0257ListaNegra.EstadoYCPAval,<BR>  DM0257ListaNegra.TelefonoAval,<BR>  DM0257ListaNegra.FechaNacimientoAval,<BR>  DM0257ListaNegra.TipoContacto2,<BR>  DM0257ListaNegra.NombreConyugeAval,<BR>  DM0257ListaNegra.DomicilioConyugeAval,<BR>  DM0257ListaNegra.ColoniaConyugeAval,<BR>  DM0257ListaNegra.CrucesConyugeAval,<BR>  DM0257ListaNegra.PoblacionConyugeAval,<BR>  DM0257ListaNegra.EstadoYCPConyug<CONTINUA>
+SQL003=<CONTINUA>eAval,<BR>  DM0257ListaNegra.TelefonoConyugeAval,<BR>  DM0257ListaNegra.FechaNacimientoConyugeAval,<BR>  DM0257ListaNegra.TipoContacto3,<BR>  DM0257ListaNegra.NombreCtoRef1,<BR>  DM0257ListaNegra.ParentescoCtoRef1,<BR>  DM0257ListaNegra.FechaNacimientoCtoRef1,<BR>  DM0257ListaNegra.DireccionCtoRef1,<BR>  DM0257ListaNegra.ColoniaCtoRef1,<BR>  DM0257ListaNegra.PoblacionCtoRef1,<BR>  DM0257ListaNegra.EstadoCtoRef1,<BR>  DM0257ListaNegra.TelefonoCtoRef1,<BR>  DM0257ListaNegra.TipoContacto4,<BR>  DM0257ListaNegra.NombreCtoRef2,<BR>  DM0257ListaNegra.ParentescoCtoRef2,<BR>  DM0257ListaNegra.FechaNacimientoCtoRef2,<BR>  DM0257ListaNegra.DireccionCtoRef2,<BR>  DM0257ListaNegra.ColoniaCtoRef2,<BR>  DM0257ListaNegra.PoblacionCtoRef2,<BR>  DM0257ListaNegra.EstadoCtoRef2,<BR>  DM0257ListaNegra.Telefon<CONTINUA>
+SQL004=<CONTINUA>oCtoRef2,<BR>  DM0257ListaNegra.Procedencia<BR><BR>FROM<BR>  DM0257ListaNegra
+[DM0257ListaNegra.ID]
+Clave=DM0257ListaNegra.ID
+LigaTabla=DM0257ListaNegra
+LigaCampo=ID
+Ligado=S
+ClaveBDE=ID
+[DM0257ListaNegra.Activo]
+Clave=DM0257ListaNegra.Activo
+LigaTabla=DM0257ListaNegra
+LigaCampo=Activo
+Ligado=S
+ClaveBDE=Activo
+[DM0257ListaNegra.InfoAdicional]
+Clave=DM0257ListaNegra.InfoAdicional
+LigaTabla=DM0257ListaNegra
+LigaCampo=InfoAdicional
+Tamano=150
+ClaveBDE=InfoAdicional
+TamanoValidacion=10
+Alineacion=Centrado
+Nombre=Informacion Adicional
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.Movimiento]
+Clave=DM0257ListaNegra.Movimiento
+LigaTabla=DM0257ListaNegra
+LigaCampo=Movimiento
+Ligado=S
+ClaveBDE=Movimiento
+[DM0257ListaNegra.Sucursal]
+Clave=DM0257ListaNegra.Sucursal
+LigaTabla=DM0257ListaNegra
+LigaCampo=Sucursal
+Ligado=S
+ClaveBDE=Sucursal
+[DM0257ListaNegra.Calificaciones]
+Clave=DM0257ListaNegra.Calificaciones
+LigaTabla=DM0257ListaNegra
+LigaCampo=Calificaciones
+Tamano=50
+ClaveBDE=Calificaciones
+TamanoValidacion=10
+Alineacion=por Omisión
+ListaRefrescar=DM0257ListaNegra.Observaciones
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Vista
+AyudaForma=DM0257ClaveFrm
+AyudaVista=DM0257ClavesVis
+AyudaCampo=Clave
+ConRefrescar=S
+[DM0257ListaNegra.Observaciones]
+Clave=DM0257ListaNegra.Observaciones
+LigaTabla=DM0257ListaNegra
+LigaCampo=Observaciones
+Tamano=200
+ClaveBDE=Observaciones
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=SQL( <T>select Descripcion from MAVIClaveSeguimiento WHERE CLAVE = <T>+ Comillas(DM0257ListaNegra.Calificaciones) + <T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ConRefrescar=S
+[DM0257ListaNegra.Cliente]
+Clave=DM0257ListaNegra.Cliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=Cliente
+Tamano=15
+ClaveBDE=Cliente
+TamanoValidacion=10
+Alineacion=por Omisión
+ConRefrescar=S
+ListaRefrescar=DM0257ListaNegra.NombreCliente<BR>DM0257ListaNegra.DomicilioCliente<BR>DM0257ListaNegra.ColoniaCliente<BR>DM0257ListaNegra.CrucesCliente<BR>DM0257ListaNegra.PoblacionCliente<BR>DM0257ListaNegra.EstadoYCPCliente<BR>DM0257ListaNegra.TelefonoCliente<BR>DM0257ListaNegra.EstadoCivilCliente<BR>DM0257ListaNegra.FechaNacimientoCliente<BR>DM0257ListaNegra.NombreConyuge<BR>DM0257ListaNegra.DomicilioConyuge<BR>DM0257ListaNegra.ColoniaConyuge<BR>DM0257ListaNegra.CrucesConyuge<BR>DM0257ListaNegra.PoblacionConyuge<BR>DM0257ListaNegra.EstadoYCPConyuge<BR>DM0257ListaNegra.TelefonoConyuge<BR>DM0257ListaNegra.FechaNacimientoConyuge<BR>DM0257ListaNegra.NombreAval<BR>DM0257ListaNegra.DomicilioAval<BR>DM0257ListaNegra.ColoniaAval<BR>DM0257ListaNegra.CrucesAval<BR>DM0257ListaNegra.PoblacionAval<BR>DM0257ListaNe<CONTINUA>
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Vista
+AyudaForma=DM0257ClientesFrm
+AyudaVista=DM0257ClientesVis
+AyudaCampo=Cliente
+ListaRefrescar002=<CONTINUA>gra.EstadoYCPAval<BR>DM0257ListaNegra.TelefonoAval<BR>DM0257ListaNegra.FechaNacimientoAval<BR>DM0257ListaNegra.NombreConyugeAval<BR>DM0257ListaNegra.DomicilioConyugeAval<BR>DM0257ListaNegra.ColoniaConyugeAval<BR>DM0257ListaNegra.CrucesConyugeAval<BR>DM0257ListaNegra.PoblacionConyugeAval<BR>DM0257ListaNegra.EstadoYCPConyugeAval<BR>DM0257ListaNegra.TelefonoConyugeAval<BR>DM0257ListaNegra.FechaNacimientoConyugeAval<BR>DM0257ListaNegra.NombreCtoRef1<BR>DM0257ListaNegra.ParentescoCtoRef1<BR>DM0257ListaNegra.FechaNacimientoCtoRef1<BR>DM0257ListaNegra.DireccionCtoRef1<BR>DM0257ListaNegra.ColoniaCtoRef1<BR>DM0257ListaNegra.PoblacionCtoRef1<BR>DM0257ListaNegra.EstadoCtoRef1<BR>DM0257ListaNegra.TelefonoCtoRef1<BR>DM0257ListaNegra.NombreCtoRef2<BR>DM0257ListaNegra.ParentescoCtoRef2<BR>DM0257ListaNegr<CONTINUA>
+ListaRefrescar003=<CONTINUA>a.FechaNacimientoCtoRef2<BR>DM0257ListaNegra.DireccionCtoRef2<BR>DM0257ListaNegra.PoblacionCtoRef2<BR>DM0257ListaNegra.ColoniaCtoRef2<BR>DM0257ListaNegra.EstadoCtoRef2<BR>DM0257ListaNegra.TelefonoCtoRef2
+[DM0257ListaNegra.NombreCliente]
+Clave=DM0257ListaNegra.NombreCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=NombreCliente
+Tamano=50
+ClaveBDE=NombreCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorRefrescar=SQL(<T>SELECT Nombre FROM CTE where cliente = <T> + Comillas(DM0257ListaNegra.Cliente) + <T> )
+Nombre=Nombre Cliente
+[DM0257ListaNegra.DomicilioCliente]
+Clave=DM0257ListaNegra.DomicilioCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=DomicilioCliente
+Tamano=50
+ClaveBDE=DomicilioCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorRefrescar=SQL( <T>SELECT TOP 1 (CD.Direccion +<T> + Comillas(<T> <T>) +  <T> +CD.MaviNumero)  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Atencion IN (<T>+Comillas(<T>EL<T>) +<T>, <T> + Comillas(<T>ELLA<T>)+<T>) AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+Nombre=Domicilio Cliente
+[DM0257ListaNegra.ColoniaCliente]
+Clave=DM0257ListaNegra.ColoniaCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=ColoniaCliente
+Tamano=50
+ClaveBDE=ColoniaCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorRefrescar=SQL( <T>select cd.Colonia from CteCto c<BR>left join CteCtoDireccion cd on c.Cliente = cd.Cliente AND C.ID = CD.ID <BR>where c.Atencion in (<T>+Comillas(<T>El<T>)+<T>, <T>+Comillas(<T>Ella<T>)+<T>) and cd.cliente = <T> + Comillas(DM0257ListaNegra.Cliente) + <T>  )
+Nombre=Colonia Cliente
+[DM0257ListaNegra.CrucesCliente]
+Clave=DM0257ListaNegra.CrucesCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=CrucesCliente
+Tamano=50
+ClaveBDE=CrucesCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=SQL( <T>select cd.Cruces from CteCto c<BR>left join CteCtoDireccion cd on c.Cliente = cd.Cliente  AND C.ID = CD.ID <BR>where c.Atencion in (<T>+Comillas(<T>El<T>)+<T>, <T>+Comillas(<T>Ella<T>)+<T>) and cd.cliente = <T> + Comillas(DM0257ListaNegra.Cliente) + <T>  )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Cruces Clientes
+[DM0257ListaNegra.PoblacionCliente]
+Clave=DM0257ListaNegra.PoblacionCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=PoblacionCliente
+Tamano=50
+ClaveBDE=PoblacionCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=SQL( <T>select Poblacion from CteCtoDireccion where Cliente = <T> + Comillas(DM0257ListaNegra.Cliente) + <T> )
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Nombre=Poblacion Cliente
+[DM0257ListaNegra.EstadoYCPCliente]
+Clave=DM0257ListaNegra.EstadoYCPCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=EstadoYCPCliente
+Tamano=20
+ClaveBDE=EstadoYCPCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=SQL( <T>SELECT TOP 1 (CD.Estado +<T> + Comillas(<T> <T>) +  <T> +CD.CodigoPostal)  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Atencion IN (<T>+Comillas(<T>EL<T>) +<T>, <T> + Comillas(<T>ELLA<T>)+<T>) AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Estado y CP Cliente
+[DM0257ListaNegra.TelefonoCliente]
+Clave=DM0257ListaNegra.TelefonoCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=TelefonoCliente
+Tamano=15
+ClaveBDE=TelefonoCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=SQL( <T>select telefonos from Cte where cliente = <T> + Comillas(DM0257ListaNegra.Cliente) + <T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Telelfono Cliente
+[DM0257ListaNegra.EstadoCivilCliente]
+Clave=DM0257ListaNegra.EstadoCivilCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=EstadoCivilCliente
+Tamano=15
+ClaveBDE=EstadoCivilCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=SQL( <T>select EstadoCivil from Cte where cliente = <T> + Comillas(DM0257ListaNegra.Cliente) + <T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Estado Civil Cliente
+AyudaEnCaptura=Vista
+AyudaForma=DM0257EstadoCivilFrm
+AyudaVista=DM0257EstadoCivilVis
+AyudaCampo=EstadocivilMavi
+[DM0257ListaNegra.FechaNacimientoCliente]
+Clave=DM0257ListaNegra.FechaNacimientoCliente
+LigaTabla=DM0257ListaNegra
+LigaCampo=FechaNacimientoCliente
+TipoDatos=FechaHora
+ClaveBDE=FechaNacimientoCliente
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=SQL( <T>select FechaNacimiento from Cte where Cliente = <T> + Comillas(DM0257ListaNegra.Cliente) + <T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Fecha Nacimiento Cliente
+AyudaEnCaptura=Calendario sin Hora
+[DM0257ListaNegra.TipoContacto]
+Clave=DM0257ListaNegra.TipoContacto
+LigaTabla=DM0257ListaNegra
+LigaCampo=TipoContacto
+Ligado=S
+ClaveBDE=TipoContacto
+[DM0257ListaNegra.NombreConyuge]
+Clave=DM0257ListaNegra.NombreConyuge
+LigaTabla=DM0257ListaNegra
+LigaCampo=NombreConyuge
+Tamano=50
+ClaveBDE=NombreConyuge
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Nombre Conyuge
+ValorRefrescar=SQL( <T>SELECT (ApellidoPaterno + <T>+ Comillas(<T> <T>) + <T> + ApellidoMaterno + <T>+ Comillas(<T> <T>) + <T> + Nombre) FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>CONYUGE<T>)+<T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.DomicilioConyuge]
+Clave=DM0257ListaNegra.DomicilioConyuge
+LigaTabla=DM0257ListaNegra
+LigaCampo=DomicilioConyuge
+Tamano=50
+ClaveBDE=DomicilioConyuge
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Domicilio Conyuge
+ValorRefrescar=SQL( <T>SELECT TOP 1 (CD.Direccion +<T> + Comillas(<T> <T>) +  <T> +CD.MaviNumero)  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.ColoniaConyuge]
+Clave=DM0257ListaNegra.ColoniaConyuge
+LigaTabla=DM0257ListaNegra
+LigaCampo=ColoniaConyuge
+Tamano=50
+ClaveBDE=ColoniaConyuge
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Colonia Conyuge
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Colonia  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.CrucesConyuge]
+Clave=DM0257ListaNegra.CrucesConyuge
+LigaTabla=DM0257ListaNegra
+LigaCampo=CrucesConyuge
+Tamano=50
+ClaveBDE=CrucesConyuge
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Cruces Conyuge
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Cruces  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.PoblacionConyuge]
+Clave=DM0257ListaNegra.PoblacionConyuge
+LigaTabla=DM0257ListaNegra
+LigaCampo=PoblacionConyuge
+Tamano=50
+ClaveBDE=PoblacionConyuge
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Poblacion Conyuge
+ConRefrescar=S
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Poblacion  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+[DM0257ListaNegra.EstadoYCPConyuge]
+Clave=DM0257ListaNegra.EstadoYCPConyuge
+LigaTabla=DM0257ListaNegra
+LigaCampo=EstadoYCPConyuge
+Tamano=25
+ClaveBDE=EstadoYCPConyuge
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Estado y CP Conyuge
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorRefrescar=SQL( <T>SELECT TOP 1(cd.Estado + <T> + Comillas(<T> <T>) + <T> + cd.CodigoPostal) FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+[DM0257ListaNegra.TelefonoConyuge]
+Clave=DM0257ListaNegra.TelefonoConyuge
+LigaTabla=DM0257ListaNegra
+LigaCampo=TelefonoConyuge
+Tamano=15
+ClaveBDE=TelefonoConyuge
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Telefono Conyuge
+ValorRefrescar=SQL( <T>SELECT Telefonos FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>CONYUGE<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.FechaNacimientoConyuge]
+Clave=DM0257ListaNegra.FechaNacimientoConyuge
+LigaTabla=DM0257ListaNegra
+LigaCampo=FechaNacimientoConyuge
+TipoDatos=FechaHora
+ClaveBDE=FechaNacimientoConyuge
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha de Nacimiento Conyuge
+ValorRefrescar=SQL( <T>SELECT FechaNacimiento FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>CONYUGE<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Calendario sin Hora
+[DM0257ListaNegra.TipoContacto1]
+Clave=DM0257ListaNegra.TipoContacto1
+LigaTabla=DM0257ListaNegra
+LigaCampo=TipoContacto1
+Ligado=S
+ClaveBDE=TipoContacto1
+[DM0257ListaNegra.NombreAval]
+Clave=DM0257ListaNegra.NombreAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=NombreAval
+Tamano=50
+ClaveBDE=NombreAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Nombre del Aval
+ValorRefrescar=SQL( <T>SELECT (ApellidoPaterno + <T>+ Comillas(<T> <T>) + <T> + ApellidoMaterno + <T>+ Comillas(<T> <T>) + <T> + Nombre) FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>AVAL<T>)+<T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.DomicilioAval]
+Clave=DM0257ListaNegra.DomicilioAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=DomicilioAval
+Tamano=50
+ClaveBDE=DomicilioAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Domicilio Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 (CD.Direccion +<T> + Comillas(<T> <T>) +  <T> +CD.MaviNumero)  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.ColoniaAval]
+Clave=DM0257ListaNegra.ColoniaAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=ColoniaAval
+Tamano=50
+ClaveBDE=ColoniaAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Colonia Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Colonia  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID    <BR>WHERE C.Tipo =<T>+Comillas(<T>AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.CrucesAval]
+Clave=DM0257ListaNegra.CrucesAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=CrucesAval
+Tamano=50
+ClaveBDE=CrucesAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Cruces Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Cruces  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.PoblacionAval]
+Clave=DM0257ListaNegra.PoblacionAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=PoblacionAval
+Tamano=50
+ClaveBDE=PoblacionAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Poblacion Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Poblacion  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+[DM0257ListaNegra.EstadoYCPAval]
+Clave=DM0257ListaNegra.EstadoYCPAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=EstadoYCPAval
+Tamano=25
+ClaveBDE=EstadoYCPAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Estado y CP del Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1(cd.Estado + <T> + Comillas(<T> <T>) + <T> + cd.CodigoPostal) FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID   <BR>WHERE C.Tipo =<T>+Comillas(<T>AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.TelefonoAval]
+Clave=DM0257ListaNegra.TelefonoAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=TelefonoAval
+Tamano=15
+ClaveBDE=TelefonoAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Telefono Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 Telefonos FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>AVAL<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.FechaNacimientoAval]
+Clave=DM0257ListaNegra.FechaNacimientoAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=FechaNacimientoAval
+TipoDatos=FechaHora
+ClaveBDE=FechaNacimientoAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha de Nacimiento Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 FechaNacimiento FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>AVAL<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Calendario sin Hora
+[DM0257ListaNegra.TipoContacto2]
+Clave=DM0257ListaNegra.TipoContacto2
+LigaTabla=DM0257ListaNegra
+LigaCampo=TipoContacto2
+Ligado=S
+ClaveBDE=TipoContacto2
+[DM0257ListaNegra.NombreConyugeAval]
+Clave=DM0257ListaNegra.NombreConyugeAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=NombreConyugeAval
+Tamano=50
+ClaveBDE=NombreConyugeAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Nombre Conyuge del Aval
+ValorRefrescar=SQL( <T>SELECT (ApellidoPaterno + <T>+ Comillas(<T> <T>) + <T> + ApellidoMaterno + <T>+ Comillas(<T> <T>) + <T> + Nombre) FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>CONYUGE DEL AVAL<T>)+<T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.DomicilioConyugeAval]
+Clave=DM0257ListaNegra.DomicilioConyugeAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=DomicilioConyugeAval
+Tamano=50
+ClaveBDE=DomicilioConyugeAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Domicilio Conyuge del Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 (CD.Direccion +<T> + Comillas(<T> <T>) +  <T> +CD.MaviNumero)  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID  <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE DEL AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.ColoniaConyugeAval]
+Clave=DM0257ListaNegra.ColoniaConyugeAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=ColoniaConyugeAval
+Tamano=50
+ClaveBDE=ColoniaConyugeAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Colonia Conyuge del Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Colonia  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE DEL AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.CrucesConyugeAval]
+Clave=DM0257ListaNegra.CrucesConyugeAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=CrucesConyugeAval
+Tamano=50
+ClaveBDE=CrucesConyugeAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Cruces Conyuge del Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Cruces  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE  AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE DEL AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.PoblacionConyugeAval]
+Clave=DM0257ListaNegra.PoblacionConyugeAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=PoblacionConyugeAval
+Tamano=50
+ClaveBDE=PoblacionConyugeAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Poblacion Conyuge del Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Poblacion  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE DEL AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+[DM0257ListaNegra.EstadoYCPConyugeAval]
+Clave=DM0257ListaNegra.EstadoYCPConyugeAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=EstadoYCPConyugeAval
+Tamano=25
+ClaveBDE=EstadoYCPConyugeAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Estado y CP Conyuge del Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1(cd.Estado + <T> + Comillas(<T> <T>) + <T> + cd.CodigoPostal) FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>CONYUGE DEL AVAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T><T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.TelefonoConyugeAval]
+Clave=DM0257ListaNegra.TelefonoConyugeAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=TelefonoConyugeAval
+Tamano=15
+ClaveBDE=TelefonoConyugeAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Telefono conyuge del Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 Telefonos FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>CONYUGE DEL AVAL<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.FechaNacimientoConyugeAval]
+Clave=DM0257ListaNegra.FechaNacimientoConyugeAval
+LigaTabla=DM0257ListaNegra
+LigaCampo=FechaNacimientoConyugeAval
+TipoDatos=FechaHora
+ClaveBDE=FechaNacimientoConyugeAval
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha de Nacimiento Conyuge del Aval
+ValorRefrescar=SQL( <T>SELECT TOP 1 FechaNacimiento FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>CONYUGE DEL AVAL<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T><T> )
+AyudaEnCaptura=Calendario sin Hora
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.TipoContacto3]
+Clave=DM0257ListaNegra.TipoContacto3
+LigaTabla=DM0257ListaNegra
+LigaCampo=TipoContacto3
+Ligado=S
+ClaveBDE=TipoContacto3
+[DM0257ListaNegra.NombreCtoRef1]
+Clave=DM0257ListaNegra.NombreCtoRef1
+LigaTabla=DM0257ListaNegra
+LigaCampo=NombreCtoRef1
+Tamano=50
+ClaveBDE=NombreCtoRef1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Nombre Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 (ApellidoPaterno + <T>+ Comillas(<T> <T>) + <T> + ApellidoMaterno + <T>+ Comillas(<T> <T>) + <T> + Nombre) FROM CteCto<BR>WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) +<T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T> AND ID = (SELECT MIN(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<BR><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.ParentescoCtoRef1]
+Clave=DM0257ListaNegra.ParentescoCtoRef1
+LigaTabla=DM0257ListaNegra
+LigaCampo=ParentescoCtoRef1
+Tamano=50
+ClaveBDE=ParentescoCtoRef1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Parentesco Referencia 1
+ValorRefrescar=SQL( <T>SELECT TOP 1 Atencion FROM CteCto<BR>WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>)+<T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T> AND ID = (SELECT MIN(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.FechaNacimientoCtoRef1]
+Clave=DM0257ListaNegra.FechaNacimientoCtoRef1
+LigaTabla=DM0257ListaNegra
+LigaCampo=FechaNacimientoCtoRef1
+TipoDatos=FechaHora
+ClaveBDE=FechaNacimientoCtoRef1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha de Nacimiento Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 FechaNacimiento FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>PERSONAL<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T> AND ID = (SELECT MIN(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T> )
+AyudaEnCaptura=Calendario sin Hora
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.DireccionCtoRef1]
+Clave=DM0257ListaNegra.DireccionCtoRef1
+LigaTabla=DM0257ListaNegra
+LigaCampo=DireccionCtoRef1
+Tamano=50
+ClaveBDE=DireccionCtoRef1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Direccion Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 (CD.Direccion +<T> + Comillas(<T> <T>) +  <T> +CD.MaviNumero)  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE  AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>PERSONAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T> AND c.ID = (SELECT MIN(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.ColoniaCtoRef1]
+Clave=DM0257ListaNegra.ColoniaCtoRef1
+LigaTabla=DM0257ListaNegra
+LigaCampo=ColoniaCtoRef1
+Tamano=50
+ClaveBDE=ColoniaCtoRef1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Colonia Ctontacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Colonia  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>PERSONAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T> AND c.ID = (SELECT MIN(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.PoblacionCtoRef1]
+Clave=DM0257ListaNegra.PoblacionCtoRef1
+LigaTabla=DM0257ListaNegra
+LigaCampo=PoblacionCtoRef1
+Tamano=50
+ClaveBDE=PoblacionCtoRef1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Poblacion Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Poblacion  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>PERSONAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T> AND c.ID = (SELECT MIN(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T>)
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+[DM0257ListaNegra.EstadoCtoRef1]
+Clave=DM0257ListaNegra.EstadoCtoRef1
+LigaTabla=DM0257ListaNegra
+LigaCampo=EstadoCtoRef1
+Tamano=25
+ClaveBDE=EstadoCtoRef1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Estado Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 cd.Estado FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>PERSONAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T> AND c.ID = (SELECT MIN(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T>)
+AyudaEnCaptura=Vista
+AyudaForma=DM0257EstadoFrm
+AyudaVista=DM0257EstadoVis
+AyudaCampo=ESTADO
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+[DM0257ListaNegra.TelefonoCtoRef1]
+Clave=DM0257ListaNegra.TelefonoCtoRef1
+LigaTabla=DM0257ListaNegra
+LigaCampo=TelefonoCtoRef1
+Tamano=15
+ClaveBDE=TelefonoCtoRef1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Telefono Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 Telefonos FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>PERSONAL<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T> AND ID = (SELECT MIN(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.TipoContacto4]
+Clave=DM0257ListaNegra.TipoContacto4
+LigaTabla=DM0257ListaNegra
+LigaCampo=TipoContacto4
+Ligado=S
+ClaveBDE=TipoContacto4
+[DM0257ListaNegra.NombreCtoRef2]
+Clave=DM0257ListaNegra.NombreCtoRef2
+LigaTabla=DM0257ListaNegra
+LigaCampo=NombreCtoRef2
+Tamano=50
+ClaveBDE=NombreCtoRef2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Nombre Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 (ApellidoPaterno + <T>+ Comillas(<T> <T>) + <T> + ApellidoMaterno + <T>+ Comillas(<T> <T>) + <T> + Nombre) FROM CteCto<BR>WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) +<T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T> AND ID = (SELECT MAX(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<BR><T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.ParentescoCtoRef2]
+Clave=DM0257ListaNegra.ParentescoCtoRef2
+LigaTabla=DM0257ListaNegra
+LigaCampo=ParentescoCtoRef2
+Tamano=50
+ClaveBDE=ParentescoCtoRef2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Parentesco Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 Atencion FROM CteCto<BR>WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>)+<T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T> AND ID = (SELECT MAX(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.FechaNacimientoCtoRef2]
+Clave=DM0257ListaNegra.FechaNacimientoCtoRef2
+LigaTabla=DM0257ListaNegra
+LigaCampo=FechaNacimientoCtoRef2
+TipoDatos=FechaHora
+ClaveBDE=FechaNacimientoCtoRef2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha Nacimiento Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 FechaNacimiento FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>PERSONAL<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T> AND ID = (SELECT MAX(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T> )
+AyudaEnCaptura=Calendario sin Hora
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.DireccionCtoRef2]
+Clave=DM0257ListaNegra.DireccionCtoRef2
+LigaTabla=DM0257ListaNegra
+LigaCampo=DireccionCtoRef2
+Tamano=50
+ClaveBDE=DireccionCtoRef2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Direccion Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 (CD.Direccion +<T> + Comillas(<T> <T>) +  <T> +CD.MaviNumero)  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>PERSONAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T> AND c.ID = (SELECT MAX(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.ColoniaCtoRef2]
+Clave=DM0257ListaNegra.ColoniaCtoRef2
+LigaTabla=DM0257ListaNegra
+LigaCampo=ColoniaCtoRef2
+Tamano=50
+ClaveBDE=ColoniaCtoRef2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Colonia Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Colonia  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE  AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>PERSONAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T> AND c.ID = (SELECT MAX(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T>)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.PoblacionCtoRef2]
+Clave=DM0257ListaNegra.PoblacionCtoRef2
+LigaTabla=DM0257ListaNegra
+LigaCampo=PoblacionCtoRef2
+Tamano=50
+ClaveBDE=PoblacionCtoRef2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Poblacion Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 CD.Poblacion  FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>PERSONAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T> AND c.ID = (SELECT MAX(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T>)
+AyudaEnCaptura=Vista
+AyudaForma=DM0257PoblacionFrm
+AyudaVista=DM0257PoblacionVis
+AyudaCampo=Poblacion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+[DM0257ListaNegra.EstadoCtoRef2]
+Clave=DM0257ListaNegra.EstadoCtoRef2
+LigaTabla=DM0257ListaNegra
+LigaCampo=EstadoCtoRef2
+Tamano=25
+ClaveBDE=EstadoCtoRef2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Estado Contacto Referencia
+ValorRefrescar=SQL( <T>SELECT TOP 1 cd.Estado FROM CteCto C WITH(NOLOCK)<BR>LEFT JOIN CteCtoDireccion CD WITH(NOLOCK) ON C.CLIENTE = CD.CLIENTE  AND C.ID = CD.ID <BR>WHERE C.Tipo =<T>+Comillas(<T>PERSONAL<T>) +<T> AND C.Cliente = <T>+ Comillas(DM0257ListaNegra.Cliente) +<T> AND c.ID = (SELECT MAX(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T>)
+AyudaEnCaptura=Vista
+AyudaForma=DM0257EstadoFrm
+AyudaVista=DM0257EstadoVis
+AyudaCampo=ESTADO
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+[DM0257ListaNegra.TelefonoCtoRef2]
+Clave=DM0257ListaNegra.TelefonoCtoRef2
+LigaTabla=DM0257ListaNegra
+LigaCampo=TelefonoCtoRef2
+Tamano=15
+ClaveBDE=TelefonoCtoRef2
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Telefono Contacto Referencia 
+ValorRefrescar=SQL( <T>SELECT TOP 1 Telefonos FROM CteCto<BR>WHERE Tipo = <T>+ Comillas(<T>PERSONAL<T>) + <T> AND Cliente = <T>+Comillas(DM0257ListaNegra.Cliente)+<T> AND ID = (SELECT MAX(ID) FROM CteCto WHERE Tipo = <T>+Comillas(<T>PERSONAL<T>) + <T> and Cliente =<T>+Comillas(DM0257ListaNegra.Cliente)+<T>)<T> )
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0257ListaNegra.Procedencia]
+Clave=DM0257ListaNegra.Procedencia
+Visible=S
+LigaTabla=DM0257ListaNegra
+LigaCampo=Procedencia
+Ligado=S
+ClaveBDE=Procedencia

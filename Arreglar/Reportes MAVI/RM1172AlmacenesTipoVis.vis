@@ -1,0 +1,24 @@
+
+[Vista]
+Icono=0
+Clave=RM1172AlmacenesTipoVis
+Modulos=(Todos)
+Nombre=RM1172AlmacenesTipoVis
+ListaTablas=RM1172AlmacenesTbl
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=RM1172AlmacenesTbl.Tipo
+TablaPrincipal=RM1172AlmacenesTbl
+
+
+SQL=SELECT DISTINCT<BR>RM1172AlmacenesTbl.Tipo<BR>FROM Alm RM1172AlmacenesTbl WITH(NOLOCK)<BR>ORDER BY RM1172AlmacenesTbl.Tipo ASC
+[RM1172AlmacenesTbl.Tipo]
+Clave=RM1172AlmacenesTbl.Tipo
+LigaTabla=RM1172AlmacenesTbl
+LigaCampo=Tipo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Tipo

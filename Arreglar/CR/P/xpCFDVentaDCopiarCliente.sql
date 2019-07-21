@@ -1,0 +1,23 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE xpCFDVentaDCopiarCliente
+@ID						int
+AS BEGIN
+IF NOT EXISTS (SELECT ID FROM CFDVentaDCte WHERE ID = @ID)
+INSERT INTO CFDVentaDCte (ID, Renglon, RenglonSub, Articulo)
+SELECT  ID, REnglon, RenglonSub, Articulo FROM VentaD WHERE ID = @ID
+ELSE
+INSERT INTO CFDVentaDCte (ID, Renglon, RenglonSub, Articulo)
+SELECT  d.ID, d.REnglon, d.RenglonSub, d.Articulo
+FROM VentaD d
+LEFT OUTER JOIN CFDVentaDCte p ON d.ID = p.ID AND d.Renglon = p.Renglon AND d.RenglonSub = p.RenglonSub AND d.Articulo = p.Articulo
+WHERE d.ID = @ID AND p.ID IS NULL
+RETURN
+END
+

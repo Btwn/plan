@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1036RutasXAgenteNivelVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Nivel
+CamposBusquedaRapida=Nivel
+SQL=select distinct NivelCobranzaMavi AS Nivel from Agente where NivelCobranzaMavi IS NOT NULL order by NivelCobranzaMavi
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nivel

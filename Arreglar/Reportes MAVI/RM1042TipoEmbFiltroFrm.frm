@@ -1,0 +1,123 @@
+[Forma]
+Clave=RM1042TipoEmbFiltroFrm
+Nombre=Tipo Embarque
+Icono=0
+Modulos=(Todos)
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=Vista
+CarpetaPrincipal=Vista
+ListaAcciones=Seleccionar
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+[RM1042TipoEmbFiltroVis.TipoEMB]
+Carpeta=RM1042TipoEmbFiltroVis
+Clave=TipoEMB
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Vista]
+Estilo=Iconos
+Clave=Vista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1042TipoEmbFiltroVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+MenuLocal=S
+IconosSeleccionMultiple=S
+ListaEnCaptura=TipoEMB
+ListaAcciones=SelTodo<BR>QuitarSel
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+[Vista.TipoEMB]
+Carpeta=Vista
+Clave=TipoEMB
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.SelTodo]
+Nombre=SelTodo
+Boton=0
+NombreDesplegar=&Seleccionar todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+UsaTeclaRapida=S
+[Acciones.QuitarSel]
+Nombre=QuitarSel
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Asigna<BR>Regis<BR>Selec
+[Acciones.Seleccionar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Regis]
+Nombre=Regis
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Seleccionar.Selec]
+Nombre=Selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM1042TipoEmbFiltro,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Vista.Columnas]
+0=-2
+1=-2

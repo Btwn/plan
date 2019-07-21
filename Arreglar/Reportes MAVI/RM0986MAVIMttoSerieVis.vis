@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0986MAVIMttoSerieVis
+Nombre=Serie Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SerieLote
+CamposBusquedaRapida=SerieLote
+SQL=select  Distinct SerieLote  <BR>from SerieLoteMov sl<BR>inner join (select  Articulo, Descripcion1<BR>from art <BR>where categoria = <T>ACTIVOS FIJOS<T><BR>and Tipo=<T>Serie<T>) art on art.articulo=sl.Articulo<BR>{Si(ConDatos(Mavi.RM0986MttoArt), <T>And sl.Articulo IN(<T>+Mavi.RM0986MttoArt+<T>)<T>, <T><T>)}
+[SerieLote]
+Clave=SerieLote
+Nombre=SerieLote
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=SerieLote

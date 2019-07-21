@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0153ActualizarAccesosVis
+Nombre=DM0153ActualizarAccesosVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre
+SQL=select <BR>Nombre<BR>from tablastd <BR>where tablaSt=<T>OPCIONES NIVELES DE ACCESO<T>
+CamposBusquedaRapida=Nombre
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Nombre

@@ -1,0 +1,31 @@
+[Vista]
+Icono=0
+Clave=MaviArtCatGpoFamLinMarcaMultVis
+Nombre=Linea Articulos
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Articulo<BR>Descripcion1
+LlavePrimaria=Articulo
+CamposBusquedaRapida=Articulo
+SQL=select Articulo,Descripcion1 from art <BR>Where 1=1<BR>and art.Categoria = <T>VENTA<T><BR>{SI(CONDATOS(Mavi.ArtGrupo),<T>AND Art.Grupo=<T>+COMILLAS(Mavi.ArtGrupo),<T><T>)}<BR>order by Articulo asc
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Articulo
+[Descripcion1]
+Clave=Descripcion1
+Nombre=Descripcion1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion1

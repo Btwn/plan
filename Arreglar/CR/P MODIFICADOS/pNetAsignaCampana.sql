@@ -1,0 +1,19 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROC pNetAsignaCampana
+@ID            int         = NULL,
+@RID           int         = NULL,
+@Usuario       varchar(10) = NULL
+AS BEGIN
+IF ISNULL(@Usuario,'') <> ''
+UPDATE CampanaD WITH(ROWLOCK) SET Usuario = @Usuario WHERE ID = @ID AND RID = @RID
+SELECT 'El registro se actualizó con éxito'
+RETURN
+END
+

@@ -1,0 +1,36 @@
+[Reporte]
+Clave=RM1115MenuRep
+Nombre=RM1115 Reporte Backorder
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+Submenu=Compras Mavi
+ConFormaPrevia=S
+FormaPrevia=RM1115BackOrderFrm
+[Vista]
+Icono=0
+Clave=RM1115MenuRep
+VistaIndependiente=S
+SQL=select uno=1

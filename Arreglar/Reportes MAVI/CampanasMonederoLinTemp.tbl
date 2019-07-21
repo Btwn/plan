@@ -1,0 +1,28 @@
+[Tabla]
+Icono=0
+Clave=CampanasMonederoLinTemp
+Nombre=LineaArt CampanasMonedero
+Archivo=CampanasMonederoLinTemp
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Id<BR>LineaArt
+CampoID=Id
+LlavePrimaria=Id<BR>LineaArt
+SQL=SELECT<BR>  Id,<BR>  LineaArt<BR><BR>FROM<BR>  CampanasMonederoLinTemp
+[Id]
+Clave=Id
+Nombre=Id
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[LineaArt]
+Clave=LineaArt
+Nombre=LineaArt
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=MaviArtLinCatGpoFamMultfrm
+AyudaVista=MaviArtLinCatGpoFamMultVis
+AyudaCampo=Linea
+AyudaMultiple=S

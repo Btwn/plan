@@ -1,0 +1,37 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE speDocLimpiarXML
+(
+@Modulo				varchar(5),
+@eDoc			varchar(50),
+@DocumentoTexto		varchar(MAX) OUTPUT
+)
+
+AS
+BEGIN
+DECLARE
+@BorrarSiOpcional			varchar(MAX)
+DECLARE crLimpiar CURSOR FOR
+SELECT REPLACE(REPLACE(LTRIM(RTRIM(BorrarSiOpcional)),CHAR(13),''),CHAR(10),'')
+FROM eDocDMapeoCampo
+WITH(NOLOCK) WHERE eDoc = @eDoc
+AND Modulo = @Modulo
+AND NULLIF(BorrarSiOpcional,'') IS NOT NULL
+AND Opcional = 1
+OPEN crLimpiar
+FETCH NEXT FROM crLimpiar  INTO @BorrarSiOpcional
+WHILE @@FETCH_STATUS = 0
+BEGIN
+SET @DocumentoTexto = REPLACE(@DocumentoTexto,@BorrarSiOpcional,'')
+FETCH NEXT FROM crLimpiar  INTO @BorrarSiOpcional
+END
+CLOSE crLimpiar
+DEALLOCATE crLimpiar
+END
+

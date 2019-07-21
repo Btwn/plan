@@ -1,0 +1,53 @@
+
+[Reporte]
+Clave=RM1200SancionesPrev
+Nombre=RM1200 Sancionador Automático Servicasa
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+
+ConFormaPrevia=S
+FormaPrevia=RM1200Sancionador
+PosicionInicialAlturaCliente=705
+PosicionInicialAncho=1382
+Submenu=Reportes Crédito
+[Vista]
+Icono=0
+Clave=RM1200SancionesPrev
+VistaIndependiente=S
+
+ListaCampos=Nada
+Nombre=RM1200SancionesPrev
+SQL=SELECT <T><T> AS Nada
+[Nada]
+Clave=Nada
+Nombre=Nada
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=1
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=Nada

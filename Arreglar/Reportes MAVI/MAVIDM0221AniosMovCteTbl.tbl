@@ -1,0 +1,45 @@
+[Tabla]
+Icono=0
+Clave=MAVIDM0221AniosMovCteTbl
+Nombre=MAVIDM0221AniosMovCteTbl
+Archivo=MAVIDM0221AniosMovCte
+Modulos=(Todos)
+Singular=MAVIDM0221AniosMovCteTbl
+TipoTabla=General
+ListaCampos=Mov<BR>Plazo<BR>AniosD<BR>AniosA
+ControlMov=S
+CampoMov=Mov
+LlavePrimaria=Mov<BR>Plazo<BR>AniosD<BR>AniosA
+SQL=SELECT<BR>  Mov,<BR>  Plazo,<BR>  AniosD,<BR>  AniosA<BR><BR>FROM<BR>  MAVIDM0221AniosMovCte
+[Mov]
+Clave=Mov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Consulta opcional
+Formula=SQLEnLista(<T>SELECT Mov FROM dbo.MovTipo WITH(NOLOCK) WHERE Clave=:tC AND Mov!=:tM<T>,<T>VTAS.F<T>,<T>Factura Mayoreo<T>)
+[Plazo]
+Clave=Plazo
+Nombre=Plazo
+Visible=S
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Consulta opcional
+Formula=SQLEnLista(<T>SELECT <T>+Comillas(<T>(Todos)<T>)+<T> A <T>+<BR><T> UNION ALL <T>+<BR><T> SELECT <T>+<BR><T>    CAST(DANumeroDocumentos AS VARCHAR) <T>+<BR><T> FROM dbo.Condicion WITH(NOLOCK) <T>+<BR><T> WHERE TipoCondicion = <T>+Comillas(<T>Credito<T>)+<T><BR>    AND DAPeriodo = <T>+Comillas(<T>Mensual<T>)+<T><BR>    AND Grupo =<T>+Comillas(<T>MENUDEO<T>)+<T><BR>    AND NivelAcceso = <T>+Comillas(<T>(Especifico)<T>)+<T><BR> GROUP BY DANumeroDocumentos<T>)
+[AniosD]
+Clave=AniosD
+Nombre=Años D
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[AniosA]
+Clave=AniosA
+Nombre=Años A
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora

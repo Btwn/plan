@@ -1,0 +1,105 @@
+[Forma]
+Clave=RM0839AjuDifInvFrm
+Nombre=RM839 Ajuste por Diferencia de Inventarios
+Icono=0
+BarraHerramientas=S
+Modulos=(Todos)
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+FiltrarFechasSinHora=S
+ListaAcciones=Preliminar<BR>Cerrar
+ListaCarpetas=(Variables)
+CarpetaPrincipal=(Variables)
+PosicionInicialAlturaCliente=94
+PosicionInicialAncho=318
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=481
+PosicionInicialArriba=446
+VentanaEscCerrar=S
+VentanaBloquearAjuste=S
+VentanaAvanzaTab=S
+ExpresionesAlMostrar=Asigna(Mavi.Ajuste,NULO)
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Preliminar]
+Nombre=Preliminar
+Boton=6
+NombreEnBoton=S
+NombreDesplegar=&Preliminar
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Variables Asignar<BR>Aceptar
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Arriba
+FichaAlineacion=Centrado
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Mavi.RM0839Ajuste<BR>Mavi.RM0839Movimientos
+CarpetaVisible=S
+[(Variables).Mavi.RM0839Movimientos]
+Carpeta=(Variables)
+Clave=Mavi.RM0839Movimientos
+Editar=S
+LineaNueva=N
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Preliminar.Variables Asignar]
+Nombre=Variables Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Preliminar.Aceptar]
+Nombre=Aceptar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Aceptar
+Activo=S
+ConCondicion=S
+Visible=S
+EjecucionConError=S
+EjecucionCondicion=ConDatos(Mavi.RM0839Ajuste) y ConDatos(Mavi.RM0839Movimientos)
+EjecucionMensaje=<T>capturar dato<T>
+[(Variables).Mavi.RM0839Ajuste]
+Carpeta=(Variables)
+Clave=Mavi.RM0839Ajuste
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+

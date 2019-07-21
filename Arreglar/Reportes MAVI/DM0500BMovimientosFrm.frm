@@ -1,0 +1,79 @@
+[Forma]
+Clave=DM0500BMovimientosFrm
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=DM0500BMovimientosVis
+CarpetaPrincipal=DM0500BMovimientosVis
+PosicionInicialAlturaCliente=280
+PosicionInicialAncho=224
+Menus=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar
+PosicionInicialIzquierda=-2
+PosicionInicialArriba=4
+[DM0500BMovimientosVis]
+Estilo=Iconos
+Clave=DM0500BMovimientosVis
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0500BMovimientosVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Negro
+CarpetaVisible=S
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+IconosNombre=DM0500BMovimientosVis:Mov
+IconosSeleccionPorLlave=S
+[DM0500BMovimientosVis.Columnas]
+0=-2
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=0
+NombreDesplegar=Seleccionar
+Multiple=S
+EnMenu=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=Registrar<BR>selc<BR>Quitar Seleccion
+[Acciones.Seleccionar.Registrar]
+Nombre=Registrar
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>DM0500BMovimientosVis<T>)
+Activo=S
+Visible=S
+[Acciones.Seleccionar.selc]
+Nombre=selc
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>)
+[Acciones.Seleccionar.Quitar Seleccion]
+Nombre=Quitar Seleccion
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S

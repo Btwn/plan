@@ -1,0 +1,69 @@
+
+[Tabla]
+Icono=0
+Clave=DM0332ExploradorRelacionTBL
+Nombre=DM0332ExploradorRelacionTBL
+Archivo=ContdcfdiRelacionado
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Tipo<BR>UUID<BR>UUIDRelacionado<BR>Importe<BR>IdCFDIRelacionado
+LlavePrimaria=IdCFDIRelacionado
+ControlID=S
+CampoID=IdCFDIRelacionado
+SQL=SELECT<BR>  IdCFDIRelacionado,<BR>  Tipo,<BR>  UUID,<BR>  UUIDRelacionado,<BR>  Importe<BR><BR>  FROM ContdcfdiRelacionado
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+TamanoValidacion=1
+TipoDatos=Texto
+Tamano=1
+
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+OpcionesUnicamente=S
+ListaOpciones=E<BR>P
+[UUID]
+Clave=UUID
+Nombre=UUID
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+BloqueaEdicion=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorPorOmision=Mavi.DM0332UUID
+[UUIDRelacionado]
+Clave=UUIDRelacionado
+Nombre=UUIDRelacionado
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaMemRenglones=8
+AyudaMemOpc=Consulta opcional
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>Select uuid from CFDValido where RFCEmisor=(Select top 1 c.RFCEmisor from CFDValido c with(nolock)<BR>inner join CONTDCFDIRelacionado r with(nolock) on c.UUID=r.UUID<BR>where c.UUID=:Tuuid) and TipoCfdi=:Ttipo<T> ,Mavi.DM0332UUID, <T>I<T> )
+[Importe]
+Clave=Importe
+Nombre=Importe
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+
+
+
+[IdCFDIRelacionado]
+Clave=IdCFDIRelacionado
+Nombre=IdCFDIRelacionado
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc

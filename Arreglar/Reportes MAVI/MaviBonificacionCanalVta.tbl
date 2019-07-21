@@ -1,0 +1,30 @@
+[Tabla]
+Icono=0
+Clave=MaviBonificacionCanalVta
+Nombre=MaviBonificacionCanalVta
+Archivo=MaviBonificacionCanalVta
+Modulos=(Todos)
+Singular=MaviBonificacionCanalVta
+TipoTabla=General
+ListaCampos=CanalVenta<BR>IdBonificacion
+LlavePrimaria=IdBonificacion<BR>CanalVenta
+SQL=SELECT<BR>  IdBonificacion,<BR>  CanalVenta<BR><BR>FROM<BR>  MaviBonificacionCanalVta
+[CanalVenta]
+Clave=CanalVenta
+Nombre=Canal de Venta
+Visible=S
+TamanoValidacion=10
+AyudaEnCaptura=Vista
+TipoDatos=Numérico
+AyudaForma=VentasCanalListaMAVI
+AyudaVista=VentasCanalMAVI
+AyudaCampo=VentasCanalMAVI.ID
+AyudaMultiple=S
+[IdBonificacion]
+Clave=IdBonificacion
+Nombre=IdBonificacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico

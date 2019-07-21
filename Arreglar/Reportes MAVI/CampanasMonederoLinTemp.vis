@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=CampanasMonederoLinTemp
+Nombre=LineaArt Campanas Monedero
+Modulos=(Todos)
+ListaTablas=CampanasMonederoLinTemp
+TablaPrincipal=CampanasMonederoLinTemp
+ListaCampos=CampanasMonederoLinTemp.Id<BR>CampanasMonederoLinTemp.LineaArt
+UsoCapturas=S
+UsarJOIN=S
+UsoReportes=S
+SQL=SELECT<BR>  CampanasMonederoLinTemp.Id,<BR>  CampanasMonederoLinTemp.LineaArt<BR><BR>FROM<BR>  CampanasMonederoLinTemp CampanasMonederoLinTemp
+[CampanasMonederoLinTemp.Id]
+Clave=CampanasMonederoLinTemp.Id
+LigaTabla=CampanasMonederoLinTemp
+LigaCampo=Id
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Id
+[CampanasMonederoLinTemp.LineaArt]
+Clave=CampanasMonederoLinTemp.LineaArt
+LigaTabla=CampanasMonederoLinTemp
+LigaCampo=LineaArt
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=LineaArt

@@ -1,0 +1,75 @@
+[Vista]
+Icono=0
+Clave=PropreRepCostoExistencia
+Nombre=Costo / Existencia
+Modulos=(Todos)
+Singular=Costo / Existencia
+ListaTablas=PropreRepCostoExistencia
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=PropreRepCostoExistencia.ID<BR>PropreRepCostoExistencia.ProductoSinCosto<BR>PropreRepCostoExistencia.ExistenciaCero<BR>PropreRepCostoExistencia.ExistenciaTodos<BR>PropreRepCostoExistencia.SoloExistencia
+TablaPrincipal=PropreRepCostoExistencia
+SQL=SELECT<BR>  PropreRepCostoExistencia.ID,<BR>  PropreRepCostoExistencia.ProductoSinCosto,<BR>  PropreRepCostoExistencia.ExistenciaCero,<BR>  PropreRepCostoExistencia.ExistenciaTodos,<BR>  PropreRepCostoExistencia.SoloExistencia<BR><BR>FROM<BR>  PropreRepCostoExistencia
+[PropreRepCostoExistencia.ID]
+Clave=PropreRepCostoExistencia.ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=PropreRepCostoExistencia
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ID
+[PropreRepCostoExistencia.ProductoSinCosto]
+Clave=PropreRepCostoExistencia.ProductoSinCosto
+Nombre=ProductoSinCosto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+LigaTabla=PropreRepCostoExistencia
+LigaCampo=ProductoSinCosto
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ProductoSinCosto
+[PropreRepCostoExistencia.ExistenciaCero]
+Clave=PropreRepCostoExistencia.ExistenciaCero
+Nombre=ExistenciaCero
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+AlCambiar=Si<BR>  PropreRepCostoExistencia.ExistenciaCero = 1<BR>Entonces<BR>  Asigna(ExistenciaTodos, 0)<BR>  Asigna(SoloExistencia, 0)<BR>Fin
+LigaTabla=PropreRepCostoExistencia
+LigaCampo=ExistenciaCero
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ExistenciaCero
+[PropreRepCostoExistencia.ExistenciaTodos]
+Clave=PropreRepCostoExistencia.ExistenciaTodos
+Nombre=ExistenciaTodos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+AlCambiar=Si<BR>  PropreRepCostoExistencia.ExistenciaTodos = 1<BR>Entonces<BR>  Asigna(ExistenciaCeros, 0)<BR>  Asigna(SoloExistencia, 0)<BR>Fin
+LigaTabla=PropreRepCostoExistencia
+LigaCampo=ExistenciaTodos
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ExistenciaTodos
+[PropreRepCostoExistencia.SoloExistencia]
+Clave=PropreRepCostoExistencia.SoloExistencia
+Nombre=SoloExistencia
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+AlCambiar=Si<BR>  PropreRepCostoExistencia.SoloExistencia = 1<BR>Entonces<BR>  Asigna(ExistenciaCeros, 0)<BR>  Asigna(PropreRepCostoExistencia.ExistenciaTodos, 0)<BR>Fin
+LigaTabla=PropreRepCostoExistencia
+LigaCampo=SoloExistencia
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=SoloExistencia

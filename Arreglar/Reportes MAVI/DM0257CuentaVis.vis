@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0257CuentaVis
+Nombre=DM0257Cuenta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cliente
+SQL=SELECT DISTINCT Cliente FROM Venta<BR>WHERE Mov IN (<T>ANALISIS CREDITO<T>, <T>SOLICITUD CREDITO<T>)
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cliente

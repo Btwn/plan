@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM0188ArtLinLigLinVis
+Nombre=Lineas de Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea
+LlavePrimaria=Linea
+CamposBusquedaRapida=Linea
+SQL=SELECT<BR>distinct(Linea) <BR>from art <BR>Where<BR>Art.Linea is not null<BR>AND LEN(Art.Familia)>0<BR>{Si(Condatos(Mavi.RM0188ArtFamLigLin),<T> And Familia in(<T>+Mavi.RM0188ArtFamLigLin+<T>)<T>,<T><T>)}<BR>order by Linea asc
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

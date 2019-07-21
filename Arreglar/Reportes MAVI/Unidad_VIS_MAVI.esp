@@ -1,0 +1,23 @@
+[Unidad.vis/Vista.ListaCampos]
+Unidad.INFORDescripcion=Unidad.UnidadSatMavi
+Unidad.UnidadSatMavi=(Fin)
+
+[Unidad.vis/Vista.SQL]
+Unidad.ReferenciaIntelisisService,=Unidad.INFORDescripcion,
+Unidad.INFORDescripcion,=Unidad.UnidadSatMavi
+Unidad.UnidadSatMavi=FROM Unidad
+FROM Unidad=(Fin)
+
+
+[Unidad.vis/Unidad.UnidadSatMavi]
+Clave=Unidad.UnidadSatMavi
+LigaTabla=Unidad
+LigaCampo=UnidadSatMavi
+ClaveBDE=UnidadSatMavi
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Mayusculas=S
+Tamano=3
+AlCambiar=Si Vacio(Unidad.UnidadSatMavi)<BR>    Entonces<BR>    Error(<T>El campo UnidadSatMavi esta vacio<T>)<BR>    AbortarOperacion<BR>Sino<BR>    Si SQL(<T>SELECT COUNT(ClaveUnidad) FROM DM0306CveUnidad WHERE ClaveUnidad= :tClave<T>,Unidad.UnidadSatMavi)=0<BR>        Entonces<BR>        Error(<T>La unidad SAT no esta registrada<T>)<BR>        AbortarOperacion<BR>    Fin    <BR>Fin

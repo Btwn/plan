@@ -1,0 +1,35 @@
+;Se Agrego El Campo SucursalAsignada para ligar los almacenes con las sucursales de instituciones
+[Alm.tbl/Tabla.ListaCampos]
+MES=SucursalAsignada
+SucursalAsignada=(Fin)
+
+[Alm.tbl/Tabla.SQL]
+Escrossdocking,=MES,
+MES,=SucursalAsignada
+SucursalAsignada=FROM Alm
+
+
+[Alm.tbl/Categoria]
+AyudaEnCaptura=Vista
+AyudaForma=AlmCategoriasInstitucionesfrm
+AyudaVista=AlmCategoriasInstitucionesvis
+AyudaCampo=Categoria
+AyudaRefrescar=S
+AyudaMemOpc=Consulta opcional
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Categoria no permitida favor de corregir.<T>
+ValidacionCondicion=SQL(<T>SELECT COUNT(*) FROM TABLASTD WHERE TABLAST = <T> + COMILLAS(<T>CATEGORIAS ALMACENES<T>) + <T> AND NOMBRE=:tCAT<T>,CATEGORIA)>=1
+
+
+
+[Alm.tbl/SucursalAsignada]
+Clave=SucursalAsignada
+Nombre=Sucursal Asignada
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=SucursalLista
+AyudaVista=Sucursal
+AyudaCampo=Sucursal.Sucursal
+AyudaRefrescar=S

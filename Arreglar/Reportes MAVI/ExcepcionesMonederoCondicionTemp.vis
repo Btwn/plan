@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=ExcepcionesMonederoCondicionTemp
+Nombre=ExcepcionesMonedero Condicion
+Modulos=(Todos)
+ListaTablas=ExcepcionesMonederoCondicionTemp
+TablaPrincipal=ExcepcionesMonederoCondicionTemp
+UsoCapturas=S
+UsarJOIN=S
+ListaCampos=ExcepcionesMonederoCondicionTemp.Id<BR>ExcepcionesMonederoCondicionTemp.Condicion
+UsoReportes=S
+SQL=SELECT<BR>  ExcepcionesMonederoCondicionTemp.Id,<BR>  ExcepcionesMonederoCondicionTemp.Condicion<BR><BR>FROM<BR>  ExcepcionesMonederoCondicionTemp
+[ExcepcionesMonederoCondicionTemp.Id]
+Clave=ExcepcionesMonederoCondicionTemp.Id
+LigaTabla=ExcepcionesMonederoCondicionTemp
+LigaCampo=Id
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Id
+[ExcepcionesMonederoCondicionTemp.Condicion]
+Clave=ExcepcionesMonederoCondicionTemp.Condicion
+LigaTabla=ExcepcionesMonederoCondicionTemp
+LigaCampo=Condicion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Condicion

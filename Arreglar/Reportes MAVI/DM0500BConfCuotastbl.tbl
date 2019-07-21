@@ -1,0 +1,69 @@
+[Tabla]
+Icono=0
+Clave=DM0500BConfCuotastbl
+Archivo=DM0500BConfCuotastbl
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Tipo_Cuota<BR>Movimientos<BR>Nivelesespeciales<BR>mvto_cta<BR>UniversoFormula
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  Tipo_Cuota,<BR>  Movimientos,<BR>  Nivelesespeciales,<BR>  mvto_cta,<BR>  UniversoFormula<BR><BR>FROM<BR>  DM0500BConfCuotastbl
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Tipo_Cuota]
+Clave=Tipo_Cuota
+Nombre=Tipo_Cuota
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Consulta opcional
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Tipo Cuota invalida o duplicada<T>
+ValidacionCondicion=(SQL( <T>Select count(*) from Comercializadora.dbo.cuotascobmenrango where tipocuota=:tCuota<T>,Tipo_Cuota )>0)<BR>  y<BR>( SQL( <T>select count(*) from DM0500BConfCuotastbl where tipo_cuota=:tCuotas<T>,Tipo_Cuota )=0)
+Formula=SQLEnLista( <T>select distinct TipoCuota from Comercializadora.dbo.CuotasCobMenRango where TipoComision=:tComision  and TipoAgente=:tagente<T>,<T>COBRANZA CAMPO<T>,<T>COBRADOR<T> )
+[Movimientos]
+Clave=Movimientos
+Nombre=Movimientos
+Visible=S
+TamanoValidacion=255
+Tamano=255
+AyudaEnCaptura=Vista
+AyudaForma=DM0500BMovimientosFrm
+AyudaVista=DM0500BMovimientosVis
+AyudaCampo=Mov
+[Nivelesespeciales]
+Clave=Nivelesespeciales
+Nombre=Nivelesespeciales
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0500BNIVELESESPECIALESFRM
+AyudaVista=DM0500BNIVELESPECIALVIS
+AyudaCampo=NOMBRE
+[mvto_cta]
+Clave=mvto_cta
+Nombre=mvto_cta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=MOVIMIENTO<BR>CUENTA
+OpcionesPredefinidas=Ninguna
+[UniversoFormula]
+Clave=UniversoFormula
+Nombre=UniversoFormula
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=UniversoFormula=<T>no<T>

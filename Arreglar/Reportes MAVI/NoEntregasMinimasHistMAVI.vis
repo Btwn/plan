@@ -1,0 +1,47 @@
+[Vista]
+Icono=0
+Clave=NoEntregasMinimasHistMAVI
+Nombre=NoEntregasMinimasHistMAVI
+Modulos=(Todos)
+Singular=NoEntregasMinimasHistMAVI
+ListaTablas=NoEntregasMinimasHistMAVI
+TablaPrincipal=NoEntregasMinimasHistMAVI
+ListaCampos=NoEntregasMinimasHistMAVI.ID<BR>NoEntregasMinimasHistMAVI.NoEntregasMinimas<BR>NoEntregasMinimasHistMAVI.Fecha
+SQL=SELECT<BR>  NoEntregasMinimasHistMAVI.ID,<BR>  NoEntregasMinimasHistMAVI.NoEntregasMinimas,<BR>  NoEntregasMinimasHistMAVI.Fecha<BR><BR>FROM<BR>  NoEntregasMinimasHistMAVI
+[NoEntregasMinimasHistMAVI.ID]
+Clave=NoEntregasMinimasHistMAVI.ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=NoEntregasMinimasHistMAVI
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ID
+[NoEntregasMinimasHistMAVI.NoEntregasMinimas]
+Clave=NoEntregasMinimasHistMAVI.NoEntregasMinimas
+Nombre=No. Entregas Mínimas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+LigaTabla=NoEntregasMinimasHistMAVI
+LigaCampo=NoEntregasMinimas
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=NoEntregasMinimas
+[NoEntregasMinimasHistMAVI.Fecha]
+Clave=NoEntregasMinimasHistMAVI.Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmmm/aaaa (hh:mm:ss am/pm)
+LigaTabla=NoEntregasMinimasHistMAVI
+LigaCampo=Fecha
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Fecha

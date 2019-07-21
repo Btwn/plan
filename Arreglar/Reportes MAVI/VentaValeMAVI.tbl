@@ -1,0 +1,27 @@
+[Tabla]
+Icono=0
+Clave=VentaValeMAVI
+Nombre=VentaValeMAVI
+Archivo=VentaValeMAVI
+Modulos=(Todos)
+Singular=VentaValeMAVI
+TipoTabla=General
+ListaCampos=ID<BR>Vale
+LlavePrimaria=ID<BR>Vale
+SQL=SELECT<BR>  ID,<BR>  Vale<BR><BR>FROM<BR>  VentaValeMAVI
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.IDMAVI
+[Vale]
+Clave=Vale
+Nombre=Vale
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50

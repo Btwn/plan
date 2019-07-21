@@ -1,0 +1,187 @@
+[Dialogo]
+Clave=MenuHerrCobranzaMenudeoMAVI
+Nombre=<T>Cobranza Menudeo<T>
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+;ListaAcciones=AsigCtasMavi<BR>OCMAVI<BR>OCEstatusMAVI
+PosicionInicialAlturaCliente=392
+PosicionInicialAncho=268
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+;PosicionInicialIzquierda=416
+;PosicionInicialArriba=291
+; **** Integracion nueva accion en lista, cambio en posicioninicial izq y arriba. Desarrollo DM0123 REASIGNACION DE NIVELES DE COBRANZA del paquete DM0123_17032011. JR 17-Mar-2011. **** 
+ListaAcciones=AsigExcluirniv<BR>CatalogodeZonas<BR>AsigCtasMavi<BR>OCMAVI<BR>OCEstatusMAVI<BR>ReasignarNivelCob<BR>ActualizaReporteria<BR>RM0493BIMPCTOFRM<BR>DM0203RecepLayoutAgentRutFrm<BR>DM0277CtasIncobrables<BR>herramienta.DM0123ANivelDeContacto<BR>DM104<BR>DM0207Jeraquias<BR>DM0207AsignarNivelCteFinal<BR>DM0207ApoyoCobDima<BR>DM0207AAsignacionDiaria
+PosicionInicialIzquierda=506
+PosicionInicialArriba=265
+
+
+
+[Acciones.AsigCtasMavi]
+Nombre=AsigCtasMavi
+Boton=0
+;Menu=&Herramientas
+NombreDesplegar=&Asignacion de Cuentas
+;EnMenu=S
+TipoAccion=Formas
+ClaveAccion=AsigCtasMavi
+Activo=S
+EspacioPrevio=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+
+[Acciones.OCMAVI]
+Nombre=OCMAVI
+Boton=0
+;Menu=&Herramientas
+NombreDesplegar=Genera Ordenes Cobro
+TipoAccion=Formas
+ClaveAccion=GeneraOrdenesCobroMAVI
+Activo=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+
+[Acciones.OCEstatusMAVI]
+Nombre=OCEstatusMAVI
+Boton=0
+;Menu=&Herramientas
+NombreDesplegar=Procesar en Lote Ordenes de Cobro
+;EnMenu=S
+TipoAccion=Formas
+ClaveAccion=ProcesarEmbarqueMAVI
+Activo=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+
+; **** Integracion de accion del desarrollo DM0123 REASIGNACION DE NIVELES DE COBRANZA dentro del paquete DM0123_17032011. JR 17-Mar-2011. **** 
+;Nueva accion para llamar la forma del DM0123 Reasignar NIvel Cobranza Victor De los Santos 10/03/2011
+[Acciones.ReasignarNivelCob]
+Nombre=ReasignarNivelCob
+Boton=0
+NombreDesplegar=&Reasignar Nivel Cobranza
+TipoAccion=Formas
+ClaveAccion=DM0123ReasignarNivelCobFrm
+Activo=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+[Acciones.ActualizaReporteria]
+Nombre=ActualizaReporteria
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Actualiza Reporteria
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Expresion=EjecutarSQLAnimado(<T>spJobRecuperacion<T>)<BR>Informacion(<T> Proceso Concluido... <T>)
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+[Acciones.RM0493BIMPCTOFRM]
+Nombre=RM0493BIMPCTOFRM
+Boton=0
+NombreDesplegar=Integrar Niveles Especiales
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0493BIMPCTOFRM
+Activo=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+[Acciones.DM0203RecepLayoutAgentRutFrm]
+Nombre=DM0203RecepLayoutAgentRutFrm
+Boton=0
+NombreDesplegar=Importar Rutas Cobranza 
+TipoAccion=Formas
+Activo=S
+Antes=S
+ClaveAccion=DM0203RecepLayoutAgentRutFrm
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+[Acciones.AsigExcluirniv]
+Nombre=AsigExcluirniv
+Boton=0
+NombreDesplegar=Movimientos que no determinan Nivel Cobranza
+TipoAccion=Formas
+ClaveAccion=NivelcobExcluirmovfrm
+Activo=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+[Acciones.CatalogodeZonas]
+Nombre=CatalogodeZonas
+Boton=0
+NombreDesplegar=Catalogo de Zonas
+TipoAccion=Formas
+ClaveAccion=DM0214AgrupaZonasCobranza
+Activo=S
+EspacioPrevio=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+[Acciones.DM0277CtasIncobrables]
+Nombre=DM0277CtasIncobrables
+Boton=0
+NombreDesplegar=&Cuentas Incobrables por Lote
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0277CtasIncobrablesFrm
+Activo=S
+Visible=S
+[Acciones.herramienta.DM0123ANivelDeContacto]
+Nombre=herramienta.DM0123ANivelDeContacto
+Boton=0
+NombreDesplegar=Nivel de Cobranza Contacto
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0123AReasignarNivelCobConFrm
+Activo=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+[Acciones.DM104]
+Nombre=DM104
+Boton=0
+NombreDesplegar=Actualización de Días En Ruta
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=expresion
+Activo=S
+Expresion=EjecutarSQLAnimado( <T>exec SP_MaviDM0104B_HistoricoCXC<T>)
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+
+[Acciones.DM0207Jeraquias]
+Nombre=DM0207Jeraquias
+Boton=0
+NombreDesplegar=DM0207 Jerarquias Asignacion
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0207EtiquetaCategoriaFrm
+Activo=S
+Visible=S
+
+[Acciones.DM0207AsignarNivelCteFinal]
+Nombre=DM0207AsignarNilvelCteFinal
+Boton=0
+NombreDesplegar=Asignar Nivel Cobranza Beneficiario
+TipoAccion=Formas
+ClaveAccion=DM0207AsignarCtasBeneFinFrm
+Activo=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+
+[Acciones.DM0207ApoyoCobDima]
+Nombre=DM0207ApoyoCobDimaFrm
+Boton=0
+NombreDesplegar=Niveles y Características Apoyo Beneficiario
+TipoAccion=Formas
+ClaveAccion=DM0207ApoyoCobDimaFrm
+Activo=S
+VisibleCondicion=Contiene(Usuario,<T>COBRA<T>)
+
+[Acciones.DM0207AAsignacionDiaria]
+Nombre=DM0207AAsignacionDiaria
+Boton=0
+Menu=&Herramientas
+NombreDesplegar=Configuración Asignación Diaria
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0207ACXCConfigAsignacionDiaria
+Activo=S
+Visible=S

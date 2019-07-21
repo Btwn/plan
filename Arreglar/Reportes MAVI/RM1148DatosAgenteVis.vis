@@ -1,0 +1,32 @@
+[Vista]
+Icono=0
+Clave=RM1148DatosAgenteVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Propiedad<BR>Nombre<BR>Fecha
+SQL=SELECT DISTINCT <BR>  P.Propiedad, E.Nombre, GETDATE() AS Fecha <BR>FROM <BR>  Prop P <BR>INNER JOIN <BR>  Agente E ON E.Agente = P.Propiedad<BR>WHERE <BR>  P.Rama = <T>USR<T> AND P.Tipo = <T>GIRO<T> <BR>  {Si(ConDatos(MAVI.RM1148Agente),<T> AND P.Cuenta = <T>+COMILLAS(MAVI.RM1148Agente),<T><T>)}
+[Propiedad]
+Clave=Propiedad
+Nombre=Agente
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Propiedad
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre
+[Fecha]
+Clave=Fecha
+Nombre=Fecha y Hora
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=Fecha

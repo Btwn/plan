@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0246AlmacenesVis
+Nombre=DM0246AlmacenesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Almacen
+SQL=Select Almacen from Alm where Almacen like <T>V%<T> and Estatus=<T>Alta<T> and Grupo=<T>INS<T> and Almacen<><T>V00039<T>
+[Almacen]
+Clave=Almacen
+Nombre=Almacen
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Almacen

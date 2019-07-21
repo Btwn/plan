@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM1107MOVIMIENTOSVis
+Nombre=RM1107MOVIMIENTOSVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Mov
+SQL=EXEC Sp_RM1107MOVIMIENTOS
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=25
+ClaveBDE=mov

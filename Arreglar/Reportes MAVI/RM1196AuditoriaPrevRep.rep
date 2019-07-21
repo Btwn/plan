@@ -1,0 +1,49 @@
+
+[Reporte]
+Clave=RM1196AuditoriaPrevRep
+Icono=0
+Tipo=Reporte
+Submenu=Contabilidad
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=RM1196PrincipalFrm
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+VistaEspecial=S
+
+Nombre=RM1196Reporte Auditorias CFDI
+[Vista]
+Icono=0
+Clave=RM1196AuditoriaPrevRep
+VistaIndependiente=S
+
+ListaCampos=uno
+SQL=Select 1 <T>uno<T>
+[uno]
+Clave=uno
+Nombre=uno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=uno

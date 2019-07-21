@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0166MaviDivisionVis
+Nombre=Divisiones
+Modulos=(Todos)
+Singular=Division
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Divisiones
+SQL=select distinct equipo as Divisiones from equipoagente where equipo like <T>div%<T>
+[Divisiones]
+Clave=Divisiones
+Nombre=Divisiones
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Divisiones

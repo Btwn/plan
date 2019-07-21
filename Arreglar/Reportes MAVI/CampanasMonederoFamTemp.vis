@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=CampanasMonederoFamTemp
+Nombre=FamiliaArt Campanas Monedero
+Modulos=(Todos)
+ListaTablas=CampanasMonederoFamTemp
+TablaPrincipal=CampanasMonederoFamTemp
+ListaCampos=CampanasMonederoFamTemp.Id<BR>CampanasMonederoFamTemp.FamiliaArt
+UsoCapturas=S
+UsarJOIN=S
+UsoReportes=S
+SQL=SELECT<BR>  CampanasMonederoFamTemp.Id,<BR>  CampanasMonederoFamTemp.FamiliaArt<BR><BR>FROM<BR>  CampanasMonederoFamTemp CampanasMonederoFamTemp
+[CampanasMonederoFamTemp.Id]
+Clave=CampanasMonederoFamTemp.Id
+LigaTabla=CampanasMonederoFamTemp
+LigaCampo=Id
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Id
+[CampanasMonederoFamTemp.FamiliaArt]
+Clave=CampanasMonederoFamTemp.FamiliaArt
+LigaTabla=CampanasMonederoFamTemp
+LigaCampo=FamiliaArt
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=FamiliaArt

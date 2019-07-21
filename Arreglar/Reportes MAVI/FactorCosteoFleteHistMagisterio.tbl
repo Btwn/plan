@@ -1,0 +1,25 @@
+[Tabla]
+Icono=0
+Clave=FactorCosteoFleteHistMagisterio
+Nombre=FactorCosteoFleteHistMagisterio
+Archivo=FactorCosteoFleteHistMagisterio
+Modulos=(Todos)
+Singular=FactorCosteoFleteHistMagisterio
+TipoTabla=General
+ListaCampos=FactorCosteoMagisterio<BR>Fecha
+SQL=SELECT<BR>  FactorCosteoMagisterio,<BR>  Fecha<BR><BR>FROM<BR>  FactorCosteoFleteHistMagisterio
+LlavePrimaria=FactorCosteoMagisterio<BR>Fecha
+[FactorCosteoMagisterio]
+Clave=FactorCosteoMagisterio
+Nombre=% Costeo Flete Magisterio
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aa hh:mm:ss

@@ -1,0 +1,15 @@
+[Vista]
+Icono=0
+Clave=RM0188BTipomovVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Mov
+SQL=select distinct Mov From Venta Where Mov in (<T>Factura<T>,<T>Credilana<T>)
+[Mov]
+Clave=Mov
+Nombre=MovTipo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Mov

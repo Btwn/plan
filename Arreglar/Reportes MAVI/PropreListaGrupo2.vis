@@ -1,0 +1,38 @@
+[Vista]
+Icono=0
+Clave=PropreListaGrupo2
+Nombre=Grupo 2
+Modulos=(Todos)
+Singular=Grupo 2
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID<BR>Estacion<BR>Lista
+SQL=SELECT <BR>      ID,<BR>      Estacion,<BR>      Lista<BR>FROM<BR>      ListaSelecc2
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID
+[Estacion]
+Clave=Estacion
+Nombre=Estacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Estacion
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Lista

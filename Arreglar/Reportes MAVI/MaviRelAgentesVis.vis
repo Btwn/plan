@@ -1,0 +1,37 @@
+[Vista]
+Icono=0
+Clave=MaviRelAgentesVis
+Nombre=Relacion de Agentes por Sucursal
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=SUCURSAL<BR>AGENTE<BR>NOMBRE
+SQL=SELECT DISTINCT<BR><TAB>S.Sucursal,<BR><TAB>AGT.Agente,<BR><TAB>AGT.Nombre<BR>FROM Sucursal S <BR><TAB>INNER JOIN VentasCanalMavi VCM ON VCM.UEN = S.WUEN<BR><TAB>INNER JOIN AGENTE AGT ON AGT.SUCURSALEMPRESA = S.SUCURSAL<BR>Where AGT.TIPO=<T>VENDEDOR<T><BR>AND AGT.CATEGORIA= <T>VENTAS PISO<T><BR>{Si(ConDatos(Mavi.SucursalXUENA),<T> And S.Sucursal in (<T>+Mavi.SucursalXUENA+<T>)<T>,<T><T>)}<BR>ORDER BY AGT.Agente Asc
+[SUCURSAL]
+Clave=SUCURSAL
+Nombre=SUCURSAL
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal
+[AGENTE]
+Clave=AGENTE
+Nombre=AGENTE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Agente
+[NOMBRE]
+Clave=NOMBRE
+Nombre=NOMBRE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

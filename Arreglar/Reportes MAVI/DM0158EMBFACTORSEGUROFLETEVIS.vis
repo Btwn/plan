@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=DM0158EMBFACTORSEGUROFLETEVIS
+Nombre=DM0158EMBFACTORSEGUROFLETEVIS
+Modulos=(Todos)
+ListaTablas=DM0158EMBFACTORSEGUROFLETETBL
+TablaPrincipal=DM0158EMBFACTORSEGUROFLETETBL
+ListaCampos=DM0158EMBFACTORSEGUROFLETETBL.FactorSeguroFlete
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+SQL=SELECT<BR>  DM0158EMBFACTORSEGUROFLETETBL.FactorSeguroFlete<BR><BR>FROM<BR>  DM0158EMBFACTORSEGUROFLETETBL
+[DM0158EMBFACTORSEGUROFLETETBL.FactorSeguroFlete]
+Clave=DM0158EMBFACTORSEGUROFLETETBL.FactorSeguroFlete
+Nombre=<T>% Factor Seguro Flete<T>
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+AyudaEnCaptura=Calculadora
+LigaTabla=DM0158EMBFACTORSEGUROFLETETBL
+LigaCampo=FactorSeguroFlete
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=FactorSeguroFlete

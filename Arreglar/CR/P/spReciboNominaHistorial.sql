@@ -1,0 +1,27 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spReciboNominaHistorial
+@Personal		varchar(20)
+AS BEGIN
+SELECT A.ID [Detalle],
+ISNULL(B.Personal,'') [Personal],
+ISNULL(A.PeriodoTipo,'') [PeriodoTipo],
+ISNULL(CONVERT(VARCHAR(10),A.FechaD,126),'') FechaD,
+ISNULL(CONVERT(VARCHAR(10),A.FechaA,126),'') FechaA,
+B.importe [NetoaPagar]
+FROM Nomina A
+JOIN NominaD B ON A.ID = B.ID
+WHERE B.Concepto = 'Nomina'
+AND B.Personal = @Personal
+AND A.Estatus='CONCLUIDO'
+GROUP BY B.Personal, A.FechaD, A.FechaA, A.PeriodoTipo, B.importe, A.ID
+ORDER BY CONVERT(DATETIME,A.FechaD) DESC
+RETURN
+END
+

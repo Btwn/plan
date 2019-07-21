@@ -1,0 +1,48 @@
+[Tabla]
+Icono=0
+Clave=NivelcobExcluirmovTBL
+Archivo=NivelcobExcluirmov
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Movimiento<BR>DI<BR>Dv<BR>Concepto<BR>Nivelasignado
+LlavePrimaria=Movimiento
+SQL=SELECT<BR>  Movimiento,<BR>  DI,<BR>  Dv,<BR>  Concepto,<BR>  Nivelasignado<BR><BR>FROM<BR>  NivelcobExcluirmov
+[Movimiento]
+Clave=Movimiento
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+Mayusculas=S
+Formula=SQLEnLista( <T>Select mov from movmavi<T> )
+[DI]
+Clave=DI
+Nombre=DI
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Dv]
+Clave=Dv
+Nombre=Dv
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+TamanoValidacion=100
+Tamano=100
+[Nivelasignado]
+Clave=Nivelasignado
+Nombre=Nivelasignado
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AlCambiar=si longitud(Nivelasignado)=0<BR>entonces<BR>informacion(<T>Debe capturar un Nivel de la lista<T>)<BR>Forma.RegistroCancelar<BR>Forma.RegistroUltimo<BR><BR>fin
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista( <T>Select nombre from nivelcobranzamavi<T> )

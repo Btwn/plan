@@ -1,0 +1,155 @@
+[Tabla]
+Icono=0
+Clave=ContSATOtroMetodoPago
+Nombre=ContSATOtroMetodoPago
+Archivo=ContSATOtroMetodoPago
+Modulos=(Todos)
+Singular=ContSATOtroMetodoPago
+TipoTabla=General
+ListaCampos=ID<BR>Modulo<BR>ModuloID<BR>ContID<BR>ClaveMetPago<BR>MetPago<BR>Fecha<BR>Beneficiario<BR>RFC<BR>Monto<BR>Moneda<BR>TipoCambio<BR>FormaPago<BR>ModuloRenglon
+ControlID=S
+CampoID=ID
+LlavePrimaria=ID
+SQL=SELECT<BR>  ID,<BR>  Modulo,<BR>  ModuloID,<BR>  ContID,<BR>  ClaveMetPago,<BR>  MetPago,<BR>  Fecha,<BR>  Beneficiario,<BR>  RFC,<BR>  Monto,<BR>  Moneda,<BR>  TipoCambio,<BR>  FormaPago,<BR>  ModuloRenglon<BR><BR>  FROM ContSATOtroMetodoPago
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Modulo]
+Clave=Modulo
+Nombre=Modulo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[ModuloID]
+Clave=ModuloID
+Nombre=ModuloID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[ContID]
+Clave=ContID
+Nombre=ContID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.ID
+ValorRefrescar=Info.ID
+AlCambiar=Info.ID
+[ClaveMetPago]
+Clave=ClaveMetPago
+Nombre=Clave
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+CondicionEdicion=Info.Valor = <T>1<T>
+AyudaIgnoraChequeos=S
+ValorRefrescar=SQL(<T>SELECT MetodoPagoSAT FROM FormaPago where FormaPago = :tFormaPago<T>, FormaPago )
+[MetPago]
+Clave=MetPago
+Nombre=Método de Pago
+Visible=S
+TamanoValidacion=255
+Tamano=255
+CondicionEdicion=Info.Valor = <T>1<T>
+TipoDatos=Texto
+ValorRefrescar=SQL(<T>SELECT Descripcion FROM ContSATMetodoPago WHERE Estatus = 1 AND Clave = :nClave<T>, ClaveMetPago )
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+CondicionEdicion=Info.Valor = <T>1<T>
+AyudaEnCaptura=Calendario sin Hora
+[Beneficiario]
+Clave=Beneficiario
+Nombre=Beneficiario
+Visible=S
+TamanoValidacion=255
+Tamano=255
+CondicionEdicion=Info.Valor = <T>1<T>
+TipoDatos=Texto
+[RFC]
+Clave=RFC
+Nombre=RFC
+Visible=S
+TamanoValidacion=10
+Tamano=10
+CondicionEdicion=Info.Valor = <T>1<T>
+Mayusculas=S
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>spRegistroOk :tCual, :tRegistro, :tEmpresa<T>, <T>RFC<T>, RFC, Empresa)
+ValidacionMensajeError=<T>Incorrecto<T>
+TipoDatos=Texto
+[Monto]
+Clave=Monto
+Nombre=Monto
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionEdicion=Info.Valor = <T>1<T>
+AyudaEnCaptura=Calculadora
+Monetario=S
+[Moneda]
+Clave=Moneda
+Nombre=Moneda
+Visible=S
+TamanoValidacion=10
+Tamano=10
+CondicionEdicion=Info.Valor = <T>1<T>
+Mayusculas=S
+ConRefrescar=S
+ListaRefrescar=TipoCambio
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=TipoCambio
+RefrescarTotales=S
+AlCambiar=Si<BR>  Moneda = <T>MXN<T><BR>Entonces<BR>  Asigna(Info.Cantidad,nulo)<BR>Sino<BR>  Asigna(Info.Cantidad,TipoCambio)<BR>Fin
+AyudaEnCaptura=Vista
+AyudaForma=MonLista
+AyudaVista=Mon
+AyudaCampo=Mon.Clave
+TipoDatos=Texto
+[TipoCambio]
+Clave=TipoCambio
+Nombre=Tipo de Cambio
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionEdicion=(Info.Valor = <T>1<T>) y (Moneda <> <T>MXN<T>) y (ConDatos(Moneda))
+ValorRefrescar=Info.Cantidad
+
+[FormaPago]
+Clave=FormaPago
+Nombre=Forma de Pago
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+ConRefrescar=S
+ListaRefrescar=ClaveMetPago<BR>MetPago
+CondicionEdicion=Info.Valor = <T>1<T>
+RefrescarTotales=S
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT FormaPago FROM FormaPago<T>)
+[ModuloRenglon]
+Clave=ModuloRenglon
+Nombre=ModuloRenglon
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante

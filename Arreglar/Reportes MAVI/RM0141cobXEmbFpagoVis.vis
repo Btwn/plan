@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0141cobXEmbFpagoVis
+Nombre=Forma Pago
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=FORMAENVIO
+SQL=SELECT DISTINCT(FORMAENVIO) FROM FORMAENVIO
+[FORMAENVIO]
+Clave=FORMAENVIO
+Nombre=FORMAENVIO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=FORMAENVIO

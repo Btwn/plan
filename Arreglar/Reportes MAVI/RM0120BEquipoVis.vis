@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0120BEquipoVis
+Nombre=Equipos
+Modulos=(Todos)
+Singular=Equipo
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Equipo
+SQL=Select Distinct Equipo From Equipoagente <BR>{<T>where Equipo like <T>+comillas(<T>EQ<T>) + <T> + substring( <T>+comillas(Mavi.RM0120BGerencia)+<T>,4,1) +<T> + comillas(<T>%<T>)}<BR>{<T> and  Equipo like <T>+comillas(<T>EQ<T>) + <T> + substring( <T>+comillas(Mavi.RM0120BDivision)+<T>,4,1) +<T> + comillas(<T>%<T>)}<BR>and Equipo not like <T>EQE%<T> and Equipo not like <T>EQP%<T> and Equipo not like <T>EQINT%<T>
+[Equipo]
+Clave=Equipo
+Nombre=Equipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Equipo

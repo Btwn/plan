@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=MaviLocalidadEdoVis
+Nombre=Localidad y Estados
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Delegacion<BR>Estado
+CamposBusquedaRapida=Delegacion
+SQL=Select Distinct Delegacion, Estado <BR>From CodigoPostal<BR>Order By Estado,Delegacion
+[Delegacion]
+Clave=Delegacion
+Nombre=Delegacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Delegacion
+[Estado]
+Clave=Estado
+Nombre=Estado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Estado

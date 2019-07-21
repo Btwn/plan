@@ -1,0 +1,37 @@
+[Vista]
+Icono=0
+Clave=DM0230ResultadoGestionVis
+Nombre=Resultado de Gestion
+Modulos=(Todos)
+ListaTablas=DM0230ResultadoGestionTbl
+TablaPrincipal=DM0230ResultadoGestionTbl
+ListaCampos=DM0230ResultadoGestionTbl.Resultado<BR>DM0230ResultadoGestionTbl.Recuperacion<BR>DM0230ResultadoGestionTbl.Especial
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+SQL=SELECT<BR>  Res.Resultado,<BR>  Res.Recuperacion,<BR>  Res.Especial<BR><BR>FROM<BR>  DM0230ResultadoGestionTbl Res
+[DM0230ResultadoGestionTbl.Resultado]
+Clave=DM0230ResultadoGestionTbl.Resultado
+LigaTabla=DM0230ResultadoGestionTbl
+LigaCampo=Resultado
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Resultado
+[DM0230ResultadoGestionTbl.Recuperacion]
+Clave=DM0230ResultadoGestionTbl.Recuperacion
+LigaTabla=DM0230ResultadoGestionTbl
+LigaCampo=Recuperacion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=Recuperacion
+[DM0230ResultadoGestionTbl.Especial]
+Clave=DM0230ResultadoGestionTbl.Especial
+LigaTabla=DM0230ResultadoGestionTbl
+LigaCampo=Especial
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=Especial

@@ -1,0 +1,43 @@
+[Dialogo]
+Clave=PropreGenerarEtiqueta
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Etiqueta<BR>Anexo<BR>Publicada
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=Centrado
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=390
+PosicionInicialArriba=431
+PosicionInicialAlturaCliente=128
+PosicionInicialAncho=500
+[Acciones.Etiqueta]
+Nombre=Etiqueta
+Boton=0
+NombreDesplegar=Imprimir &Etiqueta
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+Activo=S
+Visible=S
+ClaveAccion=PropreGenerarEtiquetaD
+[Acciones.Anexo]
+Nombre=Anexo
+Boton=0
+NombreDesplegar=Imprimir &Anexo
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+[Acciones.Publicada]
+Nombre=Publicada
+Boton=0
+NombreDesplegar=Imprimir Etiqueta &Publicada
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion

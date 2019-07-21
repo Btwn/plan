@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=RM1159SucursalesVis
+Nombre=Sucursales
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sucursal<BR>Nombre
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=select distinct Sucursal, Nombre from Sucursal where Tipo=<T>PISO<T>
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal
+UnicamenteLectura=S
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+UnicamenteLectura=S

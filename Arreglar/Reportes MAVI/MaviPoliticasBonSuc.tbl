@@ -1,0 +1,38 @@
+[Tabla]
+Icono=0
+Clave=MaviPoliticasBonSuc
+Nombre=MaviPoliticasBonSuc
+Archivo=MaviPoliticasBonSuc
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>SucTipo
+ListaRelaciones=SucursalTipo
+LlavePrimaria=ID<BR>SucTipo
+SQL=SELECT<BR>  ID,<BR>  SucTipo<BR><BR>FROM<BR>  MaviPoliticasBonSuc
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.ID
+[SucTipo]
+Clave=SucTipo
+Nombre=Tipo Sucursal
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=SucursalTipoLista
+AyudaVista=SucursalTipo
+AyudaCampo=SucursalTipo.Tipo
+ValidacionUsaTabla=S
+ValidacionTablas=SucursalTipo
+Requerido=S
+CondicionEdicion=MaviPoliticasBonCxc:MaviPoliticasBonCxc.Estatus en (EstatusSinAfectar, EstatusVigente)
+[Relaciones.SucursalTipo]
+TipoRelacion=Forzosa
+LlaveLocal=SucTipo
+Clave=SucursalTipo
+TablaRemota=SucursalTipo
+LlaveRemota=Tipo

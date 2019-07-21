@@ -1,0 +1,46 @@
+[Tabla]
+Icono=0
+Clave=MaviBonificacionIncluye
+Nombre=MaviBonificacionIncluye
+Archivo=MaviBonificacionIncluye
+Modulos=(Todos)
+Singular=MaviBonificacionIncluye
+TipoTabla=General
+ListaCampos=BonificacionNo<BR>IdBonificacion<BR>EnCascada<BR>Orden
+LlavePrimaria=IdBonificacion<BR>BonificacionNo
+SQL=SELECT<BR>  IdBonificacion,<BR>  BonificacionNo,<BR>  EnCascada,<BR>  Orden<BR><BR>FROM<BR>  MaviBonificacionIncluye
+[BonificacionNo]
+Clave=BonificacionNo
+Nombre=Incluye
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>Select Bonificacion from MaviBonificacionCat<T>)
+[IdBonificacion]
+Clave=IdBonificacion
+Nombre=IdBonificacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+[EnCascada]
+Clave=EnCascada
+Nombre=EnCascada
+Visible=S
+TamanoValidacion=5
+Tamano=5
+Requerido=S
+ValorPorOmision=<T>No<T>
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8

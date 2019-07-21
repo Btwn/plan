@@ -1,0 +1,1231 @@
+[Vista]
+Icono=0
+Clave=DM0226InvDVis
+Nombre=Inventarios Detalle
+Modulos=INV
+Singular=Inventario Detalle
+ListaTablas=InvD<BR>AlmPos<BR>Inv<BR>CB<BR>Art<BR>AlmDetalle<BR>Producto<BR>CentroCostos<BR>Espacio<BR>Cte
+TablaPrincipal=InvD
+UsoCapturas=S
+UsoReportes=S
+UsoAfectaciones=S
+ListaCampos=InvD.ID<BR>InvD.Renglon<BR>InvD.RenglonSub<BR>InvD.RenglonID<BR>InvD.RenglonTipo<BR>InvD.Almacen<BR>InvD.Codigo<BR>InvD.Articulo<BR>InvD.SubCuenta<BR>InvD.ArticuloDestino<BR>InvD.SubCuentaDestino<BR>InvD.Cantidad<BR>InvD.Costo<BR>InvD.CantidadReservada<BR>InvD.CantidadOrdenada<BR>InvD.CantidadCancelada<BR>InvD.CantidadPendiente<BR>InvD.CantidadA<BR>InvD.Aplica<BR>InvD.AplicaID<BR>InvD.ContUso<BR>InvD.Unidad<BR>InvD.Factor<BR>InvD.CantidadInventario<BR>InvD.FechaRequerida<BR>InvD.ProdSerieLote<BR>InvD.Merma<BR>InvD.Desperdicio<BR>InvD.Producto<BR>InvD.SubProducto<BR>InvD.Tipo<BR>InvD.Sucursal<BR>InvD.SucursalOrigen<BR>InvD.Precio<BR>InvD.CostoInv<BR>InvD.Espacio<BR>InvD.DestinoTipo<BR>InvD.Destino<BR>InvD.DestinoID<BR>InvD.Cliente<BR>InvD.SegundoConteo<BR>InvD.DescripcionExtra<BR>InvD.Posic<CONTINUA>
+ListaCalculados=CantidadNeta<BR>CantidadInvNeta<BR>Importe<BR>UltimoConteo<BR>AplicaNombre<BR>DestinoNombre<BR>OpcionDesc<BR>ClaveIdioma
+ListaRelaciones=InvD.CB<BR>InvD.Art<BR>InvD.CentroCostos<BR>InvD.AlmDetalle<BR>InvD.Producto<BR>InvD.Espacio<BR>InvD.Cte<BR>InvD.AlmPos<BR>AlmPos.Art<BR>Inv.InvD<BR>Cte.Espacio
+ListaCampos002=<CONTINUA>ion<BR>AlmPos.Tipo<BR>Inv.ID<BR>Inv.Estatus<BR>CB.Codigo<BR>CB.TipoCuenta<BR>CB.Cuenta<BR>CB.SubCuenta<BR>Art.Articulo<BR>Art.Descripcion1<BR>Art.Categoria<BR>Art.Linea<BR>Art.Unidad<BR>Art.UnidadCompra<BR>Art.UnidadTraspaso<BR>Art.TipoCosteo<BR>Art.Tipo<BR>Art.TipoOpcion<BR>Art.PrecioLista<BR>Art.Estatus<BR>Art.Mensaje<BR>AlmDetalle.Almacen<BR>AlmDetalle.Estatus<BR>AlmDetalle.Tipo<BR>Producto.Articulo<BR>Producto.Descripcion1<BR>Producto.Estatus<BR>CentroCostos.CentroCostos<BR>Espacio.Espacio<BR>Espacio.Nombre<BR>Espacio.NumeroEconomico<BR>Cte.Cliente<BR>Cte.Nombre
+UsarJOIN=S
+SQL=SELECT<BR>  InvD.ID,<BR>  InvD.Renglon,<BR>  InvD.RenglonSub,<BR>  InvD.RenglonID,<BR>  InvD.RenglonTipo,<BR>  InvD.Almacen,<BR>  InvD.Codigo,<BR>  InvD.Articulo,<BR>  InvD.SubCuenta,<BR>  InvD.ArticuloDestino,<BR>  InvD.SubCuentaDestino,<BR>  InvD.Cantidad,<BR>  InvD.Costo,<BR>  InvD.CantidadReservada,<BR>  InvD.CantidadOrdenada,<BR>  InvD.CantidadCancelada,<BR>  InvD.CantidadPendiente,<BR>  InvD.CantidadA,<BR>  InvD.Aplica,<BR>  InvD.AplicaID,<BR>  InvD.ContUso,<BR>  InvD.Unidad,<BR>  InvD.Factor,<BR>  InvD.CantidadInventario,<BR>  InvD.FechaRequerida,<BR>  InvD.ProdSerieLote,<BR>  InvD.Merma,<BR>  InvD.Desperdicio,<BR>  InvD.Producto,<BR>  InvD.SubProducto,<BR>  InvD.Tipo,<BR>  InvD.Sucursal,<BR>  InvD.SucursalOrigen,<BR>  InvD.Precio,<BR>  InvD.CostoInv,<BR>  InvD.Espacio,<BR>  InvD.De<CONTINUA>
+SQL002=<CONTINUA>stinoTipo,<BR>  InvD.Destino,<BR>  InvD.DestinoID,<BR>  InvD.Cliente,<BR>  InvD.SegundoConteo,<BR>  InvD.DescripcionExtra,<BR>  InvD.Posicion,<BR>  AlmPos.Tipo,<BR>  Inv.ID,<BR>  Inv.Estatus,<BR>  CB.Codigo,<BR>  CB.TipoCuenta,<BR>  CB.Cuenta,<BR>  CB.SubCuenta,<BR>  Art.Articulo,<BR>  Art.Descripcion1,<BR>  Art.Categoria,<BR>  Art.Linea,<BR>  Art.Unidad,<BR>  Art.UnidadCompra,<BR>  Art.UnidadTraspaso,<BR>  Art.TipoCosteo,<BR>  Art.Tipo,<BR>  Art.TipoOpcion,<BR>  Art.PrecioLista,<BR>  Art.Estatus,<BR>  Art.Mensaje,<BR>  AlmDetalle.Almacen,<BR>  AlmDetalle.Estatus,<BR>  AlmDetalle.Tipo,<BR>  Producto.Articulo,<BR>  Producto.Descripcion1,<BR>  Producto.Estatus,<BR>  CentroCostos.CentroCostos,<BR>  Espacio.Espacio,<BR>  Espacio.Nombre,<BR>  Espacio.NumeroEconomico,<BR>  Cte.Cliente,<BR>  Cte.<CONTINUA>
+SQL003=<CONTINUA>Nombre<BR><BR>FROM<BR>  InvD<BR>  LEFT OUTER JOIN CB ON InvD.Codigo=CB.Codigo AND {Comillas(<T>Articulos<T>)}=CB.TipoCuenta<BR>  JOIN Art ON InvD.Articulo=Art.Articulo<BR>  LEFT OUTER JOIN CentroCostos ON InvD.ContUso=CentroCostos.CentroCostos<BR>  JOIN Alm AlmDetalle ON InvD.Almacen=AlmDetalle.Almacen<BR>  LEFT OUTER JOIN Art Producto ON InvD.Producto=Producto.Articulo<BR>  LEFT OUTER JOIN Espacio ON InvD.Espacio=Espacio.Espacio<BR>  LEFT OUTER JOIN Cte ON InvD.Cliente=Cte.Cliente<BR>  LEFT OUTER JOIN AlmPos ON InvD.Almacen=AlmPos.Almacen AND InvD.Posicion=AlmPos.Posicion<BR>  JOIN Inv ON Inv.ID=InvD.ID
+
+[Importe]
+Clave=Importe
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Costo Total
+Monetario=S
+CondicionDespliege=Usuario.Costos y<BR>((MovTipoEn(<T>INV<T>,DM0226InvVis:Inv.Mov,(INV.E,INV.EI,INV.A,INV.TIS)) o (DM0226InvVis:Inv.Estatus=EstatusConcluido)) y<BR>(no MovTipoEn(<T>INV<T>,DM0226InvVis:Inv.Mov,(INV.T, INV.TG, INV.P, INV.R, INV.IF, INV.SOL, INV.OT, INV.OI, INV.TI, INV.DTI, INV.SM))) y<BR>(DM0226InvVis:Alm.Tipo<><T>Garantias<T>))
+Formula=CantidadNeta*InvD.Costo
+
+[Art.Familia]
+Clave=Art.Familia
+Nombre=Familia
+Tamano=50
+TamanoValidacion=50
+AyudaEnCaptura=Validaciones Memoria
+AyudaForma=ArtFam
+AyudaVista=ArtFam
+AyudaCampo=ArtFam.Familia
+AyudaMemTabla=ArtFam
+AyudaMemOpc=Validar captura en la lista
+LigaTabla=Art
+LigaCampo=Familia
+Ligado=S
+ClaveBDE=Familia
+
+[Art.UltimoCosto]
+Clave=Art.UltimoCosto
+Nombre=Ultimo Costo
+TipoDatos=NumMonetario
+TamanoValidacion=9
+Monetario=Si
+LigaTabla=Art
+LigaCampo=UltimoCosto
+Ligado=S
+ClaveBDE=UltimoCosto
+
+[Art.CostoPromedio]
+Clave=Art.CostoPromedio
+Nombre=Costo Promedio
+TipoDatos=NumMonetario
+TamanoValidacion=11
+Monetario=Si
+LigaTabla=Art
+LigaCampo=CostoPromedio
+Ligado=S
+ClaveBDE=CostoPromedio
+
+[Art.CostoEstandar]
+Clave=Art.CostoEstandar
+Nombre=Costo Estandar
+TipoDatos=NumMonetario
+TamanoValidacion=11
+Monetario=S
+AyudaEnCaptura=Calculadora
+LigaTabla=Art
+LigaCampo=CostoEstandar
+Ligado=S
+ClaveBDE=CostoEstandar
+
+[CantidadNeta]
+Clave=CantidadNeta
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Cantidad
+CondicionDespliege=(DM0226InvVis:Inv.Estatus noen (EstatusSinAfectar, EstatusPorConfirmar)) y<BR>(no ((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov)=INV.IF) y (DM0226InvVis:Inv.Estatus=EstatusPendiente) y (Config.InvFisicoConteo>1)))
+Cantidad=S
+Formula=InvD.Cantidad-InvD.CantidadCancelada
+
+[AplicaNombre]
+Clave=AplicaNombre
+Tamano=40
+TipoCampo=Calculado
+TamanoValidacion=40
+Alineacion=por Omisión
+Nombre=Aplica
+CondicionDespliege=MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.R, INV.TIF, INV.TIS)) o ((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) en (INV.S, INV.SI, INV.E, INV.EI, INV.T, INV.TG, INV.P, INV.CM, INV.SOL, INV.OT, INV.OI, INV.DTI)) y (no DM0226InvVis:Inv.Directo))) y (DM0226InvVis:Inv.Estatus<>EstatusSinAfectar)
+Formula=InvD.Aplica+<T> <T>+InvD.AplicaID
+
+[OpcionDesc]
+Clave=OpcionDesc
+Tamano=100
+TipoCampo=Calculado
+TamanoValidacion=35
+Alineacion=por Omisión
+Nombre=Opción
+Formula=DescribirOpciones( InvD.SubCuenta )
+
+[ClaveIdioma]
+Clave=ClaveIdioma
+Tamano=20
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Clave
+Mayusculas=S
+CondicionDespliege=Config.InvVerClaveIdioma y MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.T,INV.TG,INV.P,INV.R,INV.EI,INV.SI,INV.OT,INV.OI,INV.TI,INV.DTI,INV.TIF,INV.TIS))
+Formula=Si(Config.InvVerClaveIdioma y MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.T,INV.TG,INV.P,INV.R,INV.EI,INV.SI,INV.OT,INV.OI,INV.TI,INV.DTI,INV.TIF,INV.TIS)), ArtIdioma.Codigo(InvD.Articulo, DM0226InvVis:AlmDestino.Idioma))
+
+[DestinoNombre]
+Clave=DestinoNombre
+Tamano=40
+TipoCampo=Calculado
+TamanoValidacion=40
+Alineacion=por Omisión
+Nombre=Destino
+CondicionDespliege=DM0226InvVis:Inv.VerDestino y (DM0226InvVis:Inv.Estatus<>EstatusSinAfectar)
+Formula=InvD.Destino+<T> <T>+InvD.DestinoID
+
+[CantidadInvNeta]
+Clave=CantidadInvNeta
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Inventario
+CondicionDespliege=Config.MultiUnidades y Config.InvFactorDinamico y (DM0226InvVis:Inv.Estatus noen (EstatusSinAfectar, EstatusPorConfirmar)) y<BR>(no ((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov)=INV.IF) y (DM0226InvVis:Inv.Estatus=EstatusPendiente) y (Config.InvFisicoConteo>1)))
+Cantidad=S
+Formula=(InvD.Cantidad-InvD.CantidadCancelada)*InvD.CantidadInventario/InvD.Cantidad
+
+[Espacio.NumeroEconomico]
+Clave=Espacio.NumeroEconomico
+Nombre=Número Económico
+Visible=S
+TamanoValidacion=10
+Tamano=20
+Mayusculas=S
+LigaTabla=Espacio
+LigaCampo=NumeroEconomico
+ClaveBDE=NumeroEconomico
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+TipoDatos=Texto
+
+[UltimoConteo]
+Clave=UltimoConteo
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Ultimo Conteo
+CondicionDespliege=((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov)=INV.IF) y (Config.InvFisicoConteo>1) y (DM0226InvVis:Inv.Estatus = EstatusConcluido))
+Cantidad=S
+Formula=InvD.CantidadA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[InvD.Almacen]
+Clave=InvD.Almacen
+LigaTabla=InvD
+LigaCampo=Almacen
+ClaveBDE=Almacen
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=12
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=&Almacen
+Mayusculas=S
+CondicionDespliege=Config.InvMultiAlmacen y (MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) noen (INV.IF, INV.EI, INV.P, INV.R))
+ValorPorOmision=Si(MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov)=INV.EI, DM0226InvVis:Inv.AlmacenDestino, DM0226InvVis:Inv.Almacen)
+ValorRefrescar=Info.Almacen
+CondicionEdicion=no Usuario.BloquearAlmacen
+AyudaEnCaptura=Validaciones Memoria
+AyudaForma=AlmLista
+AyudaVista=Alm
+AyudaCampo=Alm.Almacen
+AyudaMemTabla=Alm
+Tamano=10
+TipoCampo=Tabla
+TipoDatos=Texto
+[InvD.SubCuenta]
+Clave=InvD.SubCuenta
+LigaTabla=InvD
+LigaCampo=SubCuenta
+ClaveBDE=SubCuenta
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorRefrescar=Si(Info.Copiar, Info.SubCuenta, Vacio(CB.SubCuenta, SubCuenta))
+AyudaEnCaptura=Vista
+AyudaForma=ArtAlmDesglose
+AyudaVista=ArtDesglose
+AyudaCampo=ArtSubDisponible.SubCuenta
+AyudaBusquedaRapida=Asigna(Info.Articulo, Art.Articulo)<BR>Asigna(Info.Almacen,InvD.Almacen)<BR>Asigna(Info.Descripcion, Art.Descripcion1)
+ConAyudaBusquedaRapida=S
+Mayusculas=S
+ConRefrescar=S
+ListaRefrescar=InvD.Costo<BR>InvD.Precio
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+[InvD.ArticuloDestino]
+Clave=InvD.ArticuloDestino
+LigaTabla=InvD
+LigaCampo=ArticuloDestino
+ClaveBDE=ArticuloDestino
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Consulta opcional
+Nombre=Artículo (Nueva Presentación)
+Mayusculas=S
+AyudaEnCaptura=Expresion
+CondicionDespliege=(MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) = INV.CP) y (DM0226InvVis:Inv.Estatus = EstatusSinAfectar)
+Formula=SQLEnLista(<T>SELECT Presentacion FROM ArtPresenta WHERE Articulo = :tArticulo<T>,InvD.Articulo)
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+[InvD.SubCuentaDestino]
+Clave=InvD.SubCuentaDestino
+LigaTabla=InvD
+LigaCampo=SubCuentaDestino
+ClaveBDE=SubCuentaDestino
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Opción (Nueva Presentación)
+CondicionDespliege=(MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) = INV.CP) y (DM0226InvVis:Inv.Estatus = EstatusSinAfectar)
+AyudaEnCaptura=Editor Opciones
+AyudaOpcionesArticulo=InvD.ArticuloDestino
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+[InvD.Cantidad]
+Clave=InvD.Cantidad
+ClaveBDE=Cantidad
+TipoDatos=NumFlotante
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Cantidad
+ValorRefrescar=Si(Info.Copiar, Info.CantidadPendiente, Si(MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.SOL, INV.OT, INV.OI, INV.TI, INV.DTI, INV.SM, INV.T, INV.SI)) y Usuario.VentaSugerirDisponible, SQL(<T>SELECT Disponible FROM ArtDisponible WHERE Empresa=:tEmp AND Articulo=:tArt AND Almacen=:tAlm<T>, Empresa, InvD.Articulo, InvD.Almacen), InvD.Cantidad))
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=InvD.Costo
+AlCambiar=Si(InvD.Cantidad < 0, Asigna(InvD.Costo, Nulo))
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=InvD.CantidadInventario<BR>InvD.Costo<BR>InvD.Precio
+LigaTabla=InvD
+LigaCampo=Cantidad
+TipoCampo=Tabla
+[InvD.Costo]
+Clave=InvD.Costo
+LigaTabla=InvD
+LigaCampo=Costo
+ClaveBDE=Costo
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Costo Unitario
+CondicionDespliege=Usuario.Costos y<BR>((MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.E, INV.EI, INV.A, INV.TIS)) o (DM0226InvVis:Inv.Estatus=EstatusConcluido)) y<BR>(no MovTipoEn(<T>INV<T>,DM0226InvVis:Inv.Mov,(INV.T, INV.TG, INV.P, INV.R, INV.IF, INV.SOL, INV.OT, INV.OI, INV.TI, INV.DTI, INV.SM))) y<BR>(DM0226InvVis:Alm.Tipo<><T>Garantias<T>))
+CondicionEdicion=no Usuario.BloquearCostos
+ValorRefrescar=Si<BR>  (Vacio(InvD.Cantidad, 0)>=0) y (<BR>  (MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) = INV.IF) o<BR>  (MovTipoEn(<T>INV<T>,DM0226InvVis:Inv.Mov, (INV.E, INV.EP, INV.EI, INV.A, INV.TIS)) y (DM0226InvVis:Alm.Tipo<><T>Garantias<T>) y (Config.SugerirCostoDev<><T>No<T>)) o<BR>  ((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) = INV.CM) y (InvD.Tipo=<T>Devolucion<T>)))<BR>  )<BR>Entonces<BR>  SQL(<T>spVerCosto :nSucursal, :tEmpresa, NULL, :tArticulo, :tSub, :tUnidad, :tCual, :tMoneda, :nTipoCambio<T>, Sucursal, Empresa, Articulo, SubCuenta, Unidad, Si(Config.FormaCosteo=<T>Articulo<T>, Art.TipoCosteo, Config.TipoCosteo), DM0226InvVis:Inv.Moneda, DM0226InvVis:Inv.TipoCambio)<BR>Sino<BR>  Nulo<BR>Fin
+AyudaEnCaptura=Calculadora
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+[InvD.CantidadReservada]
+Clave=InvD.CantidadReservada
+LigaTabla=InvD
+LigaCampo=CantidadReservada
+ClaveBDE=CantidadReservada
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Reservado
+CondicionDespliege=MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.SOL, INV.OT, INV.OI, INV.SM)) y (DM0226InvVis:Inv.Estatus=EstatusPendiente)
+UnicamenteLectura=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+[InvD.CantidadOrdenada]
+Clave=InvD.CantidadOrdenada
+LigaTabla=InvD
+LigaCampo=CantidadOrdenada
+ClaveBDE=CantidadOrdenada
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Ordenado
+CondicionDespliege=Config.BackOrders y MovTipoEn(<T>INV<T>, DM0226InvVis.Mov, (INV.SOL, INV.OT, INV.OI, INV.SM)) y (DM0226InvVis:Inv.Estatus=EstatusPendiente)
+UnicamenteLectura=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+[InvD.CantidadPendiente]
+Clave=InvD.CantidadPendiente
+LigaTabla=InvD
+LigaCampo=CantidadPendiente
+ClaveBDE=CantidadPendiente
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=CantidadPendiemte
+CondicionDespliege=(DM0226InvVis:Inv.Estatus=EstatusPendiente) y ((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) en (INV.P, INV.SOL, INV.OT, INV.OI, INV.TI, INV.DTI, INV.SM)) o DM0226InvVis:Inv.Largo)
+UnicamenteLectura=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+[InvD.CantidadA]
+Clave=InvD.CantidadA
+LigaTabla=InvD
+LigaCampo=CantidadA
+ClaveBDE=CantidadA
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=a Afectar
+CondicionDespliege=(MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.P, INV.SOL, INV.OT, INV.OI, INV.TI, INV.DTI, INV.SM, INV.IF)) y (DM0226InvVis:Inv.Estatus=EstatusPendiente)) o<BR>((DM0226InvVis:Inv.Mov=ConfigMov.InvValeSalida) y (DM0226InvVis:Inv.Estatus=EstatusConcluido))
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+[InvD.Aplica]
+Clave=InvD.Aplica
+LigaTabla=InvD
+LigaCampo=Aplica
+ClaveBDE=Aplica
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Aplica
+CondicionDespliege=(MovTipoEn(<T>INV<T>, DM0226InvVis.Mov, (INV.R, INV.TIF, INV.TIS)) o ((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) en (INV.S, INV.SI, INV.E, INV.EI, INV.T, INV.TG, INV.P, INV.CM, INV.SOL, INV.OT, INV.OI, INV.DTI)) y (no DM0226InvVis:Inv.Directo))) y (DM0226InvVis:Inv.Estatus=EstatusSinAfectar)
+CondicionEdicion=DM0226InvVis:Inv.Estatus en (EstatusSinAfectar, EstatusPendiente)
+ConRefrescar=S
+ListaRefrescar=InvD.Articulo<BR>InvD.SubCuenta<BR>InvD.Cantidad<BR>InvD.Unidad<BR>InvD.CantidadInventario
+AyudaEnCaptura=Vista
+AyudaForma=InvSolicitudPendienteD
+AyudaVista=InvSolicitudPendienteD
+AyudaCampo=InvSolicitudPendienteD.Mov
+AyudaBusquedaRapida=Asigna(Info.MovTipo, MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov))<BR>Asigna(Info.Almacen, DM0226InvVis:Inv.Almacen)
+ConAyudaBusquedaRapida=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+[InvD.AplicaID]
+Clave=InvD.AplicaID
+LigaTabla=InvD
+LigaCampo=AplicaID
+ClaveBDE=AplicaID
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Consecutivo
+Mayusculas=S
+CondicionDespliege=(MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.R, INV.TIF, INV.TIS)) o ((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) en (INV.S, INV.SI, INV.E, INV.EI, INV.T, INV.TG, INV.P, INV.CM, INV.SOL, INV.OT, INV.OI, INV.DTI)) y (no DM0226InvVis:Inv.Directo))) y (DM0226InvVis:Inv.Estatus=EstatusSinAfectar)
+ValorRefrescar=Asigna(Info.Copiar, Falso)<BR>Info.MovID
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+[InvD.ContUso]
+Clave=InvD.ContUso
+LigaTabla=InvD
+LigaCampo=ContUso
+ClaveBDE=ContUso
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Centro Costos
+CondicionDespliege=Config.ContUsoInv y MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.S, INV.SI, INV.E, INV.EP, INV.EI))
+CondicionEdicion=(no Usuario.BloquearContUso) y ((DM0226InvVis:Inv.Estatus en (EstatusSinAfectar, EstatusPorConfirmar)) o Usuario.ModificarProyUENActCC)
+ValorPorOmision=Usuario.DefContUso
+MascaraEdicion=Config.CentrosCostosFormato
+AyudaEnCaptura=Vista
+AyudaForma=CentroCostosLista
+AyudaVista=CentroCostosLista
+AyudaCampo=CentroCostosLista.CentroCostos
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+[InvD.Unidad]
+Clave=InvD.Unidad
+LigaTabla=InvD
+LigaCampo=Unidad
+ClaveBDE=Unidad
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Unidad
+CondicionDespliege=Config.MultiUnidades
+ValorRefrescar=Si(Info.Copiar, Info.Unidad, Si(Config.MultiUnidades, Si(MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.OI, INV.SI, INV.OT, INV.T)), Art.UnidadTraspaso, Art.Unidad)))
+AyudaEnCaptura=Expresion
+ConRefrescar=S
+ListaRefrescar=InvD.Costo<BR>InvD.CantidadInventario
+Formula=UnidadesArticulo(InvD.Articulo)
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+[InvD.CantidadInventario]
+Clave=InvD.CantidadInventario
+LigaTabla=InvD
+LigaCampo=CantidadInventario
+ClaveBDE=CantidadInventario
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Inventario
+CondicionDespliege=Config.MultiUnidades y Config.InvFactorDinamico y (DM0226InvVis:Inv.Estatus en (EstatusSinAfectar, EstatusPorConfirmar))
+CondicionEdicion=no Config.BloquearCantidadInventario
+AlCambiar=Si(Config.MultiUnidades y Config.InvFactorDinamico y Vacio(InvD.Cantidad), Asigna(InvD.Cantidad, InvD.CantidadInventario/UnidadFactor(InvD.Unidad, InvD.Articulo)))
+ValorRefrescar=Si(Info.Copiar, Info.CantidadInventario, Si(Config.MultiUnidades y Config.InvFactorDinamico, InvD.Cantidad*UnidadFactor(InvD.Unidad, InvD.Articulo)))
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+[InvD.FechaRequerida]
+Clave=InvD.FechaRequerida
+LigaTabla=InvD
+LigaCampo=FechaRequerida
+ClaveBDE=FechaRequerida
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Fecha Requerida
+CondicionDespliege=MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) en (INV.SOL, INV.OT, INV.OI, INV.TI, INV.DTI, INV.SM)
+ValorPorOmision=DM0226InvVis:Inv.FechaRequerida
+AyudaEnCaptura=Calendario sin Hora
+TipoCampo=Tabla
+TipoDatos=FechaHora
+[InvD.ProdSerieLote]
+Clave=InvD.ProdSerieLote
+LigaTabla=InvD
+LigaCampo=ProdSerieLote
+ClaveBDE=ProdSerieLote
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Lote
+CondicionDespliege=DM0226InvVis:Inv.VerLote y MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.OT, INV.T, INV.SM, INV.CM))
+ConRefrescar=S
+ListaRefrescar=InvD.Producto<BR>InvD.SubProducto
+AyudaEnCaptura=Vista
+AyudaForma=ProdSerieLotePendiente
+AyudaVista=ProdSerieLotePendiente
+AyudaCampo=ProdSerieLotePendiente.ProdSerieLote
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+[InvD.Merma]
+Clave=InvD.Merma
+LigaTabla=InvD
+LigaCampo=Merma
+ClaveBDE=Merma
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Merma
+CondicionDespliege=MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.SM, INV.CM)) y Config.Mermas
+AyudaEnCaptura=Calculadora
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+[InvD.Desperdicio]
+Clave=InvD.Desperdicio
+LigaTabla=InvD
+LigaCampo=Desperdicio
+TipoDatos=NumFlotante
+ClaveBDE=Desperdicio
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Desp.
+CondicionDespliege=MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.SM, INV.CM)) y Config.Desperdicios
+AyudaEnCaptura=Calculadora
+TipoCampo=Tabla
+[InvD.Producto]
+Clave=InvD.Producto
+LigaTabla=InvD
+LigaCampo=Producto
+Tamano=20
+ClaveBDE=Producto
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Producto
+CondicionDespliege=DM0226InvVis:Inv.VerLote y MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.OT, INV.T, INV.SM, INV.CM))
+ValorRefrescar=Info.Articulo
+AyudaEnCaptura=Vista
+AyudaForma=ArtLista
+AyudaVista=MaviArtA
+AyudaCampo=Art.Articulo
+TipoCampo=Tabla
+TipoDatos=Texto
+[InvD.SubProducto]
+Clave=InvD.SubProducto
+LigaTabla=InvD
+LigaCampo=SubProducto
+Tamano=20
+ClaveBDE=SubProducto
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Opcion
+CondicionDespliege=DM0226InvVis:Inv.VerLote y MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.OT, INV.T, INV.SM, INV.CM))
+ValorRefrescar=Info.SubCuenta
+AyudaEnCaptura=Editor Opciones
+AyudaOpcionesArticulo=InvD.Producto
+TipoCampo=Tabla
+TipoDatos=Texto
+[InvD.Tipo]
+Clave=InvD.Tipo
+LigaTabla=InvD
+LigaCampo=Tipo
+Tamano=20
+ClaveBDE=Tipo
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Tipo
+CondicionDespliege=MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov) = INV.CM
+ValorPorOmision=Si(MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov)=INV.CM, <T>Salida<T>, Nulo)
+ConRefrescar=S
+ListaRefrescar=InvD.Costo
+RequeridoActivo=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+ListaOpciones=Salida<BR>Devolucion<BR>Merma<BR>Desperdicio
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+TipoCampo=Tabla
+TipoDatos=Texto
+[InvD.Precio]
+Clave=InvD.Precio
+LigaTabla=InvD
+LigaCampo=Precio
+TipoDatos=NumMonetario
+ClaveBDE=Precio
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Precio
+CondicionDespliege=Config.InvRegistrarPrecios
+ValorRefrescar=Si<BR>  Config.InvRegistrarPrecios<BR>Entonces<BR>  Si<BR>    ConDatos(InvD.SubCuenta)<BR>  Entonces<BR>    Asigna(Temp.Monetario, SQL(<T>spVerPrecioEsp :Lista, :tMon, :tArt, :tSub, :tUnidad<T>, Nulo, DM0226InvVis:Inv.Moneda, InvD.Articulo, InvD.SubCuenta, InvD.Unidad))<BR>    Vacio(Temp.Monetario, Art.PrecioLista)<BR>  Sino<BR>    Art.PrecioLista<BR>  Fin<BR>Fin
+AyudaEnCaptura=Calculadora
+TipoCampo=Tabla
+[InvD.CostoInv]
+Clave=InvD.CostoInv
+LigaTabla=InvD
+LigaCampo=CostoInv
+TipoDatos=NumMonetario
+ClaveBDE=CostoInv
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Costo Inventario
+CondicionDespliege=Usuario.Costos y (MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov)=INV.EI)
+CondicionEdicion=no Usuario.BloquearCostos
+TipoCampo=Tabla
+[InvD.Espacio]
+Clave=InvD.Espacio
+LigaTabla=InvD
+LigaCampo=Espacio
+Tamano=10
+ClaveBDE=Espacio
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Espacio
+Mayusculas=S
+CondicionDespliege=General.Autotransportes y MovTipoEn(<T>INV<T>, DM0226InvVis:Inv.Mov, (INV.S, INV.SI, INV.E, INV.EP, INV.EI))
+ValorPorOmision=Info.Espacio
+AlCambiar=Asigna(Info.Espacio, InvD.Espacio)
+AyudaEnCaptura=Vista
+AyudaForma=EspacioLista
+AyudaVista=Espacio
+AyudaCampo=Espacio.Espacio
+ValidacionUsaTabla=S
+ValidacionTablas=Espacio
+TipoCampo=Tabla
+TipoDatos=Texto
+[InvD.Destino]
+Clave=InvD.Destino
+LigaTabla=InvD
+LigaCampo=Destino
+Tamano=20
+ClaveBDE=Destino
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Destino
+CondicionDespliege=DM0226InvVis:Inv.VerDestino y MovTipoEn(<T>INV<T>,DM0226InvVis:Inv.Mov, (INV.OT,INV.OI)) y (DM0226InvVis:Inv.Estatus=EstatusSinAfectar)
+ConRefrescar=S
+ValorRefrescar=Info.Origen
+ListaRefrescar=InvD.Articulo<BR>InvD.SubCuenta<BR>InvD.Cantidad<BR>InvD.Unidad<BR>InvD.Almacen<BR>InvD.DestinoTipo<BR>InvD.DestinoID
+TipoCampo=Tabla
+TipoDatos=Texto
+[InvD.DestinoID]
+Clave=InvD.DestinoID
+LigaTabla=InvD
+LigaCampo=DestinoID
+Tamano=20
+ClaveBDE=DestinoID
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorRefrescar=Info.OrigenID
+Nombre=Consecutivo
+CondicionDespliege=DM0226InvVis:Inv.VerDestino y MovTipoEn(<T>INV<T>,DM0226InvVis:Inv.Mov, (INV.OT,INV.OI)) y (DM0226InvVis:Inv.Estatus=EstatusSinAfectar)
+TipoCampo=Tabla
+TipoDatos=Texto
+[InvD.Cliente]
+Clave=InvD.Cliente
+LigaTabla=InvD
+LigaCampo=Cliente
+Tamano=10
+ClaveBDE=Cliente
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=Cliente
+CondicionDespliege=Config.BackOrders y (Config.BackOrdersNivel=<T>Cliente<T>) y MovTipoEn(<T>INV<T>,DM0226InvVis:Inv.Mov, (INV.OT,INV.OI))
+CondicionEdicion=(DM0226InvVis:Inv.Estatus en (EstatusSinAfectar,EstatusPorConfirmar)) o ((DM0226InvVis:Inv.Estatus en (EstatusPendiente,EstatusPorAutorizar)) y Usuario.ModificarClienteBackOrder)
+AyudaEnCaptura=Vista
+AyudaForma=CteLista
+AyudaVista=MaviCteNew
+AyudaCampo=Cte.Cliente
+ValidacionUsaTabla=S
+ValidacionTablas=Cte
+TipoCampo=Tabla
+TipoDatos=Texto
+[InvD.SegundoConteo]
+Clave=InvD.SegundoConteo
+LigaTabla=InvD
+LigaCampo=SegundoConteo
+TipoDatos=NumFlotante
+ClaveBDE=SegundoConteo
+TamanoValidacion=10
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Nombre=2 Conteo
+CondicionDespliege=((MovTipo(<T>INV<T>, DM0226InvVis:Inv.Mov)=INV.IF) y (Config.InvFisicoConteo>2) y (DM0226InvVis:Inv.Estatus = EstatusConcluido))
+TipoCampo=Tabla
+[InvD.Articulo]
+Clave=InvD.Articulo
+LigaTabla=InvD
+LigaCampo=Articulo
+ClaveBDE=Articulo
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Articulo
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+MascaraEdicion=Config.ArtFormato
+ValorRefrescar=Si(Info.Copiar, Info.Articulo, Si(ConDatos(CB.SubCuenta), Forma.BloquearAsistenteOpcionesUnaVez) CB.SubCuenta)
+ConRefrescar=S
+ConMensageEmergente=S
+MensageEmergente=Art.Mensaje
+ListaRefrescar=InvD.Cantidad<BR>InvD.Unidad<BR>InvD.CantidadInventario<BR>InvD.Costo<BR>InvD.Precio
+AyudaEnCaptura=Vista
+AyudaForma=ArtConDisponible
+AyudaVista=ArtConDisponible
+AyudaCampo=Art.Articulo
+ConAyudaBusquedaRapida=S
+AyudaMultiple=S
+AyudaBusquedaRapida=Asigna(Info.Almacen, InvD.Almacen)
+AyudaRefrescar=S
+ValidacionUsaTabla=S
+ValidacionTablas=Art
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Tipo Estructura<T>
+Mayusculas=S
+Tamano=20
+AlCambiar=Si<BR>  DM0226InvVis:Inv.Mov=<T>Solicitud<T><BR>Entonces<BR>  SI(SQL(<T>Select Count(Articulo) From ArtAlm Where Minimo >= 1 and Articulo=:Art and Almacen=:tAlm <T>,InvD.Articulo,DM0226InvVis:Inv.AlmacenDestino) > 0,Verdadero,Error(<T>Este Articulo no esta Autorizado para la Sucursal<T>) AbortarOperacion )<BR>Sino<BR>  Verdadero<BR>Fin 
+ValidacionCondicion=Art.Tipo<><T>Estructura<T>
+[InvD.ID]
+Clave=InvD.ID
+LigaTabla=InvD
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=ID
+[InvD.Renglon]
+Clave=InvD.Renglon
+LigaTabla=InvD
+LigaCampo=Renglon
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Renglon
+[InvD.RenglonSub]
+Clave=InvD.RenglonSub
+LigaTabla=InvD
+LigaCampo=RenglonSub
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=RenglonSub
+[InvD.RenglonID]
+Clave=InvD.RenglonID
+LigaTabla=InvD
+LigaCampo=RenglonID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=RenglonID
+[InvD.RenglonTipo]
+Clave=InvD.RenglonTipo
+LigaTabla=InvD
+LigaCampo=RenglonTipo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=1
+ClaveBDE=RenglonTipo
+[InvD.Codigo]
+Clave=InvD.Codigo
+LigaTabla=InvD
+LigaCampo=Codigo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Codigo
+[InvD.CantidadCancelada]
+Clave=InvD.CantidadCancelada
+LigaTabla=InvD
+LigaCampo=CantidadCancelada
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=CantidadCancelada
+[InvD.Factor]
+Clave=InvD.Factor
+LigaTabla=InvD
+LigaCampo=Factor
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Factor
+[InvD.Sucursal]
+Clave=InvD.Sucursal
+LigaTabla=InvD
+LigaCampo=Sucursal
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Sucursal
+[InvD.SucursalOrigen]
+Clave=InvD.SucursalOrigen
+LigaTabla=InvD
+LigaCampo=SucursalOrigen
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=SucursalOrigen
+[InvD.DestinoTipo]
+Clave=InvD.DestinoTipo
+LigaTabla=InvD
+LigaCampo=DestinoTipo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=DestinoTipo
+[InvD.DescripcionExtra]
+Clave=InvD.DescripcionExtra
+LigaTabla=InvD
+LigaCampo=DescripcionExtra
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=DescripcionExtra
+[InvD.Posicion]
+Clave=InvD.Posicion
+LigaTabla=InvD
+LigaCampo=Posicion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Posicion
+[AlmPos.Tipo]
+Clave=AlmPos.Tipo
+LigaTabla=AlmPos
+LigaCampo=Tipo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Tipo_1
+[Inv.ID]
+Clave=Inv.ID
+LigaTabla=Inv
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=AutoInc
+ClaveBDE=ID_1
+[Inv.Estatus]
+Clave=Inv.Estatus
+LigaTabla=Inv
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus
+[CB.Codigo]
+Clave=CB.Codigo
+LigaTabla=CB
+LigaCampo=Codigo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Codigo_1
+[CB.TipoCuenta]
+Clave=CB.TipoCuenta
+LigaTabla=CB
+LigaCampo=TipoCuenta
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=TipoCuenta
+[CB.Cuenta]
+Clave=CB.Cuenta
+LigaTabla=CB
+LigaCampo=Cuenta
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cuenta
+[CB.SubCuenta]
+Clave=CB.SubCuenta
+LigaTabla=CB
+LigaCampo=SubCuenta
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=SubCuenta_1
+[Art.Articulo]
+Clave=Art.Articulo
+LigaTabla=Art
+LigaCampo=Articulo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Articulo_1
+[Art.Descripcion1]
+Clave=Art.Descripcion1
+LigaTabla=Art
+LigaCampo=Descripcion1
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion1
+[Art.Categoria]
+Clave=Art.Categoria
+LigaTabla=Art
+LigaCampo=Categoria
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria
+[Art.Linea]
+Clave=Art.Linea
+LigaTabla=Art
+LigaCampo=Linea
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea
+[Art.Unidad]
+Clave=Art.Unidad
+LigaTabla=Art
+LigaCampo=Unidad
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Unidad_1
+[Art.UnidadCompra]
+Clave=Art.UnidadCompra
+LigaTabla=Art
+LigaCampo=UnidadCompra
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=UnidadCompra
+[Art.UnidadTraspaso]
+Clave=Art.UnidadTraspaso
+LigaTabla=Art
+LigaCampo=UnidadTraspaso
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=UnidadTraspaso
+[Art.TipoCosteo]
+Clave=Art.TipoCosteo
+LigaTabla=Art
+LigaCampo=TipoCosteo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=TipoCosteo
+[Art.Tipo]
+Clave=Art.Tipo
+LigaTabla=Art
+LigaCampo=Tipo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Tipo_2
+[Art.TipoOpcion]
+Clave=Art.TipoOpcion
+LigaTabla=Art
+LigaCampo=TipoOpcion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=TipoOpcion
+[Art.PrecioLista]
+Clave=Art.PrecioLista
+LigaTabla=Art
+LigaCampo=PrecioLista
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=PrecioLista
+[Art.Estatus]
+Clave=Art.Estatus
+LigaTabla=Art
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus_1
+[Art.Mensaje]
+Clave=Art.Mensaje
+LigaTabla=Art
+LigaCampo=Mensaje
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Mensaje
+[AlmDetalle.Almacen]
+Clave=AlmDetalle.Almacen
+LigaTabla=AlmDetalle
+LigaCampo=Almacen
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Almacen_1
+[AlmDetalle.Estatus]
+Clave=AlmDetalle.Estatus
+LigaTabla=AlmDetalle
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus_2
+[AlmDetalle.Tipo]
+Clave=AlmDetalle.Tipo
+LigaTabla=AlmDetalle
+LigaCampo=Tipo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Tipo_3
+[Producto.Articulo]
+Clave=Producto.Articulo
+LigaTabla=Producto
+LigaCampo=Articulo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Articulo_2
+[Producto.Descripcion1]
+Clave=Producto.Descripcion1
+LigaTabla=Producto
+LigaCampo=Descripcion1
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion1_1
+[Producto.Estatus]
+Clave=Producto.Estatus
+LigaTabla=Producto
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus_3
+[CentroCostos.CentroCostos]
+Clave=CentroCostos.CentroCostos
+LigaTabla=CentroCostos
+LigaCampo=CentroCostos
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=CentroCostos
+[Espacio.Espacio]
+Clave=Espacio.Espacio
+LigaTabla=Espacio
+LigaCampo=Espacio
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Espacio_1
+[Espacio.Nombre]
+Clave=Espacio.Nombre
+LigaTabla=Espacio
+LigaCampo=Nombre
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre
+[Cte.Cliente]
+Clave=Cte.Cliente
+LigaTabla=Cte
+LigaCampo=Cliente
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cliente_1
+[Cte.Nombre]
+Clave=Cte.Nombre
+LigaTabla=Cte
+LigaCampo=Nombre
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre_1
+[Relaciones.InvD.CB]
+Clave=InvD.CB
+TablaRemota=CB
+LlaveLocal=InvD.Codigo<BR>{Comillas(<T>Articulos<T>)}
+LlaveRemota=Codigo<BR>TipoCuenta
+TipoRelacion=Opcional
+[Relaciones.InvD.Art]
+Clave=InvD.Art
+TablaRemota=Art
+LlaveLocal=InvD.Articulo
+LlaveRemota=Articulo
+TipoRelacion=Forzosa
+[Relaciones.InvD.CentroCostos]
+Clave=InvD.CentroCostos
+TablaRemota=CentroCostos
+LlaveLocal=InvD.ContUso
+LlaveRemota=CentroCostos
+TipoRelacion=Opcional
+[Relaciones.InvD.AlmDetalle]
+Clave=InvD.AlmDetalle
+TablaRemota=AlmDetalle
+LlaveLocal=InvD.Almacen
+LlaveRemota=Almacen
+TipoRelacion=Forzosa
+[Relaciones.InvD.Producto]
+Clave=InvD.Producto
+TablaRemota=Producto
+LlaveLocal=InvD.Producto
+LlaveRemota=Articulo
+TipoRelacion=Opcional
+[Relaciones.InvD.Espacio]
+Clave=InvD.Espacio
+TablaRemota=Espacio
+LlaveLocal=InvD.Espacio
+LlaveRemota=Espacio
+TipoRelacion=Opcional
+[Relaciones.InvD.Cte]
+Clave=InvD.Cte
+TablaRemota=Cte
+LlaveLocal=InvD.Cliente
+LlaveRemota=Cliente
+TipoRelacion=Opcional
+[Relaciones.InvD.AlmPos]
+Clave=InvD.AlmPos
+TablaRemota=AlmPos
+LlaveLocal=InvD.Almacen<BR>InvD.Posicion
+LlaveRemota=Almacen<BR>Posicion
+TipoRelacion=Opcional
+[Relaciones.AlmPos.Art]
+Clave=AlmPos.Art
+TablaRemota=Art
+LlaveLocal=AlmPos.ArticuloEsp
+LlaveRemota=Articulo
+TipoRelacion=Opcional
+[Relaciones.Inv.InvD]
+Clave=Inv.InvD
+TablaRemota=InvD
+LlaveLocal=Inv.ID
+LlaveRemota=ID
+TipoRelacion=Forzosa
+[Relaciones.Cte.Espacio]
+Clave=Cte.Espacio
+TablaRemota=Espacio
+LlaveLocal=Cte.Espacio
+LlaveRemota=Espacio
+TipoRelacion=Opcional

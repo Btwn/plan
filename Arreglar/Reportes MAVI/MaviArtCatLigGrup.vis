@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviArtCatLigGrup
+Nombre=Categoria Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Categoria
+SQL=select <BR>distinct(Categoria) <BR>from art <BR>Where Art.Categoria is not null<BR>order by Categoria asc
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria

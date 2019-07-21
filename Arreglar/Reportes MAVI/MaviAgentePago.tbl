@@ -1,0 +1,35 @@
+[Tabla]
+Icono=0
+Clave=MaviAgentePago
+Nombre=MaviAgentePago
+Archivo=MaviAgentePago
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Agente<BR>ID<BR>Pago
+LlavePrimaria=Agente<BR>ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  Agente,<BR>  ID,<BR>  Pago<BR><BR>FROM<BR>  MaviAgentePago
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Agente
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Pago]
+Clave=Pago
+Nombre=Monto a Pagar
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+AyudaEnCaptura=Calculadora

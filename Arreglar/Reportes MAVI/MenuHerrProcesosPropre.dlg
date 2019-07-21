@@ -1,0 +1,42 @@
+[Dialogo]
+Clave=MenuHerrProcesosPropre
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=260
+ListaAcciones=CopiarLista<BR>Auditoria
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=por Omisión
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=754
+PosicionInicialArriba=356
+[Acciones.CopiarLista]
+Nombre=CopiarLista
+Boton=0
+NombreDesplegar=Copiar Listas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+NombreEnBoton=S
+Expresion=Forma(<T>PropreCopiarLista<T>)<BR>SI ConDatos(Info.PropreLista) Entonces<BR>  ProcesarSQL(<T>spPropreCopiarLista :tLista, :tListaDestino, :tDescripcionLista<T>,Info.PropreLista,Info.PropreListaDestino,Info.PropreDescripcionLista)<BR>Fin
+[Acciones.Auditoria]
+Nombre=Auditoria
+Boton=0
+NombreDesplegar=Auditoria Propre
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+Activo=S
+Visible=S
+NombreEnBoton=S
+ClaveAccion=PropreR09

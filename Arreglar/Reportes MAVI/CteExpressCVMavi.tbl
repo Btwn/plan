@@ -1,0 +1,57 @@
+[Tabla]
+Icono=0
+Clave=CteExpressCVMavi
+Nombre=CteExpressCVMavi
+Archivo=CteExpressCVMavi
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>IDint<BR>Nomina<BR>Puesto<BR>RFCInstitucion<BR>cliente
+LlavePrimaria=ID
+CampoID=ID
+ControlID=S
+SQL=SELECT<BR>  ID,<BR>  IDint,<BR>  cliente,<BR>  Nomina,<BR>  Puesto,<BR>  RFCInstitucion<BR><BR>FROM<BR>  CteExpressCVMavi
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+ValorPorOmision=Info.cantidad
+[IDint]
+Clave=IDint
+Nombre=IDint
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.cantidad2
+[Nomina]
+Clave=Nomina
+Nombre=* Nómina
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+TipoDatos=Texto
+[Puesto]
+Clave=Puesto
+Nombre=* Puesto
+Visible=S
+TamanoValidacion=30
+Tamano=30
+Mayusculas=S
+TipoDatos=Texto
+[RFCInstitucion]
+Clave=RFCInstitucion
+Nombre=* RFC Institución
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Mayusculas=S
+TipoDatos=Texto
+[cliente]
+Clave=cliente
+Nombre=cliente
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ValorPorOmision=info.cliente

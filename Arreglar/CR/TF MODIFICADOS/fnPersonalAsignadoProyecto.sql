@@ -1,0 +1,21 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnPersonalAsignadoProyecto (@Proyecto varchar(50))
+RETURNS @Resultado TABLE (Personal varchar(10))
+
+AS BEGIN
+INSERT @Resultado (Personal)
+SELECT DISTINCT r.Personal
+FROM Proyecto p WITH(NOLOCK)
+JOIN ProyectoRecurso pr WITH(NOLOCK) ON pr.ID = p.ID AND pr.Estatus = 'ALTA'
+JOIN Recurso r WITH(NOLOCK) ON r.Recurso = pr.Recurso
+WHERE p.Proyecto = @Proyecto AND p.Estatus IN ('PENDIENTE', 'CONCLUIDO')
+RETURN
+END
+

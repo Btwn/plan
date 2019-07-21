@@ -1,0 +1,393 @@
+SET DATEFIRST 7
+SET ANSI_NULLS ON
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET ANSI_WARNINGS ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spNotificacionAyudaCaptura
+@Notificacion		varchar(50),
+@Campo				varchar(50),
+@Modulo				varchar(10)  = NULL,
+@Movimiento			varchar(20)  = NULL,
+@Estatus			varchar(100) = NULL,
+@ContactoTipo		varchar(20)	 = NULL,
+@Cuenta				varchar(20)	 = NULL,
+@Rama				varchar(5)	 = NULL
+
+AS BEGIN
+DECLARE
+@Clave			varchar(50),
+@EstatusClave		varchar(15),
+@CtaTipo			varchar(15)
+SET @EstatusClave = NULL
+IF @Modulo = '(TODOS)' SET @Modulo = NULL
+IF @Movimiento = '(TODOS)' SET @Movimiento = NULL
+SELECT @EstatusClave = Estatus FROM Estatus WHERE RTRIM(Nombre) = RTRIM(@Estatus)
+SELECT @Clave = Clave FROM Notificacion WHERE Notificacion = @Notificacion
+SET @Campo = UPPER(@Campo)
+IF @Campo = 'EMPRESA'
+BEGIN
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT
+Empresa
+FROM Empresa
+WHERE Estatus = 'ALTA'
+END ELSE IF @Campo = 'SUCURSAL'
+BEGIN
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT
+CONVERT(varchar(10),Sucursal)
+FROM Sucursal
+WHERE Estatus = 'ALTA'
+END ELSE IF @Campo = 'UEN'
+BEGIN
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT
+CONVERT(varchar(10),UEN)
+FROM UEN
+WHERE Estatus = 'ALTA'
+END ELSE IF @Campo = 'USUARIO'
+BEGIN
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT
+Usuario
+FROM Usuario
+WHERE Estatus = 'ALTA'
+END ELSE IF @Campo = 'MODULO'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTECX'
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT CONVERT(varchar(10), 'CXC')
+UNION ALL
+SELECT CONVERT(varchar(10), 'CXP')
+ELSE
+IF EXISTS(SELECT 1 FROM NotificacionClaveModulo WHERE Clave = @Clave)
+BEGIN
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT
+Modulo
+FROM NotificacionClaveModulo
+WHERE Clave = @Clave
+END ELSE
+BEGIN
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT
+Modulo
+FROM Modulo
+END
+END ELSE IF @Campo = 'MOVIMIENTO'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTEUNIDADES'
+SELECT CONVERT(varchar(20),'(TODOS)')
+UNION ALL
+SELECT Mov
+FROM InvAuxUMov
+ELSE
+SELECT CONVERT(varchar(20),'(TODOS)')
+UNION ALL
+SELECT DISTINCT
+Mov
+FROM MovTipo
+WHERE RTRIM(Modulo) = RTRIM(ISNULL(@Modulo,Modulo))
+END ELSE IF @Campo = 'ESTATUS'
+BEGIN
+IF EXISTS(SELECT 1 FROM NotificacionClaveModuloEstatus WHERE Clave = @Clave AND RTRIM(Modulo) = RTRIM(ISNULL(@Modulo,Modulo)))
+BEGIN
+SELECT CONVERT(varchar(100),'(TODOS)')
+UNION ALL
+SELECT
+Estatus
+FROM NotificacionClaveModuloEstatus
+WHERE Clave = @Clave
+AND RTRIM(Modulo) = RTRIM(ISNULL(@Modulo,Modulo))
+END ELSE
+BEGIN
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT DISTINCT
+Nombre
+FROM Estatus
+END
+END ELSE IF @Campo = 'SITUACION'
+BEGIN
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT DISTINCT
+Situacion
+FROM MovSituacion
+WHERE RTRIM(Modulo) = RTRIM(ISNULL(@Modulo,Modulo))
+AND RTRIM(Mov) = RTRIM(ISNULL(@Movimiento,Mov))
+AND RTRIM(Estatus) = RTRIM(ISNULL(@EstatusClave,Estatus))
+END ELSE IF @Campo = 'PROYECTO'
+BEGIN
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT
+Proyecto
+FROM Proy
+WHERE RTRIM(Estatus) = 'ALTA'
+END ELSE IF @Campo = 'CONTACTOTIPO'
+BEGIN
+IF @Modulo IN ('VTAS','CXC','ST','VALE','CAM') SELECT CONVERT(varchar(50),'Cliente') ELSE
+IF @Modulo IN ('COMS','CXP','GAS','AF') SELECT CONVERT(varchar(50),'Proveedor') ELSE
+IF @Modulo IN ('AGENT','CR') SELECT CONVERT(varchar(50),'Agente') ELSE
+IF @Modulo IN ('PACTO','DIN') SELECT CONVERT(varchar(50),'(TODOS)') UNION ALL SELECT CONVERT(varchar(50),'Cliente') UNION ALL SELECT CONVERT(varchar(50),'Proveedor') UNION ALL SELECT CONVERT(varchar(50),'Agente') ELSE
+IF @Modulo IN ('CONT') SELECT CONVERT(varchar(50),'(TODOS)') UNION ALL SELECT CONVERT(varchar(50),'Cliente') UNION ALL SELECT CONVERT(varchar(50),'Proveedor') ELSE
+IF @Modulo NOT IN ('VTAS','CXC','ST','VALE','CAM','COMS','CXP','GAS','AF','AGENT','CR','PACTO','DIN') SELECT CONVERT(varchar(50),'(TODOS)')
+END ELSE IF @Campo = 'CONTACTO'
+BEGIN
+IF @ContactoTipo = 'Cliente'   SELECT CONVERT(varchar(10),'(TODOS)') UNION ALL SELECT Cliente FROM Cte WHERE Estatus = 'ALTA' ELSE
+IF @ContactoTipo = 'Proveedor' SELECT CONVERT(varchar(10),'(TODOS)') UNION ALL SELECT Proveedor FROM Prov WHERE Estatus = 'ALTA' ELSE
+IF @ContactoTipo = 'Agente'    SELECT CONVERT(varchar(10),'(TODOS)') UNION ALL SELECT Agente FROM Agente WHERE Estatus = 'ALTA' ELSE
+IF @ContactoTipo = '(TODOS)' AND @Modulo IN ('PACTO','DIN') SELECT CONVERT(varchar(50),'(TODOS)') UNION SELECT Cliente FROM Cte WHERE Estatus = 'ALTA' UNION SELECT Proveedor FROM Prov WHERE Estatus = 'ALTA' UNION SELECT Agente FROM Agente WHERE Estatus = 'ALTA' ELSE
+IF @ContactoTipo = '(TODOS)' AND @Modulo NOT IN ('PACTO','DIN') SELECT CONVERT(varchar(50),'(TODOS)')
+END
+ELSE IF @Campo = 'MONEDA'
+BEGIN
+SELECT CONVERT(varchar(10),'(TODOS)')
+UNION ALL
+SELECT
+Moneda
+FROM Mon
+END ELSE IF @Campo = 'TOTALIZADOR'
+BEGIN
+EXEC spCorteTotalizadorAyudaCaptura @Movimiento, @Modulo
+END ELSE IF @Campo = 'CTA'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTEUNIDADES'
+SELECT CONVERT(varchar(20),'(TODOS)')
+UNION ALL
+SELECT Articulo
+FROM Art
+WHERE Estatus = 'ALTA'
+ELSE
+SELECT CONVERT(varchar(20),'(TODOS)')
+UNION ALL
+SELECT Cuenta
+FROM Cta
+WHERE Estatus = 'ALTA'
+END ELSE IF @Campo = 'CTACATEGORIA'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTECONTABLE'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Categoria
+FROM CtaCat
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTECX'
+BEGIN
+IF ISNULL(@Modulo, '') = 'CXP'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Categoria
+FROM ProvCat
+ELSE IF ISNULL(@Modulo, '') = 'CXC'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Categoria
+FROM CteCat
+ELSE SELECT CONVERT(varchar(50),'(TODOS)')
+END
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTEUNIDADES'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Categoria
+FROM ArtCat
+ELSE SELECT CONVERT(varchar(50),'(TODOS)')
+END ELSE IF @Campo = 'CTATIPO'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTECX'
+BEGIN
+IF ISNULL(@Modulo, '') = 'CXP'
+SELECT CONVERT(varchar(50),'(TODOS)')
+ELSE IF ISNULL(@Modulo, '') = 'CXC'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Tipo
+FROM CteTipo
+END
+ELSE SELECT CONVERT(varchar(50),'(TODOS)')
+END ELSE IF @Campo = 'CTAFAMILIA'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTECONTABLE'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Familia
+FROM CtaFam
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTECX'
+BEGIN
+IF ISNULL(@Modulo, '') = 'CXP'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Familia
+FROM ProvFam
+ELSE IF ISNULL(@Modulo, '') = 'CXC'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Familia
+FROM CteFam
+ELSE SELECT CONVERT(varchar(50),'(TODOS)')
+END
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTEUNIDADES'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Familia
+FROM ArtFam
+ELSE SELECT CONVERT(varchar(50),'(TODOS)')
+END ELSE IF @Campo = 'RAMA'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTEUNIDADES'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Descripcion
+FROM Rama
+WHERE Mayor = 'INV'
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTECX'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Descripcion
+FROM Rama
+WHERE Mayor = @Modulo
+ELSE SELECT CONVERT(varchar(50),'(TODOS)')
+END ELSE IF @Campo = 'ALMACEN'
+BEGIN
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Almacen
+FROM Alm
+END ELSE IF @Campo = 'CTAGRUPO'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTECONTABLE'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Grupo
+FROM CtaGrupo
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTEUNIDADES'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Grupo
+FROM ArtGrupo
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTECX'
+BEGIN
+IF ISNULL(@Modulo, '') = 'CXP'
+SELECT CONVERT(varchar(50),'(TODOS)')
+ELSE IF ISNULL(@Modulo, '') = 'CXC'
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Grupo
+FROM CteGrupo
+ELSE SELECT CONVERT(varchar(50),'(TODOS)')
+END
+ELSE SELECT CONVERT(varchar(50),'(TODOS)')
+END ELSE IF @Campo = 'CTALINEA'
+BEGIN
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Linea
+FROM ArtLinea
+END ELSE IF @Campo = 'CTAFABRICANTE'
+BEGIN
+SELECT CONVERT(varchar(50),'(TODOS)')
+UNION ALL
+SELECT Fabricante
+FROM Fabricante
+END ELSE IF @Campo = 'DESGLOSAR'
+BEGIN
+IF ISNULL(@Movimiento, '') = 'CORTE.CORTECX'
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'Contacto')
+UNION ALL
+SELECT CONVERT(varchar(50),'Movimiento')
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTEIMPORTE'
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'Movimiento')
+UNION ALL
+SELECT CONVERT(varchar(50),'Periodo')
+UNION ALL
+SELECT CONVERT(varchar(50),'Ejercicio')
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTEUNIDADES'
+BEGIN
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'Articulo')
+UNION ALL
+SELECT CONVERT(varchar(50),'Movimiento')
+END
+ELSE IF ISNULL(@Movimiento, '') = 'CORTE.CORTECONTABLE'
+BEGIN
+IF ISNULL(@Cuenta, '') IN('', '(TODOS)')
+BEGIN
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'Mayor')
+UNION ALL
+SELECT CONVERT(varchar(50),'SubCuenta')
+UNION ALL
+SELECT CONVERT(varchar(50),'Auxiliar')
+END
+ELSE
+BEGIN
+SELECT @CtaTipo = Tipo FROM Cta WHERE Cuenta = @Cuenta
+IF @CtaTipo = 'ESTRUCTURA'
+BEGIN
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'Mayor')
+UNION ALL
+SELECT CONVERT(varchar(50),'SubCuenta')
+UNION ALL
+SELECT CONVERT(varchar(50),'Auxiliar')
+END
+ELSE IF @CtaTipo = 'MAYOR'
+BEGIN
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'SubCuenta')
+UNION ALL
+SELECT CONVERT(varchar(50),'Auxiliar')
+END
+ELSE IF @CtaTipo = 'SUBCUENTA'
+BEGIN
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'Auxiliar')
+END
+ELSE IF @CtaTipo = 'AUXILIAR'
+BEGIN
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'Auxiliar')
+END
+ELSE
+BEGIN
+SELECT CONVERT(varchar(50),'No')
+UNION ALL
+SELECT CONVERT(varchar(50),'Mayor')
+UNION ALL
+SELECT CONVERT(varchar(50),'SubCuenta')
+UNION ALL
+SELECT CONVERT(varchar(50),'Auxiliar')
+END
+END
+END
+ELSE SELECT CONVERT(varchar(50),'No')
+END
+/*
+VTAS, CXC, ST, VALE, CAM = Cliente
+COMS, CXP, GAS, AF = Proveedor
+AGENT, CR = Agente
+PACTO, DIN = Cliente, Proveedor, Agente
+*/
+END
+

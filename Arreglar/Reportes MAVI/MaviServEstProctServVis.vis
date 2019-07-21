@@ -1,0 +1,52 @@
+[Vista]
+Icono=0
+Clave=MaviServEstProctServVis
+Nombre=Estadistica Productividad Servicios
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=familia
+ListaCalculados=Entradas<BR>Salidas<BR>Existencias<BR>Poductividad
+SQL=select <BR>     distinct art.familia<BR>from <BR><TAB>inv <BR><TAB>inner join Invd on inv.id=invd.id<BR><TAB>inner join Art on invd.articulo=art.articulo<BR>where inv.mov like <T>%servicio%<T><BR><BR>order by art.familia
+[familia]
+Clave=familia
+Nombre=familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=familia
+[Entradas]
+Clave=Entradas
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Entradas
+Formula=sql(<T>Select count(inv.Mov) from    inv    inner join Invd on inv.id=invd.id    inner join Art on invd.articulo=art.articulo where inv.mov like :tentrada and art.familia = :tfam and inv.fechaemision between :fde and :fa and Inv.Almacen=:talm group by inv.Mov,art.familia order by inv.mov <T>,<T>%Entrada servicio%<T>,familia,Info.Fechad,Info.Fechaa,<T>V00097<T>)
+[Existencias]
+Clave=Existencias
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Existencias
+Formula=Entradas-Salidas
+[Salidas]
+Clave=Salidas
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Salidas
+Formula=sql(<T>Select count(inv.Mov) from    inv    inner join Invd on inv.id=invd.id    inner join Art on invd.articulo=art.articulo where inv.mov like :tsalida and art.familia = :tfam and inv.fechaemision between :fde and :fa  and inv.almacen=:talm group by inv.Mov,art.familia order by inv.mov<T>,<T>%Salida servicio%<T>,familia,Info.Fechad,Info.Fechaa,<T>V00097<T>)
+[Poductividad]
+Clave=Poductividad
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Poductividad
+Formula=Salidas/Entradas

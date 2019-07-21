@@ -1,0 +1,196 @@
+[Tabla]
+Icono=0
+Clave=DM0100CREDIRelacExpEntregArGralTbl
+Nombre=Tabla que almacena la relacion de Cuentas/Documentos que Credito Entrega a Digitalizacion
+Archivo=MaviCREDIDM100CapturaEntregaDocumentosDigital
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=id<BR>Cliente<BR>TipoCta<BR>UsuarioCaptura<BR>FechaCaptura<BR>RecepcionCorrecta<BR>UsuarioRecepcion<BR>FechaRecepcion<BR>Imprimir<BR>Extra1<BR>Extra2<BR>Extra3<BR>Extra4<BR>Comentarios<BR>TipoDocto
+ListaRelaciones=Clientes<BR>Concepto<BR>TipoDoc
+LlavePrimaria=Cliente<BR>id
+ControlID=S
+CampoID=id
+CamposBusquedaRapida=Cliente
+SQL=SELECT<BR>  id,<BR>  Cliente,<BR>  TipoCta,<BR>  UsuarioCaptura,<BR>  FechaCaptura,<BR>  UsuarioRecepcion,<BR>  FechaRecepcion,<BR>  RecepcionCorrecta,<BR>  Imprimir,<BR>  Extra1,<BR>  Extra2,<BR>  Extra3,<BR>  Extra4,<BR>  Comentarios,<BR>  TipoDocto<BR><BR>FROM<BR>  MaviCREDIDM100CapturaEntregaDocumentosDigital
+[id]
+Clave=id
+Nombre=id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValidacionUsaTabla=S
+ValidacionTablas=Cte
+ConRefrescar=S
+ListaRefrescar=UsuarioCaptura<BR>FechaCaptura<BR>TipoCta<BR>TipoDocto<BR>Comentarios
+AyudaForma=CteLista
+AyudaVista=MaviCteA
+AyudaCampo=Cte.Cliente
+AyudaEnCaptura=Vista
+ValidacionConCondiciones=S
+[TipoCta]
+Clave=TipoCta
+Nombre=Tipo Venta
+Visible=S
+TamanoValidacion=5
+Tamano=20
+Requerido=S
+ValorPorOmision=Mavi.DM100CREDITiposVenta
+ValorRefrescar=si<BR>sql(<T>SELECT<BR>    count(Tipo)<BR>FROM<BR>    MaviCREDIDM100CatalogoTipoPaquetes<BR>WHERE<BR>    Tipo = :tM<T>,Mavi.DM100CREDITiposVenta) < 1<BR>entonces<BR>error(<T>No se encuentra el registro<T>)                    <BR>bip()<BR>FIN<BR>si<BR>sql(<T>SELECT<BR>    count(Tipo)<BR>FROM<BR>    MaviCREDIDM100CatalogoTipoPaquetes<BR>WHERE<BR>    Tipo = :tM<T>,Mavi.DM100CREDITiposVenta) >= 1<BR>entonces<BR>Mavi.DM100CREDITiposVenta Sino <T><T> FIN
+AyudaForma=DM0100CatalogoDocDigitalizarFrm
+AyudaVista=DM0100CatalogoDocDigitalizar
+AyudaCampo=DM0100CatalogoDocDigitalizarTbl.Concepto
+AyudaEnCaptura=Vista
+[UsuarioCaptura]
+Clave=UsuarioCaptura
+Nombre=Usuario Captura
+Visible=S
+TamanoValidacion=10
+Tamano=10
+[FechaCaptura]
+Clave=FechaCaptura
+Nombre=Fecha Captura
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa hh:mm am/pm
+[UsuarioRecepcion]
+Clave=UsuarioRecepcion
+Nombre=Usuario Recepción
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorRefrescar=Si<BR>    ((RecepcionCorrecta = <T>NO<T>) o (RecepcionCorrecta = <T>SI<T>) )<BR>    Entonces Usuario<BR>    Sino <T><T>
+[FechaRecepcion]
+Clave=FechaRecepcion
+Nombre=Fecha Recepcion
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorRefrescar=Si<BR>    ((RecepcionCorrecta = <T>NO<T>) o (RecepcionCorrecta = <T>SI<T>) )<BR>    Entonces SQL(<T>Select Getdate()<T>)<BR>    Sino <T><T>
+FormatoValidacion=dd/mmm/aaaa hh:mm am/pm
+[RecepcionCorrecta]
+Clave=RecepcionCorrecta
+Nombre=Recibido
+Visible=S
+TamanoValidacion=10
+ConRefrescar=S
+ListaRefrescar=UsuarioRecepcion<BR>FechaRecepcion<BR>Comentarios
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=3
+Tamano=10
+CondicionEdicion=Vacio(RecepcionCorrecta)  y si<BR>sql(<T>SELECT cuantos = count(acceso) FROM dbo.Usuario<BR>WHERE Usuario =:tu AND Acceso IN(<T>+COMILLAS(<T>DIGIT_GERA<T>)<BR>+<T>,<T>+COMILLAS(<T>DIGIT_AUXA<T>)+<T>)<T>,usuario) = 0<BR>entonces falso Sino verdadero FIN
+ListaRefrescarCondiciones=Comentarios
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Especificar SI o NO<T>
+ValidacionCondicion=(RecepcionCorrecta = <T>SI<T>) o (RecepcionCorrecta = <T>NO<T>)
+ListaOpciones=SI<BR>NO
+[Imprimir]
+Clave=Imprimir
+Nombre=Imprimir?
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Vista
+AyudaMultiple=S
+[Extra1]
+Clave=Extra1
+Nombre=Extra1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[Extra2]
+Clave=Extra2
+Nombre=Extra2
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[Extra3]
+Clave=Extra3
+Nombre=Extra3
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Extra4]
+Clave=Extra4
+Nombre=Extra4
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Relaciones.Clientes]
+TipoRelacion=Forzosa
+LlaveLocal=Cliente
+Clave=Clientes
+TablaRemota=Cte
+LlaveRemota=Cliente
+[Comentarios]
+Clave=Comentarios
+Nombre=Comentarios
+Visible=S
+TamanoValidacion=200
+Tamano=200
+AyudaEnCaptura=Vista
+ListaRefrescarCondiciones=Comentarios
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>FHFGHJG<T>
+CondicionEdicion=(<BR>vacio(Comentarios) o<BR>Si<BR>(Comentarios = <T>OK<T>)<BR>entonces verdadero<BR>sino falso<BR>fin<BR>)<BR>y<BR>si<BR>sql(<T>SELECT cuantos = count(acceso) FROM dbo.Usuario<BR>WHERE Usuario =:tu AND Acceso IN(<T>+COMILLAS(<T>DIGIT_GERA<T>)<BR>+<T>,<T>+COMILLAS(<T>DIGIT_AUXA<T>)+<T>)<T>,usuario) = 0<BR>entonces falso Sino verdadero FIN
+AyudaForma=DM0100CatalogoDocDigitalizarFrm
+AyudaVista=DM0100CatalogoDocDigitalizar
+AyudaCampo=DM0100CatalogoDocDigitalizarTbl.Concepto
+ValidacionUsaTabla=S
+ValidacionTablas=DM0100CatalogoDocDigitalizarTbl
+ValorPorOmisionPrevalidado=S
+Requerido=S
+ValorRefrescar=Si<BR>    (RecepcionCorrecta = <T>SI<T>)<BR>    entonces<BR>        <T>OK<T><BR>    sino<BR>        <T><T>
+ValidacionCondicion=CONDATOS(Comentarios)
+[TipoDocto]
+Clave=TipoDocto
+Nombre=TipoDocto
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Requerido=S
+ValorPorOmision=Mavi.DM100CatalogoDocDigitalizar
+ValorRefrescar=Mavi.DM100CatalogoDocDigitalizar
+AyudaEnCaptura=Vista
+AyudaForma=DM0100CatalogoDocDigitalizarFrm
+AyudaVista=DM0100CatalogoDocDigitalizar
+AyudaCampo=DM0100CatalogoDocDigitalizarTbl.Concepto
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+ValidacionUsaTabla=S
+ValidacionTablas=DM0100TiposDoc
+ValidacionConCondiciones=S
+[Relaciones.Concepto]
+TipoRelacion=Opcional
+LlaveLocal=Comentarios
+Clave=Concepto
+TablaRemota=DM0100CatalogoDocDigitalizarTbl
+LlaveRemota=Concepto
+[Relaciones.TipoDoc]
+TipoRelacion=Opcional
+LlaveLocal=TipoDocto
+Clave=TipoDoc
+TablaRemota=DM0100TiposDoc
+LlaveRemota=Concepto

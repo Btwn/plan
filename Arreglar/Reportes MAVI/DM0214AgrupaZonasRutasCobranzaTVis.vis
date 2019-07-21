@@ -1,0 +1,108 @@
+[Vista]
+Icono=0
+Clave=DM0214AgrupaZonasRutasCobranzaTVis
+Nombre=DM0214AgrupaZonasRutasCobranzaTVis
+Modulos=(Todos)
+ListaTablas=DM0214ZonaCobranzaMen
+TablaPrincipal=DM0214ZonaCobranzaMen
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=DM0214ZonaCobranzaMen.NivelCobranza<BR>DM0214ZonaCobranzaMen.Zona<BR>DM0214ZonaCobranzaMen.Ruta<BR>DM0214ZonaCobranzaMen.Agente<BR>DM0214ZonaCobranzaMen.MaxCuentas
+SQL=SELECT<BR>  DM0214ZonaCobranzaMen.NivelCobranza,<BR>  DM0214ZonaCobranzaMen.Zona,<BR>  DM0214ZonaCobranzaMen.Ruta,<BR>  DM0214ZonaCobranzaMen.Agente,<BR>  DM0214ZonaCobranzaMen.MaxCuentas<BR><BR>FROM  ZonaCobranzaMen DM0214ZonaCobranzaMen<BR>WHERE  DM0214ZonaCobranzaMen.Zona = <T>{Info.Zona}<T><BR>ORDER BY  DM0214ZonaCobranzaMen.Agente DESC,<BR>  DM0214ZonaCobranzaMen.Ruta
+[DM0214ZonaCobranzaMen.NivelCobranza]
+Clave=DM0214ZonaCobranzaMen.NivelCobranza
+Nombre=NivelCobranza
+Visible=S
+TamanoValidacion=20
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=15
+AyudaMemOpc=Consulta opcional
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>No Corresponde al Agente  <T>+ Agente
+Requerido=N
+Mayusculas=S
+ValorPorOmision=Info.Nivel
+ValidacionCondicion=Si<BR>  Info.Bloqueo=1    <BR>Entonces<BR>  Si<BR>  DM0214ZonaCobranzaMen.NivelCobranza=Info.Nivel<BR>Entonces<BR>    Si<BR>     Info.Agente=<T>SIN AGENTE<T><BR>    Entonces<BR>      1=1<BR>    Sino<BR>      Info.Nivel= SQL( <T>Select Max(Agente.NivelcobranzaMavi) From Agente Where Agente.Agente=<T>+ASCII( 39 ) +Info.Agente+ ASCII( 39 )  )<BR>    Fin<BR>Sino<BR>    Si<BR>     Agente=<T>SIN AGENTE<T><BR>    Entonces<BR>      1=1<BR>    Sino<BR>      DM0214ZonaCobranzaMen.NivelCobranza= SQL( <T>Select Max(Agente.NivelcobranzaMavi) From Agente Where Agente.Agente=<T>+ASCII( 39 ) +Agente+ ASCII( 39 )  )<BR>    Fin<BR>Fin<BR>Sino<BR>  1=1<BR>Fin
+Formula=SQLEnLista(<T>SELECT Nombre FROM NivelCobranzaMavi<BR>           UNION<BR>            SELECT Nombre FROM NivelesEspecialesCobranzaMavi WHERE NivelOrigen IN(SELECT Nombre FROM NivelCobranzaMavi)<T>)
+TipoDatos=Texto
+LigaTabla=DM0214ZonaCobranzaMen
+LigaCampo=NivelCobranza
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=NivelCobranza
+[DM0214ZonaCobranzaMen.Zona]
+Clave=DM0214ZonaCobranzaMen.Zona
+Nombre=Zona
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ValidacionConCondiciones=S
+ValorPorOmision=Info.Zona
+TipoDatos=Texto
+LigaTabla=DM0214ZonaCobranzaMen
+LigaCampo=Zona
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Zona
+[DM0214ZonaCobranzaMen.Ruta]
+Clave=DM0214ZonaCobranzaMen.Ruta
+Nombre=Ruta
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Vista
+AyudaForma=DM0214Rutas
+AyudaVista=DM0214RutasVis
+AyudaCampo=Ruta
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T> No Existe o esta Duplicada<T>
+ValidacionCondicion=Si<BR>  DM0214ZonaCobranzaMen.Ruta = SQL( <T>Select top 1 Ruta From Ruta WHERE Ruta=<T>+ASCII(39)+DM0214ZonaCobranzaMen.Ruta+ASCII(39) )<BR>Entonces<BR>  Si<BR>  DM0214ZonaCobranzaMen.Ruta = SQL( <T>Select top 1 Ruta From ZonaCobranzaMen WHERE Ruta=<T>+ASCII(39)+DM0214ZonaCobranzaMen.Ruta+ASCII(39)+<T>AND Zona = <T>+ASCII(39)+DM0214ZonaCobranzaMen.Zona+ASCII(39) )<BR>Entonces<BR>  2=1<BR>Sino<BR>  1=1<BR>Fin<BR>Sino<BR>  2=1<BR>Fin
+TipoDatos=Texto
+LigaTabla=DM0214ZonaCobranzaMen
+LigaCampo=Ruta
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Ruta
+[DM0214ZonaCobranzaMen.Agente]
+Clave=DM0214ZonaCobranzaMen.Agente
+Nombre=Agente
+Visible=S
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Vista
+AyudaForma=DM0214AgenteFrm
+AyudaVista=DM0214AgenteVis
+AyudaCampo=Agente
+AyudaRefrescar=S
+ConRefrescar=S
+ListaRefrescar=MaxCuentas
+ValorRefrescar=SQL( <T>Select Top 1  Agente.Maximocuentas From Agente Where Agente.Agente=<T>+ASCII(39)+DM0214ZonaCobranzaMen.Agente+ASCII(39) )<BR> //EjecutarSQL(<T> EXEC SP_MAVIDM0214ZonasAgente <T>+ASCII(39)+DM0214ZonaCobranzaMen.Agente+ASCII(39) )
+AlCambiar=//EjecutarSQL( <T>EXEC SP_MAVIDM0214ZonasAgente <T>+ASCII(39)+DM0214ZonaCobranzaMen.Agente+ASCII(39) )
+Mayusculas=S
+ValorPorOmision=Info.Agente
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Duplicado o Nivel No corresponde a  <T> + DM0214ZonaCobranzaMen.Agente
+ValidacionCondicion=Si<BR>  DM0214ZonaCobranzaMen.Agente=<T>SIN AGENTE<T><BR>Entonces<BR>  1=1<BR>Sino<BR><BR>Si<BR>  DM0214ZonaCobranzaMen.Agente<>SQL( <T>Select Top 1 Agente From ZonaCobranzaMen Where Agente =<T>+ASCII(39)+DM0214ZonaCobranzaMen.Agente+ASCII(39) )<BR>Entonces<BR>    Si<BR>  DM0214ZonaCobranzaMen.Agente = Info.Agente<BR>Entonces<BR>  1=1<BR>Sino<BR>  DM0214ZonaCobranzaMen.NivelCobranza= SQL( <T>Select Max(Agente.NivelcobranzaMavi) From Agente Where Agente.Agente=<T>+ASCII( 39 ) +DM0214ZonaCobranzaMen.Agente+ ASCII( 39 )  )<BR>Fin<BR>Sino<BR>  1=2<BR>Fin<BR><BR>Fin
+TipoDatos=Texto
+LigaTabla=DM0214ZonaCobranzaMen
+LigaCampo=Agente
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Agente
+[DM0214ZonaCobranzaMen.MaxCuentas]
+Clave=DM0214ZonaCobranzaMen.MaxCuentas
+Nombre=MaxCuentas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.Cuenta
+AlCambiar=Si<BR>  DM0214ZonaCobranzaMen.Agente=<T>SIN AGENTE<T><BR>Entonces<BR>  1=1<BR>Sino<BR>  Si<BR>  DM0214ZonaCobranzaMen.MaxCuentas <>  SQL( <T>SELECT MaximoCuentas FROM Agente WHERE Agente=<T>+ ASCII( 39 )+DM0214ZonaCobranzaMen.Agente+ ASCII( 39 )   )<BR>Entonces<BR>  SI (Confirmacion( <T>¿Modificar el Maximo de cuentas del Agente <T>+DM0214ZonaCobranzaMen.Agente+<T>?<T> ,    BotonSi   , BotonNo   )=6)<BR>  Entonces<BR>  1=1<BR>  sino<BR>     AbortarOperacion<BR>  fin<BR>Sino<BR>    1=1<BR>Fin<BR>Fin
+ValorRefrescar=SQL( <T>Select Top 1  Agente.Maximocuentas From Agente Where Agente.Agente=<T>+ASCII(39)+DM0214ZonaCobranzaMen.Agente+ASCII(39) )
+LigaTabla=DM0214ZonaCobranzaMen
+LigaCampo=MaxCuentas
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=MaxCuentas

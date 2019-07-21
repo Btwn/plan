@@ -1,0 +1,925 @@
+[Vista]
+Icono=0
+Clave=ComisionesChoferesAsignacionMAVI
+Nombre=ComisionesChoferesAsignacionMAVI
+Modulos=(Todos)
+Singular=ComisionesChoferesAsignacionMAVI
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Personal<BR>Concepto<BR>Uno<BR>Dos<BR>Tres<BR>Cuatro<BR>Cinco<BR>Seis<BR>Siete<BR>Ocho<BR>Nueve<BR>Diez<BR>Once<BR>Doce<BR>Trece<BR>Catorce<BR>Quince<BR>Dieciseis<BR>Diecisiete<BR>Dieciocho<BR>Diecinueve<BR>Veinte<BR>Veintiuno<BR>Veintidos<BR>Veintitres<BR>Veinticuatro<BR>Veinticinco<BR>Veintiseis<BR>Veintisiete<BR>Veintiocho<BR>Veintinueve<BR>Treinta<BR>Treintaiuno<BR>Traspaso1<BR>Tras2<BR>Tras3<BR>Tras4<BR>Tras5<BR>Tras6<BR>Tras7<BR>Tras8<BR>Tras9<BR>Tras10<BR>Tras11<BR>Tras12<BR>Tras13<BR>Tras14<BR>Tras15<BR>Tras16<BR>Tras17<BR>Tras18<BR>Tras19<BR>Tras20<BR>Tras21<BR>Tras22<BR>Tras23<BR>Tras24<BR>Tras25<BR>Tras26<BR>Tras27<BR>Tras28<BR>Tras29<BR>Tras30<BR>Tras31
+ListaCalculados=Calc1<BR>Calc2<BR>Calc3<BR>Calc4<BR>Calc5<BR>Calc6<BR>Calc7<BR>Calc8<BR>Calc9<BR>Calc10<BR>Calc11<BR>Calc12<BR>Calc13<BR>Calc14<BR>Calc15<BR>Calc16<BR>Calc17<BR>Calc18<BR>Calc19<BR>Calc20<BR>Calc21<BR>Calc22<BR>Calc23<BR>Calc24<BR>Calc25<BR>Calc26<BR>Calc27<BR>Calc28<BR>Calc29<BR>Calc30<BR>Calc31<BR>Nombre<BR>ApellidoPaterno<BR>ApellidoMaterno<BR>FechaAlta<BR>FechaBaja<BR>NombreCompleto<BR>EntregasMin
+CamposBusquedaRapida=Personal
+SQL=<BR>SELECT Personal, Concepto, Uno, Dos, Tres, Cuatro,<BR>  Cinco, Seis, Siete, Ocho, Nueve, Diez,<BR>  Once, Doce, Trece, Catorce, Quince,<BR>  Dieciseis, Diecisiete, Dieciocho, Diecinueve,<BR>  Veinte, Veintiuno, Veintidos, Veintitres,<BR>  Veinticuatro, Veinticinco, Veintiseis, Veintisiete,<BR>  Veintiocho, Veintinueve, Treinta, Treintaiuno,<BR>  Traspaso1, Tras2, Tras3, Tras4, Tras5, Tras6, Tras7, Tras8,<BR>  Tras9, Tras10, Tras11, Tras12, Tras13, Tras14, Tras15, Tras16,<BR>  Tras17, Tras18, Tras19, Tras20, Tras21, Tras22, Tras23, Tras24,<BR>  Tras25, Tras26, Tras27, Tras28, Tras29, Tras30, Tras31<BR><BR>FROM V_ChoferesAsignacionMAVI<BR><BR>WHERE IDComision = {Info.ID}<BR>ORDER By Personal, Concepto
+[Personal]
+Clave=Personal
+Nombre=Clave
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Personal
+TipoDatos=Texto
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=2
+TipoDatos=Texto
+Tamano=2
+ClaveBDE=Concepto
+[Uno]
+Clave=Uno
+Nombre=Uno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Uno
+[Dos]
+Clave=Dos
+Nombre=Dos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Dos
+[Tres]
+Clave=Tres
+Nombre=Tres
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Tres
+[Cuatro]
+Clave=Cuatro
+Nombre=Cuatro
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Cuatro
+[Cinco]
+Clave=Cinco
+Nombre=Cinco
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Cinco
+[Seis]
+Clave=Seis
+Nombre=Seis
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Seis
+[Siete]
+Clave=Siete
+Nombre=Siete
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Siete
+[Ocho]
+Clave=Ocho
+Nombre=Ocho
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Ocho
+[Nueve]
+Clave=Nueve
+Nombre=Nueve
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Nueve
+[Diez]
+Clave=Diez
+Nombre=Diez
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Diez
+[Once]
+Clave=Once
+Nombre=Once
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Once
+[Doce]
+Clave=Doce
+Nombre=Doce
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Doce
+[Trece]
+Clave=Trece
+Nombre=Trece
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Trece
+[Catorce]
+Clave=Catorce
+Nombre=Catorce
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Catorce
+[Quince]
+Clave=Quince
+Nombre=Quince
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Quince
+[Dieciseis]
+Clave=Dieciseis
+Nombre=Dieciseis
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Dieciseis
+[Diecisiete]
+Clave=Diecisiete
+Nombre=Diecisiete
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Diecisiete
+[Dieciocho]
+Clave=Dieciocho
+Nombre=Dieciocho
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Dieciocho
+[Diecinueve]
+Clave=Diecinueve
+Nombre=Diecinueve
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Diecinueve
+[Veinte]
+Clave=Veinte
+Nombre=Veinte
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veinte
+[Veintiuno]
+Clave=Veintiuno
+Nombre=Veintiuno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veintiuno
+[Veintidos]
+Clave=Veintidos
+Nombre=Veintidos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veintidos
+[Veintitres]
+Clave=Veintitres
+Nombre=Veintitres
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veintitres
+[Veinticuatro]
+Clave=Veinticuatro
+Nombre=Veinticuatro
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veinticuatro
+[Veinticinco]
+Clave=Veinticinco
+Nombre=Veinticinco
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veinticinco
+[Veintiseis]
+Clave=Veintiseis
+Nombre=Veintiseis
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veintiseis
+[Veintisiete]
+Clave=Veintisiete
+Nombre=Veintisiete
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veintisiete
+[Veintiocho]
+Clave=Veintiocho
+Nombre=Veintiocho
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veintiocho
+[Veintinueve]
+Clave=Veintinueve
+Nombre=Veintinueve
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Veintinueve
+[Treinta]
+Clave=Treinta
+Nombre=Treinta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Treinta
+[Treintaiuno]
+Clave=Treintaiuno
+Nombre=Treintaiuno
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Treintaiuno
+[Calc1]
+Clave=Calc1
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=1
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Uno,0)>0, Uno, <T><T>)
+[Calc2]
+Clave=Calc2
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=2
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Dos,0)>0, Dos, <T><T>)
+[Calc3]
+Clave=Calc3
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=3
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Tres,0)>0, Tres, <T><T>)
+[Calc4]
+Clave=Calc4
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=4
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Cuatro,0)>0, Cuatro, <T><T>)
+[Calc5]
+Clave=Calc5
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=5
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Cinco,0)>0, Cinco, <T><T>)
+[Calc6]
+Clave=Calc6
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=6
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Seis,0)>0, Seis, <T><T>)
+[Calc7]
+Clave=Calc7
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=7
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Siete,0)>0, Siete, <T><T>)
+[Calc8]
+Clave=Calc8
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=8
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Ocho,0)>0, Ocho, <T><T>)
+[Calc9]
+Clave=Calc9
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=9
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Nueve,0)>0, Nueve, <T><T>)
+[Calc10]
+Clave=Calc10
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=10
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Diez,0)>0, Diez, <T><T>)
+[Calc11]
+Clave=Calc11
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=11
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Once,0)>0, Once, <T><T>)
+[Calc12]
+Clave=Calc12
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=12
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Doce,0)>0, Doce, <T><T>)
+[Calc13]
+Clave=Calc13
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=13
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Trece,0)>0, Trece, <T><T>)
+[Calc14]
+Clave=Calc14
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=14
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Catorce,0)>0, Catorce, <T><T>)
+[Calc15]
+Clave=Calc15
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=15
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+Formula=Si(vacio(Quince,0)>0, Quince, <T><T>)
+[Calc16]
+Clave=Calc16
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=16
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Dieciseis,0)>0, Dieciseis, <T><T>)
+[Calc17]
+Clave=Calc17
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=17
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Diecisiete,0)>0, Diecisiete, <T><T>)
+[Calc18]
+Clave=Calc18
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=18
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Dieciocho,0)>0, Dieciocho, <T><T>)
+[Calc19]
+Clave=Calc19
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=19
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Diecinueve,0)>0, Diecinueve, <T><T>)
+[Calc20]
+Clave=Calc20
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=20
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veinte,0)>0, Veinte, <T><T>)
+[Calc21]
+Clave=Calc21
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=21
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veintiuno,0)>0, Veintiuno, <T><T>)
+[Calc22]
+Clave=Calc22
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=22
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veintidos,0)>0, Veintidos, <T><T>)
+[Calc23]
+Clave=Calc23
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=23
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veintitres,0)>0, Veintitres, <T><T>)
+[Calc24]
+Clave=Calc24
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=24
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veinticuatro,0)>0, Veinticuatro, <T><T>)
+[Calc25]
+Clave=Calc25
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=25
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veinticinco,0)>0, Veinticinco, <T><T>)
+[Calc26]
+Clave=Calc26
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=26
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veintiseis,0)>0, Veintiseis, <T><T>)
+[Calc27]
+Clave=Calc27
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=27
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veintisiete,0)>0, Veintisiete, <T><T>)
+[Calc28]
+Clave=Calc28
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=28
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+Formula=Si(vacio(Veintiocho,0)>0, Veintiocho, <T><T>)
+[Calc29]
+Clave=Calc29
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=29
+CondicionDespliege=(Vacio(Info.Quincena,0) = 2) y (29 <= Dia(UltimoDiaMes(Info.FechaA)))
+Formula=Si(vacio(Veintinueve,0)>0, Veintinueve, <T><T>)
+[Calc30]
+Clave=Calc30
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=30
+CondicionDespliege=(Vacio(Info.Quincena,0) = 2) y (30 <= Dia(UltimoDiaMes(Info.FechaA)))
+Formula=Si(vacio(Treinta,0)>0, Treinta, <T><T>)
+[Calc31]
+Clave=Calc31
+Tamano=10
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=31
+CondicionDespliege=(Vacio(Info.Quincena,0) = 2) y (31 <= Dia(UltimoDiaMes(Info.FechaA)))
+Formula=Si(vacio(Treintaiuno,0)>0, Treintaiuno, <T><T>)
+[Nombre]
+Clave=Nombre
+Tamano=30
+TipoCampo=Calculado
+TamanoValidacion=30
+Alineacion=por Omisión
+Nombre=Nombre
+Formula=SQL(<T>SELECT Nombre FROM Personal WHERE Personal=:tPer<T>,Personal)
+[ApellidoPaterno]
+Clave=ApellidoPaterno
+Tamano=30
+TipoCampo=Calculado
+TamanoValidacion=30
+Alineacion=por Omisión
+Nombre=Apellido Paterno
+Formula=SQL(<T>SELECT ApellidoPaterno FROM Personal WHERE Personal=:tPer<T>,Personal)
+[ApellidoMaterno]
+Clave=ApellidoMaterno
+Tamano=30
+TipoCampo=Calculado
+TamanoValidacion=30
+Alineacion=por Omisión
+Nombre=Apellido Materno
+Formula=SQL(<T>SELECT ApellidoMaterno FROM Personal WHERE Personal=:tPer<T>,Personal)
+[FechaAlta]
+Clave=FechaAlta
+TipoDatos=FechaHora
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha Alta
+FormatoValidacion=dd/mmm/aaaa
+Formula=SQL(<T>SELECT FechaAlta FROM Personal WHERE Personal=:tPer<T>,Personal)
+[FechaBaja]
+Clave=FechaBaja
+TipoDatos=FechaHora
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Fecha Baja
+FormatoValidacion=dd/mmm/aaaa
+Formula=SQL(<T>SELECT FechaBaja FROM Personal WHERE Personal=:tPer<T>,Personal)
+[NombreCompleto]
+Clave=NombreCompleto
+TipoCampo=Calculado
+Alineacion=por Omisión
+Nombre=Nombre
+Tamano=40
+TamanoValidacion=40
+Formula=Nombre+<T> <T>+ApellidoPaterno+<T> <T>+ApellidoMaterno
+[EntregasMin]
+Clave=EntregasMin
+TipoDatos=Numérico
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Entregas Mínimas
+Formula=Vacio(Info.EntregasMinMAVI,0)
+[Traspaso1]
+Clave=Traspaso1
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Traspaso1
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras2]
+Clave=Tras2
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras2
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras3]
+Clave=Tras3
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras3
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras4]
+Clave=Tras4
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras4
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras5]
+Clave=Tras5
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras5
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras6]
+Clave=Tras6
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras6
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras7]
+Clave=Tras7
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras7
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras8]
+Clave=Tras8
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras8
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras9]
+Clave=Tras9
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras9
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras10]
+Clave=Tras10
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras10
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras11]
+Clave=Tras11
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras11
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras12]
+Clave=Tras12
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras12
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras13]
+Clave=Tras13
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras13
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras14]
+Clave=Tras14
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras14
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras15]
+Clave=Tras15
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras15
+CondicionDespliege=Vacio(Info.Quincena,0) = 1
+TipoDatos=Texto
+[Tras16]
+Clave=Tras16
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras16
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras17]
+Clave=Tras17
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras17
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras18]
+Clave=Tras18
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras18
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras19]
+Clave=Tras19
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras19
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras20]
+Clave=Tras20
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras20
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras21]
+Clave=Tras21
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras21
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras22]
+Clave=Tras22
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras22
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras23]
+Clave=Tras23
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras23
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras24]
+Clave=Tras24
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras24
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras25]
+Clave=Tras25
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras25
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras26]
+Clave=Tras26
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras26
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras27]
+Clave=Tras27
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras27
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras28]
+Clave=Tras28
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras28
+CondicionDespliege=Vacio(Info.Quincena,0) = 2
+TipoDatos=Texto
+[Tras29]
+Clave=Tras29
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras29
+CondicionDespliege=(Vacio(Info.Quincena,0) = 2) y (29 <= Dia(UltimoDiaMes(Info.FechaA)))
+TipoDatos=Texto
+[Tras30]
+Clave=Tras30
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras30
+CondicionDespliege=(Vacio(Info.Quincena,0) = 2) y (29 <= Dia(UltimoDiaMes(Info.FechaA)))
+TipoDatos=Texto
+[Tras31]
+Clave=Tras31
+Nombre=T
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=Tras31
+CondicionDespliege=(Vacio(Info.Quincena,0) = 2) y (29 <= Dia(UltimoDiaMes(Info.FechaA)))
+TipoDatos=Texto

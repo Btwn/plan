@@ -1,0 +1,29 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgDIOTConcepto ON Concepto
+FOR INSERT, UPDATE
+AS
+BEGIN
+DECLARE @Concepto			varchar(50),
+@EsDeducible		bit,
+@Modulo			varchar(5)
+SELECT @Concepto = Concepto, @EsDeducible = ISNULL(EsDeducible, 0), @Modulo = Modulo FROM Inserted
+IF UPDATE(EsDeducible) AND @Modulo = 'GAS'
+BEGIN
+IF @EsDeducible = 1
+BEGIN
+IF NOT EXISTS(SELECT Concepto FROM DIOTConcepto WHERE Concepto = @Concepto)
+INSERT INTO DIOTConcepto(Concepto) VALUES(@Concepto)
+END
+ELSE IF @EsDeducible = 0
+DELETE DIOTConcepto WHERE Concepto = @Concepto
+END
+RETURN
+END
+

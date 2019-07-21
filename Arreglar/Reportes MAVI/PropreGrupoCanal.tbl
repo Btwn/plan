@@ -1,0 +1,37 @@
+[Tabla]
+Icono=0
+Clave=PropreGrupoCanal
+Nombre=Canales por Grupo
+Archivo=PropreGrupoCanal
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Grupo<BR>Canal
+LlavePrimaria=Grupo<BR>Canal
+CampoGrupo=Grupo
+ListaRelaciones=VentasCanalMAVI
+SQL=SELECT<BR>  Grupo,<BR>  Canal<BR><BR>FROM<BR>  PropreGrupoCanal
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorPorOmision=Info.PropreGrupo
+[Canal]
+Clave=Canal
+Nombre=Canal de Venta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=VentasCanalListaMAVI
+AyudaVista=VentasCanalMAVI
+AyudaCampo=VentasCanalMAVI.ID
+ValidacionUsaTabla=S
+ValidacionTablas=VentasCanalMAVI
+[Relaciones.VentasCanalMAVI]
+TipoRelacion=Opcional
+LlaveLocal=Canal
+Clave=VentasCanalMAVI
+TablaRemota=VentasCanalMAVI
+LlaveRemota=ID

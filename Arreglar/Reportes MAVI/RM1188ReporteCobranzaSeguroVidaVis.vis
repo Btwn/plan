@@ -1,0 +1,19 @@
+
+[Vista]
+Icono=0
+Clave=RM1188ReporteCobranzaSeguroVidaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=division
+LlavePrimaria=division
+SQL=select DISTINCT DIVISION from DM0214ZONASCOBRANZA
+[division]
+Clave=division
+Nombre=Division
+Visible=S
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Division

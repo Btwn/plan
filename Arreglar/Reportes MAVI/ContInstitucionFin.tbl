@@ -1,0 +1,51 @@
+[Tabla]
+Icono=0
+Clave=ContInstitucionFin
+Nombre=ContInstitucionFin
+Archivo=CFDINominaInstitucionFin
+Modulos=(Todos)
+Singular=ContInstitucionFin
+TipoTabla=General
+ListaCampos=Institucion<BR>ClaveSAT
+ListaRelaciones=BancoSucursal<BR>CFDINominaSATInstitucionFin
+LlavePrimaria=Institucion
+SQL=SELECT<BR>  Institucion,<BR>  ClaveSAT<BR><BR>FROM<BR>  CFDINominaInstitucionFin
+[Institucion]
+Clave=Institucion
+Nombre=Institución
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=BancoSucursal
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Validar captura en la lista
+ValidacionUsaTabla=S
+ValidacionTablas=BancoSucursal
+[ClaveSAT]
+Clave=ClaveSAT
+Nombre=Clave SAT
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=ContSATInstitucionFinLista
+AyudaVista=CFDINominaSATInstitucionFin
+AyudaCampo=CFDINominaSATInstitucionFin.Clave
+AyudaMemOpc=Unicamente opciones listadas
+ValidacionUsaTabla=S
+ValidacionTablas=CFDINominaSATInstitucionFin
+[Relaciones.BancoSucursal]
+TipoRelacion=Forzosa
+LlaveLocal=Institucion
+Clave=BancoSucursal
+TablaRemota=BancoSucursal
+LlaveRemota=BancoSucursal
+[Relaciones.CFDINominaSATInstitucionFin]
+TipoRelacion=Forzosa
+LlaveLocal=ClaveSAT
+Clave=CFDINominaSATInstitucionFin
+TablaRemota=CFDINominaSATInstitucionFin
+LlaveRemota=Clave

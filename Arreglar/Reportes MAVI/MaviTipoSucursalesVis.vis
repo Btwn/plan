@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviTipoSucursalesVis
+Nombre=Tipos de Sucursal
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=TIPO
+SQL=SELECT DISTINCT(TIPO) FROM SUCURSAL<BR>WHERE TIPO IS NOT NULL<BR>AND LEN(TIPO)>0<BR>ORDER BY TIPO
+[TIPO]
+Clave=TIPO
+Nombre=TIPO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=TIPO

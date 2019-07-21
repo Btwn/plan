@@ -1,0 +1,54 @@
+[Vista]
+Icono=0
+Clave=DM0239JerarquiaSucVis
+Nombre=Jerarquia Sucursales
+Modulos=(Todos)
+ListaTablas=DM0239JerarquiSucTbl
+TablaPrincipal=DM0239JerarquiSucTbl
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=DM0239JerarquiSucTbl.Sucursal<BR>DM0239JerarquiSucTbl.Ranking<BR>DM0239JerarquiSucTbl.SucLiquidadora
+CamposBusquedaRapida=DM0239JerarquiSucTbl.Sucursal<BR>DM0239JerarquiSucTbl.Ranking<BR>DM0239JerarquiSucTbl.SucLiquidadora
+SQL=SELECT<BR>  DM0239JerarquiSucTbl.Sucursal,<BR>  DM0239JerarquiSucTbl.Ranking,<BR>  DM0239JerarquiSucTbl.SucLiquidadora<BR><BR>FROM<BR>  DM0239JerarquiadeSuc DM0239JerarquiSucTbl
+[DM0239JerarquiSucTbl.Sucursal]
+Clave=DM0239JerarquiSucTbl.Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0239JerarquiSucTbl
+LigaCampo=Sucursal
+ClaveBDE=Sucursal
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>Select Count(*) From DM0239JerarquiadeSuc Where Sucursal=:nSuc<T>,DM0239JerarquiSucTbl.Sucursal) = 0
+ValidacionMensajeError=<T>Esta Sucursal Ya Existe en Otro Ranking<T>
+[DM0239JerarquiSucTbl.Ranking]
+Clave=DM0239JerarquiSucTbl.Ranking
+Nombre=Ranking
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0239JerarquiSucTbl
+LigaCampo=Ranking
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Ranking
+[DM0239JerarquiSucTbl.SucLiquidadora]
+Clave=DM0239JerarquiSucTbl.SucLiquidadora
+Nombre=SucLiquidadora
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=DM0239JerarquiSucTbl
+LigaCampo=SucLiquidadora
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=SucLiquidadora

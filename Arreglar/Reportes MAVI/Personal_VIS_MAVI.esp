@@ -1,0 +1,86 @@
+;***** Modificacion: 03-Feb-09
+;***** Modifico: Edgar Montelongo
+;***** Se modifico: Adecuaciones para validar la direccion vs CP
+;*** Desarrollo de Campañas 27/08/09, Modifico:Joel García (Mex), se agrego un campo adicional. 
+
+[Personal.vis/Vista.ListaCampos]
+Personal.MES=Personal.LocalidadCNBV
+Personal.LocalidadCNBV=Personal.Sembrado
+Personal.Sembrado=Plaza.Descripcion
+CtaSituacion.Icono=LocalidadCNBV.LocalidadCNBV
+LocalidadCNBV.LocalidadCNBV=(Fin)
+
+[Personal.vis/Vista.SQL]
+Personal.MES,=Personal.LocalidadCNBV,
+Personal.LocalidadCNBV,=Personal.Sembrado,
+Personal.Sembrado,=Plaza.Descripcion,
+CtaSituacion.Situacion,=CtaSituacion.Icono,
+CtaSituacion.Icono,=LocalidadCNBV.LocalidadCNBV
+LocalidadCNBV.LocalidadCNBV=FROM Personal
+LEFT OUTER JOIN Empresa ON Personal.Empresa<IGUAL>Empresa.Empresa=LEFT OUTER JOIN LocalidadCNBV ON Personal.LocalidadCNBV<IGUAL>LocalidadCNBV.LocalidadCNBV
+LEFT OUTER JOIN LocalidadCNBV ON Personal.LocalidadCNBV<IGUAL>LocalidadCNBV.LocalidadCNBV=(Fin)
+
+[Personal.vis/Vista.ListaTablas]
+CtaSituacion=LocalidadCNBV
+LocalidadCNBV=(Fin)
+
+[Personal.vis/Vista.ListaRelaciones]
+Cte.CtaSituacion=Personal.Localidad
+Personal.Localidad=Sucursal.LocalidadCNBV
+Sucursal.LocalidadCNBV=Cte.LocalidadCNBV
+Cte.LocalidadCNBV=(Fin)
+
+[Personal.vis/Personal.LocalidadCNBV]
+Clave=Personal.LocalidadCNBV
+LigaTabla=Personal
+LigaCampo=LocalidadCNBV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=LocalidadCNBV
+
+[Personal.vis/LocalidadCNBV.LocalidadCNBV]
+Clave=LocalidadCNBV.LocalidadCNBV
+Nombre=Localidad
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+LigaTabla=LocalidadCNBV
+LigaCampo=LocalidadCNBV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=LocalidadCNBV_1
+
+[Personal.vis/Relaciones.Personal.Localidad]
+Clave=Personal.Localidad
+TablaRemota=LocalidadCNBV
+LlaveLocal=Personal.LocalidadCNBV
+LlaveRemota=LocalidadCNBV
+TipoRelacion=Forzosa
+
+[Personal.vis/Relaciones.Sucursal.LocalidadCNBV]
+Clave=Sucursal.LocalidadCNBV
+TablaRemota=LocalidadCNBV
+LlaveLocal=Sucursal.LocalidadCNBV
+LlaveRemota=LocalidadCNBV
+TipoRelacion=Opcional
+
+[Personal.vis/Relaciones.Cte.LocalidadCNBV]
+Clave=Cte.LocalidadCNBV
+TablaRemota=LocalidadCNBV
+LlaveLocal=Cte.LocalidadCNBV
+LlaveRemota=LocalidadCNBV
+TipoRelacion=Opcional
+
+
+;*** Desarrollo de Campañas 27/08/09, Modifico:Joel García (Mex), se agrego un campo adicional. 
+[Personal.vis/Personal.Sembrado]
+Clave=Personal.Sembrado
+Visible=S
+LigaTabla=Personal
+LigaCampo=Sembrado
+Ligado=S
+ClaveBDE=Sembrado

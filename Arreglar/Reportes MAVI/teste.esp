@@ -1,0 +1,8 @@
+
+[ContAcum.rep/D10]
+;Expresion=Si(Cta.Tipo=TipoMayor, Asigna(Rep.SumaCargos, <BR>Rep.SumaCargos+Rep.Cargos))<BR>Rep.Cargos
+;Expresion=Si(Cta.Tipo=TipoMayor, Asigna(Rep.SumaAbonos, <BR>Rep.SumaAbonos+Rep.Abonos))<BR>Rep.Abonos
+Expresion=Rep.SumaAbonos+Rep.SumaAbonos
+
+[ContAcum.rep/E10]
+ExpresionMultiple=S

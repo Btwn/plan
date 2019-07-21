@@ -1,0 +1,24 @@
+[Vista]
+Icono=0
+Clave=RM0188BCanalVis
+Nombre=RM0188BCanal
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ID<BR>Cadena
+SQL=select Cadena, ID from VentasCanalMAVI Where Categoria =<T>INSTITUCIONES<T> or Cadena=<T>CREDITO AVANZADA<T><BR>GROUP BY Cadena,ID
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID
+[Cadena]
+Clave=Cadena
+Nombre=Canal de Venta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Cadena

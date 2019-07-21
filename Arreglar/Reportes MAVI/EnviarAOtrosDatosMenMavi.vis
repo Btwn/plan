@@ -1,0 +1,540 @@
+[Vista]
+Icono=0
+Clave=EnviarAOtrosDatosMenMavi
+Nombre=Enviar a Otros Datos Menudeo
+Modulos=(Todos)
+ListaTablas=CteEnviarAOtrosDatos
+TablaPrincipal=CteEnviarAOtrosDatos
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=CteEnviarAOtrosDatos.Cliente<BR>CteEnviarAOtrosDatos.ID<BR>CteEnviarAOtrosDatos.Descripcion1<BR>CteEnviarAOtrosDatos.Descripcion2<BR>CteEnviarAOtrosDatos.Descripcion3<BR>CteEnviarAOtrosDatos.Descripcion4<BR>CteEnviarAOtrosDatos.Descripcion5<BR>CteEnviarAOtrosDatos.Descripcion6<BR>CteEnviarAOtrosDatos.Descripcion7<BR>CteEnviarAOtrosDatos.Descripcion8<BR>CteEnviarAOtrosDatos.Descripcion9<BR>CteEnviarAOtrosDatos.Descripcion10<BR>CteEnviarAOtrosDatos.Descripcion11<BR>CteEnviarAOtrosDatos.Descripcion12<BR>CteEnviarAOtrosDatos.Descripcion13<BR>CteEnviarAOtrosDatos.Descripcion14<BR>CteEnviarAOtrosDatos.Descripcion15<BR>CteEnviarAOtrosDatos.Descripcion16<BR>CteEnviarAOtrosDatos.Descripcion17<BR>CteEnviarAOtrosDatos.Descripcion18<BR>CteEnviarAOtrosDatos.Descripcion19<BR>CteEnviarAOtrosDatos.Descrip<CONTINUA>
+ListaCampos002=<CONTINUA>cion20<BR>CteEnviarAOtrosDatos.Fecha1<BR>CteEnviarAOtrosDatos.Fecha2<BR>CteEnviarAOtrosDatos.Fecha3<BR>CteEnviarAOtrosDatos.Fecha4<BR>CteEnviarAOtrosDatos.Fecha5<BR>CteEnviarAOtrosDatos.Numerico1<BR>CteEnviarAOtrosDatos.Numerico2<BR>CteEnviarAOtrosDatos.Numerico3<BR>CteEnviarAOtrosDatos.Numerico4<BR>CteEnviarAOtrosDatos.Numerico5<BR>CteEnviarAOtrosDatos.bit1<BR>CteEnviarAOtrosDatos.bit2<BR>CteEnviarAOtrosDatos.bit3<BR>CteEnviarAOtrosDatos.bit4<BR>CteEnviarAOtrosDatos.bit5
+SQL=SELECT<BR>  CteEnviarAOtrosDatos.Cliente,<BR>  CteEnviarAOtrosDatos.ID,<BR>  CteEnviarAOtrosDatos.Descripcion1,<BR>  CteEnviarAOtrosDatos.Descripcion2,<BR>  CteEnviarAOtrosDatos.Descripcion3,<BR>  CteEnviarAOtrosDatos.Descripcion4,<BR>  CteEnviarAOtrosDatos.Descripcion5,<BR>  CteEnviarAOtrosDatos.Descripcion6,<BR>  CteEnviarAOtrosDatos.Descripcion7,<BR>  CteEnviarAOtrosDatos.Descripcion8,<BR>  CteEnviarAOtrosDatos.Descripcion9,<BR>  CteEnviarAOtrosDatos.Descripcion10,<BR>  CteEnviarAOtrosDatos.Descripcion11,<BR>  CteEnviarAOtrosDatos.Descripcion12,<BR>  CteEnviarAOtrosDatos.Descripcion13,<BR>  CteEnviarAOtrosDatos.Descripcion14,<BR>  CteEnviarAOtrosDatos.Descripcion15,<BR>  CteEnviarAOtrosDatos.Descripcion16,<BR>  CteEnviarAOtrosDatos.Descripcion17,<BR>  CteEnviarAOtrosDatos.Descripcion18,<CONTINUA>
+SQL002=<CONTINUA><BR>  CteEnviarAOtrosDatos.Descripcion19,<BR>  CteEnviarAOtrosDatos.Descripcion20,<BR>  CteEnviarAOtrosDatos.Fecha1,<BR>  CteEnviarAOtrosDatos.Fecha2,<BR>  CteEnviarAOtrosDatos.Fecha3,<BR>  CteEnviarAOtrosDatos.Fecha4,<BR>  CteEnviarAOtrosDatos.Fecha5,<BR>  CteEnviarAOtrosDatos.Numerico1,<BR>  CteEnviarAOtrosDatos.Numerico2,<BR>  CteEnviarAOtrosDatos.Numerico3,<BR>  CteEnviarAOtrosDatos.Numerico4,<BR>  CteEnviarAOtrosDatos.Numerico5,<BR>  CteEnviarAOtrosDatos.bit1,<BR>  CteEnviarAOtrosDatos.bit2,<BR>  CteEnviarAOtrosDatos.bit3,<BR>  CteEnviarAOtrosDatos.bit4,<BR>  CteEnviarAOtrosDatos.bit5<BR><BR>FROM<BR>  CteEnviarAOtrosDatos
+[CteEnviarAOtrosDatos.Cliente]
+Clave=CteEnviarAOtrosDatos.Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Cliente
+TipoDatos=Texto
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Cliente
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Cliente
+[CteEnviarAOtrosDatos.ID]
+Clave=CteEnviarAOtrosDatos.ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.ID
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ID
+[CteEnviarAOtrosDatos.Descripcion1]
+Clave=CteEnviarAOtrosDatos.Descripcion1
+Nombre=Emisor Comercial 1
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion1
+ClaveBDE=Descripcion1
+Alineacion=por Omisión
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion2]
+Clave=CteEnviarAOtrosDatos.Descripcion2
+Nombre=N. Tarjeta Comercial 1
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion2
+ClaveBDE=Descripcion2
+Alineacion=por Omisión
+MascaraEdicion=################
+
+[CteEnviarAOtrosDatos.Descripcion3]
+Clave=CteEnviarAOtrosDatos.Descripcion3
+Nombre=Emisor Comercial 2
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion3
+ClaveBDE=Descripcion3
+Alineacion=por Omisión
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion4]
+Clave=CteEnviarAOtrosDatos.Descripcion4
+Nombre=N.Tarjeta Comercial 2
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion4
+ClaveBDE=Descripcion4
+Alineacion=por Omisión
+MascaraEdicion=################
+
+[CteEnviarAOtrosDatos.Descripcion5]
+Clave=CteEnviarAOtrosDatos.Descripcion5
+Nombre=Emisor Bancario 1
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion5
+ClaveBDE=Descripcion5
+Alineacion=por Omisión
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion6]
+Clave=CteEnviarAOtrosDatos.Descripcion6
+Nombre=N. Tarjeta Bancaria 1
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion6
+ClaveBDE=Descripcion6
+Alineacion=por Omisión
+MascaraEdicion=################
+
+[CteEnviarAOtrosDatos.Descripcion7]
+Clave=CteEnviarAOtrosDatos.Descripcion7
+Nombre=Emisor Bancario 2
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion7
+ClaveBDE=Descripcion7
+Alineacion=por Omisión
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion8]
+Clave=CteEnviarAOtrosDatos.Descripcion8
+Nombre=N. Tarjeta Bancaria 2
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion8
+ClaveBDE=Descripcion8
+Alineacion=por Omisión
+MascaraEdicion=################
+
+[CteEnviarAOtrosDatos.Descripcion9]
+Clave=CteEnviarAOtrosDatos.Descripcion9
+Nombre=Emisor Bancario 3
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion9
+ClaveBDE=Descripcion9
+Alineacion=por Omisión
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion10]
+Clave=CteEnviarAOtrosDatos.Descripcion10
+Nombre=N. Tarjeta Bancaria 3
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion10
+ClaveBDE=Descripcion10
+Alineacion=por Omisión
+MascaraEdicion=################
+
+[CteEnviarAOtrosDatos.Descripcion11]
+Clave=CteEnviarAOtrosDatos.Descripcion11
+Nombre=Domicilio 1
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion11
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Descripcion11
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion12]
+Clave=CteEnviarAOtrosDatos.Descripcion12
+Nombre=Nombre comercial 2
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion12
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Descripcion12
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion13]
+Clave=CteEnviarAOtrosDatos.Descripcion13
+Nombre=Domicilio 2
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion13
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Descripcion13
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion14]
+Clave=CteEnviarAOtrosDatos.Descripcion14
+Nombre=Nombre comercial 3
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion14
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Descripcion14
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion15]
+Clave=CteEnviarAOtrosDatos.Descripcion15
+Nombre=Domicilio 3
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion15
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Descripcion15
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion16]
+Clave=CteEnviarAOtrosDatos.Descripcion16
+Nombre=Descripción 16
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Descripcion16 FROM CteEnviarAOtrosDatos<T>)
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion16
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Descripcion16
+Mayusculas=S
+[CteEnviarAOtrosDatos.Descripcion17]
+Clave=CteEnviarAOtrosDatos.Descripcion17
+Nombre=Descripción 17
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Descripcion17 FROM CteEnviarAOtrosDatos<T>)
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion17
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Descripcion17
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion18]
+Clave=CteEnviarAOtrosDatos.Descripcion18
+Nombre=Descripción 18
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Descripcion18 FROM CteEnviarAOtrosDatos<T>)
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion18
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Descripcion18
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion19]
+Clave=CteEnviarAOtrosDatos.Descripcion19
+Nombre=Descripción 19
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Consulta opcional
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Descripcion19 FROM CteEnviarAOtrosDatos<T>)
+TipoDatos=Texto
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion19
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Descripcion19
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Descripcion20]
+Clave=CteEnviarAOtrosDatos.Descripcion20
+Nombre=Descripción 20
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Consulta opcional
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Descripcion20 FROM CteEnviarAOtrosDatos<T>)
+TipoDatos=Texto
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Descripcion20
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Descripcion20
+Mayusculas=S
+
+[CteEnviarAOtrosDatos.Fecha1]
+Clave=CteEnviarAOtrosDatos.Fecha1
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+FormatoValidacion=dd/mmm/aaaa
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Fecha1
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Fecha1
+[CteEnviarAOtrosDatos.Fecha2]
+Clave=CteEnviarAOtrosDatos.Fecha2
+Nombre=Fecha 2
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+FormatoValidacion=dd/mmm/aaaa
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Fecha2
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Fecha2
+[CteEnviarAOtrosDatos.Fecha3]
+Clave=CteEnviarAOtrosDatos.Fecha3
+Nombre=Fecha 3
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+FormatoValidacion=dd/mmm/aaaa
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Fecha3
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Fecha3
+[CteEnviarAOtrosDatos.Fecha4]
+Clave=CteEnviarAOtrosDatos.Fecha4
+Nombre=Fecha 4
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+FormatoValidacion=dd/mmm/aaaa
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Fecha4
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Fecha4
+[CteEnviarAOtrosDatos.Fecha5]
+Clave=CteEnviarAOtrosDatos.Fecha5
+Nombre=Fecha 5
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa
+AyudaEnCaptura=Calendario sin Hora
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Fecha5
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Fecha5
+[CteEnviarAOtrosDatos.Numerico1]
+Clave=CteEnviarAOtrosDatos.Numerico1
+Nombre=Numérico 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Numerico1
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Numerico1
+[CteEnviarAOtrosDatos.Numerico2]
+Clave=CteEnviarAOtrosDatos.Numerico2
+Nombre=Numérico 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Numerico2
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Numerico2
+[CteEnviarAOtrosDatos.Numerico3]
+Clave=CteEnviarAOtrosDatos.Numerico3
+Nombre=Numérico 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Numerico3
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Numerico3
+[CteEnviarAOtrosDatos.Numerico4]
+Clave=CteEnviarAOtrosDatos.Numerico4
+Nombre=Numérico 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Numerico4
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Numerico4
+[CteEnviarAOtrosDatos.Numerico5]
+Clave=CteEnviarAOtrosDatos.Numerico5
+Nombre=Numérico 5
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=Numerico5
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Numerico5
+[CteEnviarAOtrosDatos.bit1]
+Clave=CteEnviarAOtrosDatos.bit1
+Nombre=Piso de venta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=bit1
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=bit1
+[CteEnviarAOtrosDatos.bit2]
+Clave=CteEnviarAOtrosDatos.bit2
+Nombre=Bodega
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=bit2
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=bit2
+[CteEnviarAOtrosDatos.bit3]
+Clave=CteEnviarAOtrosDatos.bit3
+Nombre=Dom. Particular
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=bit3
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=bit3
+[CteEnviarAOtrosDatos.bit4]
+Clave=CteEnviarAOtrosDatos.bit4
+Nombre=Lógico 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=bit4
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=bit4
+[CteEnviarAOtrosDatos.bit5]
+Clave=CteEnviarAOtrosDatos.bit5
+Nombre=Lógico 5
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+LigaTabla=CteEnviarAOtrosDatos
+LigaCampo=bit5
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=bit5

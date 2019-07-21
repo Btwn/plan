@@ -1,0 +1,52 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnWMSListaResurtirTarima (@ID int, @Modulo char(5))
+RETURNS bit
+AS
+BEGIN
+DECLARE @Resultado bit,
+@Tarima varchar(20)
+IF @Modulo = 'VTAS'
+DECLARE crTarima CURSOR FOR
+SELECT vd.Tarima
+FROM Venta v
+JOIN VentaD vd ON v.ID = vd.ID AND NULLIF(vd.Tarima,'') IS NOT NULL
+WHERE v.ID = @ID
+ELSE
+IF @Modulo = 'COMS'
+DECLARE crTarima CURSOR FOR
+SELECT vd.Tarima
+FROM Compra v
+JOIN CompraD vd ON v.ID = vd.ID AND NULLIF(vd.Tarima,'') IS NOT NULL
+WHERE v.ID = @ID
+ELSE
+IF @Modulo = 'INV'
+DECLARE crTarima CURSOR FOR
+SELECT vd.Tarima
+FROM Inv v
+JOIN InvD vd ON v.ID = vd.ID AND NULLIF(vd.Tarima,'') IS NOT NULL
+WHERE v.ID = @ID
+OPEN crTarima
+FETCH NEXT FROM crTarima INTO @Tarima
+WHILE @@FETCH_STATUS <> -1
+BEGIN
+IF @@FETCH_STATUS <> -2
+BEGIN
+IF EXISTS(SELECT * FROM dbo.fnWMSEnSurtidoACancelarPorArticulo(@Tarima))
+SELECT @Resultado = 0
+ELSE
+SELECT @Resultado = 1
+END
+FETCH NEXT FROM crTarima INTO @Tarima
+END 
+CLOSE crTarima
+DEALLOCATE crTarima
+RETURN(@Resultado)
+END
+

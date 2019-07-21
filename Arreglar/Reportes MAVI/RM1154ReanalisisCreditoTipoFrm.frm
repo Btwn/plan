@@ -1,0 +1,134 @@
+[Forma]
+Clave=RM1154ReanalisisCreditoTipoFrm
+Icono=245
+Modulos=(Todos)
+ListaCarpetas=Vista
+CarpetaPrincipal=Vista
+PosicionInicialIzquierda=539
+PosicionInicialArriba=388
+PosicionInicialAlturaCliente=291
+PosicionInicialAncho=318
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar<BR>Cerrar
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+Nombre=Tipos de Reanalisis
+[Vista]
+Estilo=Iconos
+Pestana=S
+Clave=Vista
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+Vista=RM1154ReanalisisCreditoVis
+ListaEnCaptura=Nombre
+OtroOrden=S
+ListaOrden=Nombre<TAB>(Acendente)<BR>Valor<TAB>(Acendente)
+MenuLocal=S
+ListaAcciones=seleccionarTodo<BR>QuitarSeleccion
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+PestanaOtroNombre=S
+PestanaNombre=Tipos de Reanalisis
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+IconosNombre=RM1154ReanalisisCreditoVis:Valor
+IconosSubTitulo=<T>Clave<T>
+[Vista.Nombre]
+Carpeta=Vista
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+[Vista.Columnas]
+Nombre=604
+0=-2
+1=-2
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=Seleccionar
+EnBarraHerramientas=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Asignar<BR>Vista<BR>Seleccionar
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=36
+NombreEnBoton=S
+NombreDesplegar=Cerrar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+EspacioPrevio=S
+[Acciones.Seleccionar.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Vista]
+Nombre=Vista
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Seleccionar.Seleccionar]
+Nombre=Seleccionar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM1154TipoReanalisis,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Acciones.QuitarSeleccion]
+Nombre=QuitarSeleccion
+Boton=0
+NombreDesplegar=Quitar selección
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Acciones.seleccionarTodo]
+Nombre=seleccionarTodo
+Boton=0
+NombreDesplegar=Seleccionar todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=seleccionar Todo
+Activo=S
+Visible=S
+

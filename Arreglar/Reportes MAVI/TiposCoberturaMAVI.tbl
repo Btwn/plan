@@ -1,0 +1,26 @@
+[Tabla]
+Icono=0
+Clave=TiposCoberturaMAVI
+Nombre=TiposCoberturaMAVI
+Archivo=TiposCoberturaMAVI
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Cobertura<BR>Orden
+LlavePrimaria=Cobertura<BR>Orden
+SQL=SELECT<BR>  Cobertura,<BR>  Orden<BR><BR>FROM<BR>  TiposCoberturaMAVI
+[Cobertura]
+Clave=Cobertura
+Nombre=Cobertura
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=0

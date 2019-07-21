@@ -1,0 +1,19 @@
+[Vista]
+Icono=720
+Clave=RM0167MaviDivisionEIVis
+Nombre=División Estructura Instituciones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Division
+SQL=Select Distinct Division<BR>From V_MaviEstructuraInst<BR>Where Categoria = <T>VENTAS A INSTITUCIONES<T> and Division<><T><T><BR>{Si ConDatos(Mavi.GerenciaVINew) Entonces <T> And Gerencia = <T>+Mavi.GerenciaVINew Sino <T><T> Fin}<BR>{Si ConDatos(Mavi.DivisionVINew) Entonces <T> And Division = <T>+Mavi.DivisionVINew Sino <T><T> Fin}<BR>{Si ConDatos(Mavi.CelulaVINew) Entonces <T> And Celula = <T>+Mavi.CelulaVINew Sino <T><T> Fin}<BR>{Si ConDatos(Mavi.EquipoVINew) Entonces <T> And Equipo = <T>+Mavi.EquipoVINew Sino <T><T> Fin}<BR>--{Si ConDatos(Mavi.RHAgenteEI) Entonces <T> And Agente = <T>+Mavi.RHAgenteEI Sino <T><T> Fin}<BR>Order By Division
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Division

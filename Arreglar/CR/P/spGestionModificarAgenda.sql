@@ -1,0 +1,41 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spGestionModificarAgenda
+@ID		int
+
+AS BEGIN
+DECLARE
+@ReunionID	int
+BEGIN TRANSACTION
+DECLARE crModificarAgenda CURSOR FOR
+SELECT g.ID
+FROM Gestion g
+JOIN MovTipo mt ON mt.Modulo = 'GES' AND mt.Mov = g.Mov AND mt.Clave = 'GES.REU'
+WHERE g.IDOrigen = @ID AND g.Estatus IN ('PENDIENTE', 'ALTAPRIORIDAD', 'PRIORIDADBAJA')
+OPEN crModificarAgenda
+FETCH NEXT FROM crModificarAgenda INTO @ReunionID
+WHILE @@FETCH_STATUS <> -1 AND @@Error = 0
+BEGIN
+IF @@FETCH_STATUS <> -2
+BEGIN
+DELETE GestionAgenda WHERE ID = @ReunionID
+INSERT GestionAgenda (
+ID,         Modulo, Mov, MovID, Orden, Sucursal)
+SELECT @ReunionID, Modulo, Mov, MovID, Orden, Sucursal
+FROM GestionAgenda
+WHERE ID = @ID
+END
+FETCH NEXT FROM crModificarAgenda INTO @ReunionID
+END
+CLOSE crModificarAgenda
+DEALLOCATE crModificarAgenda
+COMMIT TRANSACTION
+RETURN
+END
+

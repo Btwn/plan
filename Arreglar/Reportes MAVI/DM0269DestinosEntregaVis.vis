@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=DM0269DestinosEntregaVis
+Modulos=(Todos)
+ListaCampos=DM0269DestinosEntregaTbl.PoblacionEntrega<BR>DM0269DestinosEntregaTbl.OrdenEntrega
+ListaTablas=DM0269DestinosEntregaTbl
+TablaPrincipal=DM0269DestinosEntregaTbl
+UsarJOIN=S
+UsoCapturas=S
+SQL=SELECT<BR>  DM0269DestinosEntregaTbl.PoblacionEntrega,<BR>  DM0269DestinosEntregaTbl.OrdenEntrega<BR><BR>FROM<BR>  DM0269DestinosEntrega DM0269DestinosEntregaTbl
+[DM0269DestinosEntregaTbl.PoblacionEntrega]
+Clave=DM0269DestinosEntregaTbl.PoblacionEntrega
+LigaTabla=DM0269DestinosEntregaTbl
+LigaCampo=PoblacionEntrega
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=PoblacionEntrega
+[DM0269DestinosEntregaTbl.OrdenEntrega]
+Clave=DM0269DestinosEntregaTbl.OrdenEntrega
+LigaTabla=DM0269DestinosEntregaTbl
+LigaCampo=OrdenEntrega
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=OrdenEntrega

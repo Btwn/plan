@@ -1,0 +1,28 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgArtFamBC ON ArtFam
+
+FOR UPDATE, DELETE
+AS BEGIN
+DECLARE
+@FamiliaA  	varchar(50),
+@FamiliaN		varchar(50)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @FamiliaN = Familia FROM Inserted
+SELECT @FamiliaA = Familia FROM Deleted
+IF @FamiliaN=@FamiliaA RETURN
+IF @FamiliaN IS NULL
+BEGIN
+DELETE ArtFamPresupuesto   WHERE Familia = @FamiliaA
+END ELSE
+BEGIN
+UPDATE ArtFamPresupuesto   SET Familia = @FamiliaN WHERE Familia = @FamiliaA
+END
+END
+

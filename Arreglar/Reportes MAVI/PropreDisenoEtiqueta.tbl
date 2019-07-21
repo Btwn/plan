@@ -1,0 +1,25 @@
+[Tabla]
+Icono=0
+Clave=PropreDisenoEtiqueta
+Nombre=PropreDisenoEtiqueta
+Archivo=PropreDisenoEtiqueta
+Modulos=(Todos)
+Singular=PropreDisenoEtiqueta
+TipoTabla=Maestros
+ListaCampos=Codigo<BR>Descripcion
+LlavePrimaria=Codigo
+SQL=SELECT<BR>  Codigo,<BR>  Descripcion<BR><BR>FROM<BR>  PropreDisenoEtiqueta
+[Codigo]
+Clave=Codigo
+Nombre=Codigo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+TamanoValidacion=10
+Tamano=50

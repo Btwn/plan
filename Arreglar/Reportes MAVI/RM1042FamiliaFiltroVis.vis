@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1042FamiliaFiltroVis
+Nombre=RM1042 Grupos
+Modulos=(Todos)
+Singular=RM1042 Grupos
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=FAMILIA
+CamposBusquedaRapida=FAMILIA
+LlavePrimaria=FAMILIA
+SQL=EXEC SP_RM1042ArmRutasFamilia_Filtro<BR><BR><BR> <T>{FechaFormatoServidor(Info.FechaD)}<T>, <BR> <T>{FechaFormatoServidor(Info.FechaA)}<T>,<BR>  {si(condatos(Mavi.RM1042OrdTraspasoPrincipal), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042OrdTraspasoPrincipal)),comillas(<T><T>))},<BR>  {si(condatos(Mavi.RM1042IdEmbFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042IdEmbFiltro)),comillas(<T><T>))},<BR>  {si(condatos(Mavi.RM1042TipoEmbFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042TipoEmbFiltro)),comillas(<T><T>))}
+[FAMILIA]
+Clave=FAMILIA
+Nombre=FAMILIA
+Visible=S
+TamanoValidacion=50
+Tamano=200
+ClaveBDE=FAMILIA
+TipoDatos=Texto

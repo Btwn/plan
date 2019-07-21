@@ -1,0 +1,27 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW MAFServicioAbierto
+AS
+SELECT
+v.ServicioTipo,
+v.AFArticulo,
+v.AFSerie,
+v.ID,
+v.Mov,
+v.MovID,
+v.Estatus
+FROM Venta v JOIN MovTipo mt
+ON v.Mov = mt.Mov AND mt.Modulo = 'VTAS' JOIN MovFlujo mf
+ON mf.OID = v.ID AND mf.OModulo = 'VTAS' AND mf.DModulo = 'GES' JOIN Gestion g
+ON g.ID = mf.DID JOIN MovTipo mt2
+ON mt2.Mov = g.Mov AND mt2.Modulo = 'GES'
+WHERE mt.SubClave = 'MAF.S'
+AND ((v.Estatus NOT IN ('CONCLUIDO','CANCELADO')) OR (v.Estatus IN ('CONCLUIDO') AND g.Estatus NOT IN ('CONCLUIDO','CANCELADO')))
+AND MT2.SubClave = 'MAF.SI'
+

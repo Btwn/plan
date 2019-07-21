@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=DM0244CobroClienteVis
+Nombre=DM0244CobroCliente
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=ClienteTipo
+SQL=<BR><BR><BR>SELECT ClienteTipo = res FROM  FN_MAVIDM0244ExisteAsignacionCliente (<T>2<T>,{Comillas(Mavi.Folio)},{Comillas(Info.Acreditado)})
+[ClienteTipo]
+Clave=ClienteTipo
+Nombre=ClienteTipo
+Visible=S
+TamanoValidacion=50x3
+Tamaño=20
+ClaveBDE=ClienteTipo

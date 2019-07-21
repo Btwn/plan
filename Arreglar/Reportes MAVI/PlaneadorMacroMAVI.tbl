@@ -1,0 +1,1026 @@
+[Tabla]
+Icono=0
+Clave=PlaneadorMacroMAVI
+Nombre=PlaneadorMacroMAVI
+Archivo=PlaneadorMacroMAVI
+Modulos=(Todos)
+Singular=PlaneadorMacroMAVI
+TipoTabla=General
+ListaCampos=ID<BR>Estatus<BR>Proveedor<BR>Codigo<BR>Descripcion<BR>Propiedad<BR>Categoria<BR>Grupo<BR>Linea<BR>Familia<BR>FactorDiasInv<BR>DiasDeInventario<BR>BackOrder<BR>ValorBackOrder<BR>PedidosxAutorizar<BR>PedidoEstimado<BR>CantidadOrdenar<BR>DescVarAnt1<BR>DescVarAnt2<BR>DescVarAnt3<BR>PrecioMAPcIva<BR>PrecioMAPsIva<BR>DescuentoFijo1<BR>DescuentoFijo2<BR>DescuentoFijo3<BR>CostoDescFijos<BR>DescVariable1<BR>DescVariable2<BR>DescVariable3<BR>CostoConDescuentos<BR>Apoyo<BR>CostoFinal<BR>ImporteTotal<BR>Exhibicion<BR>CostoPropre<BR>ExistenciaCD<BR>ExistenciaMAY<BR>ExistenciaSER<BR>ExistenciaAME1<BR>ExistenciaAME2<BR>ExistenciaAME3<BR>ExistenciaAME4<BR>ExistenciaINS<BR>ExistenciaVIU1<BR>ExistenciaVIU2<BR>ExistenciaVIU3<BR>ExistenciaVIU4<BR>ExistenciaRES<BR>TotalExistencias<BR>VentaAME1<BR>VentaAME2<B<CONTINUA>
+ListaCampos002=<CONTINUA>R>VentaAME3<BR>VentaAME4<BR>VentaCAM<BR>VentaREA<BR>VentaINS<BR>VentaVIU1<BR>VentaVIU2<BR>VentaVIU3<BR>VentaVIU4<BR>VentaMAY<BR>VentaRES<BR>VentasGrupo<BR>VtasCredAME<BR>VtasCredVIU<BR>TotalVtasCredito<BR>ContadoAME<BR>ContadoVIU<BR>ContadoVIUPlazos<BR>VentaContado<BR>VentaMenudeo<BR>VentaMayoreo<BR>VentasCanal<BR>ImporteExistencias<BR>ImporteVtasMenudeo<BR>ImporteVtasMayoreo<BR>ImporteVtasTotal<BR>Observaciones<BR>Columna1<BR>Columna2<BR>Columna3<BR>Columna4<BR>Columna5<BR>Columna6<BR>Columna7<BR>Columna8<BR>Columna9<BR>Columna10<BR>Columna11<BR>Columna12<BR>Columna13<BR>Columna14<BR>Columna15<BR>DistMAY<BR>DistAME1<BR>DistAME2<BR>DistAME3<BR>DistAME4<BR>DistINS<BR>DistVIU1<BR>DistVIU2<BR>DistVIU3<BR>FechaD<BR>DistVIU4<BR>FechaA<BR>Notas<BR>ImporteSol<BR>EstacionTrabajo
+ListaRelaciones=Prov
+LlavePrimaria=ID<BR>EstacionTrabajo
+ControlID=S
+ControlEstatus=S
+CampoID=ID
+CampoEstatus=Estatus
+ControlGrupo=S
+CampoGrupo=Grupo
+SQL=SELECT<BR>  ID,<BR>  Estatus,<BR>  Proveedor,<BR>  Notas,<BR>  Codigo,<BR>  Descripcion,<BR>  Propiedad,<BR>  Categoria,<BR>  Grupo,<BR>  Linea,<BR>  Familia,<BR>  FactorDiasInv,<BR>  DiasDeInventario,<BR>  BackOrder,<BR>  ValorBackOrder,<BR>  PedidosxAutorizar,<BR>  PedidoEstimado,<BR>  CantidadOrdenar,<BR>  DescVarAnt1,<BR>  DescVarAnt2,<BR>  DescVarAnt3,<BR>  PrecioMAPcIva,<BR>  PrecioMAPsIva,<BR>  DescuentoFijo1,<BR>  DescuentoFijo2,<BR>  DescuentoFijo3,<BR>  CostoDescFijos,<BR>  DescVariable1,<BR>  DescVariable2,<BR>  DescVariable3,<BR>  CostoConDescuentos,<BR>  Apoyo,<BR>  CostoFinal,<BR>  ImporteTotal,<BR>  Exhibicion,<BR>  CostoPropre,<BR>  ExistenciaCD,<BR>  ExistenciaMAY,<BR>  ExistenciaSER,<BR>  ExistenciaAME1,<BR>  ExistenciaAME2,<BR>  ExistenciaAME3,<BR>  ExistenciaAME4,<BR>  <CONTINUA>
+SQL002=<CONTINUA>ExistenciaINS,<BR>  ExistenciaVIU1,<BR>  ExistenciaVIU2,<BR>  ExistenciaVIU3,<BR>  ExistenciaVIU4,<BR>  ExistenciaRES,<BR>  TotalExistencias,<BR>  VentaAME1,<BR>  VentaAME2,<BR>  VentaAME3,<BR>  VentaAME4,<BR>  VentaCAM,<BR>  VentaREA,<BR>  VentaINS,<BR>  VentaVIU1,<BR>  VentaVIU2,<BR>  VentaVIU3,<BR>  VentaVIU4,<BR>  VentaMAY,<BR>  VentaRES,<BR>  VentasGrupo,<BR>  VtasCredAME,<BR>  VtasCredVIU,<BR>  TotalVtasCredito,<BR>  ContadoAME,<BR>  ContadoVIU,<BR>  ContadoVIUPlazos,<BR>  VentaContado,<BR>  VentaMenudeo,<BR>  VentaMayoreo,<BR>  VentasCanal,<BR>  ImporteExistencias,<BR>  ImporteVtasMenudeo,<BR>  ImporteVtasMayoreo,<BR>  ImporteVtasTotal,<BR>  Observaciones,<BR>  Columna1,<BR>  Columna2,<BR>  Columna3,<BR>  Columna4,<BR>  Columna5,<BR>  Columna6,<BR>  Columna7,<BR>  Columna8,<BR>  Col<CONTINUA>
+SQL003=<CONTINUA>umna9,<BR>  Columna10,<BR>  Columna11,<BR>  Columna12,<BR>  Columna13,<BR>  Columna14,<BR>  Columna15,<BR>  DistMAY,<BR>  DistAME1,<BR>  DistAME2,<BR>  DistAME3,<BR>  DistAME4,<BR>  DistINS,<BR>  DistVIU1,<BR>  DistVIU2,<BR>  DistVIU3,<BR>  DistVIU4,<BR>  FechaD,<BR>  FechaA,<BR>  ImporteSol,<BR>  EstacionTrabajo<BR><BR>FROM<BR>  PlaneadorMacroMAVI
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=2
+TipoDatos=Texto
+Tamano=15
+[Proveedor]
+Clave=Proveedor
+Nombre=Centrar(<T>Proveedor<T>,10)
+Visible=S
+TamanoValidacion=10
+Tamano=10
+UnicamenteLectura=S
+NombreExpresion=S
+TipoDatos=Texto
+[Codigo]
+Clave=Codigo
+Nombre=Codigo Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+TipoDatos=Texto
+[Descripcion]
+Clave=Descripcion
+Nombre=Centrar(<T>Descripcion<T>, 60)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+NombreExpresion=S
+TipoDatos=Texto
+[Propiedad]
+Clave=Propiedad
+Nombre=Centrar(<T>Propiedad Planeador<T>,20)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+NombreExpresion=S
+TipoDatos=Texto
+[Categoria]
+Clave=Categoria
+Nombre=Centrar(<T>Categoria<T>,50)
+Visible=S
+TamanoValidacion=50
+Tamano=50
+NombreExpresion=S
+TipoDatos=Texto
+[Grupo]
+Clave=Grupo
+Nombre=Centrar(<T>Grupo<T>,50)
+Visible=S
+TamanoValidacion=50
+Tamano=50
+NombreExpresion=S
+TipoDatos=Texto
+[Linea]
+Clave=Linea
+Nombre=Centrar(<T>Linea<T>, 50)
+Visible=S
+TamanoValidacion=50
+Tamano=50
+NombreExpresion=S
+TipoDatos=Texto
+[Familia]
+Clave=Familia
+Nombre=Centrar(<T>Familia<T>, 55)
+Visible=S
+TamanoValidacion=50
+Tamano=50
+NombreExpresion=S
+TipoDatos=Texto
+
+
+
+[FactorDiasInv]
+Clave=FactorDiasInv
+Nombre=Factor Dias de Inventario
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+RefrescarTodoCondiciones=S
+ValorRefrescar=GuardarCambios
+ConRefrescarCondiciones=S
+ConRefrescar=S
+ListaRefrescar=PedidoEstimado
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DiasDeInventario]
+Clave=DiasDeInventario
+Nombre=Dias de Inventario
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+[BackOrder]
+Clave=BackOrder
+Nombre=Centrar(<T>BackOrder<T>,10)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+NombreExpresion=S
+[ValorBackOrder]
+Clave=ValorBackOrder
+Nombre=Importe Backorder
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+FormatoValidacion=#,.00
+[PedidosxAutorizar]
+Clave=PedidosxAutorizar
+Nombre=Pedidos por Autorizar
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+[PedidoEstimado]
+Clave=PedidoEstimado
+Nombre=Pedido Estimado
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorRefrescar=SQL(<T>SELECT dbo.fnPedidoEstimadoMAVI( :tEmp, :tArt)<T>, Empresa, Codigo)
+[CantidadOrdenar]
+Clave=CantidadOrdenar
+Nombre=Centrar(<T>Surtir Ya<T>,14)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ListaRefrescarCondiciones=ImporteTotal
+ConRefrescar=S
+ListaRefrescar=CostoFinal<BR>ImporteTotal<BR>ImporteSol
+NombreExpresion=S
+AlCambiar=Si   ConDatos( CantidadOrdenar)  Entonces<BR>Si(CostoConDescuentos=CostoFinal,Asigna(Info.ConteoF,(CostoFinal-Apoyo)*CantidadOrdenar),Asigna(Info.ConteoF,CostoFinal*CantidadOrdenar)) <BR>Sino<BR>  Asigna(Info.ConteoF,0)<BR>Fin<BR>EjecutarSQL(<T>EXEC xpActualizaTotales :nID, :nValor, :nValor2, :nEstacion<T>, ID, CantidadOrdenar, Info.ConteoF, EstacionTrabajo)<BR>EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14<CONTINUA>
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+AlCambiar002=<CONTINUA>, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DescVarAnt1]
+Clave=DescVarAnt1
+Nombre=DV Anterior 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+AyudaEnCaptura=Calculadora
+[DescVarAnt2]
+Clave=DescVarAnt2
+Nombre=DV Anterior 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+AyudaEnCaptura=Calculadora
+[DescVarAnt3]
+Clave=DescVarAnt3
+Nombre=DV Anterior 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+AyudaEnCaptura=Calculadora
+
+[PrecioMAPcIva]
+Clave=PrecioMAPcIva
+Nombre=Centrar(<T>MAP (c/IVA)<T>,16)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=PrecioMAPsIva<BR>CostoDescFijos<BR>CostoConDescuentos<BR>CostoFinal<BR>ImporteTotal
+FormatoValidacion=#,.00
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[PrecioMAPsIva]
+Clave=PrecioMAPsIva
+Nombre=Centrar(<T>MAP (s/IVA)<T>,16)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ValorRefrescar=PrecioMAPcIva/Planeador.IVA
+FormatoValidacion=#,.00
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DescuentoFijo1]
+Clave=DescuentoFijo1
+Nombre=Descuento Fijo 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ListaRefrescarCondiciones=CostoDescFijos
+ConRefrescar=S
+ListaRefrescar=CostoDescFijos<BR>CostoConDescuentos<BR>CostoFinal<BR>ImporteTotal
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DescuentoFijo2]
+Clave=DescuentoFijo2
+Nombre=Descuento Fijo 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ListaRefrescarCondiciones=CostoDescFijos
+ConRefrescar=S
+ListaRefrescar=CostoDescFijos<BR>CostoConDescuentos<BR>CostoFinal<BR>ImporteTotal
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DescuentoFijo3]
+Clave=DescuentoFijo3
+Nombre=Descuento Fijo 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ListaRefrescarCondiciones=CostoDescFijos
+ConRefrescar=S
+ListaRefrescar=CostoDescFijos<BR>CostoConDescuentos<BR>CostoFinal<BR>ImporteTotal
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[CostoDescFijos]
+Clave=CostoDescFijos
+Nombre=Costo con Descuentos Fijos
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=#,.00
+ValorRefrescar=PrecioMAPcIva/Planeador.IVA- ((PrecioMAPcIva/Planeador.IVA)*DescuentoFijo1/100)-(PrecioMAPcIva/Planeador.IVA- ((PrecioMAPcIva/Planeador.IVA)*DescuentoFijo1/100)* DescuentoFijo2/100)-(PrecioMAPcIva/Planeador.IVA- ((PrecioMAPcIva/Planeador.IVA)*DescuentoFijo1/100)-(PrecioMAPcIva/Planeador.IVA- ((PrecioMAPcIva/Planeador.IVA)*DescuentoFijo1/100)* DescuentoFijo2/100)* DescuentoFijo3/100)
+[DescVariable1]
+Clave=DescVariable1
+Nombre=Descuento Variable 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=CostoConDescuentos<BR>CostoFinal<BR>ImporteTotal
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DescVariable2]
+Clave=DescVariable2
+Nombre=Descuento Variable 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=CostoConDescuentos<BR>CostoFinal<BR>ImporteTotal
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DescVariable3]
+Clave=DescVariable3
+Nombre=Descuento Variable 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=CostoConDescuentos<BR>CostoFinal<BR>ImporteTotal
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[CostoConDescuentos]
+Clave=CostoConDescuentos
+Nombre=Costo con Descuentos Fijos y Variables
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=#,.00
+ValorRefrescar=//CostoDescFijos-(CostoDescFijos*DescVariable1/100)  1<BR>//CostoDescFijos-(CostoDescFijos*DescVariable1/100) -(CostoDescFijos-(CostoDescFijos*DescVariable1/100) * DescVariable2/100)  2<BR>CostoDescFijos-(CostoDescFijos*DescVariable1/100) -(CostoDescFijos-(CostoDescFijos*DescVariable1/100) * DescVariable2/100)-(CostoDescFijos-(CostoDescFijos*DescVariable1/100) -(CostoDescFijos-(CostoDescFijos*DescVariable1/100) * DescVariable2/100) * DescVariable3/100)
+[Apoyo]
+Clave=Apoyo
+Nombre=Centrar(<T>Apoyo<T>,16)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+FormatoValidacion=#,.00
+ConRefrescar=S
+ListaRefrescar=CostoFinal<BR>ImporteTotal<BR>ImporteSol<BR>ImporteVtasMenudeo<BR>ImporteVtasMayoreo<BR>ImporteVtasTotal
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[CostoFinal]
+Clave=CostoFinal
+Nombre=Costo Final
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=#,.00
+ListaRefrescarCondiciones=ImporteTotal
+ConRefrescar=S
+ListaRefrescar=ImporteTotal<BR>ImporteSol<BR>ImporteVtasMenudeo<BR>ImporteVtasMayoreo<BR>ImporteVtasTotal
+ValorRefrescar=CostoConDescuentos-Apoyo
+[ImporteTotal]
+Clave=ImporteTotal
+Nombre=Importe Total
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ValorRefrescar=Si   ConDatos( CantidadOrdenar)  Entonces<BR>  CostoFinal*CantidadOrdenar<BR>Sino<BR>  CostoFinal<BR>Fin
+FormatoValidacion=#,.00
+ConRefrescar=S
+ListaRefrescar=ImporteSol
+RefrescarTodoCondiciones=S
+[Exhibicion]
+Clave=Exhibicion
+Nombre=Centrar(<T>EXH<T>,14)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+NombreExpresion=S
+[CostoPropre]
+Clave=CostoPropre
+Nombre=Centrar(<T>Propre<T>,14)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.00
+NombreExpresion=S
+[ExistenciaCD]
+Clave=ExistenciaCD
+Nombre=Centrar(<T>Exis CD<T>,14)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+NombreExpresion=S
+[ExistenciaMAY]
+Clave=ExistenciaMAY
+Nombre=Centrar(<T>Exis MAY<T>,14)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+NombreExpresion=S
+[ExistenciaSER]
+Clave=ExistenciaSER
+Nombre=Exis SER
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaAME1]
+Clave=ExistenciaAME1
+Nombre=Exis AME 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaAME2]
+Clave=ExistenciaAME2
+Nombre=Exis AME 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaAME3]
+Clave=ExistenciaAME3
+Nombre=Exis AME 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaAME4]
+Clave=ExistenciaAME4
+Nombre=Exis AME 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaINS]
+Clave=ExistenciaINS
+Nombre=Exis INS
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaVIU1]
+Clave=ExistenciaVIU1
+Nombre=Exis VIU1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaVIU2]
+Clave=ExistenciaVIU2
+Nombre=Exis VIU2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaVIU3]
+Clave=ExistenciaVIU3
+Nombre=Exis VIU3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaVIU4]
+Clave=ExistenciaVIU4
+Nombre=Exis VIU4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ExistenciaRES]
+Clave=ExistenciaRES
+Nombre=Exis RES
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[TotalExistencias]
+Clave=TotalExistencias
+Nombre=Existencias
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaAME1]
+Clave=VentaAME1
+Nombre=Vta AME 1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaAME2]
+Clave=VentaAME2
+Nombre=Vta AME 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaAME3]
+Clave=VentaAME3
+Nombre=Vta AME 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaAME4]
+Clave=VentaAME4
+Nombre=Vta AME 4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaCAM]
+Clave=VentaCAM
+Nombre=Vta CAM
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaREA]
+Clave=VentaREA
+Nombre=Vta REA
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaINS]
+Clave=VentaINS
+Nombre=Vta INS
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaVIU1]
+Clave=VentaVIU1
+Nombre=Vta VIU1
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaVIU2]
+Clave=VentaVIU2
+Nombre=Vta VIU 2
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaVIU3]
+Clave=VentaVIU3
+Nombre=Vta VIU 3
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaVIU4]
+Clave=VentaVIU4
+Nombre=Vta VIU4
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaMAY]
+Clave=VentaMAY
+Nombre=Vta MAY
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaRES]
+Clave=VentaRES
+Nombre=Vta RES
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentasGrupo]
+Clave=VentasGrupo
+Nombre=Ventas/Grupo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VtasCredAME]
+Clave=VtasCredAME
+Nombre=Vta CRE AME
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VtasCredVIU]
+Clave=VtasCredVIU
+Nombre=Vta CRE VIU
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[TotalVtasCredito]
+Clave=TotalVtasCredito
+Nombre=Vta Credito
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ContadoAME]
+Clave=ContadoAME
+Nombre=Vta CON AME
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ContadoVIU]
+Clave=ContadoVIU
+Nombre=Vta CON VIU
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ContadoVIUPlazos]
+Clave=ContadoVIUPlazos
+Nombre=Centrar(<T>Vta PD VIU<T>,10)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+NombreExpresion=S
+[VentaContado]
+Clave=VentaContado
+Nombre=Vta Contado
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaMenudeo]
+Clave=VentaMenudeo
+Nombre=Vta Menudeo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentaMayoreo]
+Clave=VentaMayoreo
+Nombre=Vta Mayoreo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[VentasCanal]
+Clave=VentasCanal
+Nombre=Ventas/Canal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[ImporteExistencias]
+Clave=ImporteExistencias
+Nombre=Importe Existencias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.00
+[ImporteVtasMenudeo]
+Clave=ImporteVtasMenudeo
+Nombre=Importe Ventas Menudeo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.00
+ValorRefrescar=VentaMenudeo*CostoFinal
+[ImporteVtasMayoreo]
+Clave=ImporteVtasMayoreo
+Nombre=Importe Ventas Mayoreo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.00
+ValorRefrescar=VentaMayoreo*CostoFinal
+ValorPorOmision=CostoDescFijos-(CostoDescFijos*DescVariable1/100) -(CostoDescFijos-(CostoDescFijos*DescVariable1/100) * DescVariable2/100)-(CostoDescFijos-(CostoDescFijos*DescVariable1/100) -(CostoDescFijos-(CostoDescFijos*DescVariable1/100) * DescVariable2/100) * DescVariable3/100)
+[ImporteVtasTotal]
+Clave=ImporteVtasTotal
+Nombre=Importe Ventas Total
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.00
+ValorRefrescar=VentasCanal*CostoFinal
+ValorPorOmision=CostoDescFijos-(CostoDescFijos*DescVariable1/100) -(CostoDescFijos-(CostoDescFijos*DescVariable1/100) * DescVariable2/100)-(CostoDescFijos-(CostoDescFijos*DescVariable1/100) -(CostoDescFijos-(CostoDescFijos*DescVariable1/100) * DescVariable2/100) * DescVariable3/100)
+[Observaciones]
+Clave=Observaciones
+Nombre=Centrar(<T>Observaciones<T>,140)
+Visible=S
+TamanoValidacion=255
+Tamano=255
+NombreExpresion=S
+TipoDatos=Texto
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna1]
+Clave=Columna1
+Nombre=Centrar(SQL(<T>select Columna1 from ParametrosPlaneadorMAVI<T>),18)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+NombreExpresion=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna2]
+Clave=Columna2
+Nombre=Centrar(SQL(<T>select Columna2 from ParametrosPlaneadorMAVI<T>),18)
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+NombreExpresion=S
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna3]
+Clave=Columna3
+Nombre=Centrar(SQL(<T>select Columna3 from ParametrosPlaneadorMAVI<T>),18)
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna4]
+Clave=Columna4
+Nombre=Centrar(SQL(<T>select Columna4 from ParametrosPlaneadorMAVI<T>),18)
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna5]
+Clave=Columna5
+Nombre=Centrar(SQL(<T>select Columna5 from ParametrosPlaneadorMAVI<T>),18)
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna6]
+Clave=Columna6
+Nombre=Centrar(SQL(<T>select Columna6 from ParametrosPlaneadorMAVI<T>), 10)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna7]
+Clave=Columna7
+Nombre=Centrar(SQL(<T>select Columna7 from ParametrosPlaneadorMAVI<T>),10)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna8]
+Clave=Columna8
+Nombre=Centrar(SQL(<T>select Columna8 from ParametrosPlaneadorMAVI<T>),10)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna9]
+Clave=Columna9
+Nombre=Centrar(SQL(<T>select Columna9 from ParametrosPlaneadorMAVI<T>),10)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna10]
+Clave=Columna10
+Nombre=Centrar(SQL(<T>select Columna10 from ParametrosPlaneadorMAVI<T>),10)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna11]
+Clave=Columna11
+Nombre=Centrar(SQL(<T>select Columna11 from ParametrosPlaneadorMAVI<T>),16)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+NombreExpresion=S
+TipoDatos=Texto
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna12]
+Clave=Columna12
+Nombre=Centrar(SQL(<T>select Columna12 from ParametrosPlaneadorMAVI<T>),16)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+NombreExpresion=S
+TipoDatos=Texto
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna13]
+Clave=Columna13
+Nombre=Centrar(SQL(<T>select Columna13 from ParametrosPlaneadorMAVI<T>),16)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+NombreExpresion=S
+TipoDatos=Texto
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna14]
+Clave=Columna14
+Nombre=Centrar(SQL(<T>select Columna14 from ParametrosPlaneadorMAVI<T>),16)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+NombreExpresion=S
+TipoDatos=Texto
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Columna15]
+Clave=Columna15
+Nombre=Centrar(SQL(<T>select Columna15 from ParametrosPlaneadorMAVI<T>),16)
+Visible=S
+TamanoValidacion=100
+Tamano=100
+NombreExpresion=S
+TipoDatos=Texto
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistMAY]
+Clave=DistMAY
+Nombre=Centrar(<T>DistMAY<T>,12)
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+NombreExpresion=S
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistAME1]
+Clave=DistAME1
+Nombre=DistAME1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistAME2]
+Clave=DistAME2
+Nombre=DistAME2
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistAME3]
+Clave=DistAME3
+Nombre=DistAME3
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistAME4]
+Clave=DistAME4
+Nombre=DistAME4
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistINS]
+Clave=DistINS
+Nombre=DistINS
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistVIU1]
+Clave=DistVIU1
+Nombre=DistVIU1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistVIU2]
+Clave=DistVIU2
+Nombre=DistVIU2
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistVIU3]
+Clave=DistVIU3
+Nombre=DistVIU3
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[DistVIU4]
+Clave=DistVIU4
+Nombre=DistVIU4
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+AlCambiar=EjecutarSQL(<T>xpGuardaPlaneadorMAVI :nID, :nFactorDiasInv, :nPrecioMAPcIva, :nPrecioMAPsIva, :nDescuentoFijo1, :nDescuentoFijo2,<BR>:nDescuentoFijo3, :nCostoDescFijos, :nDescVariable1, :nDescVariable2, :nDescVariable3, :nCostoConDescuentos, :nApoyo, :nCostoFinal,<BR>:nImporteExistencias, :nImporteVtasMenudeo, :nImporteVtasMayoreo, :nImporteVtasTotal, :tObservaciones, :nColumna1, :nColumna2,<BR>:nColumna3, :nColumna4, :nColumna5, :nColumna6, :nColumna7, :nColumna8, :nColumna9, :nColumna10, :tColumna11, :tColumna12, :tColumna13,<BR>:tColumna14, :tColumna15, :nDistMAY, :nDistAME1, :nDistAME2, :nDistAME3, :nDistAME4, :nDistINS, :nDistVIU1, :nDistVIU2, :nDistVIU3, :nDistVIU4, :nEstacion<T>,<BR>ID, FactorDiasInv, PrecioMAPcIva, PrecioMAPsIva, DescuentoFijo1, DescuentoFijo2, DescuentoFijo3, CostoDescFijos, <CONTINUA>
+AlCambiar002=<CONTINUA>DescVariable1, DescVariable2,<BR>DescVariable3, CostoConDescuentos, Apoyo, CostoFinal, ImporteExistencias, ImporteVtasMenudeo, ImporteVtasMayoreo, ImporteVtasTotal,<BR>Observaciones, Columna1, Columna2, Columna3, Columna4, Columna5, Columna6, Columna7, Columna8, Columna9, Columna10, Columna11, Columna12,<BR>Columna13, Columna14, Columna15, DistMAY, DistAME1, DistAME2, DistAME3, DistAME4, DistINS, DistVIU1, DistVIU2, DistVIU3, DistVIU4, EstacionTrabajo)
+CondicionEdicion=Propiedad noen (<T>Totales<T>, SQLEnLista(<T>SELECT Propiedad FROM PlaneadorMacroMAVI WHERE Estatus=:tBloq AND ID=:nID<T>,<T>BLOQUEADO<T>,ID))
+
+[Relaciones.Prov]
+TipoRelacion=Opcional
+LlaveLocal=Proveedor
+Clave=Prov
+TablaRemota=Prov
+LlaveRemota=Proveedor
+[FechaD]
+Clave=FechaD
+Nombre=De la Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aa
+[FechaA]
+Clave=FechaA
+Nombre=A la Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmm/aaaa
+[Notas]
+Clave=Notas
+Nombre=Notas
+Visible=S
+TamanoValidacion=255
+Tamano=255
+RefrescarTodoCondiciones=S
+ConRefrescarCondiciones=S
+TipoDatos=Texto
+[ImporteSol]
+Clave=ImporteSol
+Nombre=Importe Total Solicitud Compra
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=#,.00
+RefrescarTodoCondiciones=S
+[EstacionTrabajo]
+Clave=EstacionTrabajo
+Nombre=EstacionTrabajo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico

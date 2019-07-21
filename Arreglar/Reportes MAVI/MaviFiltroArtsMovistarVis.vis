@@ -1,0 +1,24 @@
+[Vista]
+Icono=0
+Clave=MaviFiltroArtsMovistarVis
+Nombre=Articulos de Movistar
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=articulo<BR>Descripcion1
+SQL=select <BR>   articulo,<BR>   Descripcion1<BR>from art <BR>where articulo like <T>%Movi%<T><BR>order by articulo asc
+CamposBusquedaRapida=articulo<BR>Descripcion1
+[articulo]
+Clave=articulo
+Nombre=Artículo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=articulo
+[Descripcion1]
+Clave=Descripcion1
+Nombre=Nombre del Artículo
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Descripcion1

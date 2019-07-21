@@ -1,0 +1,110 @@
+[Tabla]
+Icono=0
+Clave=NivelCobranzaMavi
+Nombre=NivelCobranzaMavi
+Archivo=NivelCobranzaMavi
+Modulos=(Todos)
+Singular=NivelCobranzaMavi
+TipoTabla=General
+ListaCampos=ID<BR>Nivel<BR>Nombre<BR>InactividadInicio<BR>InactividadFin<BR>VencimientoInicio<BR>VencimientoFin<BR>Usuario<BR>FechaRegistro
+LlavePrimaria=Nombre
+ControlUsuarios=S
+CampoID=ID
+CampoUsuario=Usuario
+ControlID=S
+SQL=SELECT<BR>  ID,<BR>  Nivel,<BR>  Nombre,<BR>  InactividadInicio,<BR>  InactividadFin,<BR>  VencimientoInicio,<BR>  VencimientoFin,<BR>  Usuario,<BR>  FechaRegistro<BR><BR>FROM<BR>  NivelCobranzaMavi
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ConRefrescar=S
+ListaRefrescar=Usuario<BR>FechaRegistro
+Mayusculas=S
+AlCambiar=Asigna(NivelCobranzaMavi:NivelCobranzaMavi.Usuario, Usuario)
+[InactividadInicio]
+Clave=InactividadInicio
+Nombre=Inactividad Inicio
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=Usuario<BR>FechaRegistro
+ValorMinimo=0
+ValorMaximo=Vacio(InactividadFin, 99999)
+Requerido=S
+AlCambiar=Asigna(NivelCobranzaMavi:NivelCobranzaMavi.Usuario, Usuario)
+[InactividadFin]
+Clave=InactividadFin
+Nombre=Inactividad Fin
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=Usuario<BR>FechaRegistro
+ValorMinimo=Vacio(InactividadInicio, 0)
+ValorMaximo=99999
+Requerido=S
+AlCambiar=Asigna(NivelCobranzaMavi:NivelCobranzaMavi.Usuario, Usuario)
+[VencimientoInicio]
+Clave=VencimientoInicio
+Nombre=Vencimiento Inicio
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=Usuario<BR>FechaRegistro
+ValorMinimo=0
+ValorMaximo=Vacio(VencimientoFin, 99999)
+Requerido=S
+AlCambiar=Asigna(NivelCobranzaMavi:NivelCobranzaMavi.Usuario, Usuario)
+[VencimientoFin]
+Clave=VencimientoFin
+Nombre=Vencimiento Fin
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=Usuario<BR>FechaRegistro
+ValorMinimo=Vacio(VencimientoInicio, 0)
+ValorMaximo=99999
+Requerido=S
+AlCambiar=Asigna(NivelCobranzaMavi:NivelCobranzaMavi.Usuario, Usuario)
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorRefrescar=Usuario
+Mayusculas=S
+ValorPorOmision=Usuario
+[FechaRegistro]
+Clave=FechaRegistro
+Nombre=FechaRegistro
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+FormatoValidacion=dd/mmmm/aaaa hh:mm:ss
+ValorRefrescar=Ahora

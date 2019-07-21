@@ -1,0 +1,24 @@
+[Vista]
+Icono=0
+Clave=RM1110DiasVis
+Modulos=(Todos)
+ListaTablas=RM1110DiasTbl
+ListaCampos=RM1110DiasTbl.DIAS
+TablaPrincipal=RM1110DiasTbl
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+SQL=SELECT<BR>  RM1110DiasTbl.DIAS<BR><BR>FROM<BR>  RM1110DIAS RM1110DiasTbl
+[RM1110DiasTbl.DIAS]
+Clave=RM1110DiasTbl.DIAS
+Nombre=DIAS
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+LigaTabla=RM1110DiasTbl
+LigaCampo=DIAS
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=DIAS

@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1132DValDiaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=DValDia
+SQL=select distinct DValDia from RM1132Parametros Where DValDia is not null 
+[DValDia]
+Clave=DValDia
+Nombre=DValDia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=DValDia

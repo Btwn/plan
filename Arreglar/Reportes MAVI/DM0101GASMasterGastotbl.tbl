@@ -1,0 +1,272 @@
+[Tabla]
+Icono=0
+Clave=DM0101GASMasterGastotbl
+Archivo=DM0101GASMasterGastotbl
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Cuadrante<BR>Estado<BR>TipoRuta<BR>Ruta<BR>Poblacion<BR>BaseInventario<BR>BaseAdmon<BR>BaseResidencia<BR>DescHotel<BR>KilomSem1<BR>KilomSem2<BR>KilomSem3<BR>KilomSem4<BR>PeajeSem1<BR>PeajeSem2<BR>PeajeSem3<BR>PeajeSem4<BR>HotelSem1<BR>HotelSem2<BR>HotelSem3<BR>HotelSem4<BR>IntAutosem1<BR>IntAutosem2<BR>IntAutosem3<BR>IntAutosem4<BR>MensajeSem1<BR>MensajeSem2<BR>MensajeSem3<BR>MensajeSem4<BR>AlimentosSem1<BR>AlimentosSem2<BR>AlimentosSem3<BR>AlimentosSem4<BR>UsuarioModif<BR>FechaRegistro
+Nombre=Master de Gastos
+LlavePrimaria=Cuadrante
+ControlCambios=S
+CampoUltimoCambio=FechaRegistro
+CampoUsuarioCambio=UsuarioModif
+ControlUsuarioCambio=S
+SQL=SELECT<BR>  Cuadrante,<BR>  Estado,<BR>  TipoRuta,<BR>  Ruta,<BR>  Poblacion,<BR>  BaseInventario,<BR>  BaseAdmon,<BR>  BaseResidencia,<BR>  DescHotel,<BR>  KilomSem1,<BR>  KilomSem2,<BR>  KilomSem3,<BR>  KilomSem4,<BR>  PeajeSem1,<BR>  PeajeSem2,<BR>  PeajeSem3,<BR>  PeajeSem4,<BR>  HotelSem1,<BR>  HotelSem2,<BR>  HotelSem3,<BR>  HotelSem4,<BR>  IntAutosem1,<BR>  IntAutosem2,<BR>  IntAutosem3,<BR>  IntAutosem4,<BR>  MensajeSem1,<BR>  MensajeSem2,<BR>  MensajeSem3,<BR>  MensajeSem4,<BR>  UsuarioModif,<BR>  FechaRegistro,<BR>  AlimentosSem1,<BR>  AlimentosSem2,<BR>  AlimentosSem3,<BR>  AlimentosSem4<BR><BR>FROM<BR>  DM0101GASMasterGastotbl
+[Cuadrante]
+Clave=Cuadrante
+Nombre=Cuadrante
+Visible=S
+TamanoValidacion=7
+Tamano=7
+AyudaEnCaptura=Vista
+AyudaForma=DM0101GASCuadranteVisFrm
+AyudaVista=DM0101GASCuadranteVis
+AyudaCampo=Propiedad
+TipoDatos=Texto
+[Estado]
+Clave=Estado
+Nombre=Estado
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=10
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQlEnlista(<T>SELECT Estado = UPPER(Estado) FROM dbo.EstadosMavi<T>)
+TipoDatos=Texto
+[TipoRuta]
+Clave=TipoRuta
+Nombre=Tipo de Ruta
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=10
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SqlEnLista(<T>SELECT Nombre FROM dbo.TablaStD<BR>WHERE TablaSt =:topc<BR>AND Valor = :tRu<T>, <T>OPCIONES MASTER GTOS<T>,<T>Tipo Ruta<T>)
+TipoDatos=Texto
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=5
+AyudaMemOpc=Unicamente opciones listadas
+Formula=sqlenlista(<T>SELECT Nombre FROM dbo.TablaStD<BR>WHERE TablaSt =:truta<BR>AND Valor = :tRt<T>, <T>OPCIONES MASTER GTOS<T>,<T>Ruta<T>)
+TipoDatos=Texto
+[Poblacion]
+Clave=Poblacion
+Nombre=Población
+Visible=S
+TamanoValidacion=200
+Tamano=200
+TipoDatos=Texto
+[BaseInventario]
+Clave=BaseInventario
+Nombre=Base de Inventario
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0101GASBaseVisFrm
+AyudaVista=DM0101GASBaseVis
+AyudaCampo=Delegacion
+TipoDatos=Texto
+[BaseAdmon]
+Clave=BaseAdmon
+Nombre=Base de Administración
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0101GASBaseVisFrm
+AyudaVista=DM0101GASBaseVis
+AyudaCampo=Delegacion
+TipoDatos=Texto
+[BaseResidencia]
+Clave=BaseResidencia
+Nombre=Base de Residencia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0101GASBaseVisFrm
+AyudaVista=DM0101GASBaseVis
+AyudaCampo=Delegacion
+TipoDatos=Texto
+[DescHotel]
+Clave=DescHotel
+Nombre=Desc Hotel
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+OpcionesUnicamente=S
+[KilomSem1]
+Clave=KilomSem1
+Nombre=Kilom Sem1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[KilomSem2]
+Clave=KilomSem2
+Nombre=Kilom Sem2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[KilomSem3]
+Clave=KilomSem3
+Nombre=Kilom Sem3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[KilomSem4]
+Clave=KilomSem4
+Nombre=Kilom Sem4
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[PeajeSem1]
+Clave=PeajeSem1
+Nombre=Peaje Sem1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[PeajeSem2]
+Clave=PeajeSem2
+Nombre=Peaje Sem2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[PeajeSem3]
+Clave=PeajeSem3
+Nombre=Peaje Sem3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[PeajeSem4]
+Clave=PeajeSem4
+Nombre=Peaje Sem4
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[HotelSem1]
+Clave=HotelSem1
+Nombre=Hotel Sem1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[HotelSem2]
+Clave=HotelSem2
+Nombre=Hotel Sem2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[HotelSem3]
+Clave=HotelSem3
+Nombre=Hotel Sem3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[HotelSem4]
+Clave=HotelSem4
+Nombre=Hotel Sem4
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[IntAutosem1]
+Clave=IntAutosem1
+Nombre=Internet Sem1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[IntAutosem2]
+Clave=IntAutosem2
+Nombre=Internet Sem2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[IntAutosem3]
+Clave=IntAutosem3
+Nombre=Internet Sem3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[IntAutosem4]
+Clave=IntAutosem4
+Nombre=Internet Sem4
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[MensajeSem1]
+Clave=MensajeSem1
+Nombre=Mensaje Sem1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[MensajeSem2]
+Clave=MensajeSem2
+Nombre=Mensaje Sem2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[MensajeSem3]
+Clave=MensajeSem3
+Nombre=Mensaje Sem3
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[MensajeSem4]
+Clave=MensajeSem4
+Nombre=Mensaje Sem4
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[UsuarioModif]
+Clave=UsuarioModif
+Nombre=Usuario Modificó
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+[FechaRegistro]
+Clave=FechaRegistro
+Nombre=Fecha de Registro
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+[AlimentosSem1]
+Clave=AlimentosSem1
+Nombre=AlimentosSem1
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[AlimentosSem2]
+Clave=AlimentosSem2
+Nombre=AlimentosSem2
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[AlimentosSem3]
+Clave=AlimentosSem3
+Nombre=AlimentosSem3
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+[AlimentosSem4]
+Clave=AlimentosSem4
+Nombre=AlimentosSem4
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario

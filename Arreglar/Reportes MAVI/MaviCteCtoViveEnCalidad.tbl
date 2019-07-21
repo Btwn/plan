@@ -1,0 +1,16 @@
+[Tabla]
+Icono=0
+Clave=MaviCteCtoViveEnCalidad
+Nombre=MaviCteCtoViveEnCalidad
+Archivo=MaviCteCtoViveEnCalidad
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ViveEnCalidad
+LlavePrimaria=ViveEnCalidad
+SQL=SELECT<BR>  ViveEnCalidad<BR><BR>FROM<BR>  MaviCteCtoViveEnCalidad
+[ViveEnCalidad]
+Clave=ViveEnCalidad
+Nombre=Vive En Calidad
+Visible=S
+TamanoValidacion=50
+Tamano=50

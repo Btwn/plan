@@ -1,0 +1,186 @@
+[Vista]
+Icono=0
+Clave=ContSATTranferencia
+Nombre=ContSATTranferencia
+Modulos=(Todos)
+ListaTablas=ContSATTranferencia<BR>ContSATTranferenciaLista<BR>CtaDinero
+TablaPrincipal=ContSATTranferencia
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=ContSATTranferencia.ID<BR>ContSATTranferencia.Modulo<BR>ContSATTranferencia.ModuloID<BR>ContSATTranferencia.ContID<BR>ContSATTranferencia.ModuloRenglon<BR>ContSATTranferencia.CtaOrigen<BR>ContSATTranferencia.BancoOrigen<BR>ContSATTranferencia.CtaDestino<BR>ContSATTranferencia.BancoDestino<BR>ContSATTranferencia.Monto<BR>ContSATTranferencia.Fecha<BR>ContSATTranferencia.Beneficiario<BR>ContSATTranferencia.RFC<BR>ContSATTranferenciaLista.NumeroCta<BR>CtaDinero.NumeroCta
+ListaRelaciones=ContSATTranferencia.CtaDinero<BR>ContSATTranferencia.ContSATTranferenciaLista
+SQL=SELECT<BR>  ContSATTranferencia.ID,<BR>  ContSATTranferencia.Modulo,<BR>  ContSATTranferencia.ModuloID,<BR>  ContSATTranferencia.ContID,<BR>  ContSATTranferencia.ModuloRenglon,<BR>  ContSATTranferencia.CtaOrigen,<BR>  ContSATTranferencia.BancoOrigen,<BR>  ContSATTranferencia.CtaDestino,<BR>  ContSATTranferencia.BancoDestino,<BR>  ContSATTranferencia.Monto,<BR>  ContSATTranferencia.Fecha,<BR>  ContSATTranferencia.Beneficiario,<BR>  ContSATTranferencia.RFC,<BR>  ContSATTranferenciaLista.NumeroCta,<BR>  CtaDinero.NumeroCta<BR><BR>FROM<BR>  ContSATTranferencia<BR>  LEFT OUTER JOIN CtaDinero ON ContSATTranferencia.CtaOrigen=CtaDinero.CtaDinero<BR>  LEFT OUTER JOIN CtaDinero ContSATTranferenciaLista ON ContSATTranferencia.CtaDestino=ContSATTranferenciaLista.CtaDinero
+[ContSATTranferencia.ID]
+Clave=ContSATTranferencia.ID
+LigaTabla=ContSATTranferencia
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=AutoInc
+ClaveBDE=ID
+[ContSATTranferencia.Modulo]
+Clave=ContSATTranferencia.Modulo
+LigaTabla=ContSATTranferencia
+LigaCampo=Modulo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Modulo
+[ContSATTranferencia.ModuloID]
+Clave=ContSATTranferencia.ModuloID
+LigaTabla=ContSATTranferencia
+LigaCampo=ModuloID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=ModuloID
+[ContSATTranferencia.ContID]
+Clave=ContSATTranferencia.ContID
+LigaTabla=ContSATTranferencia
+LigaCampo=ContID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=ContID
+[ContSATTranferencia.ModuloRenglon]
+Clave=ContSATTranferencia.ModuloRenglon
+LigaTabla=ContSATTranferencia
+LigaCampo=ModuloRenglon
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=ModuloRenglon
+[ContSATTranferencia.CtaOrigen]
+Clave=ContSATTranferencia.CtaOrigen
+LigaTabla=ContSATTranferencia
+LigaCampo=CtaOrigen
+Tamano=50
+ClaveBDE=CtaOrigen
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Clave Origen
+ConRefrescar=S
+ListaRefrescar=ContSATTranferencia.BancoOrigen<BR>ContSATTranferenciaLista.NumeroCta
+AyudaEnCaptura=Vista
+AyudaForma=CtaDineroLista
+AyudaVista=CtaDinero
+AyudaCampo=CtaDinero.CtaDinero
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+[ContSATTranferencia.BancoOrigen]
+Clave=ContSATTranferencia.BancoOrigen
+LigaTabla=ContSATTranferencia
+LigaCampo=BancoOrigen
+Tamano=50
+ClaveBDE=BancoOrigen
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Banco Origen
+ValorRefrescar=SQL( <T>SELECT BancoSucursal FROM CtaDinero WHERE Estatus = :tEstatus AND CtaDinero= :tBanco<T>, <T>ALTA<T>, ContSATTranferencia.CtaOrigen)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[ContSATTranferencia.CtaDestino]
+Clave=ContSATTranferencia.CtaDestino
+LigaTabla=ContSATTranferencia
+LigaCampo=CtaDestino
+Tamano=50
+ClaveBDE=CtaDestino
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Clave Destino
+ConRefrescar=S
+ListaRefrescar=ContSATTranferencia.BancoDestino<BR>CtaDinero.NumeroCta
+AyudaEnCaptura=Vista
+AyudaForma=CtaDineroLista
+AyudaVista=CtaDinero
+AyudaCampo=CtaDinero.CtaDinero
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+[ContSATTranferencia.BancoDestino]
+Clave=ContSATTranferencia.BancoDestino
+LigaTabla=ContSATTranferencia
+LigaCampo=BancoDestino
+Tamano=50
+ClaveBDE=BancoDestino
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Banco Destino
+ValorRefrescar=SQL( <T>SELECT BancoSucursal FROM CtaDinero WHERE Estatus = :tEstatus AND CtaDinero= :tBanco<T>, <T>ALTA<T>, ContSATTranferencia.CtaDestino)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[ContSATTranferencia.Monto]
+Clave=ContSATTranferencia.Monto
+LigaTabla=ContSATTranferencia
+LigaCampo=Monto
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Monto
+[ContSATTranferencia.Fecha]
+Clave=ContSATTranferencia.Fecha
+LigaTabla=ContSATTranferencia
+LigaCampo=Fecha
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=Fecha
+[ContSATTranferencia.Beneficiario]
+Clave=ContSATTranferencia.Beneficiario
+LigaTabla=ContSATTranferencia
+LigaCampo=Beneficiario
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Beneficiario
+[ContSATTranferencia.RFC]
+Clave=ContSATTranferencia.RFC
+LigaTabla=ContSATTranferencia
+LigaCampo=RFC
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=RFC
+[ContSATTranferenciaLista.NumeroCta]
+Clave=ContSATTranferenciaLista.NumeroCta
+LigaTabla=ContSATTranferenciaLista
+LigaCampo=NumeroCta
+Tamano=100
+ClaveBDE=NumeroCta
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Cuenta Destino
+ValorRefrescar=SQL( <T>SELECT NumeroCta FROM CtaDinero WHERE CtaDinero = :tCtaDinero <T>, ContSATTranferencia.CtaOrigen)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+[CtaDinero.NumeroCta]
+Clave=CtaDinero.NumeroCta
+LigaTabla=CtaDinero
+LigaCampo=NumeroCta
+Tamano=100
+ClaveBDE=NumeroCta_1
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Cuenta Origen
+ValorRefrescar=SQL( <T>SELECT NumeroCta FROM CtaDinero WHERE CtaDinero = :tCtaDinero <T>, ContSATTranferencia.CtaDestino)
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+[Relaciones.ContSATTranferencia.CtaDinero]
+Clave=ContSATTranferencia.CtaDinero
+TablaRemota=CtaDinero
+LlaveLocal=ContSATTranferencia.CtaOrigen
+LlaveRemota=CtaDinero
+TipoRelacion=Opcional
+[Relaciones.ContSATTranferencia.ContSATTranferenciaLista]
+Clave=ContSATTranferencia.ContSATTranferenciaLista
+TablaRemota=ContSATTranferenciaLista
+LlaveLocal=ContSATTranferencia.CtaDestino
+LlaveRemota=CtaDinero
+TipoRelacion=Opcional

@@ -1,0 +1,28 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnIDModuloID(
+@Tabla		varchar(255))
+RETURNS varchar(255)
+AS
+BEGIN
+DECLARE @Campo varchar(255)
+IF (SELECT isnull(ltrim(CampoID), '') FROM SysTabla WHERE SysTabla = @Tabla)<>''
+SELECT @Campo = (SELECT Top 1 isnull(ltrim(CampoID), '') FROM SysTabla WHERE SysTabla = @Tabla)
+ELSE
+IF EXISTS(SELECT C.Name
+FROM syscolumns C
+JOIN sysobjects T ON C.ID = T.ID
+WHERE T.name = @Tabla
+AND C.Name = 'ModuloID')
+SELECT @Campo = 'ModuloID'
+ELSE
+SELECT @Campo = 'ID'
+RETURN @Campo
+END
+

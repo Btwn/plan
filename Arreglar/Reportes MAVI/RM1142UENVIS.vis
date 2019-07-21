@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=RM1142UENVIS
+Nombre=Vista Empres
+Modulos=(Todos)
+ListaCampos=Emp<BR>Nombre
+VistaIndependiente=S
+
+SQL=SELECT<BR>  Emp = UEN.UEN,<BR>  Nombre = UEN.Nombre<BR><BR>FROM<BR>  UEN<BR>WHERE<BR>  UEN <> 3
+[Emp]
+Clave=Emp
+Nombre=Emp
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Emp
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre
+
+

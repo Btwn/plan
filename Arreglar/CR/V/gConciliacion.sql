@@ -1,0 +1,101 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW gConciliacion
+ AS
+SELECT
+ID,
+Empresa,
+Mov,
+MovID,
+FechaEmision,
+UltimoCambio,
+Concepto,
+Proyecto,
+UEN,
+Usuario,
+Autorizacion,
+Referencia,
+DocFuente,
+Observaciones,
+Estatus,
+Situacion,
+SituacionFecha,
+SituacionUsuario,
+SituacionNota,
+OrigenTipo,
+Origen,
+OrigenID,
+Poliza,
+PolizaID,
+GenerarPoliza,
+ContID,
+Ejercicio,
+Periodo,
+FechaRegistro,
+FechaConclusion,
+FechaCancelacion,
+Sucursal,
+Moneda,
+TipoCambio,
+CtaDinero,
+FechaD,
+FechaA,
+SaldoBanco,
+SaldoConciliado,
+SaldoLibros,
+SucursalOrigen,
+SucursalDestino
+FROM Conciliacion
+UNION ALL
+SELECT
+ID,
+Empresa,
+Mov,
+MovID,
+FechaEmision,
+UltimoCambio,
+Concepto,
+Proyecto,
+UEN,
+Usuario,
+Autorizacion,
+Referencia,
+DocFuente,
+Observaciones,
+Estatus,
+Situacion,
+SituacionFecha,
+SituacionUsuario,
+SituacionNota,
+OrigenTipo,
+Origen,
+OrigenID,
+Poliza,
+PolizaID,
+GenerarPoliza,
+ContID,
+Ejercicio,
+Periodo,
+FechaRegistro,
+FechaConclusion,
+FechaCancelacion,
+Sucursal,
+Moneda,
+TipoCambio,
+CtaDinero,
+FechaD,
+FechaA,
+SaldoBanco,
+SaldoConciliado,
+SaldoLibros,
+SucursalOrigen,
+SucursalDestino
+FROM hConciliacion
+;
+

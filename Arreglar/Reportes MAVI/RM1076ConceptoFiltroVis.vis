@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1076ConceptoFiltroVis
+Nombre=concepto
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Concepto
+CamposBusquedaRapida=Concepto
+SQL=Select Distinct Concepto From RMSAnaliticoBalance<BR>Where Rubro in ({si(condatos(Mavi.RM1076RubroFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1076RubroFiltro)),comillas(<T><T>))})<BR>And Cuenta in ({Si(ConDatos(Mavi.RM1076cuentaFiltro), Reemplaza( Comillas(<T>,<T>), <T>,<T>, (Mavi.RM1076CuentaFiltro)),Comillas(<T><T>))})
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=150
+TipoDatos=Texto
+Tamano=150
+ClaveBDE=Concepto

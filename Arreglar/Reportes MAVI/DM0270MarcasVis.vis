@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0270MarcasVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Marca
+SQL=   select distinct Marca From DM0270CatalogoMarcas
+CamposBusquedaRapida=Marca
+[Marca]
+Clave=Marca
+Nombre=Marca
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Marca

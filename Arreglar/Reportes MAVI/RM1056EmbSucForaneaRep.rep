@@ -1,0 +1,73 @@
+[Reporte]
+Clave=RM1056EmbSucForaneaRep
+Nombre=RM1056 Embarques Sucursal Foranea
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=1
+AnchoPagina=10
+LargoPagina=4
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+FormatoSinConexion=S
+Puerto=LPT1
+Parametros=S
+ArchivoEspecifico=RM1056EmbSucForaneaRep
+PosicionInicialAlturaCliente=134
+PosicionInicialAncho=349
+Impresora=S
+PreliminarColores=S
+Submenu=Embarques Mavi
+[Vista]
+Icono=0
+Clave=RM1056EmbSucForaneaRep
+VistaIndependiente=S
+SQL=EXEC SP_RM1056EmbSucForanea
+[Formato]
+ListaLineas=Encabezado
+VentanaIzquierda=0
+VentanaArriba=11
+VentanaAltura=746
+VentanaAncho=1368
+PanelArriba=120
+PanelBotones=80
+[Linea1]
+Clave=Encabezado
+Objetos=1
+Seccion=Encabezado Página
+AltoEnCm=1.9
+Renglones=5
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+[A1]
+Celda=A1
+Alineacion=Centrado
+AnchoEnCm=8
+AnchoTexto=43
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Reporte Concluido<T><BR><T>Ruta: <T>& SQL(<T>SELECT Valor FROM TablaStD WHERE TablaSt=<T>+COMILLAS(<T>RUTAS REPORTES BURO Y CARTERA<T>)+<T> AND Nombre=<T>+COMILLAS(<T>CARTERA<T>)+<T><T>)&<T>Otros\<T>
+FondoColor=$00E7D1B4
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+FondoEstilo=1
+ExpresionMultiple=S

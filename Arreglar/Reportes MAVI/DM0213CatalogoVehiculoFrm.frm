@@ -1,0 +1,116 @@
+[Forma]
+Clave=DM0213CatalogoVehiculoFrm
+Nombre=DM0213 Catalogo Vehiculos
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=DM0213CatalogoVehiculoFrm
+CarpetaPrincipal=DM0213CatalogoVehiculoFrm
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Guardar<BR>Eliminar
+PosicionInicialIzquierda=110
+PosicionInicialArriba=476
+PosicionInicialAlturaCliente=260
+PosicionInicialAncho=990
+BarraHerramientas=S
+[DM0213CatalogoVehiculoFrm]
+Estilo=Hoja
+Clave=DM0213CatalogoVehiculoFrm
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0213CatalogoVehiculoVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+ListaEnCaptura=DM0213CatalogoVehiculoTbl.TipoUnidadVehicular<BR>DM0213CatalogoVehiculoTbl.Descripcion
+PermiteEditar=S
+BusquedaRapidaControles=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+[Acciones.Guardar]
+Nombre=Guardar
+Boton=3
+NombreDesplegar=&Guardar / Cerrar
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Guardar Cambios
+Activo=S
+Visible=S
+NombreEnBoton=S
+EnBarraHerramientas=S
+Multiple=S
+ListaAccionesMultiples=Guardar<BR>Cerrar
+ConCondicion=S
+EjecucionConError=S
+EjecucionCondicion=//((USUARIO.ACCESO)=<T>GEROP_GERA<T>) o ((USUARIO.ACCESO)=<T>GERAD_GERA<T>) o ((USUARIO.ACCESO)=<T>VEHIC_GERA<T>)
+EjecucionMensaje=//<T>Usted NO tiene permisos para realizar esta Accion ...!<T>
+[DM0213CatalogoVehiculoFrm.Columnas]
+0=19
+1=37
+2=-2
+TipoUnidadVehicular=405
+Descripcion=528
+[DM0213CatalogoVehiculoFrm.DM0213CatalogoVehiculoTbl.TipoUnidadVehicular]
+Carpeta=DM0213CatalogoVehiculoFrm
+Clave=DM0213CatalogoVehiculoTbl.TipoUnidadVehicular
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=200
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Guardar.Guardar]
+Nombre=Guardar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Guardar Cambios
+Activo=S
+Visible=S
+[Acciones.Guardar.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Eliminar]
+Nombre=Eliminar
+Boton=5
+NombreEnBoton=S
+NombreDesplegar=&Eliminar
+EnBarraHerramientas=S
+Carpeta=(Carpeta principal)
+TipoAccion=Controles Captura
+ClaveAccion=Registro Eliminar
+Activo=S
+Visible=S
+[DM0213CatalogoVehiculoFrm.DM0213CatalogoVehiculoTbl.Descripcion]
+Carpeta=DM0213CatalogoVehiculoFrm
+Clave=DM0213CatalogoVehiculoTbl.Descripcion
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=200
+ColorFondo=Blanco
+ColorFuente=Negro

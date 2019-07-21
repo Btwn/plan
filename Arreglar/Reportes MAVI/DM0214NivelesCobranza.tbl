@@ -1,0 +1,19 @@
+[Tabla]
+Icono=0
+Clave=DM0214NivelesCobranza
+Nombre=DM0214NivelesCobranza
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=NivelCobranza
+Archivo=ZonaCobranzaMen
+LlavePrimaria=NivelCobranza
+SQL=SELECT NivelCobranza From ZonaCobranzaMen
+[NivelCobranza]
+Clave=NivelCobranza
+Nombre=NivelCobranza
+Visible=S
+TamanoValidacion=100
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>SELECT Nombre FROM NivelCobranzaMavi<BR>           UNION<BR>            SELECT Nombre FROM NivelesEspecialesCobranzaMavi WHERE NivelOrigen IN(SELECT Nombre FROM NivelCobranzaMavi)<T>)

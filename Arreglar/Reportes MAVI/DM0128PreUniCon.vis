@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0128PreUniCon
+Nombre=Precio unico para las siguientes condiciones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Condiciones
+SQL=SELECT DISTINCT DESCRIPCION4 As Condiciones FROM SUCURSALOTROSDATOS
+[Condiciones]
+Clave=Condiciones
+Nombre=Condiciones
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Condiciones

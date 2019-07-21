@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0074PuntoDeReunionVehicularVis
+Nombre=Punto de Reunión Vehícular
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=PuntoDeReunion
+SQL=Select PuntoDeReunion<BR>From(<BR>Select LtRim(rtrim(Descripcion2)) As PuntoDeReunion<BR>From Vehiculo<BR>Where Descripcion2 is not null<BR>Group By Descripcion2) PR<BR>Order By PuntoDeReunion
+CamposBusquedaRapida=PuntoDeReunion
+[PuntoDeReunion]
+Clave=PuntoDeReunion
+Nombre=PuntoDeReunion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=PuntoDeReunion

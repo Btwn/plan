@@ -1,0 +1,252 @@
+[Tabla]
+Icono=0
+Clave=ComisionesChoferesDMAVI
+Nombre=ComisionesChoferesDMAVI
+Archivo=ComisionesChoferesDMAVI
+Modulos=(Todos)
+Singular=ComisionesChoferesDMAVI
+TipoTabla=Movimientos
+ListaCampos=ID<BR>Personal<BR>FacturasEntr<BR>FacturasAsig<BR>Traspasos<BR>FactProd<BR>Productividad<BR>DomiciliosVisit<BR>DomiciliosAsig<BR>ProdCte<BR>DiasProductivos<BR>ImporteEntregas<BR>ImporteTraspasos<BR>TotalComision<BR>PromedioDiario<BR>Bonificacion<BR>ImporteAjuste<BR>TotalPagar<BR>Factor<BR>Incidencias<BR>DiasSinEmbarques<BR>ApoGereOperativo<BR>ProductividadTotal<BR>FactPagoFactura<BR>SueldoGarantia<BR>ApoGereAdministrativo<BR>TComisionSG<BR>PrecioEntrega<BR>DomicilaPagar
+ListaRelaciones=Personal
+LlavePrimaria=ID<BR>Personal
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  Personal,<BR>  FacturasEntr,<BR>  FacturasAsig,<BR>  Traspasos,<BR>  FactProd,<BR>  Productividad,<BR>  DomiciliosVisit,<BR>  DomiciliosAsig,<BR>  ProdCte,<BR>  DiasProductivos,<BR>  ImporteEntregas,<BR>  ImporteTraspasos,<BR>  TotalComision,<BR>  PromedioDiario,<BR>  Bonificacion,<BR>  ImporteAjuste,<BR>  TotalPagar,<BR>  Factor,<BR>  Incidencias,<BR>  DiasSinEmbarques,<BR>  ApoGereAdministrativo,<BR>  ApoGereOperativo,<BR>  ProductividadTotal,<BR>  FactPagoFactura,<BR>  SueldoGarantia,<BR>  TComisionSG,<BR>  PrecioEntrega,<BR>  DomicilaPagar<BR><BR>FROM<BR>  ComisionesChoferesDMAVI
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Personal]
+Clave=Personal
+Nombre=Personal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[FacturasEntr]
+Clave=FacturasEntr
+Nombre=Facturas Entr
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+[FacturasAsig]
+Clave=FacturasAsig
+Nombre=Facturas Asig
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+[Traspasos]
+Clave=Traspasos
+Nombre=Traspa
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+[FactProd]
+Clave=FactProd
+Nombre=%Fact Prod
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=0,.00
+[Productividad]
+Clave=Productividad
+Nombre= Cal Productividad
+Visible=S
+TamanoValidacion=20
+Tamano=20
+TipoDatos=Texto
+[DomiciliosVisit]
+Clave=DomiciliosVisit
+Nombre=Domicilios Visit
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+[DomiciliosAsig]
+Clave=DomiciliosAsig
+Nombre=Domicilios Asig
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+[ProdCte]
+Clave=ProdCte
+Nombre=% Prod Cte
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=0,.00
+[DiasProductivos]
+Clave=DiasProductivos
+Nombre=Dias Prod
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S
+[ImporteEntregas]
+Clave=ImporteEntregas
+Nombre=Importe Entregas
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[ImporteTraspasos]
+Clave=ImporteTraspasos
+Nombre=Importe Traspasos
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[TotalComision]
+Clave=TotalComision
+Nombre=Total Comisión
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorRefrescar=SI<BR>SueldoGarantia <> <T>Sueldo Garantia<T><BR>Entonces<BR> ImporteEntregas+ImporteTraspasos+Bonificacion+ProductividadTotal<BR>Sino<BR>   Bonificacion+TComisionSG<BR>Fin
+ListaRefrescar=TotalPagar
+ValorMinimo=0
+ListaRefrescarCondiciones=TotalPagar
+ConRefrescar=S
+[PromedioDiario]
+Clave=PromedioDiario
+Nombre=Promedio Diario
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[Bonificacion]
+Clave=Bonificacion
+Nombre=Bono Diesel
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ConRefrescar=S
+ListaRefrescar=TotalPagar
+CondicionEdicion=SQL(<T>SELECT dbo.FN_DM0021BUComisionesChoferes(:nI,:tUsr)<T>,3,Usuario)=<T>1<T>   
+ValorMinimo=0
+[ImporteAjuste]
+Clave=ImporteAjuste
+Nombre=Importe Ajuste
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+AyudaEnCaptura=Calculadora
+ConRefrescar=S
+ListaRefrescar=TotalPagar
+CondicionDespliege=ComisionesChoferesMAVI:ComisionesChoferesMAVI.Estatus en(EstatusPendiente, EstatusConcluido, EstatusCancelado)    
+CondicionEdicion=(ComisionesChoferesMAVI:ComisionesChoferesMAVI.Estatus en(EstatusPendiente)) y (Usuario.ModifComisnsChoferesMAVI)
+[TotalPagar]
+Clave=TotalPagar
+Nombre=Total a Pagar
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+ValorRefrescar=TotalComision+ApoGereOperativo+ApoGereAdministrativo+Bonificacion
+Requerido=S
+[Relaciones.Personal]
+TipoRelacion=Opcional
+LlaveLocal=Personal
+Clave=Personal
+TablaRemota=Personal
+LlaveRemota=Personal
+[Factor]
+Clave=Factor
+Nombre=Factor
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[Incidencias]
+Clave=Incidencias
+Nombre=Incidencias
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[DiasSinEmbarques]
+Clave=DiasSinEmbarques
+Nombre=DiasSinEmbarques
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[ApoGereOperativo]
+Clave=ApoGereOperativo
+Nombre=ApoyoGEROP
+Visible=S
+TamanoValidacion=12
+TipoDatos=NumMonetario
+ConRefrescar=S
+ListaRefrescar=TotalPagar
+Monetario=S
+CondicionEdicion=SQL(<T>SELECT dbo.FN_DM0021BUComisionesChoferes(:nI,:tUsr)<T>,2,Usuario)=<T>1<T>
+[ProductividadTotal]
+Clave=ProductividadTotal
+Nombre=Productividad
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[FactPagoFactura]
+Clave=FactPagoFactura
+Nombre=Pago Factura
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+FormatoValidacion=0.00
+[SueldoGarantia]
+Clave=SueldoGarantia
+Nombre=SueldoGarantia
+Visible=S
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+CondicionEdicion=SQL(<T>SELECT dbo.FN_DM0021BUComisionesChoferes(:nI,:tUsr)<T>,4,Usuario)=<T>1<T>
+ListaOpciones=<BR>Comision<BR>Sueldo Garantia
+[ApoGereAdministrativo]
+Clave=ApoGereAdministrativo
+Nombre=ApoyoGERAD
+Visible=S
+TamanoValidacion=12
+TipoDatos=NumMonetario
+Monetario=S
+CondicionEdicion=SQL(<T>SELECT dbo.FN_DM0021BUComisionesChoferes(:nI,:tUsr)<T>,1,Usuario)=<T>1<T>          
+ConRefrescar=S
+ListaRefrescar=TotalPagar
+[TComisionSG]
+Clave=TComisionSG
+Nombre=TComisionSG
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+[PrecioEntrega]
+Clave=PrecioEntrega
+Nombre=Precio/Entrega
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+[DomicilaPagar]
+Clave=DomicilaPagar
+Nombre=Dom/Pagar
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Cantidad=S

@@ -1,0 +1,232 @@
+[Art.vis/Vista.ListaCampos]
+TipoRetencion3.Tasa=Art.Capital
+Art.Capital=Art.UltimoMov
+Art.UltimoMov=Art.FechaUltimoMov
+Art.FechaUltimoMov=Art.MarcaE
+Art.MarcaE=Art.ModeloE
+Art.ModeloE=Art.LineaE
+Art.LineaE=Art.CtaCliente
+Art.CtaCliente=Art.TipoEntradaMavi
+Art.TipoEntradaMavi=Art.codigopadre
+Art.codigopadre=Art.espadre
+Art.espadre=Art.FechaLanzamiento
+Art.FechaLanzamiento=Art.FechaVigencia
+Art.FechaVigencia=(Fin)
+
+[Art.vis/Vista.SQL]
+Art.StockMaximo,=Art.Capital,
+Art.Capital,=Art.UltimoMov,
+Art.UltimoMov,=Art.FechaUltimoMov,
+Art.FechaUltimoMov,=Art.MarcaE,
+Art.MarcaE,=Art.ModeloE,
+Art.ModeloE,=Art.LineaE,
+Art.LineaE,=Art.CtaCliente,
+Art.CtaCliente,=Art.TipoEntradaMavi,
+Art.TipoEntradaMavi,=Art.codigopadre,
+Art.codigopadre,=Art.espadre,
+Art.espadre,=Art.FechaLanzamiento,
+Art.FechaLanzamiento,=Art.FechaVigencia,
+Art.FechaVigencia,=ArtFam.Familia,
+
+[Art.vis/Vista.ListaCalculados]
+TasaRetencion3=ClaveSAT
+ClaveSAT=(Fin)
+
+
+[Art.vis/Art.Capital]
+Clave=Art.Capital
+Nombre=Monto Capital
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Monetario=S
+AyudaEnCaptura=Calculadora
+LigaTabla=Art
+LigaCampo=Capital
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Capital
+
+[Art.vis/Art.UltimoMov]
+Clave=Art.UltimoMov
+Nombre=Ultimo Mov
+Visible=S
+TamanoValidacion=100
+Tamano=100
+LigaTabla=Art
+LigaCampo=UltimoMov
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=UltimoMov
+
+
+[Art.vis/Art.FechaUltimoMov]
+Clave=Art.FechaUltimoMov
+Nombre=Fecha Ultimo Mov
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+LigaTabla=Art
+LigaCampo=FechaUltimoMov
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=FechaUltimoMov
+
+
+[Art.vis/Art.MarcaE]
+Clave=Art.MarcaE
+Nombre=Marca 
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemTabla=DM0270CatMarcastbl
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Ligado=N
+LigaTabla=Art
+LigaCampo=MarcaE
+ClaveBDE=MarcaE
+Alineacion=por Omisión
+Mayusculas=S
+AyudaEnCaptura=Vista
+AyudaForma=DM0270MarcasFrm
+AyudaVista=DM0270MarcasVis
+AyudaCampo=Marca
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>select count(Marca) From DM0270CatalogoMarcas Where Marca=:tmar<T>,Art.MarcaE) > 0
+ValidacionMensajeError=<T>la marca ingresada no existe en el catalogo<T>
+[Art.vis/Art.ModeloE]
+Clave=Art.ModeloE
+Nombre=Modelo 
+Visible=S
+TamanoValidacion=10
+Tamano=50
+Ligado=N
+LigaTabla=Art
+LigaCampo=ModeloE
+ClaveBDE=ModeloE
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Mayusculas=S
+[Art.vis/Art.LineaE]
+Clave=Art.LineaE
+Nombre=Tipo Ecommerce
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaMemTabla=DM0270Cattipostbl
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Ligado=N
+LigaTabla=Art
+LigaCampo=LineaE
+ClaveBDE=LineaE
+Alineacion=por Omisión
+Mayusculas=S
+AyudaEnCaptura=Vista
+AyudaForma=DM0270tipoFrm
+AyudaVista=DM0270tipovis
+AyudaCampo=Tipo
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>select Count(Tipo) from DM0270CatalogoTipo Where Tipo=:tti<T>,Art.LineaE) > 0
+ValidacionMensajeError=<T>El tipo no existe en el catalago<T>
+
+[Art.vis/Art.CtaCliente]
+Clave=Art.CtaCliente
+Nombre=Cuenta Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=9
+LigaTabla=Art
+LigaCampo=CtaCliente
+ClaveBDE=CtaCliente
+Alineacion=por Omisión
+AyudaEnCaptura=Vista
+AyudaForma=CteLista
+AyudaVista=MaviCteA
+AyudaCampo=Cte.Cliente
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+
+[Art.vis/Art.TipoEntradaMavi]
+Clave=Art.TipoEntradaMavi
+Nombre=Tipo Entrada Mavi
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+Tamano=15
+LigaTabla=Art
+LigaCampo=TipoEntradaMavi
+ClaveBDE=TipoEntradaMavi
+Alineacion=por Omisión
+AyudaEnCaptura=Lista de Opciones
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+OpcionesPredefinidas=Ninguna
+ListaOpciones=ADJUDICACION<BR>EMBARGADO
+
+[Art.vis/Art.codigopadre]
+Clave=Art.codigopadre
+Nombre=Código Padre
+Visible=S
+TamanoValidacion=10
+Tamano=11
+LigaTabla=Art
+LigaCampo=codigopadre
+ClaveBDE=codigopadre
+Alineacion=por Omisión
+AyudaEnCaptura=Vista
+AyudaForma=DM0303AyudaArticulosFrm
+AyudaVista=DM0303AyudaArticulosVis
+AyudaCampo=Articulo
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+ValidacionConCondiciones=S
+AyudaIgnoraChequeos=S
+ValidacionCondicion=Si SQL(<T>SELECT COUNT(TablaSt) FROM TablaStd WHERE TablaSt = :tTabla AND Nombre = :tLinea AND Valor = :tFamilia<T>,<T>FAMILIA LINEA DESPIEZAR ARTICULOS<T>,Art.Linea,Art.Familia)>0<BR>Entonces Verdadero<BR>Sino Error(<T>Solo llenar si artículo es despiezado<T>) AbortarOperacion<BR>Fin
+
+[Art.vis/Art.espadre]
+Clave=Art.espadre
+Nombre=Es Padre
+Visible=S
+TamanoValidacion=12
+TipoDatos=Lógico
+LigaTabla=Art
+LigaCampo=espadre
+ClaveBDE=espadre
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValidacionConCondiciones=S
+ValidacionCondicion=Si SQL(<T>SELECT COUNT(TablaSt) FROM TablaStd WHERE TablaSt = :tTabla AND Nombre = :tLinea AND Valor = :tFamilia<T>,<T>FAMILIA LINEA DESPIEZAR ARTICULOS<T>,Art.Linea,Art.Familia)>0<BR>Entonces Verdadero<BR>Sino Error(<T>Solo llenar si artículo es despiezado<T>) AbortarOperacion<BR>Fin
+
+[Art.vis/ClaveSAT]
+Clave=ClaveSAT
+TipoCampo=Calculado
+TamanoValidacion=20
+Alineacion=por Omisión
+Nombre=Clasificación SAT
+Tamano=20
+Formula=Si<BR>  SQL(<T>SELECT COUNT(CveProdServ) FROM DM0306ArtProdServExcep WITH(NOLOCK) WHERE Articulo= :tArticulo<T>,Art.Articulo)>0<BR>Entonces<BR>  SQL(<T>SELECT CveProdServ FROM DM0306ArtProdServExcep WITH(NOLOCK) WHERE Articulo= :tArticulo<T>,Art.Articulo)<BR>Sino<BR>Si<BR>SQL(<T>SELECT COUNT(C.CveProdSAT) FROM ActivoFCat C JOIN Art A ON A.CategoriaActivoFijo = C.Categoria WHERE A.Articulo= :tArticulo<T>,Art.Articulo)>0<BR>Entonces<BR>SQL(<T>SELECT C.CveProdSAT FROM ActivoFCat C JOIN Art A ON A.CategoriaActivoFijo = C.Categoria WHERE A.Articulo= :tArticulo<T>,Art.Articulo) <BR>Sino<BR>  SQL(<T>SELECT CveProdSAT FROM ArtLinea WITH(NOLOCK) WHERE Linea= :tLinea<T>,Art.Linea)<BR>Fin<BR>Fin
+
+[Art.vis/Art.FechaLanzamiento]
+Clave=Art.FechaLanzamiento
+LigaTabla=Art
+LigaCampo=FechaLanzamiento
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=FechaLanzamiento
+
+[Art.vis/Art.FechaVigencia]
+Clave=Art.FechaVigencia
+LigaTabla=Art
+LigaCampo=FechaVigencia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=FechaVigencia

@@ -1,0 +1,34 @@
+[Tabla]
+Icono=0
+Clave=DM0158EMBFACTORSEGUROFLETEHISTTBL
+Nombre=DM0158EMBFACTORSEGUROFLETEHISTTBL
+Archivo=DM0158EMBFACTORSEGUROFLETEHISTTBL
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=FactorSeguroFlete<BR>Fecha<BR>UsuarioMod
+LlavePrimaria=FactorSeguroFlete<BR>Fecha<BR>UsuarioMod
+SQL=SELECT<BR>  FactorSeguroFlete,<BR>  Fecha,<BR>  UsuarioMod<BR><BR>FROM<BR>  DM0158EMBFACTORSEGUROFLETEHISTTBL
+[FactorSeguroFlete]
+Clave=FactorSeguroFlete
+Nombre=% Factor Seguro Flete
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=FechaHora
+[UsuarioMod]
+Clave=UsuarioMod
+Nombre=UsuarioMod
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15

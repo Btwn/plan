@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0855AGhostVis
+Nombre=RM0855AGhostVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Tema
+SQL=Select <T>Seleccion Canal<T> as  Tema 
+[Tema]
+Clave=Tema
+Nombre=Tema
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Tema

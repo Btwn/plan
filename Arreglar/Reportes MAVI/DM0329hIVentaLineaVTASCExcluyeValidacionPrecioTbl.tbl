@@ -1,0 +1,32 @@
+
+[Tabla]
+Icono=0
+Clave=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl
+Nombre= DM0329hIVentaExcluyeValidacionPrecio
+Archivo=VTASCExcluyeValidacionPrecio
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IdExcluyeValidacionPrecio<BR>Articulo
+SQL=SELECT<BR>  IdExcluyeValidacionPrecio,<BR>  Articulo<BR><BR>  FROM VTASCExcluyeValidacionPrecio
+LlavePrimaria=IdExcluyeValidacionPrecio
+ControlID=S
+CampoID=IdExcluyeValidacionPrecio
+[IdExcluyeValidacionPrecio]
+Clave=IdExcluyeValidacionPrecio
+Nombre=IdExcluyeValidacionPrecio
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>SELECT  articulo FROM art WITH(NOLOCK)<BR>                WHERE  Estatus = <T>+comillas(<T>Alta<T>)+<T><BR>                AND LEFT(articulo,4) = <T>+comillas(<T>SEGU<T>)+ <T><BR>                AND GRUPO = <T>+comillas(<T>SERVICIOS A CLIENTES<T>)+<T><BR>                AND Familia =<T>+comillas( <T>VARIOS INTANGIBLES<T>)+<T><BR>                AND LINEA =<T>+comillas(<T>VARIOS<T>)+<T><BR>                AND categoria =<T>+comillas( <T>VENTA<T>) )

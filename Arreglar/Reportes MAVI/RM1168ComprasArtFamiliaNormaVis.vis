@@ -1,0 +1,22 @@
+
+[Vista]
+Icono=0
+Clave=RM1168ComprasArtFamiliaNormaVis
+Nombre=RM1168 Familia
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Familia
+CamposBusquedaRapida=Familia
+SQL=select distinct Familia from Art with(nolock) <BR>where Categoria = <T>VENTA<T> AND Grupo = <T>MERCANCIA DE LINEA<T> AND Familia IS NOT NULL AND Familia <><T><T><BR>ORDER BY Familia
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

@@ -1,0 +1,42 @@
+
+[Vista]
+Icono=0
+Clave=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioVis
+Nombre= DM0329hIVentaLineaExcluyeValidacionPrecio
+Modulos=(Todos)
+ListaTablas=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl
+TablaPrincipal=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl.IdExcluyeValidacionPrecio<BR>DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl.Articulo
+SQL=SELECT<BR>DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl.IdExcluyeValidacionPrecio,<BR>DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl.Articulo<BR>FROM VTASCExcluyeValidacionPrecio DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl
+[DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl.IdExcluyeValidacionPrecio]
+Clave=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl.IdExcluyeValidacionPrecio
+Nombre=IdExcluyeValidacionPrecio
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl
+LigaCampo=IdExcluyeValidacionPrecio
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=IdExcluyeValidacionPrecio
+
+[DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl.Articulo]
+Clave=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl.Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>SELECT  articulo FROM art WITH(NOLOCK)<BR>                WHERE  Estatus = <T>+comillas(<T>Alta<T>)+<T><BR>                AND LEFT(articulo,4) = <T>+comillas(<T>SEGU<T>)+ <T><BR>                AND GRUPO = <T>+comillas(<T>SERVICIOS A CLIENTES<T>)+<T><BR>                AND Familia =<T>+comillas( <T>VARIOS INTANGIBLES<T>)+<T><BR>                AND LINEA =<T>+comillas(<T>VARIOS<T>)+<T><BR>                AND categoria =<T>+comillas( <T>VENTA<T>) )
+LigaTabla=DM0329hIVentaLineaVTASCExcluyeValidacionPrecioTbl
+LigaCampo=Articulo
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Articulo

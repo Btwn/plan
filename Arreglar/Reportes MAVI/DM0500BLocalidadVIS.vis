@@ -1,0 +1,19 @@
+
+[Vista]
+Icono=0
+Clave=DM0500BLocalidadVIS
+Nombre=DM0500BLocalidadVIS
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Opcion
+SQL=SELECT LocalidadAgenteMavi.Opcion <BR>FROM CampoExtraAyudaLista LocalidadAgenteMavi<BR>WHERE LocalidadAgenteMavi.CampoExtra=<T>AGTE_LOCALIDAD<T>
+[Opcion]
+Clave=Opcion
+Nombre=Localidad
+Visible=S
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=Opcion

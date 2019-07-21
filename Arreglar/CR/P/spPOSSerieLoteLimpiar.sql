@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spPOSSerieLoteLimpiar
+@Estacion		int,
+@ID  			varchar(36),
+@RenglonID		int,
+@Articulo       varchar(20),
+@SubCuenta		varchar(50)
+
+AS
+BEGIN
+DELETE POSLSerieLoteTemp
+WHERE Estacion   = @Estacion
+AND ID        = @ID
+AND RenglonID = @RenglonID
+AND Articulo  = @Articulo
+END
+

@@ -1,0 +1,57 @@
+[Vista]
+Icono=0
+Clave=PropreConsecutivoCfg
+Nombre=PropreConsecutivoCfg
+Modulos=(Todos)
+Singular=PropreConsecutivoCfg
+ListaTablas=PropreConsecutivoCfg
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=PropreConsecutivoCfg.Empresa<BR>PropreConsecutivoCfg.Tipo<BR>PropreConsecutivoCfg.Seccion
+TablaPrincipal=PropreConsecutivoCfg
+SQL=SELECT<BR>  PropreConsecutivoCfg.Empresa,<BR>  PropreConsecutivoCfg.Tipo,<BR>  PropreConsecutivoCfg.Seccion<BR><BR>FROM<BR>  PropreConsecutivoCfg
+[PropreConsecutivoCfg.Empresa]
+Clave=PropreConsecutivoCfg.Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+Tamano=5
+Requerido=N
+ValorPorOmision=Empresa
+LigaTabla=PropreConsecutivoCfg
+LigaCampo=Empresa
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Empresa
+[PropreConsecutivoCfg.Tipo]
+Clave=PropreConsecutivoCfg.Tipo
+Nombre=Tipo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista(<T>SELECT Tipo FROM Consecutivo<T>)
+LigaTabla=PropreConsecutivoCfg
+LigaCampo=Tipo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Tipo
+[PropreConsecutivoCfg.Seccion]
+Clave=PropreConsecutivoCfg.Seccion
+Nombre=Seccion
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaRefrescar=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Seccion FROM ProprePorcentajeValidacion<T>)
+LigaTabla=PropreConsecutivoCfg
+LigaCampo=Seccion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=Seccion

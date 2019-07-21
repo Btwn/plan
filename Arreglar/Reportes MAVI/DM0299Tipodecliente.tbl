@@ -1,0 +1,67 @@
+[Tabla]
+Icono=0
+Clave=DM0299Tipodecliente
+Nombre=DM0299Tipodecliente
+Archivo=DM0299Tipodecliente
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>TipoCredito<BR>TextoAmostrar<BR>Descripcion<BR>PermitirDomicilioReferencia<BR>PermitirCapturaContactos<BR>MostrarClienteExpress<BR>MensajeUsuario
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  TipoCredito,<BR>  TextoAmostrar,<BR>  Descripcion,<BR>  PermitirDomicilioReferencia,<BR>  PermitirCapturaContactos,<BR>  MostrarClienteExpress,<BR>  MensajeUsuario<BR><BR>FROM<BR>  DM0299Tipodecliente
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[TipoCredito]
+Clave=TipoCredito
+Nombre=TipoCredito
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+ListaOpciones=Credito Normal<BR>Credito Express<BR>Credito Relacionado<BR>Credito Relacionado con Diferente Domicilio<BR>Credito Agil<BR>Credito Agil  Calzado<BR>Credito DIMA<BR>Credito Internet<BR>Credito Seguro Express
+[TextoAmostrar]
+Clave=TextoAmostrar
+Nombre=Texto A Mostrar
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+TamanoValidacion=250
+Tamano=250
+[PermitirDomicilioReferencia]
+Clave=PermitirDomicilioReferencia
+Nombre=Permitir Domicilio Referencia
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+[PermitirCapturaContactos]
+Clave=PermitirCapturaContactos
+Nombre=Permitir Captura Contactos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+[MostrarClienteExpress]
+Clave=MostrarClienteExpress
+Nombre=Mostrar Cliente Express
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+[MensajeUsuario]
+Clave=MensajeUsuario
+Nombre=Mensaje Usuario
+Visible=S
+TamanoValidacion=250
+Tamano=250

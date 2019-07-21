@@ -1,0 +1,27 @@
+[Tabla]
+Icono=0
+Clave=PreguntaCte
+Nombre=PreguntaCte
+Archivo=PreguntaCte
+Modulos=(Todos)
+Singular=PreguntaCte
+TipoTabla=General
+ListaCampos=ID<BR>Pregunta
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  Pregunta<BR><BR>FROM<BR>  PreguntaCte
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[Pregunta]
+Clave=Pregunta
+Nombre=Pregunta
+Visible=S
+TamanoValidacion=50x3
+Tamano=255

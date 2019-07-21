@@ -1,0 +1,14 @@
+[Vista]
+Icono=0
+Clave=MaviTiposucursalNumXUENVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=TipodeSucursal
+SQL=Select Distinct Tipo as [Tipo de Sucursal]<BR>From Sucursal<BR>Where WUEN <> 0<BR>{Si(ConDatos(Mavi.UenNum),<T> And WUEN in(<T>+Mavi.UenNum+<T>)<T>,<T><T>)}
+[TipodeSucursal]
+Clave=TipodeSucursal
+Tamano=50
+ClaveBDE=Tipo de Sucursal
+TamanoValidacion=50
+Nombre=Tipo de Sucursal

@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=RM0350NombreAgentesVis
+Nombre=Nombre Agentes
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre<BR>Agente
+CamposBusquedaRapida=Nombre<BR>Agente
+SQL=select Agente, a.Nombre <BR>from agente a
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Agente

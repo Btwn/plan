@@ -1,0 +1,83 @@
+[Forma]
+Clave=DM0144ArtPrefijosMainFrm
+Nombre=DM0144 Prefijos
+Icono=44
+Modulos=(Todos)
+ListaCarpetas=pre
+CarpetaPrincipal=pre
+PosicionInicialAlturaCliente=113
+PosicionInicialAncho=331
+BarraAcciones=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=aceptar
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaBloquearAjuste=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=474
+PosicionInicialArriba=438
+VentanaSiempreAlFrente=S
+VentanaExclusiva=S
+VentanaEscCerrar=S
+ExpresionesAlMostrar=Asigna(Mavi.DM0144Prefijo,nulo)
+[pre]
+Estilo=Ficha
+Clave=pre
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Mavi.DM0144Prefijo
+CarpetaVisible=S
+[pre.Mavi.DM0144Prefijo]
+Carpeta=pre
+Clave=Mavi.DM0144Prefijo
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.aceptar]
+Nombre=aceptar
+Boton=-1
+NombreDesplegar=&Aceptar
+EnBarraAcciones=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=asi<BR>ace
+[Acciones.aceptar.asi]
+Nombre=asi
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.aceptar.ace]
+Nombre=ace
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Aceptar
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+EjecucionCondicion=SQL(<T>Select Case When :tpre in (Select Nombre from tablastd where tablast = <T>+comillas(<T>PREFIJOS ARTICULOS COBRANZA<T>)+<T>) then 1 else 0 end<T>,Mavi.DM0144Prefijo)=1
+EjecucionMensaje=Debe seleccionar una accion multiple

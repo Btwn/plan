@@ -1,0 +1,131 @@
+[Tabla]
+Icono=0
+Clave=Dm0116ParametrizacionCFD
+Nombre=Dm0116ParametrizacionCFD
+Archivo=Dm0116ParametrizacionCFD
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>VALOR<BR>REPORTE<BR>CATEGORIA<BR>SUCURSALDESTINO<BR>TIPOCONDICION<BR>GRUPO<BR>ORIGINAL<BR>COPIA<BR>EMBARQUE<BR>DUPLICADOS
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  CATEGORIA,<BR>  SUCURSALDESTINO,<BR>  TIPOCONDICION,<BR>  GRUPO,<BR>  REPORTE,<BR>  VALOR,<BR>  ORIGINAL,<BR>  COPIA,<BR>  EMBARQUE,<BR>  DUPLICADOS<BR><BR>FROM<BR>  Dm0116ParametrizacionCFD
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc
+[VALOR]
+Clave=VALOR
+Nombre=VALOR SALDO
+Visible=S
+TamanoValidacion=50
+TipoDatos=Numérico
+Requerido=S
+ValorMinimo=0
+[REPORTE]
+Clave=REPORTE
+Nombre=REPORTE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+Requerido=S
+ListaOpciones=CARTA<BR>TICKET
+[CATEGORIA]
+Clave=CATEGORIA
+Nombre=CATEGORÍA
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=CteCat
+AyudaMemRenglones=5
+AyudaMemOpc=Unicamente opciones listadas
+Requerido=S
+[SUCURSALDESTINO]
+Clave=SUCURSALDESTINO
+Nombre=SUCURSAL
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+Requerido=S
+Formula=SQLEnLista(<T>select convert(varchar(100), Sucursal)+<T>+comillas(<T> - <T>)+<T>+Nombre from Sucursal where Sucursal != 0<T>)
+[TIPOCONDICION]
+Clave=TIPOCONDICION
+Nombre=TIPO DE CONDICIÓN
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+AyudaMemRenglones=3
+Formula=SQLEnLista(<T>select distinct UPPER(TipoCondicion) from condicion<T>)
+[GRUPO]
+Clave=GRUPO
+Nombre=GRUPO
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+Requerido=S
+Formula=SQLEnLista(<T>select distinct Grupo from condicion where TipoCondicion is not null<T>)
+[ORIGINAL]
+Clave=ORIGINAL
+Nombre=ORIGINAL
+Visible=S
+TamanoValidacion=15
+TipoDatos=Lógico
+ValorPorOmision=Falso
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+OpcionesUnicamente=S
+OpcionesValidar=S
+Requerido=S
+[COPIA]
+Clave=COPIA
+Nombre=COPIA
+Visible=S
+TamanoValidacion=15
+TipoDatos=Lógico
+ValorPorOmision=Falso
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+OpcionesUnicamente=S
+OpcionesValidar=S
+Requerido=S
+[EMBARQUE]
+Clave=EMBARQUE
+Nombre=EMBARQUE
+Visible=S
+TamanoValidacion=15
+TipoDatos=Lógico
+ValorPorOmision=Falso
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+OpcionesUnicamente=S
+OpcionesValidar=S
+Requerido=S
+[DUPLICADOS]
+Clave=DUPLICADOS
+Nombre=DUPLICADOS
+Visible=S
+TamanoValidacion=255
+Tamano=255
+LlavePrimariaEnBlanco=S
+TipoDatos=Texto

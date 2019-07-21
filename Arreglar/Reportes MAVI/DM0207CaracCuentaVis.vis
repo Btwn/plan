@@ -1,0 +1,58 @@
+
+[Vista]
+Icono=0
+Clave=DM0207CaracCuentaVis
+Modulos=(Todos)
+ListaTablas=TablaStD
+TablaPrincipal=TablaStD
+UsarJOIN=S
+
+ListaCampos=TablaStD.TablaSt<BR>TablaStD.Nombre<BR>TablaStD.Valor
+CamposBusquedaRapida=TablaStD.Nombre<BR>TablaStD.Valor
+UsoCapturas=S
+UsoReportes=S
+SQL=SELECT<BR>  TablaStD.TablaSt,<BR>  TablaStD.Nombre,<BR>  TablaStD.Valor<BR>FROM <BR>  TablaStD<BR>WHERE <BR>  TablaStD.TablaSt = <T>PRIORIDAD JERARQUIA<T><BR>ORDER BY<BR>  TablaStD.Valor
+[TablaStD.TablaSt]
+Clave=TablaStD.TablaSt
+Nombre=TablaSt
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorPorOmision=Info.Tabla
+TipoDatos=Texto
+LigaTabla=TablaStD
+LigaCampo=TablaSt
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=TablaSt
+
+[TablaStD.Nombre]
+Clave=TablaStD.Nombre
+Nombre=Jerarquia
+Visible=S
+TamanoValidacion=250
+Tamano=250
+TipoDatos=Texto
+LigaTabla=TablaStD
+LigaCampo=Nombre
+ClaveBDE=Nombre
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[TablaStD.Valor]
+Clave=TablaStD.Valor
+Nombre=Orden
+Visible=S
+TamanoValidacion=250
+Tamano=250
+TipoDatos=Texto
+LigaTabla=TablaStD
+LigaCampo=Valor
+ClaveBDE=Valor
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El valor no puede estar repetido<T>
+ValidacionCondicion=SQL(<T>SELECT COUNT(Valor) FROM TablaStD WHERE TablaSt = :tNom AND Valor = :nVal<T>,<T>PRIORIDAD JERARQUIA<T> ,TablaStD.Valor) = 0

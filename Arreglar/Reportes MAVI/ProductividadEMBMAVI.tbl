@@ -1,0 +1,80 @@
+[Tabla]
+Icono=0
+Clave=ProductividadEMBMAVI
+Nombre=ProductividadEMBMAVI
+Archivo=ProductividadEMBMAVI
+Modulos=(Todos)
+Singular=ProductividadEMBMAVI
+TipoTabla=Movimientos
+ListaCampos=Nivel<BR>Calificacion<BR>PorcentajeIni<BR>PorcentajeFin<BR>PrecioEntrega<BR>Bonificacion<BR>Diesel
+LlavePrimaria=PorcentajeIni<BR>PorcentajeFin
+SQL=SELECT<BR>  Nivel,<BR>  Calificacion,<BR>  PorcentajeIni,<BR>  PorcentajeFin,<BR>  PrecioEntrega,<BR>  Bonificacion,<BR>  Diesel<BR><BR>FROM<BR>  ProductividadEMBMAVI
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+Alineacion=Centrado
+[Calificacion]
+Clave=Calificacion
+Nombre=Calificación
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Mayusculas=S
+Alineacion=Derecha
+Formula=SQLEnLista(<T>SELECT Calificacion FROM  MaestroCalificacionesComisionesChoferesMAVI<T>)
+TipoDatos=Texto
+[PorcentajeIni]
+Clave=PorcentajeIni
+Nombre=% Inicial
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Alineacion=Derecha
+AyudaEnCaptura=Calculadora
+ValorMinimo=0
+ValorMaximo=Vacio(PorcentajeFin,100)
+FormatoValidacion=0,.00
+[PorcentajeFin]
+Clave=PorcentajeFin
+Nombre=% Final
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+Alineacion=Derecha
+AyudaEnCaptura=Calculadora
+ValorMinimo=vacio(PorcentajeIni,0)
+ValorMaximo=100
+FormatoValidacion=0,.00
+[PrecioEntrega]
+Clave=PrecioEntrega
+Nombre=Precio Por Entrega
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+Alineacion=Derecha
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+[Bonificacion]
+Clave=Bonificacion
+Nombre=Bonificación
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+Alineacion=Derecha
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+[Diesel]
+Clave=Diesel
+Nombre=Bono Productividad
+Visible=S
+TamanoValidacion=15
+TipoDatos=NumMonetario
+Monetario=S

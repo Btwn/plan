@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0966DIVIDivisionesVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+Nombre=Divisiones
+ListaCampos=Division
+CamposBusquedaRapida=Division
+SQL=select Distinct Division <BR>from V_MaviEstructuraInst where Division is not null <BR>and Division<><T><T> and Gerencia = <T>{Mavi.RM0966Gerencia}<T>
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Division

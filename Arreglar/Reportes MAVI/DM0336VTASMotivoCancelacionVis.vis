@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=DM0336VTASMotivoCancelacionVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=Motivo
+SQL=SELECT UPPER(MotivoCancelacion) AS Motivo<BR>FROM (<BR>  SELECT <T>Sin cobertura de entrega<T> AS MotivoCancelacion<BR>  UNION ALL<BR>  SELECT <T>Exceso de dimensiones para su envio<T><BR>  UNION ALL<BR>  SELECT <T>Producto de exhibicion o dañado<T><BR>  UNION ALL<BR>  SELECT <T>Otros<T><BR>)subconsulta
+[Motivo]
+Clave=Motivo
+Nombre=Motivo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=35
+TipoDatos=Texto
+Tamano=35
+ClaveBDE=Motivo

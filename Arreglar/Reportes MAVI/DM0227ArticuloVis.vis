@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0227ArticuloVis
+Nombre=Articulo
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Articulo
+CamposBusquedaRapida=Articulo
+SQL=Select Distinct Articulo From Art Where Categoria <> <T>Venta<T><BR>{Si(ConDatos(Mavi.DM0227Familia),<T> And Familia in (<T>+Mavi.DM0227Familia+<T>)<T>,<T> <T>)}<BR>{Si(ConDatos(Mavi.DM0227Grupo),<T> And Grupo in (<T>+Mavi.DM0227Grupo+<T>)<T>,<T> <T>)}<BR>{Si(ConDatos(Mavi.DM0227Linea),<T> And Linea in (<T>+Mavi.DM0227Linea+<T>)<T>,<T> <T>)}<BR>{Si(ConDatos(Mavi.RM1096Categorias),<T> And Categoria in (<T>+Mavi.RM1096Categorias+<T>)<T>,<T> <T>)}<BR>Order By Articulo
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Articulo

@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=RM1144CtesMonXVolVis
+Nombre=Clientes Canal Venta 76
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Cliente<BR>Nombre
+CamposBusquedaRapida=Cliente
+SQL=SELECT <BR><TAB>C.Cliente,<BR><TAB>C.Nombre<BR>FROM <BR><TAB>CteEnviarA C WITH(NOLOCK)<BR>WHERE C.ID = 76 AND C.Estatus = <T>ALTA<T>
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cliente
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

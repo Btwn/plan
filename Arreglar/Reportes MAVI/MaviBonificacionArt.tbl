@@ -1,0 +1,51 @@
+[Tabla]
+Icono=0
+Clave=MaviBonificacionArt
+Nombre=MaviBonificacionArt
+Archivo=MaviBonificacionArt
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=IdBonificacion<BR>Articulo<BR>PorcArt<BR>PorcArt2
+LlavePrimaria=IdBonificacion<BR>Articulo
+ListaRelaciones=relacionart
+SQL=SELECT<BR>  IdBonificacion,<BR>  Articulo,<BR>  PorcArt,<BR>  PorcArt2<BR><BR>FROM<BR>  MaviBonificacionArt
+[IdBonificacion]
+Clave=IdBonificacion
+Nombre=IdBonificacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=60
+Tamano=60
+AyudaEnCaptura=Vista
+AyudaMemOpc=Unicamente opciones listadas
+AyudaForma=ListadoArticulos
+AyudaVista=ListadoArticulos
+AyudaCampo=articulo
+[PorcArt]
+Clave=PorcArt
+Nombre=% Cte Casa
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ValorPorOmision=0
+[PorcArt2]
+Clave=PorcArt2
+Nombre=% Cte Nuevo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ValorPorOmision=0
+[Relaciones.relacionart]
+TipoRelacion=Abierta
+LlaveLocal=Articulo
+Clave=relacionart
+TablaRemota=Art
+LlaveRemota=Articulo
+ValidarSinDatos=S

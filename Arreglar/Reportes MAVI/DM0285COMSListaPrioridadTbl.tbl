@@ -1,0 +1,90 @@
+
+[Tabla]
+Icono=0
+Clave=DM0285COMSListaPrioridadTbl
+Archivo=COMSCListaPrioridadEcommerce
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IdListaPrioridadEcommerce<BR>Nombre<BR>FechaInicio<BR>FechaFin<BR>Familia<BR>Linea<BR>UEN
+LlavePrimaria=IdListaPrioridadEcommerce
+ControlID=S
+CampoID=IdListaPrioridadEcommerce
+SQL=SELECT<BR>  IdListaPrioridadEcommerce,<BR>  Nombre,<BR>  FechaInicio,<BR>  FechaFin,<BR>  Familia,<BR>  Linea,<BR>  UEN<BR><BR>  FROM COMSCListaPrioridadEcommerce
+[IdListaPrioridadEcommerce]
+Clave=IdListaPrioridadEcommerce
+Nombre=IdListaPrioridadEcommerce
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=250
+TipoDatos=Texto
+Tamano=250
+
+[FechaInicio]
+Clave=FechaInicio
+Nombre=Fecha Inicio
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+AyudaEnCaptura=Calendario sin Hora
+[FechaFin]
+Clave=FechaFin
+Nombre=Fecha Fin
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+AyudaEnCaptura=Calendario sin Hora
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Linea
+ListaRefrescar=Linea
+AyudaMemOpc=Validar captura en la lista
+CondicionEdicion=SQL(<T>SELECT COUNT(*)<BR>FROM COMSCListaPrioridadEcommerce C WITH(NOLOCK)<BR>JOIN COMSDListaPrioridad D WITH(NOLOCK)<BR>ON D.IdListaPrioridadEcommerce = C.IdListaPrioridadEcommerce<BR>WHERE C.IdListaPrioridadEcommerce = :nID<T>,Info.Numero) = 0
+Formula=SQLEnLista(<T>SELECT DISTINCT Familia<BR>FROM(<BR>SELECT DISTINCT Familia,Linea<BR>FROM Art WITH(NOLOCK)<BR>WHERE LEN(Familia)>0<BR>AND LEN(Linea)>0<BR>AND Grupo=:tGrupo<BR>AND Estatus IN (:tEstatus1,:tEstatus2)  <BR>)tablaDerivada<BR>ORDER BY Familia<T>,<T>MERCANCIA DE LINEA<T>,<T>ALTA<T>,<T>BLOQUEADO<T>)
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+AyudaRefrescar=S
+AyudaMemOpc=Validar captura en la lista
+CondicionEdicion=SQL(<T>SELECT COUNT(*)<BR>FROM COMSCListaPrioridadEcommerce C WITH(NOLOCK)<BR>JOIN COMSDListaPrioridad D WITH(NOLOCK)<BR>ON D.IdListaPrioridadEcommerce = C.IdListaPrioridadEcommerce<BR>WHERE C.IdListaPrioridadEcommerce = :nID<T>,Info.Numero) = 0
+Formula=SQLEnLista(<T><BR>DECLARE @Familia VARCHAR(50) = :tFamilia<BR><BR>SELECT DISTINCT Linea<BR>FROM(<BR>SELECT DISTINCT Familia,Linea<BR>FROM Art WITH(NOLOCK)<BR>WHERE LEN(Familia)>0<BR>AND LEN(Linea)>0<BR>AND Familia = @Familia<BR>AND Grupo=:tGrupo<BR>AND Estatus IN (:tEstatus1,:tEstatus2)<BR>)tablaDerivada<BR>ORDER BY Linea<T>,<BR>Familia<BR>,<T>MERCANCIA DE LINEA<T>,<T>ALTA<T>,<T>BLOQUEADO<T>)
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+ListaOpciones=1<BR>2<BR>3
+OpcionesPredefinidas=Ninguna
+
+

@@ -1,0 +1,207 @@
+[Forma]
+Clave=RM0350NombreAgentesVisFrm
+Nombre=<T>Agentes<T> 
+Icono=111
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaBloquearAjuste=S
+VentanaAvanzaTab=S
+VentanaEstadoInicial=Normal
+CarpetaPrincipal=Vista
+ListaCarpetas=Vista
+PosicionInicialIzquierda=433
+PosicionInicialArriba=300
+PosicionInicialAlturaCliente=389
+PosicionInicialAncho=413
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar
+PosicionSec1=162
+PosicionSec2=162
+[Acciones.Preliminar.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Preliminar.Cer]
+Nombre=Cer
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+[Acciones.Preliminar]
+Nombre=Preliminar
+Boton=6
+NombreEnBoton=S
+NombreDesplegar=&Preliminar
+GuardarAntes=S
+Multiple=S
+GuardarConfirmar=S
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=Asig<BR>cerr
+BtnResaltado=S
+EspacioPrevio=S
+[Acciones.Preliminar.Asig]
+Nombre=Asig
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Preliminar.cerr]
+Nombre=cerr
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+ConCondicion=S
+EjecucionConError=S
+Visible=S
+EjecucionCondicion=Condatos(Info.FechaD) y Condatos(Info.FechaA)
+EjecucionMensaje=<T>Selecciona un rango de fechas<T>
+[Acciones.C]
+Nombre=C
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+EspacioPrevio=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+[Acciones.Actual]
+Nombre=Actual
+Boton=0
+GuardarAntes=S
+GuardarConfirmar=S
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Activo=S
+Visible=S
+ConAutoEjecutar=S
+AutoEjecutarExpresion=1
+[Vista]
+Estilo=Iconos
+Clave=Vista
+BusquedaRapidaControles=S
+MenuLocal=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+Zona=A1
+Vista=RM0350NombreAgentesVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+CarpetaVisible=S
+ListaEnCaptura=Nombre
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+ListaAcciones=Todos<BR>QuitarSeleccion
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosSubTitulo=<T>Agente<T>
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+Filtros=S
+OtroOrden=S
+ListaOrden=Agente<TAB>(Acendente)
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=General
+IconosNombre=RM0350NombreAgentesVis:Agente
+FiltroGeneral=Categoria=<T>Cobranza Menudeo<T> and tipo=<T>Cobrador<T> and estatus=<T>alta<T>
+[Acciones.Seleccionar.Asigna]
+Nombre=Asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar.Registrar]
+Nombre=Registrar
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+[Acciones.Seleccionar.Sel]
+Nombre=Sel
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=//Asigna(Mavi.NomAgentes,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,2<T>)
+[Acciones.Seleccionar]
+Nombre=Seleccionar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+GuardarAntes=S
+RefrescarDespues=S
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=Asigna<BR>Registrar<BR>Sel
+Activo=S
+Visible=S
+[Acciones.Todos]
+Nombre=Todos
+Boton=0
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+E
+NombreDesplegar=@Seleccionar Todos
+EnMenu=S
+TipoAccion=Controles Captura
+Activo=S
+Visible=S
+ClaveAccion=Seleccionar Todo
+[Acciones.QuitarSeleccion]
+Nombre=QuitarSeleccion
+Boton=0
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+R
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S
+[Vista.Columnas]
+0=-2
+1=319
+2=-2
+[Vista.Nombre]
+Carpeta=Vista
+Clave=Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+

@@ -1,0 +1,23 @@
+[Vista]
+Icono=0
+Clave=DM0188UsuarioSinRepetirvis
+Nombre=DM0188UsuarioSinRepetir
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Usuario
+ListaCampos002=<CONTINUA>ovs<BR>ModificarVencimientos<BR>ModificarEntregas<BR>ModificarFechaRequerida<BR>ModificarEnvios<BR>ModificarReferencias<BR>ModificarAlmacenEntregas<BR>ModificarSituacion<BR>ModificarAgente<BR>ModificarUsuario<BR>ModificarListaPrecios<BR>ModificarZonaImpuesto<BR>ModificarSucursalDestino<BR>ModificarProyUENActCC<BR>AgregarCteExpress<BR>AgregarArtExpress<BR>Costos<BR>BloquearCostos<BR>VerInfoDeudores<BR>VerInfoAcreedores<BR>VerComisionesPendientes<BR>BloquearEncabezadoVenta<BR>BloquearCxcCtaDinero<BR>BloquearCxpCtaDinero<BR>BloquearDineroCtaDinero<BR>EnviarExcel<BR>ImprimirMovs<BR>PreliminarMovs<BR>Reservar<BR>DesReservar<BR>Asignar<BR>DesAsignar<BR>ModificarAlmacenPedidos<BR>ModificarConceptos<BR>ModificarReferenciasSiempre<BR>ModificarAgenteCxcPendiente<BR>ModificarMovsNominaVigentes<BR>Blo<CONTINUA>
+ListaCampos003=<CONTINUA>quearPrecios<BR>BloquearDescGlobal<BR>BloquearDescLinea<BR>BloquearCondiciones<BR>BloquearAlmacen<BR>BloquearMoneda<BR>BloquearAgente<BR>BloquearFechaEmision<BR>BloquearProyecto<BR>BloquearFormaPago<BR>Oficina<BR>DefArtTipo<BR>DefUnidad<BR>AbrirCajon<BR>BloquearCobroInmediato<BR>ConsultarCompraPendiente<BR>AccesoTotalCuentas<BR>Estatus<BR>UltimoCambio<BR>Alta<BR>Configuracion<BR>Acceso<BR>TieneMovimientos<BR>Refacturar<BR>DefListaPreciosEsp<BR>LimiteTableroControl<BR>CteInfo<BR>CteBloquearOtrosDatos<BR>ArtBloquearOtrosDatos<BR>CteSucursalVenta<BR>CtaDineroInfo<BR>ImpresionInmediata<BR>MostrarCampos<BR>AsistentePrecios<BR>CambioValidarCobertura<BR>CambioNormatividad<BR>CambioEditarCobertura<BR>CambioVerPosicionEmpresa<BR>CambioVerPosicionSucursal<BR>CambioVerPosicionOtraSucursal<BR>CambioAu<CONTINUA>
+ListaCampos004=<CONTINUA>torizarOperacionLimite<BR>AutoDobleCapturaPrecios<BR>AutoArtGrupo<BR>AutoAgregarRecaudacionConsumo<BR>AutoDiesel<BR>BloquearActividad<BR>UEN<BR>eMail<BR>CteMov<BR>CteArt<BR>ProvMov<BR>ArtMov<BR>DefContUso<BR>BloquearContUso<BR>Observaciones<BR>TraspasarTodo<BR>BloquearNotasNegativas<BR>ModificarSerieLoteProp<BR>NominaEliminacionParcial<BR>ModificarPropiedadesLotes<BR>PVAbrirCajonSiempre<BR>PVBloquearEgresos<BR>PVCobrarNotasEstatusBorrador<BR>PVModificarEstatusBorrador<BR>BloquearPersonalCfg<BR>BloquearFacturacionDirecta<BR>Idioma<BR>ModificarDatosVIN<BR>ModificarDatosCliente<BR>CxcExpress<BR>CxpExpress<BR>Cliente<BR>SubModuloAtencion<BR>BloquearCancelarFactura<BR>CambioPresentacionExpress<BR>ModificarConsecutivos<BR>ModificarVINFechaBaja<BR>ModificarVINFechaPago<BR>ModificarVINAccesorio<BR<CONTINUA>
+ListaCampos005=<CONTINUA>>PVEditarNota<BR>ModificarDescGlobalImporte<BR>ConsultarClientesOtrosAgentes<BR>ACLCUsoEspecifico<BR>ACEditarTablaAmortizacion<BR>PlantillasOffice<BR>ConfigPlantillasOffice<BR>ACTasaGrupo<BR>CambioAgregarBeneficiarios<BR>AgregarConceptoExpress<BR>BloquearArtMaterial<BR>InfoPath<BR>InfoPathExe<BR>FEA<BR>FEACertificado<BR>FEALlave<BR>ContrasenaNuncaExpira<BR>Menu<BR>MenuAccesoTotal<BR>BloquearPDF<BR>VerificarOrtografia<BR>ContSinOrigen<BR>UnidadOrganizacional<BR>ProyectoMov<BR>CompraDevTodo<BR>BloquearWebContenido<BR>BloquearWebHTML<BR>AgregarProvExpress<BR>ProyMov<BR>Tipo_Descuento<BR>PorcDescuento<BR>ContrasenaPocket<BR>PerfilForma<BR>Licenciamiento
+SQL=select USUARIO =Usuario+ <T> <T>+Nombre  from Usuario  <BR>Where (Usuario like <T>VENT%<T> or Usuario like <T>CRED%<T>)
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=111
+TipoDatos=Texto
+Tamano=111
+ClaveBDE=USUARIO

@@ -1,0 +1,28 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgArtCatBC ON ArtCat
+
+FOR UPDATE, DELETE
+AS BEGIN
+DECLARE
+@CategoriaA  	varchar(50),
+@CategoriaN		varchar(50)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @CategoriaN = Categoria FROM Inserted
+SELECT @CategoriaA = Categoria FROM Deleted
+IF @CategoriaN=@CategoriaA RETURN
+IF @CategoriaN IS NULL
+BEGIN
+DELETE ArtCatABC   WHERE Categoria = @CategoriaA
+END ELSE
+BEGIN
+UPDATE ArtCatABC   SET Categoria = @CategoriaN WHERE Categoria = @CategoriaA
+END
+END
+

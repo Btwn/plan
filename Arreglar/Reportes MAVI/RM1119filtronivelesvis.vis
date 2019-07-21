@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM1119filtronivelesvis
+Nombre=RM1119 filtro niveles
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre
+CamposBusquedaRapida=Nombre
+SQL=select Nombre from NivelCobranzaMavi<BR>union all<BR>select Nombre from NivelesEspecialesCobranzaMavi
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre

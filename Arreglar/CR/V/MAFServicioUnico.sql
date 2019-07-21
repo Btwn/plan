@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW MAFServicioUnico
+AS
+SELECT
+v.ServicioTipo,
+v.AFArticulo,
+v.AFSerie,
+v.ID,
+v.Mov,
+v.MovID,
+v.Estatus
+FROM Venta v JOIN MovTipo mt
+ON v.Mov = mt.Mov AND mt.Modulo = 'VTAS' JOIN ActivoFTipoServicio afts
+ON v.ServicioTipo = afts.Servicio AND afts.Unico = 1
+WHERE mt.SubClave = 'MAF.S'
+AND v.Estatus NOT IN ('CANCELADO')
+

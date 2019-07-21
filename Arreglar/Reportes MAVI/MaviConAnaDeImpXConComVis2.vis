@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviConAnaDeImpXConComVis2
+Nombre=ConceptoVenta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CONCEPTO
+SQL=select distinct CONCEPTO <BR>from venta<BR>where concepto IS NOT NULL<BR>and concepto <> <T><T><BR>AND CONCEPTO <> <T>YA NO QUIERE SER AVAL<T><BR>AND CONCEPTO IN(<T>VENTA SEGURO DE VIDA<T>,<T>VENTA SEGURO DE AUTOMOVIL<T>,<T>CREDILANA<T>,<T>VENTAS CONTADO<T>,<T>VENTAS INSTITUCIONES<T>,<T>VENTAS CREDITO MENUDEO 1 A 12<T>,<T>VENTAS CREDITO MENUDEO 13 O MAS<T>,<T>VENTAS CREDITO EXTERNO<T>,<T>VENTAS MAYOREO<T>)<BR>order by CONCEPTO
+[CONCEPTO]
+Clave=CONCEPTO
+Nombre=CONCEPTO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CONCEPTO

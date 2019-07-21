@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM1027MaviAnexoProvCategoriaVis
+Nombre=RM1027 Anexo Prov Categoria
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CATEGORIA
+Singular=RM1027MaviAnexoProvCategoriaVis
+SQL=select <BR>       W.CATEGORIA<BR><BR> from (<BR>      SELECT<BR>       b.TIPO,X.CUENTA,b.Proveedor,b.NOMBRE,b.CATEGORIA,SALDO=SUM (ISNULL (X.CARGO,0)) - sum(ISNULL (X.ABONO,0))<BR>       ,CASE WHEN SUM (ISNULL (X.CARGO,0)) - sum(ISNULL (X.ABONO,0)) <> 0 THEN <T>ConSaldo<T> else <T>SinSaldo<T> end as SALDOS<BR><BR>   FROM AUXILIAR X WITH (NOLOCK) LEFT JOIN CXP a WITH (NOLOCK) on a.id=x.moduloid<BR>          LEFT JOIN prov b WITH (NOLOCK) on b.proveedor=x.cuenta<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><BR>WHERE X.MODULO=<T>CXP<T><BR>and a.estatus in (<T>pendiente<T>,<T>CONCLUIDO<T>)<BR>and (a.mov not in (<T>Solicitud Cheque<T>,<T>Solicitud Deposito<T>,<T>Aplicacion<T>) or (a.Mov = <T>Aplicacion<T> and X.Aplica IN (<T>Entrada Compra<T>,<T>Documento<T>,<T>Entrada con Gastos<T<CONTINUA>
+SQL002=<CONTINUA>>,<T>Nota Credito<T>,<T>Redondeo<T>)))<BR>{Si(ConDatos(Info.FechaD),<T> AND X.FECHA BETWEEN <T>+Comillas(FechaFormatoServidor(Info.FechaD))+<T> AND <T>+COMILLAS(FechaFormatoServidor(Info.FechaA)), <T><T>)}<BR>      group by b.tipo,x.cuenta,b.Proveedor,b.nombre,b.categoria<BR>) W <BR><BR>WHERE 1=1<BR>and w.categoria is not null <BR><BR>{Si(conDatos(Info.Proveedor), <T> And W.Proveedor = <T>+comillas(Info.Proveedor),<T><T>)}<BR>{SI(ConDatos(Mavi.RM1027MenuFiltro),<T> AND W.SALDOS=<T>+Comillas(Mavi.RM1027MenuFiltro),<T><T>)} <BR>{SI(ConDatos(Mavi.RM1027MaviAnexoProvCategoriaVis),<T> AND W.CATEGORIA=<T>+Comillas(Mavi.RM1027MaviAnexoProvCategoriaVis),<T><T>)} <BR><BR>group by w.categoria<BR>ORDER BY 1
+[CATEGORIA]
+Clave=CATEGORIA
+Nombre=CATEGORIA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CATEGORIA

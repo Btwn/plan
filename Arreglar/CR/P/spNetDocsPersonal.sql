@@ -1,0 +1,38 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE dbo.spNetDocsPersonal
+@Personal	AS VARCHAR(20),
+@Grupo AS VARCHAR(50)
+AS
+BEGIN
+SET NOCOUNT ON
+IF LEN(@Grupo) > 0
+BEGIN
+DECLARE @Q_Grupo  VARCHAR(50),
+@Rama   VARCHAR(50)
+SET @Rama = 'RH'
+DECLARE db_cursor_docs CURSOR FOR
+SELECT DISTINCT Grupo  FROM DocRama gdr WHERE Rama IN ( @Rama) AND Grupo = @Grupo
+OPEN db_cursor_docs
+FETCH NEXT FROM db_cursor_docs INTO @Q_Grupo
+WHILE @@FETCH_STATUS = 0
+BEGIN
+SELECT DISTINCT  DR.Documento,DR.Grupo,ISNULL(DC.Cuenta,'') Cuenta,DR.Orden FROM  DocRama DR LEFT OUTER JOIN DocCta DC ON DR.Documento = DC.Documento AND DC.Cuenta IN (@Personal) WHERE DR.Grupo = @Q_Grupo ORDER BY DR.Grupo, DR.Orden
+FETCH NEXT FROM db_cursor_docs INTO @Q_Grupo
+END
+CLOSE db_cursor_docs
+DEALLOCATE db_cursor_docs
+END
+ELSE IF LEN(@Grupo) = 0
+BEGIN
+SELECT DISTINCT  DR.Documento,DR.Grupo,ISNULL(DC.Cuenta,'') Cuenta,DR.Orden FROM  DocRama DR LEFT OUTER JOIN DocCta DC ON DR.Documento = DC.Documento AND DC.Cuenta IN (@Personal)  ORDER BY DR.Orden
+END
+SET NOCOUNT OFF
+END
+

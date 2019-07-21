@@ -1,0 +1,25 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spPOSHerrEtiquetasCB
+@Estacion   int
+
+AS
+BEGIN
+DECLARE
+@Codigo       varchar(30),
+@Articulo     varchar(20)
+DELETE POSArtCBTemp WHERE Estacion = @Estacion
+INSERT POSArtCBTemp(
+Estacion, Codigo, Articulo, SubCuenta, Cantidad)
+SELECT
+@Estacion, Codigo, Cuenta, SubCuenta, 1
+FROM CB WITH (NOLOCK)
+WHERE Codigo IN(SELECT Clave FROM ListaSt WITH (NOLOCK) WHERE Estacion = @Estacion)
+END
+

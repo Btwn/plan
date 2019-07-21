@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1036RutasXAgenteRutaVis
+Nombre=Ruta
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Ruta
+CamposBusquedaRapida=Ruta
+SQL=select distinct ruta from agenterutamavi order by ruta
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Ruta

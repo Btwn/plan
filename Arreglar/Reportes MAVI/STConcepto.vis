@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=STConcepto
+Nombre=Conceptos
+Modulos=(Todos)
+Singular=Concepto
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Concepto
+SQL=SELECT<BR>  Concepto<BR>FROM<BR>  Concepto<BR>WHERE<BR>  Modulo = <T>ST<T>
+
+[Concepto]
+Clave=Concepto
+Visible=S
+ClaveBDE=Concepto
+Ligado=S

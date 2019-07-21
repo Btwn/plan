@@ -1,0 +1,42 @@
+[Vista]
+Icono=0
+Clave=ProprePorcentajeValidacion
+Nombre=ProprePorcentajeValidacion
+Modulos=(Todos)
+Singular=ProprePorcentajeValidacion
+ListaTablas=ProprePorcentajeValidacion
+TablaPrincipal=ProprePorcentajeValidacion
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=ProprePorcentajeValidacion.Codigo<BR>ProprePorcentajeValidacion.Porcentaje<BR>ProprePorcentajeValidacion.Seccion
+CamposBusquedaRapida=ProprePorcentajeValidacion.Codigo
+SQL=SELECT<BR>  ProprePorcentajeValidacion.Codigo,<BR>  ProprePorcentajeValidacion.Porcentaje,<BR>  ProprePorcentajeValidacion.Seccion<BR><BR>FROM<BR>  ProprePorcentajeValidacion
+Informacion(<T>Cambiando de registro<T>)
+Informacion(<T>Cambiando de registro<T>)
+Informacion(<T>Cambiando de registro<T>)
+Informacion(<T>Cambiando de registro<T>)
+Informacion(<T>Cambiando de registro<T>)
+[ProprePorcentajeValidacion.Codigo]
+Clave=ProprePorcentajeValidacion.Codigo
+LigaTabla=ProprePorcentajeValidacion
+LigaCampo=Codigo
+Ligado=S
+ClaveBDE=Codigo
+[ProprePorcentajeValidacion.Porcentaje]
+Clave=ProprePorcentajeValidacion.Porcentaje
+LigaTabla=ProprePorcentajeValidacion
+LigaCampo=Porcentaje
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumFlotante
+ClaveBDE=Porcentaje
+[ProprePorcentajeValidacion.Seccion]
+Clave=ProprePorcentajeValidacion.Seccion
+LigaTabla=ProprePorcentajeValidacion
+LigaCampo=Seccion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Seccion

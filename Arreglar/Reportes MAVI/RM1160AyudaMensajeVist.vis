@@ -1,0 +1,19 @@
+
+[Vista]
+Icono=0
+Clave=RM1160AyudaMensajeVist
+Nombre=Ayuda en captura Mensajes
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+
+ListaCampos=Mensaje
+SQL=SELECT <BR>Mensaje<BR>FROM CXcCMensaje
+[Mensaje]
+Clave=Mensaje
+Nombre=Mensaje
+Visible=S
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=Mensaje

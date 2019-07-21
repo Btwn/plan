@@ -1,0 +1,34 @@
+[Tabla]
+Icono=0
+Clave=TMPGTECELDIV
+Nombre=tabla TMPGTECELDIV
+Archivo=TMPGTECELDIV
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=equipo<BR>Nomina<BR>Mensaje
+LlavePrimaria=Nomina
+SQL=SELECT<BR>  Equipo,<BR>  Nomina,<BR>  Mensaje<BR><BR>FROM<BR>  TMPGTECELDIV
+[equipo]
+Clave=equipo
+Nombre=equipo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+TipoDatos=Texto
+[Nomina]
+Clave=Nomina
+Nombre=Nomina
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+TipoDatos=Texto
+[Mensaje]
+Clave=Mensaje
+Nombre=Mensaje
+Visible=S
+TamanoValidacion=100
+Tamano=100
+Mayusculas=S
+TipoDatos=Texto

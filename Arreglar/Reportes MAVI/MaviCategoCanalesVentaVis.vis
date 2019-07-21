@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviCategoCanalesVentaVis
+Nombre=Categoría
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Categoria
+SQL=Select C.Categoria<BR>From ventascanalMavi C<BR>INNER JOIN UEN U  on C.UEN = U.UEN<BR>{Si(ConDatos(Mavi.UEN),<T> Where U.nombre in (<T>+Mavi.UEN+<T>)<T>,<T> and U.Nombre =<T>+comillas())}<BR>Group by C.Categoria<BR>Order by C.Categoria
+
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria

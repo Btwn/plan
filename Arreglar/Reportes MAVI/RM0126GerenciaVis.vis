@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0126GerenciaVis
+Nombre=Gerencias
+Modulos=(Todos)
+Singular=Gerencia
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Gerencia
+SQL=select distinct equipo as Gerencia from equipoagente <BR>where equipo like <T>GER%<T> and equipo not like <T>GERCO%<T>
+[Gerencia]
+Clave=Gerencia
+Nombre=Gerencia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Gerencia

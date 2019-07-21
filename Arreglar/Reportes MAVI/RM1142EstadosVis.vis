@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM1142EstadosVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Estado
+SQL=Select distinct Estado From PaisEstado with(Nolock) 
+[Estado]
+Clave=Estado
+Nombre=Estado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Estado

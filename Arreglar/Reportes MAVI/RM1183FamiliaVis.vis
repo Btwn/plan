@@ -1,0 +1,22 @@
+
+[Vista]
+Icono=0
+Clave=RM1183FamiliaVis
+Nombre=RM1183 Familia
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Familia
+LlavePrimaria=Familia
+SQL=SELECT DISTINCT Familia <BR>FROM Art WITH(NOLOCK)<BR>WHERE<TAB>Familia IS NOT NULL <BR><TAB><TAB>AND Grupo = <T>MERCANCIA DE LINEA<T> <BR><TAB><TAB>AND Familia NOT IN (<T>Varios Financieros<T>, <T>PRODUCTOS A VISTAS<T>, <T>VARIOS INTANGIBLES<T>,<T>SEGUROS DE VIDA<T>,<T>SEGUROS DE AUTOMOVILES<T>,<T>INCOBRABLES<T>,<T>GASTOS DE COBRANZA<T>)<BR><TAB><TAB>AND Categoria = <T>VENTA<T> <BR>ORDER BY Familia
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia

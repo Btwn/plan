@@ -1,0 +1,20 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spVerCamposTabla
+@Tabla	char(100)
+
+AS BEGIN
+SELECT "Campo"= c.name
+FROM sysobjects o, syscolumns c
+WHERE c.id = o.id
+AND o.id = object_id(@Tabla)
+AND o.sysstat & 0xf = 3
+AND c.name not LIKE 'Logico[0-9]'
+END
+

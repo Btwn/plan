@@ -1,0 +1,33 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnMFARetencionIVA
+(
+@Articulo				varchar(20),
+@ArtTipo				varchar(20),
+@Pitex					varchar(20),
+@ImporteIVA				float,
+@SubTotal				float
+)
+RETURNS float
+
+AS BEGIN
+DECLARE
+@RetencionIVA	float
+SET @RetencionIVA = 0.0
+IF RTRIM(UPPER(@Articulo)) = 'FLETE' AND RTRIM(UPPER(@ArtTipo)) = 'SERVICIO'
+BEGIN
+SET @RetencionIVA = ISNULL(@SubTotal,0.0) * 0.04
+END
+IF @Pitex IS NOT NULL
+BEGIN
+SET @RetencionIVA = @RetencionIVA + ISNULL(@ImporteIVA,0.0)
+END
+RETURN (@RetencionIVA)
+END
+

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0217disxvencerIVis
+Nombre=diasxvencerI
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=diasxVencerI
+CamposBusquedaRapida=diasxVencerI
+SQL=select <BR>distinct<BR>diasxVencerI=Datediff(D,GetDate(),Isnull(CxP.Vencimiento,0))<BR><BR>From CXP With(Nolock)<BR><BR>Where CXP.Mov=<T>ACuerdo Proveedor<T>
+[diasxVencerI]
+Clave=diasxVencerI
+Nombre=diasxVencerI
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=diasxVencerI

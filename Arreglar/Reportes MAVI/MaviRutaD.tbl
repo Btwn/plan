@@ -1,0 +1,95 @@
+[Tabla]
+Icono=0
+Clave=MaviRutaD
+Nombre=MaviRutaD
+Archivo=MaviRutaD
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>SupervisionID<BR>Estado<BR>Observaciones<BR>Deducciones<BR>CuentaBono<BR>Pago
+ListaRelaciones=MaviSupervision
+LlavePrimaria=ID<BR>SupervisionID
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  SupervisionID,<BR>  Estado,<BR>  Observaciones,<BR>  Deducciones,<BR>  CuentaBono,<BR>  Pago<BR><BR>FROM<BR>  MaviRutaD
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[SupervisionID]
+Clave=SupervisionID
+Nombre=SupervisionID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Estado]
+Clave=Estado
+Nombre=Estado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+CondicionDespliege=MaviRuta:MaviRuta.Estatus noen(EstatusSinAfectar)
+CondicionEdicion=MaviRuta:MaviRuta.Estatus noen(EstatusSinAfectar, EstatusConcluido, EstatusCancelado)
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>No se puede Modificar, Supervision CONCLUIDA. Presione ESC para salir del Error<T>
+ValidacionCondicion=SQL(<T>SELECT Estatus FROM dbo.MaviSupervision WHERE ID=:nID<T>,SupervisionID)<><T>CONCLUIDO<T>
+ListaOpciones=Aceptado<BR>En Espera<BR>Reprogramar<BR>Rechazado
+[Observaciones]
+Clave=Observaciones
+Nombre=Observaciones
+Visible=S
+TamanoValidacion=100
+Tamano=100
+CondicionDespliege=MaviRuta:MaviRuta.Estatus noen(EstatusSinAfectar)
+CondicionEdicion=MaviRuta:MaviRuta.Estatus noen(EstatusSinAfectar, EstatusConcluido, EstatusCancelado)
+TipoDatos=Texto
+[Relaciones.MaviSupervision]
+TipoRelacion=Opcional
+LlaveLocal=SupervisionID
+Clave=MaviSupervision
+TablaRemota=MaviSupervision
+LlaveRemota=ID
+[Deducciones]
+Clave=Deducciones
+Nombre=Deducciones
+Visible=S
+TamanoValidacion=5
+Tamano=5
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>SELECT DISTINCT TipoSeg FROM ComisionesSuperCred<BR>            where TipoSeg is not null AND TipoSeg not like <T>+comillas(<T>%<T>+<T>REF<T>+<T>%<T>)+<T> AND TipoSeg not like <T>+comillas(<T>%<T>+<T>SOC<T>+<T>%<T>)+<T> AND TipoSeg not like <T>+comillas(<T>%<T>+<T>AVAL<T>+<T>%<T>))
+[CuentaBono]
+Clave=CuentaBono
+Nombre=CuentaBono
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+[Pago]
+Clave=Pago
+Nombre=Pago
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesLlave=Número del Renglón
+OpcionesPredefinidas=Ninguna
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El tipo de contacto no es Aval2daEvaluacion y/o no tiene el perfil correcto <T>
+ValidacionCondicion=Si<BR>(sql(<T>Select Acceso from Usuario where Usuario=:tu<T>,Usuario)en(<T>CREDI_GERA<T>,<T>CREDI_ANAA<T>,<T>CREDI_USRA<T>,<T>CREDI_AUXC<T>,<T>CREDI_GERB<T>)) y<BR>(sql(<T>Select Tipo from MaviSupervision where id=:nid<T>,SupervisionID)=<T>AVAL 2DA EVALUACION<T>)   <BR>ENTONCES<BR>    verdadero<BR>sino<BR>    falso<BR>fin
+ListaOpciones=Completo<BR>Parcial

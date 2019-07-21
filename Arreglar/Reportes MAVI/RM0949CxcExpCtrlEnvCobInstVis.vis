@@ -1,0 +1,174 @@
+[Vista]
+Icono=0
+Clave=RM0949CxcExpCtrlEnvCobInstVis
+Nombre=RM0494 Control de Envios
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Ejercicio<BR>Periodo<BR>Cliente<BR>Nombre<BR>Nomina<BR>RFCInstitucion<BR>Mov<BR>MovID<BR>FechaEmision<BR>ImporteMov<BR>NoDocs<BR>DescMov<BR>DescCte<BR>SaldoMov<BR>SaldoCliente<BR>TipoEnvio<BR>TipoControlInst<BR>IDCanalVenta<BR>FechaRegistro
+CamposBusquedaRapida=Cliente<BR>Nombre<BR>Nomina<BR>RFCInstitucion<BR>Mov
+ListaCalculados=FechaReg
+SQL=SELECT<BR><TAB>Ejercicio,<BR><TAB>Periodo,<BR><TAB>Cliente,<BR><TAB>Nombre,<BR><TAB>Nomina,<BR><TAB>RFCInstitucion,<BR><TAB>Mov,<BR><TAB>MovID,<BR><TAB>FechaEmision,<BR><TAB>ImporteMov,<BR><TAB>NoDocs,<BR><TAB>DescMov,<BR><TAB>DescCte,<BR><TAB>SaldoMov,<BR><TAB>SaldoCliente,<BR><TAB>TipoEnvio,<BR><TAB>TipoControlInst,<BR><TAB>IDCanalVenta,<BR><TAB>FechaRegistro<BR>FROM<BR>(<BR><TAB>SELECT <BR><TAB><TAB>N = ROW_NUMBER() OVER(PARTITION BY C.Cliente, C.Mov, C.MovId ORDER BY C.DescMov DESC),<BR><TAB><TAB>C.Ejercicio,<BR><TAB><TAB>C.Periodo,<BR><TAB><TAB>C.Cliente, <BR><TAB><TAB>Ct.Nombre, <BR><TAB><TAB>C.Nomina, <BR><TAB><TAB>C.RFCInstitucion, <BR><TAB><TAB>C.Mov, <BR><TAB><TAB>C.MovID, <BR><TAB><TAB>C.FechaEmision, <BR><TAB><TAB>C.ImporteMov, <BR><TAB><TAB>C.NoDocs, <BR><TAB><TAB>C.DescMov, <<CONTINUA>
+SQL002=<CONTINUA>BR><TAB><TAB>C.DescCte, <BR><TAB><TAB>C.SaldoMov, <BR><TAB><TAB>C.SaldoCliente, <BR><TAB><TAB>C.TipoEnvio, <BR><TAB><TAB>C.TipoControlInst,<BR><TAB><TAB>C.IDCanalVenta,<BR><TAB><TAB>C.FechaRegistro<BR><TAB>FROM dbo.MaviEnvDispElectHist C WITH(NOLOCK)<BR><TAB>INNER JOIN dbo.Cte Ct WITH(NOLOCK) ON C.Cliente = Ct.Cliente<BR><TAB>WHERE C.Cliente IS NOT NULL<BR><TAB>{Si(ConDatos(Info.Ejercicio),<T>AND C.Ejercicio = <T>+Info.Ejercicio,<T><T>)}<BR>        {Si(ConDatos(Info.Periodo),<T>AND C.Periodo = <T>+Info.Periodo,<T><T>)}<BR><TAB>{Si(ConDatos(Mavi.NumCanalVenta),<T>AND C.IDCanalVenta = <T>+Mavi.NumCanalVenta,<T><T>)}<BR><TAB>{Si(ConDatos(Mavi.RM0949TipoEnvio),<T>AND C.TipoEnvio = <T>+Comillas(Mavi.RM0949TipoEnvio),<T><T>)}<BR><TAB>{Si(ConDatos(Mavi.RM0949CteInst),<T>AND C.Cliente = <T>+Comill<CONTINUA>
+SQL003=<CONTINUA>as(Mavi.RM0949CteInst),<T><T>)}<BR>) AS Cte<BR>WHERE N = 1
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Cliente
+TipoDatos=Texto
+[Nombre]
+Clave=Nombre
+Nombre=Nombre del Cliente
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+TipoDatos=Texto
+[Nomina]
+Clave=Nomina
+Nombre=No. de Nómina
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=Nomina
+TipoDatos=Texto
+[RFCInstitucion]
+Clave=RFCInstitucion
+Nombre=RFC del Cliente
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=RFCInstitucion
+TipoDatos=Texto
+[Mov]
+Clave=Mov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Mov
+TipoDatos=Texto
+[MovID]
+Clave=MovID
+Nombre=Folio
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=MovID
+TipoDatos=Texto
+[FechaEmision]
+Clave=FechaEmision
+Nombre=Fecha de Emisión
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaEmision
+[ImporteMov]
+Clave=ImporteMov
+Nombre=Importe Original
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=ImporteMov
+FormatoValidacion=#,0.00
+[NoDocs]
+Clave=NoDocs
+Nombre=Plazo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumPequeño
+ClaveBDE=NoDocs
+[DescMov]
+Clave=DescMov
+Nombre=Descuento Mensual
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=DescMov
+FormatoValidacion=#,0.00
+[DescCte]
+Clave=DescCte
+Nombre=Descuento Cliente
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=DescCte
+FormatoValidacion=#,0.00
+[SaldoMov]
+Clave=SaldoMov
+Nombre=Saldo del Movimiento
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=SaldoMov
+FormatoValidacion=#,0.00
+[SaldoCliente]
+Clave=SaldoCliente
+Nombre=Saldo del Cliente
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=SaldoCliente
+FormatoValidacion=#,0.00
+[TipoEnvio]
+Clave=TipoEnvio
+Nombre=Tipo Envío
+Visible=S
+TamanoValidacion=2
+Tamano=2
+ClaveBDE=TipoEnvio
+TipoDatos=Texto
+[TipoControlInst]
+Clave=TipoControlInst
+Nombre=Tipo de Control
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=TipoControlInst
+TipoDatos=Texto
+[Ejercicio]
+Clave=Ejercicio
+Nombre=Ejercicio
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Ejercicio
+[Periodo]
+Clave=Periodo
+Nombre=Periodo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumPequeño
+ClaveBDE=Periodo
+[IDCanalVenta]
+Clave=IDCanalVenta
+Nombre=IDCanalVenta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=IDCanalVenta
+[FechaRegistro]
+Clave=FechaRegistro
+Nombre=Fecha de Registro
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaRegistro
+FormatoValidacion=dd/mmm/aaaa hh:nn:ss
+[FechaReg]
+Clave=FechaReg
+TipoCampo=Calculado
+TamanoValidacion=50
+Alineacion=por Omisión
+Nombre=Fecha de Registro
+Tamano=50
+Formula=FechaEnTexto(FechaRegistro,<T>dd/mmm/aaaa hh:mm:ss ampm<T>)

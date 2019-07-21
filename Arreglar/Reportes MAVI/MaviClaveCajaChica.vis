@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=MaviClaveCajaChica
+Nombre=Clave Caja Chica
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ContUso
+ListaCampos002=<CONTINUA>Materno<BR>Nombre_4<BR>Nombre_5<BR>Asunto
+ControlSucursalOrigen=S
+CampoSucursalOrigen=SucursalOrigen
+SQL=Select Distinct<BR>GastoD.ContUso<BR>From GastoD<BR>LEFT OUTER JOIN CentroCostos ON GastoD.ContUso=CentroCostos.CentroCostos<BR>Where GastoD.ContUso is not Null<BR>Order By ContUso Asc
+[ContUso]
+Clave=ContUso
+Nombre=ContUso
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=ContUso

@@ -1,0 +1,53 @@
+
+[Tabla]
+Icono=0
+Clave=AEA00010EvtVentaCruzadaTbl
+Archivo=CREDICEventosVentaCruzada
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IdMAVIClaveSeguimiento<BR>Descripcion<BR>ContinuaProceso
+LlavePrimaria=IdMAVIClaveSeguimiento
+SQL=SELECT<BR>  IdMAVIClaveSeguimiento,<BR>  Descripcion,<BR>  ContinuaProceso<BR><BR>  FROM CREDICEventosVentaCruzada
+[IdMAVIClaveSeguimiento]
+Clave=IdMAVIClaveSeguimiento
+Nombre=Clave
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+
+Requerido=S
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=10
+AyudaMemOpc=Validar captura en la lista
+ValidacionConCondiciones=S
+Mayusculas=S
+Formula=SQLEnLista(<T>SELECT Clave FROM MAVIClaveSeguimiento WITH (NOLOCK) WHERE Clave LIKE <T> + COMILLAS(<T>MEN%<T>) + <T> ORDER BY Clave<T>)
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripción
+Visible=S
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+
+Requerido=S
+Mayusculas=S
+[ContinuaProceso]
+Clave=ContinuaProceso
+Nombre=Continua Proceso
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+AyudaEnCaptura=Lista de Opciones
+Requerido=S
+AyudaMemOpc=Validar captura en la lista
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=2
+OpcionesValidar=S
+Mayusculas=S
+ListaOpciones=POSITIVO<BR>NEGATIVO

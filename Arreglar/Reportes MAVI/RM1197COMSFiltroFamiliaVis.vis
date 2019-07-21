@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=RM1197COMSFiltroFamiliaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Familia
+CamposBusquedaRapida=Familia
+SQL=SELECT DISTINCT<BR>  Familia<BR>FROM (SELECT<BR>  Al.Familia,<BR>  Al.Linea<BR>FROM ArtLinea Al WITH(NOLOCK)<BR>JOIN Art A WITH (NOLOCK)<BR>ON A.Familia = Al.Familia<BR>AND A.Linea = Al.Linea<BR>WHERE LEN(Al.Familia) > 0<BR>AND LEN(Al.Linea) > 0<BR>AND A.Grupo = <T>MERCANCIA DE LINEA<T>) tablaDerivada<BR>ORDER BY Familia
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=250
+ClaveBDE=Familia

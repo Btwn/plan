@@ -1,0 +1,27 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnMFACuentaEstructura (@Cuenta varchar(20))
+RETURNS varchar(20)
+
+AS BEGIN
+DECLARE
+@Rama				varchar(20),
+@Tipo				varchar(15)
+SELECT
+@Rama = Rama,
+@Tipo = Tipo
+FROM Cta
+WHERE Cuenta = @Cuenta
+IF @Tipo NOT IN ('Estructura')
+BEGIN
+SELECT @Cuenta = dbo.fnMFACuentaEstructura(@Rama)
+END
+RETURN @Cuenta
+END
+

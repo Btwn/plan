@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=CampanasMonederoArtTemp
+Nombre=Articulo Campanas Monedero
+Modulos=(Todos)
+ListaTablas=CampanasMonederoArtTemp
+TablaPrincipal=CampanasMonederoArtTemp
+UsoCapturas=S
+UsarJOIN=S
+ListaCampos=CampanasMonederoArtTemp.Id<BR>CampanasMonederoArtTemp.Articulo
+CamposBusquedaRapida=CampanasMonederoArtTemp.Articulo
+UsoReportes=S
+CamposPropiedades=CampanasMonederoArtTemp.Id<BR>CampanasMonederoArtTemp.Articulo
+SQL=SELECT<BR>  CampanasMonederoArtTemp.Id,<BR>  CampanasMonederoArtTemp.Articulo<BR><BR>FROM<BR>  CampanasMonederoArtTemp CampanasMonederoArtTemp
+[CampanasMonederoArtTemp.Id]
+Clave=CampanasMonederoArtTemp.Id
+Visible=S
+LigaTabla=CampanasMonederoArtTemp
+LigaCampo=Id
+Ligado=S
+ClaveBDE=Id
+[CampanasMonederoArtTemp.Articulo]
+Clave=CampanasMonederoArtTemp.Articulo
+Visible=S
+LigaTabla=CampanasMonederoArtTemp
+LigaCampo=Articulo
+Ligado=S
+ClaveBDE=Articulo

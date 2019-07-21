@@ -1,0 +1,31 @@
+[Vista]
+Icono=0
+Clave=DM0213FILTROServicioRefaccionVis
+Nombre=DM0213 Servicio / Refaccion
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Descripcion<BR>ServicioRefaccion
+LlavePrimaria=ServicioRefaccion
+CamposBusquedaRapida=ServicioRefaccion<BR>Descripcion
+SQL=select distinct ServicioRefaccion,Descripcion from DM0213CatalogoServRefac
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=200
+TipoDatos=Texto
+Tamano=200
+ClaveBDE=Descripcion
+[ServicioRefaccion]
+Clave=ServicioRefaccion
+Nombre=ServicioRefaccion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=ServicioRefaccion

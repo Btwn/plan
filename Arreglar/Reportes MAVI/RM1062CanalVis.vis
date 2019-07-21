@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1062CanalVis
+Nombre=RM1062CanalVis
+Modulos=(Todos)
+Singular=Canal
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CLienteEnviarA
+SQL=SELECT ID ClienteEnviarA FROM VentasCanalMavi WITH (NOLOCK)<BR>WHERE Categoria in (<T>CONTADO<T>,<T>CREDITO EXTERNO<T>,<T>MAYOREO<T>)
+[CLienteEnviarA]
+Clave=CLienteEnviarA
+Nombre=CLienteEnviarA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=CLienteEnviarA

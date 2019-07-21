@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0170VTASEQUIPOSVIS
+Nombre=EQUIPO170
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Equipo
+SQL=select agente as Equipo from EquipoAgente <BR>Where Agente not like <T>EQTEN%<T> and Agente like <T>EQ%<T><BR>{Si(ConDatos(Mavi.CelulaD) y ConDatos(Mavi.CelulaA), <T> and equipo between <T>+comillas(Mavi.CelulaD)+<T> and <T>+comillas(Mavi.CelulaA),<T><T>)} 
+[Equipo]
+Clave=Equipo
+Nombre=Equipo
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Equipo
+TipoDatos=Texto

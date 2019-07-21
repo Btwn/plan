@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=MaviArtLinCatGpoFamVis
+Nombre=Linea Articulos
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Linea
+LlavePrimaria=Linea
+CamposBusquedaRapida=Linea
+SQL=select distinct(Linea) from art <BR>Where <BR>Art.Linea is not null AND LEN(Art.Linea)>0 <BR>and art.Categoria = <T>VENTA<T><BR>{SI(CONDATOS(Mavi.ArtGrupo),<T>AND Art.Grupo=<T>+COMILLAS(Mavi.ArtGrupo),<T><T>)}<BR>{SI(CONDATOS(Mavi.ArtFam),<T>AND Art.Familia=<T>+COMILLAS(Mavi.ArtFam),<T><T>)}<BR>order by Linea asc
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

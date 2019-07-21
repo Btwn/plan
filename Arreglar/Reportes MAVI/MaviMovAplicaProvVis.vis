@@ -1,0 +1,62 @@
+[Vista]
+Icono=0
+Clave=MaviMovAplicaProvVis
+Nombre=Movimientos que Aplican a Proveedores
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Proveedor<BR>Mov<BR>MovId<BR>Fechaemision<BR>Estatus<BR>Icono
+CamposBusquedaRapida=Proveedor<BR>Mov<BR>MovId
+CampoEstatus=Estatus
+ControlEstatus=S
+ControlMov=S
+CampoMov=Mov
+SQL=Declare <BR>@Prov Varchar(8000),<BR>@Comple Varchar(8000),<BR>@Mov Varchar(8000)<BR><BR>Set @Prov = {Si(ConDatos(Mavi.ProvLstSel),+Comillas(<T><T><T><T><T><T>) +Comillas(Mavi.ProvLstSel)+Comillas(<T><T><T><T><T><T>),<T> NULL <T>)}<BR>Set @Prov = Replace(@Prov,<T>,<T>,<T><T><T>,<T><T><T>)<BR>Set @Mov = {Si(ConDatos(Mavi.MovTipoProv),+Comillas(<T><T><T><T><T><T>) +Comillas(Mavi.MovTipoProv)+Comillas(<T><T><T><T><T><T>),<T> NULL <T>)}<BR>Set @Mov = Replace(@Mov,<T>,<T>,<T><T><T>,<T><T><T>)<BR>Set @Comple=<T><T><BR><BR><BR>if @Prov is not NULL Set @Comple = <T> And Proveedor in (<T>+@Prov+<T>)<T><BR>if @Mov is not NULL Set @Comple = @Comple+<T> And Mov in (<T>+@Mov+<T>)<T><BR><BR>EXEC(<T><BR>Select Distinct Proveedor, Mov, MovId, FechaEmision, Estatus,<BR>Icono=Case When Estatus = <T><T>Conclu<CONTINUA>
+SQL002=<CONTINUA>ido<T><T> Then 455 Else 7 End<BR>From CXP<BR>Where Estatus not in (<T><T>SINAFECTAR<T><T>,<T><T>CANCELADO<T><T>)<BR>And Mov in (<T><T>Entrada Compra<T><T>,<T><T>Compra Sistemas<T><T>,<T><T>Compra Taller<T><T>,<T><T>Compra Publicidad<T><T>,<BR><TAB><T><T>Compra Papeleria<T><T>,<T><T>Compra Admva<T><T>,<T><T>Entrada con Gastos<T><T>,<T><T>Gasto<T><T>,<T><T>Compra ActivoFijo<T><T>)<BR>And Saldo is not Null<BR><T>+@Comple+<T><BR>Order By Proveedor,Mov,MovID<BR><T>)
+[Proveedor]
+Clave=Proveedor
+Nombre=Proveedor
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Proveedor
+[Mov]
+Clave=Mov
+Nombre=Tipo Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Mov
+[MovId]
+Clave=MovId
+Nombre=MovId
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=MovId
+[Fechaemision]
+Clave=Fechaemision
+Nombre=Fecha Movimiento
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaEmision
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus
+[Icono]
+Clave=Icono
+Nombre=Icono
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Icono

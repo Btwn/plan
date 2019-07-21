@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=RM1152PoliticasCreditovis
+Nombre=Politicas de Credito
+Modulos=(Todos)
+ListaTablas=CteCredito
+TablaPrincipal=CteCredito
+ListaCampos=CteCredito.Credito
+CamposBusquedaRapida=CteCredito.Credito
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+SQL=SELECT<BR>  CteCredito.Credito<BR><BR>FROM<BR>  CteCredito
+[CteCredito.Credito]
+Clave=CteCredito.Credito
+Nombre=Nombre Política
+TamanoValidacion=50
+Tamano=50
+Requerido=N
+TipoDatos=Texto
+LigaTabla=CteCredito
+LigaCampo=Credito
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Credito

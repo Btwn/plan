@@ -1,0 +1,64 @@
+[Dialogo]
+Clave=RM0952AAnalisisAudGastosDlg
+Nombre=Análisis y Auditoria de Gastos
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, [Negritas]}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=RubroAgente<BR>Compartiva<BR>Control<BR>Cerrar
+PosicionInicialIzquierda=435
+PosicionInicialArriba=343
+PosicionInicialAlturaCliente=141
+PosicionInicialAncho=352
+MenuEstilo=Botones
+MenuColumnas=1
+ConFuenteEspecial=S
+MenuTamanoBoton=65x5
+MenuFlujo=Arriba - Abajo
+MenuAlineacionDibujo=Izquierda
+MenuConDibujo=S
+[Acciones.RubroAgente]
+Nombre=RubroAgente
+Boton=61
+NombreEnBoton=S
+NombreDesplegar=&Gastos por Agente
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0952BRubroagentegasFrm
+Activo=S
+Visible=S
+[Acciones.Compartiva]
+Nombre=Compartiva
+Boton=56
+NombreEnBoton=S
+NombreDesplegar=Gastos por Rubro (Comparativa Mensual)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0952CRubroCompMensualFrm
+Activo=S
+Visible=S
+[Acciones.Control]
+Nombre=Control
+Boton=64
+NombreEnBoton=S
+NombreDesplegar=&Control de gastos por Departamento
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+Activo=S
+Visible=S
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=C&errar
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

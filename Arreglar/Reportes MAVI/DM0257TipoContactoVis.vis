@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0257TipoContactoVis
+Nombre=Tipo Contacto
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=TIPO
+SQL=SELECT DISTINCT TIPO FROM CteCto WITH(NOLOCK)<BR><TAB><TAB>WHERE Tipo IS NOT NULL<BR>AND TIPO <> <T><T>
+[TIPO]
+Clave=TIPO
+Nombre=TIPO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=TIPO

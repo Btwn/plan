@@ -1,0 +1,52 @@
+[Tabla]
+Icono=0
+Clave=PuntosAdicionalesxCondicionMAVI
+Nombre=PuntosAdicionalesxCondicionMAVI
+Archivo=PuntosAdicionalesxCondicionMAVI
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Condicion<BR>Tolerancia<BR>PtosAntesPlazo<BR>PtosEnPlazo<BR>PtosPlazoTolerancia<BR>PtosDespuesPlazoTolerancia
+LlavePrimaria=Condicion
+SQL=SELECT<BR>  Condicion,<BR>  Tolerancia,<BR>  PtosAntesPlazo,<BR>  PtosEnPlazo,<BR>  PtosPlazoTolerancia,<BR>  PtosDespuesPlazoTolerancia<BR><BR>FROM<BR>  PuntosAdicionalesxCondicionMAVI
+[Condicion]
+Clave=Condicion
+Nombre=Condicion
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=CondicionLista
+AyudaVista=Condicion
+AyudaCampo=Condicion.Condicion
+[Tolerancia]
+Clave=Tolerancia
+Nombre=Tolerancia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[PtosAntesPlazo]
+Clave=PtosAntesPlazo
+Nombre=Ptos x Pago Antes del Plazo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[PtosEnPlazo]
+Clave=PtosEnPlazo
+Nombre=Ptos x Pago en el Plazo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[PtosPlazoTolerancia]
+Clave=PtosPlazoTolerancia
+Nombre=Ptos x Pago en el Plazo de Tolerancia
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[PtosDespuesPlazoTolerancia]
+Clave=PtosDespuesPlazoTolerancia
+Nombre=Ptos x Pago despues del Plazo de Tolerancia
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico

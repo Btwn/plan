@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=RM1034VtasFiltroSeriVis
+Nombre=RM1034VtasSeriVis
+Modulos=(Todos)
+Singular=RM1034VtasSeriVis
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Serie
+CamposBusquedaRapida=Serie
+SQL=SELECT <BR><TAB>Serie = Seri <BR>FROM fd_mfact a WITH(NOLOCK)<BR>GROUP BY Seri
+[Serie]
+Clave=Serie
+Nombre=Serie
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=6
+TipoDatos=Texto
+Tamano=6
+ClaveBDE=Serie

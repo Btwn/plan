@@ -1,0 +1,23 @@
+
+[Tabla]
+Icono=0
+Clave=DM0264VeriExecpcionestbl
+Nombre=DM0264VeriExecpcionestbl
+Archivo=CREDIDExcepcionesMonxRedTmp
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Articulo
+LlavePrimaria=Articulo
+SQL=SELECT<BR>  Articulo<BR><BR>  FROM CREDIDExcepcionesMonxRedTmp
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=DM0264ArticuloExcefrm
+AyudaVista=DM0264ArticuloExceVis
+AyudaCampo=Articulo

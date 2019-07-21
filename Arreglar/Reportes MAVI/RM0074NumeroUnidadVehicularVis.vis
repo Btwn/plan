@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0074NumeroUnidadVehicularVis
+Nombre=Número de Unidad Vehicular
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=vehiculo
+CamposBusquedaRapida=vehiculo
+SQL=<BR><BR>select distinct vehiculo from vehiculo<BR>where unidadpropiamavi=1
+[vehiculo]
+Clave=vehiculo
+Nombre=vehiculo
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=vehiculo

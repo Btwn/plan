@@ -1,0 +1,24 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgTituloAC ON Titulo
+
+FOR INSERT, UPDATE
+AS BEGIN
+DECLARE
+@TituloN	varchar(10),
+@FechaN	datetime,
+@ValorN	float,
+@ValorA	float
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @ValorA = Valor FROM Deleted
+SELECT @TituloN = Titulo, @FechaN = Fecha, @ValorN = Valor FROM Inserted
+IF UPDATE(Valor) AND ISNULL(@ValorN, 0.0) <> ISNULL(@ValorA, 0.0)
+INSERT INTO TituloHist (Titulo, Valor, Fecha) VALUES (@TituloN, @ValorN, @FechaN)
+END
+

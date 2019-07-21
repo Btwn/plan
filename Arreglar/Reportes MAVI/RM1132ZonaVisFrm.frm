@@ -1,0 +1,60 @@
+[Forma]
+Clave=RM1132ZonaVisFrm
+Nombre=Seleccion de Zona
+Icono=0
+Modulos=(Todos)
+BarraAcciones=S
+AccionesTamanoBoton=15x5
+MovModulo=(Todos)
+ListaCarpetas=Listado de Zonas
+CarpetaPrincipal=Listado de Zonas
+ListaAcciones=Seleccionarzona
+PosicionInicialAlturaCliente=387
+PosicionInicialAncho=203
+PosicionInicialIzquierda=374
+PosicionInicialArriba=257
+AccionesCentro=S
+[Listado de Zonas]
+Estilo=Hoja
+Pestana=S
+Clave=Listado de Zonas
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+Vista=RM1132ZonaVis
+ListaEnCaptura=Zona
+[Listado de Zonas.Zona]
+Carpeta=Listado de Zonas
+Clave=Zona
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Seleccionarzona]
+Nombre=Seleccionarzona
+Boton=107
+NombreDesplegar=Aceptar
+EnBarraAcciones=S
+TipoAccion=Ventana
+ClaveAccion=Seleccionar
+Activo=S
+Visible=S
+NombreEnBoton=S
+[Listado de Zonas.Columnas]
+Sucursal=64
+Zona=64

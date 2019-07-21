@@ -1,0 +1,80 @@
+[Tabla]
+Icono=0
+Clave=MAVIDM0133AHistFactVtaPzoEje
+Nombre=Factores Venta Plazo Eje
+Modulos=(Todos)
+TipoTabla=General
+Archivo=MAVIDM0133AHistFactVtaPzoEje
+ListaCampos=Mov<BR>Condicion<BR>TipoSucursal<BR>Linea<BR>Factor<BR>FechaIni<BR>FechaFin<BR>ActVigencia
+ControlMov=S
+CampoMov=Mov
+LlavePrimaria=Mov<BR>Condicion<BR>TipoSucursal<BR>Linea
+SQL=SELECT<BR>  Mov,<BR>  Condicion,<BR>  TipoSucursal,<BR>  Linea,<BR>  Factor,<BR>  FechaIni,<BR>  FechaFin,<BR>  ActVigencia<BR><BR>FROM<BR>  MAVIDM0133AHistFactVtaPzoEje
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+ValorPorOmision=<T>(RESTO)<T>
+Requerido=S
+LlavePrimariaEnBlanco=S
+Formula=SQLEnLista(<T>SELECT Mov FROM dbo.MovTipo WHERE Clave =:tMov<T>,<T>VTAS.F<T>)
+[Condicion]
+Clave=Condicion
+Nombre=Condicion
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+ValorPorOmision=<T>(RESTO)<T>
+Requerido=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Condicion FROM dbo.Condicion WHERE grupo =:tGrp AND TipoCondicion =:tTipo<T>,<T>Menudeo<T>,<T>Credito<T>)
+[TipoSucursal]
+Clave=TipoSucursal
+Nombre=TipoSucursal
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+ValorPorOmision=<T>(RESTO)<T>
+Requerido=S
+Formula=SQLEnLista(<T>SELECT Tipo FROM SucursalTipo<T>)
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+ValorPorOmision=<T>(RESTO)<T>
+Requerido=S
+Formula=SQLEnLista(<T>SELECT DISTINCT Linea FROM ArtLinea<T>)
+[Factor]
+Clave=Factor
+Nombre=Factor
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ValorMinimo=Factor > 0
+[FechaIni]
+Clave=FechaIni
+Nombre=FechaIni
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+[FechaFin]
+Clave=FechaFin
+Nombre=FechaFin
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+[ActVigencia]
+Clave=ActVigencia
+Nombre=ActVigencia
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=1

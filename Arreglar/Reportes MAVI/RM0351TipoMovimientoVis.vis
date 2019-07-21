@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=RM0351TipoMovimientoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MOVIMIENTO
+Nombre=Tipo de Movimiento
+SQL=SELECT DISTINCT Nombre AS MOVIMIENTO FROM TABLASTD WHERE TABLAST=<T>GRUPO MVTOS<T>
+[MOVIMIENTO]
+Clave=MOVIMIENTO
+Nombre=MOVIMIENTO
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=MOVIMIENTO

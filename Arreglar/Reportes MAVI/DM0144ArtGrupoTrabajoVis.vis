@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=DM0144ArtGrupoTrabajoVis
+Nombre=Grupo de Trabajo
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=GrupoTrabajo
+LlavePrimaria=GrupoTrabajo
+CamposBusquedaRapida=GrupoTrabajo
+SQL=Select distinct(GrupoTrabajo) From GrupoTrabajo order by GrupoTrabajo Asc
+[GrupoTrabajo]
+Clave=GrupoTrabajo
+Nombre=GrupoTrabajo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=GrupoTrabajo

@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=MaviCel
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Celula
+SQL=select distinct equipo as Celula from equipoagente where equipo like <T>CEL%<T>
+[Celula]
+Clave=Celula
+Nombre=Celula
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Celula

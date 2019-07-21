@@ -1,0 +1,99 @@
+[Forma]
+Clave=CoberturaMAVI
+Nombre=Poblaciones y Estados por Cobertura
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=CoberturaMAVI
+CarpetaPrincipal=CoberturaMAVI
+PosicionInicialIzquierda=474
+PosicionInicialArriba=369
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=416
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Aceptar<BR>Asignar
+VentanaExclusiva=S
+ExpresionesAlMostrar=Asigna(Info.Copiar, Falso)
+Comentarios=<T>Cobertura: <T> +  Info.Concepto
+[CoberturaMAVI]
+Estilo=Hoja
+Clave=CoberturaMAVI
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=CoberturaMAVI
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaVistaOmision=Automática
+CampoColorLetras=Negro
+CampoColorFondo=Plata
+CarpetaVisible=S
+ListaEnCaptura=CoberturaMAVI.Poblacion<BR>CoberturaMAVI.Estado
+Filtros=S
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=General
+PermiteEditar=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+FiltroGeneral=CoberturaMAVI.Cobertura = <T>{Info.Concepto}<T><BR>GROUP BY CoberturaMAVI.Cobertura,CoberturaMAVI.Poblacion,CoberturaMAVI.Estado,CodigoPostal.Delegacion,CodigoPostal.Estado
+[CoberturaMAVI.CoberturaMAVI.Poblacion]
+Carpeta=CoberturaMAVI
+Clave=CoberturaMAVI.Poblacion
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Plata
+ColorFuente=Negro
+[CoberturaMAVI.CoberturaMAVI.Estado]
+Carpeta=CoberturaMAVI
+Clave=CoberturaMAVI.Estado
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Plata
+ColorFuente=Negro
+[CoberturaMAVI.Columnas]
+Poblacion=167
+Estado=218
+[Acciones.Asignar]
+Nombre=Asignar
+Boton=38
+NombreEnBoton=S
+NombreDesplegar=&Asignar
+GuardarAntes=S
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Vista
+Activo=S
+Antes=S
+Visible=S
+EspacioPrevio=S
+AntesExpresiones=Forma(<T>EdoPoblacionMAVI<T>)
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Aceptar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Aceptar
+Activo=S
+Visible=S
+

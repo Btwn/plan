@@ -1,0 +1,45 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spWMSMovFinal
+@Modulo				varchar(5),
+@Mov				varchar(20)
+
+AS BEGIN
+DECLARE
+@Clave				varchar(20),
+@SubClave			varchar(20)
+SELECT @Clave = Clave, @SubClave = SubClave FROM MovTipo WHERE Modulo = @Modulo AND Mov = @Mov
+IF @Modulo = 'TMA'
+BEGIN
+IF @Clave = 'TMA.OADO'
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.ADO'
+ELSE
+IF @Clave = 'TMA.ORADO'
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.RADO'
+ELSE
+IF @Clave = 'TMA.TSUR'
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.SUR'
+ELSE
+IF @Clave = 'TMA.TSUR' AND @SubClave = 'TMA.OSURP'
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.SUR'
+ELSE
+IF @Clave = 'TMA.PCKTARIMATRAN' AND @SubClave IS NULL
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave = 'TMA.PCKTARIMA' AND SubClave IS NULL
+ELSE SELECT ''
+END
+ELSE
+IF @Modulo = 'COMS'
+BEGIN
+IF @Clave = 'COMS.O'
+SELECT Mov FROM MovTipo WHERE Modulo = @Modulo AND Clave IN ('COMS.F','COMS.EI')
+ELSE SELECT ''
+END
+ELSE SELECT ''
+END
+

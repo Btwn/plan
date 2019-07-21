@@ -1,0 +1,29 @@
+[Tabla]
+Icono=0
+Clave=DM0500BEspecialtbl
+Archivo=DM0500BEspecial
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Nivel<BR>cuota
+LlavePrimaria=Nivel
+CamposBusquedaRapida=Nivel
+SQL=SELECT<BR>  Nivel,<BR>  cuota<BR><BR>FROM<BR>  DM0500BEspecial
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0500BNIVELESESPECIALESFRM
+AyudaVista=DM0500BNIVELESPECIALVIS
+AyudaCampo=nombre
+[cuota]
+Clave=cuota
+Nombre=cuota
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AlCambiar=Si( SQL( <T>select dbo.fn_MaviDM0500BValidar(:tNivel,:tCuota)<T>,Nivel,cuota )=0,informacion(<T>Debe de eligir el nivel Origen correspondiente<T>))
+Formula=SQLEnLista( <T>select nombre from dbo.NivelCobranzaMavi where nombre not in(:tnombre)<T>,<T>Sin nivel<T>  )

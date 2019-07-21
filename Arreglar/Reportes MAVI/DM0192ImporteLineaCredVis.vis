@@ -1,0 +1,24 @@
+[Vista]
+Icono=0
+Clave=DM0192ImporteLineaCredVis
+Nombre=DM0192ImporteLineaCredVis
+Modulos=(Todos)
+ListaTablas=DM0192ImporteLineaCredtbl
+TablaPrincipal=DM0192ImporteLineaCredtbl
+ListaCampos=DM0192ImporteLineaCredtbl.ID<BR>DM0192ImporteLineaCredtbl.Importe
+UsoCapturas=S
+SQL=SELECT<BR>  DM0192ImporteLineaCredtbl.ID,<BR>  DM0192ImporteLineaCredtbl.Importe<BR><BR>FROM<BR>  DM0192ImporteLineaCred DM0192ImporteLineaCredtbl
+[DM0192ImporteLineaCredtbl.ID]
+Clave=DM0192ImporteLineaCredtbl.ID
+LigaTabla=DM0192ImporteLineaCredtbl
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=AutoInc
+ClaveBDE=ID
+[DM0192ImporteLineaCredtbl.Importe]
+Clave=DM0192ImporteLineaCredtbl.Importe
+LigaTabla=DM0192ImporteLineaCredtbl
+LigaCampo=Importe
+Ligado=S
+ClaveBDE=Importe

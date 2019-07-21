@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=RM0078KmrecorridosVis
+Nombre=Rendimiento Kilometros Recorridos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Tipo<BR>PromedioKilometrajeXUnidad
+SQL=SELECT<BR>    GV.Tipo, PromedioKilometrajeXUnidad=(MAX(GV.Lectura)- Min(GV.LecturaAnterior)) /SUM(GV.Cantidad)<BR>FROM<BR>    dbo.V_MaviGastosVehiculares AS GV<BR>WHERE GV.CodigoArticulo is not null And GV.Clasificacion = <T>COMBUSTIBLE<T><BR>{Si(CONDATOS(Info.FechaD)Y CONDATOS(Info.FechaA),<T>AND GV.Fecha BETWEEN <T>+COMILLAS(FechaFormatoServidor(Info.FechaD))+<T> AND <T>+COMILLAS(FechaFormatoServidor(Info.FechaA)),<T>AND GV.Fecha BETWEEN <T>+COMILLAS(FechaFormatoServidor(PrimerDiaAño))+<T> AND <T>+COMILLAS(FechaFormatoServidor(UltimoDiaAño)))}<BR>{Si(CONDATOS(Filtro.Actividad),<T>AND GV.NumUnidad = <T>+COMILLAS(Filtro.Personal),<T><T>)}<BR>Group by GV.Tipo, GV.clasificacion
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=2
+TipoDatos=Texto
+Tamano=2
+ClaveBDE=Tipo
+[PromedioKilometrajeXUnidad]
+Clave=PromedioKilometrajeXUnidad
+Nombre=PromedioKilometrajeXUnidad
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=PromedioKilometrajeXUnidad

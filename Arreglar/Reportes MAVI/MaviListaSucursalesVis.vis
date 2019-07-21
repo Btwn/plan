@@ -1,0 +1,43 @@
+[Vista]
+Icono=0
+Clave=MaviListaSucursalesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sucursal<BR>Nombre<BR>Tipo<BR>WUEN
+CamposBusquedaRapida=Sucursal<BR>Nombre<BR>Tipo
+ControlSucursal=S
+CampoSucursal=Sucursal
+SQL=Select Sucursal,<BR>Nombre,<BR>Tipo,<BR>WUEN<BR>From Sucursal<BR>Where WUEN is Not Null<BR>And Tipo is Not Null<BR>Order By Sucursal
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal
+[Nombre]
+Clave=Nombre
+Nombre=Nombre de Sucursal
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+TipoDatos=Texto
+[Tipo]
+Clave=Tipo
+Nombre=Tipo de Sucursal
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Tipo
+TipoDatos=Texto
+[WUEN]
+Clave=WUEN
+Nombre=UEN
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=WUEN

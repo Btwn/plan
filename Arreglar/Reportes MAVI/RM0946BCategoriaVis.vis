@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0946BCategoriaVis
+Nombre=RM0946B Filtro Categoria
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SeccionCobranzaMavi
+SQL=select Distinct SeccionCobranzaMavi From CteEnviarA With(NoLock) Where SeccionCobranzaMAVI not in (<T>Mayoreo<T>,<T>Contado<T>) and SeccionCobranzaMAVI Is Not Null
+[SeccionCobranzaMavi]
+Clave=SeccionCobranzaMavi
+Nombre=SeccionCobranzaMavi
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=SeccionCobranzaMavi

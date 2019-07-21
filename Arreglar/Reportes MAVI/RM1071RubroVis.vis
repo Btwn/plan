@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM1071RubroVis
+Nombre=RM1071 Rubros
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Rubro
+CamposBusquedaRapida=Rubro
+SQL=<TAB>Select Distinct Valor As Rubro From TablaStD  <BR><TAB>Where TablaSt = <T>RMS ANALITICO EDO RESULTADOS<T>
+[Rubro]
+Clave=Rubro
+Nombre=Rubro
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Rubro

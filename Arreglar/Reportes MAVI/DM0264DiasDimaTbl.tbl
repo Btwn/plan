@@ -1,0 +1,34 @@
+
+[Tabla]
+Icono=0
+Clave=DM0264DiasDimaTbl
+Nombre=Dias Dima
+Archivo=TcIDM0264_DiasDima
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Dias<BR>Cuota<BR>Periodo
+LlavePrimaria=Dias
+SQL=SELECT<BR>  Dias,<BR>  Cuota,<BR>  Periodo<BR><BR>  FROM TcIDM0264_DiasDima
+[Dias]
+Clave=Dias
+Nombre=Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+[Cuota]
+Clave=Cuota
+Nombre=Cuota
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+
+[Periodo]
+Clave=Periodo
+Nombre=Periodo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico

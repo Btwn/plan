@@ -1,0 +1,24 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnPCPValidarMascaraRegla
+(
+@Proyecto				varchar(50),
+@Mascara				varchar(50),
+@MascaraRegla			varchar(50)
+)
+RETURNS bit
+
+AS BEGIN
+DECLARE
+@Resultado			bit
+SELECT @Resultado = 1
+IF LEN(RTRIM(@Mascara)) <> LEN(RTRIM(@MascaraRegla)) SELECT @Resultado = 0
+RETURN (@Resultado)
+END
+

@@ -1,0 +1,45 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spPOSUsuarioMov
+@Estacion     int,
+@Usuario      varchar(10),
+@Empresa      varchar(5)
+
+AS
+BEGIN
+DECLARE
+@POSInv     bit
+SELECT @POSInv = ISNULL(POSInv,0)
+FROM POSCfg
+WHERE Empresa = @Empresa
+DELETE POSUsuarioMovTemp WHERE Estacion = @Estacion
+INSERT POSUsuarioMovTemp (
+Estacion,  Mov, Usuario)
+SELECT
+@Estacion, Mov, @Usuario
+FROM MovTipo
+WHERE Modulo = 'POS'
+AND Mov NOT IN (SELECT Mov FROM POSUsuarioMov WHERE Usuario = @Usuario)
+AND Clave NOT IN('POS.CTCAC','POS.CTCRC','POS.STE','POS.FTE','POS.TCRC','POS.TCAC','POS.INVD','POS.INVA','POS.SALDOIN')
+AND SubClave NOT IN('POS.NPF')
+GROUP BY Mov
+IF @POSInv = 1
+BEGIN
+INSERT POSUsuarioMovTemp (
+Estacion,  Mov, Usuario)
+SELECT
+@Estacion, Mov, @Usuario
+FROM MovTipo
+WHERE Modulo = 'POS'
+AND Mov NOT IN (SELECT Mov FROM POSUsuarioMov WHERE Usuario = @Usuario)
+AND Clave IN('POS.INVD','POS.INVA')
+GROUP BY Mov
+END
+END
+

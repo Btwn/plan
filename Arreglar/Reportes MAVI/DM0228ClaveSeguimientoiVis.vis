@@ -1,0 +1,23 @@
+[Vista]
+Icono=0
+Clave=DM0228ClaveSeguimientoiVis
+Modulos=(Todos)
+ListaCampos=Nombre<BR>Valor
+VistaIndependiente=S
+SQL=select distinct Nombre, Valor from TablaStD where TablaSt=<T>RM1101Rechazos<T>
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=40
+Tamano=100
+ClaveBDE=Nombre
+TipoDatos=Texto
+[Valor]
+Clave=Valor
+Nombre=Valor
+Visible=S
+TamanoValidacion=20
+Tamano=100
+ClaveBDE=Valor
+TipoDatos=Texto

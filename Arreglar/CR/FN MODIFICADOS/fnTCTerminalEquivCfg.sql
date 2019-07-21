@@ -1,0 +1,22 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnTCTerminalEquivCfg(
+@Empresa		varchar(5),
+@Sucursal		int
+)
+RETURNS varchar(20)
+AS
+BEGIN
+DECLARE @TerminalEquiv		bit
+SELECT @TerminalEquiv = ISNULL(TerminalEquiv, 0)
+FROM TCProcesadorTrans WITH(NOLOCK)
+WHERE ProcesadorTrans = dbo.fnTCProcesadorTransCfg(@Empresa, @Sucursal)
+RETURN(@TerminalEquiv)
+END
+

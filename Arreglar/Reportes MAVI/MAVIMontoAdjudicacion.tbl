@@ -1,0 +1,53 @@
+[Tabla]
+Icono=0
+Clave=MAVIMontoAdjudicacion
+Nombre=MAVIMontoAdjudicacion
+Archivo=MAVIMontoAdjudicacion
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Rango<BR>MontoMin<BR>MontoMax<BR>Condicion
+LlavePrimaria=Rango
+ListaRelaciones=Condicion
+SQL=SELECT<BR>  Rango,<BR>  MontoMin,<BR>  MontoMax,<BR>  Condicion<BR><BR>FROM<BR>  MAVIMontoAdjudicacion
+[Rango]
+Clave=Rango
+Nombre=Rango
+Visible=S
+TamanoValidacion=2
+Tamano=2
+Requerido=S
+[MontoMin]
+Clave=MontoMin
+Nombre=Monto Mínimo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=#.##
+Requerido=S
+[MontoMax]
+Clave=MontoMax
+Nombre=Monto Máximo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=#.##
+Requerido=S
+[Condicion]
+Clave=Condicion
+Nombre=Condicion Cobro
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Requerido=S
+AyudaEnCaptura=Vista
+AyudaForma=CondicionLista
+AyudaVista=Condicion
+AyudaCampo=Condicion.Condicion
+ValidacionUsaTabla=S
+ValidacionTablas=Condicion
+[Relaciones.Condicion]
+TipoRelacion=Forzosa
+LlaveLocal=Condicion
+Clave=Condicion
+TablaRemota=Condicion
+LlaveRemota=Condicion

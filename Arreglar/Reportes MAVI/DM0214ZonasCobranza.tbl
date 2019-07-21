@@ -1,0 +1,275 @@
+[Tabla]
+Icono=0
+Clave=DM0214ZonasCobranza
+Nombre=DM0214ZonasCobranza
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Zona<BR>NivelCobranza<BR>Region<BR>Division<BR>Equipo<BR>Agente<BR>Maxcuentas<BR>MaxAsociados<BR>MaxCtesFinales<BR>Categoria<BR>UsrMod<BR>FechaMod
+Archivo=DM0214ZonasCobranza
+LlavePrimaria=NivelCobranza<BR>Region<BR>Zona<BR>Division<BR>Equipo
+SQL=SELECT<BR>  Zona,<BR>  NivelCobranza,<BR>  Region,<BR>  Division,<BR>  Equipo,<BR>  Agente,<BR>  Maxcuentas,<BR>  MaxAsociados,<BR>  MaxCtesFinales,<BR>  Categoria,<BR>  UsrMod,<BR>  FechaMod<BR><BR>  FROM DM0214ZonasCobranza WITH (NOLOCK)
+[Zona]
+Clave=Zona
+Nombre=   Zona
+Visible=S
+TamanoValidacion=15
+Tamano=15
+AlCambiar=asigna(Info.Zona,Zona)
+ValidacionConCondiciones=S
+ValidacionMensajeError=SI info.id = 2<BR>Entonces<BR> <T>El nivel no corresponde a la Zona<T><BR>SIno<BR>   <T>Ya existe esa Zona<T><BR>FIN
+Mayusculas=S
+TipoDatos=Texto
+ValidacionCondicion=asigna(info.id,0)<BR><BR>Si  ( condatos(NivelCobranza)) y (IZQUIERDA(Equipo,3) <> IZQUIERDA(NivelCobranza,3))<BR>  Entonces<BR>    Asigna(info.id,2)<BR>  FIN<BR><BR><BR><BR>Si info.id =0<BR>Entonces<BR>  asigna(Info.id,(sql(<T>SP_MAVIDM0214Validanuevoreg :tv ,:tn,:tz,:tr,:td,:te <T>,<T>Zn<T>,NivelCobranza,Zona,<T><T>,<T><T>,<T><T>)))<BR>FIN<BR><BR><BR> (info.id =0)
+[NivelCobranza]
+Clave=NivelCobranza
+Nombre=NivelCobranza
+Visible=S
+TamanoValidacion=20
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Consulta opcional
+ValidacionConCondiciones=S
+ValidacionMensajeError=Si<BR> info.id = 1<BR> entonces<BR><BR> <T>El Nivel de cobranza no corresponde<BR>   al Agente o al Equipo<T><BR>sino<BR>  SI info.id = 3<BR>   Entonces<BR>    <T>El nivel no corresponde a la Zona<T><BR>   Sino<BR>     <T>Nivel de cobranza no válido <T><BR>   Fin                                                                   <BR>Fin
+Mayusculas=S
+AlCambiar=asigna(Mavi.NivelCobranza,NivelCobranza)
+ValidacionCondicion=Si<BR>  (SQL(<T> Select Count(Nombre)<BR>            FROM<BR>            ( SELECT Nombre FROM NivelCobranzaMavi<BR>               UNION<BR>            SELECT Nombre FROM NivelesEspecialesCobranzaMavi WHERE NivelOrigen IN(SELECT Nombre FROM NivelCobranzaMavi )<BR>            )A WHERE nombre = :tn <T>, NivelCobranza )=0  )<BR>    Entonces<BR>      asigna(Info.id,2)<BR><BR>    SIno<BR>      asigna(Info.id,(sql(<T>SP_MAVIDM0214Validanuevoreg :tv ,:tn,:tz,:tr,:td,:te <T>,<T>Nv<T>,NivelCobranza,Zona,Region,Division,Equipo)))<BR><BR>  FIN<BR><BR><BR>(info.id =0)
+Formula=SQLEnLista(<T>SELECT Nombre FROM NivelCobranzaMavi<BR>           UNION<BR>            SELECT Nombre FROM NivelesEspecialesCobranzaMavi WHERE NivelOrigen IN(SELECT Nombre FROM NivelCobranzaMavi)<T>)
+TipoDatos=Texto
+[Region]
+Clave=Region
+Nombre=Region
+Visible=S
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Consulta opcional
+ValidacionConCondiciones=S
+ValidacionMensajeError=CASO info.id<BR> es 1<BR>  entonces<BR>  <T>Región inexistente<BR>  o la division no le corresponde<BR>  <T><BR> es 2<BR> entonces<BR> <T>Esta División ya está registrada<BR>    con una Region Diferente a la que capturó <T><BR> es 3<BR> entonces<BR>  <T>El Equipo ya tiene registros<BR>     con una División Asignada a otra Región <T><BR> Fin
+Mayusculas=S
+ValidacionUsaTabla=S
+AlCambiar=asigna(Info.Region,Region)
+ValidacionCondicion=asigna(Info.id,(sql(<T>SP_MAVIDM0214Validanuevoreg :tv ,:tn,:tz,:tr,:td,:te <T>,<T>Reg<T>,NivelCobranza,Zona,Region,Division,Equipo)))<BR><BR><BR><BR><BR> (Info.id =0)
+Formula=SQLEnLista(<T>Select REgion from DM0214Regiones Order By REgion<T>)
+TipoDatos=Texto
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+TamanoValidacion=20
+Tamano=30
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Consulta opcional
+ValidacionConCondiciones=S
+ValidacionMensajeError=CASO info.id<BR> es 1<BR>  entonces<BR>  <T>Esta División ya está registrada<BR>    con una Region Diferente <T><BR> es 2<BR> Entonces<BR>    <T>El equipo ya tiene registros<BR>     con otra División<T><BR> es 3<BR> Entonces<BR> <T>División inexistente<BR>  o no pertenece a la Región<BR> <T><BR><BR> Fin
+Mayusculas=S
+AyudaRefrescar=S
+ConRefrescar=S
+ListaRefrescar=Categoria
+ValidacionCondicion=/*SI (SQl(<T> Select  count(division) from DM0214Divisiones where division = :Td <T>,Division)=0)<BR>Entonces<BR><BR>asigna(Info.id,3)<BR>Sino<BR><BR>asigna(Info.id,(sql(<T>SP_MAVIDM0214Validanuevoreg :tv ,:tn,:tz,:tr,:td,:te <T>,<T>DivEq<T>,NivelCobranza,Zona,Region,Division,Equipo)))<BR><BR>Fin<BR>*/<BR><BR>asigna(Info.id,(sql(<T>SP_MAVIDM0214Validanuevoreg :tv ,:tn,:tz,:tr,:td,:te <T>,<T>DivEq<T>,NivelCobranza,Zona,Region,Division,Equipo)))<BR><BR>(info.id =0)
+Formula=SQLEnLista(<T> Select  Division from DM0214Divisiones where region = :tr Order by Division <T>, Info.Region )
+TipoDatos=Texto
+[Equipo]
+Clave=Equipo
+Nombre=   Equipo
+Visible=S
+TamanoValidacion=11
+Tamano=15
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Consulta opcional
+ValidacionConCondiciones=S
+ValidacionMensajeError=CASO info.id<BR><BR> ES 1<BR>  Entonces<BR>      <T> El Equipo no existe<BR>   o no corresponde al Nivel de Cobranza  <T><BR><BR> Es 2<BR>  Entonces<BR>   <T>Existen zonas en este equipo<BR>    con otra Division<T><BR>sino<BR>1=1<BR>FIn
+ValidacionMensajeError002=<CONTINUA>T><BR>   FIn<BR>FIN<BR><BR>*/
+AlCambiar=si (longitud(Equipo)) =0<BR>entonces<BR>  si<BR>  ( sql(<T>SP_MAVIDM0214Validanuevoreg :tv ,:tn,:tz,:tr,:td,:te <T>,<T>Eq<T>,NivelCobranza,Zona,Region,Division,Equipo) =3 )<BR>    entonces<BR>    Forma.RegistroCancelar<BR>   Fin<BR>fin
+Estatus = :Te  <T> , <T>Equipo<T>,<T>COBRANZA MENUDEO<T>, <T>ALTA<T><BR> )
+Mayusculas=S
+ValorPorOmision=<T><T>
+AyudaRefrescar=S
+TipoDatos=Texto
+ValidacionCondicion=asigna(Info.id,(sql(<T>SP_MAVIDM0214Validanuevoreg :tv ,:tn,:tz,:tr,:td,:te <T>,<T>Eq<T>,NivelCobranza,Zona,Region,Division,Equipo)))<BR><BR><BR><BR>(info.id = 0)
+Formula=SQLenlista(<T>Select Distinct Agente Equipo<BR>From Agente<BR>where<BR>Tipo = :Tt   AND Categoria = :Tc  AND grupo = :Tg AND Estatus = :Te  and nivelcobranzamavi = :Tni Order by Agente <T><BR> , <T>EQUIPO<T>,<T>COBRANZA MENUDEO<T>,<T>EQUIPO<T> ,<T>ALTA<T>,NivelCobranza<BR><BR>)
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ValorPorOmision=<T>SIN AGENTE<T>
+Mayusculas=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Agente Inexistente o el Nivel No corresponde<T>
+ConRefrescar=S
+ListaRefrescar=Maxcuentas<BR>UsrMod
+AlCambiar=Asigna(info.cantidad,Maxcuentas)
+AyudaEnCaptura=Vista
+AyudaForma=dm0214agenteFrm
+AyudaVista=DM0214AgenteVis
+AyudaCampo=Agente
+AyudaRefrescar=S
+TipoDatos=Texto
+ValidacionCondicion=Si Agente=<T>SIN AGENTE<T><BR>Entonces<BR>      verdadero<BR>Sino<BR>     Si Agente<>SQL( <T>Select Top 1 Agente From DM0214ZonasCobranza Where Agente =<T>+ASCII(39)+Agente+ASCII(39)+<T> And Agente != <T>+ASCII(39)+Info.AgenteA+ASCII(39) )<BR>    Entonces<BR>        Si Agente = Info.Agente<BR>        Entonces<BR>            verdadero<BR>        Sino<BR>            NivelCobranza= SQL( <T>Select Max(Agente.NivelcobranzaMavi) From Agente Where Agente.Agente=<T>+ASCII( 39 ) +Agente+ ASCII( 39 )  )<BR>        Fin<BR>    Sino<BR>       SI NivelCobranza<>SQL( <T>Select Max(Agente.NivelcobranzaMavi) From Agente Where Agente.Agente=<T>+ASCII( 39 ) +Agente+ ASCII( 39 )  )<BR>       Entonces<BR>           falso<BR>       Sino<BR>           SI ( Confirmacion( <T>¿Desea transferir al gestor <T>+ASCII(39)+Agente+ASCII(39)+<T> del equipo <T>+ASCII(39)+SQL( <T>Select Equipo From DM0214ZonasCobranza Where Agente =<T>+ASCII(39)+Agente+ASCII(39))+ASCII(39)+<T> al equipo <T>+ASCII(39)+Equipo+ASCII(39)+<T>?<T> ,    BotonSi   , BotonNo   )=7)<BR>           Entonces<BR>               AbortarOperacion<BR>           Sino<BR>               Asigna(Info.Numero,1)<BR>               verdadero<BR>           FIN<BR>       Fin<BR>    Fin<BR>Fin
+[Maxcuentas]
+Clave=Maxcuentas
+Nombre=Max Ctas
+Visible=S
+TamanoValidacion=5
+TipoDatos=Numérico
+ValorPorOmision=0
+ValorRefrescar=ASIGNA( Info.Cantidad,SQL( <T>Select Top 1  Agente.Maximocuentas From Agente Where Agente.Agente=<T>+ASCII(39)+Agente+ASCII(39) ) )<BR><BR>SI info.Cantidad >0<BR>Entonces<BR> info.Cantidad<BR>Sino<BR>0<BR>Fin
+AlCambiar=Si<BR>  Agente=<T>SIN AGENTE<T> o vacio(Agente)<BR>Entonces<BR>  1=1<BR>Sino<BR>  Si<BR>  MaxCuentas <>  SQL( <T>SELECT MaximoCuentas FROM Agente WHERE Agente=<T>+ ASCII( 39 )+Agente+ ASCII( 39 )   )<BR>Entonces<BR>  SI (Confirmacion( <T>¿Modificar el Maximo de cuentas del Agente <T>+Agente+<T>?<T> ,    BotonSi   , BotonNo   )=6)<BR>  Entonces<BR>  1=1<BR>  sino<BR><BR> Asigna(Info.AgenteA,Agente)<BR>    Forma.Accion(<T>Cancelacamb<T>)<BR>    ASigna(Agente,Info.AgenteA)<BR>  fin<BR>Sino<BR>    1=1<BR>Fin<BR>Fin
+
+
+
+
+
+
+
+
+
+Alineacion=Derecha
+ConRefrescar=S
+ListaRefrescar=UsrMod
+[MaxAsociados]
+Clave=MaxAsociados
+Nombre=Max Asociado
+Visible=S
+TamanoValidacion=5
+TipoDatos=Numérico
+
+ValorPorOmision=0
+Alineacion=Derecha
+CondicionEdicion=Agente<><T>SIN AGENTE<T> y condatos(Agente)
+ConRefrescar=S
+ListaRefrescar=UsrMod
+Requerido=S
+[MaxCtesFinales]
+Clave=MaxCtesFinales
+Nombre=Max Cte Final
+Visible=S
+TamanoValidacion=5
+TipoDatos=Numérico
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Alineacion=Derecha
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CondicionEdicion=Agente<><T>SIN AGENTE<T> y condatos(Agente)
+
+
+ValorPorOmision=0
+
+
+
+
+ConRefrescar=S
+ListaRefrescar=UsrMod
+Requerido=S
+[Tabla.ListaCampos]
+(Inicio)=Zona
+Zona=NivelCobranza
+NivelCobranza=Region
+Region=Division
+Division=Equipo
+Equipo=Agente
+Agente=Maxcuentas
+Maxcuentas=MaxAsociados
+MaxAsociados=MaxCtesFinales
+MaxCtesFinales=(Fin)
+
+[Tabla.LlavePrimaria]
+(Inicio)=NivelCobranza
+NivelCobranza=Region
+Region=Zona
+Zona=Division
+Division=Equipo
+Equipo=(Fin)
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorPorOmision=sql(<T>select distinct categoria from DM0214Divisiones where division=:tnombre<T>,Division)
+ValorRefrescar=sql(<T>select distinct categoria from DM0214Divisiones where division=:tnombre<T>,Division)  
+AlCambiar=sql(<T>select distinct categoria from DM0214Divisiones where division=:tnombre<T>,Division)  
+TipoDatos=Texto
+
+[UsrMod]
+Clave=UsrMod
+Nombre=UsrMod
+Visible=S
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ValorRefrescar=Usuario
+
+[FechaMod]
+Clave=FechaMod
+Nombre=FechaMod
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora

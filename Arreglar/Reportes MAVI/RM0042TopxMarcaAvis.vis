@@ -1,0 +1,23 @@
+[Vista]
+Icono=0
+Clave=RM0042TopxMarcaAvis
+Nombre=RM0042TopxMarcaA
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=nomtaller
+CamposBusquedaRapida=nomtaller
+SQL=<BR>Select distinct(x.nomtaller) From<BR>(<BR>Select j.*, SucVenta=V.SucursalVenta from<BR>(<BR>Select<BR> S.Id,<BR> S.Mov,<BR> Valor1=S.MovId,<BR>MCEID=MCE.Id,<BR>ordenTraspaso=case when cte.tipo is null then s.observaciones else<BR>              case when  cte.tipo is not null then  substring(s.condicionentrega,18,20)<BR>               else <T><T> end end ,<BR> OrdT=InvOT.MovId,<BR>prov=case when substring(S.agente,1,4)= substring(Prov.Nombrecorto,1,4)then Prov.Nombrecorto else <T><T> end,<BR>res=s.Proveedor,<BR>s.agente,<BR> Serie= S.Serielote,<BR> S.Estatus,<BR> S.Situacion,<BR> Marca = Art.Fabricante,<BR> S.Articulo,<BR> Decripcion = Art.Descripcion1,<BR> Orden = S.Movid,<BR> Falla = s.Problema, <BR>Art.Linea,<BR> Factura = mce.valor,<BR>FACK=Case When mce.Valor like <T>Factura%<T> th<CONTINUA>
+SQL002=<CONTINUA>en LEFT(mce.Valor,CHARindex(<T>_<T>,mce.Valor)-1) else <T><T> End,<BR>fACKID=Case When mce.Valor like <T>Factura%<T> then rIGHT(mce.Valor,(LEN(mce.Valor)-CHARindex(<T>_<T>,mce.Valor)))ELSE <T><T> End,<BR> Cvecte = Cte.Cliente,<BR>    Tipo=case when  cte.tipo is null then <T>piso<T>else <BR>        case when cte.tipo is not null then cte.tipo else <T><T> end end,<BR> Cte.Nombre,<BR> Localidad=(Select Poblacion From Cte C Where C.Cliente=Cte.Cliente),<BR>--Tienda = case when s.mov = <T>Reporte Servicio<T> then ve.Sucursalventa else<BR><BR> NomTaller = Prov.Nombrecorto,<BR> Fechadeordenservicio= S.Fechaemision,<BR> Fechaterminado = Inv2.Fechaemision,<BR> Diastranscurridos =(DateDiff(Day, S.Fechaemision,Getdate())),<BR> Taller = R.Evento,<BR> OrdenTaller = R2.Evento,<BR> Existencia = Case When<CONTINUA>
+SQL003=<CONTINUA>  InvOT.Mov Is Null And InvOT.MovId Is Null Then <T>Sin Entrada<T> Else <T>Con Entrada<T>End,<BR> Con=1,<BR>art.familia<BR>From Soporte S<BR> Left Join Art On Art.Articulo = S.Articulo<BR>--left join <BR>--(select *from inv where mov =<T>Recibo Traspaso<T>)invloco on substring(s.condicionentrega,17,20)=invloco.movid<BR>Left Join Prov On S.Proveedor = Prov.Proveedor<BR>--left join<BR>--( select *from venta <BR>--where  mov=<T>factura<T>)ve on ve.origensucursal=s.sucursalorigen<BR> Left Join Cte On S.Cliente = Cte.Cliente<BR> Left Join Inv On S.Condicionentrega = (Inv.Mov + <T>: <T> + Inv.Movid)<BR> Left Join Inv As Inv2 On S.Destino = (Inv2.Mov + <T>: <T> + Inv2.Movid)<BR> Left Join (Select MB.Evento, T.Idevento, MB.ID<BR>From (Select Max(RID) As Idevento From Movbitacora MB Where MB.Modulo<CONTINUA>
+SQL004=<CONTINUA> = <T>ST<T> And MB.Clave=<T>SER00001<T>)T<BR> Left Join Movbitacora MB On T.Idevento = MB.RID)R On R.ID = S.Id<BR> Left Join (Select MB.Evento, T.Idevento, MB.ID<BR>From (Select Max(RID) As Idevento From MovBitacora MB Where MB.Modulo = <T>ST<T> And MB.Clave=<T>SER00002<T>)T<BR> Left Join Movbitacora MB On T.Idevento = MB.RID)R2 On R2.ID = S.Id<BR> Left Join MovCampoExtra MCE On mce.id=s.id And CampoExtra = <T>RS_FACTURA<T><BR>--Left Join venta V on V.Mov= LEFT(mce.Valor,CHARindex(<T>_<T>,mce.Valor)-1) and V.movid= rIGHT(mce.Valor,(LEN(mce.Valor)-CHARindex(<T>_<T>,mce.Valor)))<BR> Left Join Inv InvOT On InvOT.mov = MCE.mov<BR><BR>where s.mov=<T>Reporte Servicio<T> ) j <BR>Left Join   venta V on V.Mov=Fack  and V.movid=FackId) x
+[nomtaller]
+Clave=nomtaller
+Nombre=nomtaller
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=nomtaller

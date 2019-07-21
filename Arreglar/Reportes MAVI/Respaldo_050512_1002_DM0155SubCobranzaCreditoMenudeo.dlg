@@ -1,0 +1,35 @@
+[Dialogo]
+Clave=DM0155SubCobranzaCreditoMenudeo
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=RM0946<BR>SaldosaFavor
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.RM0946]
+Nombre=RM0946
+Boton=0
+NombreDesplegar=RM0946 Informe Estado de Cuentas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0946CxcInfEdoCtasVisFrm
+Activo=S
+Visible=S
+[Acciones.SaldosaFavor]
+Nombre=SaldosaFavor
+Boton=0
+NombreDesplegar=Saldos a Favor
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarCxcEfectivo
+Activo=S
+Visible=S
+

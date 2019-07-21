@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM0946BNombreClientesVis
+Nombre=Clientes
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=cliente
+CamposBusquedaRapida=cliente
+SQL=select DISTINCT cliente<BR>from RM0946B_CxcInfEdoCtas<BR>where estaciontrabajo={estaciontrabajo}<BR>{si(condatos(Mavi.RM0946Bagente),<T>and agentecobrador in (<T>+Mavi.RM0946Bagente+<T>)<T>,<T><T>)}<BR>{si(condatos(Mavi.RM0946Bcliente),<T>and cliente in (<T> +Mavi.RM0946Bcliente+<T>)<T>,<T><T>)}<BR>{si(condatos(Mavi.RM0946Bncobranza),<T>and nivelcobranza in (<T> +Mavi.RM0946Bncobranza+<T>)<T>,<T><T>)}<BR><BR>ORDER BY cliente
+[cliente]
+Clave=cliente
+Nombre=cliente
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=cliente
+TipoDatos=Texto

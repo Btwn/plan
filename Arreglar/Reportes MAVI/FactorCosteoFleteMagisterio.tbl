@@ -1,0 +1,19 @@
+[Tabla]
+Icono=0
+Clave=FactorCosteoFleteMagisterio
+Nombre=FactorCosteoFleteMagisterio
+Archivo=FactorCosteoFleteMagisterio
+Modulos=(Todos)
+Singular=FactorCosteoFleteMagisterio
+TipoTabla=General
+ListaCampos=FactorCosteoMagisterio
+LlavePrimaria=FactorCosteoMagisterio
+SQL=SELECT<BR>  FactorCosteoMagisterio<BR><BR>FROM<BR>  FactorCosteoFleteMagisterio
+[FactorCosteoMagisterio]
+Clave=FactorCosteoMagisterio
+Nombre=% Autorización Costeo Flete Magisterio
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+AyudaEnCaptura=Calculadora

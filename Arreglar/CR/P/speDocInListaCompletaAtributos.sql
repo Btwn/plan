@@ -1,0 +1,42 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE speDocInListaCompletaAtributos
+@Estacion		int,
+@XML			xml
+
+AS BEGIN
+DECLARE
+@Nodo			varchar(255),
+@NodoNombre		varchar(255),
+@Xml2                 varchar(max)
+SET ANSI_NULLS ON
+SET ANSI_WARNINGS ON
+SET QUOTED_IDENTIFIER ON
+DELETE FROM eDocInNodoTemp WHERE Estacion = @Estacion
+DELETE FROM eDocInAtributoTemp WHERE Estacion = @Estacion
+SELECT @Xml2 = CONVERT(varchar(max),@Xml)
+EXEC spDocInXmlNSListarNodo  @XML2,@Estacion
+DECLARE crNodo CURSOR FOR
+SELECT Nodo, NodoNombre
+FROM eDocInNodoTemp
+WHERE Estacion = @Estacion
+OPEN crNodo
+FETCH NEXT FROM crNodo INTO @Nodo, @NodoNombre
+WHILE @@FETCH_STATUS = 0
+BEGIN
+EXEC speDocInListarAtributosXML @Estacion, @XML, @Nodo, @NodoNombre
+FETCH NEXT FROM crNodo INTO @Nodo, @NodoNombre
+END
+CLOSE crNodo
+DEALLOCATE crNodo
+SET ANSI_NULLS OFF
+SET ANSI_WARNINGS OFF
+SET QUOTED_IDENTIFIER OFF
+END
+

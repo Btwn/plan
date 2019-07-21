@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=RM0238ArticulosVis
+Nombre=Catalogo de Articulos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Articulo<BR>Descripcion1
+CamposBusquedaRapida=Articulo
+SQL=Select <BR> Articulo,<BR> Descripcion1<BR>From Art<BR>{SI(CONDATOS(Mavi.ArtGrupLigFam),<T>AND Art.Grupo=<T>+COMILLAS(Mavi.ArtGrupLigFam),<T><T>)}<BR>{SI(CONDATOS(Mavi.ArtFamLigLin),<T>AND Familia=<T>+COMILLAS(Mavi.ArtFamLigLin),<T><T>)}<BR>Order By Articulo
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Articulo
+TipoDatos=Texto
+[Descripcion1]
+Clave=Descripcion1
+Tamano=100
+ClaveBDE=Descripcion1
+TamanoValidacion=100
+Nombre=Descripcion1
+TipoDatos=Texto

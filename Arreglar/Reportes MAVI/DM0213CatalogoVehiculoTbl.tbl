@@ -1,0 +1,25 @@
+[Tabla]
+Icono=0
+Clave=DM0213CatalogoVehiculoTbl
+Nombre=DM0213CatalogoVehiculoTbl
+Archivo=DM0213CatalogoVehiculo
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=TipoUnidadVehicular<BR>Descripcion
+LlavePrimaria=TipoUnidadVehicular
+CamposBusquedaRapida=TipoUnidadVehicular
+SQL=SELECT<BR>  TipoUnidadVehicular,<BR>  Descripcion<BR><BR>FROM<BR>  DM0213CatalogoVehiculo
+[TipoUnidadVehicular]
+Clave=TipoUnidadVehicular
+Nombre=TipoUnidadVehicular
+Visible=S
+TamanoValidacion=200
+Tamano=50
+Mayusculas=S
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+TamanoValidacion=200
+Tamano=200
+Mayusculas=S

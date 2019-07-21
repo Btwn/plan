@@ -1,0 +1,36 @@
+[Vista]
+Icono=0
+Clave=MaviAlmArtiSeriesValidasxFactxElimRetVis
+Nombre=Series para eliminar desde Retornos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Articulo<BR>Serie<BR>Id
+SQL=Select <BR>Id,<BR>Articulo,<BR>Serie<BR>From<BR>MaviDevEmbarqueFisicoAlmacen<BR>{si(condatos(Mavi.AlmacenIdEmbarque),<T>Where  idEmbarque=<T>+Mavi.AlmacenIdEmbarque,<T>Where  idEmbarque is null<T>)}<BR>--{si(Mavi.AlmacenIdFactura >0,<T>And idFactura=<T>+Mavi.AlmacenIdFactura,<T>And idFactura is null<T>)}
+[Articulo]
+Clave=Articulo
+Nombre=Código
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Articulo
+TipoDatos=Texto
+[Serie]
+Clave=Serie
+Nombre=Serie
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Serie
+[Id]
+Clave=Id
+Nombre=Id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+ClaveBDE=Id

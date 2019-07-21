@@ -1,0 +1,137 @@
+[Forma]
+Clave=UsuarioDescuento
+Nombre=Usuario Descuento
+Icono=0
+Modulos=(Todos)
+MovModulo=(Todos)
+ListaCarpetas=UsuarioDescuento
+CarpetaPrincipal=UsuarioDescuento
+PosicionInicialAlturaCliente=174
+PosicionInicialAncho=318
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=468
+PosicionInicialArriba=412
+AccionesTamanoBoton=15x5
+ListaAcciones=Aceptar<BR>Cancelar
+BarraAcciones=S
+AccionesCentro=S
+VentanaExclusiva=S
+VentanaEscCerrar=S
+ExpresionesAlMostrar=Asigna(Info.UsuarioNuevo, <T><T>)<BR>Asigna(Info.Contrasena, <T><T>)<BR>Asigna(Info.Importe,0)<BR>Asigna(Mavi.RM0850UsrAutPrecio,<T><T>)
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&OK
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+EnBarraAcciones=S
+Multiple=S
+ListaAccionesMultiples=Asignar<BR>Expresion<BR>Aceptar<BR>GuardaInfo
+[Acciones.Cancelar]
+Nombre=Cancelar
+Boton=0
+NombreDesplegar=&Cancelar
+EnBarraAcciones=S
+TipoAccion=Ventana
+ClaveAccion=Cancelar
+Activo=S
+Visible=S
+[UsuarioDescuento]
+Estilo=Ficha
+Clave=UsuarioDescuento
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Info.UsuarioNuevo<BR>Info.Contrasena<BR>Info.Importe<BR>Mavi.RM0850UsrAutPrecio
+CarpetaVisible=S
+[UsuarioDescuento.Info.Contrasena]
+Carpeta=UsuarioDescuento
+Clave=Info.Contrasena
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[UsuarioDescuento.Info.Importe]
+Carpeta=UsuarioDescuento
+Clave=Info.Importe
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Aceptar.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Aceptar.Expresion]
+Nombre=Expresion
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+Expresion=Asigna(Info.Mensaje,<T><T>)<BR>Asigna(Info.Mensaje, SQL(<T>spPropreAutorizarDescuento :tUsuario, :tContrasena, :nID, :tModulo, :nRenglon, :tArticulo, :nImporte, :nPorcentaje<T>,<BR>                          Info.UsuarioNuevo, MD5(Info.Contrasena,<T>p<T>), Info.ID, Info.Modulo, Info.Renglon, Info.Articulo, Info.Importe, Info.Porcentaje))<BR><BR>Informacion(Info.Mensaje)
+EjecucionCondicion=(Longitud(Mavi.RM0850UsrAutPrecio)=0)o(SQL(<T>SELECT COUNT(Usuario) FROM Usuario WITH(NOLOCK) WHERE Tipo_Descuento=:tTipo AND Usuario=:tUsr<T>,<T>Especifico<T>,Mavi.RM0850UsrAutPrecio)>0)
+EjecucionMensaje=<T>El Usuario debe tener un tipo de descuento Especifico...<T>
+[UsuarioDescuento.Info.UsuarioNuevo]
+Carpeta=UsuarioDescuento
+Clave=Info.UsuarioNuevo
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Aceptar.Aceptar]
+Nombre=Aceptar
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Aceptar
+Activo=S
+Visible=S
+[UsuarioDescuento.Mavi.RM0850UsrAutPrecio]
+Carpeta=UsuarioDescuento
+Clave=Mavi.RM0850UsrAutPrecio
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Aceptar.GuardaInfo]
+Nombre=GuardaInfo
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=SQL(<T>EXEC dbo.SP_MAVIRM0850InsertaAutPrecioXUsr :nID,:nRenglon,:tUsrAut,:tUsrNvo<T>,Info.ID,Info.Renglon,Mavi.RM0850UsrAutPrecio,Info.UsuarioNuevo)

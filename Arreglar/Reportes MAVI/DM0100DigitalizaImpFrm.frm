@@ -1,0 +1,326 @@
+[Forma]
+Clave=DM0100DigitalizaImpFrm
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=DM100DigitalizarImp<BR>(Variables)<BR>FiltroSiNo
+CarpetaPrincipal=DM100DigitalizarImp
+PosicionInicialAlturaCliente=716
+PosicionInicialAncho=1296
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=SeleccionarTodo<BR>DeseleccionarTodo<BR>ImprimirCaratula<BR>Refrescar
+Nombre=Imprimir Caratulas
+PosicionInicialIzquierda=-8
+PosicionInicialArriba=-8
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+PosicionSec1=41
+FiltrarFechasSinHora=S
+ExpresionesAlMostrar=Asigna(Mavi.DM100FiltroTipoCta,<T>TODO<T>)                        <BR>Asigna(Mavi.DM100DesglosarFiltro,<T>SI<T>)
+PosicionCol1=171
+[DM100DigitalizarImp]
+Estilo=Iconos
+Clave=DM100DigitalizarImp
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=B1
+Vista=DM0100CREDIRelacExpEntregArGralVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=DM0100CREDIRelacExpEntregArGralTbl.RecepcionCorrecta<BR>Cte.Nombre<BR>DM0100CREDIRelacExpEntregArGralTbl.TipoCta<BR>DM0100CREDIRelacExpEntregArGralTbl.UsuarioCaptura<BR>DM0100CREDIRelacExpEntregArGralTbl.FechaRecepcion
+CarpetaVisible=S
+BusquedaRapidaControles=S
+FiltroFechas=S
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasCampo=DM0100CREDIRelacExpEntregArGralTbl.FechaRecepcion
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+FiltroFechasDefault=Hoy
+Filtros=S
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=General
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+IconosNombreNumerico=S
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+OtroOrden=S
+IconosNombre=DM0100CREDIRelacExpEntregArGralVis:DM0100CREDIRelacExpEntregArGralTbl.id
+ListaOrden=DM0100CREDIRelacExpEntregArGralTbl.FechaRecepcion<TAB>(Acendente)
+FiltroGeneral=2=2<BR>{Si<BR>  Condatos(Mavi.DM100FiltroTipoCta)<BR>Entonces<BR>     Si<BR>     (Mavi.DM100FiltroTipoCta =<T>TODO<T>)<BR>     Entonces  <T><T><BR>     Sino<BR>         <T>and DM0100CREDIRelacExpEntregArGralTbl.TipoCta=<T>+COMILLAS(Mavi.DM100FiltroTipoCta)<BR>     Fin<BR>Sino <T>and 1=1<T><BR>Fin  }<BR><BR>{Si<BR>  Condatos(Mavi.DM100DesglosarFiltro)<BR>Entonces<BR>     Si<BR>     (Mavi.DM100DesglosarFiltro =<T>TODO<T>)<BR>     Entonces  <T><T><BR>     Sino<BR>         <T>and DM0100CREDIRelacExpEntregArGralTbl.RecepcionCorrecta=<T>+COMILLAS(Mavi.DM100DesglosarFiltro)<BR>     Fin<BR>Sino <T>and 1=1<T><BR>Fin  }
+[DM100DigitalizarImp.Columnas]
+0=-2
+1=55
+2=186
+3=98
+4=92
+5=-2
+6=-2
+7=-2
+id=64
+Nombre=184
+Cliente=64
+TipoCta=55
+UsuarioCaptura=82
+FechaCaptura=115
+RecepcionCorrecta=64
+UsuarioRecepcion=92
+FechaRecepcion=94
+TipoDocto=304
+Comentarios=604
+[Acciones.SeleccionarTodo]
+Nombre=SeleccionarTodo
+Boton=23
+NombreDesplegar=Seleccionar Todo
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Visible=S
+NombreEnBoton=S
+EnMenu=S
+Activo=S
+[Acciones.DeseleccionarTodo]
+Nombre=DeseleccionarTodo
+Boton=36
+NombreDesplegar=Deseleccionar Todo
+EnBarraHerramientas=S
+TipoAccion=controles Captura
+ClaveAccion=quitar Seleccion
+Visible=S
+NombreEnBoton=S
+EnMenu=S
+Activo=S
+EspacioPrevio=S
+[Acciones.ImprimirCaratula.CargaValores]
+Nombre=CargaValores
+Boton=0
+TipoAccion=controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.ImprimirCaratula.RegistrarSeleccion]
+Nombre=RegistrarSeleccion
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion()<BR>RegistrarSeleccionID()
+Activo=S
+Visible=S
+[Acciones.ImprimirCaratula.RegistrosPorImprimir]
+Nombre=RegistrosPorImprimir
+Boton=0
+TipoAccion=Expresion
+Activo=S
+ConCondicion=S
+EjecucionConError=S
+Visible=S
+Expresion=EjecutarSQL(<T>Exec SPMaviCREDIDM100RegistraRecibidos :nval1, :tval2,:nval3, :nval4<T>,EstacionTrabajo,<T><T>,0,2)
+EjecucionCondicion=SQL(<T><BR>Select<BR>Resultado=CASE when Comparacion.Seleccionados=Comparacion.Recibidos then 1<BR>          Else 0<BR>          End<BR>From<BR>(<BR>    Select<BR>    [Seleccionados]=count(distinct(Clave)),<BR>    [Recibidos]=count(MaviCREDIDM100CapturaEntregaDocumentosDigital.RecepcionCorrecta)<BR>    from listast<BR>    Inner Join MaviCREDIDM100CapturaEntregaDocumentosDigital on listast.Clave=MaviCREDIDM100CapturaEntregaDocumentosDigital.Id<BR>    where Estacion=:nEstacionTrabajo<BR>) Comparacion<BR>    <T>,EstacionTrabajo)=1
+EjecucionMensaje=<T>Existen registros marcados para imprimir que aun no han sido recibidos.<T>+NuevaLinea+<T>Quite su selección por favor o marquelos como tal<T>
+[Acciones.ImprimirCaratula.DigitalizacionCaratulas]
+Nombre=DigitalizacionCaratulas
+Boton=0
+TipoAccion=Expresion
+Activo=S
+ConCondicion=S
+EjecucionConError=S
+Visible=S
+Expresion=Ejecutar(<T>PlugIns\DigitalizacionCaratulas.exe<T>)
+EjecucionCondicion=SQL(<T><BR>Select<BR>Resultado=CASE when Comparacion.Seleccionados=Comparacion.Recibidos then 1<BR>          Else 0<BR>          End<BR>From<BR>(<BR>    Select<BR>    [Seleccionados]=count(distinct(Clave)),<BR>    [Recibidos]=count(MaviCREDIDM100CapturaEntregaDocumentosDigital.RecepcionCorrecta)<BR>    from listast<BR>    Inner Join MaviCREDIDM100CapturaEntregaDocumentosDigital on listast.Clave=MaviCREDIDM100CapturaEntregaDocumentosDigital.Id<BR>    where Estacion=:nEstacionTrabajo<BR>) Comparacion<BR>    <T>,EstacionTrabajo)=1
+EjecucionMensaje=<T>Existen registros marcados para imprimir que aun no han sido recibidos.<T>+NuevaLinea+<T>Quite su selección por favor o marquelos como tal<T>
+[Acciones.ImprimirCaratula]
+Nombre=ImprimirCaratula
+Boton=4
+NombreEnBoton=S
+NombreDesplegar=Imprimir
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=CargaValores<BR>RegistrarSeleccion<BR>RegistrosPorImprimir<BR>DigitalizacionCaratulas<BR>ref
+Activo=S
+Visible=S
+EspacioPrevio=S
+GuardarAntes=S
+[TipoDocto.Mavi.DM0100DesglosarFiltro]
+Carpeta=TipoDocto
+Clave=Mavi.DM0100DesglosarFiltro
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Refrescar.Act]
+Nombre=Act
+Boton=0
+TipoAccion=controles Captura
+ClaveAccion=Actualizar Forma
+Activo=S
+Visible=S
+[Acciones.Refrescar]
+Nombre=Refrescar
+Boton=82
+NombreEnBoton=S
+NombreDesplegar=Refrescar
+Multiple=S
+EnBarraHerramientas=S
+ListaAccionesMultiples=for<BR>Act
+Activo=S
+Visible=S
+[Acciones.Refrescar.for]
+Nombre=for
+Boton=0
+TipoAccion=controles Captura
+ClaveAccion=variables Asignar
+Activo=S
+Visible=S
+[Acciones.Actualizar.for]
+Nombre=for
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Actualizar.act]
+Nombre=act
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Activo=S
+Visible=S
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=0
+FichaEspacioNombres=0
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Mavi.DM100FiltroTipoCta
+CarpetaVisible=S
+PestanaNombre=Tipo de Cuenta
+[(Variables).Mavi.DM100FiltroTipoCta]
+Carpeta=(Variables)
+Clave=Mavi.DM100FiltroTipoCta
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[DM100DigitalizarImp.Cte.Nombre]
+Carpeta=DM100DigitalizarImp
+Clave=Cte.Nombre
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=100
+ColorFondo=Blanco
+ColorFuente=Negro
+[DM100DigitalizarImp.DM0100CREDIRelacExpEntregArGralTbl.TipoCta]
+Carpeta=DM100DigitalizarImp
+Clave=DM0100CREDIRelacExpEntregArGralTbl.TipoCta
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[DM100DigitalizarImp.DM0100CREDIRelacExpEntregArGralTbl.UsuarioCaptura]
+Carpeta=DM100DigitalizarImp
+Clave=DM0100CREDIRelacExpEntregArGralTbl.UsuarioCaptura
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Blanco
+ColorFuente=Negro
+[DM100DigitalizarImp.DM0100CREDIRelacExpEntregArGralTbl.RecepcionCorrecta]
+Carpeta=DM100DigitalizarImp
+Clave=DM0100CREDIRelacExpEntregArGralTbl.RecepcionCorrecta
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=10
+ColorFondo=Blanco
+ColorFuente=Negro
+[FiltroSiNo]
+Estilo=Ficha
+Clave=FiltroSiNo
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A2
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Mavi.DM100DesglosarFiltro
+CarpetaVisible=S
+PermiteEditar=S
+FichaEspacioEntreLineas=0
+FichaEspacioNombres=0
+FichaColorFondo=Plata
+FichaNombres=Izquierda
+[FiltroSiNo.Mavi.DM100DesglosarFiltro]
+Carpeta=FiltroSiNo
+Clave=Mavi.DM100DesglosarFiltro
+Editar=N
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[DM100DigitalizarImp.DM0100CREDIRelacExpEntregArGralTbl.FechaRecepcion]
+Carpeta=DM100DigitalizarImp
+Clave=DM0100CREDIRelacExpEntregArGralTbl.FechaRecepcion
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.ImprimirCaratula.ref]
+Nombre=ref
+Boton=0
+TipoAccion=controles Captura
+ClaveAccion=Actualizar Forma
+Activo=S
+Visible=S
+
+

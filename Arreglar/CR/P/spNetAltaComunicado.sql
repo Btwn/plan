@@ -1,0 +1,29 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spNetAltaComunicado
+@Titulo VARCHAR(60),
+@Registro VARCHAR(10),
+@DirigidoA VARCHAR(15),
+@FechaPublicado DATETIME,
+@FechaVigencia DATETIME,
+@Descripcion VARCHAR(255),
+@Prioridad VARCHAR(15),
+@Tipo INT,
+@Estatus bit
+AS
+BEGIN
+IF (EXISTS(SELECT * FROM pNetUsuario WHERE Usuario = @Registro))
+BEGIN
+INSERT INTO pNetComunicado VALUES(@Titulo,@Registro,@DirigidoA,GETDATE(),@FechaPublicado,@FechaVigencia,@Descripcion,@Prioridad,@Tipo,@Estatus)
+SELECT @@IDENTITY as ID
+END
+ELSE
+SELECT-1 as ID
+END
+

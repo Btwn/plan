@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0170VTASDIVISIONESVIS
+Nombre=DIVISIONES170
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Divisiones
+SQL=select Agente as Divisiones from equipoagente <BR>where Agente like <T>Div%<T> <BR>{Si(conDatos(Mavi.RM0170Gerencia170),<T> and Equipo=<T>+comillas(Mavi.RM0170Gerencia170),<T><T>)}
+[Divisiones]
+Clave=Divisiones
+Nombre=Divisiones
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Divisiones

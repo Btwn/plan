@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=DM0192ImporteVis
+Nombre=DM0192ImporteVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Importe
+SQL=Select Importe from DM0192ImporteLineaCred order by Importe
+[Importe]
+Clave=Importe
+Nombre=Importe
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Importe
+Monetario=S

@@ -1,0 +1,31 @@
+[Tabla]
+Icono=0
+Clave=FactorCosteoFleteMAVI
+Nombre=FactorCosteoFleteMAVI
+Archivo=FactorCosteoFleteMAVI
+Modulos=(Todos)
+Singular=FactorCosteoFleteMAVI
+TipoTabla=General
+ListaCampos=FactorCosteoFlete<BR>FactorCosteoFlete2
+LlavePrimaria=FactorCosteoFlete<BR>FactorCosteoFlete2
+SQL=SELECT<BR>  FactorCosteoFlete,<BR>  FactorCosteoFlete2<BR><BR>FROM<BR>  FactorCosteoFleteMAVI
+[FactorCosteoFlete]
+Clave=FactorCosteoFlete
+Nombre=% Autorización Costeo Flete
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+ListaRefrescar=FactorCosteoFlete2
+[FactorCosteoFlete2]
+Clave=FactorCosteoFlete2
+Nombre=% Autorización Costeo Flete Dirección
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=0,.00
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+ListaRefrescar=FactorCosteoFlete

@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=RM0158UENNumVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=UEN<BR>Nombre
+Nombre=RM0158 UEN
+SQL=Declare @usuario  varchar(50)<BR><BR>Set @usuario={COMILLAS(USUARIO)}<BR><BR>EXEC Sp_MaviRM0158UEN @usuario
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Uen
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

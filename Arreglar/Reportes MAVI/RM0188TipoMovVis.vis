@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0188TipoMovVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Tipomov
+Nombre=Rutas
+SQL=select distinct Mov as TipoMov from movtipo where Mov in(<T>Factura<T>,<T>Factura Viu<T>,<T>Factura Mayoreo<T>,<T>Pedido<T>,<T>Pedido Mayoreo<T>,<T>Solicitud Credito<T>,<T>Solicitud Mayoreo<T>,<T>Analisis Credito<T>,<T>Analisis Mayoreo<T>)
+[Tipomov]
+Clave=Tipomov
+Nombre=Tipomov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=11
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=TipoMov

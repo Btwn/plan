@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM1182VtasCanalVentaVis
+Nombre=Canal de Venta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=ID
+SQL=SELECT DISTINCT ID FROM  CteEnviarA WHERE ID IN(3,4,7,76)
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID

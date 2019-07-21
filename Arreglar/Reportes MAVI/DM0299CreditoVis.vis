@@ -1,0 +1,43 @@
+[Vista]
+Icono=0
+Clave=DM0299CreditoVis
+Nombre=DM0299CreditoListaOpciones
+Modulos=(Todos)
+ListaCampos=DM0299Tipodecliente.ID<BR>DM0299Tipodecliente.TipoCredito
+ListaTablas=DM0299Tipodecliente
+TablaPrincipal=DM0299Tipodecliente
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+SQL=SELECT<BR>  DM0299Tipodecliente.ID,<BR>  DM0299Tipodecliente.TipoCredito<BR><BR>FROM<BR>  DM0299Tipodecliente<BR><BR>WHERE <BR> DM0299Tipodecliente.TipoCredito !=<T>Credito Internet<T>
+[DM0299Tipodecliente.TipoCredito]
+Clave=DM0299Tipodecliente.TipoCredito
+Nombre=TipoCredito
+Visible=S
+TamanoValidacion=10
+Tamano=50
+AyudaForma=DM0299TipoClienteTBL
+AyudaVista=DM0299Tipodecliente
+AyudaCampo=DM0299Tipodecliente.TipoCredito
+AyudaMultiple=S
+LigaTabla=DM0299Tipodecliente
+LigaCampo=TipoCredito
+ClaveBDE=TipoCredito
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+TipoDatos=Texto
+[DM0299Tipodecliente.ID]
+Clave=DM0299Tipodecliente.ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=DM0299Tipodecliente
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=ID

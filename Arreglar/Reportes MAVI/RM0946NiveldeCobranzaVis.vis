@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0946NiveldeCobranzaVis
+Nombre=Nivel de Cobranza
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=nivelcobranza
+SQL=SELECT DISTINCT nivelcobranza<BR>from RM0946CxcInfEdoCtas<BR>where estaciontrabajo={estaciontrabajo}<BR>{si(condatos(Mavi.RM0946agente),<T>and agentecobrador in (<T>+Mavi.RM0946agente+<T>)<T>,<T><T>)}<BR>{si(condatos(Mavi.RM0946cliente),<T>and cliente in (<T> +Mavi.RM0946cliente+<T>)<T>,<T><T>)}<BR>{si(condatos(Mavi.RM0946ncobranza),<T>and nivelcobranza in (<T> +Mavi.RM0946ncobranza+<T>)<T>,<T><T>)}<BR><BR>ORDER BY nivelcobranza
+[nivelcobranza]
+Clave=nivelcobranza
+Nombre=nivelcobranza
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=nivelcobranza

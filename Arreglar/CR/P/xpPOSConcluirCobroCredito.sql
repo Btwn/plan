@@ -1,0 +1,35 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE xpPOSConcluirCobroCredito
+@ID				varchar(36),
+@Empresa		varchar(5)
+AS
+BEGIN
+DECLARE
+@Aplica				varchar(20),
+@AplicaID			varchar(20),
+@ImporteAPagar		float
+DECLARE crSE1 CURSOR LOCAL FOR
+SELECT Aplica, AplicaID, PrecioImpuestoInc
+FROM POSLVenta
+WHERE ID = @ID
+OPEN crSE1
+FETCH NEXT FROM crSE1 INTO @Aplica, @AplicaID, @ImporteAPagar
+WHILE @@FETCH_STATUS <> -1
+BEGIN
+IF @@FETCH_STATUS <> -2
+BEGIN
+UPDATE Cxc SET Saldo = Saldo - @ImporteAPagar WHERE Mov = @Aplica AND MovID = @AplicaID AND Empresa = @Empresa
+END
+FETCH NEXT FROM crSE1 INTO @Aplica, @AplicaID, @ImporteAPagar
+END
+CLOSE crSE1
+DEALLOCATE crSE1
+END
+

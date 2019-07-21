@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0227GrupoVis
+Nombre=Grupos
+Modulos=COMS
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Grupo
+SQL=Select Distinct Grupo From Art Where Categoria <> <T>Venta<T><BR>{Si(ConDatos(Mavi.DM0227Grupo),<T> And Familia in (<T>+Mavi.DM0227Familia+<T>)<T>,<T> <T>)}<BR>{Si(ConDatos(Mavi.DM0227Linea),<T> And Linea in (<T>+Mavi.DM0227Linea+<T>)<T>,<T> <T>)}<BR>{Si(ConDatos(Mavi.RM1096Categorias),<T> And Categoria in (<T>+Mavi.RM1096Categorias+<T>)<T>,<T> <T>)}<BR>Order By Grupo
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Grupo

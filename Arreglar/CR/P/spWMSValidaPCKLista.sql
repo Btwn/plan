@@ -1,0 +1,26 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spWMSValidaPCKLista
+@Tarima         varchar(100)
+
+AS BEGIN
+DECLARE
+@TarimaW      varchar(100),
+@MovW         varchar(100),
+@MovIDW       varchar(100),
+@ClaveW       varchar(100)
+SELECT a.ID, a.Mov, a.MovID, b.Tarima, c.Clave, a.Estatus
+FROM TMA a
+LEFT OUTER JOIN TMAD b ON b.ID=a.ID
+JOIN MovTipo c ON c.Modulo='TMA' AND c.Mov=a.Mov AND c.Clave='TMA.OPCKTARIMA'
+WHERE a.Estatus='PENDIENTE'
+AND Tarima=@Tarima
+RETURN
+END
+

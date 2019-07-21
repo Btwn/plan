@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=ConceptosCxcMAVI
+Nombre=Conceptos de CxC
+Modulos=(Todos)
+Singular=Conceptos de CxC
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Concepto
+SQL=SELECT <BR>  Concepto<BR>FROM<BR>  Concepto<BR>WHERE <BR>  Modulo IN (<T>CxC<T>, <T>VTAS<T>)<BR><BR>ORDER BY <BR>  Modulo
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Concepto

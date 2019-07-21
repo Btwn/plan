@@ -1,0 +1,62 @@
+[Vista]
+Icono=0
+Clave=DM0214ImportaZonasVis
+Nombre=DM0214ImportaZonasVis
+Modulos=(Todos)
+ListaTablas=DM0214ZonasValidacion
+TablaPrincipal=DM0214ZonasValidacion
+UsoCapturas=S
+ListaCampos=DM0214ZonasValidacion.Id<BR>DM0214ZonasValidacion.NivelCobranza<BR>DM0214ZonasValidacion.Valida<BR>DM0214ZonasValidacion.EstacionTrab
+SQL=SELECT<BR>  DM0214ZonasValidacion.Id,<BR>  DM0214ZonasValidacion.NivelCobranza,<BR>  DM0214ZonasValidacion.Valida,<BR>  DM0214ZonasValidacion.EstacionTrab<BR><BR>FROM<BR>  ZonaCobranzaMenVal DM0214ZonasValidacion<BR>   where valida = <T>tomarnivel<T>
+[DM0214ZonasValidacion.Valida]
+Clave=DM0214ZonasValidacion.Valida
+LigaTabla=DM0214ZonasValidacion
+LigaCampo=Valida
+Tamano=40
+ClaveBDE=Valida
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorRefrescar=<T>ListaNivel<T>
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+ValorPorOmision=<T>ListaNivel<T>
+[DM0214ZonasValidacion.NivelCobranza]
+Clave=DM0214ZonasValidacion.NivelCobranza
+LigaTabla=DM0214ZonasValidacion
+LigaCampo=NivelCobranza
+Tamano=100
+ClaveBDE=NivelCobranza
+TamanoValidacion=10
+Alineacion=por Omisión
+ListaRefrescar=DM0214ZonasValidacion.Valida<BR>DM0214ZonasValidacion.EstacionTrab
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Expresion
+ConRefrescar=S
+AlCambiar=avanzarcaptura<BR>asigna(info.nivel,DM0214ZonasValidacion.NivelCobranza)
+Formula=SQLEnLista( <T>Select nombre<BR>    From<BR>    (--N<BR>       SELECT Nombre FROM NivelCobranzaMavi<BR>      UNION<BR>       SELECT Nombre FROM NivelesEspecialesCobranzaMavi WHERE NivelOrigen IN(SELECT Nombre FROM NivelCobranzaMavi)<BR>      UNION <BR>      Select :te  as nombre<BR>    )N<T>,<T>TODO<T> )
+[DM0214ZonasValidacion.EstacionTrab]
+Clave=DM0214ZonasValidacion.EstacionTrab
+LigaTabla=DM0214ZonasValidacion
+LigaCampo=EstacionTrab
+TipoDatos=Numérico
+ClaveBDE=EstacionTrab
+TamanoValidacion=10
+Alineacion=por Omisión
+ValorPorOmision=EstacionTrabajo
+ValorRefrescar=EstacionTrabajo
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0214ZonasValidacion.Id]
+Clave=DM0214ZonasValidacion.Id
+Nombre=Id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=DM0214ZonasValidacion
+LigaCampo=Id
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=Id

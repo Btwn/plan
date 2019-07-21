@@ -1,0 +1,146 @@
+
+[Vista]
+Icono=0
+Clave=RM1132ACREDITablaDeConfiguracionVis
+Modulos=(Todos)
+ListaTablas=RM1132ACREDITablaDeConfiguracionTbl
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=RM1132ACREDITablaDeConfiguracionTbl.IdTablaConfiguracionBF<BR>RM1132ACREDITablaDeConfiguracionTbl.SaldoActual<BR>RM1132ACREDITablaDeConfiguracionTbl.Movimientos<BR>RM1132ACREDITablaDeConfiguracionTbl.Meses<BR>RM1132ACREDITablaDeConfiguracionTbl.MontoAbonos<BR>RM1132ACREDITablaDeConfiguracionTbl.DValDia<BR>RM1132ACREDITablaDeConfiguracionTbl.MHDV<BR>RM1132ACREDITablaDeConfiguracionTbl.MHDVxPeriodo<BR>RM1132ACREDITablaDeConfiguracionTbl.ApoyoCobranza
+TablaPrincipal=RM1132ACREDITablaDeConfiguracionTbl
+
+
+
+
+
+
+
+
+
+
+SQL=SELECT<BR>RM1132ACREDITablaDeConfiguracionTbl.IdTablaConfiguracionBF,<BR>RM1132ACREDITablaDeConfiguracionTbl.SaldoActual,<BR>RM1132ACREDITablaDeConfiguracionTbl.Movimientos,<BR>RM1132ACREDITablaDeConfiguracionTbl.Meses,<BR>RM1132ACREDITablaDeConfiguracionTbl.MontoAbonos,<BR>RM1132ACREDITablaDeConfiguracionTbl.DValDia,<BR>RM1132ACREDITablaDeConfiguracionTbl.MHDV,<BR>RM1132ACREDITablaDeConfiguracionTbl.MHDVxPeriodo,<BR>RM1132ACREDITablaDeConfiguracionTbl.ApoyoCobranza<BR>FROM CREDIDTablaConfiguracionBF RM1132ACREDITablaDeConfiguracionTbl
+[RM1132ACREDITablaDeConfiguracionTbl.SaldoActual]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.SaldoActual
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=SaldoActual
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=SaldoActual
+
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Saldo Actual
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+
+
+[RM1132ACREDITablaDeConfiguracionTbl.MontoAbonos]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.MontoAbonos
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=MontoAbonos
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=MontoAbonos
+
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Monto Abonos
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+[RM1132ACREDITablaDeConfiguracionTbl.DValDia]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.DValDia
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=DValDia
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=DValDia
+
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=DV al Dia
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+
+[RM1132ACREDITablaDeConfiguracionTbl.MHDVxPeriodo]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.MHDVxPeriodo
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=MHDVxPeriodo
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=MHDVxPeriodo
+
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=MHDV x Periodo
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+TipoCampo=Tabla
+[RM1132ACREDITablaDeConfiguracionTbl.ApoyoCobranza]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.ApoyoCobranza
+Nombre=Apoyo Cobranza
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=ApoyoCobranza
+ClaveBDE=ApoyoCobranza
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+
+TipoCampo=Tabla
+
+
+
+
+
+
+[RM1132ACREDITablaDeConfiguracionTbl.IdTablaConfiguracionBF]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.IdTablaConfiguracionBF
+Nombre=IdTablaConfiguracionBF
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=IdTablaConfiguracionBF
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=IdTablaConfiguracionBF
+
+[RM1132ACREDITablaDeConfiguracionTbl.Movimientos]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.Movimientos
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=Movimientos
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Movimientos
+
+[RM1132ACREDITablaDeConfiguracionTbl.Meses]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.Meses
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=Meses
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Meses
+
+[RM1132ACREDITablaDeConfiguracionTbl.MHDV]
+Clave=RM1132ACREDITablaDeConfiguracionTbl.MHDV
+LigaTabla=RM1132ACREDITablaDeConfiguracionTbl
+LigaCampo=MHDV
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=MHDV

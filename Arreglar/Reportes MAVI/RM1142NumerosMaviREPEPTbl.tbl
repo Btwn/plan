@@ -1,0 +1,15 @@
+[Tabla]
+Icono=0
+Clave=RM1142NumerosMaviREPEPTbl
+Archivo=RM1142NumerosMaviREPEP
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Numero
+LlavePrimaria=Numero
+SQL=SELECT<BR>  Numero<BR><BR>FROM<BR>  RM1142NumerosMaviREPEP
+[Numero]
+Clave=Numero
+Nombre=Numero Telefónico
+Visible=S
+TamanoValidacion=20
+Tamano=20

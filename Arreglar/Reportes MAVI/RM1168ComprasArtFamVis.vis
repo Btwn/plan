@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM1168ComprasArtFamVis
+Nombre=RM1168ComprasArtFamVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=familia
+CamposBusquedaRapida=familia
+SQL=SELECT  DISTINCT Familia <BR>  FROM Art WITH(NOLOCK)<BR>  WHERE Categoria = <T>VENTA<T><BR>  AND Grupo = <T>MERCANCIA DE LINEA<T><BR>  AND Estatus IN (<T>ALTA<T>,<T>BLOQUEADO<T>)<BR>  AND Familia NOT IN (<T><T>)<BR>  ORDER BY Familia
+[familia]
+Clave=familia
+Nombre=familia
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=familia

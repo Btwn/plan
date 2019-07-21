@@ -1,0 +1,20 @@
+
+[Vista]
+Icono=0
+Clave=RM1155PuestoVis
+Nombre=Puesto
+VistaIndependiente=S
+
+ListaCampos=Descripcion
+CamposBusquedaRapida=Descripcion
+SQL=SELECT Descripcion FROM Comercializadora.dbo.Puesto WITH(NOLOCK) WHERE 1=1
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Descripcion

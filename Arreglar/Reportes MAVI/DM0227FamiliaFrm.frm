@@ -1,0 +1,115 @@
+[Forma]
+Clave=DM0227FamiliaFrm
+Nombre=Familias
+Icono=0
+BarraHerramientas=S
+Modulos=COMS
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaCarpetas=Familia
+CarpetaPrincipal=Familia
+PosicionInicialIzquierda=340
+PosicionInicialArriba=110
+PosicionInicialAlturaCliente=288
+PosicionInicialAncho=471
+ListaAcciones=Seleccion
+[Familia]
+Estilo=Iconos
+Clave=Familia
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0227FamiliaVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosConRejilla=S
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Familia
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaRespetarFiltros=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaRespetarUsuario=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+FiltroIgnorarEmpresas=S
+CarpetaVisible=S
+MenuLocal=S
+ListaAcciones=todo<BR>quitar
+[Familia.Familia]
+Carpeta=Familia
+Clave=Familia
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Familia.Columnas]
+0=-2
+[Acciones.Seleccion.asing]
+Nombre=asing
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccion.regis]
+Nombre=regis
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Familia<T>)
+Activo=S
+Visible=S
+[Acciones.Seleccion]
+Nombre=Seleccion
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+ListaAccionesMultiples=asing<BR>regis<BR>selec
+Activo=S
+Visible=S
+[Acciones.Seleccion.selec]
+Nombre=selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Expresion=Asigna(Mavi.DM0227Familia,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+Activo=S
+Visible=S
+[Acciones.todo]
+Nombre=todo
+Boton=0
+NombreDesplegar=Seleccionar &Todo
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+[Acciones.quitar]
+Nombre=quitar
+Boton=0
+NombreDesplegar=&Quitar Seleccion
+EnMenu=S
+TipoAccion=Controles Captura
+ClaveAccion=Quitar Seleccion
+Activo=S
+Visible=S

@@ -1,0 +1,19 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE SPWebPaginaComunidadCargarCategorias
+@Origen       varchar(255) = null,
+@Pagina       Varchar(20) = null
+
+AS BEGIN
+IF UPPER(@Origen)='MANUAL'
+SELECT DISTINCT Categoria FROM WebArticulo WHERE     (Categoria IS NOT NULL) AND (Categoria <> '')
+IF UPPER(@Origen)='LISTA'
+SELECT DISTINCT Categoria FROM WebPaginaComunidadCat WHERE pagina=@Pagina
+end
+

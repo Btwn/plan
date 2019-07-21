@@ -1,0 +1,58 @@
+[Tabla]
+Icono=0
+Clave=PropreCondicionGrupo
+Nombre=PropreCondicionGrupo
+Archivo=PropreCondicionGrupo
+Modulos=(Todos)
+Singular=PropreCondicionGrupo
+TipoTabla=Maestros
+ListaCampos=CondicionGrupo<BR>PorcentajeEspecial<BR>CalculoBase
+LlavePrimaria=CondicionGrupo
+ListaRelaciones=Grupo
+SQL=SELECT<BR>  CondicionGrupo,<BR>  PorcentajeEspecial,<BR>  CalculoBase<BR><BR>FROM<BR>  PropreCondicionGrupo
+[CondicionGrupo]
+Clave=CondicionGrupo
+Nombre=CondicionGrupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+[PorcentajeEspecial]
+Clave=PorcentajeEspecial
+Nombre=Porcentaje Especial
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=CalculoBase
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+OpcionesValidar=S
+ConRefrescar=S
+ListaRefrescar=CalculoBase
+[CalculoBase]
+Clave=CalculoBase
+Nombre=Calculo Base
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorRefrescar=Si<BR>  no PorcentajeEspecial<BR>Entonces<BR>  Nulo<BR>Sino<BR>  CalculoBase<BR>Fin
+CondicionEdicion=PorcentajeEspecial
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoLista
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionUsaTabla=S
+ValidacionTablas=PropreCondicionGrupoD
+[Relaciones.Grupo]
+TipoRelacion=Opcional
+LlaveLocal=CalculoBase
+Clave=Grupo
+TablaRemota=PropreCondicionGrupoD
+LlaveRemota=CondicionGrupo

@@ -1,0 +1,15 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW vwPNetRecursos
+AS
+SELECT tiprec.Recurso, rec.Nombre,   tiprec.Descripcion
+FROM Recurso rec  INNER JOIN pNetTipoUserRecurso tiprec ON (rec.Recurso = tiprec.Recurso)
+WHERE rec.Estatus = 'ALTA'
+AND rec.Nombre IS NOT NULL AND rec.Nombre <> ''
+

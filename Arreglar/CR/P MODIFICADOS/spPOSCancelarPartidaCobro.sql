@@ -1,0 +1,40 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spPOSCancelarPartidaCobro
+@Estacion           int,
+@ID                 varchar(36)
+
+AS
+BEGIN
+DECLARE
+@RID          int,
+@FormaPago    varchar(50),
+@EsLDI        bit,
+@EsVFA        bit,
+@Ok           int,
+@OkRef        varchar(255)
+SELECT @RID = MAX(RID)
+FROM POSLCobro WITH (NOLOCK)
+WHERE ID = @ID
+SELECT @FormaPago = FormaPago
+FROM POSLCobro POSLCobro WITH (NOLOCK)
+WHERE ID = @ID AND RID = @RID
+IF EXISTS(SELECT * FROM POSLDIFormaPago POSLCobro WITH (NOLOCK) WHERE FormaPago = @FormaPago)
+SELECT @EsLDI = 1
+IF EXISTS(SELECT * FROM POSVFAFormaPago POSLCobro WITH (NOLOCK) WHERE FormaPago = @FormaPago)
+SELECT @EsVFA = 1
+IF ISNULL(@EsLDI,0) = 1
+EXEC spPOSCancelarCobroLDI  @ID, @RID, @Estacion, @Ok OUTPUT, @OkRef  OUTPUT
+IF ISNULL(@EsVFA,0) = 1
+EXEC spPOSCancelarVFA @ID, @RID, @Estacion, @Ok OUTPUT, @OkRef  OUTPUT
+IF @Ok IS NULL
+DELETE POSLCobro WHERE ID = @ID AND RID = @RID
+SELECT @Ok,@OKref
+END
+

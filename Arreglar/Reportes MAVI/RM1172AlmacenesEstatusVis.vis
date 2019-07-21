@@ -1,0 +1,26 @@
+
+[Vista]
+Icono=0
+Clave=RM1172AlmacenesEstatusVis
+Modulos=(Todos)
+
+ListaCampos=RM1172AlmacenesTbl.Estatus
+Nombre=RM1172EstatusVis
+ListaTablas=RM1172AlmacenesTbl
+TablaPrincipal=RM1172AlmacenesTbl
+UsoReportes=S
+UsarJOIN=S
+
+
+
+
+SQL=SELECT DISTINCT<BR>RM1172AlmacenesTbl.Estatus<BR>FROM Alm RM1172AlmacenesTbl WITH(NOLOCK)<BR>ORDER BY RM1172AlmacenesTbl.Estatus ASC
+[RM1172AlmacenesTbl.Estatus]
+Clave=RM1172AlmacenesTbl.Estatus
+LigaTabla=RM1172AlmacenesTbl
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus

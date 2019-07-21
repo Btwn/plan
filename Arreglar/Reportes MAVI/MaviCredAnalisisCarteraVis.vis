@@ -1,0 +1,1010 @@
+[Vista]
+Icono=0
+Clave=MaviCredAnalisisCarteraVis
+Nombre=Analisis Antiguedad de Saldos
+Modulos=(Todos)
+Singular=Información
+ListaCampos=CxcInfo.ID<BR>CxcInfo.Empresa<BR>CxcInfo.Cliente<BR>CxcInfo.Moneda<BR>CxcInfo.Mov<BR>CxcInfo.MovID<BR>CxcInfo.FechaEmision<BR>CxcInfo.Vencimiento<BR>CxcInfo.DiasMoratorios<BR>CxcInfo.Saldo<BR>CxcInfo.Referencia<BR>CxcInfo.Estatus<BR>Cte.Nombre<BR>Cte.Numero<BR>Cte.Direccion<BR>Cte.Colonia<BR>Cte.CodigoPostal<BR>Cte.Poblacion<BR>Cte.Estado<BR>Cte.Pais<BR>Cte.Zona<BR>Cte.RFC<BR>Cte.Telefonos<BR>Cte.Fax<BR>Cte.Categoria<BR>Cte.Familia<BR>Cte.Grupo<BR>Importe<BR>ClienteEnviarA<BR>Categoria_1<BR>CanalVenta
+ListaCalculados=Dias<BR>Moratorios<BR>AlCorriente<BR>Plazo1<BR>Plazo2<BR>Plazo3<BR>Plazo4<BR>Plazo5<BR>PlazoMayor<BR>NPlazo1<BR>NPlazo2<BR>NPlazo3<BR>NPlazoMayor<BR>Mas30<BR>C30<BR>CAT<BR>CATCONT<BR>CATCREDEXT<BR>CATCREDMEN<BR>CATINST<BR>CATMAY<BR>Contmas30<BR>ContC30<BR>contnplazo1<BR>contnplazo2<BR>contnplazo3<BR>contnplazomay<BR>extmas30<BR>extc30<BR>extnplazo1<BR>extnplazo2<BR>extnplazo3<BR>extnplazomay<BR>menmas30<BR>menc30<BR>mennplazo1<BR>mennplazo2<BR>mennplazo3<BR>mennplazomay<BR>instmas30<BR>instc30<BR>instnplazo1<BR>instnplazo2<BR>instnplazo3<BR>instnplazomay<BR>maymas30<BR>mayc30<BR>maynplazo1<BR>maynplazo2<BR>maynplazo3<BR>maynplazomay
+ListaRelaciones=CxcInfo.Cte
+VistaIndependiente=S
+SQL=SELECT<BR>  CxcInfo.ID,<BR>  CxcInfo.Empresa,<BR>  CxcInfo.Cliente,<BR>  CxcInfo.ClienteEnviarA,<BR>  VentasCanalMAVI.Cadena,<BR>  CanalVenta=VentasCanalMAVI.Categoria,<BR>  CxcInfo.Moneda,<BR>  CxcInfo.Mov,<BR>  CxcInfo.MovID,<BR>  CxcInfo.FechaEmision,<BR>  CxcInfo.Vencimiento,<BR>  CxcInfo.DiasMoratorios,<BR>  CxcInfo.Saldo,<BR>  CxcInfo.Referencia,<BR>  CxcInfo.Estatus,<BR>  Importe = Cxc.Importe + Cxc.Impuestos,<BR>  Cte.Nombre,<BR>  Cte.Numero,<BR>  Cte.Direccion,<BR>  Cte.Colonia,<BR>  Cte.CodigoPostal,<BR>  Cte.Poblacion,<BR>  Cte.Estado,<BR>  Cte.Pais,<BR>  Cte.Zona,<BR>  Cte.RFC,<BR>  Cte.Telefonos,<BR>  Cte.Fax,<BR>  Cte.Categoria,<BR>  Cte.Familia,<BR>  Cte.Grupo<BR><BR>FROM<BR>  CxcInfo<BR>  JOIN Cte ON CxcInfo.Cliente=Cte.Cliente<BR>  jOIN CXC ON CXC.ID = CXCINFO.ID<BR>  INNE<CONTINUA>
+SQL002=<CONTINUA>R jOIN VentasCanalMAVI ON VentasCanalMAVI.ID=CxcInfo.ClienteEnviarA<BR><BR>WHERE <BR>(CxcInfo.Mov LIKE <T>FACT%<T> OR  <BR>CxcInfo.Mov LIKE <T>DOC%<T> OR CxcInfo.Mov LIKE <T>CREDILA%<T>)<BR>And CxcInfo.Estatus = <T>Pendiente<T><BR>order by canalventa asc
+
+[Dias]
+Clave=Dias
+TipoDatos=Numérico
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Días
+Formula=Si((CxcInfo.Saldo>0.0) y ConDatos(CxcInfo.Vencimiento), Hoy-ExtraeFecha(CxcInfo.Vencimiento))
+
+[Moratorios]
+Clave=Moratorios
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Moratorios
+FormatoValidacion=(Monetario)
+Formula=Si((CxcInfo.DiasMoratorios>0) y (Config.CxcMoratoriosTasa>0), CxcInfo.Saldo*CxcInfo.DiasMoratorios*(Config.CxcMoratoriosTasa/100))
+
+[Plazo1]
+Clave=Plazo1
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Plazo 1
+Monetario=S
+Formula=Si((Config.CxcPlazo1>0) y (Dias>0) y (Dias<=Config.CxcPlazo1), CxcInfo.Saldo)
+
+[Plazo2]
+Clave=Plazo2
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Plazo 2
+Monetario=S
+Formula=Si((Config.CxcPlazo2>0) y (Dias>Config.CxcPlazo1) y (Dias<=Config.CxcPlazo2), CxcInfo.Saldo)
+
+[Plazo3]
+Clave=Plazo3
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Plazo 3
+Monetario=S
+Formula=Si((Config.CxcPlazo3>0) y (Dias>Config.CxcPlazo2) y (Dias<=Config.CxcPlazo3), CxcInfo.Saldo)
+
+[Plazo4]
+Clave=Plazo4
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Plazo 4
+Monetario=S
+Formula=Si((Config.CxcPlazo4>0) y (Dias>Config.CxcPlazo3) y (Dias<=Config.CxcPlazo4), CxcInfo.Saldo)
+
+[AlCorriente]
+Clave=AlCorriente
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Al Corriente
+Monetario=S
+Formula=CxcInfo.Saldo
+
+[PlazoMayor]
+Clave=PlazoMayor
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+Monetario=S
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Mayor Plazo 5
+Formula=Si(Dias>360, CxcInfo.Saldo)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[CxcInfo.ID]
+Clave=CxcInfo.ID
+LigaTabla=CxcInfo
+LigaCampo=ID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=ID
+[CxcInfo.Empresa]
+Clave=CxcInfo.Empresa
+LigaTabla=CxcInfo
+LigaCampo=Empresa
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=5
+ClaveBDE=Empresa
+[CxcInfo.Cliente]
+Clave=CxcInfo.Cliente
+LigaTabla=CxcInfo
+LigaCampo=Cliente
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cliente
+[CxcInfo.Moneda]
+Clave=CxcInfo.Moneda
+LigaTabla=CxcInfo
+LigaCampo=Moneda
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Moneda
+[CxcInfo.Mov]
+Clave=CxcInfo.Mov
+LigaTabla=CxcInfo
+LigaCampo=Mov
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=21
+ClaveBDE=Mov
+[CxcInfo.MovID]
+Clave=CxcInfo.MovID
+LigaTabla=CxcInfo
+LigaCampo=MovID
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovID
+[CxcInfo.FechaEmision]
+Clave=CxcInfo.FechaEmision
+LigaTabla=CxcInfo
+LigaCampo=FechaEmision
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=FechaEmision
+[CxcInfo.Vencimiento]
+Clave=CxcInfo.Vencimiento
+LigaTabla=CxcInfo
+LigaCampo=Vencimiento
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=FechaHora
+ClaveBDE=Vencimiento
+[CxcInfo.DiasMoratorios]
+Clave=CxcInfo.DiasMoratorios
+LigaTabla=CxcInfo
+LigaCampo=DiasMoratorios
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=DiasMoratorios
+[CxcInfo.Saldo]
+Clave=CxcInfo.Saldo
+LigaTabla=CxcInfo
+LigaCampo=Saldo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=NumMonetario
+ClaveBDE=Saldo
+[CxcInfo.Referencia]
+Clave=CxcInfo.Referencia
+LigaTabla=CxcInfo
+LigaCampo=Referencia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Referencia
+[CxcInfo.Estatus]
+Clave=CxcInfo.Estatus
+LigaTabla=CxcInfo
+LigaCampo=Estatus
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus
+[Cte.Nombre]
+Clave=Cte.Nombre
+LigaTabla=Cte
+LigaCampo=Nombre
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre
+[Cte.Numero]
+Clave=Cte.Numero
+LigaTabla=Cte
+LigaCampo=Numero
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Numero
+[Cte.Direccion]
+Clave=Cte.Direccion
+LigaTabla=Cte
+LigaCampo=Direccion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Direccion
+[Cte.Colonia]
+Clave=Cte.Colonia
+LigaTabla=Cte
+LigaCampo=Colonia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Colonia
+[Cte.CodigoPostal]
+Clave=Cte.CodigoPostal
+LigaTabla=Cte
+LigaCampo=CodigoPostal
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=CodigoPostal
+[Cte.Poblacion]
+Clave=Cte.Poblacion
+LigaTabla=Cte
+LigaCampo=Poblacion
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Poblacion
+[Cte.Estado]
+Clave=Cte.Estado
+LigaTabla=Cte
+LigaCampo=Estado
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Estado
+[Cte.Pais]
+Clave=Cte.Pais
+LigaTabla=Cte
+LigaCampo=Pais
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Pais
+[Cte.Zona]
+Clave=Cte.Zona
+LigaTabla=Cte
+LigaCampo=Zona
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Zona
+[Cte.RFC]
+Clave=Cte.RFC
+LigaTabla=Cte
+LigaCampo=RFC
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=RFC
+[Cte.Telefonos]
+Clave=Cte.Telefonos
+LigaTabla=Cte
+LigaCampo=Telefonos
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Telefonos
+[Cte.Fax]
+Clave=Cte.Fax
+LigaTabla=Cte
+LigaCampo=Fax
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Fax
+[Cte.Categoria]
+Clave=Cte.Categoria
+LigaTabla=Cte
+LigaCampo=Categoria
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria
+[Cte.Familia]
+Clave=Cte.Familia
+LigaTabla=Cte
+LigaCampo=Familia
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia
+[Cte.Grupo]
+Clave=Cte.Grupo
+LigaTabla=Cte
+LigaCampo=Grupo
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Grupo
+[Relaciones.CxcInfo.Cte]
+Clave=CxcInfo.Cte
+TablaRemota=Cte
+LlaveLocal=CxcInfo.Cliente
+LlaveRemota=Cliente
+TipoRelacion=Forzosa
+[Plazo5]
+Clave=Plazo5
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Plazo5
+Formula=Si((360>0) y (Dias>Config.CxcPlazo4) y (Dias<=360), CxcInfo.Saldo)
+[NPlazo1]
+Clave=NPlazo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=NPlazo1
+Formula=Si((Mavi.VarPlazo1>0) y (Dias>0) y (Dias<=Mavi.VarPlazo1), CxcInfo.Saldo)
+[NPlazo2]
+Clave=NPlazo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=NPlazo2
+Formula=Si((Mavi.VarPlazo2>0) y (Dias>Mavi.VarPlazo1) y (Dias<=Mavi.VarPlazo2), CxcInfo.Saldo)
+[NPlazo3]
+Clave=NPlazo3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=NPlazo3
+Formula=Si((Mavi.VarPlazo3>0) y (Dias>Mavi.VarPlazo2) y (Dias<=Mavi.VarPlazo3), CxcInfo.Saldo)
+[NPlazoMayor]
+Clave=NPlazoMayor
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=NPlazoMayor
+Formula=Si(Dias>360, CxcInfo.Saldo)
+[Mas30]
+Clave=Mas30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Mas30
+Formula=Si (Dias<0)<BR>entonces<BR>   si (Dias<(-30))<BR>     entonces<BR>      CxcInfo.Saldo<BR>   fin<BR>fin
+[C30]
+Clave=C30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=C30
+Formula=Si (Dias<0)<BR>entonces<BR>   si (Dias>(-30))<BR>     entonces<BR>      CxcInfo.Saldo<BR>   fin<BR>fin
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+ClaveBDE=Empresa
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Cliente
+[Moneda]
+Clave=Moneda
+Nombre=Moneda
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Moneda
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=21
+TipoDatos=Texto
+Tamano=21
+ClaveBDE=Mov
+[MovID]
+Clave=MovID
+Nombre=MovID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovID
+[FechaEmision]
+Clave=FechaEmision
+Nombre=FechaEmision
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaEmision
+[Vencimiento]
+Clave=Vencimiento
+Nombre=Vencimiento
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=Vencimiento
+[DiasMoratorios]
+Clave=DiasMoratorios
+Nombre=DiasMoratorios
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=DiasMoratorios
+[Saldo]
+Clave=Saldo
+Nombre=Saldo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Saldo
+[Referencia]
+Clave=Referencia
+Nombre=Referencia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Referencia
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus
+[Importe]
+Clave=Importe
+Nombre=Importe
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=Importe
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre
+[Numero]
+Clave=Numero
+Nombre=Numero
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Numero
+[Direccion]
+Clave=Direccion
+Nombre=Direccion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Direccion
+[Colonia]
+Clave=Colonia
+Nombre=Colonia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Colonia
+[CodigoPostal]
+Clave=CodigoPostal
+Nombre=CodigoPostal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=CodigoPostal
+[Poblacion]
+Clave=Poblacion
+Nombre=Poblacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Poblacion
+[Estado]
+Clave=Estado
+Nombre=Estado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Estado
+[Pais]
+Clave=Pais
+Nombre=Pais
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Pais
+[Zona]
+Clave=Zona
+Nombre=Zona
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Zona
+[RFC]
+Clave=RFC
+Nombre=RFC
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=RFC
+[Telefonos]
+Clave=Telefonos
+Nombre=Telefonos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Telefonos
+[Fax]
+Clave=Fax
+Nombre=Fax
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Fax
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Familia
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Grupo
+[CAT]
+Clave=CAT
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=C
+Formula=Si(Cte.Categoria = <T>NULL<T>, CxcInfo.Saldo,0)
+[CATCONT]
+Clave=CATCONT
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=C
+Formula=Si(Cte.Categoria = <T>CONTADO<T>, CxcInfo.Saldo,0)
+[CATCREDEXT]
+Clave=CATCREDEXT
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=C
+Formula=Si(Cte.Categoria = <T>CREDITO EXTERNO<T>, CxcInfo.Saldo,0)
+[CATCREDMEN]
+Clave=CATCREDMEN
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=CREDITO MENUDEO
+Formula=Si(Cte.Categoria en(<T>CREDITO MENUDEO<T>,<T>ASOCIADOS<T>), CxcInfo.Saldo,0)
+[CATINST]
+Clave=CATINST
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=C
+Formula=Si(Cte.Categoria = <T>INSTITUCIONES<T>, CxcInfo.Saldo,0)
+[CATMAY]
+Clave=CATMAY
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=C
+Formula=Si(Cte.Categoria = <T>MAYOREO<T>, CxcInfo.Saldo,0)
+[Contmas30]
+Clave=Contmas30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Contmas30
+Formula=Si(Cte.Categoria = <T>CONTADO<T>, Mas30,0)
+[ContC30]
+Clave=ContC30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=ContC30
+Formula=Si(Cte.Categoria = <T>CONTADO<T>, C30,0)
+[contnplazo1]
+Clave=contnplazo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=contnplazo1
+Formula=Si(Cte.Categoria = <T>CONTADO<T>, NPlazo1,0)
+[contnplazo2]
+Clave=contnplazo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=contnplazo2
+Formula=Si(Cte.Categoria = <T>CONTADO<T>, NPlazo2,0)
+[contnplazo3]
+Clave=contnplazo3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=contnplazo3
+Formula=Si(Cte.Categoria = <T>CONTADO<T>, NPlazo3,0)
+[contnplazomay]
+Clave=contnplazomay
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=contnplazomay
+Formula=Si(Cte.Categoria = <T>CONTADO<T>, NPlazoMayor,0)
+[extmas30]
+Clave=extmas30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=extmas30
+Formula=Si(Cte.Categoria = <T>CREDITO EXTERNO<T>, mas30,0)
+[extc30]
+Clave=extc30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=extc30
+Formula=Si(Cte.Categoria = <T>CREDITO EXTERNO<T>, c30,0)
+[extnplazo1]
+Clave=extnplazo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=extnplazo1
+Formula=Si(Cte.Categoria = <T>CREDITO EXTERNO<T>, nplazo1,0)
+[extnplazo2]
+Clave=extnplazo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=extnplazo2
+Formula=Si(Cte.Categoria = <T>CREDITO EXTERNO<T>, nplazo2,0)
+[extnplazo3]
+Clave=extnplazo3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=extnplazo3
+Formula=Si(Cte.Categoria = <T>CREDITO EXTERNO<T>, nplazo3,0)
+[extnplazomay]
+Clave=extnplazomay
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=extnplazomay
+Formula=Si(Cte.Categoria = <T>CREDITO EXTERNO<T>, nplazomayor,0)
+[menmas30]
+Clave=menmas30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=menmas30
+Formula=Si(Cte.Categoria en(<T>CREDITO MENUDEO<T>,<T>ASOCIADOS<T>), mas30,0)
+[menc30]
+Clave=menc30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=menc30
+Formula=Si(Cte.Categoria en(<T>CREDITO MENUDEO<T>,<T>ASOCIADOS<T>), c30,0)
+[mennplazo1]
+Clave=mennplazo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=mennplazo1
+Formula=Si(Cte.Categoria en(<T>CREDITO MENUDEO<T>,<T>ASOCIADOS<T>), nplazo1,0)
+[mennplazo2]
+Clave=mennplazo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=mennplazo2
+Formula=Si(Cte.Categoria en(<T>CREDITO MENUDEO<T>,<T>ASOCIADOS<T>), nplazo2,0)
+[mennplazo3]
+Clave=mennplazo3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=mennplazo3
+Formula=Si(Cte.Categoria en(<T>CREDITO MENUDEO<T>,<T>ASOCIADOS<T>), nplazo3,0)
+[mennplazomay]
+Clave=mennplazomay
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=mennplazomay
+Formula=Si(Cte.Categoria en(<T>CREDITO MENUDEO<T>,<T>ASOCIADOS<T>), nplazomayor,0)
+[instmas30]
+Clave=instmas30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=instmas30
+Formula=Si(Cte.Categoria = <T>INSTITUCIONES<T>, mas30,0)
+[instc30]
+Clave=instc30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=instc30
+Formula=Si(Cte.Categoria = <T>INSTITUCIONES<T>, c30,0)
+[instnplazo1]
+Clave=instnplazo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=instnplazo1
+Formula=Si(Cte.Categoria = <T>INSTITUCIONES<T>, nplazo1,0)
+[instnplazo2]
+Clave=instnplazo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=instnplazo2
+Formula=Si(Cte.Categoria = <T>INSTITUCIONES<T>, nplazo2,0)
+[instnplazo3]
+Clave=instnplazo3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=instnplazo3
+Formula=Si(Cte.Categoria = <T>INSTITUCIONES<T>, nplazo3,0)
+[instnplazomay]
+Clave=instnplazomay
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=instnplazomay
+Formula=Si(Cte.Categoria = <T>INSTITUCIONES<T>, nplazomayor,0)
+[maymas30]
+Clave=maymas30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=maymas30
+Formula=Si(Cte.Categoria = <T>MAYOREO<T>, mas30,0)
+[mayc30]
+Clave=mayc30
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=mayc30
+Formula=Si(Cte.Categoria = <T>MAYOREO<T>, c30,0)
+[maynplazo1]
+Clave=maynplazo1
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=maynplazo1
+Formula=Si(Cte.Categoria = <T>MAYOREO<T>, nplazo1,0)
+[maynplazo2]
+Clave=maynplazo2
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=maynplazo2
+Formula=Si(Cte.Categoria = <T>MAYOREO<T>, nplazo2,0)
+[maynplazo3]
+Clave=maynplazo3
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=maynplazo3
+Formula=Si(Cte.Categoria = <T>MAYOREO<T>, nplazo3,0)
+[maynplazomay]
+Clave=maynplazomay
+TipoDatos=NumFlotante
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=maynplazomay
+Formula=Si(Cte.Categoria = <T>MAYOREO<T>, nplazomayor,0)
+[ClienteEnviarA]
+Clave=ClienteEnviarA
+Nombre=ClienteEnviarA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ClienteEnviarA
+[Categoria_1]
+Clave=Categoria_1
+Nombre=Categoria_1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria_1
+[CanalVenta]
+Clave=CanalVenta
+Nombre=CanalVenta
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CanalVenta

@@ -1,0 +1,154 @@
+[Forma]
+Clave=DM0229CambioSeccionCteFrm
+Nombre=DM0229 Cambio de Seccion Cliente
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Cambio
+CarpetaPrincipal=Cambio
+PosicionInicialAlturaCliente=841
+PosicionInicialAncho=367
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Importar<BR>Cambiar
+BarraHerramientas=S
+PosicionInicialIzquierda=393
+PosicionInicialArriba=1
+MovModulo=(Todos)
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+ExpresionesAlMostrar=EjecutarSQLAnimado( <T>Exec SP_DM0229CambioSeccionCte :tUsu,:nok<T>,Info.Usuario,1)
+[Cambio]
+Estilo=Hoja
+Pestana=S
+PestanaOtroNombre=S
+PestanaNombre=Cambios de Seccion
+Clave=Cambio
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0229CambioSeccionCteVis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+CarpetaVisible=S
+ListaEnCaptura=DM0229CambioSeccionCteTbl.Institucion<BR>DM0229CambioSeccionCteTbl.Cliente<BR>DM0229CambioSeccionCteTbl.Categoria<BR>DM0229CambioSeccionCteTbl.Motivo
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+Filtros=S
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroTipo=General
+FiltroRespetar=S
+[Acciones.Importar]
+Nombre=Importar
+Boton=54
+NombreEnBoton=S
+NombreDesplegar=&Importar
+EnBarraAcciones=S
+Carpeta=Cambio
+TipoAccion=Controles Captura
+ClaveAccion=Enviar/Recibir Excel
+Activo=S
+Visible=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+[Cambio.DM0229CambioSeccionCteTbl.Institucion]
+Carpeta=Cambio
+Clave=DM0229CambioSeccionCteTbl.Institucion
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro
+[Cambio.DM0229CambioSeccionCteTbl.Cliente]
+Carpeta=Cambio
+Clave=DM0229CambioSeccionCteTbl.Cliente
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Cambio.DM0229CambioSeccionCteTbl.Motivo]
+Carpeta=Cambio
+Clave=DM0229CambioSeccionCteTbl.Motivo
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[Cambio.Columnas]
+0=-2
+1=-2
+2=-2
+3=-2
+4=-2
+Institucion=64
+Cliente=83
+CambioCatA=111
+Motivo=45
+Categoria=109
+Usuario=184
+[Acciones.Cambiar]
+Nombre=Cambiar
+Boton=23
+NombreDesplegar=&Cambiar
+EnBarraHerramientas=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+NombreEnBoton=S
+EspacioPrevio=S
+Multiple=S
+ListaAccionesMultiples=Cambios<BR>Expresion<BR>Actualizar Vista
+[Acciones.Cambiar.Cambios]
+Nombre=Cambios
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Guardar Cambios
+Activo=S
+Visible=S
+[Acciones.Cambiar.Expresion]
+Nombre=Expresion
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+ConCondicion=S
+EjecucionConError=S
+Expresion=EjecutarSQLAnimado( <T>Exec SP_DM0229CambioSeccionCte :tUsu,:nok<T>,Usuario, 0)
+EjecucionCondicion=SQL(<T>select Acceso From Usuario Where Usuario=:tUsr<T>, Usuario ) = <T>COBRA_GERA<T>
+EjecucionMensaje=<T>Solo el perfil de gerencia de cobranza puede modificar<T>
+[Acciones.Cambiar.Actualizar Vista]
+Nombre=Actualizar Vista
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Vista
+Activo=S
+Visible=S
+[Cambio.DM0229CambioSeccionCteTbl.Categoria]
+Carpeta=Cambio
+Clave=DM0229CambioSeccionCteTbl.Categoria
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+

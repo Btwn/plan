@@ -1,0 +1,21 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spContactoLista
+@ContactoTipo	varchar(10)
+
+AS BEGIN
+SELECT Contacto, Nombre, Tipo FROM
+(SELECT Cliente as Contacto, Nombre as Nombre, 'Cliente' as Tipo FROM Cte WITH (NOLOCK)
+UNION ALL
+SELECT Proveedor as Contacto, Nombre as Nombre, 'Proveedor' as Tipo FROM Prov WITH (NOLOCK)
+)ContactoLista
+WHERE Tipo = @ContactoTipo
+RETURN
+END
+

@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0988CXCMovimientosVis
+Nombre=Movimientos
+Modulos=(Todos)
+Singular=Movimientos
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=VALOR
+SQL=SELECT DISTINCT<BR>  Valor<BR><BR>FROM<BR>  TablaStD<BR><BR>WHERE<BR>  TablaSt=<T>GrupoMovimientos988<T><BR><BR>ORDER BY<BR>  Valor
+[VALOR]
+Clave=VALOR
+Nombre=VALOR
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=VALOR

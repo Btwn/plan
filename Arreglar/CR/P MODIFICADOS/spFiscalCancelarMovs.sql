@@ -1,0 +1,25 @@
+SET DATEFIRST 7    
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spFiscalCancelarMovs
+@Empresa	char(5),
+@Modulo		char(5),
+@ID			int,
+@OK			int OUTPUT,
+@OKRef		varchar(255) OUTPUT
+
+AS BEGIN
+IF EXISTS(SELECT DID FROM MovFlujo WITH (NOLOCK) WHERE Empresa = @Empresa AND OModulo = @Modulo AND OID = @ID AND DModulo = 'FIS')
+BEGIN
+SELECT @Ok = NULL, @OkRef = NULL
+DECLARE @IDFiscal int
+SELECT @IDFiscal = DID FROM MovFlujo WITH (NOLOCK) WHERE Empresa = @Empresa AND OModulo = @Modulo AND OID = @ID AND DModulo = 'FIS'
+EXEC spAfectar 'FIS', @IDFiscal, 'CANCELAR', @EnSilencio = 1, @Conexion = 1, @Ok = @Ok OUTPUT, @OKRef = @OKRef OUTPUT
+END
+END
+

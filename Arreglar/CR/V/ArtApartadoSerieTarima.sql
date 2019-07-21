@@ -1,0 +1,25 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW ArtApartadoSerieTarima
+
+AS
+SELECT t.Empresa,
+d.Articulo,
+t.Almacen,
+s.Tarima,
+s.SerieLote,
+SUM(ISNULL(s.Cantidad,0)) Apartado
+FROM TMA t
+JOIN TMAD d ON t.ID = d.ID
+JOIN SerieLoteMov s ON d.ID = s.ID AND s.Modulo ='TMA' AND d.Renglon = s.RenglonID
+JOIN MovTipo mt ON t.Mov = mt.Mov AND mt.Modulo = 'TMA'
+WHERE t.Estatus = 'PENDIENTE'
+AND mt.Clave IN('TMA.OSUR','TMA.TSUR','TMA.SUR','TMA.OPCKTARIMA','TMA.PCKTARIMATRAN','TMA.PCKTARIMA')
+GROUP BY t.Empresa, d.Articulo, t.Almacen, s.Tarima, s.SerieLote
+

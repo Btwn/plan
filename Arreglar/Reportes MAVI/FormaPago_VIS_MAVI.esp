@@ -1,0 +1,21 @@
+[FormaPago.vis/Vista.ListaCampos]
+CtaDinero.Tipo=FormaPago.VentaLinea
+FormaPago.VentaLinea=(Fin)
+
+[FormaPago.vis/Vista.SQL]
+CtaDinero.Descripcion,=CtaDinero.Tipo,
+CtaDinero.Tipo,=FormaPago.VentaLinea
+FormaPago.VentaLinea=FROM FormaPago
+
+[FormaPago.vis/FormaPago.VentaLinea]
+Clave=FormaPago.VentaLinea
+Nombre=Venta Linea
+Visible=S
+TamanoValidacion=4
+TipoDatos=Texto
+Tamano=4
+LigaTabla=FormaPago
+LigaCampo=VentaLinea
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=VentaLinea

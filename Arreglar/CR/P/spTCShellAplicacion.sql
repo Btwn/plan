@@ -1,0 +1,19 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROC spTCShellAplicacion
+@Ubicacion		varchar(255),
+@UbicacionXML	varchar(255),
+@ArchivoCfg		varchar(255),
+@Shell			varchar(8000)	OUTPUT
+
+AS
+BEGIN
+SELECT @Shell = @Ubicacion + ' "' + ISNULL(CONVERT(varchar(255), @UbicacionXML), '') + '" "' + ISNULL(CONVERT(varchar(255), @ArchivoCfg), '') + '"'
+END
+

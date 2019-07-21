@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1100MovVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Mov
+Nombre=RM1100MovVis
+SQL=select distinct Mov From Compra Where Mov like <T>Compra%<T> and Mov not in (<T>Compra Perdida<T>,<T>Compra Consignacion<T>)<BR>Union<BR>Select Distinct Mov From Gasto Where Mov in (<T>Gasto<T>,<T>Gasto Caja<T>,<T>Comprobante<T>,<T>Comprobante Inst<T>,<T>Solicitud<T>)<BR>order by 1
+[Mov]
+Clave=Mov
+Nombre=Mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Mov

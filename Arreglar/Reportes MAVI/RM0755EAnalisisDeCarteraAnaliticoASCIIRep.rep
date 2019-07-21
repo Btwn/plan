@@ -1,0 +1,90 @@
+[Reporte]
+Clave=RM0755EAnalisisDeCarteraAnaliticoASCIIRep
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+
+ConFormaPrevia=S
+FormaPrevia=RM0755EAnalisisDeCarteraASCIIFrm
+Submenu=CXC Generales Mavi
+PosicionInicialAlturaCliente=110
+PosicionInicialAncho=219
+ExpresionesAntes=Asigna(Mavi.XV3, Mavi.XV2 + 1)<BR>Asigna(Mavi.DV5, Mavi.DV4 + 1)<BR>SQL(<T>EXEC SP_MaviRM0755EAnalisisDeCarteraASCII :nxv1, :nxv2, :nxv3, :ndv1, :ndv2, :ndv3, :ndv4, :ndv5, :tcat<T>, {Mavi.XV1}, {Mavi.XV2}, {Mavi.XV3}, {Mavi.DV1}, {Mavi.DV2}, {Mavi.DV3}, {Mavi.DV4}, {Mavi.DV5},<BR>{Si(ConDatos(Mavi.RM0755ECategoriaCanal),Reemplaza( Comillas(<T>,<T>), <T>,<T>,Mavi.RM0755ECategoriaCanal ),Asigna(Mavi.RM0755ECategoriaCanal, <T>c<T>))})<BR>//{Si(ConDatos(Mavi.RM0755ECategoriaCanal),Reemplaza( Comillas(<T>,<T>), <T>,<T>,Mavi.RM0755ECategoriaCanal ),Comillas(<T><T>))}
+[Vista]
+Icono=0
+Clave=RM0755EAnalisisDeCarteraAnaliticoASCIIRep
+VistaIndependiente=S
+
+ListaCampos=Proceso
+BaseSR=S
+SQL=SELECT <BR>  Proceso=<T>Proceso Concluido !!<T>
+[Formato]
+VentanaIzquierda=363
+VentanaArriba=174
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80
+
+ListaLineas=Encabezado
+[Proceso]
+Clave=Proceso
+Nombre=Proceso
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Proceso
+
+[Linea1]
+Clave=Encabezado
+Objetos=1
+Seccion=Encabezado Página
+AltoEnCm=1.2
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+[A1]
+Celda=A1
+Alineacion=Centrado
+AnchoEnCm=4.5
+AnchoTexto=24
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Proceso

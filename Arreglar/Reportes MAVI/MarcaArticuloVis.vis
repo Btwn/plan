@@ -1,0 +1,24 @@
+[Vista]
+Icono=0
+Clave=MarcaArticulovis
+Nombre=Marcas Articulo
+Modulos=Monedero Electronico
+Singular=Marca Articulo
+ListaCampos=MARCA
+CamposBusquedaRapida=Fabricante.Fabricante
+VistaIndependiente=S
+SQL=SELECT DISTINCT MARCA = LEFT(Art.Articulo,4)<BR>FROM Art<BR>WHERE Categoria = <T>VENTA<T> <BR>{SI(CONDATOS(Mavi.ArtGrupo),<T>AND Art.Grupo=<T>+COMILLAS(Mavi.ArtGrupo),<T><T>)}<BR>{SI(CONDATOS(Mavi.ArtFam),<T>AND Art.Familia=<T>+COMILLAS(Mavi.ArtFam),<T><T>)}<BR>{SI(CONDATOS(Mavi.ArtLinea),<T>AND Art.Linea=<T>+COMILLAS(Mavi.ArtLinea),<T><T>)}<BR>ORDER BY 1
+
+
+
+
+[MARCA]
+Clave=MARCA
+Nombre=MARCA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=4
+TipoDatos=Texto
+Tamano=4
+ClaveBDE=MARCA

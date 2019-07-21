@@ -1,0 +1,66 @@
+;**** Ultima modificación:05-Sep-08
+;**** Modifico:Arly Rubio
+;**** Se modifico:
+
+
+
+
+
+;**** Se agrego un WHERE en la sentencia SQL (Arly Rubio 05-Sep-08)********
+;**** Nuevos campos calculado ****
+[VentaA.vis/Vista]
+ListaCalculados=Dias<BR>Suritdo<BR>ImporteTotal<BR>TotalNeto<BR>Throughput<BR>EstatusContable<BR>TotalComisiones<BR>ImporteMAVI<BR>ImpuestosMAVI<BR>ImporteTotalMAVI<BR>TotalNetoMAVI
+
+[VentaA.vis/Vista.SQL]
+LEFT OUTER JOIN MensajeLista ON Venta.Mensaje<IGUAL>MensajeLista.Mensaje=WHERE Venta.Moneda <IGUAL> <T>Pesos<T>
+WHERE Venta.Moneda <IGUAL> <T>Pesos<T>={Si(Mavi.ServicasaMovNvo=1020,<T>And 1<IGUAL>2<T>,<T><T>)}
+{Si(Mavi.ServicasaMovNvo=1020,<T>And 1<IGUAL>2<T>,<T><T>)}=(Fin)
+
+
+
+;Nuevo campo calculado ARC 14-May-09 *****
+[VentaA.vis/ImporteMAVI]
+Clave=ImporteMAVI
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Importe MAVI
+Monetario=S
+Formula=Si(Venta.Mov en(<T>Credilana<T>, <T>Prestamo Personal<T>, <T>Cancela Credilana<T>, <T>Cancela Prestamo<T>),SQL(<T>SELECT dbo.fnImporteSinIVAFinanciamiento(:nID, :tEmpresa)<T>,Venta.ID, Empresa), Venta.Importe)
+
+
+
+;Nuevo campo calculado ARC 14-May-09 *****
+[VentaA.vis/ImpuestosMAVI]
+Clave=ImpuestosMAVI
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Impuestos MAVI
+Monetario=S
+Formula=Si(Venta.Mov en(<T>Credilana<T>, <T>Prestamo Personal<T>, <T>Cancela Credilana<T>, <T>Cancela Prestamo<T>),SQL(<T>SELECT dbo.fnIVAFinanciamiento(:nID, :tEmpresa)<T>,Venta.ID, Empresa), Venta.Impuestos)
+
+;Nuevo campo calculado ARC 14-May-09 *****
+[VentaA.vis/ImporteTotalMAVI]
+Clave=ImporteTotalMAVI
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Importe Total MAVI
+Monetario=S
+Formula=Si(Venta.Mov en(<T>Credilana<T>, <T>Prestamo Personal<T>, <T>Cancela Credilana<T>, <T>Cancela Prestamo<T>),ImporteMAVI+ImpuestosMAVI, ImporteTotal)
+
+;Nuevo campo calculado ARC 14-May-09 *****
+[VentaA.vis/TotalNetoMAVI]
+Clave=TotalNetoMAVI
+TipoDatos=NumMonetario
+TipoCampo=Calculado
+TamanoValidacion=10
+Alineacion=por Omisión
+Nombre=Total Neto MAVI
+Monetario=S
+Formula=Si(Venta.Mov en(<T>Credilana<T>, <T>Prestamo Personal<T>, <T>Cancela Credilana<T>, <T>Cancela Prestamo<T>),ImporteTotalMAVI, TotalNeto)
+

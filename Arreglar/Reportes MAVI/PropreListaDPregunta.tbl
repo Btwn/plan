@@ -1,0 +1,173 @@
+[Tabla]
+Icono=0
+Clave=PropreListaDPregunta
+Nombre=PropreListaDPregunta
+Archivo=PropreListaDPregunta
+Modulos=(Todos)
+Singular=PropreListaDPregunta
+TipoTabla=General
+ListaCampos=Lista<BR>Articulo<BR>Descripcion<BR>Familia<BR>Margen<BR>Factor01<BR>Factor02<BR>Factor03<BR>Factor04<BR>Observaciones<BR>PrecioEtiqueta<BR>Clase<BR>MargenCompra<BR>FactorCredito<BR>ImporteCupon<BR>Margen2<BR>Imprimir<BR>Marca
+ListaRelaciones=PropreLista
+LlavePrimaria=Lista<BR>Articulo
+SQL=SELECT<BR>  Lista,<BR>  Articulo,<BR>  Descripcion,<BR>  Familia,<BR>  Margen,<BR>  Factor01,<BR>  Factor02,<BR>  Factor03,<BR>  Factor04,<BR>  Observaciones,<BR>  PrecioEtiqueta,<BR>  Clase,<BR>  MargenCompra,<BR>  FactorCredito,<BR>  ImporteCupon,<BR>  Margen2,<BR>  Imprimir,<BR>  Marca<BR><BR>FROM<BR>  PropreListaDPregunta
+[Lista]
+Clave=Lista
+Nombre=Lista
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ValorPorOmision=Info.PropreLista
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ValorPorOmision=<T>Todos<T>
+TipoDatos=Texto
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripcion
+Visible=S
+TamanoValidacion=100
+Tamano=100
+TipoDatos=Texto
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaForma=ArtFamLista
+AyudaVista=ArtFam
+AyudaCampo=ArtFam.Familia
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLENLISTA(<T>SELECT Familia FROM PropreArtFam<T>)
+[Margen]
+Clave=Margen
+Nombre=MV
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+ValidacionConCondiciones=S
+FormatoValidacion=#,.000
+[Factor01]
+Clave=Factor01
+Nombre=Difepre
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionDespliege=(Info.PropreTipoLista = <T>Doble<T>) O (Info.PropreTipoLista = <T>Contado<T>)
+ValidacionConCondiciones=S
+AyudaForma=ProprePorcentajeValidacionLista
+AyudaVista=ProprePorcentajeValidacion
+AyudaCampo=ProprePorcentajeValidacion.Porcentaje
+FormatoValidacion=#,.000
+[Factor02]
+Clave=Factor02
+Nombre=P. Dife (1)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionDespliege=(Info.PropreTipoLista = <T>Doble<T>) O (Info.PropreTipoLista = <T>Contado<T>)
+FormatoValidacion=#,.000
+[Factor03]
+Clave=Factor03
+Nombre=P. Dife (2)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionDespliege=(Info.PropreTipoLista = <T>Doble<T>) O (Info.PropreTipoLista = <T>Contado<T>)
+FormatoValidacion=#,.000
+[Factor04]
+Clave=Factor04
+Nombre=P. Dife (3)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionDespliege=(Info.PropreTipoLista = <T>Doble<T>) O (Info.PropreTipoLista = <T>Contado<T>)
+FormatoValidacion=#,.000
+[Observaciones]
+Clave=Observaciones
+Nombre=Observaciones
+Visible=S
+TamanoValidacion=50
+Tamano=50
+TipoDatos=Texto
+[PrecioEtiqueta]
+Clave=PrecioEtiqueta
+Nombre=Precio Etiqueta
+Visible=S
+TamanoValidacion=1
+Tamano=1
+CondicionDespliege=(Info.PropreTipoLista = <T>Doble<T>)
+TipoDatos=Texto
+[Clase]
+Clave=Clase
+Nombre=Clase
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+[MargenCompra]
+Clave=MargenCompra
+Nombre=MR
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionDespliege=(Info.PropreTipoLista = <T>Doble<T>)
+FormatoValidacion=#,.000
+[FactorCredito]
+Clave=FactorCredito
+Nombre=% Credito
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionDespliege=(Info.PropreTipoLista = <T>Doble<T>)
+[ImporteCupon]
+Clave=ImporteCupon
+Nombre=ImporteCupon
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+[Margen2]
+Clave=Margen2
+Nombre=Margen2
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+CondicionDespliege=(Info.PropreTipoLista = <T>Doble<T>) Y (Info.PropreUtilizaM2 = Verdadero)
+FormatoValidacion=#,.000
+[Imprimir]
+Clave=Imprimir
+Nombre=Imprimir
+Visible=S
+TamanoValidacion=1
+Tamano=1
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=3
+OpcionesValidar=S
+CondicionDespliege=Info.PropreTipoLista = <T>Mayoreo<T>
+ListaOpciones=P<BR>S<BR>N
+[Relaciones.PropreLista]
+TipoRelacion=Opcional
+LlaveLocal=Lista
+Clave=PropreLista
+TablaRemota=PropreLista
+LlaveRemota=Lista
+[Marca]
+Clave=Marca
+Nombre=Marca
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+CondicionDespliege=Info.PropreTipoLista = <T>Mayoreo<T>

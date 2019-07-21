@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviMovEmbarquesSoporteVis
+Nombre=Movimientos Embarques
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=mov
+SQL=select distinct  mov from embarque e<BR>where e.mov like (<T>Em%<T>)<BR>union<BR>select mov from soporte s<BR>where s.mov=<T>Reporte Servicio<T>
+[mov]
+Clave=mov
+Nombre=mov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=mov

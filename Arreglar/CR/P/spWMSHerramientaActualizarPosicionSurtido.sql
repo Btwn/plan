@@ -1,0 +1,38 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spWMSHerramientaActualizarPosicionSurtido
+@Posicion       varchar(20),
+@Estacion		int
+
+AS BEGIN
+DECLARE
+@ID				int,
+@Modulo			varchar(5)
+DECLARE crListaModuloID CURSOR FOR
+SELECT Modulo, ID
+FROM ListaModuloID
+WHERE Estacion = @Estacion
+OPEN crListaModuloID
+FETCH NEXT FROM crListaModuloID INTO @Modulo, @ID
+WHILE @@FETCH_STATUS = 0 
+BEGIN
+IF @Modulo='VTAS'
+UPDATE Venta SET PosicionWMS=@Posicion WHERE ID=@ID
+ELSE
+IF @Modulo='COMS'
+UPDATE Compra SET PosicionWMS=@Posicion WHERE ID=@ID
+ELSE
+IF @Modulo='INV'
+UPDATE Inv SET PosicionWMS=@Posicion WHERE ID=@ID
+FETCH NEXT FROM crListaModuloID INTO @Modulo, @ID
+END
+CLOSE crListaModuloID
+DEALLOCATE crListaModuloID
+END
+

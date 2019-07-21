@@ -1,0 +1,34 @@
+[Dialogo]
+Clave=MenuCfgCosteoFlete
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=ConceptoxRubro<BR>CosteoFleteMAVI
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.ConceptoxRubro]
+Nombre=ConceptoxRubro
+Boton=0
+NombreDesplegar=Concepto por Rubro
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ConceptoPorRubroMAVI
+Activo=S
+Visible=S
+[Acciones.CosteoFleteMAVI]
+Nombre=CosteoFleteMAVI
+Boton=0
+NombreDesplegar=Costeo Flete Parametros
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=CosteoFleteMayoreoMAVI
+Activo=S
+Visible=S

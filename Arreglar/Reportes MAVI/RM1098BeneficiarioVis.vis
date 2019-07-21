@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=RM1098BeneficiarioVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=BeneficiarioNombre
+CamposBusquedaRapida=BeneficiarioNombre
+SQL=select  distinct LTRIM(BeneficiarioNombre) As BeneficiarioNombre  from Dinero With(NoLock) Where BeneficiarioNombre is not null<BR>And Mov not Like <T>%Solicitud%<T><BR>{SI(ConDatos(Mavi.RM1098CtaBancaria), <T> And CtaDinero in (<T>+Mavi.RM1098CtaBancaria+<T>)<T>,<T><T>)}<BR>{SI(ConDatos(Mavi.RM1098NumCheque), <T> And MovID=<T>+Comillas(Mavi.RM1098NumCheque),<T><T>)}<BR>{SI(ConDatos(Mavi.RM1098Concepto),<T> And Observaciones in (<T>+Mavi.RM1098Concepto+<T>)<T>,<T><T>)}<BR>Order By 1
+[BeneficiarioNombre]
+Clave=BeneficiarioNombre
+Nombre=Beneficiario
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=BeneficiarioNombre

@@ -1,0 +1,27 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgPOSArtCBMatrizBC ON CB
+
+FOR UPDATE, DELETE
+AS BEGIN
+DECLARE
+@EsOrigen           bit,
+@SincronizaArtSuc   bit
+SELECT @EsOrigen = ISNULL(EsOrigen,0), @SincronizaArtSuc = ISNULL(SincronizaArtSuc,0) FROM POSiSync
+IF @EsOrigen = 0 RETURN
+IF @SincronizaArtSuc = 0 RETURN
+IF EXISTS(SELECT * FROM DELETED) AND NOT EXISTS(SELECT * FROM INSERTED)
+DELETE POSArtCodigoSucursal
+FROM POSArtCodigoSucursal a JOIN DELETED d ON a.Codigo = d.Codigo
+IF EXISTS(SELECT * FROM DELETED) AND  EXISTS(SELECT * FROM INSERTED)
+UPDATE POSArtCodigoSucursal SET  Codigo = i.Codigo, Articulo = i.Cuenta, SubCuenta = i.SubCuenta, Cantidad = i.Cantidad, Unidad = i.Unidad
+FROM POSArtCodigoSucursal p JOIN INSERTED i ON i.Codigo = p.Codigo AND i.TipoCuenta = 'Articulos'
+RETURN
+END
+

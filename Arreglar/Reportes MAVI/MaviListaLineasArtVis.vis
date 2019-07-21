@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviListaLineasArtVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Linea
+Nombre=Lista de Lineas de Articulos
+CamposBusquedaRapida=Linea
+SQL=Select Distinct Linea<BR>From Art<BR>Where Linea Is Not Null<BR>{Si(ConDatos(Mavi.MarcasArticulos) ,<T>And Fabricante = <T>+Comillas(Mavi.MarcasArticulos),<T><T>)}<BR>{Si(ConDatos(Mavi.ArticuloFD) ,<T>And Articulo = <T>+Comillas(Mavi.ArticuloFD),<T><T>)}<BR>{Si(ConDatos(Mavi.ArticuloFA) ,<T>And Articulo = <T>+Comillas(Mavi.ArticuloFA),<T><T>)}<BR>Order By Linea
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

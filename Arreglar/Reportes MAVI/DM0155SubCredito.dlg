@@ -1,0 +1,45 @@
+[Dialogo]
+Clave=DM0155SubCredito
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=RM0907<BR>RutasdeSupervision<BR>RM1052  
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+
+[Acciones.RutasdeSupervision]
+Nombre=RutasdeSupervision
+Boton=0
+NombreDesplegar=Rutas de Supervisión
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0422DExploraRutasSuperFrm
+Activo=S
+Visible=S
+[Acciones.RM0907]
+Nombre=RM0907
+Boton=0
+NombreDesplegar=Simulador Refinanciamientos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RM0907MaviSimRefinanciamientofrm
+Activo=S
+Visible=S
+[Acciones.RM1052]
+Nombre=RM1052
+Boton=0
+NombreDesplegar=Simulador de Layout
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=formas
+ClaveAccion=RM1052SimuladorLayoutFRM
+Activo=S
+Visible=S

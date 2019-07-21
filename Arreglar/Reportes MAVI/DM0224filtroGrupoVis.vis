@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0224filtroGrupoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Grupo
+Nombre=Grupo
+CamposBusquedaRapida=Grupo
+SQL=Select Distinct Grupo From Art With(Nolock)<BR>Where 1=1 AND Grupo <><T><T><BR>and Art.Categoria =<T>Venta<T>
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Grupo

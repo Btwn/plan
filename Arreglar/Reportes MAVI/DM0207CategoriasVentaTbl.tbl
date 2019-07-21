@@ -1,0 +1,66 @@
+[Tabla]
+Icono=0
+Clave=DM0207CategoriasVentaTbl
+Nombre=DM0207CategoriasVentaTbl
+Archivo=DM0207CategoriasVenta
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>IdCat<BR>CategoriaVenta<BR>CategoriaEtiqueta<BR>FechaRegistro
+ControlID=S
+CampoID=ID
+LlavePrimaria=ID
+SQL=SELECT<BR>  ID,<BR>  IdCat,<BR>  CategoriaVenta,<BR>  CategoriaEtiqueta,<BR>  FechaRegistro<BR><BR>FROM<BR>  DM0207CategoriasVenta
+[IdCat]
+Clave=IdCat
+Nombre=Grupo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=SQL( <T>select max(IdCat)+1 from DM0207CategoriasVenta<T> )
+ValidacionConCondiciones=S
+Requerido=S
+ValidacionCondicion=//No puede haber un Grupo con dos CategoriasVenta iguales<BR>Si<BR>  (SQL(<T>select COUNT(ID) from DM0207CategoriasVenta where CategoriaVenta = :tCat AND IdCat = :nGrupo <T>,CategoriaVenta,IdCat) = 0 ) o (SQL(<T>select ID from DM0207CategoriasVenta where CategoriaVenta = :tCat AND IdCat = :nGrupo <T>,CategoriaVenta,IdCat) = ID)<BR>Entonces                                                                                                                                 <BR>    //No puede haber un grupo con dos etiquetas diferentes<BR>    Si<BR>         (SQL(<T>select TOP 1 CategoriaEtiqueta from DM0207CategoriasVenta where IdCat = :nGrupo <T>,IdCat) = CategoriaEtiqueta) o (SQL(<T>select COUNT(ID) from DM0207CategoriasVenta where IdCat = :nGrupo <T>,IdCat) = 0)<BR>    Entonces<BR>        Verdad<CONTINUA>
+ValidacionCondicion002=<CONTINUA>ero<BR>    Sino<BR>        Error(<T>No puede haber un Grupo con dos Etiquetas diferentes<T>)<BR>    Fin<BR>Sino<BR>  Error(<T>No puede haber un Grupo con dos Categorias de Venta iguales<T>)<BR>Fin
+[CategoriaVenta]
+Clave=CategoriaVenta
+Nombre=CategoriaVenta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaForma=RM0946BFiltroCategoriaFrm
+AyudaVista=RM0946BCategoriaVis
+AyudaCampo=SeccionCobranzaMavi
+AyudaIgnoraChequeos=S
+AyudaMemOpc=Unicamente opciones listadas
+ValidacionConCondiciones=S
+Requerido=S
+ValidacionCondicion=//No puede haber un Grupo con dos CategoriasVenta iguales<BR>Si<BR>  (SQL(<T>select COUNT(ID) from DM0207CategoriasVenta where CategoriaVenta = :tCat AND IdCat = :nGrupo <T>,CategoriaVenta,IdCat) = 0 ) o (SQL(<T>select ID from DM0207CategoriasVenta where CategoriaVenta = :tCat AND IdCat = :nGrupo <T>,CategoriaVenta,IdCat) = ID)<BR>Entonces<BR>    //No puede haber un grupo con dos etiquetas diferentes<BR>    Si<BR>        (SQL(<T>select TOP 1 CategoriaEtiqueta from DM0207CategoriasVenta where IdCat = :nGrupo <T>,IdCat) = CategoriaEtiqueta) o (SQL(<T>select COUNT(ID) from DM0207CategoriasVenta where IdCat = :nGrupo <T>,IdCat) = 0)<BR>    Entonces<BR>        Verdadero<BR>    Sino<BR>         Error(<T>No puede haber un Grupo con dos Etiquetas diferentes<T>)<BR>    Fin<BR>Sino<BR>  Error(<T>No <CONTINUA>
+ValidacionCondicion002=<CONTINUA>puede haber un Grupo con dos Categorias de Venta iguales<T>)<BR>Fin
+Formula=SQLEnLista( <T>select Distinct Categoria From CteEnviarA With(NoLock) Where Categoria not in (:tMay,:tCont) and Categoria Is Not Null<T>, <T>Mayoreo<T>, <T>Contado<T> )
+[CategoriaEtiqueta]
+Clave=CategoriaEtiqueta
+Nombre=CategoriaEtiqueta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+ValidacionConCondiciones=S
+Requerido=S
+ValidacionCondicion=//No puede haber un Grupo con dos CategoriasVenta iguales<BR>Si<BR>  (SQL(<T>select COUNT(ID) from DM0207CategoriasVenta where CategoriaVenta = :tCat AND IdCat = :nGrupo <T>,CategoriaVenta,IdCat) = 0 ) o (SQL(<T>select ID from DM0207CategoriasVenta where CategoriaVenta = :tCat AND IdCat = :nGrupo <T>,CategoriaVenta,IdCat) = ID)<BR>Entonces<BR>    //No puede haber un grupo con dos etiquetas diferentes<BR>    Si<BR>        (SQL(<T>select TOP 1 CategoriaEtiqueta from DM0207CategoriasVenta where IdCat = :nGrupo <T>,IdCat) = CategoriaEtiqueta) o (SQL(<T>select COUNT(ID) from DM0207CategoriasVenta where IdCat = :nGrupo <T>,IdCat) = 0)<BR>    Entonces<BR>        Verdadero<BR>    Sino<BR>         Error(<T>No puede haber un Grupo con dos Etiquetas diferentes<T>)<BR>    Fin<BR>Sino<BR>  Error(<T>No <CONTINUA>
+ValidacionCondicion002=<CONTINUA>puede haber un Grupo con dos Categorias de Venta iguales<T>)<BR>Fin
+Formula=SQLEnLista( <T>select Distinct Categoria From CteEnviarA With(NoLock) Where Categoria not in (:tMay,:tCont) and Categoria Is Not Null<T>, <T>Mayoreo<T>, <T>Contado<T> )
+[FechaRegistro]
+Clave=FechaRegistro
+Nombre=FechaRegistro
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorPorOmision=AHORA
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc

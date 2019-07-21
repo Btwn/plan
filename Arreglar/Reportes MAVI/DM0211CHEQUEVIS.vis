@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=DM0211CHEQUEVIS
+Nombre=CHEQUE:
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CHEQUE
+LlavePrimaria=CHEQUE
+CamposBusquedaRapida=CHEQUE
+SQL=SELECT CHEQUE = <T><T> UNION SELECT CHEQUE = <T>CHEQUE<T> UNION SELECT CHEQUE = <T>CHEQUE ELECTRONICO<T>
+[CHEQUE]
+Clave=CHEQUE
+Nombre=CHEQUE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=18
+TipoDatos=Texto
+Tamano=18
+ClaveBDE=CHEQUE

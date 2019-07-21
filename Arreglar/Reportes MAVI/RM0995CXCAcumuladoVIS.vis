@@ -1,0 +1,194 @@
+[Vista]
+Icono=0
+Clave=RM0995CXCAcumuladoVIS
+Nombre=RM0995FINAcumulado
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Fecha<BR>ImporteIvaCred<BR>ImporteIvaInst<BR>PisoVentExtCC<BR>CrediPisoCC<BR>VtasExtNoAtraso<BR>InstCC<BR>TotalCCyNoAtra<BR>PisoyVtasAdelaPagos<BR>PisosVtasExtNoAtraso<BR>InstAdelaPagos<BR>TotalAdelaPagoNoAtraso<BR>TotalCCAdelaPagSinNoAtra<BR>TotalCCAdelaPagNoAtraso<BR>TotalCCAdelaPagConySinNoAtraso<BR>DismiCartera<BR>DebidoACC<BR>DebidoAdelaPago<BR>DebidoNoAtrasoCCAdelaPag<BR>DebidoACCAdelaPagConySinNoAtra<BR>PisosPagPunt<BR>VtasExtPagoPunt<BR>PisosVtaExtPagPunt<BR>DebidoCCAdelaPagConSinAtraso<BR>NoDeRecibosCred<BR>NoDeRecibosInst
+SQL=SP_MAVIRM0995BitacoraBonifCob <T>A<T>,<BR>{si(condatos(Info.FechaD),comillas((FechaformatoServidor(Info.FechaD))),(Info.FechaD))},<BR>{si(condatos(Info.FechaA),comillas((FechaformatoServidor(Info.FechaA))),(Info.FechaA))},<BR>{Mes(Mavi.Mes)},<BR>{comillas(Info.Ano)},<T><T>,<T><T>
+[Fecha]
+Clave=Fecha
+Nombre=FECHA
+Visible=S
+TamanoValidacion=100
+Tamano=11
+ClaveBDE=Fecha
+[ImporteIvaCred]
+Clave=ImporteIvaCred
+Nombre=IMPORTE CRED MEN
+Visible=S
+TamanoValidacion=10
+ClaveBDE=ImporteIvaCred
+Tamano=32
+[ImporteIvaInst]
+Clave=ImporteIvaInst
+Nombre=IMPORTE INST
+Visible=S
+TamanoValidacion=10
+ClaveBDE=ImporteIvaInst
+Tamano=32
+[PisoVentExtCC]
+Clave=PisoVentExtCC
+Nombre=IMPORTE CRED-INST
+Visible=S
+TamanoValidacion=10
+ClaveBDE=PisoVentExtCC
+Tamano=32
+[CrediPisoCC]
+Clave=CrediPisoCC
+Nombre=CRED PISOS Y EXT CC
+Visible=S
+TamanoValidacion=10
+ClaveBDE=CrediPisoCC
+Tamano=32
+[VtasExtNoAtraso]
+Clave=VtasExtNoAtraso
+Nombre=CC PISOS Y EXT NA
+Visible=S
+TamanoValidacion=10
+ClaveBDE=VtasExtNoAtraso
+Tamano=32
+[InstCC]
+Clave=InstCC
+Nombre=INST CC
+Visible=S
+TamanoValidacion=10
+ClaveBDE=InstCC
+Tamano=32
+[TotalCCyNoAtra]
+Clave=TotalCCyNoAtra
+Nombre=TOTAL CC
+Visible=S
+TamanoValidacion=10
+ClaveBDE=TotalCCyNoAtra
+Tamano=32
+[PisoyVtasAdelaPagos]
+Clave=PisoyVtasAdelaPagos
+Nombre=CREDITO PISOS EXT AP
+Visible=S
+TamanoValidacion=10
+ClaveBDE=PisoyVtasAdelaPagos
+Tamano=32
+[PisosVtasExtNoAtraso]
+Clave=PisosVtasExtNoAtraso
+Nombre=CRED PISOS EXT NA
+Visible=S
+TamanoValidacion=10
+ClaveBDE=PisosVtasExtNoAtraso
+Tamano=32
+[InstAdelaPagos]
+Clave=InstAdelaPagos
+Nombre=INST AP
+Visible=S
+TamanoValidacion=10
+ClaveBDE=InstAdelaPagos
+Tamano=32
+[TotalAdelaPagoNoAtraso]
+Clave=TotalAdelaPagoNoAtraso
+Nombre=TOTAL AP NA
+Visible=S
+TamanoValidacion=10
+ClaveBDE=TotalAdelaPagoNoAtraso
+Tamano=32
+[TotalCCAdelaPagSinNoAtra]
+Clave=TotalCCAdelaPagSinNoAtra
+Nombre=TOTAL CC Y AP
+Visible=S
+TamanoValidacion=10
+ClaveBDE=TotalCCAdelaPagSinNoAtra
+Tamano=32
+[TotalCCAdelaPagNoAtraso]
+Clave=TotalCCAdelaPagNoAtraso
+Nombre=TOTAL NA Y PP
+Visible=S
+TamanoValidacion=10
+ClaveBDE=TotalCCAdelaPagNoAtraso
+Tamano=32
+[TotalCCAdelaPagConySinNoAtraso]
+Clave=TotalCCAdelaPagConySinNoAtraso
+Nombre=TOTAL CC AP NA Y PP
+Visible=S
+TamanoValidacion=10
+ClaveBDE=TotalCCAdelaPagConySinNoAtraso
+Tamano=32
+[DismiCartera]
+Clave=DismiCartera
+Nombre=DISMIN CARTERA
+Visible=S
+TamanoValidacion=10
+ClaveBDE=DismiCartera
+Tamano=32
+[DebidoACC]
+Clave=DebidoACC
+Nombre=DISMIN POR CC
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=DebidoACC
+[DebidoAdelaPago]
+Clave=DebidoAdelaPago
+Nombre=DISMIN POR AP
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=DebidoAdelaPago
+[DebidoNoAtrasoCCAdelaPag]
+Clave=DebidoNoAtrasoCCAdelaPag
+Nombre=DISMIN POR PP NA
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=DebidoNoAtrasoCCAdelaPag
+[DebidoACCAdelaPagConySinNoAtra]
+Clave=DebidoACCAdelaPagConySinNoAtra
+Nombre=DISMIN POR CC AP NA PP
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=DebidoACCAdelaPagConySinNoAtra
+[PisosPagPunt]
+Clave=PisosPagPunt
+Nombre=CRED PISOS PP
+Visible=S
+TamanoValidacion=10
+ClaveBDE=PisosPagPunt
+Tamano=32
+[VtasExtPagoPunt]
+Clave=VtasExtPagoPunt
+Nombre=CRED EXT PP
+Visible=S
+TamanoValidacion=10
+ClaveBDE=VtasExtPagoPunt
+Tamano=32
+[PisosVtaExtPagPunt]
+Clave=PisosVtaExtPagPunt
+Nombre=TOTAL PP
+Visible=S
+TamanoValidacion=10
+ClaveBDE=PisosVtaExtPagPunt
+Tamano=32
+[DebidoCCAdelaPagConSinAtraso]
+Clave=DebidoCCAdelaPagConSinAtraso
+Nombre=DebidoCCAdelaPagConSinAtraso
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=DebidoCCAdelaPagConSinAtraso
+[NoDeRecibosCred]
+Clave=NoDeRecibosCred
+Nombre=NUM REC CRED
+Visible=S
+TamanoValidacion=30
+Tamano=30
+ClaveBDE=NoDeRecibosCred
+[NoDeRecibosInst]
+Clave=NoDeRecibosInst
+Nombre=NUM REC INST
+Visible=S
+TamanoValidacion=30
+Tamano=30
+ClaveBDE=NoDeRecibosInst

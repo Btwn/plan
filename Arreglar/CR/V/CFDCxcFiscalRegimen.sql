@@ -1,0 +1,18 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW CFDCxcFiscalRegimen AS
+SELECT  REPLICATE('0', 20 - LEN(RTRIM(LTRIM(CONVERT(varchar, Cxc.ID))))) + RTRIM(LTRIM(CONVERT(varchar, Cxc.ID)))
++ REPLICATE('0',12 - LEN(RTRIM(LTRIM(CONVERT(varchar, 20048))))) + RTRIM(LTRIM(CONVERT(varchar, 2048))) + REPLICATE('0', 7 - LEN(RTRIM(LTRIM(CONVERT(varchar, 0)))))
++ RTRIM(LTRIM(CONVERT(varchar, 0))) + REPLICATE(' ', 50 - LEN(RTRIM(LTRIM(CONVERT(varchar, dbo.fnCFDFlexRegimenFiscal(Cxc.Empresa, 'CXC', Cxc.Concepto))))))
++ RTRIM(LTRIM(CONVERT(varchar, dbo.fnCFDFlexRegimenFiscal(Cxc.Empresa, 'CXC', Cxc.Concepto))))
+OrdenExportacion,
+Cxc.ID,
+dbo.fnCFDFlexRegimenFiscal(Cxc.Empresa, 'CXC', Cxc.Concepto) EmisorRegimenFiscal
+FROM  Cxc
+

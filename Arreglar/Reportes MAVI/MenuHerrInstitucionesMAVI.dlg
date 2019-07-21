@@ -1,0 +1,70 @@
+[Dialogo]
+Clave=MenuHerrInstitucionesMAVI
+Nombre=<T>Cobranza Instituciones<T>
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=CobranzaInst<BR>MaviGeneraMovsMod<BR>GeneraLayouts
+PosicionInicialAlturaCliente=176
+PosicionInicialAncho=192
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=Centrado
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=544
+PosicionInicialArriba=407
+[Acciones.CobranzaInst]
+Nombre=CobranzaInst
+Boton=0
+NombreDesplegar=Genera Cobranza 
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=MAVIExplorarCxc
+Activo=S
+Visible=S
+[Acciones.AplicacionCobranza]
+Nombre=AplicacionCobranza
+Boton=0
+NombreDesplegar=Aplicacion Cobranza
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=MAVICobroInstituciones
+Activo=S
+Visible=S
+[Acciones.GeneraLayouts]
+Nombre=GeneraLayouts
+Boton=0
+NombreDesplegar=Genera Layouts
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=GenerarLayoutsMAVI
+Activo=S
+Visible=S
+[Acciones.RecepcionLayouts]
+Nombre=RecepcionLayouts
+Boton=0
+NombreDesplegar=Recepción Layouts
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RecepcionLayuotMAVI
+Activo=S
+Visible=S
+[Acciones.MaviGeneraMovsMod]
+Nombre=MaviGeneraMovsMod
+Boton=0
+NombreDesplegar=Generar Movimientos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=MaviGenerarMovsLayoutsFrm
+Activo=S
+Visible=S

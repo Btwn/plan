@@ -1,0 +1,78 @@
+[Tabla]
+Icono=0
+Clave=DM0130MensajesAurodialerTbl
+Archivo=DM0130MensajesAurodialer
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=CODIGO<BR>DESCRIPCION<BR>RUTA<BR>ALTA<BR>FU_CAMBIO<BR>USUARIO<BR>CATEGORIA
+LlavePrimaria=DESCRIPCION<BR>RUTA<BR>ALTA<BR>FU_CAMBIO<BR>USUARIO<BR>CODIGO
+Nombre=Mensajes Aurodialer
+ControlID=S
+CampoID=CODIGO
+SQL=SELECT<BR>  CODIGO,<BR>  DESCRIPCION,<BR>  RUTA,<BR>  ALTA,<BR>  FU_CAMBIO,<BR>  USUARIO,<BR>  CATEGORIA<BR><BR>FROM<BR>  DM0130MensajesAurodialer
+[DESCRIPCION]
+Clave=DESCRIPCION
+Nombre=DESCRIPCION
+Visible=S
+TamanoValidacion=255
+Tamano=255
+ConRefrescar=S
+ListaRefrescar=FU_CAMBIO
+Requerido=S
+TipoDatos=Texto
+[RUTA]
+Clave=RUTA
+Nombre=RUTA
+Visible=S
+TamanoValidacion=255
+Tamano=255
+AyudaEnCaptura=Buscar Archivo
+ConRefrescar=S
+ListaRefrescar=FU_CAMBIO
+Requerido=S
+TipoDatos=Texto
+[ALTA]
+Clave=ALTA
+Nombre=ALTA
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorPorOmision=SQL(<T>SELECT GETDATE()<T>)
+Requerido=S
+[FU_CAMBIO]
+Clave=FU_CAMBIO
+Nombre=FU_CAMBIO
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorPorOmision=SQL(<T>SELECT GETDATE()<T>)
+Requerido=S
+[USUARIO]
+Clave=USUARIO
+Nombre=USUARIO
+Visible=S
+TamanoValidacion=255
+Tamano=255
+ValorPorOmision=USUARIO
+Requerido=S
+TipoDatos=Texto
+[CODIGO]
+Clave=CODIGO
+Nombre=CODIGO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[CATEGORIA]
+Clave=CATEGORIA
+Nombre=CATEGORIA
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>SELECT DISTINCT Categoria FROM TcIDM0130_Categorias<T>)

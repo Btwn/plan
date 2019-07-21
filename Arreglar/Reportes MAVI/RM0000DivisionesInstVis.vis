@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0000DivisionesInstVis
+Nombre=RM0000Divisiones de Instituciones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Agente
+SQL=SELECT Agente FROM dbo.Agente WHERE Categoria = <T>Ventas a Instituciones<T> AND Grupo = <T>Division<T>
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Agente

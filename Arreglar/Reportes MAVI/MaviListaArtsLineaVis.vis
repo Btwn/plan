@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MaviListaArtsLineaVis
+Nombre=Lista de artículos de Línea
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=Select Distinct(Linea) <BR>From art <BR>Where Categoria=<T>VENTA<T> <BR>And Grupo=<T>MERCANCIA DE LINEA<T> <BR>And Linea<><T><T> <BR>Order By Linea Asc
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

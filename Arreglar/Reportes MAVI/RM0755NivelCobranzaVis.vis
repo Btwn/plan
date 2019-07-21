@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0755NivelCobranzaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre
+Nombre=Nivel de Cobranza
+SQL=Select Nombre From(<BR>Select Nombre From NivelCobranzaMavi<BR>Union<BR>Select Nombre From NivelesEspecialesCobranzaMavi<BR>Union<BR>Select <T>SIN NIVEL<T>)x<BR>
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

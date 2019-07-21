@@ -1,0 +1,46 @@
+[Vista]
+Icono=0
+Clave=RM0238AMovIDvis
+Nombre=RM0238AMovid
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=MovID<BR>FechaEmision<BR>Mov<BR>Estatus
+ListaCampos002=<CONTINUA>estino<BR>Cantidad<BR>Paquete<BR>Costo<BR>CantidadReservada<BR>CantidadOrdenada<BR>CantidadCancelada<BR>CantidadPendiente<BR>CantidadA<BR>Aplica<BR>AplicaID<BR>ContUso<BR>Unidad<BR>Factor<BR>CantidadInventario<BR>FechaRequerida_1<BR>UltimoReservadoCantidad<BR>UltimoReservadoFecha<BR>ProdSerieLote<BR>Merma<BR>Desperdicio<BR>Producto<BR>SubProducto<BR>Tipo<BR>Sucursal_1<BR>Precio<BR>CostoInv<BR>Espacio<BR>DescripcionExtra<BR>CostoUEPS<BR>CostoPEPS<BR>UltimoCosto<BR>PrecioLista<BR>AjusteCosteo<BR>Articulo_1<BR>Rama<BR>Descripcion1<BR>Descripcion2<BR>NombreCorto<BR>Grupo<BR>Categoria<BR>CategoriaActivoFijo<BR>Familia<BR>Fabricante<BR>ClaveFabricante<BR>Impuesto1<BR>Impuesto2<BR>Impuesto3<BR>Factor_1<BR>Unidad_1<BR>UnidadCompra<BR>TipoCosteo<BR>Peso_1<BR>Tara<BR>Volumen_1<BR>Tipo_1<BR>TipoOpcio<CONTINUA>
+ListaCampos003=<CONTINUA>n<BR>Accesorios<BR>Refacciones<BR>MonedaCosto<BR>MonedaPrecio<BR>MargenMinimo<BR>PrecioMinimo<BR>DescuentoCompra<BR>PrecioLista_1<BR>FactorAlterno<BR>PrecioAnterior<BR>Utilidad<BR>Comision<BR>Arancel<BR>ABC<BR>Estatus_1<BR>EstatusPrecio<BR>Precio2<BR>Precio3<BR>Precio4<BR>Precio5<BR>Precio6<BR>Precio7<BR>Precio8<BR>Precio9<BR>Precio10<BR>CategoriaProd<BR>Situacion_1<BR>SituacionFecha_1<BR>CostoEstandar<BR>CostoReposicion<BR>Proveedor<BR>Codigo<BR>Almacen_2<BR>Nombre<BR>Direccion<BR>EntreCalles<BR>Plano<BR>Observaciones_1<BR>Colonia<BR>Poblacion<BR>CodigoPostal<BR>Estado<BR>Pais<BR>Grupo_1<BR>Encargado<BR>Telefonos<BR>Exclusivo<BR>Orden<BR>Tipo_2<BR>Estatus_2<BR>Zona<BR>Categoria_1<BR>Almacen_3<BR>Nombre_1<BR>Direccion_1<BR>Encargado_1<BR>Telefonos_1<BR>Estatus_3<BR>UltimoCambio_1<BR>Grupo_<CONTINUA>
+ListaCampos004=<CONTINUA>2<BR>Alta<BR>Tipo_3<BR>Categoria_2<BR>Exclusivo_1<BR>Orden_1<BR>EntreCalles_1<BR>Plano_1<BR>Observaciones_2<BR>Zona_1<BR>Idioma<BR>Almacen_4<BR>Nombre_2<BR>Estatus_4<BR>Nombre_3
+CamposBusquedaRapida=MovID
+SQL=SELECT<BR>  Inv.FechaEmision,<BR>  Inv.Mov,<BR>  Inv.MovID,<BR>  Inv.Estatus<BR>  <BR>FROM<BR>  Inv<BR><BR>Where Inv.Mov = <T>Salida Traspaso<T><BR>And Inv.Estatus <> <T>SINAFECTAR<T>
+[MovID]
+Clave=MovID
+Nombre=ID del Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=MovID
+TipoDatos=Texto
+[Mov]
+Clave=Mov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Mov
+TipoDatos=Texto
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+ClaveBDE=Estatus
+[FechaEmision]
+Clave=FechaEmision
+TipoDatos=FechaHora
+ClaveBDE=FechaEmision
+TamanoValidacion=15
+Nombre=Fecha de Emisión
+FormatoValidacion=dd/mmmm/aaaa

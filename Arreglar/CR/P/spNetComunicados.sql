@@ -1,0 +1,35 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spNetComunicados
+@Estatus 			int
+
+AS
+BEGIN
+BEGIN TRAN
+BEGIN TRY
+SELECT
+c.IDComunicado AS ID,
+c.Titulo AS Titulo,
+c.DirigidoA AS Dirigido,
+(CONVERT(VARCHAR(24),c.FechaPublicado,113)) AS Publicado,
+(CONVERT(VARCHAR(24),c.FechaVigencia,113)) AS Vigencia,
+c.Descripcion AS Descripcion,
+c.Prioridad AS Prioridad,
+a.Descripcion AS Tipo
+FROM pNetComunicado AS c
+INNER JOIN pnetCatComunicado AS a ON c.Tipo = a.IDCatCom
+WHERE c.Estatus = 1
+COMMIT TRAN
+END TRY
+BEGIN CATCH
+SELECT -1 Ok, ERROR_MESSAGE() OkRef
+ROLLBACK TRAN
+END CATCH
+END
+

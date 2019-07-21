@@ -1,0 +1,32 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION fnTasaBase
+(
+@TasaBase1				varchar(50),
+@TasaBase2				varchar(50),
+@TasaBase3				varchar(50)
+)
+RETURNS varchar(50)
+
+AS BEGIN
+DECLARE
+@Resultado			varchar(50)
+SELECT @Resultado = NULL
+SELECT @Resultado = Tasa FROM Tasa WHERE Tasa = @TasaBase1 AND Estatus = 'ALTA'
+IF @@ROWCOUNT = 0
+BEGIN
+SELECT @Resultado = Tasa FROM Tasa WHERE Tasa = @TasaBase2 AND Estatus = 'ALTA'
+IF @@ROWCOUNT = 0
+BEGIN
+SELECT @Resultado = Tasa FROM Tasa WHERE Tasa = @TasaBase3 AND Estatus = 'ALTA'
+END
+END
+RETURN (@Resultado)
+END
+

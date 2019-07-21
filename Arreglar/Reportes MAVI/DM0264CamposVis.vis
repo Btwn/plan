@@ -1,0 +1,105 @@
+[Vista]
+Icono=0
+Clave=DM0264CamposVis
+Nombre=DM0264Campos
+Modulos=(Todos)
+ListaCampos=DM0264ComisionesTbl.ComisionN1<BR>DM0264ComisionesTbl.ComisionN2<BR>DM0264ComisionesTbl.ComisionN3<BR>DM0264ComisionesTbl.ComisionN4<BR>DM0264ComisionesTbl.ComisionN5
+ListaTablas=DM0264ComisionesTbl
+TablaPrincipal=DM0264ComisionesTbl
+UsoCapturas=S
+SQL=SELECT<BR>  DM0264ComisionesTbl.ComisionN1,<BR>  DM0264ComisionesTbl.ComisionN2,<BR>  DM0264ComisionesTbl.ComisionN3,<BR>  DM0264ComisionesTbl.ComisionN4,<BR>  DM0264ComisionesTbl.ComisionN5<BR><BR>FROM<BR>  DM0264Comisiones DM0264ComisionesTbl
+[ComisionN1]
+Clave=ComisionN1
+Nombre=ComisionN1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ClaveBDE=ComisionN1
+[ComisionN2]
+Clave=ComisionN2
+Nombre=ComisionN2
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ClaveBDE=ComisionN2
+[ComisionN3]
+Clave=ComisionN3
+Nombre=ComisionN3
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ClaveBDE=ComisionN3
+[ComisionN4]
+Clave=ComisionN4
+Nombre=ComisionN4
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ClaveBDE=ComisionN4
+[ComisionN5]
+Clave=ComisionN5
+Nombre=ComisionN5
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ClaveBDE=ComisionN5
+[DM0264ComisionesTbl.ComisionN1]
+Clave=DM0264ComisionesTbl.ComisionN1
+LigaTabla=DM0264ComisionesTbl
+LigaCampo=ComisionN1
+TipoDatos=Lógico
+ClaveBDE=ComisionN1
+TamanoValidacion=20
+Nombre=Nivel 1
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0264ComisionesTbl.ComisionN2]
+Clave=DM0264ComisionesTbl.ComisionN2
+LigaTabla=DM0264ComisionesTbl
+LigaCampo=ComisionN2
+TipoDatos=Lógico
+ClaveBDE=ComisionN2
+TamanoValidacion=20
+Nombre=Nivel 2
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0264ComisionesTbl.ComisionN3]
+Clave=DM0264ComisionesTbl.ComisionN3
+LigaTabla=DM0264ComisionesTbl
+LigaCampo=ComisionN3
+TipoDatos=Lógico
+ClaveBDE=ComisionN3
+TamanoValidacion=20
+Nombre=Nivel 3
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0264ComisionesTbl.ComisionN4]
+Clave=DM0264ComisionesTbl.ComisionN4
+LigaTabla=DM0264ComisionesTbl
+LigaCampo=ComisionN4
+TipoDatos=Lógico
+ClaveBDE=ComisionN4
+TamanoValidacion=20
+Nombre=Nivel 4
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[DM0264ComisionesTbl.ComisionN5]
+Clave=DM0264ComisionesTbl.ComisionN5
+LigaTabla=DM0264ComisionesTbl
+LigaCampo=ComisionN5
+TipoDatos=Lógico
+ClaveBDE=ComisionN5
+TamanoValidacion=20
+Nombre=Nivel 5
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas

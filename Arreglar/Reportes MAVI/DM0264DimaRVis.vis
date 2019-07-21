@@ -1,0 +1,66 @@
+[Vista]
+Icono=0
+Clave=DM0264DimaRVis
+Nombre=ClientesD
+Modulos=(Todos)
+Singular=ClienteD
+ListaCampos=Cte.Cliente<BR>Cte.Nombre
+ListaRelaciones=Venta.Cte
+VistaIndependiente=S
+CamposBusquedaRapida=Cte.Cliente<BR>Cte.Nombre
+SQL=SELECT DISTINCT<BR>  Cte.Cliente,<BR>  Cte.Nombre<BR><BR>FROM<BR>  Cte<BR>  JOIN Venta ON Venta.Cliente=Cte.Cliente<BR><BR>WHERE <BR>  Venta.EnviarA=76 AND Venta.Mov IN (<T>FACTURA<T>,<T>CREDILANA<T>) AND Venta.Estatus=<T>CONCLUIDO<T>
+[Cte.Cliente]
+Clave=Cte.Cliente
+Nombre=Clave
+Tamano=10
+TamanoValidacion=10
+Mayusculas=S
+MascaraEdicion=Config.CteFormato
+CondicionEdicion=no TieneMovimientos
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=RFC
+LigaTabla=Cte
+LigaCampo=Cliente
+ClaveBDE=Cliente
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[Cte.Nombre]
+Clave=Cte.Nombre
+Nombre=Nombre
+Tamano=100
+TamanoValidacion=10
+ConAyudaBusquedaRapida=S
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+LigaTabla=Cte
+LigaCampo=Nombre
+ClaveBDE=Nombre
+Alineacion=por Omisión
+Mayusculas=S
+[Relaciones.Venta.Cte]
+Clave=Venta.Cte
+TablaRemota=Cte
+LlaveLocal=Venta.Cliente
+LlaveRemota=Cliente
+TipoRelacion=Forzosa
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Cliente
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

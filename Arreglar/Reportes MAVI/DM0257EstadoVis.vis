@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0257EstadoVis
+Nombre=Estado
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ESTADO
+SQL=<TAB>SELECT DISTINCT ESTADO FROM Cte WITH(NOLOCK)<BR><TAB><TAB>WHERE Estado IS NOT NULL<BR><TAB><TAB>ORDER BY Estado
+[ESTADO]
+Clave=ESTADO
+Nombre=ESTADO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=ESTADO

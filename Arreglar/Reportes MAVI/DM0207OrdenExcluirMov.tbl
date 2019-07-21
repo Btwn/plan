@@ -1,0 +1,42 @@
+[Tabla]
+Icono=0
+Clave=DM0207OrdenExcluirMov
+Nombre=DM0207OrdenExcluirMov
+Archivo=DM0207OrdenExcluirMov
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Excluirpara<BR>Movimiento
+LlavePrimaria=Excluirpara<BR>Movimiento
+ControlMov=S
+CampoMov=Mov
+SQL=SELECT<BR>  Excluirpara,<BR>  Movimiento<BR><BR>FROM<BR>  DM0207OrdenExcluirMov
+[Excluirpara]
+Clave=Excluirpara
+Nombre=Excluirpara
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+Tamano=30
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+OpcionesValidar=S
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Ya existe el registro<T>
+Mayusculas=S
+ValidacionCondicion=(SQL(<T>Select count (movimiento) mov from DM0207OrdenExcluirMov where Excluirpara = :te AND Movimiento = :tm  <T>,Excluirpara,Movimiento ))<1
+ListaOpciones=DIAS VENCIDOS<BR>DIAS INACTIVOS<BR>CAPITAL<BR>CAPITAL VENCIDO
+[Movimiento]
+Clave=Movimiento
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Unicamente opciones listadas
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Ya existe el registro<T>
+Mayusculas=S
+ValidacionCondicion=(SQL(<T>Select count (movimiento) mov from DM0207OrdenExcluirMov where Excluirpara = :te AND Movimiento = :tm  <T>,Excluirpara,Movimiento ))<1
+Formula=SQLEnLista( <T>Select mov from movmavi<T> )

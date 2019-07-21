@@ -1,0 +1,25 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tgAnuncioHorarioC ON AnuncioHorario
+
+FOR UPDATE, DELETE
+AS BEGIN
+DECLARE
+@HorarioN	varchar(50),
+@HorarioA	varchar(50)
+IF dbo.fnEstaSincronizando() = 1 RETURN
+SELECT @HorarioN = Horario FROM Inserted
+SELECT @HorarioA = Horario FROM Deleted
+IF @HorarioN = @HorarioA RETURN
+IF @HorarioN IS NULL
+DELETE AnuncioD WHERE Horario = @HorarioA
+ELSE
+UPDATE AnuncioD SET Horario =  @HorarioN WHERE Horario = @HorarioA
+END
+

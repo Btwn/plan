@@ -1,0 +1,77 @@
+[Reporte]
+Clave=RM1064ColocacionCrePrePerRefFrmRep
+Icono=0
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+Nombre=RM1064 Colocación de Cred, Prés Pers y Refinan
+VistaEspecial=S
+ConFormaPrevia=S
+FormaPrevia=RM1064ColocacionCrePrePerRefFrm
+Submenu=Vtas Generales Mavi
+PosicionInicialAlturaCliente=729
+PosicionInicialAncho=1376
+[Vista]
+Icono=0
+Clave=RM1064ColocacionCrePrePerRefFrmRep
+VistaIndependiente=S
+ListaCampos=COLUMN1
+Nombre=Colocación de credilana, préstamos personales y refinanciamiento
+Singular=Colocación de credilana, préstamos personales y refinanciamiento
+SQL=SELECT 1
+[COLUMN1]
+Clave=COLUMN1
+Nombre=COLUMN1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=COLUMN1
+[Formato]
+VentanaIzquierda=360
+VentanaArriba=174
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80
+[Acciones.Excel]
+Nombre=Excel
+Boton=115
+NombreEnBoton=S
+NombreDesplegar=&Excel
+EnBarraHerramientas=S
+TipoAccion=Reportes Excel
+ClaveAccion=RM1064ColocacionCrePrePerRefXlsRep
+Activo=S
+Visible=S
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=RM0126CelVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Celula
+SQL=select distinct equipo as Celula from equipoagente <BR>{<T>where Equipo like <T>+comillas(<T>cel<T>) + <T> + substring( <T>+comillas(Mavi.RM0126Gerencia)+<T>,4,1) +<T> + comillas(<T>%<T>)}<BR>{<T> and  Equipo like <T>+comillas(<T>cel<T>) + <T> + substring( <T>+comillas(Mavi.RM0126Division)+<T>,4,1) +<T> + comillas(<T>%<T>)}
+[Celula]
+Clave=Celula
+Nombre=Celula
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Celula

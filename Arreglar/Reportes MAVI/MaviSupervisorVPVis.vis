@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=MaviSupervisorVPVis
+Nombre=Supervisores Piso de venta
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Supervisor<BR>Nombre
+SQL=SELECT DISTINCT Supervisor=S.Descripcion1 , Nombre = A.Nombre<BR>FROM SucursalOtrosDatos S<BR>INNER JOIN dbo.Agente A ON A.Agente = S.Descripcion1<BR>WHERE Descripcion1 <> <T>S/N<T>
+[Supervisor]
+Clave=Supervisor
+Nombre=Supervisor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Supervisor
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

@@ -1,0 +1,97 @@
+[Tabla]
+Icono=0
+Clave=DM0243DepositosInstTbl
+Archivo=DM0243DepositosInst
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=ID<BR>Banco<BR>FechaDeposito<BR>MontoDeposito<BR>Autorizacion<BR>UsrRegDep<BR>FechaRegDep<BR>Disponible<BR>Saldo<BR>IDValida
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  Banco,<BR>  FechaDeposito,<BR>  MontoDeposito,<BR>  Autorizacion,<BR>  UsrRegDep,<BR>  FechaRegDep,<BR>  Disponible,<BR>  Saldo,<BR>  IDValida<BR><BR>FROM<BR>  DM0243DepositosInst
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Banco]
+Clave=Banco
+Nombre=Banco
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=DM0243CtaDineroFrm
+AyudaVista=DM0243CtaDineroVis
+AyudaCampo=CtaDinero
+AyudaRefrescar=S
+RequeridoActivo=S
+ConRefrescar=S
+ListaRefrescar=FechaRegDep<BR>UsrRegDep
+CondicionEdicion=Disponible <> verdadero
+[FechaDeposito]
+Clave=FechaDeposito
+Nombre=Fecha Deposito
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+FormatoValidacion=dd/mmm/aaaa
+ConRefrescar=S
+ListaRefrescar=UsrRegDep<BR>FechaRegDep
+CondicionEdicion=Disponible <> Verdadero
+[MontoDeposito]
+Clave=MontoDeposito
+Nombre=MontoDeposito
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+CondicionEdicion=Disponible <> Verdadero
+[Autorizacion]
+Clave=Autorizacion
+Nombre=Autorizacion
+Visible=S
+TamanoValidacion=40
+Tamano=40
+[UsrRegDep]
+Clave=UsrRegDep
+Nombre=Usuario Registro Deposito
+Visible=S
+TamanoValidacion=15
+Tamano=15
+CondicionEdicion=1=0
+ValorRefrescar=Usuario
+[FechaRegDep]
+Clave=FechaRegDep
+Nombre=Fecha Registro Depositos
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+CondicionEdicion=1=0
+ValorRefrescar=SQL(<T>Select GETDATE()<T>)
+[Disponible]
+Clave=Disponible
+Nombre=Disponible
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=FAlso
+[Saldo]
+Clave=Saldo
+Nombre=Saldo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+CondicionEdicion=1=0
+[IDValida]
+Clave=IDValida
+Nombre=Nip De Cobro
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+CondicionEdicion=1=0

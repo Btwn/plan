@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviConAnaDeImpXConComAVis
+Nombre=ConceptoCXC
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CONCEPTO
+SQL=select Distinct CONCEPTO<BR>from CXC<BR>where concepto <> <T>null<T><BR>and concepto <> <T><T><BR>order by CONCEPTO
+[CONCEPTO]
+Clave=CONCEPTO
+Nombre=CONCEPTO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=CONCEPTO

@@ -1,0 +1,45 @@
+[Reporte]
+Clave=RM1040ExistenciasVsStockMenurep
+Nombre=RM1040 Existencias Vs Stock
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+Submenu=Inventarios Mavi
+SubmenuPreliminar=S
+ConFormaPrevia=S
+FormaPrevia=RM1040ExistenciasVsStockfrm
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+BarraHerramientas=S
+Menus=S
+[Vista]
+Icono=0
+Clave=RM1040ExistenciasVsStockMenurep
+UsoCapturas=S
+UsoReportes=S
+[Formato]
+VentanaIzquierda=320
+VentanaArriba=302
+VentanaAltura=420
+VentanaAncho=640
+PanelArriba=120
+PanelBotones=80

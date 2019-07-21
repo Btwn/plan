@@ -1,0 +1,30 @@
+[Vista]
+Icono=0
+Clave=RM0436CredCatDeCalSerCredSerCasVis
+Nombre=Vista Clave
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Clave<BR>descripcion
+CamposBusquedaRapida=Clave<BR>descripcion
+SQL=select Distinct Clave,descripcion<BR>from Maviclaveseguimiento<BR>Where clave like <T>%MEN%<T><BR>order by clave
+[Clave]
+Clave=Clave
+Nombre=Clave
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Clave
+[descripcion]
+Clave=descripcion
+Nombre=descripcion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=descripcion

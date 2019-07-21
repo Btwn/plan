@@ -1,0 +1,44 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spTRCLActivarTabla
+@Tabla		varchar(100),
+@Activar	bit = 1
+
+AS BEGIN
+DECLARE
+@SQL	varchar(max),
+@Trigger	varchar(100)
+SELECT @Trigger = 'dbo.tg'+@Tabla+'TRCL'
+SELECT @SQL = 'spDROP_TRIGGER '''+@Trigger+'_ABC'''
+EXEC (@SQL)
+IF @Activar = 1
+BEGIN
+SELECT @SQL =
+'CREATE TRIGGER '+@Trigger+'_ABC ON '+@Tabla+'
+
+FOR INSERT, UPDATE, DELETE
+AS BEGIN
+IF dbo.fnEstaSincronizando() = 1 RETURN
+IF (SELECT FueraLinea FROM Version WHERE TRCL = 1) = 1
+BEGIN
+SELECT @SQL = "No se puede Editar Fuera Linea ('+@Tabla+')"
+RAISERROR (@SQL,16,-1)
+END
+END'
+BEGIN TRY
+EXEC (@SQL)
+END TRY
+BEGIN CATCH
+SELECT @SQL = 'Error al Creare el Trigger '+@Trigger+' en la Tabla '+@Tabla
+RAISERROR (@SQL,16,-1)
+END CATCH
+END
+RETURN
+END
+

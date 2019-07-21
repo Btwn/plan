@@ -1,0 +1,73 @@
+[Forma]
+Clave=MaviServConsArtPorSerieFRM
+Nombre=RM041 Consulta De Articulos Por Serie
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=(variables)
+CarpetaPrincipal=(variables)
+PosicionInicialIzquierda=298
+PosicionInicialArriba=415
+PosicionInicialAlturaCliente=77
+PosicionInicialAncho=315
+Menus=S
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Cerrar<BR>Preliminar
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=por Diseño
+VentanaEstadoInicial=Normal
+ExpresionesAlMostrar=Asigna(Mavi.NSerie,<T>0<T> )
+[(variables)]
+Estilo=Ficha
+Clave=(variables)
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=2
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Mavi.NSerie
+CarpetaVisible=S
+[(variables).Mavi.NSerie]
+Carpeta=(variables)
+Clave=Mavi.NSerie
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=20
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Preliminar]
+Nombre=Preliminar
+Boton=6
+NombreEnBoton=S
+NombreDesplegar=&Preliminar
+EnBarraHerramientas=S
+BtnResaltado=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+BtnResaltado=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+

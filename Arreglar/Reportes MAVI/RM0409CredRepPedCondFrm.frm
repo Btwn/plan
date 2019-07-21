@@ -1,0 +1,94 @@
+[Forma]
+Clave=RM0409CredRepPedCondFrm
+Nombre=RM0409 Reporte de Pedidos Condicionados
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=(Variables)
+CarpetaPrincipal=(Variables)
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+VentanaTipoMarco=Sencillo
+VentanaPosicionInicial=Centrado
+VentanaEstadoInicial=Normal
+ListaAcciones=Preliminar<BR>Cerrar
+PosicionInicialIzquierda=539
+PosicionInicialArriba=401
+PosicionInicialAlturaCliente=63
+PosicionInicialAncho=362
+VentanaExclusiva=S
+VentanaEscCerrar=S
+ExpresionesAlMostrar=asigna(info.fecha,Nulo)
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=14
+FichaEspacioNombres=65
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Info.Fecha
+CarpetaVisible=S
+[(Variables).Info.Fecha]
+Carpeta=(Variables)
+Clave=Info.Fecha
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=15
+ColorFondo=Blanco
+ColorFuente=Negro
+EspacioPrevio=N
+[Acciones.Preliminar]
+Nombre=Preliminar
+Boton=6
+NombreEnBoton=S
+NombreDesplegar=&Preliminar
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Asignar<BR>Cerrar
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S
+EspacioPrevio=S
+[Acciones.Preliminar.Asignar]
+Nombre=Asignar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Preliminar.Cerrar]
+Nombre=Cerrar
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+ConCondicion=S
+Visible=S
+EjecucionCondicion=Condatos(Info.Fecha)
+EjecucionMensaje=<T>Seleccionar una Fecha<T>
+EjecucionConError=S
+

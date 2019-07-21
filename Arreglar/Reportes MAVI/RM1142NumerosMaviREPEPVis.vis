@@ -1,0 +1,16 @@
+[Vista]
+Icono=0
+Clave=RM1142NumerosMaviREPEPVis
+Modulos=(Todos)
+ListaTablas=RM1142NumerosMaviREPEPTbl
+TablaPrincipal=RM1142NumerosMaviREPEPTbl
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=RM1142NumerosMaviREPEPTbl.Numero
+SQL=SELECT<BR>  RM1142NumerosMaviREPEPTbl.Numero<BR><BR>FROM<BR>  RM1142NumerosMaviREPEP RM1142NumerosMaviREPEPTbl
+[RM1142NumerosMaviREPEPTbl.Numero]
+Clave=RM1142NumerosMaviREPEPTbl.Numero
+LigaTabla=RM1142NumerosMaviREPEPTbl
+LigaCampo=Numero
+Ligado=S
+ClaveBDE=Numero

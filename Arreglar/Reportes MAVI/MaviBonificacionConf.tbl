@@ -1,0 +1,263 @@
+[Tabla]
+Icono=0
+Clave=MaviBonificacionConf
+Nombre=MaviBonificacionConf
+Archivo=MaviBonificacionConf
+Modulos=(Todos)
+Singular=MaviBonificacionConf
+TipoTabla=General
+ListaCampos=ID<BR>Bonificacion<BR>Estatus<BR>PorcBon1<BR>FechaIni<BR>FechaFin<BR>PagoTotal<BR>AplicaA<BR>DiasAtrazo<BR>Factor<BR>Linea<BR>FechaCancelacion<BR>FechaRegistro<BR>Usuario<BR>UsuarioCancelacion<BR>Financiamiento<BR>PlazoEjeFin<BR>ActVigencia<BR>DiasMenoresA<BR>DiasMayoresA<BR>NoPuedeAplicarSola<BR>VencimientoAntes<BR>VencimientoDesp<BR>Concepto<BR>Orden<BR>PorcBon2<BR>FechaFinProgramada
+LlavePrimaria=ID
+ControlID=S
+ControlEstatus=S
+ControlUsuarios=S
+CampoID=ID
+CampoEstatus=Estatus
+CampoUsuario=Usuario
+EstatusDefault=SINAFECTAR
+SQL=SELECT<BR>  ID,<BR>  Bonificacion,<BR>  Estatus,<BR>  PorcBon1,<BR>  Financiamiento,<BR>  FechaIni,<BR>  FechaFin,<BR>  PagoTotal,<BR>  AplicaA,<BR>  PlazoEjeFin,<BR>  VencimientoAntes,<BR>  VencimientoDesp,<BR>  DiasAtrazo,<BR>  DiasMenoresA,<BR>  DiasMayoresA,<BR>  Factor,<BR>  Linea,<BR>  ActVigencia,<BR>  FechaCancelacion,<BR>  UsuarioCancelacion,<BR>  NoPuedeAplicarSola,<BR>  FechaRegistro,<BR>  Usuario,<BR>  Concepto,<BR>  Orden,<BR>  PorcBon2,<BR>  FechaFinProgramada<BR><BR>FROM<BR>  MaviBonificacionConf
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Bonificacion]
+Clave=Bonificacion
+Nombre=Bonificación
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AlCambiar=si Info.MaviBonificacion = <T>Bonificacion Pago Puntual<T><BR>entonces<BR>   si  Info.MaviBonificacion <>Bonificacion<BR>     entonces<BR>        Forma.Accion(<T>quitabonifvenc<T>)<BR>     fin<BR>fin<BR><BR>Asigna(Info.MaviBonificacion,Bonificacion)
+AyudaRefrescar=S
+Requerido=S
+ValorRefrescar=Asigna(Info.MaviBonificacion,Bonificacion)
+Formula=SQLEnLista(<T>Select Bonificacion from MaviBonificacionCat<T>)
+TipoDatos=Texto
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+[PorcBon1]
+Clave=PorcBon1
+Nombre=% Cte Casa
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ValorPorOmision=0.00
+AyudaEnCaptura=Calculadora
+ValorMaximo=100
+FormatoValidacion=0.00
+[FechaIni]
+Clave=FechaIni
+Nombre=Fecha Inicial
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+Requerido=S
+ValorPorOmision=Hoy
+ValorMinimo=Hoy
+[FechaFin]
+Clave=FechaFin
+Nombre=Fecha Final
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+Requerido=S
+ValorMinimo=FechaIni
+ValorPorOmision=Hoy
+[PagoTotal]
+Clave=PagoTotal
+Nombre=PagoTotal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Verdadero
+[AplicaA]
+Clave=AplicaA
+Nombre=Alcance
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=30
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Ninguna
+ListaOpciones=Importe de Factura<BR>Importe del Documento
+OpcionesValidar=S
+TipoDatos=Texto
+[DiasAtrazo]
+Clave=DiasAtrazo
+Nombre=Días Atraso
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+[Factor]
+Clave=Factor
+Nombre=Factor
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+FormatoEdicion=0.00
+[Linea]
+Clave=Linea
+Nombre=Linea Global
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+FormatoEdicion=0.00
+[FechaCancelacion]
+Clave=FechaCancelacion
+Nombre=Fecha Cancelación
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+[FechaRegistro]
+Clave=FechaRegistro
+Nombre=Fecha Registro
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorPorOmision=Hoy
+ValorRefrescar=Hoy
+[Usuario]
+Clave=Usuario
+Nombre=Usuario
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Usuario
+ValorRefrescar=Usuario
+TipoDatos=Texto
+[UsuarioCancelacion]
+Clave=UsuarioCancelacion
+Nombre=UsuarioCancelacion
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+[Financiamiento]
+Clave=Financiamiento
+Nombre=Financiamiento
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0.00
+[PlazoEjeFin]
+Clave=PlazoEjeFin
+Nombre=Plazo Eje
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+[ActVigencia]
+Clave=ActVigencia
+Nombre=Actualiza Vigencia
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+[DiasMenoresA]
+Clave=DiasMenoresA
+Nombre=Días Menores a
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=0
+AyudaEnCaptura=Calculadora
+AlCambiar=Si<BR>  DiasMenoresA <> 0<BR>Entonces<BR>    Asigna(DiasMayoresA,0)<BR>Fin
+[DiasMayoresA]
+Clave=DiasMayoresA
+Nombre=Días Mayores a
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=0
+AyudaEnCaptura=Calculadora
+ValorMinimo=DiasMenoresA
+AlCambiar=Si<BR>  DiasMayoresA <> 0<BR>Entonces<BR>    Asigna(DiasMenoresA,0)<BR>Fin
+[NoPuedeAplicarSola]
+Clave=NoPuedeAplicarSola
+Nombre=No puede aplicar sola
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+[VencimientoAntes]
+Clave=VencimientoAntes
+Nombre=Antes Vencimiento No.
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+AlCambiar=Si<BR>  VencimientoDesp <> 0<BR>Entonces<BR>    Asigna(VencimientoDesp,0)<BR>Fin
+ValorPorOmision=0
+ValorMaximo=365
+[VencimientoDesp]
+Clave=VencimientoDesp
+Nombre=Desp. Vencimiento No.
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ValorPorOmision=0
+AlCambiar=Si<BR>  VencimientoDesp <> 0<BR>Entonces<BR>    Asigna(VencimientoAntes,0)<BR>Fin
+ValorMaximo=365
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=MaviBonifConcepto
+AyudaVista=Concepto
+AyudaCampo=Concepto.Concepto
+AyudaIgnoraChequeos=S
+TipoDatos=Texto
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+[PorcBon2]
+Clave=PorcBon2
+Nombre=% Cte Nuevo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ValorPorOmision=0.00
+
+[FechaFinProgramada]
+Clave=FechaFinProgramada
+Nombre=Fecha Fin Programada
+Visible=S
+TamanoValidacion=20
+TipoDatos=FechaHora
+AyudaEnCaptura=Calendario sin Hora
+CondicionEdicion=si<BR>    condatos(FechaFinProgramada)<BR>entonces<BR>    falso<BR>sino<BR>    verdadero<BR>fin

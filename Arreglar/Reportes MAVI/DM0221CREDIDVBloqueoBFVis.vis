@@ -1,0 +1,55 @@
+
+[Vista]
+Icono=0
+Clave=DM0221CREDIDVBloqueoBFVis
+Nombre=DVBloqueoBF
+Modulos=(Todos)
+ListaTablas=TablaNumD
+TablaPrincipal=TablaNumD
+UsoCapturas=S
+UsoReportes=S
+
+ListaCampos=TablaNumD.TablaNum<BR>TablaNumD.Numero<BR>TablaNumD.Valor
+
+
+
+SQL=SELECT<BR>TablaNumD.TablaNum,<BR>TablaNumD.Numero,<BR>TablaNumD.Valor<BR>FROM TablaNumD TablaNumD<BR>WHERE TablaNum=<T>Bloqueo DVBF<T>
+[TablaNumD.TablaNum]
+Clave=TablaNumD.TablaNum
+Nombre=TablaNum
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ValorPorOmision=Info.Tabla
+TipoDatos=Texto
+LigaTabla=TablaNumD
+LigaCampo=TablaNum
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=TablaNum
+
+[TablaNumD.Numero]
+Clave=TablaNumD.Numero
+Nombre=Periodo Dias
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+LigaTabla=TablaNumD
+LigaCampo=Numero
+ClaveBDE=Numero
+
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+[TablaNumD.Valor]
+Clave=TablaNumD.Valor
+Nombre=MaxDV
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+LigaTabla=TablaNumD
+LigaCampo=Valor
+ClaveBDE=Valor
+Alineacion=por Omisión
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas

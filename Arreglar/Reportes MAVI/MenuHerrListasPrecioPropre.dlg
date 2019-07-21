@@ -1,0 +1,25 @@
+[Dialogo]
+Clave=MenuHerrListasPrecioPropre
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=ManipularListas
+PosicionInicialAlturaCliente=80
+PosicionInicialAncho=258
+[Acciones.ManipularListas]
+Nombre=ManipularListas
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Listas de Precios
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=PropreListaCaptura
+Activo=S
+Visible=S

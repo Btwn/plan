@@ -1,0 +1,46 @@
+[Reporte]
+Clave=RM0430BPrincipalRep
+Nombre=RM0430 - B Analisis de Credito Liberador Automatico 
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=2
+AnchoPagina=21.6
+LargoPagina=27.9
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=por Omision
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+ConFormaPrevia=S
+FormaPrevia=RM0430BAnalisisCreditoLibAutFrm
+Submenu=Liberador MAVI
+[Vista]
+Icono=0
+Clave=RM0430BPrincipalRep
+VistaIndependiente=S
+ListaCampos=N
+SQL=Select N = 1
+[N]
+Clave=N
+Nombre=N
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=N

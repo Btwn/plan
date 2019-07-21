@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=MaviDm0173CampanasMonederoFamiliaArt
+Nombre=FamiliaArt Campanas Monedero
+Modulos=(Todos)
+ListaTablas=MaviDm0173CampanasMonederoFamiliaArt
+TablaPrincipal=MaviDm0173CampanasMonederoFamiliaArt
+ListaCampos=MaviDm0173CampanasMonederoFamiliaArt.Id<BR>MaviDm0173CampanasMonederoFamiliaArt.FamiliaArt
+UsoCapturas=S
+UsarJOIN=S
+SQL=SELECT<BR>  MaviDm0173CampanasMonederoFamiliaArt.Id,<BR>  MaviDm0173CampanasMonederoFamiliaArt.FamiliaArt<BR><BR>FROM<BR>  mavidm0173campanasMonederofamiliaArt MaviDm0173CampanasMonederoFamiliaArt
+[MaviDm0173CampanasMonederoFamiliaArt.Id]
+Clave=MaviDm0173CampanasMonederoFamiliaArt.Id
+LigaTabla=MaviDm0173CampanasMonederoFamiliaArt
+LigaCampo=Id
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=Id
+[MaviDm0173CampanasMonederoFamiliaArt.FamiliaArt]
+Clave=MaviDm0173CampanasMonederoFamiliaArt.FamiliaArt
+LigaTabla=MaviDm0173CampanasMonederoFamiliaArt
+LigaCampo=FamiliaArt
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=FamiliaArt

@@ -1,0 +1,24 @@
+[Vista]
+Icono=0
+Clave=RM0042DiasFiltroVis
+Nombre=RM0042DiasFiltroVis
+Modulos=(Todos)
+Singular=RM1042 Grupos
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Diastranscurridos
+CamposBusquedaRapida=Diastranscurridos
+LlavePrimaria=Diastranscurridos
+SQL=Select distinct <BR>      <TAB><TAB> Diastranscurridos =(DateDiff(Day, S.Fechaemision,Getdate()))<BR><BR><TAB><TAB><TAB><TAB><TAB><TAB><BR>                          From Soporte S<BR>                                    Left Join Art On Art.Articulo = S.Articulo<BR><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>Left Join Prov On S.Proveedor = Prov.Proveedor<BR><TAB><TAB><TAB><TAB><TAB><BR><TAB>                left join(<BR>                                    select distinct(nombrecorto)as lo from prov<BR>  <BR>                         )PR on pr.lo=prov.nombrecorto<BR><BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB> Left Join Cte On S.Cliente = Cte.Cliente<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB> Left Join Inv On S.Condicionentrega = (Inv.Mov + <T>: <T> + Inv.Movid)<BR><TAB><TAB><<CONTINUA>
+SQL002=<CONTINUA>TAB><TAB><TAB><TAB><TAB><TAB><TAB> Left Join Inv As Inv2 On S.Destino = (Inv2.Mov + <T>: <T> + Inv2.Movid)<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><BR>               Left Join (<BR>               <BR>                               Select MB.Evento, T.Idevento, MB.ID<BR><BR><BR>                     From (<BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>   Select Max(RID) As Idevento <BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB> From Movbitacora MB <BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>   Where MB.Modulo = <T>ST<T> <BR><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB><TAB>   And MB.Clave=<T>SER00001<T><BR>                              )T<BR><BR><BR>                                   Left Join Movbitacora MB On T.Idevento = MB.RID<BR>                              )R On R.ID = S.Id<BR><BR><CONTINUA>
+SQL003=<CONTINUA>               Left Join (<BR>                               Select MB.Evento, T.Idevento, MB.ID<BR><BR>                  From (<BR> <BR>                             Select RID As Idevento <BR>                                From MovBitacora MB <BR>                              Where MB.Modulo = <T>ST<T> <BR>                                  And MB.Clave=<T>SER00002<T><BR>                           )T<BR><BR><TAB><TAB><TAB><TAB><TAB>           Left Join Movbitacora MB On T.Idevento = MB.RID<BR>                           <BR>                           )R2 On R2.ID = S.Id<BR><BR><TAB><TAB><TAB><TAB><TAB>           Left Join MovCampoExtra MCE On mce.id=s.id And CampoExtra = <T>RS_FACTURA<T><BR><BR>                              Left Join Inv InvOT On InvOT.mov = MCE.mov<BR><BR>              le<CONTINUA>
+SQL004=<CONTINUA>ft join (<BR><BR>                              select distinct origen,origenid,mov,movid <BR>                                            from inv where origen=<T>reporte servicio<T>and mov=<T>entrada servicio<T><BR>                  <BR>                           )invSI on invSI.origen=s.mov and invSI.origenid=s.movid<BR>                                     where s.mov=<T>Reporte Servicio<T> <BR><BR>order by 1<BR>--{Si(ConDatos(Info.Cliente),<T>AND S.Cliente=<T>+COMILLAS(Info.Cliente),<T><T>)}
+[Diastranscurridos]
+Clave=Diastranscurridos
+Nombre=Diastranscurridos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Diastranscurridos

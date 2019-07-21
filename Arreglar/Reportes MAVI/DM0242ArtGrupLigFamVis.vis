@@ -1,0 +1,21 @@
+[Vista]
+Icono=0
+Clave=DM0242ArtGrupLigFamVis
+Nombre=FAMILAS ARTICULOS
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Grupo
+LlavePrimaria=Grupo
+CamposBusquedaRapida=Grupo
+SQL=select <BR>distinct(Grupo) <BR>from art <BR>Where <BR>Art.Grupo is not null<BR>AND LEN(Art.Grupo)>0<BR><BR>{Si(Condatos(Mavi.DM0242ArtLinLigLin) ,<T>And Art.Grupo In (select Grupo from Art where Linea=<T>+Comillas(Mavi.DM0242ArtLinLigLin)+<T>)<T>,<T><T>)}<BR>{Si(Condatos(Mavi.DM0242ArtFamLigLin) ,<T>And Art.Grupo In (select Grupo from Art where Familia=<T>+Comillas(Mavi.DM0242ArtFamLigLin)+<T>)<T>,<T><T>)}<BR>{SI(CONDATOS(Mavi.DM0242ArtCatLigGrup),<T>AND Art.Categoria=<T>+COMILLAS(Mavi.DM0242ArtCatLigGrup),<T><T>)}<BR><BR>order by Grupo asc
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Grupo

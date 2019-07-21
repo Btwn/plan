@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviMovTipoAplicaProvVis
+Nombre=Tipo de Movimiento que Aplica a Proveedor
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Mov
+CamposBusquedaRapida=Proveedor
+SQL=Declare <BR>@Prov Varchar(8000),<BR>@Comple Varchar(8000)<BR><BR>Set @Prov = {Si(ConDatos(Mavi.ProvLstSel),+Comillas(<T><T><T><T><T><T>) +Comillas(Mavi.ProvLstSel)+Comillas(<T><T><T><T><T><T>),<T>NULL<T>)}<BR>Set @Prov = Replace(@Prov,<T>,<T>,<T><T><T>,<T><T><T>)<BR>Set @Comple = <T> <T><BR><BR>if @Prov is not NULL  <BR>Begin<BR>   Set @Comple = <T> And Proveedor in (<T>+@Prov+<T>) <T><BR>End<BR><BR>Exec(<T><BR>Select Distinct Mov<BR>From CXP<BR>Where Estatus not in (<T><T>SINAFECTAR<T><T>,<T><T>CANCELADO<T><T>)<BR>And Mov in (<T><T>Entrada Compra<T><T>,<T><T>Compra Sistemas<T><T>,<T><T>Compra Taller<T><T>,<T><T>Compra Publicidad<T><T>,<BR><TAB><T><T>Compra Papeleria<T><T>,<T><T>Compra Admva<T><T>,<T><T>Entrada con Gastos<T><T>,<T><T>Gasto<T><T>,<T><T>Compra ActivoFijo<T><T>)<BR><T>+@Compl<CONTINUA>
+SQL002=<CONTINUA>e+<T><BR>Order By Mov<T>)
+[Mov]
+Clave=Mov
+Nombre=Tipo Movimiento
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Mov
+TipoDatos=Texto

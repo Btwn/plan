@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviUsoVehicular
+Nombre=Uso Vehicular
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Uso Vehicular
+SQL=Select Distinct Descripcion5 as [Uso Vehicular]<BR>From Vehiculo<BR>Where Descripcion5 is not Null<BR>Order By Descripcion5
+[Uso Vehicular]
+Clave=Uso Vehicular
+Nombre=Uso Vehicular
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Uso Vehicular

@@ -1,0 +1,52 @@
+
+[Tabla]
+Icono=0
+Clave=MonMapeoCFD
+Nombre=MonMapeoCFD
+Archivo=MonMapeoCFD
+Modulos=(Todos)
+Singular=MonMapeoCFD
+TipoTabla=General
+
+ListaCampos=Mapeo<BR>Moneda<BR>Clave
+ListaRelaciones=Mon
+LlavePrimaria=Mapeo
+SQL=SELECT<BR>  Mapeo,<BR>  Moneda,<BR>  Clave<BR><BR>  FROM MonMapeoCFD
+[Mapeo]
+Clave=Mapeo
+Nombre=Mapeo
+Visible=S
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+
+Requerido=S
+[Moneda]
+Clave=Moneda
+Nombre=Moneda
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+Requerido=S
+ConRefrescar=S
+ListaRefrescar=Clave
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=Mon
+AyudaMemOpc=Unicamente opciones listadas
+[Clave]
+Clave=Clave
+Nombre=Clave
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+ValorRefrescar=SQL(<T>SELECT Clave FROM Mon WHERE Moneda=:tMoneda<T>,Moneda)
+[Relaciones.Mon]
+TipoRelacion=Opcional
+LlaveLocal=Moneda
+Clave=Mon
+TablaRemota=Mon
+LlaveRemota=Moneda

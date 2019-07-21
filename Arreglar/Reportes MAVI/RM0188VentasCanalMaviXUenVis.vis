@@ -1,0 +1,25 @@
+[Vista]
+Icono=0
+Clave=RM0188VentasCanalMaviXUenVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Valor<BR>ID
+SQL=SELECT Valor=Cadena,ID<BR>FROM VentasCanalMavi <BR>WHERE 1=1<BR>{Si(ConDatos(Info.UEN),<T> AND UEN = <T>+Info.UEN,<T><T>)}<BR>{Si(ConDatos(Mavi.RM0188CatCanal),<T> AND Categoria = <T>+Comillas(Mavi.RM0188CatCanal),<T><T>)}<BR>GROUP BY Cadena,ID
+[Valor]
+Clave=Valor
+Nombre=Canal de Venta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Valor
+TipoDatos=Texto
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ID

@@ -1,0 +1,1972 @@
+
+[Reporte]
+Clave=DM0175JefesDeGrupoDimaGerenteRep
+Nombre=DM0175 Gerentes Grupo Dima
+Icono=0
+VistaEspecial=S
+Tipo=Reporte
+SubmenuPreliminar=S
+ImpresoraEspecifica=(por Omisión)
+ImpresoraPixeles=(Auto)
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+FuentePorOmision={Arial, 8, Negro, []}
+Caracteres=132
+Renglones=66
+MargenInferior=2
+TamanoPagina=1
+AnchoPagina=34.0
+LargoPagina=16.0
+Impresora=S
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+Orientacion=Vertical
+FormatoSinConexion=S
+ASCIISinModos=S
+Puerto=LPT1
+Parametros=S
+
+PosicionInicialAlturaCliente=706
+PosicionInicialAncho=1316
+PreliminarColores=S
+BarraHerramientas=S
+OtroOrden=S
+Filtros=S
+FiltroRespetar=S
+Columnas=1
+ListaAcciones=NuevaConsulta<BR>Cerrar<BR>Excel<BR>Imprimir
+ListaOrden=GerenteDIMA<TAB>(Acendente)<BR>SucursalesGerentes<TAB>(Acendente)
+[Vista]
+Icono=0
+Clave=DM0175JefesDeGrupoDimaGerenteRep
+VistaIndependiente=S
+
+ListaCampos=Orden<BR>Control<BR>TotalVentaVariosDima<BR>TotalVentaCalzado<BR>TotalVentaPrestamos<BR>TotalVentaJoyas<BR>SucursalesGerentes<BR>Cuota<BR>GerenteDIMA<BR>NombreGerente<BR>DiasTrans<BR>DiasQuincena<BR>INDICE<BR>ConteoCoberturaSuc
+SQL=SET ANSI_NULLS OFF<BR>EXEC SP_DM0175GerentesDimas {si(ConDatos(MAVI.DM0175GerentesDima),Reemplaza(Comillas(<T>,<T>), <T>,<T>, MAVI.DM0175GerentesDima),Comillas(<T><T>))},{si(ConDatos(Mavi.DM0175Quincena),Mavi.DM0175Quincena,0))},{si(ConDatos(Mavi.DM0175Ejercicio),Mavi.DM0175Ejercicio,0))}
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Orden
+
+[Control]
+Clave=Control
+Nombre=Control
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Control
+
+[TotalVentaVariosDima]
+Clave=TotalVentaVariosDima
+Nombre=TotalVentaVariosDima
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=TotalVentaVariosDima
+
+[TotalVentaCalzado]
+Clave=TotalVentaCalzado
+Nombre=TotalVentaCalzado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=TotalVentaCalzado
+
+[TotalVentaPrestamos]
+Clave=TotalVentaPrestamos
+Nombre=TotalVentaPrestamos
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=TotalVentaPrestamos
+
+[TotalVentaJoyas]
+Clave=TotalVentaJoyas
+Nombre=TotalVentaJoyas
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumMonetario
+ClaveBDE=TotalVentaJoyas
+
+[SucursalesGerentes]
+Clave=SucursalesGerentes
+Nombre=SucursalesGerentes
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=SucursalesGerentes
+
+[Cuota]
+Clave=Cuota
+Nombre=Cuota
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=Cuota
+
+[GerenteDIMA]
+Clave=GerenteDIMA
+Nombre=GerenteDIMA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=GerenteDIMA
+
+[NombreGerente]
+Clave=NombreGerente
+Nombre=NombreGerente
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=NombreGerente
+
+[DiasTrans]
+Clave=DiasTrans
+Nombre=DiasTrans
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=DiasTrans
+
+[DiasQuincena]
+Clave=DiasQuincena
+Nombre=DiasQuincena
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=DiasQuincena
+
+[INDICE]
+Clave=INDICE
+Nombre=INDICE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ClaveBDE=INDICE
+
+[ConteoCoberturaSuc]
+Clave=ConteoCoberturaSuc
+Nombre=ConteoCoberturaSuc
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=ConteoCoberturaSuc
+
+[Formato]
+VentanaIzquierda=0
+VentanaArriba=20
+VentanaAltura=727
+VentanaAncho=1382
+PanelArriba=120
+PanelBotones=111
+ListaLineas=Encabezado<BR>Encabezado<BR>Encabezado<BR>Inicio: GerenteDIMA<BR>Inicio: GerenteDIMA<BR>Encabezado<BR>Encabezado<BR>Inicio: GerenteDIMA<BR>Inicio: GerenteDIMA<BR>Detalle<BR>Fin: GerenteDIMA<BR>Fin: GerenteDIMA<BR>Fin: GerenteDIMA<BR>Pie
+
+[Linea1]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+[Linea2]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=1.5
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+Objetos=3
+
+[Linea3]
+Clave=Encabezado
+Objetos=2
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+Grupo=
+[Linea4]
+Clave=Inicio: GerenteDIMA
+Seccion=Inicio Grupo
+AltoEnCm=0.1
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=0
+Grupo=GerenteDIMA
+[Linea5]
+Clave=Inicio: GerenteDIMA
+Seccion=Inicio Grupo
+AltoEnCm=0.1
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=0
+Grupo=GerenteDIMA
+[A2]
+Celda=A2
+Alineacion=Izquierda
+AnchoEnCm=1.5
+AnchoTexto=8
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+[B2]
+Celda=B2
+Alineacion=Centrado
+AnchoEnCm=22.5
+AnchoTexto=121
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial Black, 26, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Reporte DM0175 Gerentes De Grupo Dima<T>
+
+[C2]
+Celda=C2
+Alineacion=Izquierda
+AnchoEnCm=7.2
+AnchoTexto=39
+FondoColor=Blanco
+AVertical=Centrado
+EsImagen=S
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=A.bmp
+
+
+
+
+
+
+
+[Linea6]
+Clave=Encabezado
+Objetos=2
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+
+
+[Linea7]
+Clave=Encabezado
+Objetos=3
+Seccion=Encabezado Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, [Negritas]}
+AVertical=Centrado
+
+[Linea8]
+Clave=Inicio: GerenteDIMA
+Objetos=6
+Seccion=Inicio Grupo
+AltoEnCm=0.34
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+
+
+
+
+
+Grupo=GerenteDIMA
+[A8]
+Celda=A8
+Alineacion=Izquierda
+AnchoEnCm=6.89
+AnchoTexto=37
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=
+
+Marco=N
+FondoEstilo=0
+[B8]
+Celda=B8
+Alineacion=Centrado
+AnchoEnCm=12
+AnchoTexto=65
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 9, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>COMISIONES GERENTES DIMAS<T>
+
+Marco=S
+FondoEstilo=1
+[C8]
+Celda=C8
+Alineacion=Centrado
+AnchoEnCm=3.11
+AnchoTexto=17
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>CALZADO<T>
+
+Marco=S
+FondoEstilo=1
+[D8]
+Celda=D8
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>JOYAS<T>
+
+Marco=S
+FondoEstilo=1
+[E8]
+Celda=E8
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>CREDILANAS<T>
+
+Marco=S
+FondoEstilo=1
+[F8]
+Celda=F8
+Alineacion=Centrado
+AnchoEnCm=3.1
+AnchoTexto=17
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>VARIOS DIMAS<T>
+
+Marco=S
+FondoEstilo=1
+
+
+
+
+
+[Linea9]
+Clave=Inicio: GerenteDIMA
+Objetos=10
+Seccion=Inicio Grupo
+AltoEnCm=0.53
+Renglones=1
+Marco=N
+EstiloMarco=0
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Grupo=GerenteDIMA
+[A9]
+Celda=A9
+Alineacion=Centrado
+AnchoEnCm=2.2
+AnchoTexto=12
+Marco=S
+EstiloMarco=0
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>SUCURSAL<T>
+
+FondoEstilo=1
+
+
+
+
+
+
+
+
+
+
+[Linea10]
+Clave=Detalle
+Seccion=Detalle
+AltoEnCm=0.39
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=10
+Marco=S
+EstiloMarco=3
+Grupo=
+[Linea11]
+Clave=Fin: GerenteDIMA
+Objetos=10
+Seccion=Fin Grupo
+AltoEnCm=0.63
+Renglones=2
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+
+
+
+
+
+
+
+
+
+
+Grupo=GerenteDIMA
+Marco=N
+EstiloMarco=0
+[Linea12]
+Clave=Fin: GerenteDIMA
+Seccion=Fin Grupo
+AltoEnCm=0.34
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=3
+Grupo=GerenteDIMA
+[Linea13]
+Clave=Fin: GerenteDIMA
+Objetos=3
+Seccion=Fin Grupo
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Grupo=GerenteDIMA
+[Linea14]
+Clave=Pie
+Seccion=Pie Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+Objetos=3
+Grupo=
+
+[A13]
+Celda=A13
+Alineacion=Izquierda
+AnchoEnCm=2.21
+AnchoTexto=12
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+[B13]
+Celda=B13
+Alineacion=Centrado
+AnchoEnCm=4.71
+AnchoTexto=25
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 9, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>SUCURSALES CUBIERTAS<T>
+
+FondoEstilo=1
+Marco=S
+[C13]
+Celda=C13
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=suma(ConteoCoberturaSuc)
+
+Marco=S
+
+
+
+
+
+
+[Acciones.NuevaConsulta]
+Nombre=NuevaConsulta
+Boton=72
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+
+NombreEnBoton=S
+NombreDesplegar=&NuevaConsulta
+Multiple=S
+EspacioPrevio=S
+ListaAccionesMultiples=Nueva<BR>Dialogo<BR>Cerrar
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=36
+NombreEnBoton=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+Activo=S
+Visible=S
+
+NombreDesplegar=&Cerrar
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+[Acciones.Excel]
+Nombre=Excel
+Boton=115
+NombreEnBoton=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+Activo=S
+Visible=S
+
+NombreDesplegar=&Excel
+TipoAccion=Reportes Excel
+ClaveAccion=DM0175JefesDeGrupoDimaGerenteRepXls
+[Acciones.Imprimir]
+Nombre=Imprimir
+Boton=4
+NombreEnBoton=S
+NombreDesplegar=&Imprimir
+EnBarraHerramientas=S
+EspacioPrevio=S
+TipoAccion=Reportes Impresora
+ClaveAccion=DM0175JefesDeGrupoDimaGerenteRepImp
+Activo=S
+Visible=S
+
+[Acciones.NuevaConsulta.Nueva]
+Nombre=Nueva
+Boton=0
+Activo=S
+Visible=S
+
+TipoAccion=Expresion
+Expresion=FORMA(<T>DM0175JefesDeGrupoDimaFrm<T>)
+[Acciones.NuevaConsulta.Dialogo]
+Nombre=Dialogo
+Boton=0
+Activo=S
+Visible=S
+
+TipoAccion=Dialogos
+ClaveAccion=MaviNuevaConsultaDlg
+[Acciones.NuevaConsulta.Cerrar]
+Nombre=Cerrar
+Boton=0
+Activo=S
+Visible=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+
+
+[Linea18]
+Clave=Pie
+Objetos=3
+Seccion=Pie Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+[A6]
+Celda=A6
+Alineacion=Izquierda
+AnchoEnCm=5.79
+AnchoTexto=32
+Marco=S
+FondoEstilo=1
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>FECHA EJECUCION:<T>
+
+[B6]
+Celda=B6
+Alineacion=Centrado
+AnchoEnCm=9
+AnchoTexto=48
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Hoy
+
+
+[A10]
+Celda=A10
+Alineacion=Centrado
+AnchoEnCm=2.2
+AnchoTexto=12
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SucursalesGerentes
+
+FondoEstilo=0
+[B10]
+Celda=B10
+Alineacion=Centrado
+AnchoEnCm=4.71
+AnchoTexto=25
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Cuota
+
+FondoEstilo=0
+FormatoValidacion=(Monetario)
+[C10]
+Celda=C10
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Si<BR>  DiasQuincena =0<BR>    Entonces<BR>      Cuota<BR>    Sino<BR>      ((Cuota)/DiasQuincena)*DiasTrans<BR>    Fin
+
+FondoEstilo=0
+[D10]
+Celda=D10
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=TotalVentaJoyas+TotalVentaPrestamos+TotalVentaVariosDIMA<BR>+TotalVentaCalzado
+
+FondoEstilo=0
+[E10]
+Celda=E10
+Alineacion=Centrado
+FormatoValidacion=#,0.00%
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=((TotalVentaJoyas+TotalVentaPrestamos+TotalVentaVariosDIMA<BR>+TotalVentaCalzado)/Cuota)*100
+
+FondoEstilo=0
+[F10]
+Celda=F10
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Si (DiasQuincena-DiasTrans)=0 o (TotalVentaJoyas+TotalVentaPrestamos<BR>+TotalVentaVariosDIMA+TotalVentaCalzado)=0 Entonces 0 Sino ((Cuota)-<BR>(TotalVentaJoyas+TotalVentaPrestamos+TotalVentaVariosDIMA<BR>+TotalVentaCalzado))/(DiasQuincena-DiasTrans) Fin
+
+FondoEstilo=0
+[G10]
+Celda=G10
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3.11
+AnchoTexto=17
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=TotalVentaCalzado
+
+FondoEstilo=0
+[H10]
+Celda=H10
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=TotalVentaJoyas
+
+FondoEstilo=0
+[I10]
+Celda=I10
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=TotalVentaPrestamos
+
+FondoEstilo=0
+[J10]
+Celda=J10
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3.11
+AnchoTexto=17
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=TotalVentaVariosDIMA
+
+FondoEstilo=0
+
+[A12]
+Celda=A12
+Alineacion=Izquierda
+AnchoEnCm=2.21
+AnchoTexto=12
+FondoEstilo=0
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=
+
+Marco=N
+[B12]
+Celda=B12
+Alineacion=Centrado
+AnchoEnCm=4.71
+AnchoTexto=25
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 10, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>TOTAL SUCURSALES<T>
+
+Marco=S
+FondoEstilo=1
+FormatoValidacion=
+[C12]
+Celda=C12
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Conteo(INDICE)
+
+Marco=S
+
+
+
+
+
+
+
+
+
+
+FormatoValidacion=
+[A7]
+Celda=A7
+Alineacion=Izquierda
+AnchoEnCm=5.79
+AnchoTexto=32
+Marco=S
+FondoEstilo=1
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+Expresion=<T>NOMINA Y NOMBRE GERENTE DIMA:<T>
+[B7]
+Celda=B7
+Alineacion=Centrado
+AnchoEnCm=2
+AnchoTexto=11
+Marco=S
+FondoEstilo=0
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=GerenteDIMA
+
+[C7]
+Celda=C7
+Alineacion=Centrado
+AnchoEnCm=7
+AnchoTexto=38
+Marco=S
+FondoEstilo=0
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=NombreGerente
+
+[D7]
+Celda=D7
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoEstilo=1
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>JOYAS<T>
+
+[E7]
+Celda=E7
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoEstilo=1
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>CREDILANAS<T>
+
+[F7]
+Celda=F7
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoEstilo=1
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>VARIOS DIMAS<T>
+
+[A11]
+Celda=A11
+Alineacion=Derecha
+AnchoEnCm=2.21
+AnchoTexto=12
+Marco=S
+FondoEstilo=1
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial Black, 12, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>TOTAL<T>
+
+EstiloMarco=0
+[B11]
+Celda=B11
+Alineacion=Centrado
+AnchoEnCm=4.71
+AnchoTexto=25
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(Cuota)
+
+FormatoValidacion=(Monetario)
+EstiloMarco=0
+[C11]
+Celda=C11
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=((Suma(Cuota))/DiasQuincena)*DiasTrans
+
+FormatoValidacion=(Monetario)
+EstiloMarco=0
+[D11]
+Celda=D11
+Alineacion=Centrado
+AnchoEnCm=2.89
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(TotalVentaJoyas+TotalVentaPrestamos+TotalVentaVariosDIMA<BR>+TotalVentaCalzado)
+
+FormatoValidacion=(Monetario)
+EstiloMarco=0
+[E11]
+Celda=E11
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=((Suma(TotalVentaJoyas))+(Suma(TotalVentaPrestamos))+(Suma<BR>(TotalVentaVariosDIMA))+(Suma(TotalVentaCalzado)))/(Suma(Cuota))*100
+
+FormatoValidacion=#,0.00%
+EstiloMarco=0
+[F11]
+Celda=F11
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SI DiasQuincena-DiasTrans=0 ENTONCES 0 SINO((Cuota)-(suma<BR>      (TotalVentaJoyas)+suma(TotalVentaPrestamos)+suma<BR>      (TotalVentaVariosDIMA)+suma(TotalVentaCalzado)))/(DiasQuincena-<BR>DiasTrans)<BR>     FIN
+
+FormatoValidacion=(Monetario)
+Marco=S
+EstiloMarco=0
+[G11]
+Celda=G11
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=suma(TotalVentaCalzado)
+
+FormatoValidacion=(Monetario)
+EstiloMarco=0
+[H11]
+Celda=H11
+Alineacion=Centrado
+AnchoEnCm=3.21
+AnchoTexto=17
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(TotalVentaJoyas)
+
+FormatoValidacion=(Monetario)
+EstiloMarco=0
+[I11]
+Celda=I11
+Alineacion=Centrado
+AnchoEnCm=2.9
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(TotalVentaPrestamos)
+
+FormatoValidacion=(Monetario)
+EstiloMarco=0
+[J11]
+Celda=J11
+Alineacion=Centrado
+AnchoEnCm=3.21
+AnchoTexto=17
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(TotalVentaVariosDIMA)
+
+FormatoValidacion=(Monetario)
+
+
+
+EstiloMarco=0
+[A14]
+Celda=A14
+Alineacion=Centrado
+AnchoEnCm=6
+AnchoTexto=32
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>DM0175 Gerentes De Grupo Dimas<T>
+
+[B14]
+Celda=B14
+Alineacion=Centrado
+AnchoEnCm=20.61
+AnchoTexto=111
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Usuario: <T> + usuario
+
+FondoEstilo=0
+[C14]
+Celda=C14
+Alineacion=Derecha
+AnchoEnCm=4.61
+AnchoTexto=25
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Página <T> + ReportePaginaNumero + <T> de <T> + ReportePaginaTotal
+
+[A3]
+Celda=A3
+Alineacion=Izquierda
+AnchoEnCm=5.79
+AnchoTexto=32
+Marco=S
+FondoEstilo=1
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>PERIDODO DEL :<T>
+
+[B3]
+Celda=B3
+Alineacion=Centrado
+AnchoEnCm=9
+AnchoTexto=48
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Si<BR>      Mavi.DM0175Quincena <> 24<BR>    Entonces          <BR>        Minusculas(<BR>        FechaEnTexto(SQL(<T>Select dbo.fnInicioNominaMavi(:nPer,:nEje)<T>,<BR>        Mavi.DM0175Quincena+1,MAVI.DM0175Ejercicio),<T>dd/mmmm/aaaa<T>) + <BR><T>AL<T>+<BR>        FechaEnTexto(SQL(<T>Select dbo.fnFinNominaMavi(:nPer,:nEje)<T>,<BR>        Mavi.DM0175Quincena+1,MAVI.DM0175Ejercicio),<T>dd/mmmm/aaaa<T>) )<BR>    Sino<BR>        Minusculas(<BR>        FechaEnTexto(SQL(<T>Select dbo.fnInicioNominaMavi(:nPer,:nEje)<T>,<BR>        Mavi.DM0175Quincena+1,MAVI.DM0175Ejercicio),<T>dd/mmmm/aaaa<T>) + <BR><T>AL<T>+<BR>        FechaEnTexto(SQL(<T>Select dbo.fnFinNominaMavi(:nPer,:nEje)<T>,<BR>        Mavi.DM0175Quincena+1,MAVI.DM0175Ejercicio),<T>dd/mmmm/aaaa<T>) )<BR>    Fin
+
+[Linea15]
+Clave=Pie
+Objetos=3
+Seccion=Pie Página
+AltoEnCm=0.4
+Renglones=1
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+[K11]
+Celda=K11
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=TotalVentaVariosDIMA
+
+[D12]
+Celda=D12
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(TotalVentaJoyas+TotalVentaPrestamos+TotalVentaVariosDIMA<BR>+TotalVentaCalzado)
+
+[E12]
+Celda=E12
+Alineacion=Centrado
+FormatoValidacion=#,0.00%
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=((Suma(TotalVentaJoyas))+(Suma(TotalVentaPrestamos))+(Suma<BR>(TotalVentaVariosDIMA))+(Suma(TotalVentaCalzado)))/(Suma(Cuota))*100
+
+[F12]
+Celda=F12
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=SI DiasQuincena-DiasTrans=0 ENTONCES 0 SINO((Cuota)-(suma<BR>      (TotalVentaJoyas)+suma(TotalVentaPrestamos)+suma<BR>      (TotalVentaVariosDIMA)+suma(TotalVentaCalzado)))/(DiasQuincena-<BR>DiasTrans)<BR>     FIN
+
+[G12]
+Celda=G12
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=suma(TotalVentaCalzado)
+
+[H12]
+Celda=H12
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(TotalVentaJoyas)
+
+[I12]
+Celda=I12
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(TotalVentaPrestamos)
+
+[J12]
+Celda=J12
+Alineacion=Centrado
+FormatoValidacion=(Monetario)
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Suma(TotalVentaVariosDIMA)
+
+[A15]
+Celda=A15
+Alineacion=Izquierda
+AnchoEnCm=4.29
+AnchoTexto=23
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>DM0175 Gerentes De Grupo Dimas<T>
+
+[B15]
+Celda=B15
+Alineacion=Centrado
+AnchoEnCm=20.61
+AnchoTexto=111
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Usuario: <T> + usuario
+
+[C15]
+Celda=C15
+Alineacion=Derecha
+AnchoEnCm=8.11
+AnchoTexto=44
+Marco=S
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Página <T> + ReportePaginaNumero + <T> de <T> + ReportePaginaTotal
+
+[B9]
+Celda=B9
+Alineacion=Centrado
+AnchoEnCm=4.7
+AnchoTexto=25
+Marco=S
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>CUOTA GLOBAL TIENDA<T>
+
+FondoEstilo=1
+[C9]
+Celda=C9
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>A HOY<T>
+
+FondoEstilo=1
+Marco=S
+[D9]
+Celda=D9
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>REAL GENERAL<T>
+
+FondoEstilo=1
+Marco=S
+[E9]
+Celda=E9
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>COBERTURA<T>
+
+FondoEstilo=1
+Marco=S
+[F9]
+Celda=F9
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>DIA<T>
+
+FondoEstilo=1
+Marco=S
+[G9]
+Celda=G9
+Alineacion=Centrado
+AnchoEnCm=3.11
+AnchoTexto=17
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>REAL<T>
+
+FondoEstilo=1
+Marco=S
+[H9]
+Celda=H9
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>REAL<T>
+
+FondoEstilo=1
+[I9]
+Celda=I9
+Alineacion=Centrado
+AnchoEnCm=3
+AnchoTexto=16
+Marco=S
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>REAL<T>
+
+FondoEstilo=1
+[J9]
+Celda=J9
+Alineacion=Centrado
+AnchoEnCm=3.11
+AnchoTexto=17
+FondoColor=Plata
+AVertical=Centrado
+TipoImagen=Estirada
+CBAncho=12
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>REAL<T>
+
+FondoEstilo=1
+Marco=S
+

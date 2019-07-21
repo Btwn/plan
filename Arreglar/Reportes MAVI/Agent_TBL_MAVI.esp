@@ -1,0 +1,14 @@
+[Agent.tbl/FormaPago]
+CondicionDespliege=(Mov en (<T>Cobro Dif Caja<T>)) o ((no Agent:Agente.Nomina) y MovTipoEn(<T>AGENT<T>,Mov, (AGENT.P, AGENT.A)))
+
+[Agent.tbl/CtaDinero]
+CondicionDespliege=(Mov en (<T>Cobro Dif Caja<T>)) o ((no Agent:Agente.Nomina) y MovTipoEn(<T>AGENT<T>,Mov, (AGENT.P, AGENT.A)))
+
+[Agent.tbl/Agente]
+ValidacionUsaTabla=N
+ValidacionTablas=
+
+; **** Se modifico el campo para que tomara la uen de la sucursal por default y para que no fuera editable 02/10/09  ALQG****
+[Agent.tbl/UEN]
+ValorPorOmision=Sucursal.wUEN
+CondicionEdicion=Falso

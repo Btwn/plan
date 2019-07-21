@@ -1,0 +1,29 @@
+[Tabla]
+Icono=0
+Clave=NoEntregasMinimasMAVI
+Nombre=NoEntregasMinimasMAVI
+Archivo=NoEntregasMinimasMAVI
+Modulos=(Todos)
+Singular=NoEntregasMinimasMAVI
+TipoTabla=General
+ListaCampos=ID<BR>NoEntregasMinimas
+LlavePrimaria=ID
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  NoEntregasMinimas<BR><BR>FROM<BR>  NoEntregasMinimasMAVI
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[NoEntregasMinimas]
+Clave=NoEntregasMinimas
+Nombre=No Entregas Mínimas
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Calculadora
+ValorMinimo=0

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM1087CategoriaCobVis
+Nombre=categoria
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Categoria
+SQL=select Distinct Categoria from VentasCanalMAVI with (nolock)<BR>where Categoria in(<T>CREDITO MENUDEO<T>,<T>INSTITUCIONES<T>)<BR>{Si(ConDatos(Mavi.RM1087CanalCob), <T> And ID IN(<T>+Mavi.RM1087CanalCob+<T>)<T>, <T><T>)}
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Categoria

@@ -1,0 +1,77 @@
+[Forma]
+Clave=RM1096CategoriaFrm
+Nombre=Areas
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=area
+CarpetaPrincipal=area
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleciona
+[area]
+Estilo=Iconos
+Clave=area
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1096GrupoTrabajoVis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Categoria
+CarpetaVisible=S
+[area.Categoria]
+Carpeta=area
+Clave=Categoria
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[area.Columnas]
+0=-2
+[Acciones.Seleciona.asigna]
+Nombre=asigna
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleciona.regis]
+Nombre=regis
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>area<T>)
+Activo=S
+Visible=S
+[Acciones.Seleciona]
+Nombre=Seleciona
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+EspacioPrevio=S
+ListaAccionesMultiples=asigna<BR>regis<BR>selec
+Activo=S
+Visible=S
+[Acciones.Seleciona.selec]
+Nombre=selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Expresion=Asigna(Mavi.RM1096Categorias,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+Activo=S
+Visible=S

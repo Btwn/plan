@@ -1,0 +1,29 @@
+[Vista]
+Icono=0
+Clave=RM0029ProcesoOrdServVis
+Nombre=RM029 Orden de Servicio
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MovID<BR>FechaEmision
+CamposBusquedaRapida=MovID
+SQL=SELECT <BR> S.MovID,<BR> S.FechaEmision<BR>FROM Soporte S<BR> LEFT JOIN Cte ON S.Cliente = Cte.Cliente<BR> LEFT JOIN Prov P ON S.Proveedor = P.Proveedor<BR> LEFT JOIN Art ON S.Articulo = Art.Articulo<BR>WHERE S.Mov = <T>Reporte Servicio<T> and  not S.Estatus = <T>SINAFECTAR<T><BR>Order By S.FechaEmision Desc
+[MovID]
+Clave=MovID
+Nombre=MovID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=MovID
+[FechaEmision]
+Clave=FechaEmision
+Nombre=FechaEmision
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=FechaHora
+ClaveBDE=FechaEmision

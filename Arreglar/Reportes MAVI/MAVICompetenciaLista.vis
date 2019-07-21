@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=MAVICompetenciaLista
+Nombre=MAVICompetenciaLista
+Modulos=(Todos)
+Singular=MAVICompetenciaLista
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Competencia
+SQL=SELECT DISTINCT <BR>  Nombre AS Competencia<BR><BR>FROM <BR>  TablaEvaluacionD <BR><BR>WHERE <BR>  TablaEvaluacion IN (<T>CONTADO<T>, <T>CREDITO<T>)
+[Competencia]
+Clave=Competencia
+Nombre=Competencia
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Competencia

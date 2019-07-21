@@ -1,0 +1,79 @@
+
+[Tabla]
+Icono=0
+Clave=RM0195COMSComisionTCTbl
+Archivo=COMSHComisionTarjetaCredito
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=IDComisionTarjetaCredito<BR>Uen<BR>Mes<BR>Anio<BR>TCPU<BR>TCMSI
+LlavePrimaria=IDComisionTarjetaCredito
+ControlID=S
+CampoID=IDComisionTarjetaCredito
+SQL=SELECT<BR>  IDComisionTarjetaCredito,<BR>  Uen,<BR>  Mes,<BR>  Anio,<BR>  TCPU,<BR>  TCMSI<BR><BR>  FROM COMSHComisionTarjetaCredito
+[IDComisionTarjetaCredito]
+Clave=IDComisionTarjetaCredito
+Nombre=IDComisionTarjetaCredito
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+
+[Uen]
+Clave=Uen
+Nombre=UEN
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Expresion
+ValorMinimo=1
+ValorMaximo=2
+CondicionEdicion=Si<BR>  SQL(<T>SELECT COUNT(*)<BR>       FROM Usuario WITH (NOLOCK)<BR>       WHERE Estatus = :tEstatus<BR>       AND Acceso IN (SELECT<BR>         Nombre<BR>         FROM TablaStD<BR>         WHERE TablaSt = :tTablaConversion)<BR>       AND Usuario = :tUsuario<T>,<T>ALTA<T>,<T>RM0195 ACCESO MODIFICACION PORCENTAJE COMISIONES<T>,Usuario) > 0<BR>Entonces<BR>  Verdadero<BR>Sino<BR>  Falso<BR>Fin
+AyudaMemOpc=Validar captura en la lista
+Tamano=0
+Formula=SQLEnLista(<T>SELECT * FROM (<BR>SELECT CONVERT(INT,1) AS UEN<BR>UNION ALL<BR>SELECT CONVERT(INT,2) AS UEN)t<BR>ORDER BY UEN<T>)
+[Mes]
+Clave=Mes
+Nombre=MES
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+AyudaEnCaptura=Expresion
+ValorMinimo=1
+ValorMaximo=12
+CondicionEdicion=Si<BR>  SQL(<T>SELECT COUNT(*)<BR>       FROM Usuario WITH (NOLOCK)<BR>       WHERE Estatus = :tEstatus<BR>       AND Acceso IN (SELECT<BR>         Nombre<BR>         FROM TablaStD<BR>         WHERE TablaSt = :tTablaConversion)<BR>       AND Usuario = :tUsuario<T>,<T>ALTA<T>,<T>RM0195 ACCESO MODIFICACION PORCENTAJE COMISIONES<T>,Usuario) > 0<BR>Entonces<BR>  Verdadero<BR>Sino<BR>  Falso<BR>Fin
+Tamano=0
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<BR><T>SELECT * FROM(<BR>SELECT 1 AS MES<BR>UNION ALL<BR>SELECT 2 AS MES<BR>UNION ALL<BR>SELECT 3 AS MES<BR>UNION ALL<BR>SELECT 4 AS MES<BR>UNION ALL<BR>SELECT 5 AS MES<BR>UNION ALL<BR>SELECT 6 AS MES<BR>UNION ALL<BR>SELECT 7 AS MES<BR>UNION ALL<BR>SELECT 8 AS MES<BR>UNION ALL<BR>SELECT 9 AS MES<BR>UNION ALL<BR>SELECT 10 AS MES<BR>UNION ALL<BR>SELECT 11 AS MES<BR>UNION ALL<BR>SELECT 12 AS MES)t<BR>ORDER BY MES<T><BR>)
+[Anio]
+Clave=Anio
+Nombre=AÑO
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorMinimo=2012
+ValorMaximo=SQL(<T>SELECT YEAR(GETDATE())<T>)
+AyudaMemOpc=Consulta opcional
+CondicionEdicion=Si<BR>  SQL(<T>SELECT COUNT(*)<BR>       FROM Usuario WITH (NOLOCK)<BR>       WHERE Estatus = :tEstatus<BR>       AND Acceso IN (SELECT<BR>         Nombre<BR>         FROM TablaStD<BR>         WHERE TablaSt = :tTablaConversion)<BR>       AND Usuario = :tUsuario<T>,<T>ALTA<T>,<T>RM0195 ACCESO MODIFICACION PORCENTAJE COMISIONES<T>,Usuario) > 0<BR>Entonces<BR>  Verdadero<BR>Sino<BR>  Falso<BR>Fin
+[TCPU]
+Clave=TCPU
+Nombre=TCPU
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+
+ValorMinimo=0
+ValorMaximo=50
+CondicionEdicion=Si<BR>  SQL(<T>SELECT COUNT(*)<BR>       FROM Usuario WITH (NOLOCK)<BR>       WHERE Estatus = :tEstatus<BR>       AND Acceso IN (SELECT<BR>         Nombre<BR>         FROM TablaStD<BR>         WHERE TablaSt = :tTablaConversion)<BR>       AND Usuario = :tUsuario<T>,<T>ALTA<T>,<T>RM0195 ACCESO MODIFICACION PORCENTAJE COMISIONES<T>,Usuario) > 0<BR>Entonces<BR>  Verdadero<BR>Sino<BR>  Falso<BR>Fin
+[TCMSI]
+Clave=TCMSI
+Nombre=TCMSI
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+ValorMinimo=0
+ValorMaximo=50
+CondicionEdicion=Si<BR>  SQL(<T>SELECT COUNT(*)<BR>       FROM Usuario WITH (NOLOCK)<BR>       WHERE Estatus = :tEstatus<BR>       AND Acceso IN (SELECT<BR>         Nombre<BR>         FROM TablaStD<BR>         WHERE TablaSt = :tTablaConversion)<BR>       AND Usuario = :tUsuario<T>,<T>ALTA<T>,<T>RM0195 ACCESO MODIFICACION PORCENTAJE COMISIONES<T>,Usuario) > 0<BR>Entonces<BR>  Verdadero<BR>Sino<BR>  Falso<BR>Fin

@@ -1,0 +1,17 @@
+
+[Vista]
+Icono=0
+Clave=RM1186GrupoVis
+Nombre=RM1186GrupoVis
+Modulos=(Todos)
+ListaTablas=ArtGrupo
+
+ListaCampos=ArtGrupo.Grupo
+TablaPrincipal=ArtGrupo
+SQL=SELECT DISTINCT Grupo<BR>FROM Art<BR>WHERE Grupo IS NOT NULL  <BR>{Si(ConDatos(MAVI.RM1186Categoria), <T> AND Categoria IN(<T>+Comillas(Mavi.RM1186Categoria)+<T>)<T>, <T><T>)}<BR>AND Grupo <> <T><T><BR>ORDER BY Grupo
+[ArtGrupo.Grupo]
+Clave=ArtGrupo.Grupo
+LigaTabla=ArtGrupo
+LigaCampo=Grupo
+Ligado=S
+ClaveBDE=Grupo

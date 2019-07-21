@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1158MotivoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Motivo
+CamposBusquedaRapida=Motivo
+SQL=SELECT DISTINCT Motivo FROM(<BR>SELECT DISTINCT D.Articulo+<T> <T>+ISNULL(A.Descripcion1,<T><T>) AS Motivo FROM Inv V WITH(NOLOCK)<BR>INNER JOIN InvD D WITH(NOLOCK)ON D.ID = V.ID<BR>LEFT JOIN Sucursal S WITH(NOLOCK) ON S.CentroCostos = V.ContUsoMAVI<BR>LEFT JOIN Art A WITH(NOLOCK) ON A.Articulo = D.Articulo   <BR>WHERE V.Mov = <T>ENT MANTTO<T> AND V.Estatus = <T>CONCLUIDO<T> AND S.Tipo = <T>PISO<T><BR><TAB>UNION ALL<BR>SELECT DISTINCT D.Articulo+<T> <T>+ISNULL(A.Descripcion1,<T><T>) AS Motivo FROM Compra C WITH(NOLOCK)<BR>INNER JOIN CompraD D WITH(NOLOCK) ON D.ID = C.ID<BR>LEFT JOIN Sucursal S WITH(NOLOCK) ON S.CentroCostos = D.ContUso<BR>LEFT JOIN Art A WITH(NOLOCK) ON A.Articulo = D.Articulo <BR>WHERE C.Mov IN (<T>COMPRA MANTTO<T>,<T>COMPRA ACTIVOFIJO<T>) AND C.Estatus = <T>CONCLUIDO<T> <CONTINUA>
+SQL002=<CONTINUA>AND S.Tipo = <T>PISO<T><BR><TAB>UNION ALL<BR>SELECT DISTINCT T.Concepto AS Motivo FROM Gasto G WITH(NOLOCK)<BR>INNER JOIN GastoT T WITH(NOLOCK) ON T.ID = G.ID <BR>LEFT JOIN Sucursal S WITH(NOLOCK) ON S.CentroCostos = T.ContUso<BR>WHERE G.Mov = <T>GASTO<T> AND G.Estatus = <T>CONCLUIDO<T> AND S.Tipo = <T>PISO<T>)Mot<BR>ORDER BY Motivo ASC
+[Motivo]
+Clave=Motivo
+Nombre=Motivo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=121
+TipoDatos=Texto
+Tamano=121
+ClaveBDE=Motivo

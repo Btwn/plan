@@ -1,0 +1,25 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spPuestoCompetenciaOk
+@Puesto	varchar(50)
+
+AS BEGIN
+DECLARE
+@Tipo	varchar(50),
+@Peso	float
+SELECT @Tipo = NULL
+SELECT TOP(1) @Tipo = a.Tipo, @Peso = SUM(pa.Peso)
+FROM PuestoCompetencia pa
+JOIN Competencia a ON a.Competencia = pa.Competencia
+WHERE pa.Puesto = @Puesto
+GROUP BY a.Tipo
+HAVING SUM(pa.Peso) <> 100.0
+SELECT 'Tipo' = @Tipo
+END
+

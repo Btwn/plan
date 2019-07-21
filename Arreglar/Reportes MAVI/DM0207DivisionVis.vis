@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=DM0207DivisionVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Division
+LlavePrimaria=Division
+CamposBusquedaRapida=Division
+SQL=SELECT DISTINCT<BR>  DM0214Divisiones.Division<BR>FROM<BR>  DM0214Divisiones<BR>  LEFT OUTER JOIN DM0214Regiones ON DM0214Divisiones.Region=DM0214Regiones.Region
+[Division]
+Clave=Division
+Nombre=Division
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=Division

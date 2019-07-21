@@ -1,0 +1,30 @@
+[Vista]
+Icono=569
+Clave=MaviArtActivoFListaVis
+Nombre=Lista de Artículos de Activo Fijo
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Articulo<BR>NombreArticulo<BR>CategoriaActivofijo
+CamposBusquedaRapida=Articulo<BR>Nombrearticulo<BR>CategoriaActivofijo
+SQL=Select T.Articulo, <BR>T.NombreArticulo, <BR>T.CategoriaActivofijo <BR>From (<BR>Select Articulo,<BR>Categoria,<BR>Nombrearticulo=Descripcion1, <BR>CategoriaActivofijo<BR>From Art<BR>) T<BR>Where T.Categoria = <T>ACTIVOS FIJOS<T><BR>Order By T.Articulo
+[Articulo]
+Clave=Articulo
+Nombre=Articulo
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Articulo
+[CategoriaActivofijo]
+Clave=CategoriaActivofijo
+Nombre=Categoria Activo Fijo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=CategoriaActivofijo
+[NombreArticulo]
+Clave=NombreArticulo
+Tamano=100
+ClaveBDE=NombreArticulo
+TamanoValidacion=100
+Nombre=Nombre Articulo

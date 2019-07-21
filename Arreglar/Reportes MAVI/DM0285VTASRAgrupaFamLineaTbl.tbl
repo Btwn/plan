@@ -1,0 +1,66 @@
+
+[Tabla]
+Icono=0
+Clave=DM0285VTASRAgrupaFamLineaTbl
+Nombre=Ventas Agrupa Familia Linea
+Archivo=VTASRAgrupaFamLineaProp
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Familia<BR>Linea<BR>prefijo<BR>IDAgrupaFamLineaProp
+LlavePrimaria=IDAgrupaFamLineaProp
+ControlID=S
+CampoID=IDAgrupaFamLineaProp
+Singular=Ventas Agrupa Familia Linea
+
+CamposBusquedaRapida=Familia<BR>Linea
+SQL=SELECT<BR>  IDAgrupaFamLineaProp,<BR>  Familia,<BR>  Linea,<BR>  prefijo<BR><BR>  FROM VTASRAgrupaFamLineaProp
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+ConRefrescar=S
+ListaRefrescar=Linea
+Requerido=S
+Formula=SQLEnLista(<T> Select A.Familia<BR>From<BR>( Select Familia<BR>from  art with(nolock)<BR>Where categoria = <T> + comillas(<T>VENTA<T>)+ <T> and grupo = <T>+ comillas(<T>MERCANCIA DE LINEA<T>)+ <T> and estatus in ( <T>+ comillas(<T>ALTA<T>)+<T>,<T>+ comillas(<T>BLOQUEADO<T>)+ <T> )<BR>Group by Familia<BR>)A<BR>JOIN artlinea f with(nolock) On f.Familia = A.Familia<BR>Group by A.Familia<BR>Order by  A.Familia <BR><T> )
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Requerido=S
+Formula=SQLEnLista(<T>Select A.Linea<BR>From<BR>(<BR>Select Linea<BR>from  art with(nolock)<BR>Where categoria = <T> + comillas(<T>VENTA<T>)+ <T> and grupo = <T>+ comillas(<T>MERCANCIA DE LINEA<T>)+ <T> and estatus in ( <T>+ comillas(<T>ALTA<T>)+<T>,<T>+ comillas(<T>BLOQUEADO<T>)+ <T> )<BR>Group by Linea<BR> )A<BR>JOIN artlinea f with(nolock) On f.Linea = A.Linea<BR>Where f.familia = :tf<BR>Group by A.Linea<BR>Order by A.Linea <T>,Familia<BR>)
+[prefijo]
+Clave=prefijo
+Nombre=prefijo
+Visible=S
+TamanoValidacion=4
+TipoDatos=Texto
+Tamano=4
+
+
+
+
+
+
+Requerido=S
+[IDAgrupaFamLineaProp]
+Clave=IDAgrupaFamLineaProp
+Nombre=IDAgrupaFamLineaProp
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc

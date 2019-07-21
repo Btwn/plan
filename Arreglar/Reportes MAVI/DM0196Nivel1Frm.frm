@@ -1,0 +1,94 @@
+[Forma]
+Clave=DM0196Nivel1Frm
+Nombre=Niveles Especiales
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=DM0196Nivel1Frm
+CarpetaPrincipal=DM0196Nivel1Frm
+PosicionInicialAlturaCliente=553
+PosicionInicialAncho=416
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Seleccionar1  
+PosicionInicialIzquierda=451
+PosicionInicialArriba=257
+[DM0196Nivel1Frm]
+Estilo=Iconos
+Pestana=S
+Clave=DM0196Nivel1Frm
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0196Nivel1Vis
+Fuente={Tahoma, 8, Negro, []}
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=DM0196NivelEspecialesTbl.Nivel
+CarpetaVisible=S
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSubTitulo=Nombre
+Filtros=S
+IconosSeleccionMultiple=S
+FiltroPredefinido=S
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=General
+IconosNombre=DM0196Nivel1Vis:DM0196NivelEspecialesTbl.Nombre
+[DM0196Nivel1Frm.Columnas]
+Nivel=38
+Nombre=281
+0=266
+1=61
+2=-2
+[Acciones.Seleccionar1]
+Nombre=Seleccionar1
+Boton=23
+NombreEnBoton=S
+NombreDesplegar=&Seleccionar
+EnBarraHerramientas=S
+TipoAccion=Controles Captura
+ClaveAccion=Seleccionar Todo
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=variA<BR>regis<BR>selec
+[Acciones.Seleccionar1.variA]
+Nombre=variA
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Seleccionar1.regis]
+Nombre=regis
+Boton=0
+TipoAccion=Expresion
+Expresion=RegistrarSeleccion(<T>Vista<T>)
+Activo=S
+Visible=S
+[Acciones.Seleccionar1.selec]
+Nombre=selec
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM0254Sucursales,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[DM0196Nivel1Frm.DM0196NivelEspecialesTbl.Nivel]
+Carpeta=DM0196Nivel1Frm
+Clave=DM0196NivelEspecialesTbl.Nivel
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+ColorFondo=Blanco
+ColorFuente=Negro

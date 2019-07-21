@@ -1,0 +1,32 @@
+[Tabla]
+Icono=0
+Clave=RM1098CtasLEBTbl
+Archivo=RM1098CtasDinero
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Orden<BR>CtaDinero<BR>Nombre
+LlavePrimaria=Orden<BR>CtaDinero
+SQL=SELECT<BR>  Orden,<BR>  CtaDinero,<BR>  Nombre<BR><BR>FROM<BR>  RM1098CtasDinero
+[Orden]
+Clave=Orden
+Nombre=Orden
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[CtaDinero]
+Clave=CtaDinero
+Nombre=Cuenta 
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValidacionConCondiciones=S
+ValidacionCondicion=SQL(<T>Select Count(*) From CtaDinero Where CtaDinero=:tCta<T>,CtaDinero) => 1
+ValidacionMensajeError=<T>La cuenta no Existe<T>
+[Nombre]
+Clave=Nombre
+Nombre=Nombre cuenta
+Visible=S
+TamanoValidacion=50
+Tamano=50

@@ -1,0 +1,31 @@
+[Vista]
+Icono=0
+Clave=MaviSucursalesUENVis
+Nombre=Sucursales de Muebles América
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Sucursal<BR>Nombre
+ControlSucursal=S
+CampoSucursal=Sucursal
+CamposBusquedaRapida=Sucursal<BR>Nombre
+SQL=Select Sucursal,Nombre<BR>From Sucursal<BR><BR>{Si((ConDatos(Mavi.TipoSucursalNumXUEN))y(Vacio(Mavi.UenNum)),<T> Where Tipo in (<T>+Mavi.TipoSucursalNumXUEN+<T>)<T>,<BR>Si((Vacio(Mavi.TipoSucursalNumXUEN))y(Vacio(Mavi.UenNum)),<T> Where WUEN in(1,2,3)<T>,<BR>Si((Vacio(Mavi.TipoSucursalNumXUEN))y(ConDatos(Mavi.UenNum)),<T> Where WUEN in (<T>+Mavi.UENNum+<T>)<T>,<BR>Si((ConDatos(Mavi.TipoSucursalNumXUEN))y(ConDatos(Mavi.UenNum)),<T> Where Tipo in (<T>+Mavi.TipoSucursalNumXUEN+<T>) And WUEN in (<T>+Mavi.UENNum+<T>)<T>,<BR><T>Where WUEN in(1,2,3)<T>))))}
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Sucursal
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

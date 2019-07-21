@@ -1,0 +1,102 @@
+[Tabla]
+Icono=0
+Clave=MaviCteCtoAdicional
+Nombre=MaviCteCtoAdicional
+Archivo=MaviCteCtoAdicional
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Cliente<BR>ID<BR>Tiempo<BR>Descripcion<BR>NumMedidorLuz<BR>NumMedidorAgua<BR>Complexion<BR>Estatura<BR>ColorPiel<BR>TipoCabello<BR>ColorCabello<BR>ColorOjos<BR>SenasParticulares<BR>Comentarios
+LlavePrimaria=Cliente<BR>ID
+CampoID=ID
+SQL=SELECT<BR>  Cliente,<BR>  ID,<BR>  Tiempo,<BR>  Descripcion,<BR>  NumMedidorLuz,<BR>  NumMedidorAgua,<BR>  Complexion,<BR>  Estatura,<BR>  ColorPiel,<BR>  TipoCabello,<BR>  ColorCabello,<BR>  ColorOjos,<BR>  SenasParticulares,<BR>  Comentarios<BR><BR>FROM<BR>  MaviCteCtoAdicional
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Info.Cliente
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=Info.ID
+[Tiempo]
+Clave=Tiempo
+Nombre=Tiempo de conocer al Cliente
+Visible=S
+TamanoValidacion=50
+Tamano=50
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripción del lugar
+Visible=S
+TamanoValidacion=50x3
+TipoDatos=Memo
+[NumMedidorLuz]
+Clave=NumMedidorLuz
+Nombre=Num Medidor Luz
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[NumMedidorAgua]
+Clave=NumMedidorAgua
+Nombre=Num Medidor Agua
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[Complexion]
+Clave=Complexion
+Nombre=Complexión
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[Estatura]
+Clave=Estatura
+Nombre=Estatura
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+[ColorPiel]
+Clave=ColorPiel
+Nombre=Color de Piel
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[TipoCabello]
+Clave=TipoCabello
+Nombre=Tipo de Cabello
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[ColorCabello]
+Clave=ColorCabello
+Nombre=Color de Cabello
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[ColorOjos]
+Clave=ColorOjos
+Nombre=Color de Ojos
+Visible=S
+TamanoValidacion=30
+Tamano=30
+[SenasParticulares]
+Clave=SenasParticulares
+Nombre=Señas Particulares
+Visible=S
+TamanoValidacion=100
+Tamano=100
+[Comentarios]
+Clave=Comentarios
+Nombre=Comentarios
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50x3
+TipoDatos=Memo

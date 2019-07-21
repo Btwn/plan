@@ -1,0 +1,17 @@
+[Vista]
+Icono=0
+Clave=RM0118EquiposVis
+Nombre=Equipos de Agentes
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Equipo
+CamposBusquedaRapida=Equipo
+SQL=<BR>select Distinct equipo as Equipo from Equipoagente where Equipo like + <T>EQ<T> + substring(  {comillas(Mavi.RM0118GerenciaVtasExt)}  ,4,1) + <T>%<T><BR>
+[Equipo]
+Clave=Equipo
+Nombre=Equipos
+Visible=S
+TamanoValidacion=15
+Tamano=10
+ClaveBDE=Equipo

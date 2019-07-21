@@ -1,0 +1,18 @@
+[Vista]
+Icono=624
+Clave=RM0074ModeloVehiculoVis
+Nombre=Modelo de Vehiculos
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=ModeloVehiculo
+CamposBusquedaRapida=ModeloVehiculo
+SQL=Select ModeloVehiculo<BR>From (<BR>SELECT Distinct Descripcion3 As ModeloVehiculo<BR>FROM Vehiculo<BR>Where Descripcion3 Is Not Null) MV<BR>ORDER BY ModeloVehiculo Desc
+[ModeloVehiculo]
+Clave=ModeloVehiculo
+Nombre=ModeloVehiculo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=ModeloVehiculo
+TipoDatos=Texto

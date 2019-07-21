@@ -1,0 +1,33 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROC spMFALayoutDSentenciaArmar
+@Tipo		varchar(20),
+@SQL		varchar(max)	OUTPUT
+
+AS BEGIN
+DECLARE @ID		int,
+@IDAnt	int
+CREATE TABLE #Agrupado(ID int IDENTITY, Sentencia varchar(max))
+IF @Tipo = 'Sentencia'
+INSERT INTO #Agrupado(Sentencia) SELECT Sentencia FROM #Resultado GROUP BY Sentencia
+ELSE IF @Tipo = 'Sentencia Delete'
+INSERT INTO #Agrupado(Sentencia) SELECT Sentencia FROM #ResultadoDelete GROUP BY Sentencia
+SELECT @IDAnt = 0, @SQL = ''
+WHILE(1=1)
+BEGIN
+SELECT @ID = MIN(ID)
+FROM #Agrupado
+WHERE ID > @IDAnt
+IF @ID IS NULL BREAK
+SELECT @IDAnt = @ID
+SELECT @SQL = @SQL + ISNULL(Sentencia, '') FROM #Agrupado WHERE ID = @ID
+END
+RETURN
+END
+

@@ -1,0 +1,41 @@
+
+[Tabla]
+Icono=0
+Clave=DM0351CREDICDisminucionLineaDeCreditoBF
+Archivo=CREDICDisminucionLineaDeCreditoBF
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Concepto<BR>Valor<BR>Periodo
+LlavePrimaria=Concepto
+Nombre=Disminución Línea de Crédito BF
+SQL=SELECT<BR>  Concepto,<BR>  Valor,<BR>  Periodo<BR><BR>  FROM CREDICDisminucionLineaDeCreditoBF WITH(NOLOCK)
+ControlGrupo=S
+CampoGrupo=Concepto
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+
+CondicionEdicion=1 = 0
+[Valor]
+Clave=Valor
+Nombre=Valor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+
+[Periodo]
+Clave=Periodo
+Nombre=Periodo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico

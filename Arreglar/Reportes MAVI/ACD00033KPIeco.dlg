@@ -1,0 +1,26 @@
+
+[Dialogo]
+Clave=ACD00033KPIeco
+Nombre=KPIEcommerce
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialAlturaCliente=80
+PosicionInicialAncho=500
+
+ListaAcciones=KPIVentas
+[Acciones.KPIVentas]
+Nombre=KPIVentas
+Boton=0
+NombreDesplegar=Ventas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=Ejecutar(<T>PlugIns\Dashboard\ACD00033Dashboard.exe <T>+ Usuario)

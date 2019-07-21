@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0292ATipoSucVIS
+Nombre=Tipo de sucursales
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Tipo
+VistaIndependiente=S
+SQL=select  DISTINCT Tipo <BR>from sucursal <BR>WHERE WUEN <> null and WUEN <> 3<BR>{Si(Condatos(Mavi.UENC),<BR>        Si(Mavi.UENC=1,<BR>            <T>AND WUEN = 1<T>,<BR>            Si(Mavi.UENC=2,<BR>                <T> AND WUEN=2<T>,<BR>                <T><T>)),<T><T>)}<BR>{Si(ConDatos(Mavi.RM0292ASucuXUEN) ,<BR><T> And sucursal in ( <T>+Mavi.RM0292ASucuXUEN+<T>)<T>,<T><T>)}
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Tipo

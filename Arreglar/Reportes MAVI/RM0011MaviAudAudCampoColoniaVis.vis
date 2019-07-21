@@ -1,0 +1,24 @@
+[Vista]
+Icono=0
+Clave=RM0011MaviAudAudCampoColoniaVis
+Nombre=Colonias Auditoria Credito
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=CODIGOPOSTAL<BR>COLONIA
+SQL=SELECT distinct C.COLONIA, C.CodigoPostal<BR>FROM<TAB><TAB><BR>VENTA V INNER JOIN VENTAD VD ON VD.ID = V.ID<BR>LEFT JOIN CTE C ON C.CLIENTE = V.CLIENTE<BR>WHERE<TAB><BR>     V.MOV LIKE <T>%SOLICITUD CREDITO%<T>
+CamposBusquedaRapida=COLONIA<BR>CODIGOPOSTAL
+[COLONIA]
+Clave=COLONIA
+Nombre=COLONIA
+Visible=S
+TamanoValidacion=70
+Tamano=100
+ClaveBDE=COLONIA
+[CODIGOPOSTAL]
+Clave=CODIGOPOSTAL
+Nombre=CODIGOPOSTAL
+Visible=S
+TamanoValidacion=7
+Tamano=15
+ClaveBDE=CODIGOPOSTAL

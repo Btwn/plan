@@ -1,0 +1,20 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW SerieLoteMovCOMSExportacion AS
+SELECT
+REPLICATE('0',20-LEN(RTRIM(LTRIM(CONVERT(varchar,CompraD.ID))))) + RTRIM(LTRIM(CONVERT(varchar,CompraD.ID))) +
+REPLICATE('0',12-LEN(RTRIM(LTRIM(CONVERT(varchar,CompraD.Renglon))))) + RTRIM(LTRIM(CONVERT(varchar,CompraD.Renglon))) +
+REPLICATE('0',7-LEN(RTRIM(LTRIM(CONVERT(varchar,CompraD.RenglonSub))))) + RTRIM(LTRIM(CONVERT(varchar,CompraD.RenglonSub))) +
+RTRIM(SerieLoteMov.SerieLote)
+OrdenExportacion,
+SerieLoteMov.*
+FROM SerieLoteMov JOIN CompraD
+ON SerieLoteMov.ID = CompraD.ID AND SerieLoteMov.RenglonID = CompraD.RenglonID
+WHERE SerieLoteMov.Modulo = 'COMS'
+

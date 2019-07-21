@@ -1,0 +1,32 @@
+[Tabla]
+Icono=0
+Clave=RutaDestinosMAVI
+Nombre=Destinos de Rutas
+Archivo=RutaDestinosMAVI
+Modulos=(Todos)
+Singular=Destino de Ruta
+TipoTabla=General
+ListaCampos=Ruta<BR>Destino
+LlavePrimaria=Ruta<BR>Destino
+SQL=SELECT<BR>  Ruta,<BR>  Destino<BR><BR>FROM<BR>  RutaDestinosMAVI
+[Ruta]
+Clave=Ruta
+Nombre=Ruta
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Requerido=S
+ValorPorOmision=Temp.Texto
+[Destino]
+Clave=Destino
+Nombre=Destino
+Visible=S
+TamanoValidacion=50
+Tamano=50
+Mayusculas=S
+Requerido=S
+AyudaEnCaptura=Vista
+AyudaForma=DestinosMAVILista
+AyudaVista=DestinosMAVILista
+AyudaCampo=Delegacion
+AyudaMultiple=S

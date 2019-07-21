@@ -1,0 +1,26 @@
+[Vista]
+Icono=0
+Clave=RM1142LeyendaCamposVis
+Nombre=Leyenda Campos
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Identificador<BR>Campos a Presentar
+SQL=SELECT X.a AS IDENTIFICADOR, X.b AS <T>CAMPOS A PRESENTAR<T><BR>FROM (VALUES(<T>*1<T> , <T>Nombre Pila<T>),<BR><TAB>    (<T>*2<T> , <T>Apellido<T>),<BR>            (<T>*3<T> , <T>UEN<T>) ,<BR><TAB>    (<T>*4<T> , <T>Fecha de Vencimiento Monedero<T>) ,<BR><TAB>    (<T>*5<T> , <T>Cuenta<T>),<BR><TAB>    (<T>*6<T> , <T>Saldo<T>),<BR><TAB>    (<T>*7<T> , <T>Familia<T>),<BR><TAB>    (<T>*8<T> , <T>Linea<T>),<BR><TAB>    (<T>*9<T> , <T>Saldo Monedero<T>),<BR><TAB>    (<T>*10<T> , <T>Fecha de Compra<T>),<BR><TAB>    (<T>*11<T> , <T>Categoria de Venta<T>)<BR>)AS X (a,b)<TAB><TAB>
+[Identificador]
+Clave=Identificador
+Nombre=Identificador
+Visible=S
+TamanoValidacion=10
+ClaveBDE=IDENTIFICADOR
+Tamano=2
+[Campos a Presentar]
+Clave=Campos a Presentar
+Nombre=Campos a Presentar
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=CAMPOS A PRESENTAR

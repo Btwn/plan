@@ -1,0 +1,59 @@
+[Tabla]
+Icono=0
+Clave=SugerirCobroIMMavi
+Nombre=Sugerir Cobro
+Archivo=SugerirCobroIMMavi
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=EstacionTrabajo<BR>SugerirCobro<BR>Importe<BR>Mov<BR>MovID
+LlavePrimaria=EstacionTrabajo
+SQL=SELECT<BR>  EstacionTrabajo,<BR>  SugerirCobro,<BR>  Importe,<BR>  Mov,<BR>  MovID<BR><BR>FROM<BR>  SugerirCobroIMMavi
+[EstacionTrabajo]
+Clave=EstacionTrabajo
+Nombre=EstacionTrabajo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+ValorPorOmision=EstacionTrabajo
+[SugerirCobro]
+Clave=SugerirCobro
+Nombre=Sugerir
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ListaRefrescar=Mov<BR>MovID
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Mov<BR>MovID
+OpcionesUnicamente=S
+Requerido=S
+ValorPorOmision=<T>Saldo Vencido<T>
+ListaOpciones=Saldo Vencido<BR>Importe Especifico<BR>Saldo Total<BR>Por Factura
+[Importe]
+Clave=Importe
+Nombre=Importe
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+AyudaEnCaptura=Calculadora
+[Mov]
+Clave=Mov
+Nombre=Movimiento
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=SugerirCobro = <T>Por Factura<T>
+AyudaEnCaptura=Expresion
+AyudaRefrescar=S
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista(<T>SELECT Mov FROM MovTipo WHERE Modulo = :tModulo AND Clave = :tClave<T>, <T>CXC<T>,<T>CXC.F<T>)
+[MovID]
+Clave=MovID
+Nombre=Consecutivo
+Visible=S
+TamanoValidacion=50
+Tamano=50
+CondicionDespliege=SugerirCobro = <T>Por Factura<T>

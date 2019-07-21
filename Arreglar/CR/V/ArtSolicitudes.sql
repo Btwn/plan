@@ -1,0 +1,25 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER VIEW ArtSolicitudes
+
+AS
+SELECT
+i.Empresa,
+d.Articulo,
+d.Almacen,
+"CantidadPendiente" = Sum(d.CantidadPendiente)
+FROM Inv i
+JOIN InvD d ON i.ID = d.ID
+JOIN MovTipo mt ON i.Mov = mt.Mov AND mt.Modulo = 'INV'
+WHERE
+i.Estatus = 'PENDIENTE'
+AND mt.Clave IN ('INV.SOL', 'INV.OT', 'INV.OI', 'INV.SM')
+GROUP BY
+i.Empresa, d.Articulo, d.Almacen
+

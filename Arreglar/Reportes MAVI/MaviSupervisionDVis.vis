@@ -1,0 +1,26 @@
+[Vista]
+Icono=0
+Clave=MaviSupervisionDVis
+Nombre=Supervisiones
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Mov<BR>MovID
+CamposBusquedaRapida=Mov<BR>MovID
+SQL=Select Distinct <BR>Mov,<BR>MovID<BR>From MaviSupervision
+[Mov]
+Clave=Mov
+Nombre=Supervisión
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=Mov
+Alineacion=Centrado
+[MovID]
+Clave=MovID
+Nombre=No
+Visible=S
+TamanoValidacion=20
+Tamano=20
+ClaveBDE=MovID
+Alineacion=Centrado

@@ -1,0 +1,17 @@
+[Sucursal.vis/Vista.ListaCampos]
+Cte.Nombre=Sucursal.LiberaAut
+Sucursal.LiberaAut=(Fin)
+
+[Sucursal.vis/Vista.SQL]
+LocalidadCNBV.Nombre,=Cte.Nombre,
+Cte.Nombre,=Sucursal.LiberaAut
+Sucursal.LiberaAut=FROM Sucursal
+
+[Sucursal.vis/Sucursal.LiberaAut]
+Clave=Sucursal.LiberaAut
+LigaTabla=Sucursal
+LigaCampo=LiberaAut
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Lógico
+ClaveBDE=LiberaAut

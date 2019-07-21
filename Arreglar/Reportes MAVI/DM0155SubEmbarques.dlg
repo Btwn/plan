@@ -1,0 +1,35 @@
+[Dialogo]
+Clave=DM0155SubEmbarques
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Xcliente<BR>Xvehiculo
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+[Acciones.Xcliente]
+Nombre=Xcliente
+Boton=0
+NombreDesplegar=Embarcar (por Cliente)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarEmbarqueCliente
+Activo=S
+Visible=S
+[Acciones.Xvehiculo]
+Nombre=Xvehiculo
+Boton=0
+NombreDesplegar=Embarcar (por Vehículo)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ExplorarEmbarqueVehiculo
+Activo=S
+Visible=S
+

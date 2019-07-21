@@ -1,0 +1,55 @@
+[Dialogo]
+Clave=MenuHerrAsignacionAvales
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialAlturaCliente=128
+PosicionInicialAncho=443
+ListaAcciones=DM0196AsignarMaxAval<BR>DM0196AsignacionAvales<BR>DM0196NivelCobranzaMaviDivAvalesFrm<BR>RM1140CatalogoContatoAvalREP
+PosicionInicialIzquierda=306
+PosicionInicialArriba=91
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+
+[Acciones.DM0196AsignacionAvales]
+Nombre=DM0196AsignacionAvales
+Boton=0
+TipoAccion=Formas
+ClaveAccion=DM0196AsignacionAvales
+Activo=S
+Visible=S
+NombreDesplegar=Procesar Asignacion de Avales 
+
+[Acciones.DM0196AsignarMaxAval]
+Nombre=DM0196AsignarMaxAval
+Boton=0
+NombreDesplegar=Maximo Avales por Agente
+TipoAccion=Formas
+ClaveAccion=DM0196AsignarMaxAval
+Activo=S
+Visible=S
+
+[Acciones.DM0196NivelCobranzaMaviDivAvalesFrm]
+Nombre=DM0196NivelCobranzaMaviDivAvalesFrm
+Boton=0
+NombreDesplegar=&Configuracion Asignacion Avales
+EnMenu=S
+TipoAccion=Formas
+ClaveAccion=DM0196NivelCobranzaMaviDivAvalesFrm
+Activo=S
+Visible=S
+
+[Acciones.RM1140CatalogoContatoAvalREP]
+Nombre=RM1140CatalogoContatoAvalREP
+Boton=0
+NombreDesplegar=Catalogo Contacto Aval
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Reportes Pantalla
+ClaveAccion=RM1140CatalogoContatoAvalREP
+Activo=S
+Visible=S

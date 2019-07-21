@@ -1,0 +1,90 @@
+[Forma]
+Clave=RM1119filtroestadofrm
+Nombre=RM1119 Filtro Localidad
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=Localidad
+CarpetaPrincipal=Localidad
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Select
+PosicionInicialAlturaCliente=273
+PosicionInicialAncho=500
+[Acciones.Select]
+Nombre=Select
+Boton=23
+NombreDesplegar=&Seleccionar
+Multiple=S
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+ListaAccionesMultiples=Asig<BR>Regis<BR>Select
+NombreEnBoton=S
+[Acciones.Select.Asig]
+Nombre=Asig
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
+[Acciones.Select.Regis]
+Nombre=Regis
+Boton=0
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=RegistrarSeleccion( <T>Localidad<T> )
+[Acciones.Select.Select]
+Nombre=Select
+Boton=0
+TipoAccion=Ventana
+ClaveAccion=Seleccionar/Resultado
+Activo=S
+Visible=S
+Expresion=Asigna(Mavi.RM1119NivelCob,SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>))<BR>SQL(<T>Exec SP_MaviCuentaEstacionUEN <T>+EstacionTrabajo+<T>,1<T>)
+[Estados.Columnas]
+0=-2
+[Localidad]
+Estilo=Iconos
+Clave=Localidad
+BusquedaRapidaControles=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=RM1119filtroestadovis
+Fuente={Tahoma, 8, Negro, []}
+IconosCampo=(sin Icono)
+IconosEstilo=Detalles
+IconosAlineacion=de Arriba hacia Abajo
+IconosConSenales=S
+ElementosPorPagina=200
+IconosSeleccionMultiple=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Delegacion
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+CarpetaVisible=S
+[Localidad.Columnas]
+0=-2
+[Localidad.Delegacion]
+Carpeta=Localidad
+Clave=Delegacion
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro

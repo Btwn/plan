@@ -1,0 +1,77 @@
+
+; ***** Integracion de listaCalculados para desarrollo DM0152 I (Informacion de Cliente) dentro del paquete DM0152_19122011. JR 20-Dic-2011. *****
+[CteInfo.vis/Vista.ListaCampos]
+CteAseguradora.Nombre=Cte.DireccionNumero
+Cte.DireccionNumero=Cte.DireccionNumeroInt
+Cte.DireccionNumeroInt=Cte.DefMneda
+Cte.DefMneda=(Fin)
+
+[CteInfo.vis/Vista.SQL]
+CteAseguradora.Cliente,=CteAseguradora.Nombre,
+CteAseguradora.Nombre,=Cte.DireccionNumero,
+Cte.DireccionNumero,=Cte.DireccionNumeroInt
+Cte.DireccionNumeroInt=FROM Cte
+
+[CteInfo.vis/Vista.ListaCalculados]
+CteRFCCalc=TelParticular
+TelParticular=TelMovil
+TelMovil=TelTrabajo
+TelTrabajo=TelOtros
+TelOtros=(Fin)
+
+[CteInfo.vis/Cte.DireccionNumero]
+Clave=Cte.DireccionNumero
+LigaTabla=Cte
+LigaCampo=DireccionNumero
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=DireccionNumero
+
+[CteInfo.vis/Cte.DireccionNumeroInt]
+Clave=Cte.DireccionNumeroInt
+LigaTabla=Cte
+LigaCampo=DireccionNumeroInt
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Numérico
+ClaveBDE=DireccionNumeroInt
+
+; ***** Integracion de nuevos campos calculados para desarrollo DM0152 I (Informacion de Cliente) dentro del paquete DM0152_19122011. JR 20-Dic-2011. *****
+[CteInfo.vis/TelParticular]
+Clave=TelParticular
+Tamano=25
+TipoCampo=Calculado
+TamanoValidacion=25
+Alineacion=por Omisión
+Nombre=Tel. Particular
+Formula=Sql(<T>Select Lada+Telefono From CteTel Where Tipo=:tTipo and Cliente=:tCte<T>,<T>Particular<T>,Info.Cliente)
+
+[CteInfo.vis/TelMovil]
+Clave=TelMovil
+Tamano=25
+TipoCampo=Calculado
+TamanoValidacion=25
+Alineacion=por Omisión
+Nombre=Tel. Movil
+Formula=Sql(<T>Select Lada+Telefono From CteTel Where Tipo=:tTipo and Cliente=:tCte<T>,<T>Movil<T>,Info.Cliente)
+
+[CteInfo.vis/TelTrabajo]
+Clave=TelTrabajo
+Tamano=25
+TipoCampo=Calculado
+TamanoValidacion=25
+Alineacion=por Omisión
+Nombre=Tel. Trabajo
+Formula=Sql(<T>Select Lada+Telefono From CteTel Where Tipo=:tTipo and Cliente=:tCte<T>,<T>Trabajo<T>,Info.Cliente)
+
+[CteInfo.vis/TelOtros]
+Clave=TelOtros
+Tamano=25
+TipoCampo=Calculado
+TamanoValidacion=25
+Alineacion=por Omisión
+Nombre=Tel. Otros
+Formula=Sql(<T>Select top 1 Lada+Telefono From CteTel Where Tipo not in (<T>+comillas(<T>Particular<T>)+<T>,<T>+comillas(<T>Movil<T>)+<T>,<T>+comillas(<T>Trabajo<T>)+<T>) and Cliente=:tCte<T>,Info.Cliente)
+; ***** Termina integracion de nuevos campos calculados. ******
+

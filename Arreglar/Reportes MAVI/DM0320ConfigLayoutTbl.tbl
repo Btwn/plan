@@ -1,0 +1,62 @@
+
+[Tabla]
+Icono=0
+Clave=DM0320ConfigLayoutTbl
+Nombre=Layout Almacen
+Modulos=(Todos)
+TipoTabla=General
+
+ListaCampos=Id<BR>Modulo<BR>Rack<BR>Nivel
+Archivo=TcIDM0320_ConfigLayout
+LlavePrimaria=Id
+ControlID=S
+CampoID=Id
+SQL=SELECT<BR>   Id,<BR>   Modulo,<BR>   Rack,<BR>   Nivel<BR><BR>FROM<BR>   TcIDM0320_ConfigLayout
+[Modulo]
+Clave=Modulo
+Nombre=Modulo
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El módulo ya existe.<T>
+ValidacionCondicion=/*Si SQL(<T>SELECT COUNT(*) FROM TcIDM0320_ConfigLayout WHERE Modulo = :tModulo<T>,Modulo) > 0<BR>Entonces<BR>    Falso<BR>Sino<BR>    Verdadero<BR>Fin */<BR><BR>Si(SQL(<T>SELECT COUNT(*) FROM TcIDM0320_ConfigLayout WHERE Modulo = :tModulo<T>,Modulo) > 0,Falso,Verdadero)
+[Rack]
+Clave=Rack
+Nombre=Rack
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaForma=DM0320LayoutAlmFrm
+AyudaVista=(Variables)
+AyudaCampo=Mavi.DM0320Rack
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>El Rack ya existe.<T>
+ValidacionCondicion=Si(SQL(<T>SELECT COUNT(*) FROM TcIDM0320_ConfigLayout WHERE Rack = :tRack<T>,Rack) > 0,Falso,Verdadero)
+[Nivel]
+Clave=Nivel
+Nombre=Nivel
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+ValidacionConCondiciones=S
+ValidacionCondicion=Si(SQL(<T>SELECT COUNT(*) FROM TcIDM0320_ConfigLayout WHERE Nivel = :tNivel<T>,Nivel) > 0,Falso,Verdadero)
+ValidacionMensajeError=<T>El Nivel ya existe.<T>
+[Id]
+Clave=Id
+Nombre=Id
+Visible=S
+TamanoValidacion=10
+TipoDatos=AutoInc

@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0188CalificacionesDistintasVis
+Nombre=DM0188CalificacionesDistintas
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=SituacionCalif
+SQL=SELECT<BR>  MAVIClaveSeguimiento.Clave + <T> <T>+<BR>  MAVIClaveSeguimiento.Descripcion as SituacionCalif <BR>FROM<BR>  MAVIClaveSeguimiento WITH(NOLOCK)<BR>  JOIN Modulo ON MAVIClaveSeguimiento.Modulo = Modulo.Modulo<BR>WHERE Modulo.Modulo = <T>VTAS<T> AND MAVIClaveSeguimiento.Grupo NOT IN(<T>MAYOREO<T>)<BR><BR>UNION <BR><BR>SELECT <BR>DISTINCT m.Situacion as SituacionCalif2 FROM MovTiempo m<BR>INNER JOIN Venta v ON M.ID=V.ID<BR>JOIN MovSituacion s ON v.Mov=<T>Analisis Credito<T><BR>WHERE 1=1<BR>AND m.Modulo=<T>VTAS<T><BR>AND v.Mov=<T>Analisis Credito<T><BR>AND m.Situacion IS NOT NULL ORDER BY SituacionCalif ASC
+[SituacionCalif]
+Clave=SituacionCalif
+Nombre=SituacionCalif
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+ClaveBDE=SituacionCalif

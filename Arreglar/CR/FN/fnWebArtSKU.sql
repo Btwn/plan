@@ -1,0 +1,28 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER FUNCTION dbo.fnWebArtSKU
+(
+@SKU        varchar(255)
+)
+RETURNS varchar(255)
+
+AS BEGIN
+DECLARE
+@Longitud    int,
+@Posicion    int,
+@Resultado   varchar(255)
+SELECT @Longitud = LEN(@SKU)
+SELECT @Posicion = CHARINDEX('#',@SKU,1)
+IF   @Posicion > 0
+SELECT @Resultado = SUBSTRING(@SKU,@Posicion +1,@Longitud)
+ELSE
+SELECT @Resultado = @SKU
+RETURN (@Resultado)
+END
+

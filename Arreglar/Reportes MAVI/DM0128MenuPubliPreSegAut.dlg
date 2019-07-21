@@ -1,0 +1,24 @@
+[Dialogo]
+Clave=DM0128MenuPubliPreSegAut
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=DM0128
+PosicionInicialAlturaCliente=80
+PosicionInicialAncho=500
+[Acciones.DM0128]
+Nombre=DM0128
+Boton=0
+NombreDesplegar=Publicar Precios Seguros Autos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0128PubliPreSegAut
+Activo=S
+Visible=S

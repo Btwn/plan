@@ -1,0 +1,30 @@
+[Dialogo]
+Clave=MenuHerrArticulosPropre
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+PosicionInicialAlturaCliente=80
+PosicionInicialAncho=245
+ListaAcciones=Artículos
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=por Omisión
+VentanaEscCerrar=S
+VentanaEstadoInicial=Normal
+
+[Acciones.Artículos]
+Nombre=Artículos
+Boton=0
+EnMenu=S
+EnBarraAcciones=S
+Activo=S
+Visible=S
+NombreEnBoton=S
+NombreDesplegar=&Articulos
+TipoAccion=Expresion
+Expresion=Forma(<T>PropreArt<T>)

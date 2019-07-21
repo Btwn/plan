@@ -1,0 +1,23 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER TRIGGER tr_xcrm_del_ventad ON ventad
+
+AFTER DELETE as BEGIN
+SET NOCOUNT ON
+IF EXISTS(SELECT * FROM DELETED)
+BEGIN
+INSERT INTO xcrm_del_ventad
+(ID,Renglon,renglonid,renglonsub,articulo,ultimocambio,crmobjectid)
+SELECT DELETED.ID,Renglon,DELETED.renglonid,renglonsub,articulo,GETDATE(),DELETED.crmobjectid
+FROM DELETED
+join Venta on (DELETED.ID = Venta.id)
+Where Venta.folioCRM is not null
+END
+END
+

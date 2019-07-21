@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=MaviCanalesXUenVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=UEN<BR>Canal
+SQL= -- Vista para Sacar las opciones de Canal x UEN Para reporte RM-194 --<BR>SELECT Distinct UEN, Canal FROM<BR>(SELECT UEN, Canal = Case When UEN=3 Then <T>Mayoreo<T><BR><TAB>When UEN=2 Then <T>VIU<T><BR><TAB>When Categoria=<T>INSTITUCIONES<T> Then <T>Instituciones<T><BR><TAB>When Clave=<T>CR CAMBA<T> Then <T>Cambaceo<T><BR><TAB>Else <T>Piso<T><BR><TAB>End<BR>FROM VentasCanalMavi<BR>Union<BR>Select UEN = 1, Canal = <T>Reactivacion<T><BR>)as Canales<BR>{Si(ConDatos(Info.UEN),<T> WHERE UEN=<T>+Info.UEN,<T><T>)}
+[UEN]
+Clave=UEN
+Nombre=UEN
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=UEN
+[Canal]
+Clave=Canal
+Nombre=Canal
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=13
+TipoDatos=Texto
+Tamano=13
+ClaveBDE=Canal

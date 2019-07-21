@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM0500ANOMEquipoVis
+Nombre=Equipos
+Modulos=(Todos)
+Singular=Equipo
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Equipo
+SQL=declare @sql nvarchar(4000),<BR>        @sql2 varchar(200)<BR><BR>set @sql=<T>select distinct ea.Equipo,mr.nivelcobranza<BR>from equipoagente ea<BR>Inner Join Agente a on ea.Equipo=a.Agente<BR>inner join(select distinct agentecobrador,nivelcobranza<BR>      from mavirecuperacion)mr on mr.agentecobrador=ea.agente<BR>where tipo= <T>+char(39)+<T>EQuipo<T>+char(39)<BR><BR>set @sql2=<T>{Si(ConDatos(Mavi.RM0500ANivelCobranzaProm),Mavi.RM0500ANivelCobranzaProm,<T><T>)}<T><BR><BR>if @sql2<><T><T><BR>Begin<BR>SET @sql2=char(39)+replace(@sql2,<T>,<T>,<T><T><T>,<T><T><T>)+char(39)  <BR>SET @Sql2 = <T> And Mr.nivelcobranza in (<T>+@Sql2+<T>)<T><BR>  <BR>End<BR><BR>set @sql=@sql+@sql2 +<T> order by mr.nivelcobranza<T><BR><BR>EXECUTE sp_executesql @sql
+[Equipo]
+Clave=Equipo
+Nombre=Equipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Equipo

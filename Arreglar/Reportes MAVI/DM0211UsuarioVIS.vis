@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=DM0211UsuarioVIS
+Nombre=DM0211 Situacion
+Modulos=(Todos)
+CamposBusquedaRapida=USUARIO
+VistaIndependiente=S
+ListaCampos=USUARIO
+LlavePrimaria=USUARIO
+TipoTabla=General
+SQL=SELECT distinct x.USUARIO<BR> FROM (<BR>----------------------------------------------------------------------------------------------------------------------------------      PAGO <BR>select distinct p.id , a.ORIGEN , a.ORIGENID  ,  p.ESTATUS , p.FECHAEMISION <BR>                       , p.SITUACION , p.USUARIO , p.PROVEEDOR   , prov.NOMBRE , Movimiento = p.MOV +<T>  <T>+ p.MOVID<BR>, p.MOV , p.MOVID<BR>FROM cxp p left join cxpd d on p.id = d.id left join cxp a on d.aplica = a.mov and d.aplicaid = a.movid<BR>                      left join prov on p.proveedor = prov.proveedor<BR><BR>WHERE p.mov in (<T>Pago<T>,<T>Prestamo<T>) and p.movid is not null <BR>union all <BR>select distinct p.id , p.ORIGEN , p.ORIGENID ,  p.ESTATUS , p.FECHAEMISION <BR>                       , p.SITUACION , p.USUA<CONTINUA>
+SQL002=<CONTINUA>RIO , p.ACREEDOR , prov.NOMBRE , Movimiento = p.MOV +<T>  <T>+ p.MOVID <BR>, p.MOV , p.MOVID<BR>from gasto p left join prov on p.ACREEDOR = prov.proveedor<BR><BR>where mov in (<T>Gasto<T>)  and p.movid is not null <BR>)x<BR><BR>WHERE x.MOVID IS NOT NULL <BR><BR>ORDER BY 1 ASC
+[USUARIO]
+Clave=USUARIO
+Nombre=USUARIO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=USUARIO

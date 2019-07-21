@@ -1,0 +1,27 @@
+[Vista]
+Icono=0
+Clave=RM0501AsignacionesVis
+Nombre=RM0501 Asignaciones
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=id<BR>Quincena
+SQL=Select * from (<BR>SELECT id, Estatus,Quincena=Dbo.Fn_MaviNumQuincena(FechaEmision)  FROM dbo.CobTelAsignacionMavi<BR>) x<BR>Where 1=1 and estatus=<T>Concluido<T><BR>{Si(ConDatos(Mavi.QuincenaCobranza),   <T>And Quincena =<T>+Comillas(Mavi.QuincenaCobranza),  <T><T>)}<BR>order by Quincena
+[id]
+Clave=id
+Nombre=id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=id
+[Quincena]
+Clave=Quincena
+Nombre=Quincena
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Quincena

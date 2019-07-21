@@ -1,0 +1,46 @@
+[Vista]
+Icono=0
+Clave=MontosMaximosFleteMayoreoMAVI
+Nombre=MontosMaximosFleteMayoreoMAVI
+Modulos=(Todos)
+Singular=MontosMaximosFleteMayoreoMAVI
+ListaTablas=MontosMaximosFleteMayoreoMAVI
+TablaPrincipal=MontosMaximosFleteMayoreoMAVI
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+ListaCampos=MontosMaximosFleteMayoreoMAVI.TipoUnidadVehicular<BR>MontosMaximosFleteMayoreoMAVI.CostoMaximo
+SQL=SELECT<BR>  MontosMaximosFleteMayoreoMAVI.TipoUnidadVehicular,<BR>  MontosMaximosFleteMayoreoMAVI.CostoMaximo<BR><BR>FROM<BR>  MontosMaximosFleteMayoreoMAVI
+[MontosMaximosFleteMayoreoMAVI.TipoUnidadVehicular]
+Clave=MontosMaximosFleteMayoreoMAVI.TipoUnidadVehicular
+Nombre=Tipo Unidad Vehicular
+Visible=S
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+Requerido=N
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=12
+AyudaMemOpc=Validar captura en la lista
+Formula=SQLEnLista(<T>Select TipoUnidad from TipoUnidadVehicularMAVI<T>)
+LigaTabla=MontosMaximosFleteMayoreoMAVI
+LigaCampo=TipoUnidadVehicular
+Ligado=S
+TipoCampo=Tabla
+TipoDatos=Texto
+ClaveBDE=TipoUnidadVehicular
+[MontosMaximosFleteMayoreoMAVI.CostoMaximo]
+Clave=MontosMaximosFleteMayoreoMAVI.CostoMaximo
+Nombre=Costo Máximo
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumMonetario
+Monetario=S
+Requerido=N
+ValorPorOmision=0
+AyudaEnCaptura=Calculadora
+LigaTabla=MontosMaximosFleteMayoreoMAVI
+LigaCampo=CostoMaximo
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=CostoMaximo

@@ -1,0 +1,128 @@
+
+[Vista]
+Icono=0
+Clave=DM0224ConfiguracionNotasCreditoEspejoVis
+Modulos=(Todos)
+
+ListaCampos=DM0224ConfiguracionNotasCreditoEspejoTbl.MovCargo<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCargo<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.MovCredito<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCredito<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCargoNuevo<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.FechaDesde
+ListaTablas=DM0224ConfiguracionNotasCreditoEspejoTbl
+TablaPrincipal=DM0224ConfiguracionNotasCreditoEspejoTbl
+UsoCapturas=S
+
+
+
+
+
+
+
+UsoReportes=S
+
+AlAgregar=S
+AlModificar=S
+SQL=SELECT<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.MovCargo,<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCargo,<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.MovCredito,<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCredito,<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCargoNuevo,<BR>DM0224ConfiguracionNotasCreditoEspejoTbl.FechaDesde<BR>FROM TcIDM0224_ConfigNotasEspejo DM0224ConfiguracionNotasCreditoEspejoTbl
+ExpresionAlAgregar=Informacion(<T>Configuracion Guardada Correctamente<T>)
+ExpresionAlModificar=Informacion(<T>Configuracion Actualizada Correctamente<T>)
+[DM0224ConfiguracionNotasCreditoEspejoTbl.MovCargo]
+Clave=DM0224ConfiguracionNotasCreditoEspejoTbl.MovCargo
+Nombre=Mov Nota Cargo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=20
+LigaTabla=DM0224ConfiguracionNotasCreditoEspejoTbl
+LigaCampo=MovCargo
+ClaveBDE=MovCargo
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Requerido=S
+Formula=SQLEnLista(<T>SELECT Mov FROM MovTipo WHERE Modulo=<T>&Comillas(<T>CXC<T>)&<BR>  <T>AND Clave=<T>&Comillas(<T>CXC.CA<T>)&<T>AND CFD_tipoDeComprobante=<T>&Comillas(<T>Ingreso<T>))
+[DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCargo]
+Clave=DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCargo
+Nombre=Concepto Nota Cargo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=DM0224ConfiguracionNotasCreditoEspejoTbl
+LigaCampo=ConceptoCargo
+ClaveBDE=ConceptoCargo
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Requerido=S
+Formula=SQLEnLista(<T>SELECT Concepto FROM EmpresaConceptoValidar<T>&<BR>  <T> WHERE Modulo=<T>&Comillas(<T>CXC<T>)&<T> AND Mov = <T>&Comillas(DM0224ConfiguracionNotasCreditoEspejoTbl.MovCargo)&<BR>  <T> GROUP BY Concepto ORDER BY Concepto<T><BR>  )
+[DM0224ConfiguracionNotasCreditoEspejoTbl.MovCredito]
+Clave=DM0224ConfiguracionNotasCreditoEspejoTbl.MovCredito
+Nombre=Mov Nota Credito
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=20
+LigaTabla=DM0224ConfiguracionNotasCreditoEspejoTbl
+LigaCampo=MovCredito
+ClaveBDE=MovCredito
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Requerido=S
+Formula=SQLEnLista(<T>SELECT Mov FROM MovTipo WHERE Modulo=<T>&Comillas(<T>CXC<T>)&<BR>  <T>AND Clave=<T>&Comillas(<T>CXC.NC<T>)&<T>AND CFD_tipoDeComprobante=<T>&Comillas(<T>Egreso<T>))
+[DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCredito]
+Clave=DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCredito
+Nombre=Concepto Nota Credito
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=DM0224ConfiguracionNotasCreditoEspejoTbl
+LigaCampo=ConceptoCredito
+ClaveBDE=ConceptoCredito
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Requerido=S
+Formula=SQLEnLista(<T>SELECT Concepto FROM EmpresaConceptoValidar<T>&<BR>  <T> WHERE Modulo=<T>&Comillas(<T>CXC<T>)&<T> AND Mov = <T>&Comillas(DM0224ConfiguracionNotasCreditoEspejoTbl.MovCredito)&<BR>  <T> GROUP BY Concepto ORDER BY Concepto<T><BR>  )
+[DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCargoNuevo]
+Clave=DM0224ConfiguracionNotasCreditoEspejoTbl.ConceptoCargoNuevo
+Nombre=Concepto Nota Cargo Nuevo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=50
+LigaTabla=DM0224ConfiguracionNotasCreditoEspejoTbl
+LigaCampo=ConceptoCargoNuevo
+ClaveBDE=ConceptoCargoNuevo
+
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+Requerido=S
+Formula=SQLEnLista(<T>SELECT Concepto FROM EmpresaConceptoValidar<T>&<BR>  <T> WHERE Modulo=<T>&Comillas(<T>CXC<T>)&<T> AND Mov = <T>&Comillas(DM0224ConfiguracionNotasCreditoEspejoTbl.MovCargo)&<BR>  <T> GROUP BY Concepto ORDER BY Concepto<T><BR>  )
+[DM0224ConfiguracionNotasCreditoEspejoTbl.FechaDesde]
+Clave=DM0224ConfiguracionNotasCreditoEspejoTbl.FechaDesde
+Nombre=Fecha Desde
+Visible=S
+TamanoValidacion=10
+TipoDatos=FechaHora
+LigaTabla=DM0224ConfiguracionNotasCreditoEspejoTbl
+LigaCampo=FechaDesde
+ClaveBDE=FechaDesde
+Alineacion=por Omisión
+AyudaEnCaptura=Calendario sin Hora
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Requerido=S

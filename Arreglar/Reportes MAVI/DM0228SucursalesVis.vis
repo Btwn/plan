@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=DM0228SucursalesVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Nombre
+CamposBusquedaRapida=Nombre
+SQL=Select Nombre From Sucursal where Tipo=<T>INSTITUCIONES<T>
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=100
+TipoDatos=Texto
+Tamano=100
+ClaveBDE=Nombre

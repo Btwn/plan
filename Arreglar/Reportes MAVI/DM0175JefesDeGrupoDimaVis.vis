@@ -1,0 +1,26 @@
+[Vista]
+Icono=0
+Clave=DM0175JefesDeGrupoDimaVis
+Nombre=DM0175JefesDeGrupoDimaVis
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Agente<BR>Nombre
+CamposBusquedaRapida=Nombre
+SQL=SELECT ReportaA as Agente, Nombre FROM Agente WITH(NOLOCK)<BR>    WHERE Categoria=<T>VENTAS DIMA<T> AND Grupo=<T>EQUIPO<T> AND ReportaA <> <T><T>
+[Agente]
+Clave=Agente
+Nombre=Agente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Agente
+TipoDatos=Texto
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+TipoDatos=Texto

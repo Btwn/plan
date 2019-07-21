@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=RM1079LineaVis
+Nombre=RM1079Linea
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Linea
+CamposBusquedaRapida=Linea
+SQL=select distinct Linea from art<BR>WHERE Linea is NOT NULL <BR>AND Categoria = <T>VENTA<T><BR>{Si(ConDatos(Mavi.RM1079GrupoFiltro), <T> And Grupo IN(<T>+Mavi.RM1079GrupoFiltro+<T>)<T>, <T><T>)}<BR>{Si(ConDatos(Mavi.RM1079FamiliaFiltro), <T> And Familia IN(<T>+Mavi.RM1079FamiliaFiltro+<T>)<T>, <T><T>)}<BR>order by Linea
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Linea

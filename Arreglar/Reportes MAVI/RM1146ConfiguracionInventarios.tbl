@@ -1,0 +1,28 @@
+[Tabla]
+Icono=0
+Clave=RM1146ConfiguracionInventarios
+Nombre=RM1146Configuracion
+Archivo=RM1146ConfiguracionInventarios
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=DiasAdjudicacion<BR>DiasEmbargo<BR>DiasVenta
+LlavePrimaria=DiasAdjudicacion
+SQL=SELECT<BR>  DiasAdjudicacion,<BR>  DiasEmbargo,<BR>  DiasVenta<BR><BR>FROM<BR>  RM1146ConfiguracionInventarios
+[DiasAdjudicacion]
+Clave=DiasAdjudicacion
+Nombre=Dias de  Adjudicacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[DiasEmbargo]
+Clave=DiasEmbargo
+Nombre=Dias de Embargo
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+[DiasVenta]
+Clave=DiasVenta
+Nombre=Dias en Venta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico

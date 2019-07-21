@@ -1,0 +1,117 @@
+[Forma]
+Clave=DM0500BEspecialNivelfrm
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=DM0500BEspecialVis
+CarpetaPrincipal=DM0500BEspecialVis
+PosicionInicialIzquierda=398
+PosicionInicialArriba=48
+PosicionInicialAlturaCliente=258
+PosicionInicialAncho=819
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Guardar
+Nombre=Captura de subniveles  
+[deducPromCobCampoMAVI.Columnas]
+Nivel=304
+cuota=304
+[Acciones.Guardar]
+Nombre=Guardar
+Boton=3
+NombreEnBoton=S
+NombreDesplegar=&Guardar
+EnBarraHerramientas=S
+Activo=S
+Visible=S
+Multiple=S
+ListaAccionesMultiples=Actualizar Forma<BR>Actualizar Arbol<BR>Guardar Cambios
+[Acciones.Guardar.Actualizar Forma]
+Nombre=Actualizar Forma
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Forma
+Activo=S
+Visible=S
+[Acciones.Guardar.Actualizar Arbol]
+Nombre=Actualizar Arbol
+Boton=0
+Carpeta=(Carpeta principal)
+TipoAccion=Controles Captura
+ClaveAccion=Actualizar Arbol
+Activo=S
+Visible=S
+[Acciones.Guardar.Guardar Cambios]
+Nombre=Guardar Cambios
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Guardar Cambios
+Activo=S
+Visible=S
+[DM0500BEspecialVis]
+Estilo=Hoja
+Clave=DM0500BEspecialVis
+Filtros=S
+BusquedaRapidaControles=S
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=DM0500BEspecialVis
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=DM0500BEspecialtbl.Nivel<BR>DM0500BEspecialtbl.cuota
+FiltroPredefinido=S
+FiltroGrupo1=DM0500BEspecialtbl.cuota
+FiltroValida1=DM0500BEspecialtbl.cuota
+FiltroNullNombre=(sin clasificar)
+FiltroEnOrden=S
+FiltroTodoNombre=(Todo)
+FiltroAncho=20
+FiltroRespetar=S
+FiltroTipo=Múltiple (por Grupos)
+FiltroModificarEstatus=S
+FiltroCambiarPeriodo=S
+FiltroBuscarEn=S
+FiltroFechasCambiar=S
+FiltroFechasNormal=S
+FiltroFechasNombre=&Fecha
+BusquedaRapida=S
+BusquedaInicializar=S
+BusquedaRespetarControles=S
+BusquedaAncho=20
+BusquedaEnLinea=S
+CarpetaVisible=S
+FiltroTodo=S
+[DM0500BEspecialVis.DM0500BEspecialtbl.Nivel]
+Carpeta=DM0500BEspecialVis
+Clave=DM0500BEspecialtbl.Nivel
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[DM0500BEspecialVis.DM0500BEspecialtbl.cuota]
+Carpeta=DM0500BEspecialVis
+Clave=DM0500BEspecialtbl.cuota
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=50
+ColorFondo=Blanco
+ColorFuente=Negro
+[DM0500BEspecialVis.Columnas]
+Nivel=304
+cuota=304

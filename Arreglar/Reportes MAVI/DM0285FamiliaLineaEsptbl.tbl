@@ -1,0 +1,50 @@
+[Tabla]
+Icono=0
+Clave=DM0285FamiliaLineaEsptbl
+Nombre=DM0285FamiliaLineaEsptbl
+Archivo=eCommercefamilialineaesp
+Modulos=(Todos)
+TipoTabla=General
+ListaCampos=Uen<BR>Familia<BR>Linea
+LlavePrimaria=Uen<BR>Familia<BR>Linea
+CampoID=id
+CamposBusquedaRapida=Uen<BR>Familia<BR>Linea
+SQL=SELECT<BR>  Uen,<BR>  Familia,<BR>  Linea<BR><BR>FROM<BR>  eCommercefamilialineaesp
+[Uen]
+Clave=Uen
+Nombre=UEN
+Visible=S
+TamanoValidacion=10
+Tamano=10
+AyudaMemOpc=Unicamente opciones listadas
+AyudaEnCaptura=Lista de Opciones
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=2
+OpcionesUnicamente=S
+OpcionesValidar=S
+ListaOpciones=VIU<BR>MA
+[Familia]
+Clave=Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemTabla=ArtFam
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+ConRefrescar=S
+ListaRefrescar=Linea
+Formula=SQLEnLista(<T> Select A.Familia<BR>From<BR>( Select Familia<BR>from  art with(nolock)<BR>Where categoria = <T> + comillas(<T>VENTA<T>)+ <T> and grupo = <T>+ comillas(<T>MERCANCIA DE LINEA<T>)+ <T> and estatus in ( <T>+ comillas(<T>ALTA<T>)+<T>,<T>+ comillas(<T>BLOQUEADO<T>)+ <T> )<BR>Group by Familia<BR>)A<BR>JOIN artlinea f with(nolock) On f.Familia = A.Familia<BR>Group by A.Familia<BR>Order by  A.Familia <BR><T> )
+[Linea]
+Clave=Linea
+Nombre=Linea
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Expresion
+AyudaMemOpc=Validar captura en la lista
+AyudaRefrescar=S
+ValorRefrescar=<T><T>
+Formula=SQLEnLista(<T>Select A.Linea<BR>From<BR>(<BR>Select Linea<BR>from  art with(nolock)<BR>Where categoria = <T> + comillas(<T>VENTA<T>)+ <T> and grupo = <T>+ comillas(<T>MERCANCIA DE LINEA<T>)+ <T> and estatus in ( <T>+ comillas(<T>ALTA<T>)+<T>,<T>+ comillas(<T>BLOQUEADO<T>)+ <T> )<BR>Group by Linea<BR> )A<BR>JOIN artlinea f with(nolock) On f.Linea = A.Linea<BR>Where f.familia = :tf<BR>Group by A.Linea<BR>Order by A.Linea <T>,Familia<BR>)

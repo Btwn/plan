@@ -1,0 +1,28 @@
+[Vista]
+Icono=0
+Clave=RM1160CanalVentaFiltroVis
+Nombre=Canal de Venta
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Id<BR>Cadena
+SQL=Select Id,Cadena From VentasCanalMAVI<BR>Where 1=1<BR>{Si(ConDatos(Mavi.RM1160Categoria)<BR>,<T>AND Categoria in( <T> & ListaEntreComillas( Reemplaza( <T>,<T>, NuevaLinea ,Mavi.RM1160Categoria ) , <T>,<T> ) & <T>)<T><BR>,<T>AND Categoria = <T> & Comillas(<T>1<T>))}<BR><BR>Order By Id
+[Id]
+Clave=Id
+Nombre=Id
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+ClaveBDE=Id
+[Cadena]
+Clave=Cadena
+Nombre=Cadena
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Cadena

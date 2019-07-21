@@ -1,0 +1,21 @@
+
+[Vista]
+Icono=0
+Clave=DM0130AyudaCategoriaVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+
+ListaCampos=Categoria
+CamposBusquedaRapida=Categoria
+SQL=SELECT DISTINCT<BR>  Categoria <BR>FROM <BR>  TcIDM0130_Categorias <BR>ORDER BY Categoria
+[Categoria]
+Clave=Categoria
+Nombre=Categoria
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Categoria

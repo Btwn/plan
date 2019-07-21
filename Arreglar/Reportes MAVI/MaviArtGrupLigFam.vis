@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=MaviArtGrupLigFam
+Nombre=FAMILAS ARTICULOS
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Grupo
+SQL=select <BR>distinct(Grupo) <BR>from art <BR>Where <BR>Art.Grupo is not null<BR>AND LEN(Art.Grupo)>0<BR>{SI(CONDATOS(Mavi.ArtCatLigGrup),<T>AND Art.Categoria=<T>+COMILLAS(Mavi.ArtCatLigGrup),<T><T>)}<BR>order by Grupo asc
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Grupo

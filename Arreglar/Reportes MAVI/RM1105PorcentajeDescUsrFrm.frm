@@ -1,0 +1,56 @@
+[Forma]
+Clave=RM1105PorcentajeDescUsrFrm
+Nombre=RM1105 Porcentaje Descuento X Usuario
+Icono=0
+Modulos=(Todos)
+ListaCarpetas=(Variables)
+CarpetaPrincipal=(Variables)
+BarraHerramientas=S
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=Txt<BR>cerrar
+PosicionInicialIzquierda=454
+PosicionInicialArriba=334
+PosicionInicialAlturaCliente=29
+PosicionInicialAncho=418
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+HojaTitulos=S
+HojaMostrarColumnas=S
+HojaMostrarRenglones=S
+HojaColoresPorEstatus=S
+HojaPermiteInsertar=S
+HojaPermiteEliminar=S
+HojaVistaOmision=Automática
+CampoColorLetras=Negro
+CampoColorFondo=Negro
+CarpetaVisible=S
+[Acciones.Txt]
+Nombre=Txt
+Boton=88
+NombreEnBoton=S
+NombreDesplegar=Generar &Txt
+EnBarraHerramientas=S
+EspacioPrevio=S
+TipoAccion=Reportes Impresora
+ClaveAccion=RM1105PorcUsuariosDescMayoreoRep
+Activo=S
+Visible=S
+[Acciones.cerrar]
+Nombre=cerrar
+Boton=36
+NombreEnBoton=S
+NombreDesplegar=&Cerrar
+EnBarraHerramientas=S
+EspacioPrevio=S
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Activo=S
+Visible=S

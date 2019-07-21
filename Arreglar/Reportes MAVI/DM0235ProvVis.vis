@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=DM0235ProvVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Proveedor
+SQL=Select Proveedor From Prov With(NoLock) Where Categoria=<T>INSTITUCIONES<T><BR>and Familia=<T>INSTITUCIONES<T>
+[Proveedor]
+Clave=Proveedor
+Nombre=Proveedor
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Texto
+Tamano=10
+ClaveBDE=Proveedor

@@ -1,0 +1,18 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE spWebPaginaArtAlm
+@SesionID     Uniqueidentifier = null,
+@Origen       varchar(255) = null,
+@Pagina       Varchar(20) = NULL
+
+AS BEGIN
+SELECT DISTINCT(Alm.Nombre) AS Nombre, ASD.Almacen AS Almacen FROM ArtSubDisponible ASD  INNER JOIN Alm ON ASD.Almacen=Alm.Almacen
+WHERE Alm.Estatus='ALTA' AND ASD.Articulo=@Origen
+END
+

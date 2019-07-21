@@ -1,0 +1,22 @@
+[Vista]
+Icono=0
+Clave=RM1042IdEmbFiltroVis
+Nombre=RM1042IdEmbFiltroVis
+Modulos=(Todos)
+Singular=ID De Embarque
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=IDDEMBARQUE
+LlavePrimaria=IDDEMBARQUE
+CamposBusquedaRapida=IDDEMBARQUE
+SQL=EXEC SP_RM1042ArmRutasIDEmb_Filtro<BR><BR><BR> <T>{FechaFormatoServidor(Info.FechaD)}<T>, <BR> <T>{FechaFormatoServidor(Info.FechaA)}<T>,<BR>  {si(condatos(Mavi.RM1042FamiliaFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042FamiliaFiltro)),comillas(<T><T>))},<BR>  {si(condatos(Mavi.RM1042OrdTraspasoPrincipal), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042OrdTraspasoPrincipal)),comillas(<T><T>))},<BR>  {si(condatos(Mavi.RM1042TipoEmbFiltro), Reemplaza( comillas(<T>,<T>), <T>,<T>, (Mavi.RM1042TipoEmbFiltro)),comillas(<T><T>))}
+[IDDEMBARQUE]
+Clave=IDDEMBARQUE
+Nombre=IDDEMBARQUE
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=30
+TipoDatos=Texto
+Tamano=30
+ClaveBDE=IDDEMBARQUE

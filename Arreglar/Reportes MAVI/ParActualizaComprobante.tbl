@@ -1,0 +1,68 @@
+
+[Tabla]
+Icono=0
+Clave=ParActualizaComprobante
+Nombre=ParActualizaComprobante
+Archivo=ParActualizaComprobante
+Modulos=(Todos)
+Singular=ParActualizaComprobante
+TipoTabla=General
+
+ListaCampos=Estacion<BR>Empresa<BR>FechaD<BR>FechaA<BR>Modulo<BR>TipoPoliza
+LlavePrimaria=Estacion
+SQL=SELECT<BR>  Estacion,<BR>  Empresa,<BR>  FechaD,<BR>  FechaA,<BR>  Modulo,<BR>  TipoPoliza<BR><BR>  FROM ParActualizaComprobante
+[Estacion]
+Clave=Estacion
+Nombre=Estacion
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+
+ValorPorOmision=EstacionTrabajo
+[Empresa]
+Clave=Empresa
+Nombre=Empresa
+Visible=S
+TamanoValidacion=5
+TipoDatos=Texto
+Tamano=5
+
+ValorPorOmision=Empresa
+[FechaD]
+Clave=FechaD
+Nombre=De la Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+AyudaEnCaptura=Calendario sin Hora
+Requerido=S
+[FechaA]
+Clave=FechaA
+Nombre=A la Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+AyudaEnCaptura=Calendario sin Hora
+Requerido=S
+[Modulo]
+Clave=Modulo
+Nombre=Modulo
+Visible=S
+TamanoValidacion=40
+TipoDatos=Texto
+Tamano=40
+
+AyudaEnCaptura=Expresion
+Formula=SQLEnLista(<T>SELECT Modulo FROM Modulo WHERE Modulo IN (:tCXC, :tCXP, :tDIN, :tGAS, :tVTAS, :tNOM, :tCOMS)<T>,<T>CXC<T>,<T>CXP<T>,<T>DIN<T>,<T>GAS<T>,<T>VTAS<T>,<T>NOM<T>,<T>COMS<T>))
+[TipoPoliza]
+Clave=TipoPoliza
+Nombre=Tipo de Poliza
+Visible=S
+TamanoValidacion=40
+TipoDatos=Texto
+Tamano=40
+AyudaEnCaptura=Expresion
+Requerido=S
+Formula=SQLEnLista(<T>SELECT DISTINCT TipoPoliza FROM MovTipo WHERE Modulo IN (:tCONT) AND :tNulo IS NOT NULL<T>,<T>CONT<T>,<T>NULLIF(TipoPoliza,<T><T>)<T>))

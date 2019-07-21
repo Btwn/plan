@@ -1,0 +1,20 @@
+[Vista]
+Icono=0
+Clave=CteExpressParentVis
+Nombre=Parentesco
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Parentesco
+SQL=SELECT Parentesco FROM Parentesco<BR>WHERE Parentesco NOT IN (<T>AVALADO<T>,<T>CONCUBINA<T>,<T>CONCUBINO<T>,<T>EL<T>,<T>ELLA<T>,<T>EMPLEADO<T>,<T>NOVIA<T>,<T>NOVIO<T>,<T>PATRON<T>)
+CamposBusquedaRapida=Parentesco
+[Parentesco]
+Clave=Parentesco
+Nombre=Parentesco
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=Parentesco

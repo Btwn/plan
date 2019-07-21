@@ -1,0 +1,47 @@
+
+[Dialogo]
+Clave=DM0321SegurosVidaDlg
+Nombre=DM0321 Automatización Seguros
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+
+ListaAcciones=Interfaz1<BR>Interfaz2
+PosicionInicialAlturaCliente=104
+PosicionInicialAncho=500
+VentanaTipoMarco=Normal
+VentanaPosicionInicial=Centrado
+VentanaBloquearAjuste=S
+VentanaEstadoInicial=Normal
+PosicionInicialIzquierda=433
+PosicionInicialArriba=313
+[Acciones.Interfaz1]
+Nombre=Interfaz1
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Tipos de Seguro
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0321TipoSegurosVidaFrm
+Activo=S
+Visible=S
+
+[Acciones.Interfaz2]
+Nombre=Interfaz2
+Boton=0
+NombreEnBoton=S
+NombreDesplegar=Parametros
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DM0321ConfigSegurosVidaFrm
+Activo=S
+Visible=S
+
+

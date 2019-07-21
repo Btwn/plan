@@ -1,0 +1,79 @@
+[Tabla]
+Icono=0
+Clave=DM0117CrediCteTel
+Nombre=DM0117CrediCteTel
+Archivo=DM0117CrediCteTel
+Modulos=(Todos)
+Singular=DM0117CrediCteTel
+TipoTabla=General
+ListaCampos=Cliente<BR>Telefono<BR>Tipo<BR>lada<BR>Extencion<BR>PedirTono<BR>DePreferencia
+LlavePrimaria=Cliente<BR>Telefono<BR>lada
+ControlTipo=S
+CampoTipo=Tipo
+SQL=SELECT<BR>  Cliente,<BR>  Telefono,<BR>  Tipo,<BR>  lada,<BR>  Extencion,<BR>  PedirTono,<BR>  DePreferencia<BR><BR>FROM<BR>  DM0117CrediCteTel
+[Cliente]
+Clave=Cliente
+Nombre=Cliente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ValorPorOmision=Anexo.ID
+[Telefono]
+Clave=Telefono
+Nombre=Telefono
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Telefono Incorrecto<T>
+CondicionEdicion=CONDATOS(lada)
+ValidacionCondicion=Si<BR>  SQL(<T>Select dbo.fn_ValidaTelefonosMavi(<T>&comillas(Lada)&<T>,<T>&comillas(Telefono)&<T>)<T>)=1<BR>Entonces<BR>  SQL(<T>Select dbo.fn_ValidaTelefonosMavi(<T>&comillas(Lada)&<T>,<T>&comillas(Telefono)&<T>)<T>)<BR>Sino<BR>  1=1<BR>Fin
+TipoDatos=Texto
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+OpcionesUnicamente=S
+ListaOpciones=Trabajo <BR>Trabajo 2<BR>Fax Trabajo<BR>Asistente <BR>Organizacion<BR>Movil<BR>Particular<BR>Particular 2<BR>Fax Particular<BR>Radio<BR>Otro <BR>Otro Fax<BR>Localizador<BR>Automovil<BR>Telex<BR>Teletipo
+TipoDatos=Texto
+[lada]
+Clave=lada
+Nombre=Lada
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ConRefrescar=S
+ListaRefrescar=Telefono
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Telefono
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Lada Incorrecta<T>
+ValidacionCondicion=Si<BR>  SQL(<T>Select dbo.fn_ValidaLadaMavi(<T>&comillas(Lada)&<T>)<T>)=1<BR>Entonces<BR>  SQL(<T>Select dbo.fn_ValidaLadaMavi(<T>&comillas(Lada)&<T>)<T>)<BR>Sino<BR>  1=1<BR>Fin
+TipoDatos=Texto
+[Extencion]
+Clave=Extencion
+Nombre=Extensión
+Visible=S
+TamanoValidacion=10
+Tamano=10
+TipoDatos=Texto
+[PedirTono]
+Clave=PedirTono
+Nombre=PedirTono
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+[DePreferencia]
+Clave=DePreferencia
+Nombre=DePreferencia
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso

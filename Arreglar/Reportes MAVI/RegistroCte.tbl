@@ -1,0 +1,290 @@
+[Tabla]
+Icono=0
+Clave=RegistroCte
+Nombre=RegistroCte
+Archivo=RegistroCte
+Modulos=(Todos)
+Singular=RegistroCte
+TipoTabla=General
+ListaCampos=Codigo<BR>Nombre<BR>Registro<BR>Fecha<BR>Sucursal<BR>Motivo<BR>Pregunta1<BR>Pregunta2<BR>Respuesta2<BR>Pregunta3<BR>Respuesta1<BR>Respuesta3<BR>Pregunta4<BR>Respuesta4<BR>Pregunta5<BR>Respuesta5<BR>Valido<BR>UsuarioValido<BR>FechaValido<BR>ID<BR>Huella<BR>Estatus<BR>IdMov<BR>Recomendado
+LlavePrimaria=ID<BR>Codigo
+ControlSucursal=S
+CampoSucursal=Sucursal
+ListaRelaciones=Cliente
+CamposBusquedaRapida=Codigo<BR>Nombre
+ControlID=S
+CampoID=ID
+SQL=SELECT<BR>  ID,<BR>  Codigo,<BR>  Nombre,<BR>  Registro,<BR>  Fecha,<BR>  Sucursal,<BR>  Huella,<BR>  Valido,<BR>  UsuarioValido,<BR>  FechaValido,<BR>  Motivo,<BR>  Pregunta1,<BR>  Respuesta1,<BR>  Pregunta2,<BR>  Respuesta2,<BR>  Pregunta3,<BR>  Respuesta3,<BR>  Pregunta4,<BR>  Respuesta4,<BR>  Pregunta5,<BR>  Respuesta5,<BR>  Estatus,<BR>  IdMov,<BR>  Recomendado<BR><BR>FROM<BR>  RegistroCte
+[Codigo]
+Clave=Codigo
+Nombre=Codigo
+Visible=S
+TamanoValidacion=10
+Tamano=10
+AyudaEnCaptura=Vista
+AyudaForma=CteLista
+AyudaVista=CteA
+AyudaCampo=Cte.Cliente
+ValidacionUsaTabla=S
+ValidacionTablas=Cte
+AyudaRefrescar=S
+ListaRefrescar=Nombre
+ValorPorOmision=Info.Cliente
+Mayusculas=S
+TipoDatos=Texto
+[Nombre]
+Clave=Nombre
+Nombre=Nombre
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ValorPorOmision=SQL(<T>SELECT Nombre FROM Cte WHERE Cliente=:tClie<T>,Info.Cliente)
+TipoDatos=Texto
+[Registro]
+Clave=Registro
+Nombre=Identificación
+Visible=S
+TamanoValidacion=50
+Tamano=45
+ValorPorOmision=Si<BR>  Info.Reporte=<T>Preguntas<T><BR>Entonces<BR>  <T>Preguntas<T><BR>Sino<BR>  <T>Alta<T>
+TipoDatos=Texto
+[Fecha]
+Clave=Fecha
+Nombre=Fecha
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorPorOmision=FechaDMA( Ahora , 2 )
+FormatoValidacion=dd/mm/aa hh:nn
+[Sucursal]
+Clave=Sucursal
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=SucursalLista
+AyudaVista=Sucursal
+AyudaCampo=Sucursal.Sucursal
+ValorPorOmision=Sucursal
+[Motivo]
+Clave=Motivo
+Nombre=Motivo
+Visible=S
+TamanoValidacion=50
+Tamano=100
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Formula=SQLEnLista(<T>SELECT Nombre FROM dbo.TablaSt TS<BR>INNER JOIN dbo.TablaStD TSD ON TS.TablaSt = TSD.TablaSt<BR>WHERE TS.TablaSt=:tMt Order By Nombre<T>,<T>MOTIVOS IDENTIF HUELLA CTE<T>)
+TipoDatos=Texto
+[Pregunta1]
+Clave=Pregunta1
+Nombre=Pregunta1
+Visible=S
+TamanoValidacion=50x3
+AyudaForma=PreguntaCte
+AyudaVista=PreguntaCte
+AyudaCampo=PreguntaCte.Pregunta
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Tamano=255
+AyudaMemTabla=Preg
+ValorPorOmision=SQL( <T>SELECT Pregunta FROM PreguntaCte WHERE ID=:nID<T>,  SQL(<T>xpRandom :nBorra, :nEstacion<T>, 1,EstacionTrabajo))
+TipoDatos=Texto
+[Respuesta1]
+Clave=Respuesta1
+Nombre=Respuesta1
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50x3
+TipoDatos=Texto
+Tamano=255
+CondicionEdicion=Pregunta1 <> Nulo
+RequeridoActivo=S
+AlCambiar=Asigna(Info.Respuesta1,Respuesta1)
+[Pregunta2]
+Clave=Pregunta2
+Nombre=Pregunta2
+Visible=S
+TamanoValidacion=50x3
+AyudaForma=PreguntaCte
+AyudaVista=PreguntaCte
+AyudaCampo=PreguntaCte.Pregunta
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Tamano=255
+AyudaMemTabla=PreguntaCte
+ValorPorOmision=SQL( <T>SELECT Pregunta FROM PreguntaCte WHERE ID=:nID<T>,  SQL(<T>xpRandom :nBorra, :nEstacion<T>, 0, EstacionTrabajo))
+TipoDatos=Texto
+[Respuesta2]
+Clave=Respuesta2
+Nombre=Respuesta2
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50x3
+TipoDatos=Texto
+Tamano=255
+CondicionEdicion=Pregunta2 <> Nulo
+RequeridoActivo=S
+AlCambiar=Asigna(Info.Respuesta2,Respuesta2)
+[Pregunta3]
+Clave=Pregunta3
+Nombre=Pregunta3
+Visible=S
+TamanoValidacion=50x3
+AyudaForma=PreguntaCte
+AyudaVista=PreguntaCte
+AyudaCampo=PreguntaCte.Pregunta
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Tamano=255
+AyudaMemTabla=PreguntaCte
+ValorPorOmision=SQL( <T>SELECT Pregunta FROM PreguntaCte WHERE ID=:nID<T>,  SQL(<T>xpRandom :nBorra, :nEstacion<T>, 0, EstacionTrabajo))
+TipoDatos=Texto
+[Respuesta3]
+Clave=Respuesta3
+Nombre=Respuesta3
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50x3
+TipoDatos=Texto
+Tamano=255
+CondicionEdicion=Pregunta3 <> Nulo
+RequeridoActivo=S
+AlCambiar=Asigna(Info.Respuesta3,Respuesta3)
+[Pregunta4]
+Clave=Pregunta4
+Nombre=Pregunta4
+Visible=S
+TamanoValidacion=50x3
+AyudaForma=PreguntaCte
+AyudaVista=preguntaCte
+AyudaCampo=PreguntaCte.Pregunta
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Tamano=255
+AyudaMemTabla=PregutnaCte
+ValorPorOmision=SQL( <T>SELECT Pregunta FROM PreguntaCte WHERE ID=:nID<T>,  SQL(<T>xpRandom :nBorra, :nEstacion<T>, 0, EstacionTrabajo))
+TipoDatos=Texto
+[Respuesta4]
+Clave=Respuesta4
+Nombre=Respuesta4
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50x3
+TipoDatos=Texto
+Tamano=255
+CondicionEdicion=Pregunta4 <> Nulo
+RequeridoActivo=S
+AlCambiar=Asigna(Info.Respuesta4,Respuesta4)
+[Pregunta5]
+Clave=Pregunta5
+Nombre=Pregunta5
+Visible=S
+TamanoValidacion=50x3
+AyudaForma=PreguntaCte
+AyudaVista=PreguntaCte
+AyudaCampo=PreguntaCte.Pregunta
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+Tamano=255
+AyudaMemTabla=PreguntaCte
+ValorPorOmision=SQL( <T>SELECT Pregunta FROM PreguntaCte WHERE ID=:nID<T>,  SQL(<T>xpRandom :nBorra, :nEstacion<T>, 0, EstacionTrabajo))
+TipoDatos=Texto
+[Respuesta5]
+Clave=Respuesta5
+Nombre=Respuesta5
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50x3
+TipoDatos=Texto
+Tamano=255
+CondicionEdicion=Pregunta5 <> Nulo
+RequeridoActivo=S
+AlCambiar=Asigna(Info.Respuesta5,Respuesta5)
+[Relaciones.Cliente]
+TipoRelacion=Forzosa
+LlaveLocal=Codigo
+Clave=Cliente
+TablaRemota=Cte
+LlaveRemota=Cliente
+[Valido]
+Clave=Valido
+Nombre=Es Válido
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
+ConRefrescar=S
+ListaRefrescar=UsuarioValido<BR>FechaValido
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesPredefinidas=Si - No
+AlCambiar=asigna(Mavi.ExpRegistroCteCerrar,verdadero)
+ValorRefrescar=asigna(Mavi.ExpRegistroCteCerrar,verdadero)
+[UsuarioValido]
+Clave=UsuarioValido
+Nombre=Valido Usuario
+Visible=S
+TamanoValidacion=10
+Tamano=50
+ValorRefrescar=Usuario
+TipoDatos=Texto
+[FechaValido]
+Clave=FechaValido
+Nombre=Fecha Validación
+Visible=S
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorRefrescar=Ahora
+FormatoValidacion=dd/mmmm/aaaa (hh:mm:ss)
+[ID]
+Clave=ID
+Nombre=ID
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=AutoInc
+[Huella]
+Clave=Huella
+Nombre=Huella
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=15
+TipoDatos=Texto
+Tamano=15
+[IdMov]
+Clave=IdMov
+Nombre=IdMov
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+[Recomendado]
+Clave=Recomendado
+Nombre=Recomendado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=2
+TipoDatos=Texto
+Tamano=2

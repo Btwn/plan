@@ -1,0 +1,64 @@
+[Forma]
+Clave=CostoxKmMAVI
+Nombre=Costo Km.
+Icono=0
+Modulos=(Todos)
+MovModulo=(Todos)
+ListaCarpetas=(Variables)
+CarpetaPrincipal=(Variables)
+BarraAcciones=S
+AccionesTamanoBoton=15x5
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=Centrado
+VentanaExclusiva=S
+VentanaSinIconosMarco=S
+AccionesDivision=S
+ListaAcciones=Aceptar
+PosicionInicialIzquierda=541
+PosicionInicialArriba=337
+PosicionInicialAlturaCliente=91
+PosicionInicialAncho=198
+AccionesCentro=S
+[(Variables)]
+Estilo=Ficha
+Clave=(Variables)
+PermiteEditar=S
+AlineacionAutomatica=S
+AcomodarTexto=S
+MostrarConteoRegistros=S
+Zona=A1
+Vista=(Variables)
+Fuente={Tahoma, 8, Negro, []}
+FichaEspacioEntreLineas=6
+FichaEspacioNombres=100
+FichaEspacioNombresAuto=S
+FichaNombres=Izquierda
+FichaAlineacion=Izquierda
+FichaColorFondo=Plata
+FichaAlineacionDerecha=S
+CampoColorLetras=Negro
+CampoColorFondo=Blanco
+ListaEnCaptura=Anexo.CostoxKm
+CarpetaVisible=S
+[(Variables).Anexo.CostoxKm]
+Carpeta=(Variables)
+Clave=Anexo.CostoxKm
+Editar=S
+LineaNueva=S
+ValidaNombre=S
+3D=S
+Tamano=12
+ColorFondo=Blanco
+ColorFuente=Negro
+[Acciones.Aceptar]
+Nombre=Aceptar
+Boton=0
+NombreDesplegar=Aceptar
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar / Ventana Aceptar
+Activo=S
+Visible=S
+GuardarAntes=S
+Antes=S
+EnBarraAcciones=S
+AntesExpresiones=Si(EsNumerico(Anexo.CostoxKm),<T> <T>,Si(Precaucion(<T>Específique un costo válido<T>,BotonAceptar)=BotonAceptar,AbortarOperacion, AbortarOperacion))

@@ -1,0 +1,81 @@
+[Vista]
+Icono=0
+Clave=DM0304LineasRelacionVis
+Modulos=(Todos)
+ListaTablas=DM0304LineasRelacionTbl
+TablaPrincipal=DM0304LineasRelacionTbl
+UsoCapturas=S
+UsoReportes=S
+ListaCampos=DM0304LineasRelacionTbl.Familia<BR>DM0304LineasRelacionTbl.Linea<BR>DM0304LineasRelacionTbl.FamiliaRelacionada<BR>DM0304LineasRelacionTbl.LineaRelacionada<BR>DM0304LineasRelacionTbl.Cantidad
+SQL=SELECT<BR>  DM0304LineasRelacionTbl.Familia,<BR>  DM0304LineasRelacionTbl.Linea,<BR>  DM0304LineasRelacionTbl.FamiliaRelacionada,<BR>  DM0304LineasRelacionTbl.LineaRelacionada,<BR>  DM0304LineasRelacionTbl.Cantidad<BR><BR>FROM<BR>  DM0304LineasRelacion DM0304LineasRelacionTbl
+[DM0304LineasRelacionTbl.Familia]
+Clave=DM0304LineasRelacionTbl.Familia
+Nombre=Familia
+Visible=S
+TamanoValidacion=10
+Tamano=50
+LigaTabla=DM0304LineasRelacionTbl
+LigaCampo=Familia
+ClaveBDE=Familia
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Mayusculas=S
+Formula=SQLEnLista(<T>SELECT DISTINCT al.familia FROM ArtLinea al<BR>            INNER JOIN art a ON a.Familia = al.Familia and al.Linea = a.Linea<BR>            WHERE a.categoria = <T>+comillas(<T>venta<T>)+<T><BR>            AND a.grupo  = <T>+comillas(<T>mercancia de linea<T>)+<T><BR>            AND a.Estatus in (<T>+comillas(<T>alta<T>+ascii(39)+<T>,<T>+ascii(39)+<T>bloqueado<T>)+<T>)<T>+<T><BR>            GROUP BY al.Linea, al.Familia<BR>            ORDER BY al.Familia<T>)
+[DM0304LineasRelacionTbl.Linea]
+Clave=DM0304LineasRelacionTbl.Linea
+Nombre=Linea
+Visible=S
+TamanoValidacion=10
+Tamano=50
+LigaTabla=DM0304LineasRelacionTbl
+LigaCampo=Linea
+ClaveBDE=Linea
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Mayusculas=S
+Formula=SQLEnLista(<T>SELECT DISTINCT a.Linea FROM ArtLinea A INNER JOIN Art AR on a.familia=ar.Familia WHERE a.Familia=:tFam and ar.categoria=:tCate and ar.Grupo=:tGrupo<T>,DM0304LineasRelacionTbl.Familia, <T>venta<T>, <T>mercancia de linea<T>)
+[DM0304LineasRelacionTbl.FamiliaRelacionada]
+Clave=DM0304LineasRelacionTbl.FamiliaRelacionada
+Nombre=Familia Relacionada
+Visible=S
+TamanoValidacion=10
+Tamano=50
+LigaTabla=DM0304LineasRelacionTbl
+LigaCampo=FamiliaRelacionada
+ClaveBDE=FamiliaRelacionada
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Mayusculas=S
+Formula=SQLEnLista(<T>SELECT DISTINCT al.familia FROM ArtLinea al<BR>            INNER JOIN art a ON a.Familia = al.Familia and al.Linea = a.Linea<BR>            WHERE a.categoria = <T>+comillas(<T>venta<T>)+<T><BR>            AND a.grupo  = <T>+comillas(<T>mercancia de linea<T>)+<T><BR>            AND a.Estatus in (<T>+comillas(<T>alta<T>+ascii(39)+<T>,<T>+ascii(39)+<T>bloqueado<T>)+<T>)<T>+<T><BR>            GROUP BY al.Linea, al.Familia<BR>            ORDER BY al.Familia<T>)
+[DM0304LineasRelacionTbl.LineaRelacionada]
+Clave=DM0304LineasRelacionTbl.LineaRelacionada
+Nombre=Linea Relacionada
+Visible=S
+TamanoValidacion=10
+Tamano=50
+LigaTabla=DM0304LineasRelacionTbl
+LigaCampo=LineaRelacionada
+ClaveBDE=LineaRelacionada
+Alineacion=por Omisión
+AyudaEnCaptura=Expresion
+AyudaMemRenglones=8
+AyudaMemOpc=Unicamente opciones listadas
+AyudaRefrescar=S
+Mayusculas=S
+Formula=SQLEnLista(<T>SELECT DISTINCT a.Linea FROM ArtLinea A INNER JOIN Art AR on a.Familia=ar.Familia WHERE a.Familia=:tFam and ar.categoria=:tCate and ar.Grupo=:tGrupo<T>,DM0304LineasRelacionTbl.FamiliaRelacionada, <T>venta<T>, <T>mercancia de linea<T>)
+[DM0304LineasRelacionTbl.Cantidad]
+Clave=DM0304LineasRelacionTbl.Cantidad
+Visible=S
+LigaTabla=DM0304LineasRelacionTbl
+LigaCampo=Cantidad
+ClaveBDE=Cantidad
+Ligado=S

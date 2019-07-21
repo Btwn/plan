@@ -1,0 +1,38 @@
+[Vista]
+Icono=0
+Clave=RM0404SuperNumVis
+Nombre=Supervisor
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=Agente<BR>Nombre<BR>Tipo<BR>Categoria
+CamposBusquedaRapida=Agente<BR>Nombre
+SQL=SELECT<BR>    Agente, Nombre, Tipo, Categoria<BR>FROM<BR>    dbo.Agente<BR>WHERE<BR>    Agente IS NOT NULL<BR>    AND Tipo = <T>Supervisor<T><BR>    AND Categoria = <T>CREDITO<T><BR>ORDER BY<BR>    Agente ASC
+[Agente]
+Clave=Agente
+Nombre=No. de Agente
+Visible=S
+TamanoValidacion=10
+Tamano=10
+ClaveBDE=Agente
+[Nombre]
+Clave=Nombre
+Nombre=Nombre de Agente
+Visible=S
+TamanoValidacion=100
+Tamano=100
+ClaveBDE=Nombre
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+TamanoValidacion=15
+Tamano=15
+ClaveBDE=Tipo
+[Categoria]
+Clave=Categoria
+Nombre=Categoría
+Visible=S
+TamanoValidacion=50
+Tamano=50
+ClaveBDE=Categoria

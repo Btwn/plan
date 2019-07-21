@@ -1,0 +1,19 @@
+[Vista]
+Icono=0
+Clave=RM0755TipoMovimientoVis
+Modulos=(Todos)
+VistaIndependiente=S
+TipoTabla=General
+ListaCampos=MOVIMIENTO
+Nombre=Tipo de Movimiento
+SQL=select distinct valor AS <T>MOVIMIENTO<T> From (select distinct valor  From  tablastd where tablast=<T>GRUPO MVTOS<T>and valor not like <T>SEGUN%<T>UNION SELECT <T>NA<T>)X
+[MOVIMIENTO]
+Clave=MOVIMIENTO
+Nombre=MOVIMIENTO
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+ClaveBDE=MOVIMIENTO

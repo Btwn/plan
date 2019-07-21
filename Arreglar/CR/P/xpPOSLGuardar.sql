@@ -1,0 +1,22 @@
+SET DATEFIRST 7
+SET ANSI_NULLS OFF
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
+SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
+GO
+ALTER PROCEDURE xpPOSLGuardar
+@Empresa		varchar(5),
+@Sucursal		int,
+@ID				varchar(36),
+@Mov			varchar(20),
+@Cliente		varchar(10)
+AS
+BEGIN
+DECLARE
+@Resultado		bit
+SELECT @Resultado = 0
+SELECT 'Resultado' = @Resultado
+END
+

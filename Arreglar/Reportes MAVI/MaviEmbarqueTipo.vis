@@ -1,0 +1,18 @@
+[Vista]
+Icono=0
+Clave=MaviEmbarqueTipo
+Modulos=(Todos)
+TipoTabla=General
+VistaIndependiente=S
+ListaCampos=Tipo
+SQL=select Tipo=Mov from embarque<BR>where mov like <T>Embarque%<T><BR>group by mov<BR>union<BR>select Tipo=<T>(Todos)<T>
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+ClaveBDE=Tipo

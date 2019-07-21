@@ -1,0 +1,142 @@
+;**** Modificacion: 22-Abr-09
+;**** Modifico: Edgar Montelongo
+;**** Se modifico: Integro Campo LeasingMAVI para Refinanciamiento
+
+;**** Ultima modificación:09-Jun-08
+;**** Modifico:Arly Rubio
+;**** Se modifico:
+
+;**** 26-Ago-08(Arly):Se agregaron los campos: PROPRECanal, PROPREGrupo ****
+;**** 26-Ago-08(Arly):Se agregaron las relaciones: Grupo, VentasCanal ****
+
+[Condicion.tbl/Tabla]
+ListaRelaciones=Grupo<BR>VentasCanal
+ControlNivelAcceso=N
+
+[Condicion.tbl/Tabla.ListaCampos]
+DiferirFechaAcumulacion=PROPREGrupo
+PROPREGrupo=PROPRECanal
+PROPRECanal=LeasingMAVI
+LeasingMAVI=ListTemp
+ListTemp=DIMA
+DIMA=(Fin)
+
+[Condicion.tbl/Tabla.SQL]
+CFD_metodoDePago,=DiferirFechaAcumulacion,
+DiferirFechaAcumulacion,=PROPREGrupo,
+PROPREGrupo,=PROPRECanal,
+PROPRECanal,=LeasingMAVI,
+LeasingMAVI,=ListTemp,
+ListTemp,=DIMA
+DIMA=FROM
+
+
+
+;**** Se agregaron nuevas opciones al campo TipoVenta ****
+[Condicion.tbl/TipoVenta]
+Clave=TipoVenta
+Nombre=Tipo Contado
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Ninguna
+OpcionesUnicamente=S
+OpcionesValidar=S
+CondicionDespliege=TipoCondicion = <T>Contado<T>
+ListaOpciones=Contado<BR>Pago Inmediato<BR>Plazos Diferidos<BR>Fonacot
+
+
+;**** Nuevo Campo Agregado ******
+[Condicion.tbl/PROPREGrupo]
+Clave=PROPREGrupo
+Nombre=Grupo Propre
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Vista
+AyudaForma=PropreCondicionGrupoListaT
+AyudaVista=PropreCondicionGrupo
+AyudaCampo=PropreCondicionGrupo.CondicionGrupo
+AyudaRefrescar=S
+ValidacionUsaTabla=S
+ValidacionTablas=PropreCondicionGrupo
+
+
+;**** Nuevo Campo Agregado ******
+[Condicion.tbl/PROPRECanal]
+Clave=PROPRECanal
+Nombre=Canal de Venta
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+AyudaEnCaptura=Vista
+AyudaForma=VentasCanalListaMAVI
+AyudaVista=VentasCanalMAVI
+AyudaCampo=VentasCanalMAVI.ID
+ValidacionUsaTabla=S
+ValidacionTablas=VentasCanalMAVI
+
+
+;*** Refresca valores despues del nivel de acceso
+[Condicion.tbl/NivelAcceso]
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+AyudaMemTabla=NivelAccesoEsp
+
+;*********************************************************** RELACIONES ******************************************************
+;*****************************************************************************************************************************
+
+
+;***** Nueva Relacion *****
+[Condicion.tbl/Relaciones.Grupo]
+TipoRelacion=Opcional
+LlaveLocal=PROPREGrupo
+Clave=Grupo
+TablaRemota=PropreCondicionGrupo
+LlaveRemota=CondicionGrupo
+
+
+;***** Nueva Relacion *****
+[Condicion.tbl/Relaciones.VentasCanal]
+TipoRelacion=Opcional
+LlaveLocal=PROPRECanal
+Clave=VentasCanal
+TablaRemota=VentasCanalMAVI
+LlaveRemota=ID
+
+
+;****** Campo LeasingMAVI
+[Condicion.tbl/LeasingMAVI]
+Clave=LeasingMAVI
+Nombre=Refinanciamiento (%)
+Visible=S
+TamanoValidacion=10
+TipoDatos=NumFlotante
+FormatoValidacion=#.##
+AyudaEnCaptura=Calculadora
+
+[Condicion.tbl/ListTemp]
+Clave=ListTemp
+Nombre=Desplegar en listas temporales
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+[Condicion.tbl/ProdUnic]
+Clave=ProdUnic
+Nombre=En Productos Unicos
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+
+[Condicion.tbl/DIMA]
+Clave=DIMA
+Nombre=DIMA
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Lógico
