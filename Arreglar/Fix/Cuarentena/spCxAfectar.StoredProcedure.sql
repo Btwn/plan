@@ -250,14 +250,14 @@ BEGIN
 	SET @LDIOkRef = NULL
 	SET @LDIOk = NULL
 	SELECT @LDI = ISNULL(InterfazLDI, 0)
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CFDFlex = ISNULL(CFDFlex, 0)
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Mov = @Mov
 	AND Modulo = @Modulo
 	SELECT @SubMovTipo = SubClave
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND Mov = @Mov
 	SELECT @ContactoImporte = 0.0
@@ -427,7 +427,7 @@ BEGIN
 		AND @OrigenTipo IN ('DIN')
 		AND @Ok IS NULL
 	BEGIN
-		UPDATE Dinero
+		UPDATE Dinero WITH(ROWLOCK)
 		SET ChequeDevuelto = 0
 		WHERE ID = @IDOrigen
 
@@ -441,7 +441,7 @@ BEGIN
 	BEGIN
 
 		IF @CfgAC = 1
-			OR EXISTS (SELECT * FROM Condicion WHERE Condicion = @Condicion AND DA = 1)
+			OR EXISTS (SELECT * FROM Condicion WITH(NOLOCK) WHERE Condicion = @Condicion AND DA = 1)
 			EXEC spCxCancelarDocAuto @Empresa
 									,@Usuario
 									,@Modulo
@@ -461,27 +461,27 @@ BEGIN
 
 		IF (
 				SELECT Sincro
-				FROM Version
+				FROM Version WITH(NOLOCK)
 			)
 			= 1
 		BEGIN
 
 			IF @Modulo = 'CXC'
-				EXEC sp_executesql N'UPDATE CxcD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+				EXEC sp_executesql N'UPDATE CxcD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 								  ,N'@Sucursal int, @ID int'
 								  ,@Sucursal
 								  ,@ID
 			ELSE
 
 			IF @Modulo = 'CXP'
-				EXEC sp_executesql N'UPDATE CxpD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+				EXEC sp_executesql N'UPDATE CxpD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 								  ,N'@Sucursal int, @ID int'
 								  ,@Sucursal
 								  ,@ID
 			ELSE
 
 			IF @Modulo = 'AGENT'
-				EXEC sp_executesql N'UPDATE AgentD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+				EXEC sp_executesql N'UPDATE AgentD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 								  ,N'@Sucursal int, @ID int'
 								  ,@Sucursal
 								  ,@ID
@@ -499,7 +499,7 @@ BEGIN
 				  ,@IEPSFiscal = IEPSFiscal
 				  ,@Condicion = '(Fecha)'
 				  ,@Vencimiento = Vencimiento
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Mov = @MovAplica
 			AND MovID = @MovAplicaID
@@ -511,7 +511,7 @@ BEGIN
 				  ,@IEPSFiscal = IEPSFiscal
 				  ,@Condicion = '(Fecha)'
 				  ,@Vencimiento = Vencimiento
-			FROM Cxp
+			FROM Cxp WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Mov = @MovAplica
 			AND MovID = @MovAplicaID
@@ -527,7 +527,7 @@ BEGIN
 		SELECT @AforoID = DID
 			  ,@AforoMov = DMov
 			  ,@AforoMovID = DMovID
-		FROM MovFlujo
+		FROM MovFlujo WITH(NOLOCK)
 		WHERE Cancelado = 0
 		AND Empresa = @Empresa
 		AND OModulo = @Modulo
@@ -576,15 +576,15 @@ BEGIN
 			SELECT @EsCargo = 0
 
 		IF @Accion = 'CANCELAR'
-			UPDATE Cxc
+			UPDATE Cxc WITH(ROWLOCK)
 			SET AnticipoSaldo = ISNULL(AnticipoSaldo, 0) + vfa.Importe
-			FROM Cxc c, CxcFacturaAnticipo vfa
+			FROM Cxc c, CxcFacturaAnticipo vfa WITH(NOLOCK)
 			WHERE vfa.ID = @ID
 			AND vfa.CxcID = c.ID
 		ELSE
 		BEGIN
 			SELECT @SumaAnticiposFacturados = SUM(AnticipoAplicar)
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE AnticipoAplicaModulo = @Modulo
 			AND AnticipoAplicaID = @ID
 
@@ -592,7 +592,7 @@ BEGIN
 				SELECT @Ok = 30405
 			ELSE
 
-			IF EXISTS (SELECT * FROM Cxc WHERE AnticipoAplicaModulo = @Modulo AND AnticipoAplicaID = @ID AND (ISNULL(AnticipoAplicar, 0) < 0.0 OR ROUND(AnticipoAplicar, 0) > ROUND(AnticipoSaldo, 0)))
+			IF EXISTS (SELECT * FROM Cxc WITH(NOLOCK) WHERE AnticipoAplicaModulo = @Modulo AND AnticipoAplicaID = @ID AND (ISNULL(AnticipoAplicar, 0) < 0.0 OR ROUND(AnticipoAplicar, 0) > ROUND(AnticipoSaldo, 0)))
 				SELECT @Ok = 30405
 			ELSE
 			BEGIN
@@ -600,10 +600,10 @@ BEGIN
 					SELECT @ID
 						  ,ID
 						  ,AnticipoAplicar
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE AnticipoAplicaModulo = @Modulo
 					AND AnticipoAplicaID = @ID
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET AnticipoSaldo = ISNULL(AnticipoSaldo, 0) - ISNULL(AnticipoAplicar, 0)
 				   ,AnticipoAplicar = NULL
 				   ,AnticipoAplicaModulo = NULL
@@ -782,7 +782,7 @@ BEGIN
 					  ,@Retencion2 = 0.0
 					  ,@Retencion3 = 0.0
 				SELECT @Importe = SUM(Importe)
-				FROM AgentD
+				FROM AgentD WITH(NOLOCK)
 				WHERE ID = @ID
 				SELECT @Impuestos = @Importe * (@ImpuestosPorcentaje / 100)
 					  ,@Retencion = @Importe * (@RetencionPorcentaje / 100)
@@ -797,13 +797,13 @@ BEGIN
 	IF @Modulo = 'CXP'
 		AND @Accion = 'CANCELAR'
 
-		IF EXISTS (SELECT * FROM Cxp c JOIN MovTipo mt ON mt.Modulo = 'CXP' AND c.Mov = mt.Mov AND mt.Clave = 'CXP.RE' JOIN CxpD d ON c.ID = d.ID WHERE c.Estatus = 'CONCLUIDO' AND c.Empresa = @Empresa AND d.Aplica = @Mov AND d.AplicaID = @MovID)
+		IF EXISTS (SELECT * FROM Cxp c WITH(NOLOCK) JOIN MovTipo mt WITH(NOLOCK) ON mt.Modulo = 'CXP' AND c.Mov = mt.Mov AND mt.Clave = 'CXP.RE' JOIN CxpD d WITH(NOLOCK) ON c.ID = d.ID WHERE c.Estatus = 'CONCLUIDO' AND c.Empresa = @Empresa AND d.Aplica = @Mov AND d.AplicaID = @MovID)
 			SELECT @Ok = 30411
 
 	IF @Modulo = 'CXC'
 		AND @Accion = 'CANCELAR'
 
-		IF EXISTS (SELECT * FROM Cxc c JOIN MovTipo mt ON mt.Modulo = 'CXC' AND c.Mov = mt.Mov AND mt.Clave = 'CXC.RE' JOIN CxcD d ON c.ID = d.ID WHERE c.Estatus = 'CONCLUIDO' AND c.Empresa = @Empresa AND d.Aplica = @Mov AND d.AplicaID = @MovID)
+		IF EXISTS (SELECT * FROM Cxc c WITH(NOLOCK) JOIN MovTipo mt WITH(NOLOCK) ON mt.Modulo = 'CXC' AND c.Mov = mt.Mov AND mt.Clave = 'CXC.RE' JOIN CxcD d WITH(NOLOCK) ON c.ID = d.ID WHERE c.Estatus = 'CONCLUIDO' AND c.Empresa = @Empresa AND d.Aplica = @Mov AND d.AplicaID = @MovID)
 			SELECT @Ok = 30411
 
 	IF @OrigenTipo = 'AUTO/RE'
@@ -862,7 +862,7 @@ BEGIN
 		AND @Ok IS NULL
 	BEGIN
 		SELECT @ConsignacionFechaCorte = dbo.fnFechaSinHora(ConsignacionFechaCorte)
-		FROM Cxp
+		FROM Cxp WITH(NOLOCK)
 		WHERE ID = @ID
 		EXEC spCxpSLCCorte @@SPID
 						  ,@Modulo
@@ -934,14 +934,14 @@ BEGIN
 			BEGIN
 
 				IF @Accion <> 'CANCELAR'
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET AnticipoSaldo = @SaldoNuevo
 					   ,AnticipoAplicar = NULL
 					   ,AnticipoAplicaModulo = NULL
 					   ,AnticipoAplicaID = NULL
 					WHERE ID = @ID
 				ELSE
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET AnticipoAplicaModulo = NULL
 					   ,AnticipoAplicaID = NULL
 					   ,AnticipoAplicar = NULL
@@ -1062,7 +1062,7 @@ BEGIN
 					  ,@MovAplicaImporteTotal = ISNULL(Importe, 0.0) + ISNULL(Impuestos, 0.0)
 					  ,@MovAplicaTipoCambio = TipoCambio
 					  ,@MovAplicaMoneda = Moneda
-				FROM Cxc
+				FROM Cxc WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Mov = @MovAplica
 				AND MovID = @MovAplicaID
@@ -1081,7 +1081,7 @@ BEGIN
 					  ,@MovAplicaImporteTotal = ISNULL(Importe, 0.0) + ISNULL(Impuestos, 0.0)
 					  ,@MovAplicaTipoCambio = TipoCambio
 					  ,@MovAplicaMoneda = Moneda
-				FROM Cxp
+				FROM Cxp WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Mov = @MovAplica
 				AND MovID = @MovAplicaID
@@ -1164,7 +1164,7 @@ BEGIN
 								,@OkRef OUTPUT
 
 			IF @Modulo = 'CXC'
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET Saldo = @MovAplicaSaldo
 				   ,UltimoCambio = @FechaEmision
 				   ,FechaConclusion = @FechaConclusion
@@ -1173,7 +1173,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'CXP'
-				UPDATE Cxp
+				UPDATE Cxp WITH(ROWLOCK)
 				SET Saldo = @MovAplicaSaldo
 				   ,UltimoCambio = @FechaEmision
 				   ,FechaConclusion = @FechaConclusion
@@ -1219,7 +1219,7 @@ BEGIN
 						  ,ClavePresupuestal
 						  ,ClavePresupuestalImpuesto1
 						  ,DescuentoGlobal
-					FROM MovImpuesto
+					FROM MovImpuesto WITH(NOLOCK)
 					WHERE Modulo = @Modulo
 					AND ModuloID = @IDAplica
 
@@ -1344,8 +1344,8 @@ BEGIN
 
 					IF @Modulo = 'CXC'
 						SELECT @IVAFiscal = SUM(d.Importe * a.IVAFiscal) / NULLIF(SUM(d.Importe), 0.0)
-						FROM CxcD d
-							,Cxc a
+						FROM CxcD d WITH(NOLOCK)
+							,Cxc a WITH(NOLOCK)
 						WHERE d.Aplica = a.Mov
 						AND d.AplicaID = a.MovID
 						AND a.Empresa = @Empresa
@@ -1355,8 +1355,8 @@ BEGIN
 
 					IF @Modulo = 'CXP'
 						SELECT @IVAFiscal = SUM(d.Importe * a.IVAFiscal) / NULLIF(SUM(d.Importe), 0.0)
-						FROM CxpD d
-							,Cxp a
+						FROM CxpD d WITH(NOLOCK)
+							,Cxp a WITH(NOLOCK)
 						WHERE d.Aplica = a.Mov
 						AND d.AplicaID = a.MovID
 						AND a.Empresa = @Empresa
@@ -1376,8 +1376,8 @@ BEGIN
 
 				IF @Modulo = 'CXC'
 					SELECT @IEPSFiscal = SUM(d.Importe * a.IEPSFiscal) / SUM(d.Importe)
-					FROM CxcD d
-						,CxcAplica a
+					FROM CxcD d WITH(NOLOCK)
+						,CxcAplica a WITH(NOLOCK)
 					WHERE d.Aplica = a.Mov
 					AND d.AplicaID = a.MovID
 					AND a.Empresa = @Empresa
@@ -1386,8 +1386,8 @@ BEGIN
 
 				IF @Modulo = 'CXP'
 					SELECT @IEPSFiscal = SUM(d.Importe * a.IEPSFiscal) / SUM(d.Importe)
-					FROM CxpD d
-						,CxpAplica a
+					FROM CxpD d WITH(NOLOCK)
+						,CxpAplica a WITH(NOLOCK)
 					WHERE d.Aplica = a.Mov
 					AND d.AplicaID = a.MovID
 					AND a.Empresa = @Empresa
@@ -1415,11 +1415,11 @@ BEGIN
 		BEGIN
 			SELECT @FechaRevision = @FechaEmision
 			SELECT @DiaRevision = DiaRevision1
-			FROM Cte
+			FROM Cte WITH(NOLOCK)
 			WHERE Cliente = @Contacto
 			EXEC spRecorrerVencimiento @DiaRevision
 									  ,@FechaRevision OUTPUT
-			UPDATE Cxc
+			UPDATE Cxc WITH(ROWLOCK)
 			SET Concepto = @Concepto
 			   ,Impuestos = @Impuestos
 			   ,IVAFiscal = @IVAFiscal
@@ -1448,23 +1448,23 @@ BEGIN
 			IF ISNULL(@Origen, '') = ''
 				AND ISNULL(@OrigenID, '') = ''
 				AND @Mov = 'Aplicacion'
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET Origen = @MovAplica
 				   ,OrigenID = @MovAplicaID
 				WHERE ID = @ID
 
-			IF EXISTS (SELECT ID FROM Venta WHERE MovID = @MovID AND Mov = @Mov AND Empresa = @Empresa AND Sucursal = @Sucursal)
+			IF EXISTS (SELECT ID FROM Venta WITH(NOLOCK) WHERE MovID = @MovID AND Mov = @Mov AND Empresa = @Empresa AND Sucursal = @Sucursal)
 				AND @OrigenTipo = 'VTAS'
 			BEGIN
 				SELECT @IVAFiscal = IVAFiscal
-				FROM Venta
+				FROM Venta WITH(NOLOCK)
 				WHERE MovID = @MovID
 				AND Mov = @Mov
 				AND Empresa = @Empresa
 				AND Sucursal = @Sucursal
 
 				IF ISNULL(@IVAFiscal, 0) = 0
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET IVAFiscal = @IVAFiscal
 					WHERE ID = @ID
 
@@ -1475,7 +1475,7 @@ BEGIN
 
 		IF @Modulo = 'CXP'
 		BEGIN
-			UPDATE Cxp
+			UPDATE Cxp WITH(ROWLOCK)
 			SET Concepto = @Concepto
 			   ,Impuestos = @Impuestos
 			   ,IVAFiscal = @IVAFiscal
@@ -1501,18 +1501,18 @@ BEGIN
 			   ,Mensaje = NULL
 			WHERE ID = @ID
 
-			IF EXISTS (SELECT ID FROM Compra WHERE MovID = @MovID AND Mov = @Mov AND Empresa = @Empresa AND Sucursal = @Sucursal)
+			IF EXISTS (SELECT ID FROM Compra WITH(NOLOCK) WHERE MovID = @MovID AND Mov = @Mov AND Empresa = @Empresa AND Sucursal = @Sucursal)
 				AND @OrigenTipo = 'COMS'
 			BEGIN
 				SELECT @IVAFiscal = IVAFiscal
-				FROM Compra
+				FROM Compra WITH(NOLOCK)
 				WHERE MovID = @MovID
 				AND Mov = @Mov
 				AND Empresa = @Empresa
 				AND Sucursal = @Sucursal
 
 				IF ISNULL(@IVAFiscal, 0) = 0
-					UPDATE Cxp
+					UPDATE Cxp WITH(ROWLOCK)
 					SET IVAFiscal = @IVAFiscal
 					WHERE ID = @ID
 
@@ -1522,7 +1522,7 @@ BEGIN
 		ELSE
 
 		IF @Modulo = 'AGENT'
-			UPDATE Agent
+			UPDATE Agent WITH(ROWLOCK)
 			SET Concepto = @Concepto
 			   ,Impuestos = @Impuestos
 			   ,Saldo = @SaldoNuevo
@@ -1585,7 +1585,7 @@ BEGIN
 
 				IF ISNULL(@ImporteComision, 0.0) <> 0.0
 					AND @Ok IS NULL
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET ComisionTotal = @ImporteComision
 					   ,ComisionPendiente = @ImporteComision
 					WHERE ID = @ID
@@ -1593,7 +1593,7 @@ BEGIN
 			END
 			ELSE
 				SELECT @ImporteComision = ComisionTotal
-				FROM Cxc
+				FROM Cxc WITH(NOLOCK)
 				WHERE ID = @ID
 
 			IF ISNULL(@ImporteComision, 0.0) <> 0.0
@@ -1690,7 +1690,7 @@ BEGIN
 								,@OkRef OUTPUT
 
 			IF @Modulo = 'CXC'
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET FechaConclusion = @FechaConclusion
 				   ,Estatus = @GenerarEstatus
 				   ,GenerarPoliza = @GenerarPolizaTemp
@@ -1698,7 +1698,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'CXP'
-				UPDATE Cxp
+				UPDATE Cxp WITH(ROWLOCK)
 				SET FechaConclusion = @FechaConclusion
 				   ,Estatus = @GenerarEstatus
 				   ,GenerarPoliza = @GenerarPolizaTemp
@@ -1706,7 +1706,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'AGENT'
-				UPDATE Agent
+				UPDATE Agent WITH(ROWLOCK)
 				SET FechaConclusion = @FechaConclusion
 				   ,Estatus = @GenerarEstatus
 				   ,GenerarPoliza = @GenerarPolizaTemp
@@ -1719,7 +1719,7 @@ BEGIN
 
 	END
 
-	IF NOT EXISTS (SELECT * FROM MovImpuesto WHERE Modulo = @Modulo AND ModuloID = @ID)
+	IF NOT EXISTS (SELECT * FROM MovImpuesto WITH(NOLOCK) WHERE Modulo = @Modulo AND ModuloID = @ID)
 		AND @Ok IS NULL
 	BEGIN
 
@@ -1730,7 +1730,7 @@ BEGIN
 			IF @MovTipo = 'CXP.A'
 			BEGIN
 				SELECT @CompraID = MIN(ID)
-				FROM Compra
+				FROM Compra WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND @Referencia = Mov + ' ' + MovID
 				AND Estatus IN ('PENDIENTE', 'CONCLUIDO')
@@ -1738,7 +1738,7 @@ BEGIN
 				IF @CompraID IS NOT NULL
 				BEGIN
 					SELECT @CompraImporte = ISNULL(Importe, 0.0)
-					FROM Compra
+					FROM Compra WITH(NOLOCK)
 					WHERE ID = @CompraID
 					INSERT MovImpuesto (Modulo, ModuloID, OrigenModulo, OrigenModuloID, OrigenConcepto, OrigenDeducible, OrigenFecha, LoteFijo, Retencion1, Retencion2, Retencion3, Excento1, Excento2, Excento3, Impuesto1, Impuesto2, Impuesto3, TipoImpuesto1, TipoImpuesto2, TipoImpuesto3, TipoRetencion1, TipoRetencion2, TipoRetencion3, Importe1, Importe2, Importe3, SubTotal, ContUso, ContUso2, ContUso3, ClavePresupuestal, ClavePresupuestalImpuesto1, DescuentoGlobal)
 						SELECT @Modulo
@@ -1774,7 +1774,7 @@ BEGIN
 							  ,ClavePresupuestal
 							  ,ClavePresupuestalImpuesto1
 							  ,DescuentoGlobal
-						FROM MovImpuesto
+						FROM MovImpuesto WITH(NOLOCK)
 						WHERE Modulo = 'COMS'
 						AND ModuloID = @CompraID
 				END
@@ -1783,13 +1783,13 @@ BEGIN
 
 					IF (
 							SELECT CP
-							FROM EmpresaGral
+							FROM EmpresaGral WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 						)
 						= 1
 						AND (
 							SELECT CXPReferenciaEnAnticiposCP
-							FROM empresacfg2
+							FROM empresacfg2 WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 						)
 						= 1
@@ -1801,7 +1801,7 @@ BEGIN
 			END
 
 			IF @CompraID IS NULL
-				OR (@OrigenTipo = 'INV' AND @OrigenMovTipo = 'INV.EI' AND EXISTS (SELECT ID FROM InvGastoDiverso WHERE ID = @IDOrigen)
+				OR (@OrigenTipo = 'INV' AND @OrigenMovTipo = 'INV.EI' AND EXISTS (SELECT ID FROM InvGastoDiverso WITH(NOLOCK) WHERE ID = @IDOrigen)
 				)
 			BEGIN
 
@@ -1809,7 +1809,7 @@ BEGIN
 					SELECT @ContUso = NULLIF(ContUso, '')
 						  ,@ContUso2 = NULLIF(ContUso2, '')
 						  ,@ContUso3 = NULLIF(ContUso3, '')
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE ID = @ID
 				ELSE
 
@@ -1817,7 +1817,7 @@ BEGIN
 					SELECT @ContUso = NULLIF(ContUso, '')
 						  ,@ContUso2 = NULLIF(ContUso2, '')
 						  ,@ContUso3 = NULLIF(ContUso3, '')
-					FROM Cxp
+					FROM Cxp WITH(NOLOCK)
 					WHERE ID = @ID
 
 				INSERT MovImpuesto (Modulo, ModuloID, OrigenModulo, OrigenModuloID, OrigenConcepto, OrigenFecha, Retencion1, Retencion2, Retencion3, Impuesto1, Importe1, SubTotal, ContUso, ContUso2, ContUso3)
@@ -1842,10 +1842,10 @@ BEGIN
 		ELSE
 		BEGIN
 
-			IF (@OrigenTipo = 'COMS' AND @OrigenMovTipo = 'COMS.EG' AND EXISTS (SELECT ID FROM CompraGastoDiverso WHERE ID = @IDOrigen)
+			IF (@OrigenTipo = 'COMS' AND @OrigenMovTipo = 'COMS.EG' AND EXISTS (SELECT ID FROM CompraGastoDiverso WITH(NOLOCK) WHERE ID = @IDOrigen)
 				)
 				OR (@OrigenTipo = 'COMS' AND @OrigenMovTipo = 'COMS.EI')
-				OR (@OrigenTipo = 'INV' AND @OrigenMovTipo = 'INV.EI' AND EXISTS (SELECT ID FROM InvGastoDiverso WHERE ID = @IDOrigen)
+				OR (@OrigenTipo = 'INV' AND @OrigenMovTipo = 'INV.EI' AND EXISTS (SELECT ID FROM InvGastoDiverso WITH(NOLOCK) WHERE ID = @IDOrigen)
 				)
 			BEGIN
 				INSERT MovImpuesto (Modulo, ModuloID, OrigenModulo, OrigenModuloID, OrigenConcepto, OrigenFecha, Retencion1, Retencion2, Retencion3, Impuesto1, Importe1, SubTotal)
@@ -1861,37 +1861,37 @@ BEGIN
 						  ,(@Impuestos / NULLIF(@Importe, 0.0)) * 100.0
 						  ,@Impuestos
 						  ,@Importe
-					FROM Mov
+					FROM Mov WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Modulo = @OrigenTipo
 					AND ID = @IDOrigen
 
 				IF @OrigenTipo = 'COMS'
-					UPDATE MovImpuesto
+					UPDATE MovImpuesto WITH(ROWLOCK)
 					SET Excento1 = c.Impuesto1Excento
 					   ,Excento2 = c.Excento2
 					   ,Excento3 = c.Excento3
 					FROM MovImpuesto p
-					JOIN CompraGastoDiverso g
+					JOIN CompraGastoDiverso g WITH(NOLOCK)
 						ON p.OrigenModulo = @OrigenTipo
 						AND p.OrigenModuloID = g.ID
 						AND p.OrigenConcepto = g.Concepto
-					JOIN Concepto c
+					JOIN Concepto c WITH(NOLOCK)
 						ON c.Concepto = g.Concepto
 					WHERE p.Modulo = 'CXP'
 					AND p.ModuloID = @ID
 
 				IF @OrigenTipo = 'INV'
-					UPDATE MovImpuesto
+					UPDATE MovImpuesto WITH(ROWLOCK)
 					SET Excento1 = c.Impuesto1Excento
 					   ,Excento2 = c.Excento2
 					   ,Excento3 = c.Excento3
 					FROM MovImpuesto p
-					JOIN InvGastoDiverso g
+					JOIN InvGastoDiverso g WITH(NOLOCK)
 						ON p.OrigenModulo = @OrigenTipo
 						AND p.OrigenModuloID = g.ID
 						AND p.OrigenConcepto = g.Concepto
-					JOIN Concepto c
+					JOIN Concepto c WITH(NOLOCK)
 						ON c.Concepto = g.Concepto
 					WHERE p.Modulo = 'CXP'
 					AND p.ModuloID = @ID
@@ -1935,7 +1935,7 @@ BEGIN
 						  ,ClavePresupuestal
 						  ,ClavePresupuestalImpuesto1
 						  ,DescuentoGlobal
-					FROM MovImpuesto
+					FROM MovImpuesto WITH(NOLOCK)
 					WHERE Modulo = @Modulo
 					AND ModuloID = @ID
 			ELSE
@@ -1976,14 +1976,14 @@ BEGIN
 						  ,ClavePresupuestal
 						  ,ClavePresupuestalImpuesto1
 						  ,DescuentoGlobal
-					FROM MovImpuesto
+					FROM MovImpuesto WITH(NOLOCK)
 					WHERE Modulo = 'CXP'
 					AND ModuloID = @ID
 					AND OrigenConcepto = @Concepto
 			ELSE
 			BEGIN
 				SELECT @OrigenImporte = SUM(SubTotal)
-				FROM MovImpuesto
+				FROM MovImpuesto WITH(NOLOCK)
 				WHERE Modulo = @OrigenTipo
 				AND ModuloID = @IDOrigen
 				INSERT MovImpuesto (Modulo, ModuloID, OrigenModulo, OrigenModuloID, OrigenConcepto, OrigenDeducible, OrigenFecha, LoteFijo, Retencion1, Retencion2, Retencion3, Excento1, Excento2, Excento3, Impuesto1, Impuesto2, Impuesto3, TipoImpuesto1, TipoImpuesto2, TipoImpuesto3, TipoRetencion1, TipoRetencion2, TipoRetencion3, Importe1, Importe2, Importe3, SubTotal, ContUso, ContUso2, ContUso3, ClavePresupuestal, ClavePresupuestalImpuesto1, DescuentoGlobal)
@@ -2020,7 +2020,7 @@ BEGIN
 						  ,ClavePresupuestal
 						  ,ClavePresupuestalImpuesto1
 						  ,DescuentoGlobal
-					FROM MovImpuesto
+					FROM MovImpuesto WITH(NOLOCK)
 					WHERE Modulo = @OrigenTipo
 					AND ModuloID = @IDOrigen
 			END
@@ -2029,7 +2029,7 @@ BEGIN
 
 	END
 
-	IF NOT EXISTS (SELECT * FROM MovImpuesto WHERE Modulo = @Modulo AND ModuloID = @ID)
+	IF NOT EXISTS (SELECT * FROM MovImpuesto WITH(NOLOCK) WHERE Modulo = @Modulo AND ModuloID = @ID)
 		AND @MovTipo = 'CXP.F'
 		AND @OrigenMovTipo = 'GAS.GTC'
 		AND @IDOrigen IS NOT NULL
@@ -2069,7 +2069,7 @@ BEGIN
 				  ,ClavePresupuestal
 				  ,ClavePresupuestalImpuesto1
 				  ,DescuentoGlobal
-			FROM MovImpuesto
+			FROM MovImpuesto WITH(NOLOCK)
 			WHERE Modulo = @OrigenTipo
 			AND ModuloID = @IDOrigen
 			AND SubFolio = @SubFolio
@@ -2112,7 +2112,7 @@ BEGIN
 				  ,ClavePresupuestal
 				  ,ClavePresupuestalImpuesto1
 				  ,DescuentoGlobal
-			FROM MovImpuesto
+			FROM MovImpuesto WITH(NOLOCK)
 			WHERE Modulo = @Modulo
 			AND ModuloID = @IDAplica
 	END
@@ -2148,7 +2148,7 @@ BEGIN
 		ELSE
 
 		IF @INSTRUCCIONES_ESP <> 'SIN_DOCAUTO'
-			AND EXISTS (SELECT * FROM Condicion WHERE Condicion = @Condicion AND DA = 1)
+			AND EXISTS (SELECT * FROM Condicion WITH(NOLOCK) WHERE Condicion = @Condicion AND DA = 1)
 			EXEC spCxDocAuto @Modulo
 							,@ID
 							,@Usuario
@@ -2163,11 +2163,11 @@ BEGIN
 		IF @Modulo = 'CXC'
 		BEGIN
 			SELECT @FormaCobroTarjetas = CxcFormaCobroTarjetas
-			FROM EmpresaCfg
+			FROM EmpresaCfg WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			SELECT @LDITarjeta = ISNULL(LDI, 0)
 				  ,@LDIServicio = NULLIF(LDIServicio, '')
-			FROM FormaPago
+			FROM FormaPago WITH(NOLOCK)
 			WHERE FormaPago = @FormaCobroTarjetas
 			SELECT @TarjetasCobradas = 0.0
 			SELECT @ConDesglose = ConDesglose
@@ -2186,7 +2186,7 @@ BEGIN
 				  ,@Referencia3 = Referencia3
 				  ,@Referencia4 = Referencia4
 				  ,@Referencia5 = Referencia5
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE ID = @ID
 
 			IF @ConDesglose = 0
@@ -2237,7 +2237,7 @@ BEGIN
 
 				IF @TarjetasCobradas <> 0.0
 					AND @Ok IS NULL
-					AND NOT EXISTS (SELECT * FROM TarjetaSerieMov t JOIN ValeSerie v ON t.Serie = v.Serie JOIN Art a ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(t.Importe, 0) <> 0 AND ISNULL(a.LDI, 0) = 1)
+					AND NOT EXISTS (SELECT * FROM TarjetaSerieMov t WITH(NOLOCK) JOIN ValeSerie v WITH(NOLOCK) ON t.Serie = v.Serie JOIN Art a WITH(NOLOCK) ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(t.Importe, 0) <> 0 AND ISNULL(a.LDI, 0) = 1)
 					AND @LDITarjeta = 0
 					EXEC spValeGeneraAplicacionTarjeta @Empresa
 													  ,@Modulo
@@ -2263,12 +2263,12 @@ BEGIN
 		IF (@MovTipo IN ('CXC.A', 'CXC.AR', 'CXC.AA', 'CXC.C', 'CXP.CAP', 'CXP.DP', 'CXP.CD', 'CXP.DC', 'CXP.NCP', 'CXP.C', 'AGENT.A') AND @ConDesglose = 0 AND UPPER(@FormaPago) = UPPER(@CfgFormaCobroDA))
 			OR (@MovTipo IN ('CXC.A', 'CXC.AR', 'CXC.AA', 'CXC.C') AND (@ConDesglose = 1 AND (
 				SELECT UPPER(FormaCobro1)
-				FROM Cxc
+				FROM Cxc WITH(NOLOCK)
 				WHERE ID = @ID
 			)
 			= UPPER(@CfgFormaCobroDA)))
 
-			IF EXISTS (SELECT Usuario, Nombre, Sucursal, GrupoTrabajo, Estatus, Configuracion, Acceso FROM Usuario WHERE GrupoTrabajo <> 'CREDITO' AND Estatus = 'ALTA' AND Usuario = @Usuario)
+			IF EXISTS (SELECT Usuario, Nombre, Sucursal, GrupoTrabajo, Estatus, Configuracion, Acceso FROM Usuario WITH(NOLOCK) WHERE GrupoTrabajo <> 'CREDITO' AND Estatus = 'ALTA' AND Usuario = @Usuario)
 				EXEC spDepositoAnticipado @Sucursal
 									 ,@Accion
 									 ,@ID
@@ -2293,7 +2293,7 @@ BEGIN
 		IF (@MovTipo IN ('CXP.P', 'CXP.DP', 'CXP.NCP', 'CXP.ANC', 'CXP.A', 'CXP.AA', 'CXC.CAP', 'CXC.DE', 'CXC.DFA', 'CXC.DI', 'CXC.DC', 'AGENT.P', 'AGENT.A') AND @ConDesglose = 0 AND UPPER(@FormaPago) = UPPER(@CfgFormaCobroDA))
 			OR (@MovTipo IN ('CXC.DE') AND (@ConDesglose = 1 AND (
 				SELECT UPPER(FormaCobro1)
-				FROM Cxc
+				FROM Cxc WITH(NOLOCK)
 				WHERE ID = @ID
 			)
 			= UPPER(@CfgFormaCobroDA)))
@@ -2361,7 +2361,7 @@ BEGIN
 			END
 
 			SELECT @OrigenTipoCxc = OrigenTipo
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE ID = @ID
 
 			IF ROUND(@DineroImporte, 2) > 0.0
@@ -2375,7 +2375,7 @@ BEGIN
 					AND @Mov NOT IN ('Cobro Dif Caja', 'Canc Dif Caja')
 				BEGIN
 					SELECT @NomAuto = NomAuto
-					FROM EmpresaGral
+					FROM EmpresaGral WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					SELECT @NominaID = NULL
 						  ,@NominaMov = @AgenteNominaMov
@@ -2466,30 +2466,30 @@ BEGIN
 						IF @MovTipo = 'CXC.CAP'
 							OR (@Mov IN ('Cancela Credilana', 'Cancela Prestamo') AND ISNULL(@OrigenTipoCxc, '') = 'VTAS' AND ISNULL(@Concepto, '') != 'MONEDERO ELECTRONICO')
 							SELECT @DineroImporte = @DineroImporte - ISNULL(InteresesAnticipados, 0.0) - ISNULL(Comisiones, 0.0) - ISNULL(ComisionesIVA, 0.0)
-							FROM Cxc
+							FROM Cxc WITH(NOLOCK)
 							WHERE ID = @ID
 						ELSE
 
 						IF @MovTipo = 'CXP.CAP'
 							SELECT @DineroImporte = @DineroImporte - ISNULL(InteresesAnticipados, 0.0) - ISNULL(Comisiones, 0.0) - ISNULL(ComisionesIVA, 0.0)
-							FROM Cxp
+							FROM Cxp WITH(NOLOCK)
 							WHERE ID = @ID
 
 					END
 
 					IF @CfgAC = 1
 						AND @MovTipo IN ('CXC.CAP', 'CXP.CAP')
-						AND EXISTS (SELECT * FROM LCCtaDinero WHERE LineaCredito = @LineaCredito)
+						AND EXISTS (SELECT * FROM LCCtaDinero WITH(NOLOCK) WHERE LineaCredito = @LineaCredito)
 					BEGIN
 						SELECT @LCCtaDineroImporte = SUM(Importe)
-						FROM LCCtaDinero
+						FROM LCCtaDinero WITH(NOLOCK)
 						WHERE LineaCredito = @LineaCredito
 						DECLARE
 							crLCCtaDinero
 							CURSOR LOCAL FOR
 							SELECT CtaDinero
 								  ,dbo.fnR3(@LCCtaDineroImporte, @DineroImporte, Importe)
-							FROM LCCtaDinero
+							FROM LCCtaDinero WITH(NOLOCK)
 							WHERE LineaCredito = @LineaCredito
 						OPEN crLCCtaDinero
 						FETCH NEXT FROM crLCCtaDinero INTO @LCCtaDinero, @LCCtaDineroImporte
@@ -2556,7 +2556,7 @@ BEGIN
 						DEALLOCATE crLCCtaDinero
 					END
 					ELSE
-						IF EXISTS (SELECT Usuario, Nombre, Sucursal, GrupoTrabajo, Estatus, Configuracion, Acceso FROM Usuario WHERE GrupoTrabajo <> 'CREDITO' AND Estatus = 'ALTA' AND Usuario = @Usuario)
+						IF EXISTS (SELECT Usuario, Nombre, Sucursal, GrupoTrabajo, Estatus, Configuracion, Acceso FROM Usuario WITH(NOLOCK) WHERE GrupoTrabajo <> 'CREDITO' AND Estatus = 'ALTA' AND Usuario = @Usuario)
 						BEGIN
 							EXEC spGenerarDinero @Sucursal
 											,@SucursalOrigen
@@ -2676,15 +2676,15 @@ BEGIN
 				  ,@ImpuestosMN = @Impuestos * @ContactoTipoCambio
 				  ,@MonedaMN = NULL
 			SELECT @MonedaMN = cfg.ContMoneda
-			FROM EmpresaCfg cfg
-				,Mon m
+			FROM EmpresaCfg cfg WITH(NOLOCK)
+				,Mon m WITH(NOLOCK)
 			WHERE cfg.Empresa = @Empresa
 			AND m.Moneda = cfg.ContMoneda
 			AND m.TipoCambio = 1.0
 
 			IF @MonedaMN IS NULL
 				SELECT MIN(Moneda)
-				FROM Mon
+				FROM Mon WITH(NOLOCK)
 				WHERE TipoCambio = 1.0
 
 			EXEC spGenerarCx @Sucursal
@@ -2793,7 +2793,7 @@ BEGIN
 			SELECT @AforoMovID = NULL
 				  ,@AforoImporte = @ImporteTotal * (@Aforo / 100)
 			SELECT @AforoMov = CxpAforo
-			FROM EmpresaCfgMov
+			FROM EmpresaCfgMov WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			INSERT Cxp (Sucursal, Empresa, Mov, FechaEmision, Proyecto, Moneda, TipoCambio, Usuario, Referencia, Estatus,
 			Proveedor, ProveedorMoneda, ProveedorTipoCambio, Importe, Condicion, Vencimiento, AplicaManual, OrigenTipo, Origen, OrigenID)
@@ -2830,7 +2830,7 @@ BEGIN
 
 			IF @Ok IS NULL
 			BEGIN
-				UPDATE Cxp
+				UPDATE Cxp WITH(ROWLOCK)
 				SET Aforo = @AforoImporte
 				WHERE ID = @ID
 				SELECT @Ok = 80030
@@ -2961,11 +2961,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Cte
+				FROM Cte WITH(NOLOCK)
 				WHERE Cliente = @Contacto
 			)
 			= 0
-			UPDATE Cte
+			UPDATE Cte WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE TieneMovimientos = 0
 			AND Cliente = @Contacto
@@ -2977,11 +2977,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Prov
+				FROM Prov WITH(NOLOCK)
 				WHERE Proveedor = @Contacto
 			)
 			= 0
-			UPDATE Prov
+			UPDATE Prov WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Proveedor = @Contacto
 
@@ -2992,11 +2992,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Agente
+				FROM Agente WITH(NOLOCK)
 				WHERE Agente = @Contacto
 			)
 			= 0
-			UPDATE Agente
+			UPDATE Agente WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Agente = @Contacto
 
@@ -3007,11 +3007,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Agente
+				FROM Agente WITH(NOLOCK)
 				WHERE Agente = @Agente
 			)
 			= 0
-			UPDATE Agente
+			UPDATE Agente WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Agente = @Agente
 
@@ -3042,8 +3042,8 @@ BEGIN
 		AND @MovTipo = 'CXP.P'
 	BEGIN
 		SELECT @IDCancelaCXPCA = mf.DID
-		FROM MovFlujo mf
-		JOIN MovTipo mt
+		FROM MovFlujo mf WITH(NOLOCK)
+		JOIN MovTipo mt WITH(NOLOCK)
 			ON mf.DModulo = mt.Modulo
 			AND mf.DMov = mt.Mov
 		WHERE mf.OID = @ID
@@ -3054,8 +3054,8 @@ BEGIN
 
 		IF @IDCancelaCXPCA IS NOT NULL
 			SELECT @IDCancelaCXPCA = mf.DID
-			FROM MovFlujo mf
-			JOIN MovTipo mt
+			FROM MovFlujo mf WITH(NOLOCK)
+			JOIN MovTipo mt WITH(NOLOCK)
 				ON mf.DModulo = mt.Modulo
 				AND mf.DMov = mt.Mov
 			WHERE mf.OID = @IDCancelaCXPCA
@@ -3090,7 +3090,7 @@ BEGIN
 		IF @TarjetasCobradas <> 0.0
 			AND @LDI = 1
 			AND @CFDFlex = 0
-			AND EXISTS (SELECT * FROM TarjetaSerieMov t JOIN ValeSerie v ON t.Serie = v.Serie JOIN Art a ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(t.Importe, 0) <> 0 AND ISNULL(a.LDI, 0) = 1)
+			AND EXISTS (SELECT * FROM TarjetaSerieMov t WITH(NOLOCK) JOIN ValeSerie v WITH(NOLOCK) ON t.Serie = v.Serie JOIN Art a WITH(NOLOCK) ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(t.Importe, 0) <> 0 AND ISNULL(a.LDI, 0) = 1)
 			AND @LDITarjeta = 1
 			AND @LDIServicio IS NOT NULL
 			EXEC spValeGeneraAplicacionTarjeta @Empresa
@@ -3143,7 +3143,7 @@ BEGIN
 				   ,SucursalContable INT NULL
 				)
 
-			IF EXISTS (SELECT * FROM PolizaDescuadrada WHERE Modulo = @Modulo AND ID = @ID)
+			IF EXISTS (SELECT * FROM PolizaDescuadrada WITH(NOLOCK) WHERE Modulo = @Modulo AND ID = @ID)
 				INSERT @PolizaDescuadrada (Cuenta, SubCuenta, Concepto, Debe, Haber, SucursalContable)
 					SELECT Cuenta
 						  ,SubCuenta
@@ -3151,7 +3151,7 @@ BEGIN
 						  ,Debe
 						  ,Haber
 						  ,SucursalContable
-					FROM PolizaDescuadrada
+					FROM PolizaDescuadrada WITH(NOLOCK)
 					WHERE Modulo = @Modulo
 					AND ID = @ID
 

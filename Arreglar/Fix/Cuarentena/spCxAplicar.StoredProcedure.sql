@@ -231,18 +231,18 @@ BEGIN
 		 ,@MovA VARCHAR(20)
 	SELECT @RetencionAlPagoMovImpuesto = RetencionAlPagoMovImpuesto
 		  ,@FiscalGenerarRetenciones = ISNULL(FiscalGenerarRetenciones, 0)
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CfgDevRetencionMov = CxpDevRetencion
-	FROM EmpresaCfgMov
+	FROM EmpresaCfgMov WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @PPTO = PPTO
 		  ,@Fiscal = ISNULL(Fiscal, 0)
 		  ,@CP = ISNULL(CP, 0)
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @Peru = Peru
-	FROM Version
+	FROM Version WITH(NOLOCK)
 
 	IF @VerificarAplica = 0
 	BEGIN
@@ -318,7 +318,7 @@ BEGIN
 		IF @Modulo = 'CXC'
 			SELECT @IDMovAplica = ID
 				  ,@AplicaProyecto = NULLIF(Proyecto, '')
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Mov = @MovAplica
 			AND MovID = @MovAplicaID
@@ -328,7 +328,7 @@ BEGIN
 		IF @Modulo = 'CXP'
 			SELECT @IDMovAplica = ID
 				  ,@AplicaProyecto = NULLIF(Proyecto, '')
-			FROM Cxp
+			FROM Cxp WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Mov = @MovAplica
 			AND MovID = @MovAplicaID
@@ -370,7 +370,7 @@ BEGIN
 					  ,ISNULL(InteresesOrdinariosIVA * (1 - (ISNULL(InteresesOrdinariosQuita, 0.0) / 100)), 0.0)
 					  ,ISNULL(InteresesMoratoriosIVA, 0.0)
 					  ,ISNULL(InteresesMoratoriosIVA * (1 - (ISNULL(InteresesMoratoriosQuita, 0.0) / 100)), 0.0)
-				FROM CxcD
+				FROM CxcD WITH(NOLOCK)
 				WHERE ID = @ID
 		ELSE
 
@@ -399,7 +399,7 @@ BEGIN
 					  ,ISNULL(InteresesOrdinariosIVA * (1 - (ISNULL(InteresesOrdinariosQuita, 0.0) / 100)), 0.0)
 					  ,ISNULL(InteresesMoratoriosIVA, 0.0)
 					  ,ISNULL(InteresesMoratoriosIVA * (1 - (ISNULL(InteresesMoratoriosQuita, 0.0) / 100)), 0.0)
-				FROM CxpD
+				FROM CxpD WITH(NOLOCK)
 				WHERE ID = @ID
 		ELSE
 
@@ -428,7 +428,7 @@ BEGIN
 					  ,0.0
 					  ,0.0
 					  ,0.0
-				FROM AgentD
+				FROM AgentD WITH(NOLOCK)
 				WHERE ID = @ID
 
 		OPEN crCxDetalle
@@ -446,7 +446,7 @@ BEGIN
 			SELECT @Ok = 20180
 
 		SELECT @AplicaMovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Modulo = @Modulo
 		AND Mov = @AplicaMov
 
@@ -509,7 +509,7 @@ BEGIN
 						  ,@AplicaSaldoMoratoriosIVA = ISNULL(SaldoInteresesMoratoriosIVA, 0.0)
 						  ,@AplicaContacto = Cliente
 						  ,@AplicaVencimiento = Vencimiento
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Mov = @AplicaMov
 					AND MovID = @AplicaMovID
@@ -525,7 +525,7 @@ BEGIN
 						  ,@AplicaSaldoMoratoriosIVA = ISNULL(SaldoInteresesMoratoriosIVA, 0.0)
 						  ,@AplicaContacto = Proveedor
 						  ,@AplicaVencimiento = Vencimiento
-					FROM Cxp
+					FROM Cxp WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Mov = @AplicaMov
 					AND MovID = @AplicaMovID
@@ -536,7 +536,7 @@ BEGIN
 					SELECT @AplicaMoneda = Moneda
 						  ,@AplicaSaldo = ISNULL(Saldo, 0.0)
 						  ,@AplicaContacto = Agente
-					FROM Agent
+					FROM Agent WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Mov = @AplicaMov
 					AND MovID = @AplicaMovID
@@ -695,7 +695,7 @@ BEGIN
 						  ,@AplicaPeriodo = Periodo
 						  ,@NoAutoAjustar = ISNULL(NoAutoAjustar, 0)
 						  ,@AplicaProyecto = NULLIF(Proyecto, '')
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Mov = @AplicaMov
 					AND MovID = @AplicaMovID
@@ -731,7 +731,7 @@ BEGIN
 						  ,@AplicaPeriodo = Periodo
 						  ,@NoAutoAjustar = ISNULL(NoAutoAjustar, 0)
 						  ,@AplicaProyecto = NULLIF(Proyecto, '')
-					FROM Cxp
+					FROM Cxp WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Mov = @AplicaMov
 					AND MovID = @AplicaMovID
@@ -751,7 +751,7 @@ BEGIN
 						  ,@Estatus = Estatus
 						  ,@AplicaEjercicio = Ejercicio
 						  ,@AplicaPeriodo = Periodo
-					FROM Agent
+					FROM Agent WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Mov = @AplicaMov
 					AND MovID = @AplicaMovID
@@ -873,7 +873,7 @@ BEGIN
 						IF @Estatus = 'PENDIENTE'
 						BEGIN
 							SELECT @MovA = Mov
-							FROM CXC
+							FROM CXC WITH(NOLOCK)
 							WHERE ID = @ID
 
 							IF (ABS(@AplicaSaldo) - ABS(@ContactoImporte) <= -@AutoAjuste)
@@ -889,7 +889,7 @@ BEGIN
 									AND @Ligado = 0
 									AND (
 										SELECT UPPER(CobroIntereses)
-										FROM LC
+										FROM LC WITH(NOLOCK)
 										WHERE LineaCredito = @AplicaLineaCredito
 									)
 									= 'DEVENGADOS'
@@ -933,11 +933,11 @@ BEGIN
 							IF @Accion = 'CANCELAR'
 								SELECT @NuevoVencimiento = @AplicaFechaAnterior
 							ELSE
-								UPDATE CxcD
+								UPDATE CxcD WITH(ROWLOCK)
 								SET FechaAnterior = @AplicaVencimiento
 								WHERE CURRENT OF crCxDetalle
 
-							UPDATE Cxc
+							UPDATE Cxc WITH(ROWLOCK)
 							SET Condicion = '(Fecha)'
 							   ,Vencimiento = @NuevoVencimiento
 							WHERE ID = @IDAplica
@@ -974,7 +974,7 @@ BEGIN
 
 								IF @AplicaOrigenTipo = 'VTAS'
 									SELECT @IDOrigen = ID
-									FROM Venta
+									FROM Venta WITH(NOLOCK)
 									WHERE Mov = @AplicaOrigen
 									AND MovID = @AplicaOrigenID
 									AND Estatus IN ('PENDIENTE', 'CONCLUIDO')
@@ -982,7 +982,7 @@ BEGIN
 
 								IF @AplicaOrigenTipo = 'COMS'
 									SELECT @IDOrigen = ID
-									FROM Compra
+									FROM Compra WITH(NOLOCK)
 									WHERE Mov = @AplicaOrigen
 									AND MovID = @AplicaOrigenID
 									AND Estatus IN ('PENDIENTE', 'CONCLUIDO')
@@ -990,7 +990,7 @@ BEGIN
 
 								IF @AplicaOrigenTipo = 'GAS'
 									SELECT @IDOrigen = ID
-									FROM Gasto
+									FROM Gasto WITH(NOLOCK)
 									WHERE Mov = @AplicaOrigen
 									AND MovID = @AplicaOrigenID
 									AND Estatus IN ('PENDIENTE', 'CONCLUIDO')
@@ -999,7 +999,7 @@ BEGIN
 								IF @AplicaOrigenTipo = 'CXC'
 									OR (@AplicaOrigenTipo IS NULL AND @Modulo = 'CXC')
 									SELECT @IDOrigen = ID
-									FROM Cxc
+									FROM Cxc WITH(NOLOCK)
 									WHERE Mov = @AplicaMov
 									AND MovID = @AplicaMovID
 									AND Estatus IN ('PENDIENTE', 'CONCLUIDO')
@@ -1008,7 +1008,7 @@ BEGIN
 								IF @AplicaOrigenTipo = 'CXP'
 									OR (@AplicaOrigenTipo IS NULL AND @Modulo = 'CXP')
 									SELECT @IDOrigen = ID
-									FROM Cxp
+									FROM Cxp WITH(NOLOCK)
 									WHERE Mov = @AplicaMov
 									AND MovID = @AplicaMovID
 									AND Estatus IN ('PENDIENTE', 'CONCLUIDO')
@@ -1049,7 +1049,7 @@ BEGIN
 											  ,ClavePresupuestal
 											  ,ClavePresupuestalImpuesto1
 											  ,DescuentoGlobal
-										FROM MovImpuesto
+										FROM MovImpuesto WITH(NOLOCK)
 										WHERE Modulo = @Modulo
 										AND ModuloID = @IDAplica
 
@@ -1059,7 +1059,7 @@ BEGIN
 												  ,@RenglonSub
 												  ,CuentaPresupuesto
 												  ,Importe * @AplicaFactor
-											FROM MovPresupuesto
+											FROM MovPresupuesto WITH(NOLOCK)
 											WHERE Modulo = @Modulo
 											AND ModuloID = @IDAplica
 
@@ -1131,7 +1131,7 @@ BEGIN
 														,@OkRef OUTPUT
 
 									IF @Modulo = 'CXC'
-										UPDATE Cxc
+										UPDATE Cxc WITH(ROWLOCK)
 										SET Saldo = @AplicaSaldoN
 										   ,SaldoInteresesOrdinarios = @AplicaSaldoOrdinariosN
 										   ,SaldoInteresesOrdinariosIVA = @AplicaSaldoOrdinariosIVAN
@@ -1145,7 +1145,7 @@ BEGIN
 									ELSE
 
 									IF @Modulo = 'CXP'
-										UPDATE Cxp
+										UPDATE Cxp WITH(ROWLOCK)
 										SET Saldo = @AplicaSaldoN
 										   ,SaldoInteresesOrdinarios = @AplicaSaldoOrdinariosN
 										   ,SaldoInteresesOrdinariosIVA = @AplicaSaldoOrdinariosIVAN
@@ -1159,7 +1159,7 @@ BEGIN
 									ELSE
 
 									IF @Modulo = 'AGENT'
-										UPDATE Agent
+										UPDATE Agent WITH(ROWLOCK)
 										SET Saldo = @AplicaSaldoN
 										   ,AutoAjuste = @AutoAjusteD
 										   ,Estatus = @AplicaEstatusNuevo
@@ -1194,7 +1194,7 @@ BEGIN
 														,@OkRef OUTPUT
 
 									IF @Modulo = 'CXC'
-										UPDATE Cxc
+										UPDATE Cxc WITH(ROWLOCK)
 										SET Saldo = @AplicaSaldoN
 										   ,SaldoInteresesOrdinarios = @AplicaSaldoOrdinariosN
 										   ,SaldoInteresesOrdinariosIVA = @AplicaSaldoOrdinariosIVAN
@@ -1208,7 +1208,7 @@ BEGIN
 									ELSE
 
 									IF @Modulo = 'CXP'
-										UPDATE Cxp
+										UPDATE Cxp WITH(ROWLOCK)
 										SET Saldo = @AplicaSaldoN
 										   ,SaldoInteresesOrdinarios = @AplicaSaldoOrdinariosN
 										   ,SaldoInteresesOrdinariosIVA = @AplicaSaldoOrdinariosIVAN
@@ -1222,7 +1222,7 @@ BEGIN
 									ELSE
 
 									IF @Modulo = 'AGENT'
-										UPDATE Agent
+										UPDATE Agent WITH(ROWLOCK)
 										SET Saldo = @AplicaSaldoN
 										   ,AutoAjuste = NULL
 										   ,Estatus = @AplicaEstatusNuevo
@@ -1513,7 +1513,7 @@ BEGIN
 
 									IF @Accion = 'CANCELAR'
 										SELECT @ImporteComision = ISNULL(Comision, 0.0)
-										FROM CxcD
+										FROM CxcD WITH(NOLOCK)
 										WHERE ID = @ID
 										AND Renglon = @Renglon
 										AND RenglonSub = @RenglonSub
@@ -1562,7 +1562,7 @@ BEGIN
 											SELECT @AplicaComisionPendienteN = @AplicaComisionPendiente + @ImporteComision
 										ELSE
 										BEGIN
-											UPDATE CxcD
+											UPDATE CxcD WITH(ROWLOCK)
 											SET Comision = @ImporteComision
 											WHERE CURRENT OF crCxDetalle
 											SELECT @AplicaComisionPendienteN = @AplicaComisionPendiente - @ImporteComision
@@ -1572,7 +1572,7 @@ BEGIN
 
 										END
 
-										UPDATE Cxc
+										UPDATE Cxc WITH(ROWLOCK)
 										SET ComisionPendiente = NULLIF(@AplicaComisionPendienteN, 0.0)
 										WHERE ID = @IDAplica
 
@@ -1581,11 +1581,11 @@ BEGIN
 										BEGIN
 
 											IF @Accion = 'CANCELAR'
-												UPDATE Cxc
+												UPDATE Cxc WITH(ROWLOCK)
 												SET ComisionGenerada = ISNULL(ComisionGenerada, 0.0) - @ImporteComision
 												WHERE ID = @IDAplica
 											ELSE
-												UPDATE Cxc
+												UPDATE Cxc WITH(ROWLOCK)
 												SET ComisionGenerada = ISNULL(ComisionGenerada, 0.0) + @ImporteComision
 												WHERE ID = @IDAplica
 
@@ -1641,7 +1641,7 @@ BEGIN
 															,@OkRef OUTPUT
 
 										IF @Modulo = 'CXC'
-											UPDATE Cxc
+											UPDATE Cxc WITH(ROWLOCK)
 											SET Saldo = NULL
 											   ,Estatus = 'CANCELADO'
 											   ,FechaCancelacion = @FechaAfectacion
@@ -1650,7 +1650,7 @@ BEGIN
 										ELSE
 
 										IF @Modulo = 'CXP'
-											UPDATE Cxp
+											UPDATE Cxp WITH(ROWLOCK)
 											SET Saldo = NULL
 											   ,Estatus = 'CANCELADO'
 											   ,FechaCancelacion = @FechaAfectacion
@@ -1659,7 +1659,7 @@ BEGIN
 										ELSE
 
 										IF @Modulo = 'AGENT'
-											UPDATE Agent
+											UPDATE Agent WITH(ROWLOCK)
 											SET Saldo = NULL
 											   ,Estatus = 'CANCELADO'
 											   ,FechaCancelacion = @FechaAfectacion
@@ -1910,7 +1910,7 @@ BEGIN
 
 			IF @Modulo = 'CXC'
 				SELECT @DRID = ID
-				FROM Cxc
+				FROM Cxc WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Mov = @AplicaMov
 				AND MovID = @AplicaMovID
@@ -1919,7 +1919,7 @@ BEGIN
 
 			IF @Modulo = 'CXP'
 				SELECT @DRID = ID
-				FROM Cxp
+				FROM Cxp WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Mov = @AplicaMov
 				AND MovID = @AplicaMovID
@@ -2159,13 +2159,13 @@ BEGIN
 
 		IF @Modulo = 'CXC'
 			SELECT @Renglon = ISNULL(MAX(Renglon), 0.0) + 2048
-			FROM CxcD
+			FROM CxcD WITH(NOLOCK)
 			WHERE ID = @ID
 		ELSE
 
 		IF @Modulo = 'CXP'
 			SELECT @Renglon = ISNULL(MAX(Renglon), 0.0) + 2048
-			FROM CxpD
+			FROM CxpD WITH(NOLOCK)
 			WHERE ID = @ID
 
 		IF @MovTipo IN ('CXC.IM', 'CXC.RM', 'CXC.DA', 'CXC.DC', 'CXP.DA', 'CXP.DC')
@@ -2209,7 +2209,7 @@ BEGIN
 								   WHEN 'CXC' THEN CxcNCargoRecargos
 								   WHEN 'CXP' THEN CxpRecargos
 							   END
-						FROM EmpresaCfgMov
+						FROM EmpresaCfgMov WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 						SELECT @ConceptoDescuento =
 							   CASE @Modulo
@@ -2221,10 +2221,10 @@ BEGIN
 								   WHEN 'CXC' THEN CxcRecargosConcepto
 								   WHEN 'CXP' THEN CxpRecargosConcepto
 							   END
-						FROM EmpresaCfg
+						FROM EmpresaCfg WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 						SELECT @IVA = DefImpuesto
-						FROM EmpresaGral
+						FROM EmpresaGral WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 						SELECT @DREsCredito = 1
 							  ,@DRMov = @MovDescuento
@@ -2242,7 +2242,7 @@ BEGIN
 								SELECT Aplica
 									  ,AplicaID
 									  ,ISNULL(-DescuentoRecargos, 0.0) / @ContactoFactor
-								FROM CxcD
+								FROM CxcD WITH(NOLOCK)
 								WHERE ID = @ID
 								AND ISNULL(DescuentoRecargos, 0.0) < 0.0
 						ELSE
@@ -2254,7 +2254,7 @@ BEGIN
 								SELECT Aplica
 									  ,AplicaID
 									  ,ISNULL(-DescuentoRecargos, 0.0) / @ContactoFactor
-								FROM CxpD
+								FROM CxpD WITH(NOLOCK)
 								WHERE ID = @ID
 								AND ISNULL(DescuentoRecargos, 0.0) < 0.0
 
@@ -2307,14 +2307,14 @@ BEGIN
 							SELECT @DRImporte = @DRImporteTotal - @DRImpuestos
 
 							IF @Modulo = 'CXC'
-								UPDATE Cxc
+								UPDATE Cxc WITH(ROWLOCK)
 								SET Importe = @DRImporte
 								   ,Impuestos = @DRImpuestos
 								WHERE ID = @DRID
 							ELSE
 
 							IF @Modulo = 'CXP'
-								UPDATE Cxp
+								UPDATE Cxp WITH(ROWLOCK)
 								SET Importe = @DRImporte
 								   ,Impuestos = @DRImpuestos
 								WHERE ID = @DRID
@@ -2378,7 +2378,7 @@ BEGIN
 								SELECT Aplica
 									  ,AplicaID
 									  ,ISNULL(DescuentoRecargos, 0.0) / @ContactoFactor
-								FROM CxcD
+								FROM CxcD WITH(NOLOCK)
 								WHERE ID = @ID
 								AND ISNULL(DescuentoRecargos, 0.0) > 0.0
 						ELSE
@@ -2390,7 +2390,7 @@ BEGIN
 								SELECT Aplica
 									  ,AplicaID
 									  ,ISNULL(DescuentoRecargos, 0.0) / @ContactoFactor
-								FROM CxpD
+								FROM CxpD WITH(NOLOCK)
 								WHERE ID = @ID
 								AND ISNULL(DescuentoRecargos, 0.0) > 0.0
 
@@ -2434,14 +2434,14 @@ BEGIN
 							SELECT @DRImporte = @DRImporteTotal - @DRImpuestos
 
 							IF @Modulo = 'CXC'
-								UPDATE Cxc
+								UPDATE Cxc WITH(ROWLOCK)
 								SET Importe = @DRImporte
 								   ,Impuestos = @DRImpuestos
 								WHERE ID = @DRID
 							ELSE
 
 							IF @Modulo = 'CXP'
-								UPDATE Cxp
+								UPDATE Cxp WITH(ROWLOCK)
 								SET Importe = @DRImporte
 								   ,Impuestos = @DRImpuestos
 								WHERE ID = @DRID
@@ -2473,7 +2473,7 @@ BEGIN
 												,@OkRef OUTPUT
 
 							IF @Modulo = 'CXC'
-								UPDATE Cxc
+								UPDATE Cxc WITH(ROWLOCK)
 								SET Estatus = 'CONCLUIDO'
 								   ,FechaConclusion = @FechaEmision
 								   ,Saldo = NULL
@@ -2482,7 +2482,7 @@ BEGIN
 							ELSE
 
 							IF @Modulo = 'CXP'
-								UPDATE Cxp
+								UPDATE Cxp WITH(ROWLOCK)
 								SET Estatus = 'CONCLUIDO'
 								   ,FechaConclusion = @FechaEmision
 								   ,Saldo = NULL
@@ -2563,7 +2563,7 @@ BEGIN
 									  ,ISNULL(Impuestos, 0.0)
 									  ,Referencia
 									  ,ClienteEnviarA
-								FROM CxcAplicaDif
+								FROM CxcAplicaDif WITH(NOLOCK)
 								WHERE ID = @ID
 						ELSE
 
@@ -2577,7 +2577,7 @@ BEGIN
 									  ,ISNULL(Impuestos, 0.0)
 									  ,Referencia
 									  ,CONVERT(INT, NULL)
-								FROM CxpAplicaDif
+								FROM CxpAplicaDif WITH(NOLOCK)
 								WHERE ID = @ID
 
 						OPEN crAplicaDif
@@ -2589,7 +2589,7 @@ BEGIN
 						IF @@FETCH_STATUS <> -2
 						BEGIN
 							SELECT @AplicaDifMovTipo = Clave
-							FROM MovTipo
+							FROM MovTipo WITH(NOLOCK)
 							WHERE Modulo = @Modulo
 							AND Mov = @AplicaDifMov
 

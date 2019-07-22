@@ -38,7 +38,7 @@ BEGIN
 	   ,@min INT
 	   ,@max INT
 	SELECT @GenerarMovTipo = Clave
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND Mov = @GenerarMov
 	DELETE ListaIDOk
@@ -70,9 +70,9 @@ BEGIN
 				  ,v.Vencimiento
 				  ,v.DescuentoGlobal
 				  ,MIN(l.ID)
-			FROM ListaID l
-				,Venta v
-				,MovTipo mt
+			FROM ListaID l WITH(NOLOCK)
+				,Venta v WITH(NOLOCK)
+				,MovTipo mt WITH(NOLOCK)
 			WHERE l.Estacion = @Estacion
 			AND v.ID = l.ID
 			AND v.Empresa = @Empresa
@@ -105,8 +105,8 @@ BEGIN
 		BEGIN
 			IF (
 					SELECT mt.Clave
-					FROM Venta v
-						,MovTipo mt
+					FROM Venta v WITH(NOLOCK)
+						,MovTipo mt WITH(NOLOCK)
 					WHERE v.ID = @ID
 					AND mt.Modulo = 'VTAS'
 					AND mt.Mov = v.Mov
@@ -140,12 +140,12 @@ BEGIN
 			IF @Ok = 80030
 			BEGIN
 				SELECT @Renglon = ISNULL(MAX(Renglon), 0)
-				FROM VentaD
+				FROM VentaD WITH(NOLOCK)
 				WHERE ID = @IDGenerar
 				SELECT *
 				INTO #VentaDetalleLote
-				FROM cVentaD
-				WHERE ID IN (SELECT l.ID FROM ListaID l, Venta v WHERE l.Estacion = @Estacion AND v.ID <> @ID AND v.ID = l.ID AND v.Empresa = @Empresa AND v.Sucursal = @Sucursal AND v.Cliente = @Cliente AND v.Condicion = @Condicion AND v.Vencimiento = @Vencimiento AND v.DescuentoGlobal = @DescuentoGlobal)
+				FROM cVentaD WITH(NOLOCK)
+				WHERE ID IN (SELECT l.ID FROM ListaID l WITH(NOLOCK), Venta v WITH(NOLOCK) WHERE l.Estacion = @Estacion AND v.ID <> @ID AND v.ID = l.ID AND v.Empresa = @Empresa AND v.Sucursal = @Sucursal AND v.Cliente = @Cliente AND v.Condicion = @Condicion AND v.Vencimiento = @Vencimiento AND v.DescuentoGlobal = @DescuentoGlobal)
 
 				IF EXISTS (SELECT * FROM #VentaDetalleLote)
 				BEGIN
@@ -153,13 +153,13 @@ BEGIN
 					SET @Renglon = Renglon = @Renglon + 2048.0
 					   ,Aplica = v.Mov
 					   ,AplicaID = v.MovID
-					FROM #VentaDetalleLote d, Venta v
+					FROM #VentaDetalleLote d, Venta v WITH(NOLOCK)
 					WHERE v.ID = d.ID
 
 					IF @MovTipo = 'VTAS.VCR'
 						UPDATE #VentaDetalleLote
 						SET Almacen = v.AlmacenDestino
-						FROM #VentaDetalleLote d, Venta v
+						FROM #VentaDetalleLote d, Venta v WITH(NOLOCK)
 						WHERE v.ID = d.ID
 
 					IF @Base = 'TODO'
@@ -252,7 +252,7 @@ BEGIN
 				BEGIN
 
 					IF @Modulo = 'VTAS'
-						AND @GenerarMov IN (SELECT Mov FROM MovTipo WHERE TipoConsecutivo = 'General' AND Modulo = 'VTAS')
+						AND @GenerarMov IN (SELECT Mov FROM MovTipo WITH(NOLOCK) WHERE TipoConsecutivo = 'General' AND Modulo = 'VTAS')
 						EXEC SpConsecutivoGral @IDGenerar
 											  ,'VTAS'
 											  ,0
@@ -291,7 +291,7 @@ BEGIN
 	BEGIN
 		INSERT INTO @crLista
 			SELECT ID
-			FROM ListaID
+			FROM ListaID WITH(NOLOCK)
 			WHERE Estacion = @Estacion
 			ORDER BY IDInterno
 		SELECT @min = MIN(ident)
@@ -308,8 +308,8 @@ BEGIN
 		BEGIN
 			IF (
 					SELECT mt.Clave
-					FROM Venta v
-						,MovTipo mt
+					FROM Venta v WITH(NOLOCK)
+						,MovTipo mt WITH(NOLOCK)
 					WHERE v.ID = @ID
 					AND mt.Modulo = 'VTAS'
 					AND mt.Mov = v.Mov
@@ -344,7 +344,7 @@ BEGIN
 			BEGIN
 
 				IF @Modulo = 'VTAS'
-					AND @GenerarMov IN (SELECT Mov FROM MovTipo WHERE TipoConsecutivo = 'General' AND Modulo = 'VTAS')
+					AND @GenerarMov IN (SELECT Mov FROM MovTipo WITH(NOLOCK) WHERE TipoConsecutivo = 'General' AND Modulo = 'VTAS')
 					EXEC SpConsecutivoGral @IDGenerar
 										  ,'VTAS'
 										  ,0
@@ -382,7 +382,7 @@ BEGIN
 		SELECT @Mensaje = 'Proceso Concluido'
 	ELSE
 		SELECT @Mensaje = Descripcion + ' ' + RTRIM(@OkRef)
-		FROM MensajeLista
+		FROM MensajeLista WITH(NOLOCK)
 		WHERE Mensaje = @Ok
 
 	SELECT @Mensaje

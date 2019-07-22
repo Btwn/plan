@@ -109,7 +109,7 @@ BEGIN
 	   ,@suc INT
 	SET @suc = (
 		SELECT TOP 1 Sucursal
-		FROM venta
+		FROM venta WITH(NOLOCK)
 		WHERE id = @ID
 	)
 	SET @FechaActual = GETDATE()
@@ -139,7 +139,7 @@ BEGIN
 	BEGIN
 		SELECT @Mov = Mov
 			  ,@Estatus = Estatus
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF @Mov IN ('Factura', 'Factura Mayoreo', 'Factura VIU')
@@ -207,7 +207,7 @@ BEGIN
 									  ,@Ok OUTPUT
 									  ,@OkRef OUTPUT
 		SELECT @Mov = Mov
-		FROM Inv
+		FROM Inv WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF (@Mov = 'Recibo Traspaso')
@@ -217,17 +217,17 @@ BEGIN
 
 		SELECT @AlmacenOrigen = Almacen
 			  ,@AlmacenDestino = AlmacenDestino
-		FROM INV
+		FROM INV WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF (@AlmacenOrigen IS NOT NULL)
 			AND (@AlmacenDestino IS NOT NULL)
 		BEGIN
 			SELECT @AlmacenOrigenTipo = Tipo
-			FROM Alm
+			FROM Alm WITH(NOLOCK)
 			WHERE Almacen = @AlmacenOrigen
 			SELECT @AlmacenDestinoTipo = Tipo
-			FROM Alm
+			FROM Alm WITH(NOLOCK)
 			WHERE Almacen = @AlmacenDestino
 
 			IF @AlmacenOrigenTipo <> @AlmacenDestinoTipo
@@ -270,7 +270,7 @@ BEGIN
 		SELECT @Estatus = Estatus
 			  ,@Mov = Mov
 			  ,@Situacion = Situacion
-		FROM CXP
+		FROM CXP WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF @Estatus = 'SINAFECTAR'
@@ -288,10 +288,10 @@ BEGIN
 		SELECT @Mov = Mov
 			  ,@Directo = Directo
 			  ,@ConDesglose = ConDesglose
-		FROM Dinero
+		FROM Dinero WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @Clave = Clave
-		FROM Movtipo
+		FROM Movtipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 
 		IF @Clave = 'DIN.TC'
@@ -307,10 +307,10 @@ BEGIN
 	BEGIN
 		SELECT @Mov = Mov
 			  ,@ImporteTotal = Importe
-		FROM Dinero
+		FROM Dinero WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @Clave = Clave
-		FROM Movtipo
+		FROM Movtipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND Modulo = @Modulo
 
@@ -318,7 +318,7 @@ BEGIN
 		BEGIN
 
 			IF (@ImporteTotal > 0)
-				UPDATE Dinero
+				UPDATE Dinero WITH(ROWLOCK)
 				SET Importe = 0.0
 				WHERE ID = @ID
 
@@ -332,10 +332,10 @@ BEGIN
 		SELECT @Estatus = Estatus
 			  ,@Mov = Mov
 			  ,@Situacion = Situacion
-		FROM INV
+		FROM INV WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @MovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND Modulo = @Modulo
 
@@ -356,7 +356,7 @@ BEGIN
 		IF @MovTipo IN ('INV.A', 'INV.IF')
 		BEGIN
 
-			IF EXISTS (SELECT * FROM Art a, Inv b, InvD c WHERE b.Id = c.Id AND c.Articulo = a.Articulo AND b.Id = @Id AND a.Categoria IN ('ACTIVOS FIJOS'))
+			IF EXISTS (SELECT * FROM Art a WITH(NOLOCK), Inv b WITH(NOLOCK), InvD c WITH(NOLOCK) WHERE b.Id = c.Id AND c.Articulo = a.Articulo AND b.Id = @Id AND a.Categoria IN ('ACTIVOS FIJOS'))
 			BEGIN
 				SELECT @Ok = 100026
 			END
@@ -371,10 +371,10 @@ BEGIN
 		SELECT @Estatus = Estatus
 			  ,@Mov = Mov
 			  ,@Situacion = Situacion
-		FROM Gasto
+		FROM Gasto WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @MovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND Modulo = @Modulo
 
@@ -392,7 +392,7 @@ BEGIN
 		END
 
 		IF @Estatus = 'SINAFECTAR'
-			AND EXISTS (SELECT TOP 1 Mov FROM Empresaconceptovalidar WHERE Modulo = @Modulo AND Mov = @Mov)
+			AND EXISTS (SELECT TOP 1 Mov FROM Empresaconceptovalidar WITH(NOLOCK) WHERE Modulo = @Modulo AND Mov = @Mov)
 		BEGIN
 
 			IF EXISTS (SELECT * FROM TEMPDB.SYS.SYSOBJECTS WHERE ID = OBJECT_ID('Tempdb.dbo.#ValidaConceptoGas') AND TYPE = 'U')
@@ -404,11 +404,11 @@ BEGIN
 				  ,GasConcepto = D.Concepto
 				  ,ValidaConcepto = C.Concepto
 			INTO #ValidaConceptoGas
-			FROM dbo.Gasto G
-			INNER JOIN dbo.GastoD D
+			FROM dbo.Gasto G WITH(NOLOCK)
+			INNER JOIN dbo.GastoD D WITH(NOLOCK)
 				ON G.ID = D.ID
 				AND G.ID = @ID
-			LEFT JOIN dbo.EmpresaConceptoValidar C
+			LEFT JOIN dbo.EmpresaConceptoValidar C WITH(NOLOCK)
 				ON C.Mov = G.Mov
 				AND C.Empresa = G.Empresa
 				AND C.Modulo = @Modulo
@@ -445,10 +445,10 @@ BEGIN
 			  ,@Situacion = Situacion
 			  ,@Origen = Origen
 			  ,@OrigenId = OrigenID
-		FROM COMPRA
+		FROM COMPRA WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @MovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND Modulo = @Modulo
 
@@ -459,13 +459,13 @@ BEGIN
 			SELECT @Ok = 99990
 		END
 
-		IF NOT EXISTS (SELECT c.Proveedor, d.Articulo FROM compra c INNER JOIN CompraD d ON d.ID = c.ID INNER JOIN DM0289ConfigArticulos ca ON ca.Articulo = d.Articulo INNER JOIN DM0289ConfigProveedores cp ON cp.Proveedor = c.Proveedor INNER JOIN Usuario u ON u.Usuario = c.Usuario INNER JOIN DM0289ConfigGrupoTrabajo gt ON gt.GrupoTrabajo = u.GrupoTrabajo WHERE c.ID = @ID AND Mov = 'Devolucion Compra')
+		IF NOT EXISTS (SELECT c.Proveedor, d.Articulo FROM compra c WITH(NOLOCK) INNER JOIN CompraD d WITH(NOLOCK) ON d.ID = c.ID INNER JOIN DM0289ConfigArticulos ca WITH(NOLOCK) ON ca.Articulo = d.Articulo INNER JOIN DM0289ConfigProveedores cp  WITH(NOLOCK)ON cp.Proveedor = c.Proveedor INNER JOIN Usuario u WITH(NOLOCK) ON u.Usuario = c.Usuario INNER JOIN DM0289ConfigGrupoTrabajo gt WITH(NOLOCK) ON gt.GrupoTrabajo = u.GrupoTrabajo WHERE c.ID = @ID AND Mov = 'Devolucion Compra')
 		BEGIN
 
 			IF @Mov IN ('Orden Devolucion', 'Devolucion Compra')
 			BEGIN
 
-				IF EXISTS (SELECT IDCopiaMAVI FROM CompraD WHERE IDCopiaMAVI IS NULL AND ID = @ID)
+				IF EXISTS (SELECT IDCopiaMAVI FROM CompraD WITH(NOLOCK) WHERE IDCopiaMAVI IS NULL AND ID = @ID)
 					SELECT @NuloCopia = 1
 
 				IF @NuloCopia = 1
@@ -484,7 +484,7 @@ BEGIN
 			AND @Mov IN ('Solicitud Compra')
 		BEGIN
 
-			IF EXISTS (SELECT C.Id FROM CompraD CD INNER JOIN Compra C ON CD.Id = C.ID INNER JOIN Art A ON CD.Articulo = A.Articulo WHERE C.Planeador = 0 AND A.Categoria = 'VENTA' AND C.Id = @Id)
+			IF EXISTS (SELECT C.Id FROM CompraD CD WITH(NOLOCK) INNER JOIN Compra C WITH(NOLOCK) ON CD.Id = C.ID INNER JOIN Art A WITH(NOLOCK) ON CD.Articulo = A.Articulo WHERE C.Planeador = 0 AND A.Categoria = 'VENTA' AND C.Id = @Id)
 				SELECT @Ok = 99990
 
 		END
@@ -492,14 +492,14 @@ BEGIN
 		IF @MovTipo IN ('COMS.F', 'COMS.EI', 'COMS.EG')
 		BEGIN
 			SELECT @Clave = Clave
-			FROM MovTipo
+			FROM MovTipo WITH(NOLOCK)
 			WHERE Modulo = 'COMS'
 			AND Mov = @Origen
 
 			IF @Clave = 'COMS.O'
 			BEGIN
 				SELECT @IDOrigen = ID
-				FROM Compra
+				FROM Compra WITH(NOLOCK)
 				WHERE Mov = @Origen
 				AND MovID = @OrigenID
 				DECLARE
@@ -508,7 +508,7 @@ BEGIN
 					SELECT Articulo
 						  ,ISNULL(Costo, 0)
 						  ,Almacen
-					FROM CompraD
+					FROM CompraD WITH(NOLOCK)
 					WHERE ID = @ID
 				OPEN CRDetalle
 				FETCH NEXT FROM CRDetalle INTO @Articulo, @Costo, @Almacen
@@ -518,7 +518,7 @@ BEGIN
 				IF @@FETCH_STATUS <> -2
 				BEGIN
 					SELECT @CostoAnt = ISNULL(Costo, 0)
-					FROM CompraD
+					FROM CompraD WITH(NOLOCK)
 					WHERE ID = @IDOrigen
 					AND Articulo = @Articulo
 
@@ -550,17 +550,17 @@ BEGIN
 			  ,@Origen = Origen
 			  ,@OrigenID = OrigenID
 			  ,@Concepto = Concepto
-		FROM CXC
+		FROM CXC WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @AplicaManualCxc = AplicacionManualCxcMAVI
-		FROM UsuarioCfg2
+		FROM UsuarioCfg2 WITH(NOLOCK)
 		WHERE Usuario = @Usuario
 		SELECT @MovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND Modulo = @Modulo
 
-		IF (@AplicaManual = 0 AND EXISTS (SELECT ID FROM CxcD WHERE ID = @ID) AND @Mov <> 'Sol Refinanciamiento')
+		IF (@AplicaManual = 0 AND EXISTS (SELECT ID FROM CxcD WITH(NOLOCK) WHERE ID = @ID) AND @Mov <> 'Sol Refinanciamiento')
 			DELETE FROM CxcD
 			WHERE ID = @ID
 
@@ -569,7 +569,7 @@ BEGIN
 									  ,@Mov
 									  ,'CXC'
 
-		IF NOT EXISTS (SELECT COUNT(*) FROM NegociaMoratoriosMAVI WHERE IDCobro = @ID)
+		IF NOT EXISTS (SELECT COUNT(*) FROM NegociaMoratoriosMAVI WITH(NOLOCK) WHERE IDCobro = @ID)
 			AND @Origen IS NULL
 			AND (@AplicaManualCxc = 0 OR @AplicaManualCxc IS NULL)
 			AND @MovTipo = 'CXC.C'
@@ -591,7 +591,7 @@ BEGIN
 			AND @MovTipo = 'CXC.C'
 			AND (
 				SELECT COUNT(*)
-				FROM NegociaMoratoriosMAVI
+				FROM NegociaMoratoriosMAVI WITH(NOLOCK)
 				WHERE IDCobro = @ID
 			)
 			= 0
@@ -602,7 +602,7 @@ BEGIN
 		IF @MovTipo = 'CXC.C'
 		BEGIN
 			SELECT @TipoCobro = TipoCobro
-			FROM TipoCobroMAVI
+			FROM TipoCobroMAVI WITH(NOLOCK)
 			WHERE IdCobro = @ID
 
 			IF @TipoCobro = 0
@@ -612,7 +612,7 @@ BEGIN
 					CURSOR FOR
 					SELECT Origen
 						  ,OrigenID
-					FROM NegociaMoratoriosMAVI
+					FROM NegociaMoratoriosMAVI WITH(NOLOCK)
 					WHERE IDCobro = @ID
 					GROUP BY Origen
 							,OrigenId
@@ -624,14 +624,14 @@ BEGIN
 				IF @@FETCH_STATUS <> -2
 				BEGIN
 					SELECT @FechaCobroAntxpol = dbo.fnfechasinhora(FechaEmision)
-					FROM CXC
+					FROM CXC WITH(NOLOCK)
 					WHERE ID = (
 						SELECT MAX(IDCobro)
-						FROM NegociaMoratoriosMAVI
+						FROM NegociaMoratoriosMAVI WITH(NOLOCK)
 						WHERE Origen = @Origen
 						AND OrigenID = @OrigenID
 						AND IDCobro < @ID
-						AND IDCobro IN (SELECT t.IDCobro FROM TipoCobroMAVI t WHERE t.TipoCobro = 1)
+						AND IDCobro IN (SELECT t.IDCobro FROM TipoCobroMAVI t WITH(NOLOCK) WHERE t.TipoCobro = 1)
 					)
 
 					IF dbo.fnfechaSinHora(@FechaCobroAntxpol) = dbo.fnfechaSinHora(GETDATE())
@@ -654,7 +654,7 @@ BEGIN
 			AND (@MovTipo IN ('CXC.C', 'CXC.DP') OR @Mov = 'Cheque Posfechado')
 			AND @AplicaManual = 1
 			AND @OK IS NULL
-			AND NOT EXISTS (SELECT idCobro FROM NegociaMoratoriosMavi WHERE idCobro = @id)
+			AND NOT EXISTS (SELECT idCobro FROM NegociaMoratoriosMavi WITH(NOLOCK) WHERE idCobro = @id)
 		BEGIN
 			CREATE TABLE #temp2 (
 				Origen VARCHAR(20)
@@ -686,7 +686,7 @@ BEGIN
 				SELECT Aplica
 					  ,AplicaID
 					  ,Importe
-				FROM CxcD
+				FROM CxcD WITH(NOLOCK)
 				WHERE ID = @ID
 				AND Aplica IN ('Documento', 'Contra Recibo', 'Contra Recibo Inst', 'Nota Cargo', 'Nota Cargo VIU', 'Nota Cargo Mayoreo')
 			INSERT INTO #cobroAplica (idmov, Mov, MovID, PadreMavi, PadreMaviID, concepto, Vencimiento, numDoc, idVence, importeCobro, Saldo)
@@ -701,7 +701,7 @@ BEGIN
 					  ,ROW_NUMBER() OVER (PARTITION BY c.PadreMAVI, c.PadreIDMAVI ORDER BY c.Vencimiento)
 					  ,ca.importeCobro
 					  ,c.Saldo
-				FROM cxc c
+				FROM cxc c WITH(NOLOCK)
 				JOIN #cobro ca
 					ON ca.Mov = c.Mov
 					AND ca.MovID = c.MovID
@@ -744,8 +744,8 @@ BEGIN
 							  ,mov
 							  ,MovID
 							  ,Vencimiento
-						FROM cxc
-						WHERE id IN (SELECT id FROM MovCampoExtra WHERE Modulo = 'CXC' AND Valor = @PadreMavi + '_' + @PadreMaviID)
+						FROM cxc WITH(NOLOCK)
+						WHERE id IN (SELECT id FROM MovCampoExtra WITH(NOLOCK) WHERE Modulo = 'CXC' AND Valor = @PadreMavi + '_' + @PadreMaviID)
 						AND Estatus IN ('PENDIENTE')
 						AND id <> @idAux
 						AND Vencimiento < @Vencimiento
@@ -760,7 +760,7 @@ BEGIN
 							  ,Mov
 							  ,MovID
 							  ,Vencimiento
-						FROM CxcPendiente
+						FROM CxcPendiente WITH(NOLOCK)
 						WHERE Origen = @PadreMavi
 						AND OrigenID = @PadreMaviID
 						AND NOT (MovID = @AplicaID AND Mov = @Aplica)
@@ -803,13 +803,13 @@ BEGIN
 					SELECT COUNT(*)
 					FROM (
 						SELECT DISTINCT Padre.ID
-						FROM CXC c
-						JOIN CXCd d
+						FROM CXC c WITH(NOLOCK)
+						JOIN CXCd d WITH(NOLOCK)
 							ON d.ID = c.ID
-						JOIN CXC f
+						JOIN CXC f WITH(NOLOCK)
 							ON f.Mov = d.Aplica
 							AND f.MovID = d.AplicaID
-						JOIN CXC Padre
+						JOIN CXC Padre WITH(NOLOCK)
 							ON Padre.Mov = f.PadreMAVI
 							AND Padre.MovID = f.PadreIDMAVI
 						WHERE c.ID = @ID
@@ -834,16 +834,16 @@ BEGIN
 			  ,@Origen = Origen
 			  ,@OrigenID = OrigenID
 			  ,@SaldoTotal = (ISNULL(Importe, 0) + ISNULL(Impuestos, 0))
-		FROM CXC
+		FROM CXC WITH(NOLOCK)
 		WHERE ID
 		=
 		@ID
 		SELECT @MovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND Modulo = @Modulo
 		SELECT @ImporteTotal = Importe
-		FROM CXC
+		FROM CXC WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF @Mov = 'Cobro'
@@ -851,7 +851,7 @@ BEGIN
 
 			IF (
 					SELECT ValorAfectar
-					FROM CXC
+					FROM CXC WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				= 1
@@ -864,7 +864,7 @@ BEGIN
 
 				IF (
 						SELECT AplicaManual
-						FROM CXC
+						FROM CXC WITH(NOLOCK)
 						WHERE ID = @ID
 					)
 					<> 1
@@ -873,7 +873,7 @@ BEGIN
 					SELECT @Ok = 20170
 				END
 
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET ValorAfectar = 0
 				WHERE id = @ID
 			END
@@ -912,12 +912,12 @@ BEGIN
 				  ,@TipoCte = Cte.Tipo
 				  ,@Condicion = Cxc.Condicion
 				  ,@CteEnviarA = Cxc.ClienteEnviarA
-			FROM CTE
-				,CXC
+			FROM CTE WITH(NOLOCK)
+				,CXC WITH(NOLOCK)
 			WHERE Cte.Cliente = Cxc.Cliente
 			AND Cxc.ID = @ID
 			SELECT @Condicion2 = Cadena
-			FROM VentasCanalMAVI
+			FROM VentasCanalMAVI WITH(NOLOCK)
 			WHERE ID = @CteEnviarA
 
 			IF @TipoCte <> 'Deudor'
@@ -937,12 +937,12 @@ BEGIN
 				  ,@TipoCte = Cte.Tipo
 				  ,@Condicion = Cxc.Condicion
 				  ,@CteEnviarA = Cxc.ClienteEnviarA
-			FROM CTE
-				,CXC
+			FROM CTE WITH(NOLOCK)
+				,CXC WITH(NOLOCK)
 			WHERE Cte.Cliente = Cxc.Cliente
 			AND Cxc.ID = @ID
 			SELECT @Condicion2 = Cadena
-			FROM VentasCanalMAVI
+			FROM VentasCanalMAVI WITH(NOLOCK)
 			WHERE ID = @CteEnviarA
 
 			IF @TipoCte <> 'Deudor'
@@ -980,13 +980,13 @@ BEGIN
 
 			IF (
 					SELECT COUNT(ID)
-					FROM CxcD
+					FROM CxcD WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				> 1
 				SELECT @Ok = 100001
 
-			IF EXISTS (SELECT ID FROM CxcD WHERE ID = @ID AND Aplica IN ('Contra Recibo Inst', 'Cta Incobrable F', 'Cta Incobrable NV'))
+			IF EXISTS (SELECT ID FROM CxcD WITH(NOLOCK) WHERE ID = @ID AND Aplica IN ('Contra Recibo Inst', 'Cta Incobrable F', 'Cta Incobrable NV'))
 				SELECT @Ok = 100002
 
 		END
@@ -995,7 +995,7 @@ BEGIN
 			AND @Estatus = 'SINAFECTAR'
 		BEGIN
 
-			IF EXISTS (SELECT ID FROM Cxc WHERE ID = @ID AND MovAplica IN ('Contra Recibo Inst', 'Cta Incobrable F', 'Cta Incobrable NV'))
+			IF EXISTS (SELECT ID FROM Cxc WITH(NOLOCK) WHERE ID = @ID AND MovAplica IN ('Contra Recibo Inst', 'Cta Incobrable F', 'Cta Incobrable NV'))
 				SELECT @Ok = 100003
 			ELSE
 				EXEC spValidarCtasIncobrableMAVI @ID
@@ -1023,7 +1023,7 @@ BEGIN
 		IF @Mov = 'React Incobrable F'
 		BEGIN
 
-			IF EXISTS (SELECT CD.ID FROM CxcD CD WHERE CD.ID = @ID AND CD.Aplica NOT IN ('Cta Incobrable F'))
+			IF EXISTS (SELECT CD.ID FROM CxcD CD WITH(NOLOCK) WHERE CD.ID = @ID AND CD.Aplica NOT IN ('Cta Incobrable F'))
 				SELECT @Ok = 100002
 
 			IF (
@@ -1039,7 +1039,7 @@ BEGIN
 		IF @Mov = 'React Incobrable NV'
 		BEGIN
 
-			IF EXISTS (SELECT CD.ID FROM CxcD CD WHERE CD.ID = @ID AND CD.Aplica NOT IN ('Cta Incobrable NV'))
+			IF EXISTS (SELECT CD.ID FROM CxcD CD WITH(NOLOCK) WHERE CD.ID = @ID AND CD.Aplica NOT IN ('Cta Incobrable NV'))
 				SELECT @Ok = 100002
 
 			IF (
@@ -1076,7 +1076,7 @@ BEGIN
 			IF (@OK IS NULL)
 			BEGIN
 				SELECT @ImporteTotal = Importe
-				FROM Cxc
+				FROM Cxc WITH(NOLOCK)
 				WHERE ID = @ID
 
 				IF (@ImporteTotal IS NULL)
@@ -1093,7 +1093,7 @@ BEGIN
 
 			IF (
 					SELECT ISNULL(Importe, 0.0)
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				<= 0.0
@@ -1101,13 +1101,13 @@ BEGIN
 
 			IF @Ok = NULL
 
-				IF EXISTS (SELECT CxcD.ID FROM CxcD WHERE CxcD.ID = @ID AND dbo.fnIDDelMovimientoMAVI(CxcD.Aplica, CxcD.AplicaID) NOT IN (SELECT IDOrigen FROM MaviRefinaciamientos WHERE ID = @ID))
+				IF EXISTS (SELECT CxcD.ID FROM CxcD WITH(NOLOCK) WHERE CxcD.ID = @ID AND dbo.fnIDDelMovimientoMAVI(CxcD.Aplica, CxcD.AplicaID) NOT IN (SELECT IDOrigen FROM MaviRefinaciamientos WITH(NOLOCK) WHERE ID = @ID))
 					SELECT @Ok = 100015
 
 			IF @Ok IS NULL
 			BEGIN
 				SELECT @ImporteARefinanciar = SUM(ISNULL(dbo.fnSaldoPendienteMovPadreMAVI(IDOrigen), 0))
-				FROM MaviRefinaciamientos
+				FROM MaviRefinaciamientos WITH(NOLOCK)
 				WHERE ID = @ID
 
 				IF ISNULL(@SaldoTotal, 0) <> ISNULL(@ImporteARefinanciar, 0)
@@ -1130,14 +1130,14 @@ BEGIN
 		BEGIN
 			SET @Ok = 60160
 			SELECT @Mensaje = Descripcion
-			FROM MensajeLista
+			FROM MensajeLista WITH(NOLOCK)
 			WHERE Mensaje = @Ok
 		END
 
 		IF @Mov = 'Refinanciamiento'
 			AND @Estatus = 'SINAFECTAR'
 		BEGIN
-			UPDATE Cxc
+			UPDATE Cxc WITH(ROWLOCK)
 			SET EsCredilana = 1
 			WHERE ID = @ID
 		END
@@ -1158,7 +1158,7 @@ BEGIN
 				SELECT @ImporteARefinanciar = NULL
 				SELECT @IDOrigen = dbo.fnIDDelMovimientoMAVI(@Origen, @OrigenID)
 				SELECT @ImporteARefinanciar = SUM(ISNULL(dbo.fnSaldoPendienteMovPadreMAVI(IDOrigen), 0))
-				FROM MaviRefinaciamientos
+				FROM MaviRefinaciamientos WITH(NOLOCK)
 				WHERE ID = @IDorigen
 				SELECT @SaldoTotal = ISNULL(@SaldoTotal, 0) - ISNULL(@Financiamiento, 0)
 
@@ -1198,7 +1198,7 @@ BEGIN
 			  ,@Origen = Origen
 			  ,@OrigenID = OrigenID
 			  ,@SaldoTotal = (ISNULL(Importe, 0) + ISNULL(Impuestos, 0))
-		FROM CXC
+		FROM CXC WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF @Mov = 'Sol Refinanciamiento'
@@ -1222,13 +1222,13 @@ BEGIN
 
 			IF @Ok = NULL
 
-				IF EXISTS (SELECT CxcD.ID FROM CxcD WHERE CxcD.ID = @ID AND dbo.fnIDDelMovimientoMAVI(CxcD.Aplica, CxcD.AplicaID) NOT IN (SELECT IDOrigen FROM MaviRefinaciamientos WHERE ID = @ID))
+				IF EXISTS (SELECT CxcD.ID FROM CxcD WITH(NOLOCK) WHERE CxcD.ID = @ID AND dbo.fnIDDelMovimientoMAVI(CxcD.Aplica, CxcD.AplicaID) NOT IN (SELECT IDOrigen FROM MaviRefinaciamientos WITH(NOLOCK) WHERE ID = @ID))
 					SELECT @Ok = 100015
 
 			IF @Ok = NULL
 			BEGIN
 				SELECT @ImporteARefinanciar = SUM(ISNULL(dbo.fnSaldoPendienteMovPadreMAVI(IDOrigen), 0))
-				FROM MaviRefinaciamientos
+				FROM MaviRefinaciamientos WITH(NOLOCK)
 				WHERE ID = @ID
 
 				IF ISNULL(@SaldoTotal, 0) <> ISNULL(@ImporteARefinanciar, 0)
@@ -1254,7 +1254,7 @@ BEGIN
 		SELECT @Estatus = Estatus
 			  ,@Mov = Mov
 			  ,@Situacion = Situacion
-		FROM Cxc
+		FROM Cxc WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF dbo.fnClaveAfectacionMAVI(@Mov, 'CXC') IN ('CXC.AA')
@@ -1262,7 +1262,7 @@ BEGIN
 
 			IF (
 					SELECT ISNULL(SaldoAplicadoMavi, 0.0) + ISNULL(SaldoDevueltoMavi, 0.0)
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				> 0
@@ -1277,12 +1277,12 @@ BEGIN
 			   ,@MovIDRef VARCHAR(50)
 			SELECT @MovRef = Aplica
 				  ,@MovIDRef = AplicaID
-			FROM CxcD
+			FROM CxcD WITH(NOLOCK)
 			WHERE ID = @ID
 
 			IF (
 					SELECT Estatus
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE Mov = @MovRef
 					AND MovID = @MovIDRef
 				)
@@ -1295,7 +1295,7 @@ BEGIN
 			 AND @Mov <> 'Cobro Div Deudores'--  Se verifica su fecha de emision
 		BEGIN
 			SELECT @FechaEmision = CONVERT(VARCHAR(8), FechaEmision, 112)
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE ID = @ID
 
 			IF @FechaEmision <> @FechaActual
@@ -1311,7 +1311,7 @@ BEGIN
 			SELECT @EstatusSol = Estatus
 				  ,@MovSol = Mov
 				  ,@MovIDSol = MovID
-			FROM CXC
+			FROM CXC WITH(NOLOCK)
 			WHERE ID = @ID
 
 			IF @EstatusSol IN ('CONCLUIDO', 'PENDIENTE')
@@ -1329,15 +1329,15 @@ BEGIN
 
 			IF (
 					SELECT h.Estatus
-					FROM CXCD D
+					FROM CXCD D WITH(NOLOCK)
 					JOIN MOVTIPO M
 						ON D.APLICA = M.MOV
 						AND M.CLAVE = 'CXC.DM'
 						AND M.MODULO = 'CXC'
-					JOIN CXC C
+					JOIN CXC C WITH(NOLOCK)
 						ON C.MOV = D.APLICA
 						AND C.MOVID = D.APLICAID
-					JOIN CtasMaviCobHist H
+					JOIN CtasMaviCobHist H WITH(NOLOCK)
 						ON C.ID = H.IDCtaIncobrable
 					WHERE d.id = @id
 				)
@@ -1359,7 +1359,7 @@ BEGIN
 
 			IF (
 					SELECT Estatus
-					FROM CtasMaviCobHist
+					FROM CtasMaviCobHist WITH(NOLOCK)
 					WHERE IDCtaIncobrable = @ID
 				)
 				= 'ENVIADO'
@@ -1376,13 +1376,13 @@ BEGIN
 			  ,@Estatus = Estatus
 			  ,@Mov = Mov
 			  ,@Situacion = Situacion
-		FROM Embarque
+		FROM Embarque WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @NivelCobranza = NivelCobranzaMAVI
-		FROM Agente
+		FROM Agente WITH(NOLOCK)
 		WHERE Agente = @Agente
 		SELECT @MovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND Modulo = @Modulo
 
@@ -1396,7 +1396,7 @@ BEGIN
 
 		IF (@Mov = 'Orden Cobro' AND @Estatus = 'SINAFECTAR')
 
-			IF EXISTS (SELECT Cx.Mov, Cx.MovID FROM EmbarqueD ED JOIN EmbarqueMov EM ON ED.EmbarqueMov = EM.ID AND EM.Modulo = 'CXC' JOIN Cxc Cx ON EM.ModuloID = Cx.ID JOIN Cte Cte ON Cte.Cliente = Cx.Cliente LEFT OUTER JOIN CteEnviarA E ON E.ID = Cx.ClienteEnviarA AND E.Cliente = Cx.Cliente WHERE ED.ID = @ID AND ISNULL(E.NivelCobranzaMAVI, 'SIN NIVEL') <> @NivelCobranza)
+			IF EXISTS (SELECT Cx.Mov, Cx.MovID FROM EmbarqueD ED WITH(NOLOCK) JOIN EmbarqueMov EM WITH(NOLOCK) ON ED.EmbarqueMov = EM.ID AND EM.Modulo = 'CXC' JOIN Cxc Cx WITH(NOLOCK) ON EM.ModuloID = Cx.ID JOIN Cte Cte WITH(NOLOCK) ON Cte.Cliente = Cx.Cliente LEFT OUTER JOIN CteEnviarA E WITH(NOLOCK) ON E.ID = Cx.ClienteEnviarA AND E.Cliente = Cx.Cliente WHERE ED.ID = @ID AND ISNULL(E.NivelCobranzaMAVI, 'SIN NIVEL') <> @NivelCobranza)
 				SELECT @Ok = 100014
 
 		SELECT @Agente = Agente
@@ -1405,7 +1405,7 @@ BEGIN
 			  ,@Licencia = LicenciaAgente
 			  ,@Licencia2 = LicenciaAgente2
 			  ,@Ruta = Ruta
-		FROM Embarque
+		FROM Embarque WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF (@Estatus = 'SINAFECTAR' AND @Mov <> 'Orden Cobro')
@@ -1439,7 +1439,7 @@ BEGIN
 			  ,@Situacion = Situacion
 			  ,@Concepto = Concepto
 			  ,@Personal = ISNULL(Personal, 'SINASIGNAR')
-		FROM ActivoFijo
+		FROM ActivoFijo WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF @Estatus = 'SINAFECTAR'
@@ -1463,7 +1463,7 @@ BEGIN
 		END
 
 		SELECT @Proveedor = Proveedor
-		FROM ActivoFijo
+		FROM ActivoFijo WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF (@Estatus = 'SINAFECTAR' AND @Mov IN ('Mannto Maquinaria', 'Mantenimiento', 'Mantenimiento Ligero', 'Mantenimiento Severo',
@@ -1482,13 +1482,13 @@ BEGIN
 	BEGIN
 		SELECT @Mov = Mov
 			  ,@Cliente = Cliente
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @ImporteTotal = SUM(ISNULL(Cantidad, 0) * ISNULL(Precio, 0))
-		FROM VentaD
+		FROM VentaD WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @MovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND Modulo = 'VTAS'
 
@@ -1496,13 +1496,13 @@ BEGIN
 		BEGIN
 			SELECT @mov = (
 				 SELECT Origen
-				 FROM Venta
+				 FROM Venta WITH(NOLOCK)
 				 WHERE ID = @ID
 			 )
 
 			IF (
 					SELECT Origen
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				= 'Sol Dev Unicaja'
@@ -1515,7 +1515,7 @@ BEGIN
 
 			IF (
 					SELECT Origen
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				= 'Solicitud Devolucion'
@@ -1528,7 +1528,7 @@ BEGIN
 
 			IF (
 					SELECT Origen
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				= 'Sol Dev Mayoreo'
@@ -1547,7 +1547,7 @@ BEGIN
 		IF @Mov NOT IN ('Analisis Mayoreo', 'Solicitud Mayoreo', 'Analisis Credito', 'Solicitud Credito')
 		BEGIN
 			SELECT @TipoCte = Tipo
-			FROM Cte
+			FROM Cte WITH(NOLOCK)
 			WHERE Cliente = @Cliente
 			SELECT @PrefijoCte = LEFT(@Cliente, 1)
 
@@ -1561,7 +1561,7 @@ BEGIN
 
 			IF @Mov IN ('Analisis Credito', 'Solicitud Credito')
 
-				IF EXISTS (SELECT * FROM Venta V LEFT OUTER JOIN Condicion C ON V.Condicion = C.Condicion WHERE V.ID = @ID AND C.TipoCondicion = 'Contado')
+				IF EXISTS (SELECT * FROM Venta V WITH(NOLOCK) LEFT OUTER JOIN Condicion C WITH(NOLOCK) ON V.Condicion = C.Condicion WHERE V.ID = @ID AND C.TipoCondicion = 'Contado')
 					SELECT @Ok = 99997
 
 		END
@@ -1572,7 +1572,7 @@ BEGIN
 			IF @Mov = 'Sol Dev Unicaja'
 			BEGIN
 
-				IF EXISTS (SELECT IDCopiaMavi FROM VentaD WHERE IdCopiaMavi IS NOT NULL AND ID = @ID)
+				IF EXISTS (SELECT IDCopiaMavi FROM VentaD WITH(NOLOCK) WHERE IdCopiaMavi IS NOT NULL AND ID = @ID)
 					SELECT @Ok = 99995
 				ELSE
 				BEGIN
@@ -1581,10 +1581,10 @@ BEGIN
 												  ,1
 					SELECT @NuloCopia = 0
 					SELECT @GpoTrabajo = GrupoTrabajo
-					FROM Usuario
+					FROM Usuario WITH(NOLOCK)
 					WHERE Usuario = @Usuario
 
-					IF EXISTS (SELECT IDCopiaMavi FROM VentaD WHERE ((IDCopiaMavi IS NULL) OR (IdCopiaMAVI = '')) AND ID = @ID)
+					IF EXISTS (SELECT IDCopiaMavi FROM VentaD WITH(NOLOCK) WHERE ((IDCopiaMavi IS NULL) OR (IdCopiaMAVI = '')) AND ID = @ID)
 						SELECT @NuloCopia = 1
 
 					IF @NuloCopia = 1
@@ -1599,13 +1599,13 @@ BEGIN
 
 				IF (
 						SELECT Origen
-						FROM Venta
+						FROM Venta WITH(NOLOCK)
 						WHERE ID = @ID
 					)
 					<> 'Sol Dev Unicaja'
 				BEGIN
 
-					IF EXISTS (SELECT IDCopiaMavi FROM VentaD WHERE IdCopiaMavi IS NULL AND ID = @ID)
+					IF EXISTS (SELECT IDCopiaMavi FROM VentaD WITH(NOLOCK) WHERE IdCopiaMavi IS NULL AND ID = @ID)
 						SELECT @Ok = 99992
 
 				END
@@ -1647,7 +1647,7 @@ BEGIN
 
 			IF ISNULL((
 					SELECT Agente
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				, '') = ''
@@ -1660,7 +1660,7 @@ BEGIN
 
 			IF ISNULL((
 					SELECT FormaEnvio
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				, '') = ''
@@ -1671,7 +1671,7 @@ BEGIN
 		IF @Mov = 'FACTURA MAYOREO'
 		BEGIN
 
-			IF 'ACTIVOS FIJOS' IN (SELECT a.categoria FROM art a, ventad vd WHERE vd.ID = @ID AND a.articulo = vd.articulo)
+			IF 'ACTIVOS FIJOS' IN (SELECT a.categoria FROM art a WITH(NOLOCK), ventad vd WITH(NOLOCK) WHERE vd.ID = @ID AND a.articulo = vd.articulo)
 			BEGIN
 				DECLARE
 					@Serie VARCHAR(20)
@@ -1681,7 +1681,7 @@ BEGIN
 					CURSOR FOR
 					SELECT SerieLote
 						  ,Articulo
-					FROM serielotemov
+					FROM serielotemov WITH(NOLOCK)
 					WHERE ID = @ID
 				OPEN AFSeries_Cursor
 				FETCH NEXT FROM AFSeries_Cursor
@@ -1692,7 +1692,7 @@ BEGIN
 
 				IF (
 						SELECT responsable
-						FROM ActivoF
+						FROM ActivoF WITH(NOLOCK)
 						WHERE Serie = @Serie
 						AND Articulo = @Art
 					)
@@ -1708,7 +1708,7 @@ BEGIN
 
 			IF ISNULL((
 					SELECT FormaEnvio
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				, '') = ''
@@ -1719,12 +1719,12 @@ BEGIN
 		IF (@Mov IN ('Solicitud Credito', 'Pedido', 'Solicitud Mayoreo'))
 		BEGIN
 			SELECT @Cliente = Cliente
-			FROM Venta
+			FROM Venta WITH(NOLOCK)
 			WHERE ID = @ID
 
 			IF ((
 					SELECT FacDesgloseIVA
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				= 1)
@@ -1746,12 +1746,12 @@ BEGIN
 		IF @Mov IN ('Solicitud Devolucion', 'Sol Dev Mayoreo')
 		BEGIN
 			SELECT @DevOrigen = ISNULL(IDCopiaMavi, 0)
-			FROM VentaD
+			FROM VentaD WITH(NOLOCK)
 			WHERE ID = @ID
 			SELECT @FacDesgloseIVA = FacDesgloseIVA
-			FROM Venta
+			FROM Venta WITH(NOLOCK)
 			WHERE Id = @DevOrigen
-			UPDATE Venta
+			UPDATE Venta WITH(ROWLOCK)
 			SET FacDesgloseIVA = @FacDesgloseIVA
 			WHERE ID = @ID
 		END
@@ -1764,7 +1764,7 @@ BEGIN
 		SELECT @Estatus = Estatus
 			  ,@Origen = Origen
 			  ,@OrigenId = OrigenID
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF dbo.fnClaveAfectacionMAVI(@Mov, 'VTAS') IN ('VTAS.P')
@@ -1773,7 +1773,7 @@ BEGIN
 			AND @Estatus = 'SINAFECTAR'
 		BEGIN
 			SELECT @Redime = RedimePtos
-			FROM Venta
+			FROM Venta WITH(NOLOCK)
 			WHERE ID = @ID
 			DECLARE
 				crArtPrecio
@@ -1783,8 +1783,8 @@ BEGIN
 					  ,Precio
 					  ,D.PrecioAnterior
 					  ,A.Estatus
-				FROM VentaD D
-				LEFT JOIN Art A
+				FROM VentaD D WITH(NOLOCK)
+				LEFT JOIN Art A WITH(NOLOCK)
 					ON A.Articulo = D.Articulo
 					AND A.Familia = 'Calzado'
 					AND A.Estatus = 'Bloqueado'
@@ -1802,7 +1802,7 @@ BEGIN
 
 				IF (ISNULL(@PrecioAnterior, @PrecioArt) <> @Precio)
 					AND (@bloq <> 'Bloqueado')
-					AND (@suc NOT IN (SELECT Nombre FROM TablaStD WHERE TablaSt = 'SUCURSALES LINEA')
+					AND (@suc NOT IN (SELECT Nombre FROM TablaStD WITH(NOLOCK) WHERE TablaSt = 'SUCURSALES LINEA')
 					)
 					SELECT @Ok = 20305
 						  ,@OkRef = RTRIM(@ArtP)
@@ -1817,7 +1817,7 @@ BEGIN
 
 		IF (dbo.fnClaveAfectacionMAVI(@Mov, 'VTAS') IN ('VTAS.P') AND (
 				SELECT Origen
-				FROM Venta
+				FROM Venta WITH(NOLOCK)
 				WHERE ID = @ID
 			)
 			IS NULL AND @Ok IS NULL)
@@ -1835,19 +1835,19 @@ BEGIN
 		SELECT @Mov = Mov
 			  ,@Estatus = Estatus
 			  ,@DineroID = IDIngresoMAVI
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @ID
 
-		IF EXISTS (SELECT VD.ID FROM VentaD VD INNER JOIN Venta V ON VD.ID = V.ID WHERE VD.IDCopiaMavi = @ID AND V.Estatus NOT IN ('CANCELADO', 'SINAFECTAR'))
+		IF EXISTS (SELECT VD.ID FROM VentaD VD WITH(NOLOCK) INNER JOIN Venta V WITH(NOLOCK) ON VD.ID = V.ID WHERE VD.IDCopiaMavi = @ID AND V.Estatus NOT IN ('CANCELADO', 'SINAFECTAR'))
 			SELECT @Ok = 100000
 
-		IF EXISTS (SELECT EM.AsignadoID FROM EmbarqueMov EM INNER JOIN Embarque E ON EM.AsignadoID = E.ID WHERE EM.ModuloID = @ID AND EM.Modulo = 'VTAS' AND E.Estatus NOT IN ('CANCELADO', 'SINAFECTAR'))
+		IF EXISTS (SELECT EM.AsignadoID FROM EmbarqueMov EM WITH(NOLOCK) INNER JOIN Embarque E WITH(NOLOCK) ON EM.AsignadoID = E.ID WHERE EM.ModuloID = @ID AND EM.Modulo = 'VTAS' AND E.Estatus NOT IN ('CANCELADO', 'SINAFECTAR'))
 			SELECT @Ok = 100000
 
 		IF @Mov IN ('Cancela Credilana', 'Cancela Prestamo')
 		BEGIN
 
-			IF EXISTS (SELECT ID FROM Dinero WHERE ID = @DineroID AND Estatus IN ('PENDIENTE', 'CONCLUIDO'))
+			IF EXISTS (SELECT ID FROM Dinero WITH(NOLOCK) WHERE ID = @DineroID AND Estatus IN ('PENDIENTE', 'CONCLUIDO'))
 				SELECT @Ok = 60060
 
 		END
@@ -1857,7 +1857,7 @@ BEGIN
 	IF @Modulo = 'CXC'
 		AND ISNULL(@Accion, '') IN ('CANCELAR', 'AFECTAR')
 		AND ISNULL(@Ok, 0) = 0
-		AND EXISTS (SELECT ID FROM CXC WHERE ID = @ID AND ((Mov IN (SELECT DISTINCT MovCargo FROM TcIDM0224_ConfigNotasEspejo UNION ALL SELECT DISTINCT MovCredito FROM TcIDM0224_ConfigNotasEspejo) AND ISNULL(Concepto, '') IN (SELECT DISTINCT ConceptoCargo FROM TcIDM0224_ConfigNotasEspejo UNION ALL SELECT DISTINCT ConceptoCredito FROM TcIDM0224_ConfigNotasEspejo)) OR Mov = 'Aplicacion') AND Estatus NOT IN ('CANCELADO'))
+		AND EXISTS (SELECT ID FROM CXC WITH(NOLOCK) WHERE ID = @ID AND ((Mov IN (SELECT DISTINCT MovCargo FROM TcIDM0224_ConfigNotasEspejo WITH(NOLOCK) UNION ALL SELECT DISTINCT MovCredito FROM TcIDM0224_ConfigNotasEspejo WITH(NOLOCK)) AND ISNULL(Concepto, '') IN (SELECT DISTINCT ConceptoCargo FROM TcIDM0224_ConfigNotasEspejo WITH(NOLOCK) UNION ALL SELECT DISTINCT ConceptoCredito FROM TcIDM0224_ConfigNotasEspejo WITH(NOLOCK))) OR Mov = 'Aplicacion') AND Estatus NOT IN ('CANCELADO'))
 	BEGIN
 		EXEC dbo.SP_MAVIDM0224NotaCreditoEspejo @ID
 											   ,@Accion

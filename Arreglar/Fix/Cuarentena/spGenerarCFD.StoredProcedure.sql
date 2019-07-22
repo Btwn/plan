@@ -353,7 +353,7 @@ BEGIN
 				,@RetencionTotal = ISNULL(Retencion, dbo.fnRetencionCFD(@ID))
 			  ,@FechaRegistro = ISNULL(FechaRegistro, GETDATE())
 			  ,@FechaCancelacion = ISNULL(FechaCancelacion, GETDATE())
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @ID
 
 	IF @Modulo = 'CXC'
@@ -381,7 +381,7 @@ BEGIN
 			  ,@FechaRegistro = ISNULL(FechaRegistro, GETDATE())
 			  ,@FechaCancelacion = ISNULL(FechaCancelacion, GETDATE())
 			  ,@FechaRegistro = FechaRegistro
-		FROM CXC
+		FROM CXC WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @ImporteDescuentoGlobal = 0
 
@@ -395,7 +395,7 @@ BEGIN
 
 	IF @Layout = 'SAT'
 		SELECT @MN = SAT_MN
-		FROM EmpresaCFD
+		FROM EmpresaCFD WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 
 	IF @MN = 1
@@ -410,7 +410,7 @@ BEGIN
 		AND @ID IS NOT NULL
 	BEGIN
 		SELECT @MovIDCFD = MovID
-		FROM CFD
+		FROM CFD WITH(NOLOCK)
 		WHERE Modulo = @Modulo
 		AND ModuloID = @ID
 
@@ -421,7 +421,7 @@ BEGIN
 	END
 
 	SELECT @Fecha = Fecha
-	FROM CFD
+	FROM CFD WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND ModuloID = @ID
 
@@ -434,7 +434,7 @@ BEGIN
 
 		IF @Validar = 0
 
-			IF NOT EXISTS (SELECT ModuloID FROM CFD WHERE Modulo = @Modulo AND ModuloID = @ID)
+			IF NOT EXISTS (SELECT ModuloID FROM CFD WITH(NOLOCK) WHERE Modulo = @Modulo AND ModuloID = @ID)
 				INSERT CFD (Modulo, ModuloID, Fecha)
 					VALUES (@Modulo, @ID, @Fecha)
 
@@ -453,7 +453,7 @@ BEGIN
 				  ,@ImpuestosTotal = SUM(Impuestos * TipoCambio)
 				  ,@ImporteDescuentoGlobal = SUM(ImporteDescuentoGlobal * TipoCambio)
 				  ,@ImporteSobrePrecio = SUM(ImporteSobrePrecio * TipoCambio)
-			FROM VentaTCalc
+			FROM VentaTCalc WITH(NOLOCK)
 			WHERE ID = @ID
 			SELECT @AnticiposFacturados = ISNULL(@AnticiposFacturados, 0) * @TipoCambio
 				  ,@AnticiposImpuestos = ISNULL(@AnticiposImpuestos, 0) * @TipoCambio
@@ -467,7 +467,7 @@ BEGIN
 				  ,@ImpuestosTotal = SUM(Impuestos)
 				  ,@ImporteDescuentoGlobal = SUM(ImporteDescuentoGlobal)
 				  ,@ImporteSobrePrecio = SUM(ImporteSobrePrecio)
-			FROM VentaTCalc
+			FROM VentaTCalc WITH(NOLOCK)
 			WHERE ID = @ID
 
 		SELECT @Embarque = Embarque
@@ -475,10 +475,10 @@ BEGIN
 			  ,@Recibo = Recibo
 			  ,@ReciboFecha = ReciboFecha
 			  ,@EntregaMercancia = EntregaMercancia
-		FROM VentaEntrega
+		FROM VentaEntrega WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @NumeroArticulos = COUNT(DISTINCT (Articulo))
-		FROM VentaD
+		FROM VentaD WITH(NOLOCK)
 		WHERE ID = @ID
 		AND RenglonTipo <> 'C'
 	END
@@ -508,10 +508,10 @@ BEGIN
 		  ,@ClienteTelefonos = Telefonos
 		  ,@ClienteIEPS = IEPS
 		  ,@PersonalCobrador = PersonalCobrador
-	FROM Cte
+	FROM Cte WITH(NOLOCK)
 	WHERE Cliente = @Cliente
 	SELECT @emailCobrador = email
-	FROM Personal
+	FROM Personal WITH(NOLOCK)
 	WHERE Personal = @PersonalCobrador
 	SELECT @ReceptorID = ReceptorID
 		  ,@TipoAddenda = TipoAddenda
@@ -521,7 +521,7 @@ BEGIN
 				   OR VersionFecha IS NULL THEN Version
 			   ELSE VersionAnterior
 		   END
-	FROM CteCFD
+	FROM CteCFD WITH(NOLOCK)
 	WHERE Cliente = @Cliente
 
 	IF @TipoAddenda IN ('CHEDRAUI', 'EDIFACT')
@@ -531,11 +531,11 @@ BEGIN
 	SELECT @EmisorID = EmisorID
 		  ,@ProveedorID = ProveedorID
 		  ,@InformacionCompra = InformacionCompra
-	FROM CteEmpresaCFD
+	FROM CteEmpresaCFD WITH(NOLOCK)
 	WHERE Cliente = @Cliente
 	AND Empresa = @Empresa
 	SELECT @ProveedorIDDeptoEnviarA = ProveedorID
-	FROM CteDeptoEnviarA
+	FROM CteDeptoEnviarA WITH(NOLOCK)
 	WHERE Cliente = @Cliente
 	AND Departamento = @Departamento
 	AND Empresa = @Empresa
@@ -554,13 +554,13 @@ BEGIN
 		  ,@EnviarACodigoPostal = CodigoPostal
 		  ,@EnviarAGLN = GLN
 		  ,@EnviarATelefonos = Telefonos
-	FROM CteEnviarA
+	FROM CteEnviarA WITH(NOLOCK)
 	WHERE Cliente = @Cliente
 	AND ID = @EnviarA
 	SELECT @DepartamentoClave = Clave
 		  ,@DepartamentoNombre = Departamento
 		  ,@DepartamentoContacto = Contacto
-	FROM CteDepto
+	FROM CteDepto WITH(NOLOCK)
 	WHERE Cliente = @Cliente
 	AND Departamento = @Departamento
 
@@ -587,7 +587,7 @@ BEGIN
 		  ,@EmpresaRegistroPatronal = RegistroPatronal
 		  ,@EmpresaGLN = GLN
 		  ,@EmpresaTelefonos = Telefonos
-	FROM Empresa
+	FROM Empresa WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @TipoAddenda IN ('CHEDRAUI', 'EDIFACT')
@@ -610,7 +610,7 @@ BEGIN
 		  ,@PaqueteEsCantidad = PaqueteEsCantidad
 		  ,@AgruparDetalle = AgruparDetalle
 		  ,@CfgDecimales = ISNULL(Decimales, 2)
-	FROM EmpresaCFD
+	FROM EmpresaCFD WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF ISNULL(@LayOut, '') IN ('SAT', '')
@@ -669,15 +669,15 @@ BEGIN
 	END
 
 	SELECT @DefImpuesto = DefImpuesto
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	SELECT @DefImpuestoZona = @DefImpuesto
 	EXEC spZonaImp @ZonaImpuesto
 				  ,@DefImpuestoZona OUTPUT
 	SELECT @MonedaClave = Clave
-	FROM Mon
+	FROM Mon WITH(NOLOCK)
 	WHERE Moneda = @Moneda
 	SELECT @DescuentoClave = Clave
-	FROM Descuento
+	FROM Descuento WITH(NOLOCK)
 	WHERE Descuento = @Descuento
 	SELECT @SucursalNombre = Nombre
 		  ,@SucursalGLN = GLN
@@ -691,7 +691,7 @@ BEGIN
 		  ,@SucursalEstado = Estado
 		  ,@SucursalPais = Pais
 		  ,@SucursalCodigoPostal = CodigoPostal
-	FROM Sucursal
+	FROM Sucursal WITH(NOLOCK)
 	WHERE Sucursal = @Sucursal
 	SELECT @TipoCondicion = TipoCondicion
 		  ,@formaDePago = CFD_formaDePago
@@ -699,13 +699,13 @@ BEGIN
 		  ,@DiasVencimiento = ISNULL(DiasVencimiento, 1)
 		  ,@ProntoPago = ProntoPago
 		  ,@DescuentoProntoPago = DescuentoProntoPago
-	FROM Condicion
+	FROM Condicion WITH(NOLOCK)
 	WHERE Condicion = @Condicion
 
 	IF @Modulo = 'CXC'
 	BEGIN
 		SELECT @MovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Modulo = @Modulo
 		AND Mov = @Mov
 
@@ -725,7 +725,7 @@ BEGIN
 
 			SET @ExtraCondicion = (
 				SELECT Valor
-				FROM MovCampoExtra
+				FROM MovCampoExtra WITH(NOLOCK)
 				WHERE ID = @ID
 				AND CampoExtra = @CampoExtra
 			)
@@ -764,7 +764,7 @@ BEGIN
 								WHEN Valor LIKE ('Seguro Auto_%') THEN SUBSTRING(Valor, LEN('Seguro Auto_') + 1, (LEN(Valor) - LEN('Seguro Auto_')))
 							END
 					   )
-				FROM MovCampoExtra
+				FROM MovCampoExtra WITH(NOLOCK)
 				WHERE ID = @ID
 				AND CampoExtra = @CampoExtra
 
@@ -772,20 +772,20 @@ BEGIN
 				BEGIN
 					SELECT TOP 1 @OrigenDoc = Aplica
 								,@OrigenIDDoc = AplicaID
-					FROM CXCD d
+					FROM CXCD d WITH(NOLOCK)
 						,CXC c
 					WHERE c.Mov = @MovE
 					AND c.MovID = @MovIDE
 					AND d.ID = c.ID
 					SELECT @MovOrigen = Origen
 						  ,@MovOrigenID = OrigenID
-					FROM CXC
+					FROM CXC WITH(NOLOCK)
 					WHERE Mov = @OrigenDoc
 					AND MovID = @OrigenIDDoc
 					SELECT @formadePago = c.CFD_formaDePago
 						  ,@TipoCondicion = c.TipoCondicion
-					FROM cxc x
-						,condicion c
+					FROM cxc x WITH(NOLOCK)
+						,condicion c WITH(NOLOCK)
 					WHERE x.condicion = c.condicion
 					AND x.MovID = @MovOrigenID
 					AND x.Mov = @MovOrigen
@@ -797,8 +797,8 @@ BEGIN
 				BEGIN
 					SELECT @formadePago = c.CFD_formaDePago
 						  ,@TipoCondicion = c.TipoCondicion
-					FROM cxc v
-						,condicion c
+					FROM cxc v WITH(NOLOCK)
+						,condicion c WITH(NOLOCK)
 					WHERE v.mov = @MovE
 					AND v.movid = @MovIDE
 					AND v.condicion = c.condicion
@@ -808,8 +808,8 @@ BEGIN
 			ELSE
 				SELECT @formadePago = c.CFD_formaDePago
 					  ,@TipoCondicion = c.TipoCondicion
-				FROM condicion c
-					,cxc x
+				FROM condicion c WITH(NOLOCK)
+					,cxc x WITH(NOLOCK)
 				WHERE x.ID = @ID
 				AND x.condicion = c.condicion
 
@@ -834,13 +834,13 @@ BEGIN
 								WHEN Referencia LIKE ('Factura_%') THEN SUBSTRING(Referencia, LEN('Factura_') + 1, (LEN(Referencia) - LEN('Factura_')))
 							END
 					   )
-				FROM Venta
+				FROM Venta WITH(NOLOCK)
 				WHERE Mov = @Origen
 				AND MovID = @OrigenID
 				SELECT @formadePago = c.CFD_formaDePago
 					  ,@TipoCondicion = c.TipoCondicion
-				FROM condicion c
-					,venta v
+				FROM condicion c WITH(NOLOCK)
+					,venta v WITH(NOLOCK)
 				WHERE c.condicion = v.condicion
 				AND v.mov = @MovE
 				AND v.movid = @MovIDE
@@ -849,20 +849,20 @@ BEGIN
 			BEGIN
 				SELECT TOP 1 @MovE = Aplica
 							,@MovIDE = AplicaID
-				FROM CxcD
+				FROM CxcD WITH(NOLOCK)
 				WHERE ID = @ID
 
 				IF @MovE = 'Documento'
 				BEGIN
 					SELECT @OrigenE = Origen
 						  ,@OrigenIDE = OrigenID
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE Mov = @MovE
 					AND MovID = @MovIDE
 					SELECT @formadePago = c.CFD_formaDePago
 						  ,@TipoCondicion = c.TipoCondicion
-					FROM Cxc x
-						,condicion c
+					FROM Cxc x WITH(NOLOCK)
+						,condicion c WITH(NOLOCK)
 					WHERE x.condicion = c.condicion
 					AND x.MovID = @OrigenIDE
 					AND x.Mov = @OrigenE
@@ -872,20 +872,20 @@ BEGIN
 				BEGIN
 					SELECT TOP 1 @OrigenDoc = Aplica
 								,@OrigenIDDoc = AplicaID
-					FROM CXCD d
-						,CXC c
+					FROM CXCD d WITH(NOLOCK)
+						,CXC c WITH(NOLOCK)
 					WHERE c.Mov = @MovE
 					AND c.MovID = @MovIDE
 					AND d.ID = c.ID
 					SELECT @MovOrigen = Origen
 						  ,@MovOrigenID = OrigenID
-					FROM CXC
+					FROM CXC WITH(NOLOCK)
 					WHERE Mov = @OrigenDoc
 					AND MovID = @OrigenIDDoc
 					SELECT @formadePago = c.CFD_formaDePago
 						  ,@TipoCondicion = c.TipoCondicion
-					FROM cxc x
-						,condicion c
+					FROM cxc x WITH(NOLOCK)
+						,condicion c WITH(NOLOCK)
 					WHERE x.condicion = c.condicion
 					AND x.MovID = @MovOrigenID
 					AND x.Mov = @MovOrigen
@@ -896,8 +896,8 @@ BEGIN
 				BEGIN
 					SELECT @formadePago = c.CFD_formaDePago
 						  ,@TipoCondicion = c.TipoCondicion
-					FROM cxc v
-						,condicion c
+					FROM cxc v WITH(NOLOCK)
+						,condicion c WITH(NOLOCK)
 					WHERE v.mov = @MovE
 					AND v.movid = @MovIDE
 					AND v.condicion = c.condicion
@@ -918,12 +918,12 @@ BEGIN
 						SET @CampoExtraE = 'NCM_FACTURA'
 
 					SELECT @IDNota = ID
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE Mov = @MovE
 					AND MovID = @MovIDE
 					SET @ExtraCondicion = (
 						SELECT Valor
-						FROM MovCampoExtra
+						FROM MovCampoExtra WITH(NOLOCK)
 						WHERE ID = @IDNota
 						AND CampoExtra = @CampoExtraE
 					)
@@ -961,7 +961,7 @@ BEGIN
 										WHEN Valor LIKE ('Seguro Auto_%') THEN SUBSTRING(Valor, LEN('Seguro Auto_') + 1, (LEN(Valor) - LEN('Seguro Auto_')))
 									END
 							   )
-						FROM MovCampoExtra
+						FROM MovCampoExtra WITH(NOLOCK)
 						WHERE ID = @IDNota
 						AND CampoExtra = @CampoExtraE
 
@@ -969,13 +969,13 @@ BEGIN
 					BEGIN
 						SELECT @OrigenE = Origen
 							  ,@OrigenIDE = OrigenID
-						FROM Cxc
+						FROM Cxc WITH(NOLOCK)
 						WHERE Mov = @MovNota
 						AND MovID = @MovNotaID
 						SELECT @formadePago = c.CFD_formaDePago
 							  ,@TipoCondicion = c.TipoCondicion
-						FROM Cxc x
-							,condicion c
+						FROM Cxc x WITH(NOLOCK)
+							,condicion c WITH(NOLOCK)
 						WHERE x.condicion = c.condicion
 						AND x.MovID = @OrigenIDE
 						AND x.Mov = @OrigenE
@@ -985,20 +985,20 @@ BEGIN
 					BEGIN
 						SELECT TOP 1 @OrigenDoc = Aplica
 									,@OrigenIDDoc = AplicaID
-						FROM CXCD d
-							,CXC c
+						FROM CXCD d WITH(NOLOCK)
+							,CXC c WITH(NOLOCK)
 						WHERE c.Mov = @MovNota
 						AND c.MovID = @MovNotaID
 						AND d.ID = c.ID
 						SELECT @MovOrigen = Origen
 							  ,@MovOrigenID = OrigenID
-						FROM CXC
+						FROM CXC WITH(NOLOCK)
 						WHERE Mov = @OrigenDoc
 						AND MovID = @OrigenIDDoc
 						SELECT @formadePago = c.CFD_formaDePago
 							  ,@TipoCondicion = c.TipoCondicion
-						FROM cxc x
-							,condicion c
+						FROM cxc x WITH(NOLOCK)
+							,condicion c WITH(NOLOCK)
 						WHERE x.condicion = c.condicion
 						AND x.MovID = @MovOrigenID
 						AND x.Mov = @MovOrigen
@@ -1010,8 +1010,8 @@ BEGIN
 					BEGIN
 						SELECT @formadePago = c.CFD_formaDePago
 							  ,@TipoCondicion = c.TipoCondicion
-						FROM cxc v
-							,condicion c
+						FROM cxc v WITH(NOLOCK)
+							,condicion c WITH(NOLOCK)
 						WHERE v.mov = @MovNota
 						AND v.movid = @MovNotaID
 						AND v.condicion = c.condicion
@@ -1029,7 +1029,7 @@ BEGIN
 		  ,@tipoDeComprobante = CFD_tipoDeComprobante
 		  ,@ConsecutivoModulo = ConsecutivoModulo
 		  ,@ConsecutivoMov = ConsecutivoMov
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND Mov = @Mov
 	EXEC spMovIDEnSerieConsecutivo @MovID
@@ -1037,7 +1037,7 @@ BEGIN
 								  ,@Folio OUTPUT
 	SELECT @noAprobacion = noAprobacion
 		  ,@fechaAprobacion = fechaAprobacion
-	FROM CFDFolio
+	FROM CFDFolio WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	AND Modulo = @ConsecutivoModulo
 	AND Mov = @ConsecutivoMov
@@ -1048,7 +1048,7 @@ BEGIN
 	IF @@ROWCOUNT = 0
 		SELECT @noAprobacion = noAprobacion
 			  ,@fechaAprobacion = fechaAprobacion
-		FROM CFDFolio
+		FROM CFDFolio WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 		AND Modulo = @ConsecutivoModulo
 		AND Mov = @ConsecutivoMov
@@ -1062,13 +1062,13 @@ BEGIN
 		IF @MovTipo IN ('VTAS.D', 'VTAS.B')
 		BEGIN
 			SELECT @ReferenciaFecha = Fecha
-			FROM CFD
+			FROM CFD WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND MovID = @Referencia
 
 			IF @@ROWCOUNT = 0
 				SELECT @ReferenciaFecha = FechaRegistro
-				FROM Venta
+				FROM Venta WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND MovID = @Referencia
 				AND Estatus IN ('CONCLUIDO', 'PENDIENTE')
@@ -1384,14 +1384,14 @@ BEGIN
 			IF UPPER(@p) NOT IN ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
 			BEGIN
 				SELECT @RetencionFlete = SUM(Subtotal * 0.04)
-				FROM VentaTCalc
+				FROM VentaTCalc WITH(NOLOCK)
 				WHERE ID = @ID
 				AND Articulo = 'FLETE'
 			END
 
 		END
 
-		IF EXISTS (SELECT * FROM Cte WHERE Cliente = @Cliente AND NULLIF(RTRIM(PITEX), '') IS NOT NULL)
+		IF EXISTS (SELECT * FROM Cte WITH(NOLOCK) WHERE Cliente = @Cliente AND NULLIF(RTRIM(PITEX), '') IS NOT NULL)
 		BEGIN
 			SELECT @RetencionPitex = @Impuesto1Total + ISNULL(@AnticiposImpuestos, 0)
 		END
@@ -3153,8 +3153,8 @@ BEGIN
 					  ,MAX(a.Descripcion2)
 					  ,MAX(a.TipoEmpaque)
 					  ,d.Precio
-				FROM VentaTCalc d
-				JOIN Art a
+				FROM VentaTCalc d WITH(NOLOCK)
+				JOIN Art a WITH(NOLOCK)
 					ON a.Articulo = d.Articulo
 				WHERE d.ID = @ID
 				AND d.RenglonTipo <> 'C'
@@ -3198,8 +3198,8 @@ BEGIN
 					  ,a.Descripcion2
 					  ,a.TipoEmpaque
 					  ,d.Precio
-				FROM VentaTCalc d
-				JOIN Art a
+				FROM VentaTCalc d WITH(NOLOCK)
+				JOIN Art a WITH(NOLOCK)
 					ON a.Articulo = d.Articulo
 				WHERE d.ID = @ID
 				AND d.RenglonTipo NOT IN ('C', 'E')
@@ -3224,7 +3224,7 @@ BEGIN
 					  ,@CompImpuesto1Total = ISNULL(SUM(Impuesto1Total), 0.0)
 					  ,@compImpuesto2Total = ISNULL(SUM(Impuesto2Total), 0.0)
 					  ,@CompPrecio = ISNULL(SUM(ISNULL(Precio, 0.0) * Cantidad), 0.0)
-				FROM VentaTCalc
+				FROM VentaTCalc WITH(NOLOCK)
 				WHERE ID = @ID
 				AND RenglonID = @RenglonID
 				AND RenglonTipo = 'C'
@@ -3237,7 +3237,7 @@ BEGIN
 			END
 
 			SELECT @UnidadClave = Clave
-			FROM Unidad
+			FROM Unidad WITH(NOLOCK)
 			WHERE Unidad = @Unidad
 
 			IF @AgruparDetalle = 1
@@ -3247,7 +3247,7 @@ BEGIN
 			ELSE
 				SELECT @Paquetes = Paquete
 					  ,@DescripcionExtra = DescripcionExtra
-				FROM VentaD
+				FROM VentaD WITH(NOLOCK)
 				WHERE ID = @ID
 				AND Renglon = @Renglon
 				AND RenglonSub = @RenglonSub
@@ -3265,7 +3265,7 @@ BEGIN
 			SELECT @noIdentificacion = RTRIM(@Articulo) + ' ' + ISNULL(RTRIM(@SubCuenta), '')
 			SELECT @TipoEmpaqueClave = Clave
 				  ,@TipoEmpaqueTipo = Tipo
-			FROM TipoEmpaque
+			FROM TipoEmpaque WITH(NOLOCK)
 			WHERE TipoEmpaque = @ArtTipoEmpaque
 
 			IF @Layout = 'EDIFACT'
@@ -3338,8 +3338,8 @@ BEGIN
 					  ,@PedimentoFecha3 = p.Fecha3
 					  ,@Aduana = p.Aduana
 					  ,@AgenteAduanal = p.AgenteAduanal
-				FROM SerieLote s
-				JOIN SerieLoteProp p
+				FROM SerieLote s WITH(NOLOCK)
+				JOIN SerieLoteProp p WITH(NOLOCK)
 					ON p.Propiedades = s.Propiedades
 				WHERE s.SerieLote = @PrimerSerieLote
 
@@ -4397,8 +4397,8 @@ BEGIN
 							  ,dbo.fnLimpiarRFC(s.Propiedades)
 							  ,p.Fecha2
 							  ,p.Aduana
-						FROM SerieLoteMov s
-						JOIN SerieLoteProp p
+						FROM SerieLoteMov s WITH(NOLOCK)
+						JOIN SerieLoteProp p WITH(NOLOCK)
 							ON p.Propiedades = s.Propiedades
 						WHERE s.Empresa = @Empresa
 						AND s.Modulo = @Modulo
@@ -4417,8 +4417,8 @@ BEGIN
 							  ,dbo.fnLimpiarRFC(s.Propiedades)
 							  ,p.Fecha2
 							  ,p.Aduana
-						FROM SerieLoteMov s
-						JOIN SerieLoteProp p
+						FROM SerieLoteMov s WITH(NOLOCK)
+						JOIN SerieLoteProp p WITH(NOLOCK)
 							ON p.Propiedades = s.Propiedades
 						WHERE s.Empresa = @Empresa
 						AND s.Modulo = @Modulo
@@ -4597,8 +4597,8 @@ BEGIN
 				crRetencion1
 				CURSOR LOCAL FOR
 				SELECT v.importe * (a.retencion2 / 100)
-				FROM ventatcalc v
-					,art a
+				FROM ventatcalc v WITH(NOLOCK)
+					,art a WITH(NOLOCK)
 				WHERE v.mov = @Mov
 				AND v.MovID = @MovID
 				AND v.articulo = a.articulo
@@ -4649,7 +4649,7 @@ BEGIN
 						   WHEN @MN = 1 THEN TipoCambio
 						   ELSE 1.0
 					   END)
-				FROM VentaTCalc
+				FROM VentaTCalc WITH(NOLOCK)
 				WHERE ID = @ID
 				GROUP BY Impuesto1
 				ORDER BY Impuesto1
@@ -4731,7 +4731,7 @@ BEGIN
 						   WHEN @MN = 1 THEN TipoCambio
 						   ELSE 1.0
 					   END)
-				FROM VentaTCalc
+				FROM VentaTCalc WITH(NOLOCK)
 				WHERE ID = @ID
 				GROUP BY Impuesto2
 				ORDER BY Impuesto2
@@ -5234,12 +5234,12 @@ BEGIN
 			IF @Estatus = 'CANCELADO'
 				AND (
 					SELECT NULLIF(FechaCancelacion, '')
-					FROM CFD
+					FROM CFD WITH(NOLOCK)
 					WHERE Modulo = @Modulo
 					AND ModuloID = @ID
 				)
 				IS NULL
-				UPDATE CFD
+				UPDATE CFD WITH(ROWLOCK)
 				SET FechaCancelacion = GETDATE()
 			   ,Fecha = @FechaRegistro
 			   ,Ejercicio = YEAR(@Fecha)
@@ -5256,7 +5256,7 @@ BEGIN
 				WHERE Modulo = @Modulo
 				AND ModuloID = @ID
 			ELSE
-				UPDATE CFD
+				UPDATE CFD WITH(ROWLOCK)
 				SET Fecha = @Fecha
 				   ,Ejercicio = YEAR(@Fecha)
 				   ,Periodo = MONTH(@Fecha)

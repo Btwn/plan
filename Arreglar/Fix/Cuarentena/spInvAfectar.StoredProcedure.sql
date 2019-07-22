@@ -621,26 +621,26 @@ BEGIN
 		   ,CantidadDispSL FLOAT NULL
 		)
 	SELECT @CFDFlex = CFDFlex
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Mov = @Mov
 	AND Modulo = @Modulo
 	SELECT @SubMovTipo = ISNULL(SubClave, '')
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND Mov = @Mov
 	SELECT @EsEcuador = EsEcuador
-	FROM Empresa
+	FROM Empresa WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @SubClave = SubClave
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Mov = @Mov
 	AND Modulo = @Modulo
 	SELECT @RedondeoMonetarios = RedondeoMonetarios
 		  ,@CfgRetencion2BaseImpuesto1 = ISNULL(Retencion2BaseImpuesto1, 0)
-	FROM Version
+	FROM Version WITH(NOLOCK)
 
 	IF @MovTipo = 'INV.EI'
-		UPDATE InvD
+		UPDATE InvD WITH(ROWLOCK)
 		SET Tarima = NULL
 		WHERE ID = @ID
 
@@ -719,7 +719,7 @@ BEGIN
 		  ,@OPORT = ISNULL(OPORT, 0)
 		  ,@CFGProdInterfazInfor = ISNULL(ProdInterfazInfor, 0)
 		  ,@CfgEspacios = Espacios
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CfgRetencionMov =
 		   CASE
@@ -728,7 +728,7 @@ BEGIN
 		   END
 		  ,@CfgIngresoMov = VentaIngreso
 		  ,@CfgEstadisticaAjusteMerma = InvEstadisticaAjusteMerma
-	FROM EmpresaCfgMov
+	FROM EmpresaCfgMov WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CfgArrastrarSerieLote = ISNULL(VentaArrastrarSerieLote, 0)
 		  ,@CfgNotasBorrador = NotasBorrador
@@ -736,19 +736,19 @@ BEGIN
 		  ,@VentaMovImpuestoDesdeRemision = ISNULL(VentaMovImpuestoDesdeRemision, 0)
 		  ,@GenerarNCAlProcesar = ISNULL(GenerarNCAlProcesar, 0)
 		  ,@CfgCostearDC = ISNULL(CompraCostearDCporMovimiento, 0)
-	FROM EmpresaCfg
+	FROM EmpresaCfg WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @WMS = 1
 		AND @MovTipo = 'INV.EI'
-		UPDATE InvD
+		UPDATE InvD WITH(ROWLOCK)
 		SET Tarima = NULL
 		WHERE ID = @ID
 
 	IF @WMS = 1
 		AND @MovTipo = 'COMS.F'
-		AND EXISTS (SELECT PosicionWMS FROM Compra WHERE ID = @ID AND NULLIF(PosicionWMS, '') IS NULL)
-		AND EXISTS (SELECT * FROM Alm WHERE Almacen = @Almacen AND WMS = 1)
+		AND EXISTS (SELECT PosicionWMS FROM Compra WITH(NOLOCK) WHERE ID = @ID AND NULLIF(PosicionWMS, '') IS NULL)
+		AND EXISTS (SELECT * FROM Alm WITH(NOLOCK) WHERE Almacen = @Almacen AND WMS = 1)
 		SELECT @Ok = 20922
 			  ,@OkRef = 'Especifique una Posición (Anden)'
 
@@ -759,7 +759,7 @@ BEGIN
 
 	IF @Modulo = 'VTAS'
 		SELECT @AnticipoFacturadoTipoServicio = ISNULL(AnticipoFacturadoTipoServicio, 0)
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @ID
 
 	SELECT @CfgRetencionAlPago = ISNULL(RetencionAlPago, 0)
@@ -788,7 +788,7 @@ BEGIN
 		   END
 		  ,@ValuacionOtraMonedaTCV = dbo.fnTipoCambioVenta(InvValuacionOtraMoneda)
 		  ,@ValuacionOtraMonedaTCC = dbo.fnTipoCambioCompra(InvValuacionOtraMoneda)
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @SubClave = 'COMS.CE/GT'
@@ -808,7 +808,7 @@ BEGIN
 	IF @OrigenMovTipo = 'VTAS.OP'
 		AND @IDOrigen IS NOT NULL
 		AND @Accion <> 'CANCELAR'
-		UPDATE Venta
+		UPDATE Venta WITH(ROWLOCK)
 		SET Estatus = 'CONCLUIDO'
 		WHERE ID = @IDOrigen
 
@@ -888,10 +888,10 @@ BEGIN
 						   END
 						  ,C.SerieLote
 						  ,C.Cantidad
-					FROM Inv A
-					JOIN InvD B
+					FROM Inv A WITH(NOLOCK)
+					JOIN InvD B WITH(NOLOCK)
 						ON A.ID = B.ID
-					JOIN SerieLoteMov C
+					JOIN SerieLoteMov C WITH(NOLOCK)
 						ON A.ID = C.ID
 						AND A.Empresa = C.Empresa
 						AND C.Modulo = 'INV'
@@ -918,8 +918,8 @@ BEGIN
 					SELECT A.Articulo
 						  ,A.SerieLote
 						  ,SUM(A.Cantidad) Cantidad
-					FROM SerieLoteMov A
-					JOIN Inv B
+					FROM SerieLoteMov A WITH(NOLOCK)
+					JOIN Inv B WITH(NOLOCK)
 						ON A.ID = B.ID
 						AND A.Modulo = B.OrigenTipo
 					WHERE A.Empresa = @Empresa
@@ -959,7 +959,7 @@ BEGIN
 						SELECT @CrRenglonAnt = @CrRenglon
 							  ,@CrRenglonIDAnt = @CrRenglonID
 							  ,@CrArticuloAnt = @CrArticulo
-						UPDATE SerieLoteMov
+						UPDATE SerieLoteMov WITH(ROWLOCK)
 						SET Cantidad =
 						CASE
 							WHEN Cantidad <= @CrCantidad THEN Cantidad
@@ -981,7 +981,7 @@ BEGIN
 								   WHEN Cantidad <= @CrCantidad THEN Cantidad
 								   ELSE @CrCantidad
 							   END
-						FROM SerieLoteMov
+						FROM SerieLoteMov WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 						AND Modulo = 'INV'
 						AND ID = @ID
@@ -1054,7 +1054,7 @@ BEGIN
 					AND @CrSerieLote = @CrSLMSerieLote
 					AND @CrSLMCantidad <= @CrCantidadSL
 				BEGIN
-					UPDATE SerieLoteMov
+					UPDATE SerieLoteMov WITH(ROWLOCK)
 					SET Cantidad =
 					CASE
 						WHEN @CrCantidadDispSL > @CrCantidad THEN @CrCantidad
@@ -1127,17 +1127,17 @@ BEGIN
 		BEGIN
 
 			IF @MovTipo = 'VTAS.EG'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET AlmacenDestino = (
 					SELECT AlmacenDestinoEntregaGarantia
-					FROM EmpresaCfg
+					FROM EmpresaCfg WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 				)
 				WHERE ID = @ID
 
 			IF @UtilizarMovTipo = 'VTAS.CO'
 			BEGIN
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET Condicion = NULL
 				   ,Vencimiento = NULL
 				   ,Referencia = RTRIM(@UtilizarMov) + ' ' + LTRIM(CONVERT(CHAR, @UtilizarMovID))
@@ -1146,7 +1146,7 @@ BEGIN
 					 WHEN '$' THEN (ISNULL(DescuentoLinea, 0.0) / precio) * 100
 					 ELSE ISNULL(DescuentoLinea, 0.0)
 				 END) / 100))
-				FROM VentaD
+				FROM VentaD WITH(NOLOCK)
 				WHERE ID = @UtilizarID
 				INSERT INTO VentaD (Sucursal, ID, Renglon, Aplica, AplicaID, Articulo, Cantidad, Precio, Impuesto1, Almacen)
 					VALUES (@Sucursal, @ID, 2048, @UtilizarMov, @UtilizarMovID, @CfgVentaContratosArticulo, 1, @Precio, @CfgVentaContratosImpuesto, @Almacen)
@@ -1169,7 +1169,7 @@ BEGIN
 				WHERE Empresa = @Empresa
 					AND Modulo = 'INV'
 					AND ID = @ID
-					AND Articulo NOT IN (SELECT Articulo FROM INVD WHERE ID = @Id)
+					AND Articulo NOT IN (SELECT Articulo FROM INVD WITH(NOLOCK) WHERE ID = @Id)
 
 				IF @MovTipo IN ('COMS.EG', 'COMS.EI', 'COMS.OI', 'INV.EI')
 					EXEC spMovCopiarGastoDiverso @Modulo
@@ -1189,20 +1189,20 @@ BEGIN
 
 				IF @UtilizarMovTipo IN ('VTAS.VC', 'VTAS.VCR')
 					AND @MovTipo NOT IN ('VTAS.DC', 'VTAS.DCR')
-					UPDATE VentaD
+					UPDATE VentaD WITH(ROWLOCK)
 					SET Almacen = @GenerarAlmacen
 					WHERE ID = @ID
 				ELSE
 
 				IF @UtilizarMovTipo = 'INV.P'
-					UPDATE InvD
+					UPDATE InvD WITH(ROWLOCK)
 					SET Almacen = @GenerarAlmacenDestino
 					WHERE ID = @ID
 				ELSE
 
 				IF @UtilizarMovTipo = 'INV.SM'
 					AND @MovTipo = 'INV.CM'
-					UPDATE InvD
+					UPDATE InvD WITH(ROWLOCK)
 					SET Tipo = 'Salida'
 					WHERE ID = @ID
 				ELSE
@@ -1212,25 +1212,25 @@ BEGIN
 				BEGIN
 
 					IF @CfgTipoMerma = '#'
-						UPDATE ProdD
+						UPDATE ProdD WITH(ROWLOCK)
 						SET Tipo = 'Entrada'
 						   ,Cantidad = Cantidad - ISNULL(a.Merma, 0) - ISNULL(a.Desperdicio, 0)
 						   ,Merma = a.Merma
 						   ,Desperdicio = a.Desperdicio
-						FROM ProdD d, Art a
+						FROM ProdD d, Art a WITH(NOLOCK)
 						WHERE d.Articulo = a.Articulo
 						AND d.ID = @ID
 					ELSE
-						UPDATE ProdD
+						UPDATE ProdD WITH(ROWLOCK)
 						SET Tipo = 'Entrada'
 						   ,Cantidad = Cantidad - ISNULL(ROUND(d.Cantidad * (a.Merma / 100), 10), 0) - ISNULL(ROUND(d.Cantidad * (a.Desperdicio / 100), 10), 0)
 						   ,Merma = ROUND(d.Cantidad * (a.Merma / 100), 10)
 						   ,Desperdicio = ROUND(d.Cantidad * (a.Desperdicio / 100), 10)
-						FROM ProdD d, Art a
+						FROM ProdD d, Art a WITH(NOLOCK)
 						WHERE d.Articulo = a.Articulo
 						AND d.ID = @ID
 
-					UPDATE ProdD
+					UPDATE ProdD WITH(ROWLOCK)
 					SET CantidadInventario = Cantidad * Factor
 					WHERE ID = @ID
 				END
@@ -1254,11 +1254,11 @@ BEGIN
 		AND @Accion <> 'CANCELAR'
 		AND @Estatus = 'SINAFECTAR'
 
-		IF EXISTS (SELECT ConVigencia FROM Venta WHERE ID = @ID AND ConVigencia = 1)
-			UPDATE Cte
+		IF EXISTS (SELECT ConVigencia FROM Venta WITH(NOLOCK) WHERE ID = @ID AND ConVigencia = 1)
+			UPDATE Cte WITH(ROWLOCK)
 			SET VigenciaDesde = v.VigenciaDesde
 			   ,VigenciaHasta = v.VigenciaHasta
-			FROM Venta v
+			FROM Venta v WITH(NOLOCK)
 			WHERE v.ID = @ID
 			AND v.Cliente = Cte.Cliente
 
@@ -1290,13 +1290,13 @@ BEGIN
 									,@OkRef OUTPUT
 
 				IF @UtilizarMovTipo IN ('VTAS.C', 'VTAS.CS')
-					UPDATE Venta
+					UPDATE Venta WITH(ROWLOCK)
 					SET Estatus = 'CONCLUIDO'
 					WHERE ID = @UtilizarID
 				ELSE
 
 				IF @UtilizarMovTipo = 'COMS.C'
-					UPDATE Compra
+					UPDATE Compra WITH(ROWLOCK)
 					SET Estatus = 'CONCLUIDO'
 					WHERE ID = @UtilizarID
 
@@ -1319,23 +1319,23 @@ BEGIN
 				BEGIN
 					SELECT @AlmacenEspecificoVenta = NULL
 					SELECT @AlmacenEspecificoVenta = MIN(NULLIF(RTRIM(AlmacenEspecificoVenta), ''))
-					FROM Art a
-						,VentaD d
+					FROM Art a WITH(NOLOCK)
+						,VentaD d WITH(NOLOCK)
 					WHERE d.ID = @ID
 					AND d.Articulo = a.Articulo
 					AND a.AlmacenEspecificoVentaMov = @Mov
 					AND NULLIF(RTRIM(a.AlmacenEspecificoVenta), '') IS NOT NULL
 
 					IF @AlmacenEspecificoVenta IS NOT NULL
-						UPDATE Venta
+						UPDATE Venta WITH(ROWLOCK)
 						SET Almacen = @AlmacenEspecificoVenta
 						WHERE ID = @ID
 
 				END
 				ELSE
-					UPDATE VentaD
+					UPDATE VentaD WITH(ROWLOCK)
 					SET Almacen = NULLIF(RTRIM(AlmacenEspecificoVenta), '')
-					FROM VentaD d, Art a
+					FROM VentaD d, Art a WITH(NOLOCK)
 					WHERE d.ID = @ID
 					AND d.Articulo = a.Articulo
 					AND a.AlmacenEspecificoVentaMov = @Mov
@@ -1346,13 +1346,13 @@ BEGIN
 			IF @UtilizarMovTipo IN ('VTAS.N', 'VTAS.NO', 'VTAS.NR', 'VTAS.FM')
 				AND @MovTipo IN ('VTAS.N', 'VTAS.NO', 'VTAS.NR', 'VTAS.FM')
 			BEGIN
-				UPDATE VentaD
+				UPDATE VentaD WITH(ROWLOCK)
 				SET Cantidad = -ABS(Cantidad)
 				   ,CantidadInventario = -ABS(CantidadInventario)
 				   ,Aplica = NULL
 				   ,AplicaID = NULL
 				WHERE ID = @ID
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET Directo = 1
 				   ,Referencia = RTRIM(@UtilizarMov) + ' ' + RTRIM(@UtilizarMovID)
 				WHERE ID = @ID
@@ -1361,11 +1361,11 @@ BEGIN
 			IF @UtilizarMovTipo IN ('VTAS.N', 'VTAS.NO', 'VTAS.NR', 'VTAS.FM')
 				AND @MovTipo = 'VTAS.SD'
 			BEGIN
-				UPDATE VentaD
+				UPDATE VentaD WITH(ROWLOCK)
 				SET Aplica = NULL
 				   ,AplicaID = NULL
 				WHERE ID = @ID
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET Directo = 1
 				   ,Referencia = RTRIM(@UtilizarMov) + ' ' + RTRIM(@UtilizarMovID)
 				WHERE ID = @ID
@@ -1375,7 +1375,7 @@ BEGIN
 			BEGIN
 
 				IF @MovTipo IN ('VTAS.N', 'VTAS.FM')
-					UPDATE Venta
+					UPDATE Venta WITH(ROWLOCK)
 					SET Condicion = NULL
 					   ,Vencimiento = NULL
 					WHERE ID = @ID
@@ -1391,7 +1391,7 @@ BEGIN
 											  ,@Vencimiento OUTPUT
 											  ,NULL
 											  ,@Ok OUTPUT
-					UPDATE Venta
+					UPDATE Venta WITH(ROWLOCK)
 					SET Vencimiento = @Vencimiento
 					WHERE ID = @ID
 					AND Vencimiento <> @Vencimiento
@@ -1400,7 +1400,7 @@ BEGIN
 			END
 
 			IF @UtilizarMovTipo = 'INV.P'
-				UPDATE Inv
+				UPDATE Inv WITH(ROWLOCK)
 				SET Almacen = AlmacenDestino
 				   ,AlmacenDestino = Almacen
 				WHERE ID = @ID
@@ -1414,27 +1414,27 @@ BEGIN
 			IF @GenerarMovTipo = 'INV.TMA'
 				AND (
 					SELECT WMSSugerirEntarimado
-					FROM EmpresaCfg
+					FROM EmpresaCfg WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 				)
 				= 1
 			BEGIN
 				SELECT @OrigenP = Origen
 					  ,@OrigenIDP = OrigenID
-				FROM INV
+				FROM INV WITH(NOLOCK)
 				WHERE ID = @ID
 				SELECT @IDN = ID
-				FROM INV
+				FROM INV WITH(NOLOCK)
 				WHERE MOV = @OrigenP
 				AND MOVID = @OrigenIDP
 				SELECT @CrossDocking = CrossDocking
 					  ,@Almacen = Almacen
 					  ,@PosicionWMS = PosicionWMS
-				FROM INV
+				FROM INV WITH(NOLOCK)
 				WHERE ID = @IDN
 				SELECT @EsCrossDocking = RTRIM(LTRIM(ISNULL(EsCrossDocking, '')))
 					  ,@posicioncrossdocking = ISNULL(defposicioncrossdocking, '')
-				FROM ALM
+				FROM ALM WITH(NOLOCK)
 				WHERE Almacen = @Almacen
 
 				IF @posicioncrossdocking = ''
@@ -1442,7 +1442,7 @@ BEGIN
 				BEGIN
 					SELECT @Ok = Mensaje
 						  ,@OkRef = Descripcion
-					FROM MensajeLista
+					FROM MensajeLista WITH(NOLOCK)
 					WHERE Mensaje = 20028
 					SELECT @OkRef
 					ROLLBACK TRANSACTION
@@ -1456,7 +1456,7 @@ BEGIN
 				BEGIN
 					SELECT @Ok = Mensaje
 						  ,@OkRef = Descripcion
-					FROM MensajeLista
+					FROM MensajeLista WITH(NOLOCK)
 					WHERE Mensaje = 20027
 					SELECT @OkRef
 					ROLLBACK TRANSACTION
@@ -1522,7 +1522,7 @@ BEGIN
 
 			IF @LDI = 1
 				AND @Ok IS NOT NULL
-				AND EXISTS (SELECT * FROM LDIIDTemp WHERE Estacion = @@SPID AND Modulo = @Modulo)
+				AND EXISTS (SELECT * FROM LDIIDTemp WITH(NOLOCK) WHERE Estacion = @@SPID AND Modulo = @Modulo)
 			BEGIN
 				INSERT @LDILog (IDModulo, Modulo, Servicio, Fecha, TipoTransaccion, TipoSubservicio, CodigoRespuesta, DescripcionRespuesta, OrigenRespuesta, InfoAdicional, IDTransaccion, CodigoAutorizacion, Comprobante, Cadena, CadenaRespuesta, Importe, RIDCobro)
 					SELECT IDModulo
@@ -1542,9 +1542,9 @@ BEGIN
 						  ,CadenaRespuesta
 						  ,Importe
 						  ,RIDCobro
-					FROM LDIMovLog
+					FROM LDIMovLog WITH(NOLOCK)
 					WHERE IDModulo = @ID
-					AND ID IN (SELECT ID FROM LDIIDTemp WHERE Estacion = @@SPID AND Modulo = @Modulo)
+					AND ID IN (SELECT ID FROM LDIIDTemp WITH(NOLOCK) WHERE Estacion = @@SPID AND Modulo = @Modulo)
 			END
 
 			IF @Ok IS NULL
@@ -1641,7 +1641,7 @@ BEGIN
 		AND @CfgComisionBase = 'COBRO'
 	BEGIN
 		SELECT @ComisionFactor = 1 - ABS(ISNULL(DelEfectivo / NULLIF((ISNULL(Importe1, 0) + ISNULL(Importe2, 0) + ISNULL(Importe3, 0) + ISNULL(Importe4, 0) + ISNULL(Importe5, 0) - ISNULL(Cambio, 0) + ISNULL(DelEfectivo, 0)), 0), 0.0))
-		FROM VentaCobro
+		FROM VentaCobro WITH(NOLOCK)
 		WHERE ID = @ID
 	END
 
@@ -1770,34 +1770,34 @@ BEGIN
 
 		IF (
 				SELECT Sincro
-				FROM Version
+				FROM Version WITH(NOLOCK)
 			)
 			= 1
 		BEGIN
 
 			IF @Modulo = 'INV'
-				EXEC sp_executesql N'UPDATE InvD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+				EXEC sp_executesql N'UPDATE InvD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 								  ,N'@Sucursal int, @ID int'
 								  ,@Sucursal
 								  ,@ID
 			ELSE
 
 			IF @Modulo = 'VTAS'
-				EXEC sp_executesql N'UPDATE VentaD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+				EXEC sp_executesql N'UPDATE VentaD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 								  ,N'@Sucursal int, @ID int'
 								  ,@Sucursal
 								  ,@ID
 			ELSE
 
 			IF @Modulo = 'COMS'
-				EXEC sp_executesql N'UPDATE CompraD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+				EXEC sp_executesql N'UPDATE CompraD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 								  ,N'@Sucursal int, @ID int'
 								  ,@Sucursal
 								  ,@ID
 			ELSE
 
 			IF @Modulo = 'PROD'
-				EXEC sp_executesql N'UPDATE ProdD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+				EXEC sp_executesql N'UPDATE ProdD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 								  ,N'@Sucursal int, @ID int'
 								  ,@Sucursal
 								  ,@ID
@@ -1812,15 +1812,15 @@ BEGIN
 		AND @MovTipo = 'INV.A'
 		AND @OrigenMovTipo = 'INV.IF'
 	BEGIN
-		UPDATE Tarima
+		UPDATE Tarima WITH(ROWLOCK)
 		SET Estatus = 'BAJA'
 		   ,Baja = GETDATE()
 		FROM Tarima
-		JOIN InvD
+		JOIN InvD WITH(NOLOCK)
 			ON Tarima.Posicion = InvD.PosicionReal
-		JOIN Inv
+		JOIN Inv WITH(NOLOCK)
 			ON InvD.ID = Inv.ID
-		JOIN AlmPos
+		JOIN AlmPos WITH(NOLOCK)
 			ON Inv.Almacen = AlmPos.Almacen
 			AND InvD.PosicionReal = AlmPos.Posicion
 		WHERE InvD.ID = @ID
@@ -2070,8 +2070,8 @@ BEGIN
 					  ,d.Retencion2
 					  ,d.Retencion3
 					  ,ISNULL(d.AnticipoFacturado, 0)
-				FROM VentaD d
-					,Art a
+				FROM VentaD d WITH(NOLOCK)
+					,Art a WITH(NOLOCK)
 				WHERE d.ID = @ID
 				AND d.Articulo = a.Articulo
 			OPEN crVentaDetalle
@@ -2157,8 +2157,8 @@ BEGIN
 					  ,d.Retencion3
 					  ,ISNULL(d.PosicionActual, '')
 					  ,ISNULL(PosicionReal, '')
-				FROM CompraD d
-					,Art a
+				FROM CompraD d WITH(NOLOCK)
+					,Art a WITH(NOLOCK)
 				WHERE d.ID = @ID
 				AND d.Articulo = a.Articulo
 			OPEN crCompraDetalle
@@ -2238,8 +2238,8 @@ BEGIN
 					  ,d.PosicionDestino
 					  ,ISNULL(d.PosicionActual, '')
 					  ,ISNULL(PosicionReal, '')
-				FROM InvD d
-					,Art a
+				FROM InvD d WITH(NOLOCK)
+					,Art a WITH(NOLOCK)
 				WHERE d.ID = @ID
 				AND d.Articulo = a.Articulo
 			OPEN crInvDetalle
@@ -2317,8 +2317,8 @@ BEGIN
 					  ,a.TipoRetencion1
 					  ,a.TipoRetencion2
 					  ,a.TipoRetencion3
-				FROM ProdD d
-					,Art a
+				FROM ProdD d WITH(NOLOCK)
+					,Art a WITH(NOLOCK)
 				WHERE d.ID = @ID
 				AND d.Articulo = a.Articulo
 			OPEN crProdDetalle
@@ -2370,7 +2370,7 @@ BEGIN
 
 		IF @CP = 1
 			SELECT @ClavePresupuestalImpuesto1 = ClavePresupuestalImpuesto1
-			FROM Art
+			FROM Art WITH(NOLOCK)
 			WHERE Articulo = @Articulo
 
 		IF @CfgMultiUnidades = 0
@@ -2378,7 +2378,7 @@ BEGIN
 
 			IF @Modulo = 'COMS'
 				SELECT @ArtUnidad = UnidadCompra
-				FROM Art
+				FROM Art WITH(NOLOCK)
 				WHERE Articulo = @Articulo
 
 			SELECT @MovUnidad = @ArtUnidad
@@ -2467,22 +2467,22 @@ BEGIN
 
 		IF @Almacen IS NOT NULL
 			SELECT @AlmacenTipo = UPPER(Tipo)
-			FROM Alm
+			FROM Alm WITH(NOLOCK)
 			WHERE Almacen = @AlmacenRenglon
 
 		IF @AlmacenDestino IS NOT NULL
 			SELECT @AlmacenDestinoTipo = UPPER(Tipo)
-			FROM Alm
+			FROM Alm WITH(NOLOCK)
 			WHERE Almacen = @AlmacenDestino
 
 		SELECT @SucursalAlmacen = Sucursal
 			  ,@WMSAlmacen = ISNULL(WMS, 0)
-		FROM Alm
+		FROM Alm WITH(NOLOCK)
 		WHERE Almacen = @Almacen
 
 		IF @AlmacenDestino IS NOT NULL
 			SELECT @SucursalAlmacenDestino = Sucursal
-			FROM Alm
+			FROM Alm WITH(NOLOCK)
 			WHERE Almacen = @AlmacenDestino
 
 		IF @WMS = 1
@@ -2512,7 +2512,7 @@ BEGIN
 
 			IF (
 					SELECT Tipo
-					FROM AlmPos
+					FROM AlmPos WITH(NOLOCK)
 					WHERE AlmPos.Almacen = @Almacen
 					AND AlmPos.Posicion = @PosicionReal
 				)
@@ -2535,7 +2535,7 @@ BEGIN
 
 			IF (
 					SELECT Tipo
-					FROM AlmPos
+					FROM AlmPos WITH(NOLOCK)
 					WHERE AlmPos.Almacen = @Almacen
 					AND AlmPos.Posicion = @PosicionReal
 				)
@@ -2553,13 +2553,13 @@ BEGIN
 		IF @AplicaMov <> NULL
 		BEGIN
 			SELECT @AplicaMovTipo = Clave
-			FROM MovTipo
+			FROM MovTipo WITH(NOLOCK)
 			WHERE Modulo = @Modulo
 			AND Mov = @AplicaMov
 
 			IF @Modulo = 'VTAS'
 				SELECT @IDAplica = ID
-				FROM Venta
+				FROM Venta WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Mov = @AplicaMov
 				AND MovID = @AplicaMovID
@@ -2568,7 +2568,7 @@ BEGIN
 
 			IF @Modulo = 'COMS'
 				SELECT @IDAplica = ID
-				FROM Compra
+				FROM Compra WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Mov = @AplicaMov
 				AND MovID = @AplicaMovID
@@ -2577,7 +2577,7 @@ BEGIN
 
 			IF @Modulo = 'PROD'
 				SELECT @IDAplica = ID
-				FROM Prod
+				FROM Prod WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Mov = @AplicaMov
 				AND MovID = @AplicaMovID
@@ -2586,7 +2586,7 @@ BEGIN
 
 			IF @Modulo = 'INV'
 				SELECT @IDAplica = ID
-				FROM Inv
+				FROM Inv WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Mov = @AplicaMov
 				AND MovID = @AplicaMovID
@@ -2596,8 +2596,8 @@ BEGIN
 				AND @IDAplica IS NOT NULL
 			BEGIN
 				SELECT @IDSalidaTraspaso = o.ID
-				FROM Inv i
-				JOIN Inv o
+				FROM Inv i WITH(NOLOCK)
+				JOIN Inv o WITH(NOLOCK)
 					ON o.Empresa = i.Empresa
 					AND o.Mov = i.Origen
 					AND o.MovID = i.OrigenID
@@ -2684,7 +2684,7 @@ BEGIN
 
 			SELECT @ArtMoneda = MonedaCosto
 				  ,@SeriesLotesAutoOrden = ISNULL(NULLIF(NULLIF(RTRIM(UPPER(SeriesLotesAutoOrden)), ''), '(EMPRESA)'), @CfgSeriesLotesAutoOrden)
-			FROM Art
+			FROM Art WITH(NOLOCK)
 			WHERE Articulo = @Articulo
 
 			IF @Generar = 0
@@ -2696,7 +2696,7 @@ BEGIN
 				BEGIN
 					SELECT @Costo = 0.0
 						  ,@Precio = 0.0
-					UPDATE CompraD
+					UPDATE CompraD WITH(ROWLOCK)
 					SET Costo = NULL
 					WHERE CURRENT OF crCompraDetalle
 				END
@@ -2723,7 +2723,7 @@ BEGIN
 							crArtInv
 							CURSOR FOR
 							SELECT TOP 1 SerieLote
-							FROM SerieLote
+							FROM SerieLote WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 							AND Articulo = @Articulo
 							AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '')
@@ -2738,7 +2738,7 @@ BEGIN
 						WHILE @@FETCH_STATUS = 0
 						BEGIN
 
-						IF NOT EXISTS (SELECT * FROM SerieLoteMov WHERE Empresa = @Empresa AND Modulo = @Modulo AND ID = @ID AND RenglonID = @RenglonID)
+						IF NOT EXISTS (SELECT * FROM SerieLoteMov WITH(NOLOCK) WHERE Empresa = @Empresa AND Modulo = @Modulo AND ID = @ID AND RenglonID = @RenglonID)
 						BEGIN
 							INSERT SerieLoteMov (Sucursal, Empresa, Modulo, ID, RenglonID, Articulo, SubCuenta, SerieLote, Cantidad)
 								VALUES (@Sucursal, @Empresa, @Modulo, @ID, @RenglonID, @Articulo, ISNULL(@SubCuenta, ''), @SerieLote, @CantidadOriginal)
@@ -2875,7 +2875,7 @@ BEGIN
 						  ,@Impuesto5 = @Impuesto5N
 
 					IF @Modulo = 'VTAS'
-						UPDATE VentaD
+						UPDATE VentaD WITH(ROWLOCK)
 						SET Precio = @Precio
 						   ,Impuesto1 = @Impuesto1
 						   ,Impuesto2 = @Impuesto2
@@ -2891,7 +2891,7 @@ BEGIN
 							AND @NoValidarDisponible <> 0
 						BEGIN
 							SELECT @Costo = @Precio
-							UPDATE CompraD
+							UPDATE CompraD WITH(ROWLOCK)
 							SET Costo = @Costo
 							   ,Impuesto1 = @Impuesto1
 							   ,Impuesto2 = @Impuesto2
@@ -2919,9 +2919,9 @@ BEGIN
 
 					IF @MovTipo IN ('VTAS.F', 'VTAS.FAR', 'VTAS.FC', 'VTAS.FG', 'VTAS.FX', 'VTAS.FB')
 					BEGIN
-						UPDATE VentaDAgente
+						UPDATE VentaDAgente WITH(ROWLOCK)
 						SET CostoActividad = a.Costo
-						FROM VentaDAgente d, Actividad a
+						FROM VentaDAgente d, Actividad a WITH(NOLOCK)
 						WHERE d.ID = @ID
 						AND d.Renglon = @Renglon
 						AND d.RenglonSub = @RenglonSub
@@ -2929,18 +2929,18 @@ BEGIN
 
 						IF @CfgCosteoActividades = 'TIEMPO ESTANDAR'
 							SELECT @CostoActividad = SUM(CostoActividad * CantidadEstandar)
-							FROM VentaDAgente
+							FROM VentaDAgente WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
 						ELSE
 							SELECT @CostoActividad = SUM(CostoActividad * (CONVERT(FLOAT, Minutos) / 60))
-							FROM VentaDAgente
+							FROM VentaDAgente WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
 
-						UPDATE VentaD
+						UPDATE VentaD WITH(ROWLOCK)
 						SET CostoActividad = @CostoActividad / NULLIF(@MovTipoCambio, 0) / NULLIF(@CantidadOriginal, 0)
 						WHERE CURRENT OF crVentaDetalle
 					END
@@ -2993,7 +2993,7 @@ BEGIN
 						IF @Modulo = 'VTAS'
 						BEGIN
 
-							IF EXISTS (SELECT * FROM Venta v JOIN MovTipo mt ON v.Mov = mt.Mov AND mt.Modulo = @Modulo WHERE v.Empresa = @Empresa AND v.Mov = @AplicaMov AND v.MovID = @AplicaMovID AND mt.Clave IN ('VTAS.VCR', 'VTAS.R'))
+							IF EXISTS (SELECT * FROM Venta v WITH(NOLOCK) JOIN MovTipo mt WITH(NOLOCK) ON v.Mov = mt.Mov AND mt.Modulo = @Modulo WHERE v.Empresa = @Empresa AND v.Mov = @AplicaMov AND v.MovID = @AplicaMovID AND mt.Clave IN ('VTAS.VCR', 'VTAS.R'))
 								AND @VentaMovImpuestoDesdeRemision = 1
 								AND @MovTipo IN ('VTAS.F', 'VTAS.DCR')
 							BEGIN
@@ -3001,7 +3001,7 @@ BEGIN
 								SELECT @MovImpuestoAplicaID = ID
 									  ,@AplicaConcepto = Concepto
 									  ,@AplicaFechaEmision = FechaEmision
-								FROM Venta
+								FROM Venta WITH(NOLOCK)
 								WHERE Empresa = @Empresa
 								AND Mov = @AplicaMov
 								AND MovID = @AplicaMovID
@@ -3189,7 +3189,7 @@ BEGIN
 					AND @ArtTipo NOT IN ('JUEGO', 'SERVICIO')
 				BEGIN
 					SELECT @Costo = ISNULL(SUM(Cantidad * Costo) / NULLIF(SUM(Cantidad), 0.0), 0.0)
-					FROM VentaD
+					FROM VentaD WITH(NOLOCK)
 					WHERE ID = @IDAplica
 					AND Articulo = @Articulo
 					AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '')
@@ -3197,7 +3197,7 @@ BEGIN
 					IF @Costo = 0.0
 						SELECT @AfectarCostos = 1
 					ELSE
-						UPDATE VentaD
+						UPDATE VentaD WITH(ROWLOCK)
 						SET Costo = @Costo
 						WHERE CURRENT OF crVentaDetalle
 
@@ -3207,7 +3207,7 @@ BEGIN
 					AND @AlmacenTipo = 'GARANTIAS'
 					AND @Accion <> 'CANCELAR'
 				BEGIN
-					UPDATE VentaD
+					UPDATE VentaD WITH(ROWLOCK)
 					SET Costo = NULL
 					WHERE CURRENT OF crVentaDetalle
 					SELECT @Costo = 0.0
@@ -3245,7 +3245,7 @@ BEGIN
 
 					IF @MovTipo IN ('COMS.EG', 'COMS.EI')
 						SELECT @CostoInv = CostoInv
-						FROM CompraD
+						FROM CompraD WITH(NOLOCK)
 						WHERE ID = @ID
 						AND Renglon = @Renglon
 						AND RenglonSub = @RenglonSub
@@ -3253,7 +3253,7 @@ BEGIN
 
 					IF @MovTipo IN ('INV.EI')
 						SELECT @CostoInv = CostoInv
-						FROM InvD
+						FROM InvD WITH(NOLOCK)
 						WHERE ID = @ID
 						AND Renglon = @Renglon
 						AND RenglonSub = @RenglonSub
@@ -3413,7 +3413,7 @@ BEGIN
 						ELSE
 
 						IF @Modulo = 'INV'
-							UPDATE InvD
+							UPDATE InvD WITH(ROWLOCK)
 							SET Precio = @Precio
 							WHERE CURRENT OF crInvDetalle
 
@@ -3461,7 +3461,7 @@ BEGIN
 							IF @Modulo = 'VTAS'
 							BEGIN
 
-								IF EXISTS (SELECT * FROM Venta v JOIN MovTipo mt ON v.Mov = mt.Mov AND mt.Modulo = @Modulo WHERE v.Empresa = @Empresa AND v.Mov = @AplicaMov AND v.MovID = @AplicaMovID AND mt.Clave IN ('VTAS.VCR', 'VTAS.R'))
+								IF EXISTS (SELECT * FROM Venta v WITH(NOLOCK) JOIN MovTipo mt WITH(NOLOCK) ON v.Mov = mt.Mov AND mt.Modulo = @Modulo WHERE v.Empresa = @Empresa AND v.Mov = @AplicaMov AND v.MovID = @AplicaMovID AND mt.Clave IN ('VTAS.VCR', 'VTAS.R'))
 									AND @VentaMovImpuestoDesdeRemision = 1
 									AND @MovTipo IN ('VTAS.F', 'VTAS.DCR')
 								BEGIN
@@ -3469,7 +3469,7 @@ BEGIN
 									SELECT @MovImpuestoAplicaID = ID
 										  ,@AplicaConcepto = Concepto
 										  ,@AplicaFechaEmision = FechaEmision
-									FROM Venta
+									FROM Venta WITH(NOLOCK)
 									WHERE Empresa = @Empresa
 									AND Mov = @AplicaMov
 									AND MovID = @AplicaMovID
@@ -3598,7 +3598,7 @@ BEGIN
 					BEGIN
 
 						IF @Modulo = 'VTAS'
-							UPDATE VentaD
+							UPDATE VentaD WITH(ROWLOCK)
 							SET Unidad = @MovUnidad
 							   ,Costo = @ArtCosto * @ArtFactor
 							   ,AjusteCosteo = @ArtAjusteCosteo * @ArtFactor
@@ -3612,7 +3612,7 @@ BEGIN
 						ELSE
 
 						IF @Modulo = 'INV'
-							UPDATE InvD
+							UPDATE InvD WITH(ROWLOCK)
 							SET Unidad = @MovUnidad
 							   ,Costo = @ArtCosto * @ArtFactor
 							   ,AjusteCosteo = @ArtAjusteCosteo * @ArtFactor
@@ -3626,7 +3626,7 @@ BEGIN
 						ELSE
 
 						IF @Modulo = 'PROD'
-							UPDATE ProdD
+							UPDATE ProdD WITH(ROWLOCK)
 							SET Unidad = @MovUnidad
 							   ,Costo = @ArtCosto * @ArtFactor
 							   ,AjusteCosteo = @ArtAjusteCosteo * @ArtFactor
@@ -3640,7 +3640,7 @@ BEGIN
 						ELSE
 
 						IF @Modulo = 'COMS'
-							UPDATE CompraD
+							UPDATE CompraD WITH(ROWLOCK)
 							SET Unidad = @MovUnidad
 							   ,AjusteCosteo = @ArtAjusteCosteo * @ArtFactor
 							   ,CostoUEPS = @ArtCostoUEPS * @ArtFactor
@@ -3655,7 +3655,7 @@ BEGIN
 							SELECT @Ok = 1
 
 						IF @MovTipo = 'COMS.D'
-							UPDATE CompraD
+							UPDATE CompraD WITH(ROWLOCK)
 							SET CostoInv = @ArtCosto
 							WHERE CURRENT OF crCompraDetalle
 
@@ -3668,7 +3668,7 @@ BEGIN
 							AND @IDSalidaTraspaso IS NOT NULL
 							SELECT @AjustePrecioLista = @PrecioSinImpuestos - (
 								 SELECT MIN(PrecioLista)
-								 FROM InvD
+								 FROM InvD WITH(NOLOCK)
 								 WHERE ID = @IDSalidaTraspaso
 								 AND Articulo = @Articulo
 								 AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '')
@@ -3689,7 +3689,7 @@ BEGIN
 						ELSE
 
 						IF @Modulo = 'INV'
-							UPDATE InvD
+							UPDATE InvD WITH(ROWLOCK)
 							SET Unidad = @MovUnidad
 							   ,AjusteCosteo = @ArtAjusteCosteo * @ArtFactor
 							   ,CostoUEPS = @ArtCostoUEPS * @ArtFactor
@@ -3703,7 +3703,7 @@ BEGIN
 						ELSE
 
 						IF @Modulo = 'PROD'
-							UPDATE ProdD
+							UPDATE ProdD WITH(ROWLOCK)
 							SET Unidad = @MovUnidad
 							   ,AjusteCosteo = @ArtAjusteCosteo * @ArtFactor
 							   ,CostoUEPS = @ArtCostoUEPS * @ArtFactor
@@ -3716,7 +3716,7 @@ BEGIN
 						ELSE
 
 						IF @Modulo = 'COMS'
-							UPDATE CompraD
+							UPDATE CompraD WITH(ROWLOCK)
 							SET Unidad = @MovUnidad
 							   ,AjusteCosteo = @ArtAjusteCosteo * @ArtFactor
 							   ,CostoUEPS = @ArtCostoUEPS * @ArtFactor
@@ -3743,7 +3743,7 @@ BEGIN
 								  ,a.Precio2 * @Cantidad
 								  ,@FechaEmision
 								  ,'ALTA'
-							FROM Art a
+							FROM Art a WITH(NOLOCK)
 							WHERE a.Articulo = @Articulo
 
 					IF @Modulo <> 'COMS'
@@ -3822,7 +3822,7 @@ BEGIN
 										,@RenglonID = @RenglonID
 										,@SubGrupo = @Tarima
 
-						IF EXISTS (SELECT * FROM Movtipo WHERE Modulo = 'VTAS' AND Clave = 'VTAS.VCR' AND Mov = @Origen)
+						IF EXISTS (SELECT * FROM Movtipo WITH(NOLOCK) WHERE Modulo = 'VTAS' AND Clave = 'VTAS.VCR' AND Mov = @Origen)
 							AND @MovTipo = 'VTAS.F'
 							SET @CostoInvTotal = 0
 
@@ -3860,7 +3860,7 @@ BEGIN
 										,@RenglonSub = @RenglonSub
 										,@RenglonID = @RenglonID
 
-						IF NOT EXISTS (SELECT * FROM Movtipo WHERE Modulo = 'VTAS' AND Clave = 'VTAS.VCR' AND Mov = @Origen)
+						IF NOT EXISTS (SELECT * FROM Movtipo WITH(NOLOCK) WHERE Modulo = 'VTAS' AND Clave = 'VTAS.VCR' AND Mov = @Origen)
 
 							IF @MovTipo IN ('VTAS.F', 'VTAS.FM', 'VTAS.FR', 'INV.SI', 'INV.T', 'VTAS.VCR', 'VTAS.R', 'INV.A', 'INV.S')
 								AND @WMS = 1
@@ -3906,7 +3906,7 @@ BEGIN
 
 							IF (
 									SELECT Tipo
-									FROM AlmPos
+									FROM AlmPos WITH(NOLOCK)
 									WHERE Almacen = @AfectarAlmacen
 									AND Posicion = @PosicionReal
 								)
@@ -3916,7 +3916,7 @@ BEGIN
 								IF @Accion IN ('AFECTAR', 'CANCELAR')
 									AND (
 										SELECT Disponible
-										FROM ArtDisponibleTarima
+										FROM ArtDisponibleTarima WITH(NOLOCK)
 										WHERE Tarima = @Tarima
 										AND Almacen = @AfectarAlmacen
 										AND Empresa = @Empresa
@@ -3924,7 +3924,7 @@ BEGIN
 									)
 									= 0
 								BEGIN
-									UPDATE Tarima
+									UPDATE Tarima WITH(ROWLOCK)
 									SET Estatus = 'BAJA'
 									   ,Baja = GETDATE()
 									WHERE Tarima = @Tarima
@@ -3932,7 +3932,7 @@ BEGIN
 									IF @OrigenMovTipo = 'INV.IF'
 									BEGIN
 
-										IF EXISTS (SELECT * FROM InvD WHERE ID = @ID AND Articulo <> @Articulo AND Tarima = @Tarima)
+										IF EXISTS (SELECT * FROM InvD WITH(NOLOCK) WHERE ID = @ID AND Articulo <> @Articulo AND Tarima = @Tarima)
 										BEGIN
 											DELETE SaldoUWMS
 											WHERE Sucursal = @Sucursal
@@ -3965,14 +3965,14 @@ BEGIN
 								IF @Accion IN ('AFECTAR', 'CANCELAR')
 									AND (
 										SELECT Disponible
-										FROM ArtDisponibleTarima
+										FROM ArtDisponibleTarima WITH(NOLOCK)
 										WHERE Tarima = @Tarima
 										AND Almacen = @Almacen
 										AND Empresa = @Empresa
 										AND Articulo = @Articulo
 									)
 									> 0
-									UPDATE Tarima
+									UPDATE Tarima WITH(ROWLOCK)
 									SET Estatus = 'ALTA'
 									   ,Baja = NULL
 									WHERE Tarima = @Tarima
@@ -3980,14 +3980,14 @@ BEGIN
 								IF @Accion = 'AFECTAR'
 									AND @PosicionActual <> @PosicionReal
 									AND ISNULL(@PosicionReal, '') <> ''
-									UPDATE Tarima
+									UPDATE Tarima WITH(ROWLOCK)
 									SET Posicion = @PosicionReal
 									WHERE Tarima = @Tarima
 
 								IF @Accion = 'CANCELAR'
 									AND @PosicionActual <> @PosicionReal
 									AND ISNULL(@PosicionActual, '') <> ''
-									UPDATE Tarima
+									UPDATE Tarima WITH(ROWLOCK)
 									SET Posicion = @PosicionActual
 									WHERE Tarima = @Tarima
 
@@ -4073,7 +4073,7 @@ BEGIN
 								SELECT @Ok = 20630
 
 							SELECT @VIN = MIN(SerieLote)
-							FROM SerieLoteMov
+							FROM SerieLoteMov WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 							AND Modulo = @Modulo
 							AND ID = @ID
@@ -4081,7 +4081,7 @@ BEGIN
 							AND Articulo = @Articulo
 
 							IF @MovTipo = 'VTAS.F'
-								UPDATE Venta
+								UPDATE Venta WITH(ROWLOCK)
 								SET ServicioArticulo = @Articulo
 								   ,ServicioSerie = @VIN
 								WHERE ID = @ID
@@ -4090,9 +4090,9 @@ BEGIN
 
 						IF @Accion = 'CANCELAR'
 							AND @Ok IS NULL
-							UPDATE VIN
+							UPDATE VIN WITH(ROWLOCK)
 							SET FechaMRS = NULL
-							FROM VIN v, SerieLoteMov s
+							FROM VIN v, SerieLoteMov s WITH(NOLOCK)
 							WHERE s.Empresa = @Empresa
 							AND s.Modulo = @Modulo
 							AND s.ID = @ID
@@ -4103,10 +4103,10 @@ BEGIN
 						ELSE
 						BEGIN
 
-							IF EXISTS (SELECT v.VIN FROM VIN v, SerieLoteMov s WHERE s.Empresa = @Empresa AND s.Modulo = @Modulo AND s.ID = @ID AND s.RenglonID = @RenglonID AND s.Articulo = @Articulo AND v.VIN = s.SerieLote AND v.TieneMovimientos = 0)
-								UPDATE VIN
+							IF EXISTS (SELECT v.VIN FROM VIN v WITH(NOLOCK), SerieLoteMov s WITH(NOLOCK) WHERE s.Empresa = @Empresa AND s.Modulo = @Modulo AND s.ID = @ID AND s.RenglonID = @RenglonID AND s.Articulo = @Articulo AND v.VIN = s.SerieLote AND v.TieneMovimientos = 0)
+								UPDATE VIN WITH(ROWLOCK)
 								SET TieneMovimientos = 1
-								FROM VIN v, SerieLoteMov s
+								FROM VIN v, SerieLoteMov s WITH(NOLOCK)
 								WHERE s.Empresa = @Empresa
 								AND s.Modulo = @Modulo
 								AND s.ID = @ID
@@ -4131,11 +4131,11 @@ BEGIN
 												 ,@OkRef OUTPUT
 
 							IF @MovTipo IN ('VTAS.F', 'VTAS.FAR', 'VTAS.FC', 'VTAS.FG', 'VTAS.FX', 'VTAS.FB')
-								UPDATE VIN
+								UPDATE VIN WITH(ROWLOCK)
 								SET Cliente = @ClienteProv
 								   ,FechaSalida = @FechaEmision
 								   ,VentaID = @ID
-								FROM VIN v, SerieLoteMov s
+								FROM VIN v, SerieLoteMov s WITH(NOLOCK)
 								WHERE s.Empresa = @Empresa
 								AND s.Modulo = @Modulo
 								AND s.ID = @ID
@@ -4153,7 +4153,7 @@ BEGIN
 				BEGIN
 					SELECT @CantidadDif = @Cantidad
 					SELECT @CantidadDif = @Cantidad - ISNULL(SUM(Cantidad) / @Factor, 0.0)
-					FROM SerieLoteMov
+					FROM SerieLoteMov WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Modulo = @Modulo
 					AND ID = @ID
@@ -4238,7 +4238,7 @@ BEGIN
 													  ,@OkRef OUTPUT
 						SELECT @CantidadDif = @Cantidad
 						SELECT @CantidadDif = @Cantidad - ISNULL(SUM(Cantidad) / @Factor, 0.0)
-						FROM SerieLoteMov
+						FROM SerieLoteMov WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 						AND Modulo = @Modulo
 						AND ID = @ID
@@ -4290,7 +4290,7 @@ BEGIN
 
 						IF @Modulo = 'COMS'
 							SELECT @Cliente = Cliente
-							FROM CompraD
+							FROM CompraD WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
@@ -4301,7 +4301,7 @@ BEGIN
 								  ,@DestinoTipo = DestinoTipo
 								  ,@Destino = Destino
 								  ,@DestinoID = DestinoID
-							FROM InvD
+							FROM InvD WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
@@ -4309,7 +4309,7 @@ BEGIN
 
 						IF @Modulo = 'PROD'
 							SELECT @Cliente = Cliente
-							FROM ProdD
+							FROM ProdD WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
@@ -4407,7 +4407,7 @@ BEGIN
 											,@CentroDestino OUTPUT
 											,@Estacion OUTPUT
 											,@EstacionDestino OUTPUT
-					UPDATE ProdD
+					UPDATE ProdD WITH(ROWLOCK)
 					SET Centro = @Centro
 					   ,Orden = @Orden
 					   ,CentroDestino = @CentroDestino
@@ -4620,7 +4620,7 @@ BEGIN
 
 						IF @MovTipo = 'COMS.EI'
 							SELECT @ProveedorRef = ISNULL(NULLIF(RTRIM(ImportacionProveedor), ''), @ClienteProv)
-							FROM CompraD
+							FROM CompraD WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
@@ -4667,7 +4667,7 @@ BEGIN
 					AND @Ok IS NULL
 					AND (
 						SELECT ISNULL(Ubicaciones, 0)
-						FROM Alm
+						FROM Alm WITH(NOLOCK)
 						WHERE Almacen = @Almacen
 					)
 					= 1
@@ -4718,7 +4718,7 @@ BEGIN
 											  ,@Factor
 											  ,Cantidad * @AuxiliarAlternoFactorEntrada
 											  ,Cantidad * @AuxiliarAlternoFactorSalida
-										FROM SerieLoteMov
+										FROM SerieLoteMov WITH(NOLOCK)
 										WHERE Empresa = @Empresa
 										AND Modulo = @Modulo
 										AND ID = @ID
@@ -4778,7 +4778,7 @@ BEGIN
 											  ,@Factor
 											  ,Cantidad * @AuxiliarAlternoFactorEntrada
 											  ,Cantidad * @AuxiliarAlternoFactorSalida
-										FROM SerieLoteMov
+										FROM SerieLoteMov WITH(NOLOCK)
 										WHERE Empresa = @Empresa
 										AND Modulo = @Modulo
 										AND ID = @ID
@@ -4833,7 +4833,7 @@ BEGIN
 											   WHEN @Accion = 'CANCELAR' THEN @Cantidad * -1
 											   ELSE @Cantidad
 										   END
-									FROM SerieLoteMov
+									FROM SerieLoteMov WITH(NOLOCK)
 									WHERE Empresa = @Empresa
 									AND Modulo = @Modulo
 									AND ID = @ID
@@ -4859,7 +4859,7 @@ BEGIN
 											   ELSE @Cantidad
 										   END
 										  ,0.0
-									FROM SerieLoteMov
+									FROM SerieLoteMov WITH(NOLOCK)
 									WHERE Empresa = @Empresa
 									AND Modulo = @Modulo
 									AND ID = @ID
@@ -5010,7 +5010,7 @@ BEGIN
 						SELECT @CantidadOrdenada = NULL
 
 					IF @Modulo = 'VTAS'
-						UPDATE VentaD
+						UPDATE VentaD WITH(ROWLOCK)
 						SET CantidadCancelada =
 							CASE
 								WHEN @Accion = 'CANCELAR'
@@ -5027,7 +5027,7 @@ BEGIN
 					ELSE
 
 					IF @Modulo = 'INV'
-						UPDATE InvD
+						UPDATE InvD WITH(ROWLOCK)
 						SET CantidadCancelada =
 							CASE
 								WHEN @Accion = 'CANCELAR'
@@ -5044,7 +5044,7 @@ BEGIN
 					ELSE
 
 					IF @Modulo = 'PROD'
-						UPDATE ProdD
+						UPDATE ProdD WITH(ROWLOCK)
 						SET CantidadCancelada =
 							CASE
 								WHEN @Accion = 'CANCELAR'
@@ -5061,7 +5061,7 @@ BEGIN
 					ELSE
 
 					IF @Modulo = 'COMS'
-						UPDATE CompraD
+						UPDATE CompraD WITH(ROWLOCK)
 						SET CantidadCancelada =
 							CASE
 								WHEN @Accion = 'CANCELAR'
@@ -5101,7 +5101,7 @@ BEGIN
 							SELECT @DestinoTipo = DestinoTipo
 								  ,@Destino = Destino
 								  ,@DestinoID = DestinoID
-							FROM CompraD
+							FROM CompraD WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
@@ -5111,7 +5111,7 @@ BEGIN
 							SELECT @DestinoTipo = DestinoTipo
 								  ,@Destino = Destino
 								  ,@DestinoID = DestinoID
-							FROM InvD
+							FROM InvD WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
@@ -5121,12 +5121,12 @@ BEGIN
 							SELECT @DestinoTipo = DestinoTipo
 								  ,@Destino = Destino
 								  ,@DestinoID = DestinoID
-							FROM ProdD
+							FROM ProdD WITH(NOLOCK)
 							WHERE ID = @ID
 							AND Renglon = @Renglon
 							AND RenglonSub = @RenglonSub
 
-						IF @DestinoTipo IN (SELECT Modulo FROM Modulo)
+						IF @DestinoTipo IN (SELECT Modulo FROM Modulo WITH(NOLOCK))
 							AND @Destino IS NOT NULL
 							AND @DestinoID IS NOT NULL
 							EXEC spInvBackOrder @Sucursal
@@ -5172,12 +5172,12 @@ BEGIN
 						SELECT @DestinoTipo = DestinoTipo
 							  ,@Destino = Destino
 							  ,@DestinoID = DestinoID
-						FROM CompraD
+						FROM CompraD WITH(NOLOCK)
 						WHERE ID = @ID
 						AND Renglon = @Renglon
 						AND RenglonSub = @RenglonSub
 
-					IF @DestinoTipo IN (SELECT Modulo FROM Modulo)
+					IF @DestinoTipo IN (SELECT Modulo FROM Modulo WITH(NOLOCK))
 						AND @Destino IS NOT NULL
 						AND @DestinoID IS NOT NULL
 						EXEC spInvBackOrder @Sucursal
@@ -5220,7 +5220,7 @@ BEGIN
 					  ,@Destino = @Mov
 					  ,@DestinoID = @MovID
 				SELECT @Cantidad = SUM(Cantidad)
-				FROM VentaD
+				FROM VentaD WITH(NOLOCK)
 				WHERE id = @ID
 				EXEC spInvBackOrder @Sucursal
 								   ,@Accion
@@ -5277,13 +5277,13 @@ BEGIN
 				BEGIN
 
 					IF @Modulo = 'VTAS'
-						UPDATE VentaD
+						UPDATE VentaD WITH(ROWLOCK)
 						SET CantidadA = NULL
 						WHERE CURRENT OF crVentaDetalle
 					ELSE
 
 					IF @Modulo = 'COMS'
-						UPDATE CompraD
+						UPDATE CompraD WITH(ROWLOCK)
 						SET CantidadA = NULL
 						WHERE CURRENT OF crCompraDetalle
 					ELSE
@@ -5295,7 +5295,7 @@ BEGIN
 					ELSE
 
 					IF @Modulo = 'PROD'
-						UPDATE ProdD
+						UPDATE ProdD WITH(ROWLOCK)
 						SET CantidadA = NULL
 						WHERE CURRENT OF crProdDetalle
 
@@ -5314,13 +5314,13 @@ BEGIN
 				IF @MovTipo IN ('PROD.A', 'PROD.E')
 					SELECT @TiempoEstandarFijo = ISNULL(TiempoFijo, 0)
 						  ,@TiempoEstandarVariable = ISNULL(TiempoVariable, 0) * @Cantidad
-					FROM ProdRutaD
+					FROM ProdRutaD WITH(NOLOCK)
 					WHERE Ruta = @Ruta
 					AND Orden = @Orden
 					AND Centro = @Centro
 
 				IF @Modulo = 'VTAS'
-					UPDATE VentaD
+					UPDATE VentaD WITH(ROWLOCK)
 					SET Unidad = @MovUnidad
 					   ,Factor = @Factor
 					   ,ArtEstatus =
@@ -5337,21 +5337,21 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'COMS'
-					UPDATE CompraD
+					UPDATE CompraD WITH(ROWLOCK)
 					SET Unidad = @MovUnidad
 					   ,Factor = @Factor
 					WHERE CURRENT OF crCompraDetalle
 				ELSE
 
 				IF @Modulo = 'INV'
-					UPDATE InvD
+					UPDATE InvD WITH(ROWLOCK)
 					SET Unidad = @MovUnidad
 					   ,Factor = @Factor
 					WHERE CURRENT OF crInvDetalle
 				ELSE
 
 				IF @Modulo = 'PROD'
-					UPDATE ProdD
+					UPDATE ProdD WITH(ROWLOCK)
 					SET Unidad = @MovUnidad
 					   ,Factor = @Factor
 					   ,TiempoEstandarFijo = @TiempoEstandarFijo
@@ -5364,9 +5364,9 @@ BEGIN
 			BEGIN
 				SELECT @CompraID = NULL
 				SELECT @CompraID = MAX(c.ID)
-				FROM Compra c
-					,CompraD d
-					,MovTipo mt
+				FROM Compra c WITH(NOLOCK)
+					,CompraD d WITH(NOLOCK)
+					,MovTipo mt WITH(NOLOCK)
 				WHERE c.Empresa = @Empresa
 				AND c.Estatus = 'CONCLUIDO'
 				AND mt.Modulo = @Modulo
@@ -5378,19 +5378,19 @@ BEGIN
 
 				IF @CompraID IS NOT NULL
 					SELECT @ProveedorRef = Proveedor
-					FROM Compra
+					FROM Compra WITH(NOLOCK)
 					WHERE ID = @CompraID
 				ELSE
 				BEGIN
 					SELECT @ProveedorRef = @ClienteProv
 					SELECT @ProveedorRef = ISNULL(p.Proveedor, @ClienteProv)
-					FROM Art a
-						,Prov p
+					FROM Art a WITH(NOLOCK)
+						,Prov p WITH(NOLOCK)
 					WHERE a.Articulo = @Articulo
 					AND p.Proveedor = a.Proveedor
 				END
 
-				UPDATE CompraD
+				UPDATE CompraD WITH(ROWLOCK)
 				SET ProveedorRef = @ProveedorRef
 				WHERE CURRENT OF crCompraDetalle
 			END
@@ -5423,7 +5423,7 @@ BEGIN
 
 					IF @Modulo = 'VTAS'
 						SELECT @ImporteComision = ISNULL(Comision, 0.0)
-						FROM VentaD
+						FROM VentaD WITH(NOLOCK)
 						WHERE ID = @ID
 						AND Renglon = @Renglon
 						AND RenglonSub = @RenglonSub
@@ -5431,7 +5431,7 @@ BEGIN
 
 					IF @Modulo = 'PROD'
 						SELECT @ImporteComision = ISNULL(Comision, 0.0)
-						FROM ProdD
+						FROM ProdD WITH(NOLOCK)
 						WHERE ID = @ID
 						AND Renglon = @Renglon
 						AND RenglonSub = @RenglonSub
@@ -5476,7 +5476,7 @@ BEGIN
 					BEGIN
 
 						IF @Modulo = 'VTAS'
-							UPDATE VentaD
+							UPDATE VentaD WITH(ROWLOCK)
 							SET Comision = @ImporteComision
 							WHERE CURRENT OF crVentaDetalle
 						ELSE
@@ -5497,11 +5497,11 @@ BEGIN
 
 				IF (
 						SELECT TieneMovimientos
-						FROM Art
+						FROM Art WITH(NOLOCK)
 						WHERE Articulo = @Articulo
 					)
 					= 0
-					UPDATE Art
+					UPDATE Art WITH(ROWLOCK)
 					SET TieneMovimientos = 1
 					WHERE Articulo = @Articulo
 
@@ -5510,12 +5510,12 @@ BEGIN
 
 					IF (
 							SELECT TieneMovimientos
-							FROM ArtSub
+							FROM ArtSub WITH(NOLOCK)
 							WHERE Articulo = @Articulo
 							AND SubCuenta = @SubCuenta
 						)
 						= 0
-						UPDATE ArtSub
+						UPDATE ArtSub WITH(ROWLOCK)
 						SET TieneMovimientos = 1
 						WHERE Articulo = @Articulo
 						AND SubCuenta = @SubCuenta
@@ -5556,11 +5556,11 @@ BEGIN
 
 				IF (
 						SELECT TieneMovimientos
-						FROM Centro
+						FROM Centro WITH(NOLOCK)
 						WHERE Centro = @Centro
 					)
 					= 0
-					UPDATE Centro
+					UPDATE Centro WITH(ROWLOCK)
 					SET TieneMovimientos = 1
 					WHERE Centro = @Centro
 
@@ -5577,8 +5577,8 @@ BEGIN
 
 					IF @AplicaMov = @CfgIngresoMov
 						SELECT @EspacioDAnterior = MIN(d.Espacio)
-						FROM VentaD d
-							,Venta v
+						FROM VentaD d WITH(NOLOCK)
+							,Venta v WITH(NOLOCK)
 						WHERE v.Empresa = @Empresa
 						AND v.Mov = @AplicaMov
 						AND v.MovID = @AplicaMovID
@@ -5588,7 +5588,7 @@ BEGIN
 						AND d.SubCuenta = @SubCuenta
 						AND d.Espacio IS NOT NULL
 
-					UPDATE Cte
+					UPDATE Cte WITH(ROWLOCK)
 					SET Espacio = NULLIF(RTRIM(@EspacioDAnterior), '')
 					WHERE Cliente = @ClienteProv
 				END
@@ -5597,7 +5597,7 @@ BEGIN
 				IF @EspacioD IS NULL
 					SELECT @Ok = 10210
 				ELSE
-					UPDATE Cte
+					UPDATE Cte WITH(ROWLOCK)
 					SET Espacio = @EspacioD
 					WHERE Cliente = @ClienteProv
 
@@ -5896,7 +5896,7 @@ BEGIN
 			   ,@GTImpuesto1Acreedor VARCHAR(10)
 			SELECT @GTImpuesto1Mov = NULLIF(RTRIM(Impuesto1Mov), '')
 				  ,@GTImpuesto1Acreedor = NULLIF(RTRIM(Impuesto1Acreedor), '')
-			FROM EmpresaCfgGT
+			FROM EmpresaCfgGT WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 
 			IF @GTImpuesto1Mov IS NULL
@@ -6031,13 +6031,13 @@ BEGIN
 		BEGIN
 
 			IF @Modulo = 'VTAS'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET Saldo = Saldo - @ImporteTotal
 				WHERE ID = @UtilizarID
 			ELSE
 
 			IF @Modulo = 'COMS'
-				UPDATE Compra
+				UPDATE Compra WITH(ROWLOCK)
 				SET Saldo = Saldo - @ImporteTotal
 				WHERE ID = @UtilizarID
 
@@ -6055,10 +6055,10 @@ BEGIN
 				AND @MovTipo NOT IN ('VTAS.PR', 'VTAS.EST', 'VTAS.C', 'VTAS.CS', 'VTAS.P', 'VTAS.S', 'VTAS.SD')
 			BEGIN
 				SELECT @Paquetes = ISNULL(COUNT(DISTINCT Paquete), 0)
-				FROM VentaD
+				FROM VentaD WITH(NOLOCK)
 				WHERE ID = @ID
 				SELECT @Paquetes = @Paquetes + ISNULL(ROUND(SUM(Cantidad), 0), 0)
-				FROM VentaD
+				FROM VentaD WITH(NOLOCK)
 				WHERE ID = @ID
 				AND NULLIF(Paquete, 0) IS NULL
 				AND RenglonTipo <>
@@ -6074,10 +6074,10 @@ BEGIN
 				AND @MovTipo NOT IN ('INV.SOL', 'INV.OT', 'INV.OT', 'INV.IF')
 			BEGIN
 				SELECT @Paquetes = ISNULL(COUNT(DISTINCT Paquete), 0)
-				FROM InvD
+				FROM InvD WITH(NOLOCK)
 				WHERE ID = @ID
 				SELECT @Paquetes = @Paquetes + ISNULL(ROUND(SUM(Cantidad), 0), 0)
-				FROM InvD
+				FROM InvD WITH(NOLOCK)
 				WHERE ID = @ID
 				AND NULLIF(Paquete, 0) IS NULL
 				AND RenglonTipo <>
@@ -6093,10 +6093,10 @@ BEGIN
 				AND @MovTipo NOT IN ('COMS.R', 'COMS.C', 'COMS.O', 'COMS.OP', 'COMS.OG', 'COMS.OD', 'COMS.OI')
 			BEGIN
 				SELECT @Paquetes = ISNULL(COUNT(DISTINCT Paquete), 0)
-				FROM InvD
+				FROM InvD WITH(NOLOCK)
 				WHERE ID = @ID
 				SELECT @Paquetes = @Paquetes + ISNULL(ROUND(SUM(Cantidad), 0), 0)
-				FROM CompraD
+				FROM CompraD WITH(NOLOCK)
 				WHERE ID = @ID
 				AND NULLIF(Paquete, 0) IS NULL
 				AND RenglonTipo <>
@@ -6111,7 +6111,7 @@ BEGIN
 				  ,@IEPSFiscal = CONVERT(FLOAT, @SumaImpuesto2Neto) / NULLIF(@ImporteTotal - @SumaRetenciones, 0)
 
 			IF @Modulo = 'VTAS'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET Peso = @SumaPeso
 				   ,Volumen = @SumaVolumen
 				   ,Paquetes = @Paquetes
@@ -6133,7 +6133,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'COMS'
-				UPDATE Compra
+				UPDATE Compra WITH(ROWLOCK)
 				SET Peso = @SumaPeso
 				   ,Volumen = @SumaVolumen
 				   ,Paquetes = @Paquetes
@@ -6152,7 +6152,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'INV'
-				UPDATE Inv
+				UPDATE Inv WITH(ROWLOCK)
 				SET Peso = @SumaPeso
 				   ,Volumen = @SumaVolumen
 				   ,Paquetes = @Paquetes
@@ -6161,7 +6161,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'PROD'
-				UPDATE Prod
+				UPDATE Prod WITH(ROWLOCK)
 				SET Peso = @SumaPeso
 				   ,Volumen = @SumaVolumen
 				   ,Paquetes = @Paquetes
@@ -6199,7 +6199,7 @@ BEGIN
 			AND @EstatusNuevo IN ('PENDIENTE', 'CANCELADO')
 		BEGIN
 			SELECT @CotizacionID = ID
-			FROM Venta
+			FROM Venta WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND OrigenTipo = 'VTAS'
 			AND Origen = @Mov
@@ -6216,7 +6216,7 @@ BEGIN
 								,@CotizacionEstatusNuevo
 								,@Ok OUTPUT
 								,@OkRef OUTPUT
-			UPDATE Venta
+			UPDATE Venta WITH(ROWLOCK)
 			SET Estatus = @CotizacionEstatusNuevo
 			WHERE ID = @CotizacionID
 		END
@@ -6235,7 +6235,7 @@ BEGIN
 					SELECT @Vencimiento = ISNULL(CASE
 						 WHEN ConVigencia = 1 THEN VigenciaDesde
 					 END, @FechaEmision)
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				ELSE
 					EXEC spCalcularVencimiento @Modulo
@@ -6250,7 +6250,7 @@ BEGIN
 				IF (@EnviarA = 76)
 				BEGIN
 					SELECT @DAPeriodo = DAPeriodo
-					FROM Condicion
+					FROM Condicion WITH(NOLOCK)
 					WHERE Condicion = @Condicion
 
 					IF @DAPeriodo = 'QUINCENAL'
@@ -6297,7 +6297,7 @@ BEGIN
 
 				IF (
 						SELECT UPPER(ControlAnticipos)
-						FROM Condicion
+						FROM Condicion WITH(NOLOCK)
 						WHERE Condicion = @Condicion
 					)
 					IN ('ABIERTO', 'PLAZOS', 'FECHA REQUERIDA')
@@ -6372,13 +6372,13 @@ BEGIN
 				SELECT @SumaPendiente = SUM(ROUND(ISNULL(CantidadPendiente, 0.0), 4))
 					  ,@SumaReservada = SUM(ROUND(ISNULL(CantidadReservada, 0.0), 2))
 					  ,@SumaOrdenada = SUM(ROUND(ISNULL(CantidadOrdenada, 0.0), 2))
-				FROM VentaD
+				FROM VentaD WITH(NOLOCK)
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'COMS'
 				SELECT @SumaPendiente = SUM(ROUND(ISNULL(CantidadPendiente, 0.0), 4))
-				FROM CompraD
+				FROM CompraD WITH(NOLOCK)
 				WHERE ID = @ID
 			ELSE
 
@@ -6386,7 +6386,7 @@ BEGIN
 				SELECT @SumaPendiente = SUM(ROUND(ISNULL(CantidadPendiente, 0.0), 4))
 					  ,@SumaReservada = SUM(ROUND(ISNULL(CantidadReservada, 0.0), 2))
 					  ,@SumaOrdenada = SUM(ROUND(ISNULL(CantidadOrdenada, 0.0), 2))
-				FROM InvD
+				FROM InvD WITH(NOLOCK)
 				WHERE ID = @ID
 			ELSE
 
@@ -6394,7 +6394,7 @@ BEGIN
 				SELECT @SumaPendiente = SUM(ROUND(ISNULL(CantidadPendiente, 0.0), 4))
 					  ,@SumaReservada = SUM(ROUND(ISNULL(CantidadReservada, 0.0), 2))
 					  ,@SumaOrdenada = SUM(ROUND(ISNULL(CantidadOrdenada, 0.0), 2))
-				FROM ProdD
+				FROM ProdD WITH(NOLOCK)
 				WHERE ID = @ID
 
 		END
@@ -6404,22 +6404,22 @@ BEGIN
 			SELECT @TienePendientes = 0
 
 			IF @Modulo = 'VTAS'
-				AND EXISTS (SELECT * FROM VentaD WHERE ID = @ID AND ((ISNULL(CantidadPendiente, 0.0) <> 0.0) OR (ISNULL(CantidadReservada, 0.0) <> 0.0) OR (ISNULL(CantidadOrdenada, 0.0) <> 0.0)))
+				AND EXISTS (SELECT * FROM VentaD WITH(NOLOCK) WHERE ID = @ID AND ((ISNULL(CantidadPendiente, 0.0) <> 0.0) OR (ISNULL(CantidadReservada, 0.0) <> 0.0) OR (ISNULL(CantidadOrdenada, 0.0) <> 0.0)))
 				SELECT @TienePendientes = 1
 			ELSE
 
 			IF @Modulo = 'INV'
-				AND EXISTS (SELECT * FROM InvD WHERE ID = @ID AND ((ISNULL(CantidadPendiente, 0.0) <> 0.0) OR (ISNULL(CantidadReservada, 0.0) <> 0.0) OR (ISNULL(CantidadOrdenada, 0.0) <> 0.0)))
+				AND EXISTS (SELECT * FROM InvD WITH(NOLOCK) WHERE ID = @ID AND ((ISNULL(CantidadPendiente, 0.0) <> 0.0) OR (ISNULL(CantidadReservada, 0.0) <> 0.0) OR (ISNULL(CantidadOrdenada, 0.0) <> 0.0)))
 				SELECT @TienePendientes = 1
 			ELSE
 
 			IF @Modulo = 'PROD'
-				AND EXISTS (SELECT * FROM ProdD WHERE ID = @ID AND ((ISNULL(CantidadPendiente, 0.0) <> 0.0) OR (ISNULL(CantidadReservada, 0.0) <> 0.0) OR (ISNULL(CantidadOrdenada, 0.0) <> 0.0)))
+				AND EXISTS (SELECT * FROM ProdD WITH(NOLOCK) WHERE ID = @ID AND ((ISNULL(CantidadPendiente, 0.0) <> 0.0) OR (ISNULL(CantidadReservada, 0.0) <> 0.0) OR (ISNULL(CantidadOrdenada, 0.0) <> 0.0)))
 				SELECT @TienePendientes = 1
 			ELSE
 
 			IF @Modulo = 'COMS'
-				AND EXISTS (SELECT * FROM CompraD WHERE ID = @ID AND ISNULL(CantidadPendiente, 0.0) <> 0.0)
+				AND EXISTS (SELECT * FROM CompraD WITH(NOLOCK) WHERE ID = @ID AND ISNULL(CantidadPendiente, 0.0) <> 0.0)
 				SELECT @TienePendientes = 1
 
 			IF @EstatusNuevo <> 'PENDIENTE'
@@ -6497,7 +6497,7 @@ BEGIN
 							,@OkRef OUTPUT
 
 		IF @Modulo = 'VTAS'
-			UPDATE Venta
+			UPDATE Venta WITH(ROWLOCK)
 			SET Vencimiento = @Vencimiento
 			   ,Concepto = @Concepto
 			   ,FechaConclusion = @FechaConclusion
@@ -6521,7 +6521,7 @@ BEGIN
 		ELSE
 
 		IF @Modulo = 'COMS'
-			UPDATE Compra
+			UPDATE Compra WITH(ROWLOCK)
 			SET Vencimiento = @Vencimiento
 			   ,Concepto = @Concepto
 			   ,FechaConclusion = @FechaConclusion
@@ -6545,7 +6545,7 @@ BEGIN
 		ELSE
 
 		IF @Modulo = 'INV'
-			UPDATE Inv
+			UPDATE Inv WITH(ROWLOCK)
 			SET Vencimiento = @Vencimiento
 			   ,Concepto = @Concepto
 			   ,FechaConclusion = @FechaConclusion
@@ -6563,7 +6563,7 @@ BEGIN
 		ELSE
 
 		IF @Modulo = 'PROD'
-			UPDATE Prod
+			UPDATE Prod WITH(ROWLOCK)
 			SET Concepto = @Concepto
 			   ,FechaConclusion = @FechaConclusion
 			   ,FechaCancelacion = @FechaCancelacion
@@ -6585,14 +6585,14 @@ BEGIN
 			AND @WMS = 1
 			AND @EstatusNuevo = 'CANCELADO'
 		BEGIN
-			UPDATE Tarima
+			UPDATE Tarima WITH(ROWLOCK)
 			SET Tarima.Estatus = 'BAJA'
 			   ,Tarima.Baja = @FechaCancelacion
-			FROM InvD
+			FROM InvD WITH(NOLOCK)
 			JOIN Tarima
 				ON Tarima.Tarima = InvD.Tarima
 				AND Tarima.Almacen = InvD.Almacen
-			JOIN AlmPos
+			JOIN AlmPos WITH(NOLOCK)
 				ON Tarima.Posicion = AlmPos.Posicion
 				AND AlmPos.Almacen = InvD.Almacen
 			WHERE InvD.ID = @ID
@@ -6620,13 +6620,13 @@ BEGIN
 				IF @Base <> 'SELECCION'
 
 					IF @Modulo = 'VTAS'
-						UPDATE Venta
+						UPDATE Venta WITH(ROWLOCK)
 						SET Saldo = Saldo - @ImporteTotal
 						WHERE ID = @ID
 					ELSE
 
 					IF @Modulo = 'COMS'
-						UPDATE Compra
+						UPDATE Compra WITH(ROWLOCK)
 						SET Saldo = Saldo - @ImporteTotal
 						WHERE ID = @ID
 
@@ -6635,13 +6635,13 @@ BEGIN
 			BEGIN
 
 				IF @Modulo = 'VTAS'
-					UPDATE Venta
+					UPDATE Venta WITH(ROWLOCK)
 					SET Saldo = NULL
 					WHERE ID = @ID
 				ELSE
 
 				IF @Modulo = 'COMS'
-					UPDATE Compra
+					UPDATE Compra WITH(ROWLOCK)
 					SET Saldo = NULL
 					WHERE ID = @ID
 
@@ -6655,7 +6655,7 @@ BEGIN
 		IF @MovTipo IN ('VTAS.VC', 'VTAS.VCR', 'VTAS.DC', 'VTAS.DCR')
 			AND @Accion <> 'CANCELAR'
 		BEGIN
-			UPDATE Venta
+			UPDATE Venta WITH(ROWLOCK)
 			SET AlmacenDestino =
 			CASE
 				WHEN @MovTipo IN ('VTAS.VC', 'VTAS.VCR') THEN @GenerarAlmacenDestino
@@ -6712,7 +6712,7 @@ BEGIN
 								,@OkRef OUTPUT
 
 			IF @Modulo = 'VTAS'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET FechaConclusion = @FechaConclusion
 				   ,Estatus = @GenerarEstatus
 				   ,GenerarPoliza = @GenerarPolizaTemp
@@ -6720,7 +6720,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'COMS'
-				UPDATE Compra
+				UPDATE Compra WITH(ROWLOCK)
 				SET FechaConclusion = @FechaConclusion
 				   ,Estatus = @GenerarEstatus
 				   ,GenerarPoliza = @GenerarPolizaTemp
@@ -6728,7 +6728,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'INV'
-				UPDATE Inv
+				UPDATE Inv WITH(ROWLOCK)
 				SET FechaConclusion = @FechaConclusion
 				   ,Estatus = @GenerarEstatus
 				   ,GenerarPoliza = @GenerarPolizaTemp
@@ -6736,7 +6736,7 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'PROD'
-				UPDATE Prod
+				UPDATE Prod WITH(ROWLOCK)
 				SET FechaConclusion = @FechaConclusion
 				   ,Estatus = @GenerarEstatus
 				   ,GenerarPoliza = @GenerarPolizaTemp
@@ -6922,7 +6922,7 @@ BEGIN
 				IF @MovTipo IN ('VTAS.F', 'VTAS.FAR', 'VTAS.N')
 					AND (
 						SELECT CxcAutoAplicarAnticiposPedidos
-						FROM EmpresaCfg2
+						FROM EmpresaCfg2 WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 					)
 					= 1
@@ -7004,7 +7004,7 @@ BEGIN
 						  ,@TipoCambio3 = POSTipoCambio3
 						  ,@TipoCambio4 = POSTipoCambio4
 						  ,@TipoCambio5 = POSTipoCambio5
-					FROM VentaCobro
+					FROM VentaCobro WITH(NOLOCK)
 					WHERE ID = @ID
 					EXEC spVentaCobroTotalPOS @Empresa
 											 ,@FormaCobro1
@@ -7060,7 +7060,7 @@ BEGIN
 						  ,@TCProcesado3 = ISNULL(TCProcesado3, 0)
 						  ,@TCProcesado4 = ISNULL(TCProcesado4, 0)
 						  ,@TCProcesado5 = ISNULL(TCProcesado5, 0)
-					FROM VentaCobro
+					FROM VentaCobro WITH(NOLOCK)
 					WHERE ID = @ID
 					EXEC spVentaCobroTotal @FormaCobro1
 										  ,@FormaCobro2
@@ -7079,10 +7079,10 @@ BEGIN
 
 				SELECT @FormaCobroVales = CxcFormaCobroVales
 					  ,@FormaCobroTarjetas = CxcFormaCobroTarjetas
-				FROM EmpresaCfg
+				FROM EmpresaCfg WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				SELECT @LDITarjeta = ISNULL(LDI, 0)
-				FROM FormaPago
+				FROM FormaPago WITH(NOLOCK)
 				WHERE FormaPago = @FormaCobroTarjetas
 
 				IF @FormaCobro1 = @FormaCobroVales
@@ -7120,7 +7120,7 @@ BEGIN
 					SELECT @TarjetasCobradas = @TarjetasCobradas + @Importe5
 						  ,@ReferenciaTarjetas = @Referencia5
 
-				IF EXISTS (SELECT * FROM FormaPago WHERE FormaPago IN (@FormaCobro1, @FormaCobro2, @FormaCobro3, @FormaCobro4, @FormaCobro5) AND FormaPago NOT IN (@FormaCobroTarjetas) AND LDI = 1)
+				IF EXISTS (SELECT * FROM FormaPago WITH(NOLOCK) WHERE FormaPago IN (@FormaCobro1, @FormaCobro2, @FormaCobro3, @FormaCobro4, @FormaCobro5) AND FormaPago NOT IN (@FormaCobroTarjetas) AND LDI = 1)
 				BEGIN
 					EXEC spLDIPagoTarjetaCredito @ID
 												,@Empresa
@@ -7161,7 +7161,7 @@ BEGIN
 						SELECT @CobroCambio = 0.0
 
 					IF @Accion <> 'CANCELAR'
-						UPDATE VentaCobro
+						UPDATE VentaCobro WITH(ROWLOCK)
 						SET Actualizado = 1
 						   ,Cambio = @CobroCambio
 						WHERE ID = @ID
@@ -7219,7 +7219,7 @@ BEGIN
 						AND @Modulo = 'VTAS'
 						AND @CfgVentaMonedero = 1
 						AND @CfgVentaMonederoA = 0
-						AND EXISTS (SELECT * FROM TarjetaSeriemov t JOIN ValeSerie v ON t.Serie = v.Serie JOIN Art a ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(a.LDI, 0) = 0)
+						AND EXISTS (SELECT * FROM TarjetaSeriemov t WITH(NOLOCK) JOIN ValeSerie v WITH(NOLOCK) ON t.Serie = v.Serie JOIN Art a WITH(NOLOCK) ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(a.LDI, 0) = 0)
 					BEGIN
 						EXEC spVentaMonedero @Empresa
 											,@Modulo
@@ -7247,7 +7247,7 @@ BEGIN
 						AND @Modulo = 'VTAS'
 						AND @CfgVentaMonedero = 1
 						AND @CfgVentaMonederoA = 0
-						AND EXISTS (SELECT * FROM TarjetaSeriemov WHERE Empresa = @Empresa AND Modulo = @Modulo AND ID = @ID)
+						AND EXISTS (SELECT * FROM TarjetaSeriemov WITH(NOLOCK) WHERE Empresa = @Empresa AND Modulo = @Modulo AND ID = @ID)
 						AND @LDI = 0
 						EXEC spVentaMonedero @Empresa
 											,@Modulo
@@ -7494,7 +7494,7 @@ BEGIN
 					IF @CobroIntegradoParcial = 1
 						SELECT @CondicionCx = Condicion
 							  ,@VencimientoCx = Vencimiento
-						FROM VentaCobro
+						FROM VentaCobro WITH(NOLOCK)
 						WHERE ID = @ID
 
 					IF @CfgAC = 1
@@ -7502,10 +7502,10 @@ BEGIN
 					BEGIN
 						SELECT @LCMetodo = ta.Metodo
 							  ,@LCPorcentajeResidual = ISNULL(lc.PorcentajeResidual, 0)
-						FROM Venta v
-						JOIN TipoAmortizacion ta
+						FROM Venta v WITH(NOLOCK)
+						JOIN TipoAmortizacion ta WITH(NOLOCK)
 							ON ta.TipoAmortizacion = v.TipoAmortizacion
-						JOIN LC
+						JOIN LC WITH(NOLOCK)
 							ON lc.LineaCredito = v.LineaCredito
 						WHERE v.ID = @ID
 						EXEC xpPorcentajeResidual @Modulo
@@ -7625,10 +7625,10 @@ BEGIN
 						IF @CxAjusteImporte > 0.0
 						BEGIN
 							SELECT @CxAjusteMov = ACAjusteValorResidual
-							FROM EmpresaCfgMov
+							FROM EmpresaCfgMov WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 							SELECT @CxConcepto = ACAjusteConceptoValorResidual
-							FROM EmpresaCfg
+							FROM EmpresaCfg WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 							EXEC @CxAjusteID = spAfectar 'CXC'
 														,@CxID
@@ -7648,7 +7648,7 @@ BEGIN
 							IF @Ok IS NULL
 								AND @CxAjusteID IS NOT NULL
 							BEGIN
-								UPDATE Cxc
+								UPDATE Cxc WITH(ROWLOCK)
 								SET Concepto = @CxConcepto
 								   ,Importe = @CxAjusteImporte
 								   ,Impuestos = NULL
@@ -7677,10 +7677,10 @@ BEGIN
 						IF @CxAjusteImporte > 0.0
 						BEGIN
 							SELECT @CxAjusteMov = ACAjusteImpuestoAd
-							FROM EmpresaCfgMov
+							FROM EmpresaCfgMov WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 							SELECT @CxConcepto = ACAjusteConceptoImpuestoAd
-							FROM EmpresaCfg
+							FROM EmpresaCfg WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 							EXEC @CxAjusteID = spAfectar 'CXC'
 														,@CxID
@@ -7700,7 +7700,7 @@ BEGIN
 							IF @Ok IS NULL
 								AND @CxAjusteID IS NOT NULL
 							BEGIN
-								UPDATE Cxc
+								UPDATE Cxc WITH(ROWLOCK)
 								SET Concepto = @CxConcepto
 								   ,Importe = @CxAjusteImporte
 								   ,Impuestos = NULL
@@ -7730,7 +7730,7 @@ BEGIN
 
 				IF @CxID IS NOT NULL
 					SELECT @CxMovTipo = Clave
-					FROM MovTipo
+					FROM MovTipo WITH(NOLOCK)
 					WHERE Modulo = @CxModulo
 					AND Mov = @CxMov
 
@@ -7813,16 +7813,16 @@ BEGIN
 
 				IF @Accion = 'CANCELAR'
 				BEGIN
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET AnticipoSaldo = ISNULL(AnticipoSaldo, 0) + vfa.Importe
-					FROM Cxc c, VentaFacturaAnticipo vfa
+					FROM Cxc c, VentaFacturaAnticipo vfa WITH(NOLOCK)
 					WHERE vfa.ID = @ID
 					AND vfa.CxcID = c.ID
 
 					IF @AnticipoFacturadoTipoServicio = 1
 						SELECT @AnticiposFacturados = (
 							 SELECT SUM(ABS(ISNULL(Importetotal, 0.0)) - ABS(ISNULL(AnticipoRetencion, 0.0)))
-							 FROM VentaTCalc
+							 FROM VentaTCalc WITH(NOLOCK)
 							 WHERE ID = @ID
 							 AND AnticipoFacturado = 1
 						 )
@@ -7831,14 +7831,14 @@ BEGIN
 				ELSE
 				BEGIN
 
-					IF EXISTS (SELECT 1 FROM VentaD WHERE ID = @ID AND AnticipoFacturado = 1 AND (AnticipoMoneda <> @MovMoneda OR AnticipoTipoCambio <> @MovTipoCambio))
+					IF EXISTS (SELECT 1 FROM VentaD WITH(NOLOCK) WHERE ID = @ID AND AnticipoFacturado = 1 AND (AnticipoMoneda <> @MovMoneda OR AnticipoTipoCambio <> @MovTipoCambio))
 						SELECT @Ok = 10495
 
 					SELECT @SumaAnticiposFacturados = SUM(CASE
 						 WHEN RTRIM(LTRIM(Moneda)) = RTRIM(LTRIM(@MovMoneda)) THEN AnticipoAplicar
 						 ELSE (AnticipoAplicar * TipoCambio) / @MovTipoCambio
 					 END)
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE AnticipoAplicaModulo = @Modulo
 					AND AnticipoAplicaID = @ID
 					AND Estatus IN ('PENDIENTE', 'CONCLUIDO')
@@ -7856,7 +7856,7 @@ BEGIN
 					IF @AnticipoFacturadoTipoServicio = 1
 						SELECT @AnticiposFacturados = (
 							 SELECT SUM(ABS(ISNULL(Importetotal, 0.0)) - ABS(ISNULL(AnticipoRetencion, 0.0)))
-							 FROM VentaTCalc
+							 FROM VentaTCalc WITH(NOLOCK)
 							 WHERE ID = @ID
 							 AND AnticipoFacturado = 1
 						 )
@@ -7871,10 +7871,10 @@ BEGIN
 					ELSE
 
 					IF @AnticipoFacturadoTipoServicio = 1
-						AND EXISTS (SELECT 1 FROM VentaTCalc WHERE ID = @ID AND AnticipoFacturado = 1 AND ImporteTotal > 0.0)
+						AND EXISTS (SELECT 1 FROM VentaTCalc WITH(NOLOCK) WHERE ID = @ID AND AnticipoFacturado = 1 AND ImporteTotal > 0.0)
 						SELECT @Ok = 30405
 
-					IF EXISTS (SELECT * FROM Cxc WHERE AnticipoAplicaModulo = @Modulo AND AnticipoAplicaID = @ID AND (ISNULL(AnticipoAplicar, 0) < 0.0 OR ROUND(AnticipoAplicar, 0) > ROUND(AnticipoSaldo, 0)))
+					IF EXISTS (SELECT * FROM Cxc WITH(NOLOCK) WHERE AnticipoAplicaModulo = @Modulo AND AnticipoAplicaID = @ID AND (ISNULL(AnticipoAplicar, 0) < 0.0 OR ROUND(AnticipoAplicar, 0) > ROUND(AnticipoSaldo, 0)))
 						SELECT @Ok = 30405
 					ELSE
 					BEGIN
@@ -7882,10 +7882,10 @@ BEGIN
 							SELECT @ID
 								  ,ID
 								  ,AnticipoAplicar
-							FROM Cxc
+							FROM Cxc WITH(NOLOCK)
 							WHERE AnticipoAplicaModulo = @Modulo
 							AND AnticipoAplicaID = @ID
-						UPDATE Cxc
+						UPDATE Cxc WITH(ROWLOCK)
 						SET AnticipoSaldo = ISNULL(AnticipoSaldo, 0) - ISNULL(AnticipoAplicar, 0)
 						   ,AnticipoAplicar = NULL
 						   ,AnticipoAplicaModulo = NULL
@@ -8019,11 +8019,11 @@ BEGIN
 				IF @MovTipo = 'VTAS.DF'
 				BEGIN
 					SELECT @CxImporte = -SUM(Cantidad * Costo)
-					FROM VentaD
+					FROM VentaD WITH(NOLOCK)
 					WHERE ID = @ID
 					SELECT @CxMovEspecifico = @Mov
 					SELECT @CxAgente = AgenteServicio
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
 				END
 				ELSE
@@ -8031,13 +8031,13 @@ BEGIN
 
 					IF @CfgInvAjusteCargoAgente = 'PRECIO'
 						SELECT @CxImporte = SUM(d.Cantidad * ISNULL(d.Precio, a.PrecioLista))
-						FROM InvD d
-							,Art a
+						FROM InvD d WITH(NOLOCK)
+							,Art a WITH(NOLOCK)
 						WHERE d.ID = @ID
 						AND d.Articulo = a.Articulo
 					ELSE
 						SELECT @CxImporte = SUM(Cantidad * Costo)
-						FROM InvD
+						FROM InvD WITH(NOLOCK)
 						WHERE ID = @ID
 
 				END
@@ -8181,7 +8181,7 @@ BEGIN
 				AND @MovTipo IN ('VTAS.F', 'VTAS.FAR')
 				AND (
 					SELECT CxcAutoAplicarAnticiposPedidos
-					FROM EmpresaCfg2
+					FROM EmpresaCfg2 WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 				)
 				= 1
@@ -8232,7 +8232,7 @@ BEGIN
 
 				IF (
 						SELECT AC
-						FROM EmpresaGral
+						FROM EmpresaGral WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 					)
 					= 0
@@ -8257,10 +8257,10 @@ BEGIN
 				AND @Ok IN (NULL, 80030)
 			BEGIN
 				SELECT @Proveedor = Proveedor
-				FROM Compra
+				FROM Compra WITH(NOLOCK)
 				WHERE ID = @ID
 				SELECT @AutoEndosar = AutoEndoso
-				FROM Prov
+				FROM Prov WITH(NOLOCK)
 				WHERE Proveedor = @Proveedor
 
 				IF @AutoEndosar IS NOT NULL
@@ -8268,7 +8268,7 @@ BEGIN
 					SELECT @Ok = NULL
 						  ,@OkRef = NULL
 					SELECT @CxEndosoMov = CxpEndoso
-					FROM EmpresaCfgMov
+					FROM EmpresaCfgMov WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					EXEC spCx @CxID
 							 ,@CxModulo
@@ -8293,7 +8293,7 @@ BEGIN
 					BEGIN
 
 						IF @CxModulo = 'CXP'
-							UPDATE Cxp
+							UPDATE Cxp WITH(ROWLOCK)
 							SET FechaEmision = @FechaEmision
 							   ,Proveedor = @AutoEndosar
 							WHERE ID = @CxEndosoID
@@ -8375,11 +8375,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Cte
+				FROM Cte WITH(NOLOCK)
 				WHERE Cliente = @ClienteProv
 			)
 			= 0
-			UPDATE Cte
+			UPDATE Cte WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Cliente = @ClienteProv
 
@@ -8391,12 +8391,12 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM CteEnviarA
+				FROM CteEnviarA WITH(NOLOCK)
 				WHERE Cliente = @ClienteProv
 				AND ID = @EnviarA
 			)
 			= 0
-			UPDATE CteEnviarA
+			UPDATE CteEnviarA WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Cliente = @ClienteProv
 			AND ID = @EnviarA
@@ -8408,11 +8408,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Alm
+				FROM Alm WITH(NOLOCK)
 				WHERE Almacen = @Almacen
 			)
 			= 0
-			UPDATE Alm
+			UPDATE Alm WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Almacen = @Almacen
 
@@ -8423,11 +8423,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Alm
+				FROM Alm WITH(NOLOCK)
 				WHERE Almacen = @AlmacenDestino
 			)
 			= 0
-			UPDATE Alm
+			UPDATE Alm WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Almacen = @AlmacenDestino
 
@@ -8438,11 +8438,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Agente
+				FROM Agente WITH(NOLOCK)
 				WHERE Agente = @Agente
 			)
 			= 0
-			UPDATE Agente
+			UPDATE Agente WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Agente = @Agente
 
@@ -8453,11 +8453,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Prov
+				FROM Prov WITH(NOLOCK)
 				WHERE Proveedor = @ClienteProv
 			)
 			= 0
-			UPDATE Prov
+			UPDATE Prov WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Proveedor = @ClienteProv
 
@@ -8490,8 +8490,8 @@ BEGIN
 		SELECT @ProrrateoAplicaID = p.ID
 			  ,@ProrrateoAplicaIDMov = p.Mov
 			  ,@ProrrateoAplicaIDMovID = p.MovID
-		FROM Compra c
-			,Compra p
+		FROM Compra c WITH(NOLOCK)
+			,Compra p WITH(NOLOCK)
 		WHERE c.ID = @ID
 		AND c.ProrrateoAplicaID = p.ID
 
@@ -8611,7 +8611,7 @@ BEGIN
 
 		IF @MovTipo <> 'INV.T'
 			AND @WMS = 1
-			AND EXISTS (SELECT * FROM Alm WHERE Almacen = @Almacen AND WMS = 1)
+			AND EXISTS (SELECT * FROM Alm WITH(NOLOCK) WHERE Almacen = @Almacen AND WMS = 1)
 			AND @Accion IN ('AFECTAR', 'CANCELAR', 'RESERVARPARCIAL')
 			AND @OrigenTipo <> 'TMA'
 			AND @Ok IS NULL
@@ -8638,11 +8638,11 @@ BEGIN
 				SELECT @CrossDocking = CrossDocking
 					  ,@Almacen = Almacen
 					  ,@PosicionWMS = PosicionWMS
-				FROM INV
+				FROM INV WITH(NOLOCK)
 				WHERE ID = @ID
 				SELECT @EsCrossDocking = RTRIM(LTRIM(ISNULL(EsCrossDocking, '')))
 					  ,@posicioncrossdocking = ISNULL(defposicioncrossdocking, '')
-				FROM ALM
+				FROM ALM WITH(NOLOCK)
 				WHERE Almacen = @Almacen
 
 				IF @posicioncrossdocking = ''
@@ -8650,7 +8650,7 @@ BEGIN
 				BEGIN
 					SELECT @Ok = Mensaje
 						  ,@OkRef = Descripcion
-					FROM MensajeLista
+					FROM MensajeLista WITH(NOLOCK)
 					WHERE Mensaje = 20028
 					SELECT @OkRef
 					ROLLBACK TRANSACTION
@@ -8664,7 +8664,7 @@ BEGIN
 				BEGIN
 					SELECT @Ok = Mensaje
 						  ,@OkRef = Descripcion
-					FROM MensajeLista
+					FROM MensajeLista WITH(NOLOCK)
 					WHERE Mensaje = 20027
 					SELECT @OkRef
 					ROLLBACK TRANSACTION
@@ -8739,18 +8739,18 @@ BEGIN
 		AND @Accion = 'CANCELAR'
 		AND @OrigenMovTipo = 'INV.IF'
 	BEGIN
-		UPDATE Tarima
+		UPDATE Tarima WITH(ROWLOCK)
 		SET Estatus = 'ALTA'
 		   ,Baja = NULL
 		FROM Tarima
-		JOIN InvD
+		JOIN InvD WITH(NOLOCK)
 			ON Tarima.Posicion = InvD.PosicionReal
-		JOIN Inv
+		JOIN Inv WITH(NOLOCK)
 			ON InvD.ID = Inv.ID
-		JOIN AlmPos
+		JOIN AlmPos WITH(NOLOCK)
 			ON Inv.Almacen = AlmPos.Almacen
 			AND InvD.PosicionReal = AlmPos.Posicion
-		JOIN ArtDisponibleTarima
+		JOIN ArtDisponibleTarima WITH(NOLOCK)
 			ON Tarima.Tarima = ArtDisponibleTarima.Tarima
 			AND ArtDisponibleTarima.Empresa = Inv.Empresa
 			AND ArtDisponibleTarima.Almacen = Inv.Almacen
@@ -8904,7 +8904,7 @@ BEGIN
 							,@Ok OUTPUT
 
 		IF @Modulo = 'VTAS'
-			UPDATE VentaOrigen
+			UPDATE VentaOrigen WITH(ROWLOCK)
 			SET OrigenID = 0
 			WHERE ID = @ID
 
@@ -8934,7 +8934,7 @@ BEGIN
 						,@OkRef OUTPUT
 
 	IF @Modulo = 'VTAS'
-		AND EXISTS (SELECT * FROM ValeSerie v JOIN VentaD d ON v.Articulo = d.Articulo JOIN SerieLoteMov s ON d.ID = s.ID AND s.Modulo = 'VTAS' AND s.Empresa = @Empresa AND s.RenglonID = d.RenglonID AND d.Articulo = s.Articulo AND ISNULL(d.SubCuenta, '') = ISNULL(s.SubCuenta, '') AND v.Serie = s.SerieLote JOIN Art a ON d.Articulo = a.Articulo WHERE d.ID = @ID AND a.LDI = 1)
+		AND EXISTS (SELECT * FROM ValeSerie v WITH(NOLOCK) JOIN VentaD d WITH(NOLOCK) ON v.Articulo = d.Articulo JOIN SerieLoteMov s WITH(NOLOCK) ON d.ID = s.ID AND s.Modulo = 'VTAS' AND s.Empresa = @Empresa AND s.RenglonID = d.RenglonID AND d.Articulo = s.Articulo AND ISNULL(d.SubCuenta, '') = ISNULL(s.SubCuenta, '') AND v.Serie = s.SerieLote JOIN Art a ON d.Articulo = a.Articulo WHERE d.ID = @ID AND a.LDI = 1)
 		AND @LDI = 1
 		AND @OrigenTipo NOT IN ('POS', 'VMOS')
 		AND @Accion NOT IN ('CANCELAR')
@@ -8993,7 +8993,7 @@ BEGIN
 		AND @Modulo = 'VTAS'
 		AND @CfgVentaMonedero = 1
 		AND @CfgVentaMonederoA = 0
-		AND EXISTS (SELECT * FROM TarjetaSeriemov t JOIN ValeSerie v ON t.Serie = v.Serie JOIN Art a ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(a.LDI, 0) = 1)
+		AND EXISTS (SELECT * FROM TarjetaSeriemov t WITH(NOLOCK) JOIN ValeSerie v WITH(NOLOCK) ON t.Serie = v.Serie JOIN Art a WITH(NOLOCK) ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(a.LDI, 0) = 1)
 		AND @LDI = 1
 		AND @OrigenTipo NOT IN ('VMOS')
 		EXEC spVentaMonedero @Empresa
@@ -9064,7 +9064,7 @@ BEGIN
 
 	IF @LDI = 1
 		AND @Ok IS NOT NULL
-		AND EXISTS (SELECT * FROM LDIIDTemp WHERE Estacion = @@SPID AND Modulo = @Modulo)
+		AND EXISTS (SELECT * FROM LDIIDTemp WITH(NOLOCK) WHERE Estacion = @@SPID AND Modulo = @Modulo)
 	BEGIN
 		INSERT @LDILog (IDModulo, Modulo, Servicio, Fecha, TipoTransaccion, TipoSubservicio, CodigoRespuesta, DescripcionRespuesta, OrigenRespuesta, InfoAdicional, IDTransaccion, CodigoAutorizacion, Comprobante, Cadena, CadenaRespuesta, Importe, RIDCobro)
 			SELECT IDModulo
@@ -9084,9 +9084,9 @@ BEGIN
 				  ,CadenaRespuesta
 				  ,Importe
 				  ,RIDCobro
-			FROM LDIMovLog
+			FROM LDIMovLog WITH(NOLOCK)
 			WHERE IDModulo = @ID
-			AND ID IN (SELECT ID FROM LDIIDTemp WHERE Estacion = @@SPID AND Modulo = @Modulo)
+			AND ID IN (SELECT ID FROM LDIIDTemp WITH(NOLOCK) WHERE Estacion = @@SPID AND Modulo = @Modulo)
 	END
 
 	IF @Conexion = 0
@@ -9107,7 +9107,7 @@ BEGIN
 				   ,SucursalContable INT NULL
 				)
 
-			IF EXISTS (SELECT * FROM PolizaDescuadrada WHERE Modulo = @Modulo AND ID = @ID)
+			IF EXISTS (SELECT * FROM PolizaDescuadrada WITH(NOLOCK) WHERE Modulo = @Modulo AND ID = @ID)
 				INSERT @PolizaDescuadrada (Cuenta, SubCuenta, Concepto, Debe, Haber, SucursalContable)
 					SELECT Cuenta
 						  ,SubCuenta
@@ -9115,7 +9115,7 @@ BEGIN
 						  ,Debe
 						  ,Haber
 						  ,SucursalContable
-					FROM PolizaDescuadrada
+					FROM PolizaDescuadrada WITH(NOLOCK)
 					WHERE Modulo = @Modulo
 					AND ID = @ID
 
@@ -9162,7 +9162,7 @@ BEGIN
 	END
 
 	SELECT @BanderaDesentarimado = DesentarimarPedido
-	FROM EmpresaCfg
+	FROM EmpresaCfg WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @BanderaDesentarimado = 1
@@ -9177,7 +9177,7 @@ BEGIN
 
 	IF @Ok = 80070
 		AND @MovTipo = 'INV.IF'
-		UPDATE Inv
+		UPDATE Inv WITH(ROWLOCK)
 		SET Estatus = 'CONCLUIDO'
 		   ,FechaConclusion = GETDATE()
 		WHERE ID = @ID

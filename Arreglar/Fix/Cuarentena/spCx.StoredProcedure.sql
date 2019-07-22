@@ -295,11 +295,11 @@ BEGIN
 			  ,@ComisionesIVA = ISNULL(ComisionesIVA, 0.0)
 			  ,@SaldoInteresesOrdinariosIVA = ISNULL(SaldoInteresesOrdinariosIVA, 0.0)
 			  ,@SaldoInteresesMoratoriosIVA = ISNULL(SaldoInteresesMoratoriosIVA, 0.0)
-		FROM Cxc
+		FROM Cxc WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @CobroDesglosado = @Importe1 + @Importe2 + @Importe3 + @Importe4 + @Importe5
 		SELECT @FormaCobroVales = CxcFormaCobroVales
-		FROM EmpresaCfg
+		FROM EmpresaCfg WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 
 		IF @FormaCobro1 = @FormaCobroVales
@@ -319,7 +319,7 @@ BEGIN
 
 		SELECT @ContactoTipo = UPPER(Tipo)
 			  ,@CfgDescuentoRecargos = DescuentoRecargos
-		FROM Cte
+		FROM Cte WITH(NOLOCK)
 		WHERE Cliente = @Contacto
 	END
 	ELSE
@@ -386,14 +386,14 @@ BEGIN
 			  ,@SaldoInteresesOrdinariosIVA = ISNULL(SaldoInteresesOrdinariosIVA, 0.0)
 			  ,@SaldoInteresesMoratoriosIVA = ISNULL(SaldoInteresesMoratoriosIVA, 0.0)
 			  ,@EmidaCarrierID = ISNULL(EmidaCarrierID, '')
-		FROM Cxp
+		FROM Cxp WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @ContactoTipo = UPPER(Tipo)
 			  ,@CfgDescuentoRecargos = DescuentoRecargos
 			  ,@Pagares = Pagares
 			  ,@Aforo = ISNULL(Aforo, 0)
 			  ,@CtaDineroOmision = NULLIF(CtaDinero, '')
-		FROM Prov
+		FROM Prov WITH(NOLOCK)
 		WHERE Proveedor = @Contacto
 	END
 	ELSE
@@ -433,13 +433,13 @@ BEGIN
 			  ,@Saldo = ISNULL(Saldo, 0.0)
 			  ,@GenerarPoliza = GenerarPoliza
 			  ,@FechaConclusion = FechaConclusion
-		FROM Agent
+		FROM Agent WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @AgenteNomina = Nomina
 			  ,@AgentePersonal = Personal
 			  ,@AgenteNominaMov = NominaMov
 			  ,@AgenteNominaConcepto = NominaConcepto
-		FROM Agente
+		FROM Agente WITH(NOLOCK)
 		WHERE Agente = @Agente
 	END
 
@@ -449,7 +449,7 @@ BEGIN
 
 	IF @MovAplica IS NOT NULL
 		SELECT @MovAplicaMovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Modulo = @Modulo
 		AND Mov = @MovAplica
 
@@ -467,7 +467,7 @@ BEGIN
 		AND @OrigenTipo <> 'CAM'
 		SELECT @Cajero = DefCajero
 			  ,@CtaDinero = DefCtaDinero
-		FROM Usuario
+		FROM Usuario WITH(NOLOCK)
 		WHERE Usuario = @Usuario
 
 	IF @CtaDinero IS NULL
@@ -520,7 +520,7 @@ BEGIN
 						 ,@IDOrigen OUTPUT
 						 ,@Ok OUTPUT
 		SELECT @OrigenMovTipo = Clave
-		FROM MovTipo
+		FROM MovTipo WITH(NOLOCK)
 		WHERE Modulo = @OrigenTipo
 		AND Mov = @Origen
 	END
@@ -602,7 +602,7 @@ BEGIN
 		IF @Accion <> 'VERIFICAR'
 			BEGIN TRANSACTION
 
-		IF EXISTS (SELECT * FROM CxcD d, Cxc e WHERE d.ID = @ID AND d.Aplica = e.Mov AND d.AplicaID = e.MovID AND e.Empresa = @Empresa AND e.Estatus NOT IN ('SINAFECTAR', 'CONFIRMAR', 'BORRADOR', 'CANCELADO') AND e.Sucursal <> @SucursalDestino)
+		IF EXISTS (SELECT * FROM CxcD d WITH(NOLOCK), Cxc e WITH(NOLOCK) WHERE d.ID = @ID AND d.Aplica = e.Mov AND d.AplicaID = e.MovID AND e.Empresa = @Empresa AND e.Estatus NOT IN ('SINAFECTAR', 'CONFIRMAR', 'BORRADOR', 'CANCELADO') AND e.Sucursal <> @SucursalDestino)
 			SELECT @Ok = 60390
 
 	END
@@ -642,7 +642,7 @@ BEGIN
 			  ,@CfgVentaComisionesCobradas = VentaComisionesCobradas
 			  ,@CfgComisionBase = UPPER(ComisionBase)
 			  ,@CfgValidarPPMorosos = ISNULL(CxcValidarDescPPMorosos, 0)
-		FROM EmpresaCfg
+		FROM EmpresaCfg WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 
 		IF @@ERROR <> 0
@@ -661,7 +661,7 @@ BEGIN
 			  ,@CfgRetencion3Acreedor = NULLIF(RTRIM(GastoRetencion3Acreedor), '')
 			  ,@CfgRetencion3Concepto = NULLIF(RTRIM(GastoRetencion3Concepto), '')
 			  ,@CfgAgentAfectarGastos = ISNULL(AgentAfectarGastos, 0)
-		FROM EmpresaCfg2
+		FROM EmpresaCfg2 WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 
 		IF @@ERROR <> 0
@@ -670,7 +670,7 @@ BEGIN
 		SELECT @AutoAjuste = @AutoAjuste
 		SELECT @CfgContX = ContX
 			  ,@CfgAC = ISNULL(AC, 0)
-		FROM EmpresaGral
+		FROM EmpresaGral WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 
 		IF @@ERROR <> 0
@@ -678,7 +678,7 @@ BEGIN
 
 		IF @CfgContX = 1
 			SELECT @CfgContXGenerar = ContXGenerar
-			FROM EmpresaCfgModulo
+			FROM EmpresaCfgModulo WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Modulo = @Modulo
 
@@ -690,7 +690,7 @@ BEGIN
 			 WHEN @MovTipo = 'CXP.DC' THEN CxpDevRetencion
 			 ELSE CxpRetencion
 		 END
-		FROM EmpresaCfgMov
+		FROM EmpresaCfgMov WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 
 		IF @@ERROR <> 0
@@ -699,7 +699,7 @@ BEGIN
 		SELECT @CfgMovCargoDiverso = NULL
 			  ,@CfgMovCreditoDiverso = NULL
 
-		IF EXISTS (SELECT * FROM EmpresaCfgMovEsp WHERE Empresa = @Empresa AND Asunto = 'EMB' AND Modulo = @Modulo AND Mov = @Mov)
+		IF EXISTS (SELECT * FROM EmpresaCfgMovEsp WITH(NOLOCK) WHERE Empresa = @Empresa AND Asunto = 'EMB' AND Modulo = @Modulo AND Mov = @Mov)
 			SELECT @CfgEmbarcar = 1
 
 		IF @MovTipo IN ('CXC.NCP', 'CXP.NCP')
@@ -802,7 +802,7 @@ BEGIN
 			IF @Autorizar = 1
 				AND @Modulo = 'CXP'
 			BEGIN
-				UPDATE Cxp
+				UPDATE Cxp WITH(ROWLOCK)
 				SET Mensaje = @Ok
 				WHERE ID = @ID
 			END

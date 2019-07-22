@@ -1,11 +1,11 @@
-USE [IntelisisTmp]
-GO
-
-/****** Object:  View [dbo].[TipoRetencion2]    Script Date: 21/05/2019 06:45:06 p. m. ******/
+SET DATEFIRST 7    
 SET ANSI_NULLS ON
-GO
-
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
 SET QUOTED_IDENTIFIER ON
+SET NOCOUNT ON
+SET ANSI_WARNINGS ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 
 ALTER VIEW [dbo].[TipoRetencion2]
@@ -13,7 +13,7 @@ ALTER VIEW [dbo].[TipoRetencion2]
 AS
 SELECT TipoImpuesto AS TipoRetencion
 				,Tasa
-FROM TipoImpuesto
+FROM TipoImpuesto WITH(NOLOCK)
 WHERE Tipo='Retencion 2'
 GO
 

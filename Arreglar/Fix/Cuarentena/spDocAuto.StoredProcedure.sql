@@ -1,6 +1,10 @@
+SET DATEFIRST 7    
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spDocAuto]
  @ID INT
@@ -88,7 +92,7 @@ BEGIN
 	   ,@MenosDias INT
 	SET @CorteDias = 2
 	SELECT @RedondeoMonetarios = RedondeoMonetarios
-	FROM Version
+	FROM Version WITH(NOLOCK)
 	SELECT @EsQuince = 0
 		  ,@Saldo = 0.0
 		  ,@Proyecto = NULL
@@ -119,17 +123,17 @@ BEGIN
 		  ,@ImpPrimerDoc = ImpPrimerDoc
 		  ,@Condicion = Condicion
 		  ,@InteresPorcentaje = NULLIF(Interes / 100, 0)
-	FROM DocAuto
+	FROM DocAuto WITH(NOLOCK)
 	WHERE ID = @ID
 	SELECT @TipoCambio = TipoCambio
-	FROM Mon
+	FROM Mon WITH(NOLOCK)
 	WHERE Moneda = @Moneda
 
 	IF NULLIF(RTRIM(@Usuario), '') IS NULL
 		SELECT @Usuario = @MovUsuario
 
 	SELECT @MovTipo = Clave
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND Mov = @Mov
 	SELECT @PPFechaEmision = @FechaEmision
@@ -142,7 +146,7 @@ BEGIN
 		 WHEN 'CXC' THEN CxcDocAutoBorrador
 		 ELSE CxpDocAutoBorrador
 	 END, 0)
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @CfgDocAutoBorrador = 1
@@ -160,7 +164,7 @@ BEGIN
 			 WHEN 'CXP' THEN NULLIF(RTRIM(CxpDocAnticipoAutoFolio), '')
 			 ELSE NULL
 		 END
-		FROM EmpresaCfg
+		FROM EmpresaCfg WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 	END
 	ELSE
@@ -170,12 +174,12 @@ BEGIN
 			 WHEN 'CXP' THEN NULLIF(RTRIM(CxpDocAutoFolio), '')
 			 ELSE NULL
 		 END
-		FROM EmpresaCfg
+		FROM EmpresaCfg WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 
 	IF @Modulo = 'CXC'
 		SELECT @DesglosarImpuestos = ISNULL(CxcCobroImpuestos, 0)
-		FROM EmpresaCfg2
+		FROM EmpresaCfg2 WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 
 	IF @Estatus = 'SINAFECTAR'
@@ -192,7 +196,7 @@ BEGIN
 				  ,@Agente = Agente
 				  ,@Cobrador = Cobrador
 				  ,@PersonalCobrador = PersonalCobrador
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Cliente = @Cuenta
 			AND Mov = @Mov
@@ -206,7 +210,7 @@ BEGIN
 				  ,@Impuestos = ISNULL(Impuestos, 0.0)
 				  ,@Saldo = ISNULL(Saldo, 0.0)
 				  ,@Proyecto = Proyecto
-			FROM Cxp
+			FROM Cxp WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Proveedor = @Cuenta
 			AND Mov = @Mov
@@ -277,11 +281,11 @@ BEGIN
 					SELECT @EsQuince = 1
 						  ,@PrimerVencimiento = DATEADD(dd, 15 - @Dia, @PrimerVencimiento)
 					SET @PrimerVencimiento = DATEADD(dd, @CorteDias, @PrimerVencimiento)
-					UPDATE VENTA
+					UPDATE VENTA WITH(ROWLOCK)
 					SET vencimiento = @PrimerVencimiento
 					WHERE mov = @Mov
 					AND MovID = @MovID
-					UPDATE CXC
+					UPDATE CXC WITH(ROWLOCK)
 					SET vencimiento = @PrimerVencimiento
 					WHERE mov = @Mov
 					AND MovID = @MovID
@@ -302,11 +306,11 @@ BEGIN
 						IF (DATEPART(dd, @PrimerVencimiento) = 31)
 							SET @PrimerVencimiento = DATEADD(dd, 2, @PrimerVencimiento)
 
-						UPDATE VENTA
+						UPDATE VENTA WITH(ROWLOCK)
 						SET vencimiento = @PrimerVencimiento
 						WHERE mov = @Mov
 						AND MovID = @MovID
-						UPDATE CXC
+						UPDATE CXC WITH(ROWLOCK)
 						SET vencimiento = @PrimerVencimiento
 						WHERE mov = @Mov
 						AND MovID = @MovID
@@ -316,11 +320,11 @@ BEGIN
 						SELECT @EsQuince = 0
 							  ,@PrimerVencimiento = DATEADD(dd, -DATEPART(dd, @PrimerVencimiento), DATEADD(mm, 1, @PrimerVencimiento))
 						SET @PrimerVencimiento = DATEADD(dd, @CorteDias + @MenosDias, @PrimerVencimiento)
-						UPDATE VENTA
+						UPDATE VENTA WITH(ROWLOCK)
 						SET vencimiento = @PrimerVencimiento
 						WHERE mov = @Mov
 						AND MovID = @MovID
-						UPDATE CXC
+						UPDATE CXC WITH(ROWLOCK)
 						SET vencimiento = @PrimerVencimiento
 						WHERE mov = @Mov
 						AND MovID = @MovID
@@ -441,8 +445,8 @@ BEGIN
 				IF @DesglosarImpuestos = 1
 				BEGIN
 					SELECT @AplicaImpuestos = NULLIF(SUM(d.Importe * c.IVAFiscal * ISNULL(c.IEPSFiscal, 1)), 0)
-					FROM CxcD d
-						,Cxc c
+					FROM CxcD d WITH(NOLOCK)
+						,Cxc c WITH(NOLOCK)
 					WHERE d.ID = @DocID
 					AND c.Empresa = @Empresa
 					AND c.Mov = d.Aplica
@@ -451,7 +455,7 @@ BEGIN
 					AND FechaEmision = @FechaEmision
 
 					IF @AplicaImpuestos IS NOT NULL
-						UPDATE Cxc
+						UPDATE Cxc WITH(ROWLOCK)
 						SET Importe = Importe - @AplicaImpuestos
 						   ,Impuestos = @AplicaImpuestos
 						WHERE ID = @DocID
@@ -566,7 +570,7 @@ BEGIN
 	ELSE
 	BEGIN
 		SELECT @Mensaje = Descripcion
-		FROM MensajeLista
+		FROM MensajeLista WITH(NOLOCK)
 		WHERE Mensaje = @Ok
 
 		IF @OkRef IS NOT NULL

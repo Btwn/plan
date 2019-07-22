@@ -40,7 +40,7 @@ BEGIN
 	IF @Accion = 'CANCELAR'
 	BEGIN
 
-		IF EXISTS (SELECT * FROM EmbarqueD WHERE ID = @ID AND DesembarqueParcial = 1)
+		IF EXISTS (SELECT * FROM EmbarqueD WITH(NOLOCK) WHERE ID = @ID AND DesembarqueParcial = 1)
 			SELECT @Ok = 42050
 
 		RETURN
@@ -51,12 +51,12 @@ BEGIN
 		IF @Estatus = 'SINAFECTAR'
 		BEGIN
 
-			IF NOT EXISTS (SELECT * FROM EmbarqueD WHERE ID = @ID)
+			IF NOT EXISTS (SELECT * FROM EmbarqueD WITH(NOLOCK) WHERE ID = @ID)
 				SELECT @Ok = 60010
 
 			IF (
 					SELECT Estatus
-					FROM Vehiculo
+					FROM Vehiculo WITH(NOLOCK)
 					WHERE Vehiculo = @Vehiculo
 				)
 				= 'ENTRANSITO'
@@ -65,12 +65,12 @@ BEGIN
 			BEGIN
 				SELECT @ModuloID = NULL
 				SELECT @ModuloID = MIN(e.ModuloID)
-				FROM EmbarqueDArt e
-				INNER JOIN VentaD d
+				FROM EmbarqueDArt e WITH(NOLOCK)
+				INNER JOIN VentaD d WITH(NOLOCK)
 					ON e.ModuloID = d.ID
-				INNER JOIN VENTA
+				INNER JOIN VENTA WITH(NOLOCK)
 					ON VENTA.ID = D.ID
-				INNER JOIN EmpresaCfg2
+				INNER JOIN EmpresaCfg2 WITH(NOLOCK)
 					ON EmpresaCfg2.Empresa = VENTA.Empresa
 				WHERE e.ID = @ID
 				AND e.Modulo = 'VTAS'
@@ -83,7 +83,7 @@ BEGIN
 				IF @ModuloID IS NOT NULL
 					SELECT @Ok = 20010
 						  ,@OkRef = RTRIM(Mov) + ' ' + RTRIM(MovID)
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ModuloID
 
 			END
@@ -99,10 +99,10 @@ BEGIN
 					  ,NULLIF(RTRIM(m.Cliente), '')
 					  ,NULLIF(RTRIM(m.Proveedor), '')
 					  ,ISNULL(d.Importe, 0.0)
-				FROM EmbarqueD d
-				JOIN EmbarqueMov m
+				FROM EmbarqueD d WITH(NOLOCK)
+				JOIN EmbarqueMov m WITH(NOLOCK)
 					ON d.EmbarqueMov = m.ID
-				LEFT OUTER JOIN EmbarqueEstado e
+				LEFT OUTER JOIN EmbarqueEstado e WITH(NOLOCK)
 					ON d.Estado = e.Estado
 				WHERE d.ID = @ID
 			OPEN crEstado

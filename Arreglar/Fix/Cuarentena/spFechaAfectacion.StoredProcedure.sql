@@ -23,7 +23,7 @@ BEGIN
 		 ,@Mov VARCHAR(20)
 	SELECT @CfgFechaEmision = NULL
 	SELECT @CfgFechaEmision = UPPER(FechaEmision)
-	FROM EmpresaCfgModulo
+	FROM EmpresaCfgModulo WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	AND Modulo = @Modulo
 
@@ -36,7 +36,7 @@ BEGIN
 
 		IF (
 				SELECT OrigenTipo
-				FROM Venta
+				FROM Venta WITH(NOLOCK)
 				WHERE ID = @ID
 			)
 			= 'POS'
@@ -49,7 +49,7 @@ BEGIN
 
 		IF (
 				SELECT OrigenTipo
-				FROM Dinero
+				FROM Dinero WITH(NOLOCK)
 				WHERE ID = @ID
 			)
 			= 'POS'
@@ -85,104 +85,104 @@ BEGIN
 
 			IF @Modulo = 'INV'
 				SELECT @Mov = Mov
-				FROM Inv
+				FROM Inv WITH(NOLOCK)
 				WHERE Id = @ID
 			ELSE
 
 			IF @Modulo = 'GAS'
 				SELECT @Mov = Mov
-				FROM Gasto
+				FROM Gasto WITH(NOLOCK)
 				WHERE Id = @ID
 			ELSE
 
 			IF @Modulo = 'CXC'
 				SELECT @Mov = Mov
-				FROM CXC
+				FROM CXC WITH(NOLOCK)
 				WHERE Id = @ID
 
 			IF @Modulo = 'CONT'
-				UPDATE Cont
+				UPDATE Cont WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'VTAS'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PROD'
-				UPDATE Prod
+				UPDATE Prod WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'COMS'
-				UPDATE Compra
+				UPDATE Compra WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'INV'
-				UPDATE Inv
+				UPDATE Inv WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 				AND @Mov <> 'Estadistica'
 			ELSE
 
 			IF @Modulo = 'CXC'
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 				AND @Mov <> 'Estadistica'
 			ELSE
 
 			IF @Modulo = 'CXP'
-				UPDATE Cxp
+				UPDATE Cxp WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'AGENT'
-				UPDATE Agent
+				UPDATE Agent WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'GAS'
-				UPDATE Gasto
+				UPDATE Gasto WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 				AND @Mov <> 'Estadistica'
 			ELSE
 
 			IF @Modulo = 'DIN'
-				UPDATE Dinero
+				UPDATE Dinero WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'EMB'
-				UPDATE Embarque
+				UPDATE Embarque WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'NOM'
-				UPDATE Nomina
+				UPDATE Nomina WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'RH'
-				UPDATE RH
+				UPDATE RH WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'ASIS'
-				UPDATE Asiste
+				UPDATE Asiste WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
@@ -194,175 +194,175 @@ BEGIN
 			ELSE
 
 			IF @Modulo = 'PC'
-				UPDATE PC
+				UPDATE PC WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'OFER'
-				UPDATE Oferta
+				UPDATE Oferta WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'VALE'
-				UPDATE Vale
+				UPDATE Vale WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CR'
-				UPDATE CR
+				UPDATE CR WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'ST'
-				UPDATE Soporte
+				UPDATE Soporte WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CAP'
-				UPDATE Capital
+				UPDATE Capital WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'INC'
-				UPDATE Incidencia
+				UPDATE Incidencia WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CONC'
-				UPDATE Conciliacion
+				UPDATE Conciliacion WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PPTO'
-				UPDATE Presup
+				UPDATE Presup WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CREDI'
-				UPDATE Credito
+				UPDATE Credito WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'TMA'
-				UPDATE TMA
+				UPDATE TMA WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'RSS'
-				UPDATE RSS
+				UPDATE RSS WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CMP'
-				UPDATE Campana
+				UPDATE Campana WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'FIS'
-				UPDATE Fiscal
+				UPDATE Fiscal WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CONTP'
-				UPDATE ContParalela
+				UPDATE ContParalela WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'OPORT'
-				UPDATE Oportunidad
+				UPDATE Oportunidad WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CORTE'
-				UPDATE Corte
+				UPDATE Corte WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'FRM'
-				UPDATE FormaExtra
+				UPDATE FormaExtra WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CAPT'
-				UPDATE Captura
+				UPDATE Captura WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'GES'
-				UPDATE Gestion
+				UPDATE Gestion WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CP'
-				UPDATE CP
+				UPDATE CP WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PCP'
-				UPDATE PCP
+				UPDATE PCP WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PROY'
-				UPDATE Proyecto
+				UPDATE Proyecto WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'ORG'
-				UPDATE Organiza
+				UPDATE Organiza WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'RE'
-				UPDATE Recluta
+				UPDATE Recluta WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'ISL'
-				UPDATE ISL
+				UPDATE ISL WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CAM'
-				UPDATE Cambio
+				UPDATE Cambio WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PACTO'
-				UPDATE Contrato
+				UPDATE Contrato WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'SAUX'
-				UPDATE SAUX
+				UPDATE SAUX WITH(ROWLOCK)
 				SET FechaEmision = @FechaEmision
 				WHERE ID = @ID
 

@@ -41,29 +41,29 @@ BEGIN
 	   ,@CfgTipoCambio VARCHAR(20)
 	EXEC spExtraerFecha @FechaEmision OUTPUT
 	SELECT @CfgTipoCambio = TipoCambio
-	FROM EmpresaCfgModulo
+	FROM EmpresaCfgModulo WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	AND Modulo = @Modulo
 
 	IF @CfgTipoCambio = 'Venta'
 		SELECT @TipoCambio = TipoCambioVenta
-		FROM Mon
+		FROM Mon WITH(NOLOCK)
 		WHERE Moneda = @Moneda
 	ELSE
 
 	IF @CfgTipoCambio = 'Compra'
 		SELECT @TipoCambio = TipoCambioCompra
-		FROM Mon
+		FROM Mon WITH(NOLOCK)
 		WHERE Moneda = @Moneda
 
 	SELECT @UsarSucursalMovOrigen = UsarSucursalMovOrigen
 		  ,@AC = AC
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @UsarSucursalMovOrigen = 0
 		SELECT @Sucursal = Sucursal
-		FROM UsuarioSucursal
+		FROM UsuarioSucursal WITH(NOLOCK)
 		WHERE Usuario = @Usuario
 
 	IF @Mov IS NOT NULL
@@ -100,7 +100,7 @@ BEGIN
 				  ,Referencia
 				  ,Observaciones
 				  ,AfectarPresupuesto
-			FROM Cont
+			FROM Cont WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -242,7 +242,7 @@ BEGIN
 				  ,IdEcommerce
 					,PagoDIE
 					,ReporteDescuento
-			FROM Venta
+			FROM Venta WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -279,7 +279,7 @@ BEGIN
 				  ,FechaInicio
 				  ,FechaEntrega
 				  ,RenglonID
-			FROM Prod
+			FROM Prod WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -338,7 +338,7 @@ BEGIN
 				  ,ComisionesIVA
 				  ,AutoCargos
 				  ,Cliente
-			FROM Compra
+			FROM Compra WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -383,7 +383,7 @@ BEGIN
 				  ,Personal
 				  ,ContUsoMAVI
 				  ,IDOrdTrasMavi
-			FROM Inv
+			FROM Inv WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -448,8 +448,8 @@ BEGIN
 				  ,d.Titulo
 				  ,t.Valor
 				  ,d.ValorOrigen
-			FROM Dinero d
-			LEFT OUTER JOIN Titulo t
+			FROM Dinero d WITH(NOLOCK)
+			LEFT OUTER JOIN Titulo t WITH(NOLOCK)
 				ON t.Titulo = d.Titulo
 			WHERE d.ID = @ID
 	ELSE
@@ -528,8 +528,8 @@ BEGIN
 				  ,Nota
 				  ,VIN
 				  ,ContUso
-			FROM Cxc
-				,Mon ms
+			FROM Cxc WITH(NOLOCK)
+				,Mon ms WITH(NOLOCK)
 			WHERE ms.Moneda = ClienteMoneda
 			AND ID = @ID
 	ELSE
@@ -587,8 +587,8 @@ BEGIN
 				  ,Nota
 				  ,VIN
 				  ,ContUso
-			FROM Cxp
-				,Mon ms
+			FROM Cxp WITH(NOLOCK)
+				,Mon ms WITH(NOLOCK)
 			WHERE ms.Moneda = ProveedorMoneda
 			AND ID = @ID
 	ELSE
@@ -622,7 +622,7 @@ BEGIN
 				  ,CtaDinero
 				  ,FormaPago
 				  ,Importe
-			FROM Agent
+			FROM Agent WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -685,7 +685,7 @@ BEGIN
 				  ,Nota
 				  ,ClienteRef
 				  ,ArticuloRef
-			FROM Gasto
+			FROM Gasto WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -724,7 +724,7 @@ BEGIN
 				  ,Condicion
 				  ,Vencimiento
 				  ,PersonalCobrador
-			FROM Embarque
+			FROM Embarque WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -757,7 +757,7 @@ BEGIN
 				  ,FechaD
 				  ,FechaA
 				  ,FechaOrigen
-			FROM Nomina
+			FROM Nomina WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -787,7 +787,7 @@ BEGIN
 				  ,Referencia
 				  ,Observaciones
 				  ,Evaluacion
-			FROM RH
+			FROM RH WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -818,7 +818,7 @@ BEGIN
 				  ,Localidad
 				  ,FechaD
 				  ,FechaA
-			FROM Asiste
+			FROM Asiste WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -860,7 +860,7 @@ BEGIN
 				  ,Personal
 				  ,Espacio
 				  ,ContUso
-			FROM ActivoFijo
+			FROM ActivoFijo WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -895,7 +895,7 @@ BEGIN
 				  ,Proveedor
 				  ,Metodo
 				  ,Monto
-			FROM PC
+			FROM PC WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -941,7 +941,7 @@ BEGIN
 				  ,Linea
 				  ,Fabricante
 				  ,Porcentaje
-			FROM Oferta
+			FROM Oferta WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -982,7 +982,7 @@ BEGIN
 				  ,Descuento
 				  ,DescuentoGlobal
 				  ,CtaDinero
-			FROM Vale
+			FROM Vale WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -1015,7 +1015,7 @@ BEGIN
 				  ,Cajero
 				  ,FechaD
 				  ,FechaA
-			FROM CR
+			FROM CR WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -1096,7 +1096,7 @@ BEGIN
 				  ,Clase3
 				  ,Clase4
 				  ,Clase5
-			FROM Soporte
+			FROM Soporte WITH(NOLOCK)
 			WHERE ID = @ID
 	ELSE
 
@@ -1126,7 +1126,7 @@ BEGIN
 				  ,Referencia
 				  ,Observaciones
 				  ,Agente
-			FROM Capital
+			FROM Capital WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'INC'
@@ -1168,7 +1168,7 @@ BEGIN
 				  ,Prorratear
 				  ,Frecuencia
 				  ,Veces
-			FROM Incidencia
+			FROM Incidencia WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'CONC'
@@ -1199,7 +1199,7 @@ BEGIN
 				  ,CtaDinero
 				  ,FechaD
 				  ,FechaA
-			FROM Conciliacion
+			FROM Conciliacion WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'PPTO'
@@ -1227,7 +1227,7 @@ BEGIN
 				  ,ISNULL(@TipoCambio, TipoCambio)
 				  ,Referencia
 				  ,Observaciones
-			FROM Presup
+			FROM Presup WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'CREDI'
@@ -1270,7 +1270,7 @@ BEGIN
 				  ,LineaCreditoFondeo
 				  ,TieneTasaEsp
 				  ,TasaEsp
-			FROM Credito
+			FROM Credito WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'WMS'
@@ -1299,7 +1299,7 @@ BEGIN
 				  ,Almacen
 				  ,Agente
 				  ,Contenedor
-			FROM WMS
+			FROM WMS WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'RSS'
@@ -1338,7 +1338,7 @@ BEGIN
 				  ,AdjuntoTamano
 				  ,AdjuntoTipo
 				  ,GETDATE()
-			FROM RSS
+			FROM RSS WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'CMP'
@@ -1370,7 +1370,7 @@ BEGIN
 				  ,TieneVigencia
 				  ,FechaD
 				  ,FechaA
-			FROM Campana
+			FROM Campana WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'FIS'
@@ -1401,7 +1401,7 @@ BEGIN
 				  ,Acreedor
 				  ,Condicion
 				  ,Vencimiento
-			FROM Fiscal
+			FROM Fiscal WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'FRM'
@@ -1430,7 +1430,7 @@ BEGIN
 				  ,FormaTipo
 				  ,Aplica
 				  ,AplicaClave
-			FROM FormaExtra
+			FROM FormaExtra WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'PROY'
@@ -1474,7 +1474,7 @@ BEGIN
 				  ,ProyectoReestructurar
 				  ,0
 				  ,Comentarios
-			FROM Proyecto
+			FROM Proyecto WITH(NOLOCK)
 			WHERE ID = @ID
 
 	IF @Modulo = 'CAM'
@@ -1504,7 +1504,7 @@ BEGIN
 				  ,Agente
 				  ,Condicion
 				  ,Vencimiento
-			FROM Cambio
+			FROM Cambio WITH(NOLOCK)
 			WHERE ID = @ID
 
 	SELECT @GenerarID = @@IDENTITY
@@ -1545,7 +1545,7 @@ BEGIN
 							  ,@Ok OUTPUT
 							  ,@CopiarBitacora
 
-	IF EXISTS (SELECT * FROM EmpresaCfgModulo WHERE Empresa = @Empresa AND Modulo = @Modulo AND UPPER(Tiempos) = 'SI')
+	IF EXISTS (SELECT * FROM EmpresaCfgModulo WITH(NOLOCK) WHERE Empresa = @Empresa AND Modulo = @Modulo AND UPPER(Tiempos) = 'SI')
 		INSERT MovTiempo (Modulo, Sucursal, ID, Usuario, FechaInicio, FechaComenzo, Estatus)
 			VALUES (@Modulo, @Sucursal, @GenerarID, @Usuario, GETDATE(), GETDATE(), @Estatus)
 

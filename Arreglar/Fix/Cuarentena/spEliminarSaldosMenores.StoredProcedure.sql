@@ -51,7 +51,7 @@ BEGIN
 		 WHEN 'CXC' THEN NULLIF(RTRIM(CxcAjuste), '')
 		 ELSE NULLIF(RTRIM(CxpAjuste), '')
 	 END
-	FROM EmpresaCfgMov
+	FROM EmpresaCfgMov WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @Modulo = 'CXC'
@@ -66,9 +66,9 @@ BEGIN
 				  ,c.Mov
 				  ,c.MovID
 				  ,ISNULL(c.Saldo, 0)
-			FROM Cxc c
-				,Mon m
-				,MovTipo mt
+			FROM Cxc c WITH(NOLOCK)
+				,Mon m WITH(NOLOCK)
+				,MovTipo mt WITH(NOLOCK)
 			WHERE c.Empresa = @Empresa
 			AND m.Moneda = c.Moneda
 			AND c.Saldo >=
@@ -103,9 +103,9 @@ BEGIN
 				  ,c.Mov
 				  ,c.MovID
 				  ,ISNULL(c.Saldo, 0)
-			FROM Cxp c
-				,Mon m
-				,MovTipo mt
+			FROM Cxp c WITH(NOLOCK)
+				,Mon m WITH(NOLOCK)
+				,MovTipo mt WITH(NOLOCK)
 			WHERE c.Empresa = @Empresa
 			AND m.Moneda = c.Moneda
 			AND c.Saldo >=
@@ -154,23 +154,23 @@ BEGIN
 
 				IF @Modulo = 'CXC'
 				BEGIN
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET Importe = @SumaImporte
 					WHERE ID = @ID
 
 					IF (@SumaImporte < 0)
-						AND (EXISTS (SELECT Concepto FROM Concepto WHERE Concepto = 'SALDOS ROJOS' AND Modulo = 'CXC')
+						AND (EXISTS (SELECT Concepto FROM Concepto WITH(NOLOCK) WHERE Concepto = 'SALDOS ROJOS' AND Modulo = 'CXC')
 						)
-						UPDATE Cxc
+						UPDATE Cxc WITH(ROWLOCK)
 						SET Concepto = 'SALDOS ROJOS'
 						WHERE ID = @ID
 					ELSE
 					BEGIN
 
 						IF (@SumaImporte >= 0)
-							AND (EXISTS (SELECT Concepto FROM Concepto WHERE Concepto = 'SALDOS NEGROS' AND Modulo = 'CXC')
+							AND (EXISTS (SELECT Concepto FROM Concepto WITH(NOLOCK) WHERE Concepto = 'SALDOS NEGROS' AND Modulo = 'CXC')
 							)
-							UPDATE Cxc
+							UPDATE Cxc WITH(ROWLOCK)
 							SET Concepto = 'SALDOS NEGROS'
 							WHERE ID = @ID
 
@@ -179,23 +179,23 @@ BEGIN
 				END
 				ELSE
 				BEGIN
-					UPDATE Cxp
+					UPDATE Cxp WITH(ROWLOCK)
 					SET Importe = @SumaImporte
 					WHERE ID = @ID
 
 					IF (@SumaImporte < 0)
-						AND (EXISTS (SELECT Concepto FROM Concepto WHERE Concepto = 'SALDOS ROJOS' AND Modulo = 'CXP')
+						AND (EXISTS (SELECT Concepto FROM Concepto WITH(NOLOCK) WHERE Concepto = 'SALDOS ROJOS' AND Modulo = 'CXP')
 						)
-						UPDATE Cxp
+						UPDATE Cxp WITH(ROWLOCK)
 						SET Concepto = 'SALDOS ROJOS'
 						WHERE ID = @ID
 					ELSE
 					BEGIN
 
 						IF (@SumaImporte >= 0)
-							AND (EXISTS (SELECT Concepto FROM Concepto WHERE Concepto = 'SALDOS NEGROS' AND Modulo = 'CXP')
+							AND (EXISTS (SELECT Concepto FROM Concepto WITH(NOLOCK) WHERE Concepto = 'SALDOS NEGROS' AND Modulo = 'CXP')
 							)
-							UPDATE Cxp
+							UPDATE Cxp WITH(ROWLOCK)
 							SET Concepto = 'SALDOS NEGROS'
 							WHERE ID = @ID
 
@@ -260,23 +260,23 @@ BEGIN
 
 		IF @Modulo = 'CXC'
 		BEGIN
-			UPDATE Cxc
+			UPDATE Cxc WITH(ROWLOCK)
 			SET Importe = @SumaImporte
 			WHERE ID = @ID
 
 			IF (@SumaImporte < 0)
-				AND (EXISTS (SELECT Concepto FROM Concepto WHERE Concepto = 'SALDOS ROJOS' AND Modulo = 'CXC')
+				AND (EXISTS (SELECT Concepto FROM Concepto WITH(NOLOCK) WHERE Concepto = 'SALDOS ROJOS' AND Modulo = 'CXC')
 				)
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET Concepto = 'SALDOS ROJOS'
 				WHERE ID = @ID
 			ELSE
 			BEGIN
 
 				IF (@SumaImporte >= 0)
-					AND (EXISTS (SELECT Concepto FROM Concepto WHERE Concepto = 'SALDOS NEGROS' AND Modulo = 'CXC')
+					AND (EXISTS (SELECT Concepto FROM Concepto WITH(NOLOCK) WHERE Concepto = 'SALDOS NEGROS' AND Modulo = 'CXC')
 					)
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET Concepto = 'SALDOS NEGROS'
 					WHERE ID = @ID
 
@@ -285,23 +285,23 @@ BEGIN
 		END
 		ELSE
 		BEGIN
-			UPDATE Cxp
+			UPDATE Cxp WITH(ROWLOCK)
 			SET Importe = @SumaImporte
 			WHERE ID = @ID
 
 			IF (@SumaImporte < 0)
-				AND (EXISTS (SELECT Concepto FROM Concepto WHERE Concepto = 'SALDOS ROJOS' AND Modulo = 'CXP')
+				AND (EXISTS (SELECT Concepto FROM Concepto WITH(NOLOCK) WHERE Concepto = 'SALDOS ROJOS' AND Modulo = 'CXP')
 				)
-				UPDATE Cxp
+				UPDATE Cxp WITH(ROWLOCK)
 				SET Concepto = 'SALDOS ROJOS'
 				WHERE ID = @ID
 			ELSE
 			BEGIN
 
 				IF (@SumaImporte >= 0)
-					AND (EXISTS (SELECT Concepto FROM Concepto WHERE Concepto = 'SALDOS NEGROS' AND Modulo = 'CXP')
+					AND (EXISTS (SELECT Concepto FROM Concepto WITH(NOLOCK) WHERE Concepto = 'SALDOS NEGROS' AND Modulo = 'CXP')
 					)
-					UPDATE Cxp
+					UPDATE Cxp WITH(ROWLOCK)
 					SET Concepto = 'SALDOS NEGROS'
 					WHERE ID = @ID
 
@@ -333,7 +333,7 @@ BEGIN
 	ELSE
 		SELECT @OkDesc = Descripcion
 			  ,@OkTipo = Tipo
-		FROM MensajeLista
+		FROM MensajeLista WITH(NOLOCK)
 		WHERE Mensaje = @Ok
 
 	SELECT @Ok

@@ -28,17 +28,17 @@ BEGIN
 		  ,@OrigenTipo = OrigenTipo
 		  ,@Origen = Origen
 		  ,@OrigenID = OrigenID
-	FROM Venta
+	FROM Venta WITH(NOLOCK)
 	WHERE ID = @ID
 
 	IF @OrigenTipo = 'VTAS'
 	BEGIN
 
-		IF EXISTS (SELECT * FROM Venta v, Condicion c, MovTipo mt WHERE v.Empresa = @Empresa AND v.Mov = @Origen AND v.MovID = @OrigenID AND Cliente = @Cliente AND v.Estatus NOT IN ('SINAFECTAR', 'CANCELADO') AND v.Condicion = c.Condicion AND UPPER(c.ControlAnticipos) IN ('ABIERTO', 'PLAZOS', 'FECHA REQUERIDA') AND mt.Mov = v.Mov AND mt.Modulo = 'VTAS' AND mt.Clave IN ('VTAS.P', 'VTAS.S'))
+		IF EXISTS (SELECT * FROM Venta v WITH(NOLOCK), Condicion c WITH(NOLOCK), MovTipo mt WITH(NOLOCK) WHERE v.Empresa = @Empresa AND v.Mov = @Origen AND v.MovID = @OrigenID AND Cliente = @Cliente AND v.Estatus NOT IN ('SINAFECTAR', 'CANCELADO') AND v.Condicion = c.Condicion AND UPPER(c.ControlAnticipos) IN ('ABIERTO', 'PLAZOS', 'FECHA REQUERIDA') AND mt.Mov = v.Mov AND mt.Modulo = 'VTAS' AND mt.Clave IN ('VTAS.P', 'VTAS.S'))
 		BEGIN
 			SELECT @Saldo = 0.0
 			SELECT @Saldo = ISNULL(SUM(Abono), 0.0)
-			FROM Anticipo
+			FROM Anticipo WITH(NOLOCK)
 			WHERE Cancelado = 0
 			AND Empresa = @Empresa
 			AND Cuenta = @Cliente
@@ -47,7 +47,7 @@ BEGIN
 			AND Referencia IS NOT NULL
 			SELECT @Aplicado = 0.0
 			SELECT @Aplicado = ISNULL(SUM(Importe + Impuestos), 0.0)
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Cliente = @Cliente
 			AND Moneda = @Moneda
@@ -63,12 +63,12 @@ BEGIN
 	IF @Saldo IS NULL
 		AND (
 			SELECT VentaSugerirSaldoFavorID
-			FROM EmpresaCfg
+			FROM EmpresaCfg WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 		)
 		= 0
 		SELECT @Saldo = -ISNULL(Saldo, 0.0)
-		FROM CxcEfectivo
+		FROM CxcEfectivo WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 		AND Cliente = @Cliente
 		AND Moneda = @Moneda

@@ -108,13 +108,13 @@ BEGIN
 	SELECT @UsarPrefijoSucursal = CteExpressUsarPrefijoSucursal
 		  ,@Condicion = CteExpressCondicion
 		  ,@ConsecutivoGral = SugerirConsecCentralizado
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @UsarPrefijoSucursal = 1
 		SELECT @PrefijoSucursal = NULLIF(RTRIM(Prefijo), '')
-		FROM Sucursal s
-			,Version v
+		FROM Sucursal s WITH(NOLOCK)
+			,Version v WITH(NOLOCK)
 		WHERE s.Sucursal = v.Sucursal
 
 	IF @CPID IS NOT NULL
@@ -124,7 +124,7 @@ BEGIN
 			  ,@Ruta = Ruta
 			  ,@Estado = Estado
 			  ,@Pais = 'Mexico'
-		FROM CodigoPostal
+		FROM CodigoPostal WITH(NOLOCK)
 		WHERE ID = @CPID
 
 	IF @PrefijoSucursal IS NOT NULL
@@ -137,7 +137,7 @@ BEGIN
 	IF @Clave = '(RFC)'
 	BEGIN
 
-		IF NOT EXISTS (SELECT * FROM Cte WHERE UPPER(RTRIM(LTRIM(RFC))) = UPPER(RTRIM(LTRIM(@RFC))))
+		IF NOT EXISTS (SELECT * FROM Cte WITH(NOLOCK) WHERE UPPER(RTRIM(LTRIM(RFC))) = UPPER(RTRIM(LTRIM(@RFC))))
 			SELECT @Clave = RTRIM(LTRIM(@RFC))
 		ELSE
 			SELECT @Clave = '(CONSECUTIVO)'
@@ -164,7 +164,7 @@ BEGIN
 		ELSE
 		BEGIN
 			SELECT @Clave = MAX(RTRIM(LTRIM(Cliente)))
-			FROM Cte
+			FROM Cte WITH(NOLOCK)
 			WHERE Tipo = 'Prospecto'
 
 			IF @Clave IS NULL
@@ -207,23 +207,23 @@ BEGIN
 
 	BEGIN TRANSACTION
 
-	IF NOT EXISTS (SELECT * FROM Cte WHERE RTRIM(LTRIM(Cliente)) = RTRIM(LTRIM(@Clave)))
+	IF NOT EXISTS (SELECT * FROM Cte WITH(NOLOCK) WHERE RTRIM(LTRIM(Cliente)) = RTRIM(LTRIM(@Clave)))
 	BEGIN
 
-		IF EXISTS (SELECT * FROM Cte WHERE UPPER(Nombre) = UPPER(@Nombre) AND UPPER(RTRIM(LTRIM(RFC))) = UPPER(RTRIM(LTRIM(@RFC))))
+		IF EXISTS (SELECT * FROM Cte WITH(NOLOCK) WHERE UPPER(Nombre) = UPPER(@Nombre) AND UPPER(RTRIM(LTRIM(RFC))) = UPPER(RTRIM(LTRIM(@RFC))))
 		BEGIN
 			SELECT @Clave = Cliente
-			FROM Cte
+			FROM Cte WITH(NOLOCK)
 			WHERE UPPER(Nombre) = UPPER(@Nombre)
 			AND UPPER(RTRIM(LTRIM(RFC))) = UPPER(RTRIM(LTRIM(@RFC)))
 			SELECT @Ok = 1
 		END
 		ELSE
 
-		IF EXISTS (SELECT * FROM Cte WHERE UPPER(RTRIM(LTRIM(RFC))) = UPPER(RTRIM(LTRIM(@RFC))))
+		IF EXISTS (SELECT * FROM Cte WITH(NOLOCK) WHERE UPPER(RTRIM(LTRIM(RFC))) = UPPER(RTRIM(LTRIM(@RFC))))
 		BEGIN
 			SELECT @Clave = Cliente
-			FROM Cte
+			FROM Cte WITH(NOLOCK)
 			WHERE UPPER(RTRIM(LTRIM(RFC))) = UPPER(RTRIM(LTRIM(@RFC)))
 			SELECT @Mensaje = 'El RFC Ya Existe en"' + RTRIM(LTRIM(@Clave)) + '"'
 			RAISERROR (@Mensaje, 16, -1)
@@ -232,19 +232,19 @@ BEGIN
 		BEGIN
 
 			IF @Categoria IS NOT NULL
-				AND NOT EXISTS (SELECT * FROM CteCat WHERE UPPER(Categoria) = UPPER(@Categoria))
+				AND NOT EXISTS (SELECT * FROM CteCat WITH(NOLOCK) WHERE UPPER(Categoria) = UPPER(@Categoria))
 				SELECT @Ok = 10060
 					  ,@OkRef = @Categoria
 			ELSE
 
 			IF @Grupo IS NOT NULL
-				AND NOT EXISTS (SELECT * FROM CteGrupo WHERE UPPER(Grupo) = UPPER(@Grupo))
+				AND NOT EXISTS (SELECT * FROM CteGrupo WITH(NOLOCK) WHERE UPPER(Grupo) = UPPER(@Grupo))
 				SELECT @Ok = 10060
 					  ,@OkRef = @Grupo
 			ELSE
 
 			IF @Familia IS NOT NULL
-				AND NOT EXISTS (SELECT * FROM CteFam WHERE UPPER(Familia) = UPPER(@Familia))
+				AND NOT EXISTS (SELECT * FROM CteFam WITH(NOLOCK) WHERE UPPER(Familia) = UPPER(@Familia))
 				SELECT @Ok = 10060
 					  ,@OkRef = @Familia
 
@@ -257,8 +257,8 @@ BEGIN
 
 			IF @Comentarios IS NOT NULL
 
-				IF EXISTS (SELECT * FROM NotaCta WHERE Rama = 'CXC' AND RTRIM(LTRIM(Cuenta)) = RTRIM(LTRIM(@Clave)))
-					UPDATE NotaCta
+				IF EXISTS (SELECT * FROM NotaCta WITH(NOLOCK) WHERE Rama = 'CXC' AND RTRIM(LTRIM(Cuenta)) = RTRIM(LTRIM(@Clave)))
+					UPDATE NotaCta WITH(ROWLOCK)
 					SET Comentarios = @Comentarios
 					WHERE Rama = 'CXC'
 					AND RTRIM(LTRIM(Cuenta)) = RTRIM(LTRIM(@Clave))
@@ -278,14 +278,14 @@ BEGIN
 	IF @Ok = 10060
 	BEGIN
 		SELECT @Mensaje = '"' + LTRIM(RTRIM(ISNULL(@OkRef, ''))) + '" ' + Descripcion
-		FROM MensajeLista
+		FROM MensajeLista WITH(NOLOCK)
 		WHERE Mensaje = @Ok
 		RAISERROR (@Mensaje, 16, -1)
 	END
 	ELSE
 
 	IF @Ok IS NULL
-		AND EXISTS (SELECT * FROM Cte WHERE RTRIM(LTRIM(Cliente)) = RTRIM(LTRIM(@Clave)) AND RTRIM(LTRIM(RFC)) = RTRIM(LTRIM(@RFC)))
+		AND EXISTS (SELECT * FROM Cte WITH(NOLOCK) WHERE RTRIM(LTRIM(Cliente)) = RTRIM(LTRIM(@Clave)) AND RTRIM(LTRIM(RFC)) = RTRIM(LTRIM(@RFC)))
 	BEGIN
 		SELECT "Clave" = RTRIM(LTRIM(@Clave))
 		RETURN

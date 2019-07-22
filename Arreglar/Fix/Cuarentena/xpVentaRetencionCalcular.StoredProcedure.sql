@@ -37,7 +37,7 @@ BEGIN
 	   ,@RFC VARCHAR(20)
 	   ,@PorcRetencion FLOAT
 	SELECT @PorcRetencion = (Retencion2 / 100)
-	FROM Art
+	FROM Art WITH(NOLOCK)
 	WHERE Articulo = @Articulo
 	SELECT @Retencion = @ImporteNeto * @PorcRetencion
 		  ,@BorrarRetencionCx = 0

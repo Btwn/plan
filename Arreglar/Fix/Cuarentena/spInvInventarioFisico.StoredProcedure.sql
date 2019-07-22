@@ -75,12 +75,12 @@ BEGIN
 	   ,@Movx VARCHAR(20)
 	SELECT @ArticuloBlanco = Articulo
 		  ,@TarimaBlanco = Tarima
-	FROM WMSInventarioFisicoArtBlanco
+	FROM WMSInventarioFisicoArtBlanco WITH(NOLOCK)
 	SELECT @MonedaBlanco = MonedaCosto
-	FROM Art
+	FROM Art WITH(NOLOCK)
 	WHERE Articulo = @ArticuloBlanco
 	SELECT @WMS = ISNULL(WMS, 0)
-	FROM Alm
+	FROM Alm WITH(NOLOCK)
 	WHERE Almacen = @Almacen
 	SELECT @Renglon = 0
 		  ,@RenglonID = 0
@@ -92,19 +92,19 @@ BEGIN
 		  ,@FormaCosteo = UPPER(FormaCosteo)
 		  ,@TipoCosteo = ISNULL(NULLIF(RTRIM(UPPER(TipoCosteo)), ''), 'PROMEDIO')
 		  ,@WMSSugerirEntarimado = WMSSugerirEntarimado
-	FROM EmpresaCfg
+	FROM EmpresaCfg WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CfgMultiUnidades = MultiUnidades
 		  ,@CfgMultiUnidadesNivel = ISNULL(UPPER(NivelFactorMultiUnidad), 'UNIDAD')
 		  ,@RegistrarPrecios = InvRegistrarPrecios
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @Moneda = Moneda
 		  ,@TipoCambio = TipoCambio
-	FROM Inv
+	FROM Inv WITH(NOLOCK)
 	WHERE ID = @IDGenerar
 	SELECT @SucursalAlmacen = Sucursal
-	FROM Alm
+	FROM Alm WITH(NOLOCK)
 	WHERE Almacen = @Almacen
 
 	IF @WMS = 1
@@ -112,7 +112,7 @@ BEGIN
 	BEGIN
 		SELECT @Base = 'TODO'
 
-		IF NOT EXISTS (SELECT * FROM SaldoUWMS WHERE Sucursal = @Sucursal AND Empresa = @Empresa AND Rama = 'INV' AND Grupo = @Almacen AND Cuenta = @ArticuloBlanco AND SubCuenta = '' AND SubGrupo = @TarimaBlanco)
+		IF NOT EXISTS (SELECT * FROM SaldoUWMS WITH(NOLOCK) WHERE Sucursal = @Sucursal AND Empresa = @Empresa AND Rama = 'INV' AND Grupo = @Almacen AND Cuenta = @ArticuloBlanco AND SubCuenta = '' AND SubGrupo = @TarimaBlanco)
 			INSERT INTO SaldoUWMS (Sucursal, Empresa, Rama, Moneda, Grupo, SubGrupo, Cuenta, SubCuenta, Saldo, SaldoU, PorConciliar, PorConciliarU, UltimoCambio)
 				SELECT @Sucursal
 					  ,@Empresa
@@ -147,12 +147,12 @@ BEGIN
 			  ,@ZonaImpuesto = ZonaImpuesto
 			  ,@Contacto = Proveedor
 			  ,@FechaEmision = FechaEmision
-		FROM Compra
+		FROM Compra WITH(NOLOCK)
 		WHERE ID = @IDGenerar
 	ELSE
 	BEGIN
 		SELECT @Mov = Mov
-		FROM Inv
+		FROM Inv WITH(NOLOCK)
 		WHERE ID = @IDGenerar
 		CREATE TABLE #ExistenciaFisica (
 			Articulo VARCHAR(20) COLLATE Database_Default NOT NULL
@@ -180,10 +180,10 @@ BEGIN
 				  ,ISNULL(d.PosicionActual, '')
 				  ,ISNULL(d.PosicionReal, '')
 				  ,Tarima
-			FROM InvD d
-				,Art a
-				,ArtCostoSucursal ac
-				,Alm al
+			FROM InvD d WITH(NOLOCK)
+				,Art a WITH(NOLOCK)
+				,ArtCostoSucursal ac WITH(NOLOCK)
+				,Alm al WITH(NOLOCK)
 			WHERE d.ID = @ID
 			AND d.Articulo = a.Articulo
 			AND UPPER(a.Tipo) NOT IN ('JUEGO', 'SERVICIO')
@@ -215,8 +215,8 @@ BEGIN
 				  ,ISNULL(d.PosicionActual, '')
 				  ,ISNULL(d.PosicionReal, '')
 				  ,Tarima
-			FROM InvD d
-				,Art a
+			FROM InvD d WITH(NOLOCK)
+				,Art a WITH(NOLOCK)
 			WHERE d.ID = @ID
 			AND d.Articulo = a.Articulo
 			AND UPPER(a.Tipo) NOT IN ('JUEGO', 'SERVICIO')
@@ -246,8 +246,8 @@ BEGIN
 				  ,e.Almacen
 				  ,NULLIF(RTRIM(e.Tarima), '')
 				  ,Art.ContUso
-			FROM ArtSubDisponibleTarima e
-			JOIN Art
+			FROM ArtSubDisponibleTarima e WITH(NOLOCK)
+			JOIN Art WITH(NOLOCK)
 				ON Art.Articulo = e.Articulo
 			WHERE e.Empresa = @Empresa
 			AND e.Almacen = ISNULL(@Almacen, e.Almacen)
@@ -268,8 +268,8 @@ BEGIN
 				  ,e.Almacen
 				  ,NULLIF(RTRIM(e.Tarima), '')
 				  ,Art.ContUso
-			FROM ArtSubDisponibleTarima e
-				,Art
+			FROM ArtSubDisponibleTarima e WITH(NOLOCK)
+				,Art WITH(NOLOCK)
 			WHERE e.Articulo = Art.Articulo
 			AND e.Empresa = @Empresa
 			AND e.Almacen = ISNULL(@Almacen, e.Almacen)
@@ -288,8 +288,8 @@ BEGIN
 				  ,e.Almacen
 				  ,NULLIF(RTRIM(e.Tarima), '')
 				  ,Art.ContUso
-			FROM ArtSubExistenciaConsigAFTarima e
-				,Art
+			FROM ArtSubExistenciaConsigAFTarima e WITH(NOLOCK)
+				,Art WITH(NOLOCK)
 			WHERE e.Articulo = Art.Articulo
 			AND e.Empresa = @Empresa
 			AND e.Almacen = ISNULL(@Almacen, e.Almacen)
@@ -307,9 +307,9 @@ BEGIN
 				  ,e.Almacen
 				  ,NULLIF(RTRIM(e.Tarima), '')
 				  ,Art.ContUso
-			FROM ArtSubExistenciaConsigAFTarima2 e
-				,Art
-				,InvD d
+			FROM ArtSubExistenciaConsigAFTarima2 e WITH(NOLOCK)
+				,Art WITH(NOLOCK)
+				,InvD d WITH(NOLOCK)
 			WHERE e.Articulo = Art.Articulo
 			AND e.Empresa = @Empresa
 			AND e.Almacen = ISNULL(@Almacen, e.Almacen)
@@ -335,7 +335,7 @@ BEGIN
 			  ,@PosicionReal = NULL
 		SELECT @PosicionActual = Posicion
 			  ,@PosicionReal = Posicion
-		FROM Tarima
+		FROM Tarima WITH(NOLOCK)
 		WHERE Tarima = @Tarima
 		UPDATE #ExistenciaFisica
 		SET Cantidad = Cantidad - @Existencia
@@ -382,8 +382,8 @@ BEGIN
 				  ,a.ContUso
 				  ,d.PosicionActual
 				  ,d.PosicionReal
-			FROM InvD d
-				,Art a
+			FROM InvD d WITH(NOLOCK)
+				,Art a WITH(NOLOCK)
 			WHERE d.ID = @ID
 			AND d.Articulo = a.Articulo
 			AND d.Articulo NOT IN (SELECT Articulo FROM #ExistenciaFisica)
@@ -421,7 +421,7 @@ BEGIN
 	BEGIN
 	SELECT @Unidad = Unidad
 		  ,@LotesFijos = ISNULL(LotesFijos, 0)
-	FROM Art
+	FROM Art WITH(NOLOCK)
 	WHERE Articulo = @Articulo
 
 	IF @CfgMultiUnidadesNivel = 'ARTICULO'
@@ -442,7 +442,7 @@ BEGIN
 
 	IF @FormaCosteo = 'ARTICULO'
 		SELECT @TipoCosteo = TipoCosteo
-		FROM Art
+		FROM Art WITH(NOLOCK)
 		WHERE Articulo = @Articulo
 
 	EXEC spVerCosto @Sucursal
@@ -492,14 +492,14 @@ BEGIN
 			IF @SeriesLotesAutoOrden = 'ASCENDENTE'
 				SELECT @Lote = (
 					 SELECT TOP 1 Lote
-					 FROM ArtLoteFijo
+					 FROM ArtLoteFijo WITH(NOLOCK)
 					 WHERE Articulo = @Articulo
 					 ORDER BY Lote DESC
 				 )
 			ELSE
 				SELECT @Lote = (
 					 SELECT TOP 1 Lote
-					 FROM ArtLoteFijo
+					 FROM ArtLoteFijo WITH(NOLOCK)
 					 WHERE Articulo = @Articulo
 					 ORDER BY Lote
 				 )
@@ -508,7 +508,7 @@ BEGIN
 
 			IF @Lote IS NOT NULL
 				SELECT @Costo = MIN(CostoPromedio) * @Factor
-				FROM SerieLote
+				FROM SerieLote WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Articulo = @Articulo
 				AND SubCuenta = ISNULL(@SubCuenta, '')
@@ -523,7 +523,7 @@ BEGIN
 			SELECT @Impuesto1 = Impuesto1
 				  ,@Impuesto2 = Impuesto2
 				  ,@Impuesto3 = Impuesto3
-			FROM Art
+			FROM Art WITH(NOLOCK)
 			WHERE Articulo = @Articulo
 			EXEC spZonaImp @ZonaImpuesto
 						  ,@Impuesto1 OUTPUT
@@ -577,8 +577,8 @@ BEGIN
 						   ELSE ISNULL(@Existencia, 0.0)
 					   END
 					  ,@Tarima
-				FROM SerieLote sl
-				LEFT OUTER JOIN SerieLoteMov slm
+				FROM SerieLote sl WITH(NOLOCK)
+				LEFT OUTER JOIN SerieLoteMov slm WITH(NOLOCK)
 					ON slm.Empresa = @Empresa
 					AND slm.Modulo = @Modulo
 					AND slm.ID = @ID
@@ -619,7 +619,7 @@ BEGIN
 
 	IF @Modulo = 'COMS'
 	BEGIN
-		UPDATE Compra
+		UPDATE Compra WITH(ROWLOCK)
 		SET RenglonID = @RenglonID + 1
 		WHERE ID = @IDGenerar
 		DELETE CompraD
@@ -628,7 +628,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		UPDATE Inv
+		UPDATE Inv WITH(ROWLOCK)
 		SET RenglonID = @RenglonID + 1
 		WHERE ID = @IDGenerar
 		DELETE InvD
@@ -639,7 +639,7 @@ BEGIN
 	IF @@ERROR <> 0
 		SELECT @Ok = 1
 
-	IF NOT EXISTS (SELECT * FROM InvD WHERE ID = @IDGenerar)
+	IF NOT EXISTS (SELECT * FROM InvD WITH(NOLOCK) WHERE ID = @IDGenerar)
 	BEGIN
 
 		IF @Modulo = 'COMS'

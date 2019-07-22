@@ -40,8 +40,8 @@ BEGIN
 	   ,@EstatusExtra CHAR(15)
 		 ,@HM CHAR(5)
 	SELECT @MovTipo = MT.Clave
-	FROM Asiste A
-	JOIN MovTipo MT
+	FROM Asiste A WITH(NOLOCK)
+	JOIN MovTipo MT WITH(NOLOCK)
 		ON MT.Mov = A.Mov
 		AND MT.Modulo = @Modulo
 	WHERE A.ID = @ID
@@ -52,7 +52,7 @@ BEGIN
 			crCancelarNomina
 			CURSOR FOR
 			SELECT ID
-			FROM Nomina
+			FROM Nomina WITH(NOLOCK)
 			WHERE OrigenTipo = @Modulo
 			AND Origen = @Mov
 			AND OrigenID = @MovID
@@ -68,7 +68,7 @@ BEGIN
 
 			IF @MovTipo = 'ASIS.C'
 
-				IF EXISTS (SELECT * FROM MovFlujo WHERE Cancelado = 0 AND Empresa = @Empresa AND OModulo = @Modulo AND OID = @ID AND OModulo <> DModulo)
+				IF EXISTS (SELECT * FROM MovFlujo WITH(NOLOCK) WHERE Cancelado = 0 AND Empresa = @Empresa AND OModulo = @Modulo AND OID = @ID AND OModulo <> DModulo)
 
 					IF @Accion = 'CANCELAR'
 						SELECT @Ok = 60060
@@ -95,21 +95,21 @@ BEGIN
 			  ,@GenerarRetardos = AsisteGenerarRetardos
 			  ,@GenerarHorasExtras = AsisteGenerarHorasExtras
 			  ,@HerramHorasExtra = HerramientaHorasExtra
-		FROM EmpresaCfg
+		FROM EmpresaCfg WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 		SELECT @TipoCambio = TipoCambio
-		FROM Mon
+		FROM Mon WITH(NOLOCK)
 		WHERE Moneda = @Moneda
 		SELECT @MovFaltas = NomFaltas
 			  ,@MovRetardos = NomRetardos
 			  ,@MovHorasExtras = NomHorasExtras
-		FROM EmpresaCfgMov
+		FROM EmpresaCfgMov WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 		DECLARE
 			crAsisteConcepto
 			CURSOR LOCAL FOR
 			SELECT DISTINCT ISNULL(RTRIM(Concepto), '')
-			FROM AsisteD
+			FROM AsisteD WITH(NOLOCK)
 			WHERE ID = @ID
 		OPEN crAsisteConcepto
 		FETCH NEXT FROM crAsisteConcepto INTO @Concepto
@@ -124,11 +124,11 @@ BEGIN
 			IF @GenerarFaltas = 1
 			BEGIN
 
-				IF EXISTS (SELECT personal FROM AsisteD d WHERE d.ID = @ID AND UPPER(d.Tipo) = 'DIAS AUSENCIA' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
+				IF EXISTS (SELECT personal FROM AsisteD d WITH(NOLOCK) WHERE d.ID = @ID AND UPPER(d.Tipo) = 'DIAS AUSENCIA' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
 				BEGIN
 					SELECT @FechaD = FechaD
 						  ,@FechaA = FechaA
-					FROM Asiste
+					FROM Asiste WITH(NOLOCK)
 					WHERE ID = @ID
 					INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
 						SELECT GETDATE()
@@ -148,7 +148,7 @@ BEGIN
 							  ,@Moneda
 							  ,@TipoCambio
 							  ,@Concepto
-						FROM Asiste
+						FROM Asiste WITH(NOLOCK)
 						WHERE ID = @ID
 					SELECT @NominaID = SCOPE_IDENTITY()
 
@@ -159,8 +159,8 @@ BEGIN
 								,d.Fecha
 								,1.0
 								,@Concepto
-						FROM AsisteD d
-						JOIN Personal p
+						FROM AsisteD d WITH(NOLOCK)
+						JOIN Personal p WITH(NOLOCK)
 							ON p.Personal = d.Personal
 							AND p.Estatus = 'ALTA'
 						WHERE d.ID = @ID
@@ -169,7 +169,7 @@ BEGIN
 						GROUP BY d.Personal
 								,d.Fecha
 
-					IF NOT EXISTS (SELECT * FROM NominaD WHERE ID = @NominaID)
+					IF NOT EXISTS (SELECT * FROM NominaD WITH(NOLOCK) WHERE ID = @NominaID)
 					BEGIN
 						DELETE Nomina
 						WHERE ID = @NominaID
@@ -177,7 +177,7 @@ BEGIN
 
 				END
 
-				IF EXISTS (SELECT personal FROM AsisteD d WHERE d.ID = @ID AND UPPER(d.Tipo) = 'DIAS DE SANCION' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
+				IF EXISTS (SELECT personal FROM AsisteD d WITH(NOLOCK) WHERE d.ID = @ID AND UPPER(d.Tipo) = 'DIAS DE SANCION' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
 				BEGIN
 					INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
 						SELECT GETDATE()
@@ -197,7 +197,7 @@ BEGIN
 							  ,@Moneda
 							  ,@TipoCambio
 							  ,@Concepto
-						FROM Asiste
+						FROM Asiste WITH(NOLOCK)
 						WHERE ID = @ID
 					SELECT @NominaID = @@IDENTITY
 					INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad, Concepto)
@@ -207,8 +207,8 @@ BEGIN
 							  ,d.Fecha
 							  ,1.0
 							  ,@Concepto
-						FROM AsisteD d
-						JOIN Personal p
+						FROM AsisteD d WITH(NOLOCK)
+						JOIN Personal p WITH(NOLOCK)
 							ON p.Personal = d.Personal
 							AND p.Estatus = 'ALTA'
 						WHERE d.ID = @ID
@@ -223,13 +223,13 @@ BEGIN
 			IF @GenerarRetardos = 1
 			BEGIN
 
-				IF EXISTS (SELECT personal FROM AsisteD d WHERE d.ID = @ID AND UPPER(d.Tipo) = 'MINUTOS AUSENCIA' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
+				IF EXISTS (SELECT personal FROM AsisteD d WITH(NOLOCK) WHERE d.ID = @ID AND UPPER(d.Tipo) = 'MINUTOS AUSENCIA' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
 				BEGIN
 					SELECT @FechaD = NULL
 						  ,@FechaA = NULL
 					SELECT @FechaD = FechaD
 						  ,@FechaA = FechaA
-					FROM Asiste
+					FROM Asiste WITH(NOLOCK)
 					WHERE ID = @ID
 					INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
 						SELECT GETDATE()
@@ -249,7 +249,7 @@ BEGIN
 							  ,@Moneda
 							  ,@TipoCambio
 							  ,@Concepto
-						FROM Asiste
+						FROM Asiste WITH(NOLOCK)
 						WHERE ID = @ID
 					SELECT @NominaID = SCOPE_IDENTITY()
 
@@ -260,8 +260,8 @@ BEGIN
 								,d.Fecha
 								,SUM(d.Cantidad) / (60)
 								,CAST(CONVERT(VARCHAR, d.Fecha + (SUM(d.Cantidad) / (60 * 24)), 108) AS VARCHAR(5))
-						FROM AsisteD d
-						JOIN Personal p
+						FROM AsisteD d WITH(NOLOCK)
+						JOIN Personal p WITH(NOLOCK)
 							ON p.Personal = d.Personal
 							AND p.Estatus = 'ALTA'
 						WHERE d.ID = @ID
@@ -270,7 +270,7 @@ BEGIN
 						GROUP BY d.Personal
 								,d.Fecha
 
-					IF NOT EXISTS (SELECT * FROM NominaD WHERE ID = @NominaID)
+					IF NOT EXISTS (SELECT * FROM NominaD WITH(NOLOCK) WHERE ID = @NominaID)
 					BEGIN
 						DELETE Nomina
 						WHERE ID = @NominaID
@@ -282,7 +282,7 @@ BEGIN
 
 			IF @GenerarHorasExtras = 1
 				SELECT @GenerarBancoHoras = ISNULL(porOmision, 0)
-				FROM PersonalProp
+				FROM PersonalProp WITH(NOLOCK)
 				WHERE propiedad = 'Activar Banco de Horas'
 
 			SET @EstatusExtra = 'CONFIRMAR'
@@ -295,7 +295,7 @@ BEGIN
 					  ,@EstatusExtra = 'CONCLUIDO'
 			END
 
-			IF EXISTS (SELECT personal FROM AsisteD d WHERE d.ID = @ID AND UPPER(d.Tipo) = 'MINUTOS EXTRAS' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
+			IF EXISTS (SELECT personal FROM AsisteD d WITH(NOLOCK) WHERE d.ID = @ID AND UPPER(d.Tipo) = 'MINUTOS EXTRAS' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
 			BEGIN
 				INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
 					SELECT GETDATE()
@@ -315,7 +315,7 @@ BEGIN
 							,@Moneda
 							,@TipoCambio
 							,@Concepto
-					FROM Asiste
+					FROM Asiste WITH(NOLOCK)
 					WHERE ID = @ID
 				SELECT @NominaID = SCOPE_IDENTITY()
 				INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad, Horas)
@@ -325,8 +325,8 @@ BEGIN
 							,d.Fecha
 							,SUM(d.Cantidad) / 60.0
 							,CAST(CONVERT(VARCHAR, d.Fecha + (SUM(d.Cantidad) / (60 * 24)), 108) AS VARCHAR(5))
-					FROM AsisteD d
-					JOIN Personal p
+					FROM AsisteD d WITH(NOLOCK)
+					JOIN Personal p WITH(NOLOCK)
 						ON p.Personal = d.Personal
 						AND p.Estatus = 'ALTA'
 					WHERE d.ID = @ID
@@ -338,7 +338,7 @@ BEGIN
 					crNominaD
 					CURSOR LOCAL FOR
 					SELECT Cantidad * 60
-					FROM NominaD
+					FROM NominaD WITH(NOLOCK)
 					WHERE ID = @NominaID
 				OPEN crNominaD
 				FETCH NEXT FROM crNominaD INTO @Minutos
@@ -352,7 +352,7 @@ BEGIN
 					EXEC spMinutosToHoras @Minutos
 											,@Horas OUTPUT
 											,1
-					UPDATE NominaD
+					UPDATE NominaD WITH(ROWLOCK)
 					SET Horas = @Horas
 					WHERE CURRENT OF crNominaD
 				END
@@ -362,7 +362,7 @@ BEGIN
 				CLOSE crNominaD
 				DEALLOCATE crNominaD
 
-				IF EXISTS (SELECT personal FROM AsisteD d WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Día Desc. Lab.' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
+				IF EXISTS (SELECT personal FROM AsisteD d WITH(NOLOCK) WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Día Desc. Lab.' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
 				BEGIN
 					INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
 						SELECT GETDATE()
@@ -382,7 +382,7 @@ BEGIN
 							  ,@Moneda
 							  ,@TipoCambio
 							  ,@Concepto
-						FROM Asiste
+						FROM Asiste WITH(NOLOCK)
 						WHERE ID = @ID
 					SELECT @NominaID = @@IDENTITY
 					INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad)
@@ -391,8 +391,8 @@ BEGIN
 							  ,d.Personal
 							  ,d.Fecha
 							  ,d.Cantidad
-						FROM AsisteD d
-						JOIN Personal p
+						FROM AsisteD d WITH(NOLOCK)
+						JOIN Personal p WITH(NOLOCK)
 							ON p.Personal = d.Personal
 							AND p.Estatus = 'ALTA'
 						WHERE d.ID = @ID
@@ -403,7 +403,7 @@ BEGIN
 								,d.Cantidad
 				END
 
-				IF EXISTS (SELECT personal FROM AsisteD d WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Domingos Laborados' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
+				IF EXISTS (SELECT personal FROM AsisteD d WITH(NOLOCK) WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Domingos Laborados' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
 				BEGIN
 					INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
 						SELECT GETDATE()
@@ -423,7 +423,7 @@ BEGIN
 							  ,@Moneda
 							  ,@TipoCambio
 							  ,@Concepto
-						FROM Asiste
+						FROM Asiste WITH(NOLOCK)
 						WHERE ID = @ID
 					SELECT @NominaID = @@IDENTITY
 					INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad)
@@ -432,8 +432,8 @@ BEGIN
 							  ,d.Personal
 							  ,d.Fecha
 							  ,d.Cantidad
-						FROM AsisteD d
-						JOIN Personal p
+						FROM AsisteD d WITH(NOLOCK)
+						JOIN Personal p WITH(NOLOCK)
 							ON p.Personal = d.Personal
 							AND p.Estatus = 'ALTA'
 						WHERE d.ID = @ID
@@ -444,7 +444,7 @@ BEGIN
 								,d.Cantidad
 				END
 
-				IF EXISTS (SELECT personal FROM AsisteD d WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Día Festivo Lab.' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
+				IF EXISTS (SELECT personal FROM AsisteD d WITH(NOLOCK) WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Día Festivo Lab.' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto)
 				BEGIN
 					INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
 						SELECT GETDATE()
@@ -464,7 +464,7 @@ BEGIN
 							  ,@Moneda
 							  ,@TipoCambio
 							  ,@Concepto
-						FROM Asiste
+						FROM Asiste WITH(NOLOCK)
 						WHERE ID = @ID
 					SELECT @NominaID = @@IDENTITY
 					INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad)
@@ -473,8 +473,8 @@ BEGIN
 							  ,d.Personal
 							  ,d.Fecha
 							  ,d.Cantidad
-						FROM AsisteD d
-						JOIN Personal p
+						FROM AsisteD d WITH(NOLOCK)
+						JOIN Personal p WITH(NOLOCK)
 							ON p.Personal = d.Personal
 							AND p.Estatus = 'ALTA'
 						WHERE d.ID = @ID

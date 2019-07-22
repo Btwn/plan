@@ -54,16 +54,16 @@ BEGIN
 		  ,@ConsecutivoUnico = 0
 			,@CFDFlex = 0
 	SELECT @ConsecutivoUnico = ISNULL(ConsecutivoUnico, 0)
-	FROM Modulo
+	FROM Modulo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	SELECT @MovTipo = Clave
 		  ,@SubFoliosOrigen = ISNULL(SubFoliosOrigen, 0)
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND Mov = @Mov
 	SELECT @CfgSubFoliosOrigen = ISNULL(SubFoliosOrigen, 0)
 		  ,@CfgSubFoliosOrigenSeparador = ISNULL(NULLIF(RTRIM(SubFoliosOrigenSeparador), ''), '.')
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @CfgSubFoliosOrigen = 0
@@ -140,9 +140,9 @@ BEGIN
 		AND NULLIF(RTRIM(@Concepto), '') IS NOT NULL
 		AND @Ok IS NULL
 
-		IF EXISTS (SELECT * FROM EmpresaConcepto c, EmpresaConceptoValidar v WHERE v.Empresa = c.Empresa AND v.Modulo = c.Modulo AND v.Mov = c.Mov AND c.Empresa = @Empresa AND c.Modulo = @Modulo AND c.Mov = @Mov)
+		IF EXISTS (SELECT * FROM EmpresaConcepto c WITH(NOLOCK), EmpresaConceptoValidar v WITH(NOLOCK) WHERE v.Empresa = c.Empresa AND v.Modulo = c.Modulo AND v.Mov = c.Mov AND c.Empresa = @Empresa AND c.Modulo = @Modulo AND c.Mov = @Mov)
 
-			IF NOT EXISTS (SELECT * FROM EmpresaConceptoValidar WHERE Empresa = @Empresa AND Modulo = @Modulo AND Mov = @Mov AND Concepto = @Concepto)
+			IF NOT EXISTS (SELECT * FROM EmpresaConceptoValidar WITH(NOLOCK) WHERE Empresa = @Empresa AND Modulo = @Modulo AND Mov = @Mov AND Concepto = @Concepto)
 				SELECT @Ok = 20485
 					  ,@OkRef = RTRIM(@Mov) + ' (' + RTRIM(@Concepto) + ')'
 
@@ -164,7 +164,7 @@ BEGIN
 							   ,@Ok OUTPUT
 							   ,@OkRef OUTPUT
 		SELECT @PREFIJOSUCURSAL = prefijosucursal
-		FROM movtipo
+		FROM movtipo WITH(NOLOCK)
 		WHERE Modulo = @Modulo
 		AND Mov = @Mov
 
@@ -178,7 +178,7 @@ BEGIN
 			END
 			ELSE
 				SELECT @SucursalPrincipal = Sucursal
-				FROM Version
+				FROM Version WITH(NOLOCK)
 
 			SELECT @SucursalConsecutivo = @SucursalPrincipal
 		END
@@ -191,7 +191,7 @@ BEGIN
 			IF @Sucursal <> @SucursalDestino
 			BEGIN
 
-				IF EXISTS (SELECT * FROM EmpresaGral WHERE Empresa = @Empresa AND UsarConsecutivoSucursalDestino = 1)
+				IF EXISTS (SELECT * FROM EmpresaGral WITH(NOLOCK) WHERE Empresa = @Empresa AND UsarConsecutivoSucursalDestino = 1)
 				BEGIN
 					EXEC spSucursalEnLinea @SucursalDestino
 										  ,@EnLinea OUTPUT
@@ -230,7 +230,7 @@ BEGIN
 		BEGIN
 			SELECT @Prefijo = NULL
 			SELECT @Prefijo = NULLIF(RTRIM(Prefijo), '')
-			FROM Sucursal
+			FROM Sucursal WITH(NOLOCK)
 			WHERE Sucursal = @SucursalConsecutivo
 			EXEC xpConsecutivoPrefijo @Empresa
 									 ,@Modulo
@@ -262,7 +262,7 @@ BEGIN
 
 				IF @SucursalPrincipal IS NULL
 					SELECT @SucursalPrincipal = Sucursal
-					FROM Version
+					FROM Version WITH(NOLOCK)
 
 				IF @SucursalConsecutivo <> @SucursalPrincipal
 				BEGIN
@@ -291,271 +291,271 @@ BEGIN
 		BEGIN
 
 			IF @Modulo = 'CONT'
-				UPDATE Cont
+				UPDATE Cont WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'VTAS'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PROD'
-				UPDATE Prod
+				UPDATE Prod WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'COMS'
-				UPDATE Compra
+				UPDATE Compra WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'INV'
-				UPDATE Inv
+				UPDATE Inv WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CXC'
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CXP'
-				UPDATE Cxp
+				UPDATE Cxp WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'AGENT'
-				UPDATE Agent
+				UPDATE Agent WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'GAS'
-				UPDATE Gasto
+				UPDATE Gasto WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'DIN'
-				UPDATE Dinero
+				UPDATE Dinero WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'EMB'
-				UPDATE Embarque
+				UPDATE Embarque WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'NOM'
-				UPDATE Nomina
+				UPDATE Nomina WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'RH'
-				UPDATE RH
+				UPDATE RH WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'ASIS'
-				UPDATE Asiste
+				UPDATE Asiste WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'AF'
-				UPDATE ActivoFijo
+				UPDATE ActivoFijo WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PC'
-				UPDATE PC
+				UPDATE PC WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'OFER'
-				UPDATE Oferta
+				UPDATE Oferta WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'VALE'
-				UPDATE Vale
+				UPDATE Vale WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CR'
-				UPDATE CR
+				UPDATE CR WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'ST'
-				UPDATE Soporte
+				UPDATE Soporte WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CAP'
-				UPDATE Capital
+				UPDATE Capital WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'INC'
-				UPDATE Incidencia
+				UPDATE Incidencia WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CONC'
-				UPDATE Conciliacion
+				UPDATE Conciliacion WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PPTO'
-				UPDATE Presup
+				UPDATE Presup WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CREDI'
-				UPDATE Credito
+				UPDATE Credito WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'TMA'
-				UPDATE TMA
+				UPDATE TMA WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'RSS'
-				UPDATE RSS
+				UPDATE RSS WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CMP'
-				UPDATE Campana
+				UPDATE Campana WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'FIS'
-				UPDATE Fiscal
+				UPDATE Fiscal WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CONTP'
-				UPDATE ContParalela
+				UPDATE ContParalela WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'OPORT'
-				UPDATE Oportunidad
+				UPDATE Oportunidad WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CORTE'
-				UPDATE Corte
+				UPDATE Corte WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'FRM'
-				UPDATE FormaExtra
+				UPDATE FormaExtra WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CAPT'
-				UPDATE Captura
+				UPDATE Captura WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'GES'
-				UPDATE Gestion
+				UPDATE Gestion WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CP'
-				UPDATE CP
+				UPDATE CP WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PCP'
-				UPDATE PCP
+				UPDATE PCP WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PROY'
-				UPDATE Proyecto
+				UPDATE Proyecto WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'ORG'
-				UPDATE Organiza
+				UPDATE Organiza WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'RE'
-				UPDATE Recluta
+				UPDATE Recluta WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'ISL'
-				UPDATE ISL
+				UPDATE ISL WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'CAM'
-				UPDATE Cambio
+				UPDATE Cambio WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PACTO'
-				UPDATE Contrato
+				UPDATE Contrato WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'SAUX'
-				UPDATE SAUX
+				UPDATE SAUX WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE
 
 			IF @Modulo = 'PREV'
-				UPDATE PrevencionLD
+				UPDATE PrevencionLD WITH(ROWLOCK)
 				SET MovID = @MovID
 				WHERE ID = @ID
 			ELSE

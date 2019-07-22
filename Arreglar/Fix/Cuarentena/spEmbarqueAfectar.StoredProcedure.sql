@@ -132,7 +132,7 @@ BEGIN
 		AND @EstatusNuevo = 'CONCLUIDO'
 	BEGIN
 
-		IF EXISTS (SELECT d.id FROM EmbarqueD d JOIN EmbarqueMov m ON d.EmbarqueMov = m.ID JOIN EmbarqueEstado e ON d.Estado = e.Estado WHERE d.ID = @ID AND UPPER(e.Tipo) = 'PENDIENTE' AND d.DesembarqueParcial = 0)
+		IF EXISTS (SELECT d.id FROM EmbarqueD d WITH(NOLOCK) JOIN EmbarqueMov m WITH(NOLOCK) ON d.EmbarqueMov = m.ID JOIN EmbarqueEstado e WITH(NOLOCK) ON d.Estado = e.Estado WHERE d.ID = @ID AND UPPER(e.Tipo) = 'PENDIENTE' AND d.DesembarqueParcial = 0)
 			SELECT @TienePendientes = 1
 				  ,@EstatusNuevo = 'PENDIENTE'
 
@@ -249,10 +249,10 @@ BEGIN
 
 		IF (
 				SELECT Sincro
-				FROM Version
+				FROM Version WITH(NOLOCK)
 			)
 			= 1
-			EXEC sp_executesql N'UPDATE EmbarqueD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+			EXEC sp_executesql N'UPDATE EmbarqueD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 							  ,N'@Sucursal int, @ID int'
 							  ,@Sucursal
 							  ,@ID
@@ -319,7 +319,7 @@ BEGIN
 		FROM EmbarqueD d
 		JOIN EmbarqueMov m
 			ON d.EmbarqueMov = m.ID
-		LEFT OUTER JOIN EmbarqueEstado e
+		LEFT OUTER JOIN EmbarqueEstado e WITH(NOLOCK)
 			ON d.Estado = e.Estado
 		WHERE d.ID = @ID
 		AND d.DesembarqueParcial = 0
@@ -343,7 +343,7 @@ BEGIN
 
 		IF @Importe < ISNULL((
 				SELECT ISNULL(Saldo, 0.0) --+ ISNULL(SaldoInteresesOrdinarios, 0.0) + ISNULL(SaldoInteresesMoratorios, 0.0)
-				FROM Cxc
+				FROM Cxc WITH(NOLOCK)
 				WHERE ID = @MovModuloID
 			)
 			, 0)
@@ -363,25 +363,25 @@ BEGIN
 
 				IF @MovTipo = 'EMB.OC'
 					AND @MovModulo = 'CXC'
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET PersonalCobrador = @PersonalCobrador
 					WHERE ID = @MovModuloID
 					AND ISNULL(PersonalCobrador, '') <> @PersonalCobrador
 
-				UPDATE EmbarqueD
+				UPDATE EmbarqueD WITH(ROWLOCK)
 				SET Estado = @CfgEstadoTransito
 				WHERE CURRENT OF crEmbarque
-				UPDATE EmbarqueMov
+				UPDATE EmbarqueMov WITH(ROWLOCK)
 				SET MovPorcentaje = ISNULL(MovPorcentaje, 0) + @MovPorcentaje
 				WHERE ID = @EmbarqueMovID
 			END
 
 			IF @Accion = 'CANCELAR'
 			BEGIN
-				UPDATE EmbarqueD
+				UPDATE EmbarqueD WITH(ROWLOCK)
 				SET Estado = @CfgEstadoPendiente
 				WHERE CURRENT OF crEmbarque
-				UPDATE EmbarqueMov
+				UPDATE EmbarqueMov WITH(ROWLOCK)
 				SET MovPorcentaje = ISNULL(MovPorcentaje, 0) - @MovPorcentaje
 				WHERE ID = @EmbarqueMovID
 			END
@@ -393,14 +393,14 @@ BEGIN
 
 				IF @MovModulo = 'VTAS'
 				BEGIN
-					UPDATE VentaD
+					UPDATE VentaD WITH(ROWLOCK)
 					SET CantidadEmbarcada =
 					CASE
 						WHEN @Accion = 'CANCELAR'
 							OR @EstadoTipo = 'DESEMBARCAR' THEN ISNULL(d.CantidadEmbarcada, 0) - ISNULL(e.Cantidad, 0)
 						ELSE ISNULL(d.CantidadEmbarcada, 0) + ISNULL(e.Cantidad, 0)
 					END
-					FROM EmbarqueDArt e, VentaD d
+					FROM EmbarqueDArt e WITH(NOLOCK), VentaD d
 					WHERE e.ID = @ID
 					AND e.EmbarqueMov = @EmbarqueMov
 					AND e.Modulo = @MovModulo
@@ -408,8 +408,8 @@ BEGIN
 					AND e.Renglon = d.Renglon
 					AND e.RenglonSub = d.RenglonSub
 
-					IF EXISTS (SELECT * FROM EmbarqueDArt e, VentaD d WHERE e.ID = @ID AND e.EmbarqueMov = @EmbarqueMov AND e.Modulo = @MovModulo AND e.ModuloID = d.ID AND d.CantidadEmbarcada <> d.Cantidad - ISNULL(d.CantidadCancelada, 0))
-						UPDATE EmbarqueMov
+					IF EXISTS (SELECT * FROM EmbarqueDArt e WITH(NOLOCK), VentaD d WITH(NOLOCK) WHERE e.ID = @ID AND e.EmbarqueMov = @EmbarqueMov AND e.Modulo = @MovModulo AND e.ModuloID = d.ID AND d.CantidadEmbarcada <> d.Cantidad - ISNULL(d.CantidadCancelada, 0))
+						UPDATE EmbarqueMov WITH(ROWLOCK)
 						SET AsignadoID = NULL
 						WHERE ID = @EmbarqueMov
 
@@ -418,14 +418,14 @@ BEGIN
 
 				IF @MovModulo = 'COMS'
 				BEGIN
-					UPDATE CompraD
+					UPDATE CompraD WITH(ROWLOCK)
 					SET CantidadEmbarcada =
 					CASE
 						WHEN @Accion = 'CANCELAR'
 							OR @EstadoTipo = 'DESEMBARCAR' THEN ISNULL(d.CantidadEmbarcada, 0) - ISNULL(e.Cantidad, 0)
 						ELSE ISNULL(d.CantidadEmbarcada, 0) + ISNULL(e.Cantidad, 0)
 					END
-					FROM EmbarqueDArt e, CompraD d
+					FROM EmbarqueDArt e WITH(NOLOCK), CompraD d
 					WHERE e.ID = @ID
 					AND e.EmbarqueMov = @EmbarqueMov
 					AND e.Modulo = @MovModulo
@@ -433,8 +433,8 @@ BEGIN
 					AND e.Renglon = d.Renglon
 					AND e.RenglonSub = d.RenglonSub
 
-					IF EXISTS (SELECT * FROM EmbarqueDArt e, CompraD d WHERE e.ID = @ID AND e.EmbarqueMov = @EmbarqueMov AND e.Modulo = @MovModulo AND e.ModuloID = d.ID AND d.CantidadEmbarcada <> d.Cantidad - ISNULL(d.CantidadCancelada, 0))
-						UPDATE EmbarqueMov
+					IF EXISTS (SELECT * FROM EmbarqueDArt e WITH(NOLOCK), CompraD d WITH(NOLOCK) WHERE e.ID = @ID AND e.EmbarqueMov = @EmbarqueMov AND e.Modulo = @MovModulo AND e.ModuloID = d.ID AND d.CantidadEmbarcada <> d.Cantidad - ISNULL(d.CantidadCancelada, 0))
+						UPDATE EmbarqueMov WITH(ROWLOCK)
 						SET AsignadoID = NULL
 						WHERE ID = @EmbarqueMov
 
@@ -450,7 +450,7 @@ BEGIN
 					  ,@MovEstatus = NULL
 					  ,@Agente = NULL
 				SELECT @MovMovTipo = Clave
-				FROM MovTipo
+				FROM MovTipo WITH(NOLOCK)
 				WHERE Modulo = @MovModulo
 				AND Mov = @MovMov
 
@@ -460,7 +460,7 @@ BEGIN
 						  ,@Agente = Agente
 						  ,@MovCondicion = Condicion
 						  ,@MovVencimiento = Vencimiento
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @MovModuloID
 
 					IF @EstadoTipo IN ('ENTREGADO', 'COBRADO')
@@ -470,7 +470,7 @@ BEGIN
 					BEGIN
 						SELECT @ModificarVencimiento = @CfgModificarVencimiento
 						SELECT @CteModificarVencimiento = ISNULL(UPPER(ModificarVencimiento), '(EMPRESA)')
-						FROM Cte
+						FROM Cte WITH(NOLOCK)
 						WHERE Cliente = @Cliente
 
 						IF @CteModificarVencimiento = 'SI'
@@ -483,7 +483,7 @@ BEGIN
 						IF NULLIF(@ClienteEnviarA, 0) IS NOT NULL
 						BEGIN
 							SELECT @EnviarAModificarVencimiento = RTRIM(UPPER(ModificarVencimiento))
-							FROM CteEnviarA
+							FROM CteEnviarA WITH(NOLOCK)
 							WHERE Cliente = @Cliente
 							AND ID = @ClienteEnviarA
 
@@ -513,31 +513,31 @@ BEGIN
 
 				IF @MovModulo = 'INV'
 					SELECT @MovEstatus = Estatus
-					FROM Inv
+					FROM Inv WITH(NOLOCK)
 					WHERE ID = @MovModuloID
 				ELSE
 
 				IF @MovModulo = 'COMS'
 					SELECT @MovEstatus = Estatus
-					FROM Compra
+					FROM Compra WITH(NOLOCK)
 					WHERE ID = @MovModuloID
 				ELSE
 
 				IF @MovModulo = 'CXC'
 					SELECT @MovEstatus = Estatus
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE ID = @MovModuloID
 				ELSE
 
 				IF @MovModulo = 'DIN'
 					SELECT @MovEstatus = Estatus
-					FROM Dinero
+					FROM Dinero WITH(NOLOCK)
 					WHERE ID = @MovModuloID
 
 				IF ((@Accion <> 'CANCELAR' AND (@EstadoTipo = 'DESEMBARCAR')) OR (@EstadoTipo = 'COBRO PARCIAL' AND @MovTipo = 'EMB.OC'))
 					OR (@Accion = 'CANCELAR' AND @Estatus = 'CONCLUIDO' AND @EstadoTipo <> 'DESEMBARCAR')
 				BEGIN
-					UPDATE EmbarqueMov
+					UPDATE EmbarqueMov WITH(ROWLOCK)
 					SET AsignadoID = NULL
 					WHERE ID = @EmbarqueMov
 				END
@@ -651,31 +651,31 @@ BEGIN
 				BEGIN
 
 					IF @MovModulo = 'VTAS'
-						UPDATE Venta
+						UPDATE Venta WITH(ROWLOCK)
 						SET FechaEntrega = @FechaHora
 						WHERE ID = @MovModuloID
 					ELSE
 
 					IF @MovModulo = 'COMS'
-						UPDATE Compra
+						UPDATE Compra WITH(ROWLOCK)
 						SET FechaEntrega = @FechaHora
 						WHERE ID = @MovModuloID
 					ELSE
 
 					IF @MovModulo = 'INV'
-						UPDATE Inv
+						UPDATE Inv WITH(ROWLOCK)
 						SET FechaEntrega = @FechaHora
 						WHERE ID = @MovModuloID
 					ELSE
 
 					IF @MovModulo = 'CXC'
-						UPDATE Cxc
+						UPDATE Cxc WITH(ROWLOCK)
 						SET FechaEntrega = @FechaHora
 						WHERE ID = @MovModuloID
 					ELSE
 
 					IF @MovModulo = 'DIN'
-						UPDATE Dinero
+						UPDATE Dinero WITH(ROWLOCK)
 						SET FechaEntrega = @FechaHora
 						WHERE ID = @MovModuloID
 
@@ -698,7 +698,7 @@ BEGIN
 							   ,@Ok OUTPUT
 
 				IF @Accion = 'CANCELAR'
-					UPDATE EmbarqueMov
+					UPDATE EmbarqueMov WITH(ROWLOCK)
 					SET AsignadoID = @AntecedenteID
 					WHERE ID = @EmbarqueMov
 
@@ -708,7 +708,7 @@ BEGIN
 
 		IF @TienePendientes = 1
 			AND @EstadoTipo NOT IN ('PENDIENTE', NULL, '')
-			UPDATE EmbarqueD
+			UPDATE EmbarqueD WITH(ROWLOCK)
 			SET DesembarqueParcial = 1
 			WHERE CURRENT OF crEmbarque
 
@@ -769,7 +769,7 @@ BEGIN
 	BEGIN
 
 		IF @TienePendientes = 1
-			UPDATE Embarque
+			UPDATE Embarque WITH(ROWLOCK)
 			SET Estatus = @EstatusNuevo
 			   ,UltimoCambio = @FechaRegistro
 			WHERE ID = @ID
@@ -820,7 +820,7 @@ BEGIN
 								,@EstatusNuevo
 								,@Ok OUTPUT
 								,@OkRef OUTPUT
-			UPDATE Embarque
+			UPDATE Embarque WITH(ROWLOCK)
 			SET Peso = NULLIF(@SumaPeso, 0.0)
 			   ,Volumen = NULLIF(@SumaVolumen, 0.0)
 			   ,Paquetes = NULLIF(@SumaPaquetes, 0.0)
@@ -850,23 +850,23 @@ BEGIN
 
 		IF @EstatusNuevo = 'CONCLUIDO'
 		BEGIN
-			UPDATE EmbarqueD
+			UPDATE EmbarqueD WITH(ROWLOCK)
 			SET DesembarqueParcial = 0
 			WHERE ID = @ID
 			AND DesembarqueParcial = 1
-			UPDATE EmbarqueMov
+			UPDATE EmbarqueMov WITH(ROWLOCK)
 			SET Gastos = ISNULL(Gastos, 0) + (((e.Importe + e.Impuestos) * e.TipoCambio) * @GastoAnexoTotalPesos) / (@SumaImportePesos + @SumaImpuestosPesos)
-			FROM EmbarqueMov e, EmbarqueD d
+			FROM EmbarqueMov e, EmbarqueD d WITH(NOLOCK)
 			WHERE d.ID = @ID
 			AND d.EmbarqueMov = e.ID
-			UPDATE EmbarqueMov
+			UPDATE EmbarqueMov WITH(ROWLOCK)
 			SET Concluido = 1
 			WHERE AsignadoID = @ID
 
 			IF @CfgBaseProrrateo = 'IMPORTE'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET EmbarqueGastos = ISNULL(EmbarqueGastos, 0) + (((e.Importe + e.Impuestos) * e.TipoCambio) * @GastoAnexoTotalPesos) / (@SumaImportePesos + @SumaImpuestosPesos)
-				FROM EmbarqueMov e, EmbarqueD d, Venta v
+				FROM EmbarqueMov e WITH(NOLOCK), EmbarqueD d WITH(NOLOCK), Venta v
 				WHERE d.ID = @ID
 				AND d.EmbarqueMov = e.ID
 				AND e.Modulo = 'VTAS'
@@ -874,9 +874,9 @@ BEGIN
 			ELSE
 
 			IF @CfgBaseProrrateo = 'PAQUETES'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET EmbarqueGastos = ISNULL(EmbarqueGastos, 0) + (e.Paquetes * @GastoAnexoTotalPesos) / @SumaPaquetes
-				FROM EmbarqueMov e, EmbarqueD d, Venta v
+				FROM EmbarqueMov e WITH(NOLOCK), EmbarqueD d WITH(NOLOCK), Venta v
 				WHERE d.ID = @ID
 				AND d.EmbarqueMov = e.ID
 				AND e.Modulo = 'VTAS'
@@ -884,9 +884,9 @@ BEGIN
 			ELSE
 
 			IF @CfgBaseProrrateo = 'PESO'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET EmbarqueGastos = ISNULL(EmbarqueGastos, 0) + (e.Peso * @GastoAnexoTotalPesos) / @SumaPeso
-				FROM EmbarqueMov e, EmbarqueD d, Venta v
+				FROM EmbarqueMov e WITH(NOLOCK), EmbarqueD d WITH(NOLOCK), Venta v
 				WHERE d.ID = @ID
 				AND d.EmbarqueMov = e.ID
 				AND e.Modulo = 'VTAS'
@@ -894,9 +894,9 @@ BEGIN
 			ELSE
 
 			IF @CfgBaseProrrateo = 'VOLUMEN'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET EmbarqueGastos = ISNULL(EmbarqueGastos, 0) + (e.Volumen * @GastoAnexoTotalPesos) / @SumaVolumen
-				FROM EmbarqueMov e, EmbarqueD d, Venta v
+				FROM EmbarqueMov e WITH(NOLOCK), EmbarqueD d WITH(NOLOCK), Venta v
 				WHERE d.ID = @ID
 				AND d.EmbarqueMov = e.ID
 				AND e.Modulo = 'VTAS'
@@ -904,9 +904,9 @@ BEGIN
 			ELSE
 
 			IF @CfgBaseProrrateo = 'PESO/VOLUMEN'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET EmbarqueGastos = ISNULL(EmbarqueGastos, 0) + (((ISNULL(e.Peso, 0) * ISNULL(e.Volumen, 0)) * e.TipoCambio) * @GastoAnexoTotalPesos) / (@SumaPeso * @SumaVolumen)
-				FROM EmbarqueMov e, EmbarqueD d, Venta v
+				FROM EmbarqueMov e WITH(NOLOCK), EmbarqueD d WITH(NOLOCK), Venta v
 				WHERE d.ID = @ID
 				AND d.EmbarqueMov = e.ID
 				AND e.Modulo = 'VTAS'
@@ -914,7 +914,7 @@ BEGIN
 
 		END
 
-		UPDATE Vehiculo
+		UPDATE Vehiculo WITH(ROWLOCK)
 		SET Estatus =
 		CASE
 			WHEN @EstatusNuevo = 'PENDIENTE' THEN 'ENTRANSITO'
@@ -932,11 +932,11 @@ BEGIN
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Vehiculo
+				FROM Vehiculo WITH(NOLOCK)
 				WHERE Vehiculo = @Vehiculo
 			)
 			= 0
-			UPDATE Vehiculo
+			UPDATE Vehiculo WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Vehiculo = @Vehiculo
 

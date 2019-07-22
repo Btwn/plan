@@ -128,18 +128,18 @@ BEGIN
 		   ,EstatusNuevo VARCHAR(15)
 		)
 	SELECT @ArtRedondeo = Articulo
-	FROM Art
+	FROM Art WITH(NOLOCK)
 	WHERE Articulo = (
 		SELECT RedondeoVentaCodigo
-		FROM POSCfg
+		FROM POSCfg WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 	)
 	SET @FacturaGlobalPeriodo = 0
 
-	IF NOT EXISTS (SELECT * FROM ListaID WHERE Estacion = @Estacion)
+	IF NOT EXISTS (SELECT * FROM ListaID WITH(NOLOCK) WHERE Estacion = @Estacion)
 		OR ((
 			SELECT Clave
-			FROM MovTipo
+			FROM MovTipo WITH(NOLOCK)
 			WHERE Modulo = 'VTAS'
 			AND Mov = @FacturaMov
 		)
@@ -151,10 +151,10 @@ BEGIN
 
 	SELECT @ArtOfertaFP = ArtOfertaFP
 		  ,@ArtOfertaImporte = ArtOfertaImporte
-	FROM POSCfg
+	FROM POSCfg WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CfgAnticipoArticuloServicio = NULLIF(CxcAnticipoArticuloServicio, '')
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @EnviarA = NULL
 		  ,@NotaID = NULL
@@ -169,7 +169,7 @@ BEGIN
 		  ,@Proveedor = NULL
 		  ,@CuantasFacturas = 0
 	SELECT @AjusteMov = InvAjuste
-	FROM EmpresaCfgMov
+	FROM EmpresaCfgMov WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CfgCosteoNivelSubCuenta = CosteoNivelSubCuenta
 		  ,@ClienteVMOS = NULLIF(RTRIM(ClienteFacturaVMOS), '')
@@ -180,7 +180,7 @@ BEGIN
 		  ,@CfgCosteoLotes = ISNULL(CosteoLotes, 0)
 		  ,@SeriesLotesAutoOrden = UPPER(SeriesLotesAutoOrden)
 		  ,@GenerarNCAlProcesar = ISNULL(GenerarNCAlProcesar, 0)
-	FROM EmpresaCfg
+	FROM EmpresaCfg WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @VentaEstatus = @EstatusVMOS
 
@@ -199,23 +199,23 @@ BEGIN
 		SELECT @LeyendaEstatus = ' (Sin Afectar)'
 
 	SELECT @VentaMultiAlmacen = VentaMultiAlmacen
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @Sucursal IS NULL
 		SELECT @Sucursal = Sucursal
-		FROM UsuarioSucursal
+		FROM UsuarioSucursal WITH(NOLOCK)
 		WHERE Usuario = @Usuario
 
 	SELECT @CerrarSucursalAuto = CerrarSucursalAuto
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	EXEC spExtraerFecha @FechaEmision OUTPUT
 	DECLARE
 		crLista
 		CURSOR FOR
 		SELECT ID
-		FROM ListaID
+		FROM ListaID WITH(NOLOCK)
 		WHERE Estacion = @Estacion
 	OPEN crLista
 	FETCH NEXT FROM crLista INTO @NotaID
@@ -231,7 +231,7 @@ BEGIN
 
 	END
 
-	IF EXISTS (SELECT * FROM Inv WHERE Empresa = @Empresa AND Estatus = 'CONFIRMAR' AND OrigenTipo = 'VMOS' AND Sucursal = @Sucursal)
+	IF EXISTS (SELECT * FROM Inv WITH(NOLOCK) WHERE Empresa = @Empresa AND Estatus = 'CONFIRMAR' AND OrigenTipo = 'VMOS' AND Sucursal = @Sucursal)
 	BEGIN
 		SELECT @Ok = 10170
 
@@ -241,7 +241,7 @@ BEGIN
 	END
 
 	SELECT @ImporteTotal = SUM(ISNULL(Importe, 0.0) + ISNULL(Impuestos, 0.0))
-	FROM Venta v
+	FROM Venta v WITH(NOLOCK)
 		,ListaID l
 	WHERE v.ID = l.ID
 	AND l.Estacion = @Estacion
@@ -262,7 +262,7 @@ BEGIN
 		  ,@TipoCambio = TipoCambio
 		  ,@Concepto = Concepto
 		  ,@ZonaImpuesto = ZonaImpuesto
-	FROM Venta
+	FROM Venta WITH(NOLOCK)
 	WHERE ID = @NotaID
 
 	IF @CteCNO IS NOT NULL
@@ -271,15 +271,15 @@ BEGIN
 			  ,@EnviarA = FacturarCteEnviarA
 			  ,@Condicion = Condicion
 			  ,@Agente = Agente
-		FROM Cte
+		FROM Cte WITH(NOLOCK)
 		WHERE Cliente = @CteCNO
 		SELECT @UEN = UEN
-		FROM Usuario
+		FROM Usuario WITH(NOLOCK)
 		WHERE Usuario = @Usuario
 	END
 
 	SELECT @FacturaGlobalPeriodo = FacturaGlobalPeriodo
-	FROM Empresacfg
+	FROM Empresacfg WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	CREATE TABLE #Facturas (
 		ID INT NULL
@@ -301,8 +301,8 @@ BEGIN
 							ELSE FechaEmision
 						END
 					   ,Sucursal
-		FROM Venta v
-			,ListaID l
+		FROM Venta v WITH(NOLOCK)
+			,ListaID l WITH(NOLOCK)
 		WHERE l.Estacion = @Estacion
 		AND v.ID = l.ID
 	OPEN crFechaEmision
@@ -352,10 +352,10 @@ BEGIN
 				  ,d.DescuentoImporte
 				  ,d.Puntos
 				  ,d.Comision
-			FROM Venta v
+			FROM Venta v WITH(NOLOCK)
 				,VentaD d
-				,ListaID l
-				,Art
+				,ListaID l WITH(NOLOCK)
+				,Art WITH(NOLOCK)
 			WHERE v.ID = d.ID
 			AND d.ID = l.ID
 			AND CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)
@@ -440,11 +440,11 @@ BEGIN
 						  ,SUM(s.CantidadAlterna)
 						  ,@Sucursal
 						  ,ISNULL(s.Propiedades, '')
-					FROM SerieLoteMov s
-						,Venta v
-						,VentaD d
-						,ListaID l
-						,Art
+					FROM SerieLoteMov s WITH(NOLOCK)
+						,Venta v WITH(NOLOCK)
+						,VentaD d WITH(NOLOCK)
+						,ListaID l WITH(NOLOCK)
+						,Art WITH(NOLOCK)
 					WHERE v.ID = d.ID
 					AND d.ID = l.ID
 					AND CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)
@@ -475,10 +475,10 @@ BEGIN
 							,s.ArtCostoInv
 							,s.Propiedades
 				SELECT @Costo = ISNULL(SUM(m.Cantidad * ISNULL(s.CostoPromedio * Mon.TipoCambio, 0.0)) / NULLIF(SUM(m.Cantidad), 0.0), 0.0) / @TipoCambio
-				FROM SerieLoteMov m
-					,SerieLote s
-					,Art a
-					,Mon
+				FROM SerieLoteMov m WITH(NOLOCK)
+					,SerieLote s WITH(NOLOCK)
+					,Art a WITH(NOLOCK)
+					,Mon WITH(NOLOCK)
 				WHERE m.Empresa = @Empresa
 				AND m.Modulo = 'VTAS'
 				AND m.ID = @FacturaID
@@ -493,9 +493,9 @@ BEGIN
 				AND s.Almacen = @Almacen
 				AND a.Articulo = @Articulo
 				AND Mon.Moneda = a.MonedaCosto
-				UPDATE SerieLoteMov
+				UPDATE SerieLoteMov WITH(ROWLOCK)
 				SET ArtCostoInv = s.CostoPromedio
-				FROM SerieLoteMov m, SerieLote s
+				FROM SerieLoteMov m, SerieLote s WITH(NOLOCK)
 				WHERE m.Empresa = @Empresa
 				AND m.Modulo = 'VTAS'
 				AND m.ID = @FacturaID
@@ -508,7 +508,7 @@ BEGIN
 				AND s.SerieLote = m.SerieLote
 				AND s.Sucursal = @Sucursal
 				AND s.Almacen = @Almacen
-				UPDATE VentaD
+				UPDATE VentaD WITH(ROWLOCK)
 				SET Costo = @Costo
 				WHERE ID = @FacturaID
 				AND Renglon = @Renglon
@@ -554,10 +554,10 @@ BEGIN
 				  ,d.ContUso2
 				  ,d.ContUso3
 				  ,l.ID
-			FROM Venta v
-				,VentaD d
-				,ListaID l
-				,Art
+			FROM Venta v WITH(NOLOCK)
+				,VentaD d WITH(NOLOCK)
+				,ListaID l WITH(NOLOCK)
+				,Art WITH(NOLOCK)
 			WHERE v.ID = d.ID
 			AND d.ID = l.ID
 			AND CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)
@@ -632,13 +632,13 @@ BEGIN
 
 			IF (
 					SELECT NotasBorrador
-					FROM EmpresaCFG
+					FROM EmpresaCFG WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 				)
 				= 0
 			BEGIN
 				SELECT @SerieLote = SerieLote
-				FROM SerieLoteMov
+				FROM SerieLoteMov WITH(NOLOCK)
 				WHERE ID = @ListaID
 				AND Empresa = @Empresa
 				AND Sucursal = @Sucursal
@@ -656,13 +656,13 @@ BEGIN
 				OR (@ArtTipo IN ('LOTE', 'PARTIDA') AND (@CfgCosteoLotes = 1 OR @ArtCostoIdentificado = 1))
 				OR ((
 					SELECT NotasBorrador
-					FROM EmpresaCFG
+					FROM EmpresaCFG WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 				)
 				= 1 AND @ArtTipo IN ('SERIE', 'LOTE'))
 				OR ((
 					SELECT NotasBorrador
-					FROM EmpresaCFG
+					FROM EmpresaCFG WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 				)
 				= 0 AND @ArtTipo IN ('SERIE', 'LOTE') AND @ExisteSerieLote = 1)
@@ -679,11 +679,11 @@ BEGIN
 						  ,SUM(s.CantidadAlterna)
 						  ,@Sucursal
 						  ,ISNULL(s.Propiedades, '')
-					FROM SerieLoteMov s
-						,Venta v
-						,VentaD d
-						,ListaID l
-						,Art
+					FROM SerieLoteMov s WITH(NOLOCK)
+						,Venta v WITH(NOLOCK)
+						,VentaD d WITH(NOLOCK)
+						,ListaID l WITH(NOLOCK)
+						,Art WITH(NOLOCK)
 					WHERE v.ID = d.ID
 					AND d.ID = l.ID
 					AND CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)
@@ -725,8 +725,8 @@ BEGIN
 				  ,v.ID
 				  ,@Sucursal
 				  ,@Sucursal
-			FROM Venta v
-				,ListaID l
+			FROM Venta v WITH(NOLOCK)
+				,ListaID l WITH(NOLOCK)
 			WHERE l.Estacion = @Estacion
 			AND v.ID = l.ID
 			AND CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)
@@ -737,7 +737,7 @@ BEGIN
 	ELSE
 	BEGIN
 
-		IF EXISTS (SELECT * FROM Venta v JOIN VentaD d ON v.ID = d.ID JOIN ListaID l ON l.ID = v.ID AND l.Estacion = @Estacion WHERE v.ID = d.ID AND d.ID = l.ID AND (CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)) AND l.Estacion = @Estacion AND ((d.Cantidad < 0.0) AND d.Articulo NOT IN (@CfgAnticipoArticuloServicio, @ArtOfertaFP, @ArtOfertaImporte)) AND d.ProcesadoID IS NULL)
+		IF EXISTS (SELECT * FROM Venta v WITH(NOLOCK) JOIN VentaD d WITH(NOLOCK) ON v.ID = d.ID JOIN ListaID l WITH(NOLOCK) ON l.ID = v.ID AND l.Estacion = @Estacion WHERE v.ID = d.ID AND d.ID = l.ID AND (CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)) AND l.Estacion = @Estacion AND ((d.Cantidad < 0.0) AND d.Articulo NOT IN (@CfgAnticipoArticuloServicio, @ArtOfertaFP, @ArtOfertaImporte)) AND d.ProcesadoID IS NULL)
 			EXEC spVentasProcesarNCredito @Estacion
 										 ,@Empresa
 										 ,@Sucursal
@@ -765,7 +765,7 @@ BEGIN
 										 ,@Ok OUTPUT
 										 ,@OkRef OUTPUT
 
-		IF EXISTS (SELECT * FROM Venta v JOIN VentaD d ON v.ID = d.ID JOIN ListaID l ON l.ID = v.ID AND l.Estacion = @Estacion WHERE v.ID = d.ID AND d.ID = l.ID AND (CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)) AND l.Estacion = @Estacion AND ((d.Cantidad > 0.0) OR d.Articulo IN (@CfgAnticipoArticuloServicio, @ArtOfertaFP, @ArtOfertaImporte)) AND d.ProcesadoID IS NULL)
+		IF EXISTS (SELECT * FROM Venta v WITH(NOLOCK) JOIN VentaD d WITH(NOLOCK) ON v.ID = d.ID JOIN ListaID l WITH(NOLOCK) ON l.ID = v.ID AND l.Estacion = @Estacion WHERE v.ID = d.ID AND d.ID = l.ID AND (CONVERT(CHAR(10), v.FechaEmision, 121) BETWEEN CONVERT(CHAR(10), @FacturaFechaEmisionInicio, 121) AND CONVERT(CHAR(10), @FacturaFechaEmision, 121)) AND l.Estacion = @Estacion AND ((d.Cantidad > 0.0) OR d.Articulo IN (@CfgAnticipoArticuloServicio, @ArtOfertaFP, @ArtOfertaImporte)) AND d.ProcesadoID IS NULL)
 			EXEC spVentasProcesarN2 @Estacion
 								   ,@Empresa
 								   ,@Sucursal
@@ -817,9 +817,9 @@ BEGIN
 			  ,ROUND(d.Disponible, 4)
 			  ,a.Unidad
 			  ,ISNULL(a.LotesFijos, 0)
-		FROM ArtSubDisponible d
-			,Art a
-			,Alm
+		FROM ArtSubDisponible d WITH(NOLOCK)
+			,Art a WITH(NOLOCK)
+			,Alm WITH(NOLOCK)
 		WHERE a.Articulo = d.Articulo
 		AND ROUND(d.Disponible, 4) < 0.0
 		AND d.Almacen = alm.Almacen
@@ -828,7 +828,7 @@ BEGIN
 
 	IF (
 			SELECT NotasBorrador
-			FROM EmpresaCFG
+			FROM EmpresaCFG WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 		)
 		= 1
@@ -840,21 +840,21 @@ BEGIN
 				  ,ROUND(SUM(ABS(s.Existencia)), 4)
 				  ,a.Unidad
 				  ,ISNULL(a.LotesFijos, 0)
-			FROM ArtSubDisponible d
-			JOIN Art a
+			FROM ArtSubDisponible d WITH(NOLOCK)
+			JOIN Art a WITH(NOLOCK)
 				ON a.Articulo = d.Articulo
-			JOIN Alm
+			JOIN Alm WITH(NOLOCK)
 				ON d.Almacen = alm.Almacen
-			JOIN SerieLote s
+			JOIN SerieLote s WITH(NOLOCK)
 				ON s.Articulo = a.Articulo
 				AND s.Empresa = @Empresa
 				AND s.Sucursal = @sucursal
-			JOIN SerieLoteMov sm
+			JOIN SerieLoteMov sm WITH(NOLOCK)
 				ON sm.articulo = s.Articulo
 				AND sm.SerieLote = s.SerieLote
 				AND sm.Empresa = s.Empresa
 				AND sm.Sucursal = s.Sucursal
-			JOIN ListaID l
+			JOIN ListaID l WITH(NOLOCK)
 				ON l.ID = sm.ID
 				AND l.Estacion = @Estacion
 			WHERE ROUND(d.Disponible, 4) >= 0.0
@@ -900,7 +900,7 @@ BEGIN
 		SELECT @Lote = NULL
 			  ,@Costo = NULL
 		SELECT @Factor = ISNULL(Factor, 1)
-		FROM Unidad
+		FROM Unidad WITH(NOLOCK)
 		WHERE Unidad = @Unidad
 
 		IF @LotesFijos = 1
@@ -909,14 +909,14 @@ BEGIN
 			IF @SeriesLotesAutoOrden = 'ASCENDENTE'
 				SELECT @Lote = (
 					 SELECT TOP 1 Lote
-					 FROM ArtLoteFijo
+					 FROM ArtLoteFijo WITH(NOLOCK)
 					 WHERE Articulo = @Articulo
 					 ORDER BY Lote DESC
 				 )
 			ELSE
 				SELECT @Lote = (
 					 SELECT TOP 1 Lote
-					 FROM ArtLoteFijo
+					 FROM ArtLoteFijo WITH(NOLOCK)
 					 WHERE Articulo = @Articulo
 					 ORDER BY Lote
 				 )
@@ -925,7 +925,7 @@ BEGIN
 
 			IF @Lote IS NOT NULL
 				SELECT @Costo = MIN(CostoPromedio) * @Factor
-				FROM SerieLote
+				FROM SerieLote WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Articulo = @Articulo
 				AND SubCuenta = ISNULL(@SubCuenta, '')
@@ -960,7 +960,7 @@ BEGIN
 
 		IF (
 				SELECT NotasBorrador
-				FROM EmpresaCFG
+				FROM EmpresaCFG WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 			)
 			= 1
@@ -979,11 +979,11 @@ BEGIN
 					  ,SUM(ABS(sl.Existencia))
 					  ,@Sucursal
 					  ,ISNULL(s.Propiedades, '')
-				FROM SerieLoteMov s
-				JOIN ListaID l
+				FROM SerieLoteMov s WITH(NOLOCK)
+				JOIN ListaID l WITH(NOLOCK)
 					ON l.ID = s.ID
 					AND l.Estacion = @Estacion
-				JOIN Serielote sl
+				JOIN Serielote sl WITH(NOLOCK)
 					ON s.articulo = sl.Articulo
 					AND s.SerieLote = sl.SerieLote
 					AND s.Empresa = sl.Empresa
@@ -997,12 +997,12 @@ BEGIN
 						,s.ArtCostoInv
 						,s.Propiedades
 
-			IF EXISTS (SELECT s.ID FROM SerieLoteMov s JOIN ListaID l ON l.ID = s.ID AND l.Estacion = @Estacion JOIN Serielote sl ON s.articulo = sl.Articulo AND s.SerieLote = sl.SerieLote AND s.Empresa = sl.Empresa AND s.Sucursal = sl.Sucursal WHERE s.Empresa = @Empresa AND s.Modulo = 'VTAS' AND s.Articulo = @Articulo AND s.Sucursal = @Sucursal AND sl.Existencia < 0)
+			IF EXISTS (SELECT s.ID FROM SerieLoteMov s WITH(NOLOCK) JOIN ListaID l WITH(NOLOCK) ON l.ID = s.ID AND l.Estacion = @Estacion JOIN Serielote sl WITH(NOLOCK) ON s.articulo = sl.Articulo AND s.SerieLote = sl.SerieLote AND s.Empresa = sl.Empresa AND s.Sucursal = sl.Sucursal WHERE s.Empresa = @Empresa AND s.Modulo = 'VTAS' AND s.Articulo = @Articulo AND s.Sucursal = @Sucursal AND sl.Existencia < 0)
 			BEGIN
 				SELECT @CantidadAjusteLote = NULL
 				SELECT @CantidadAjusteLote = SUM(ABS(sl.Existencia))
-				FROM SerieLoteMov s
-				JOIN Serielote sl
+				FROM SerieLoteMov s WITH(NOLOCK)
+				JOIN Serielote sl WITH(NOLOCK)
 					ON s.articulo = sl.Articulo
 					AND s.SerieLote = sl.SerieLote
 					AND s.Empresa = sl.Empresa
@@ -1023,7 +1023,7 @@ BEGIN
 				BEGIN
 
 					IF NULLIF(-@Disponible / @Factor, 0.0) <> @CantidadAjusteLote
-						UPDATE InvD
+						UPDATE InvD WITH(ROWLOCK)
 						SET Cantidad = @CantidadAjusteLote
 						WHERE ID = @AjusteID
 						AND Renglon = @Renglon
@@ -1115,7 +1115,7 @@ BEGIN
 		IF @Ok IS NULL
 		BEGIN
 			SELECT @DevolucionEstatus = Estatus
-			FROM Venta
+			FROM Venta WITH(NOLOCK)
 			WHERE ID = @DevolucionID
 			INSERT @TablaCFD (Empresa, ID, Modulo, Mov, MovID, EstatusNuevo)
 				SELECT @Empresa
@@ -1179,7 +1179,7 @@ BEGIN
 		IF @Ok IS NULL
 		BEGIN
 			SELECT @FacturaEstatus = Estatus
-			FROM Venta
+			FROM Venta WITH(NOLOCK)
 			WHERE ID = @FacturaID
 			INSERT @TablaCFD (Empresa, ID, Modulo, Mov, MovID, EstatusNuevo)
 				SELECT @Empresa
@@ -1202,12 +1202,12 @@ BEGIN
 		SELECT TOP 1 @FacturaID = ID
 		FROM #Facturas
 		SELECT @FacturaMovID = MovID
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @FacturaID
 		SELECT TOP 1 @DevolucionID = ID
 		FROM #Devoluciones
 		SELECT @DevolucionMovID = MovID
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @DevolucionID
 	END
 
@@ -1301,7 +1301,7 @@ BEGIN
 
 		IF @EnSilencio = 0
 			SELECT Descripcion + ' ' + RTRIM(@OkRef)
-			FROM MensajeLista
+			FROM MensajeLista WITH(NOLOCK)
 			WHERE Mensaje = @Ok
 
 	END
