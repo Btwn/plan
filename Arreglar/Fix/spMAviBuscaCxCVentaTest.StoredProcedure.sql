@@ -37,11 +37,11 @@ BEGIN
 		  ,@MovtipoNvo = ''
 	SELECT @IdCXC = Id
 		  ,@Concepto = Concepto
-	FROM CXC
+	FROM CXC WITH(NOLOCK)
 	WHERE Mov = @MovCxc
 	AND mOViD = @MovIdCxc
 	SELECT @CveAfecta = Clave
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Modulo = 'CXC'
 	AND Mov = @MovCxc
 
@@ -60,8 +60,8 @@ BEGIN
 			  ,@IdNvo = (OMovId)
 			  ,@IdOrigenNvo = ISNULL(mf.OID, 0)
 			  ,@MovtipoNvo = Mt.Clave
-		FROM MovFlujo mf
-			,Movtipo Mt
+		FROM MovFlujo mf WITH(NOLOCK)
+			,Movtipo Mt WITH(NOLOCK)
 		WHERE mf.OMov = Mt.Mov
 		AND mf.DMov = @IdMovNvo
 		AND mf.DMovID = @IdNvo
@@ -73,8 +73,8 @@ BEGIN
 			SELECT @IdOrigenNvo = OID
 				  ,@IdNvo = OMovID
 				  ,@IdMovNvo = OMov
-			FROM MovFlujo mf
-				,Movtipo Mt
+			FROM MovFlujo mf WITH(NOLOCK)
+				,Movtipo Mt WITH(NOLOCK)
 			WHERE mf.OMov = Mt.Mov
 			AND mf.DMov = @MovCxC
 			AND mf.DMovID = @MovIDCxC
@@ -92,7 +92,7 @@ BEGIN
 
 		SELECT @Aplica = Aplica
 			  ,@AplicaID = AplicaID
-		FROM CxcD
+		FROM CxcD WITH(NOLOCK)
 		WHERE Id = @IdOrigen
 
 		IF NOT @AplicaID IS NULL
@@ -101,7 +101,7 @@ BEGIN
 				crCxCCte
 				CURSOR FOR
 				SELECT Id
-				FROM CXc
+				FROM CXc WITH(NOLOCK)
 				WHERE Mov = @Aplica
 				AND MovId = @AplicaID
 			OPEN crCxCCte
@@ -114,8 +114,8 @@ BEGIN
 				  ,@IdNvo = (OMovId)
 				  ,@IdOrigenNvo = mf.OID
 				  ,@MovtipoNvo = Mt.Clave
-			FROM MovFlujo mf
-				,Movtipo Mt
+			FROM MovFlujo mf WITH(NOLOCK)
+				,Movtipo Mt WITH(NOLOCK)
 			WHERE mf.OMov = Mt.Mov
 			AND mf.DMov = @IdMovNvo2
 			AND mf.DMovID = @IdNvo

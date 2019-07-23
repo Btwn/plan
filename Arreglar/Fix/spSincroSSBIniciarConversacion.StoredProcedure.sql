@@ -20,13 +20,13 @@ BEGIN
 	   ,@EncriptarOrigen BIT
 	   ,@EncriptarDestino BIT
 	SELECT @EncriptarOrigen = ComunicacionEncriptada
-	FROM Sucursal
+	FROM Sucursal WITH(NOLOCK)
 	WHERE Sucursal = @SucursalOrigen
 	SELECT @EncriptarDestino = ComunicacionEncriptada
-	FROM Sucursal
+	FROM Sucursal WITH(NOLOCK)
 	WHERE Sucursal = @SucursalDestino
 	SELECT @MismaInstancia = ISNULL(SincroSSBMismaInstancia, 0)
-	FROM Version
+	FROM Version WITH(NOLOCK)
 	SELECT @ServicioLocal = 'ServicioSSB_' + CONVERT(VARCHAR, @SucursalOrigen)
 		  ,@ServicioRemoto = 'ServicioSSB_' + CONVERT(VARCHAR, @SucursalDestino)
 	SELECT @SQL = N'BEGIN DIALOG CONVERSATION @Conversacion

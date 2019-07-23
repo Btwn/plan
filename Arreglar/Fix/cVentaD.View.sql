@@ -1,13 +1,11 @@
-USE [IntelisisTmp]
-GO
-
-/****** Object:  View [dbo].[cVentaD]    Script Date: 21/05/2019 03:03:36 p. m. ******/
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
-
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
-
 ALTER VIEW [dbo].[cVentaD]
 
 AS
@@ -102,7 +100,7 @@ AplicaRenglon,
 MesLanzamiento,
 Puntos						
 FROM
-VentaD
+VentaD WITH(NOLOCK)
 
 GO
 

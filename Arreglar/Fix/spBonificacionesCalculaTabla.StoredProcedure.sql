@@ -129,8 +129,8 @@ BEGIN
 		  ,@MaxDiasAtrazo = ISNULL(cm.MaxDiasVencidosMAVI, 0.00)
 		  ,@PadreMavi = c.PadreMAVI
 		  ,@PadreMaviID = c.PadreIDMAVI
-	FROM CXC c
-	LEFT JOIN CXCMAVI cm
+	FROM CXC c WITH(NOLOCK)
+	LEFT JOIN CXCMAVI cm WITH(NOLOCK)
 		ON cm.id = c.id
 	WHERE c.Id = @IdCxC
 
@@ -157,8 +157,8 @@ BEGIN
 			  ,@OrigenId = c.OrigenId
 			  ,@Sucursal = c.SucursalOrigen
 			  ,@MaxDiasAtrazo = ISNULL(cm.MaxDiasVencidosMAVI, 0.00)
-		FROM CXC c
-		LEFT JOIN CXCMAVI cm
+		FROM CXC c WITH(NOLOCK)
+		LEFT JOIN CXCMAVI cm WITH(NOLOCK)
 			ON cm.id = c.id
 		WHERE c.Mov = @Mov
 		AND c.Movid = @MovId
@@ -168,7 +168,7 @@ BEGIN
 		SELECT TOP (1) @LineaVta = Linea
 					  ,@ImporteVenta = PrecioToTal
 					  ,@Sucursal = SucursalVenta
-		FROM BonifSIMAVI
+		FROM BonifSIMAVI WITH(NOLOCK)
 		WHERE IDCxc = @idcxc
 	END
 
@@ -181,7 +181,7 @@ BEGIN
 		OR NOT @Referencia LIKE '%/%'
 	BEGIN
 		SELECT TOP (1) @Referencia = Referencia
-		FROM Cxc
+		FROM Cxc WITH(NOLOCK)
 		WHERE PadreMavi = @Mov
 		AND PadreIDMAVI = @MovID
 		AND Mov = 'Documento'
@@ -208,13 +208,13 @@ BEGIN
 		SELECT TOP (1) @LineaVta = Linea
 					  ,@ImporteVenta = PrecioToTal
 					  ,@Sucursal = SucursalVenta
-		FROM BonifSIMAVI
+		FROM BonifSIMAVI WITH(NOLOCK)
 		WHERE IDCxc = @IdVenta
 
 	IF @Mov LIKE '%Refinan%'
 		SELECT @Refinan = 'Ok'
 			  ,@ImporteVenta = Importe + Impuestos
-		FROM Cxc
+		FROM Cxc WITH(NOLOCK)
 		WHERE Mov = @Mov
 		AND MovID = @MovID
 
@@ -222,9 +222,9 @@ BEGIN
 		OR @LineaVta IS NULL
 	BEGIN
 		SELECT @LineaVta = ISNULL(A.Linea, '')
-		FROM venta
-			,ventad
-			 LEFT OUTER JOIN Art a
+		FROM venta WITH(NOLOCK)
+			,ventad WITH(NOLOCK)
+			 LEFT OUTER JOIN Art a WITH(NOLOCK)
 				 ON a.Articulo = ventad.Articulo
 		WHERE venta.id = ventad.id
 		AND venta.id = @IdVenta
@@ -232,7 +232,7 @@ BEGIN
 		IF @ImporteVenta IS NULL
 			OR @ImporteVenta = 0
 			SELECT @ImporteVenta = PrecioToTal
-			FROM Venta
+			FROM Venta WITH(NOLOCK)
 			WHERE Id = @IdVenta
 
 	END
@@ -241,27 +241,27 @@ BEGIN
 		SELECT @Sucursal = 39
 			  ,@LineaVta = ''
 		SELECT @ImporteVenta = Importe
-		FROM Cxc
+		FROM Cxc WITH(NOLOCK)
 		WHERE id = @IdVenta
 	END
 
 	SELECT @TipoSucursal = SucursalTipo.Tipo
-	FROM Sucursal
-		,SucursalTipo
+	FROM Sucursal WITH(NOLOCK)
+		,SucursalTipo WITH(NOLOCK)
 	WHERE Sucursal.Tipo = SucursalTipo.Tipo
 	AND Sucursal.Sucursal = @Sucursal
 
-	IF EXISTS (SELECT SolC.FechaEmision FROM Venta Fac INNER JOIN Venta Ped ON Fac.Origen = Ped.Mov AND Fac.OrigenID = Ped.MovID INNER JOIN Venta AnaC ON Ped.Origen = AnaC.Mov AND Ped.OrigenID = AnaC.MovID INNER JOIN Venta SolC ON AnaC.Origen = SolC.Mov AND AnaC.OrigenID = SolC.MovID WHERE Fac.Mov = @Mov AND Fac.MovID = @MovID)
+	IF EXISTS (SELECT SolC.FechaEmision FROM Venta Fac WITH(NOLOCK) INNER JOIN Venta Ped WITH(NOLOCK) ON Fac.Origen = Ped.Mov AND Fac.OrigenID = Ped.MovID INNER JOIN Venta AnaC WITH(NOLOCK) ON Ped.Origen = AnaC.Mov AND Ped.OrigenID = AnaC.MovID INNER JOIN Venta SolC WITH(NOLOCK) ON AnaC.Origen = SolC.Mov AND AnaC.OrigenID = SolC.MovID WHERE Fac.Mov = @Mov AND Fac.MovID = @MovID)
 	BEGIN
 		SELECT @FechaEmision = SolC.FechaEmision
-		FROM Venta Fac
-		INNER JOIN Venta Ped
+		FROM Venta Fac WITH(NOLOCK)
+		INNER JOIN Venta Ped WITH(NOLOCK)
 			ON Fac.Origen = Ped.Mov
 			AND Fac.OrigenID = Ped.MovID
-		INNER JOIN Venta AnaC
+		INNER JOIN Venta AnaC WITH(NOLOCK)
 			ON Ped.Origen = AnaC.Mov
 			AND Ped.OrigenID = AnaC.MovID
-		INNER JOIN Venta SolC
+		INNER JOIN Venta SolC WITH(NOLOCK)
 			ON AnaC.Origen = SolC.Mov
 			AND AnaC.OrigenID = SolC.MovID
 		WHERE Fac.Mov = @Mov
@@ -269,10 +269,10 @@ BEGIN
 	END
 
 	SELECT @ImporteVenta = (((Doc.Importe + Doc.Impuestos)) - ISNULL(Mon.Abono, 0))
-	FROM dbo.Cxc Doc
-	LEFT JOIN dbo.Condicion Con
+	FROM dbo.Cxc Doc WITH(NOLOCK)
+	LEFT JOIN dbo.Condicion Con WITH(NOLOCK)
 		ON Con.Condicion = Doc.Condicion
-	LEFT JOIN dbo.AuxiliarP Mon
+	LEFT JOIN dbo.AuxiliarP Mon WITH(NOLOCK)
 		ON Mon.Mov = Doc.Mov
 		AND Mon.MovID = Doc.MovID
 		AND ISNULL(Mon.Abono, 0) > 0
@@ -332,12 +332,12 @@ BEGIN
 				  ,mbc.FechaRegistro
 				  ,mbc.Usuario
 				  ,mbl.Linea
-			FROM MaviBonificacionConf mbc
-			INNER JOIN MaviBonificacionMoV mbmv
+			FROM MaviBonificacionConf mbc WITH(NOLOCK)
+			INNER JOIN MaviBonificacionMoV mbmv WITH(NOLOCK)
 				ON mbc.Id = mbmv.IdBonificacion
-			INNER JOIN dbo.MaviBonificacionCondicion mbc2
+			INNER JOIN dbo.MaviBonificacionCondicion mbc2 WITH(NOLOCK)
 				ON mbc2.IdBonificacion = mbc.ID
-			LEFT JOIN dbo.MaviBonificacionLinea mbl
+			LEFT JOIN dbo.MaviBonificacionLinea mbl WITH(NOLOCK)
 				ON mbl.IdBonificacion = mbc.ID
 			WHERE mbmv.Movimiento = @Mov
 			AND COndicion = @Condicion
@@ -371,10 +371,10 @@ BEGIN
 				  ,mbc.FechaRegistro
 				  ,mbc.Usuario
 				  ,NULL
-			FROM MaviBonificacionConf mbc
-			INNER JOIN MaviBonificacionMoV mbmv
+			FROM MaviBonificacionConf mbc WITH(NOLOCK)
+			INNER JOIN MaviBonificacionMoV mbmv WITH(NOLOCK)
 				ON mbc.Id = mbmv.IdBonificacion
-			INNER JOIN dbo.MaviBonificacionCondicion mbc2
+			INNER JOIN dbo.MaviBonificacionCondicion mbc2 WITH(NOLOCK)
 				ON mbc2.IdBonificacion = mbc.ID
 			WHERE mbmv.Movimiento = @Mov
 			AND COndicion = @Condicion
@@ -423,21 +423,21 @@ BEGIN
 	DECLARE
 		@LineaVentaBonif VARCHAR(50)
 	SELECT TOP 1 @LineaVentaBonif = ISNULL(Linea, @LineaVta)
-	FROM BonifSIMAVI
+	FROM BonifSIMAVI WITH(NOLOCK)
 	WHERE IDCxc = @IdVenta
-	AND Linea IN (SELECT mbl.Linea FROM MaviBonificacionConf mbc INNER JOIN MaviBonificacionMoV mbmv ON mbc.Id = mbmv.IdBonificacion INNER JOIN MaviBonificacionCondicion mbc2 ON mbc2.IdBonificacion = mbc.ID LEFT JOIN MaviBonificacionLinea mbl ON ID = mbl.IdBonificacion WHERE mbmv.Movimiento = @Mov AND COndicion = @Condicion AND mbc.Estatus = 'CONCLUIDO' AND @FechaEmision BETWEEN mbc.FechaIni AND mbc.FechaFin AND mbc.NoPuedeAplicarSola = 0 AND Bonificacion LIKE '%Contado Comercial%')
+	AND Linea IN (SELECT mbl.Linea FROM MaviBonificacionConf mbc WITH(NOLOCK) INNER JOIN MaviBonificacionMoV mbmv WITH(NOLOCK) ON mbc.Id = mbmv.IdBonificacion INNER JOIN MaviBonificacionCondicion mbc2 WITH(NOLOCK) ON mbc2.IdBonificacion = mbc.ID LEFT JOIN MaviBonificacionLinea mbl WITH(NOLOCK) ON ID = mbl.IdBonificacion WHERE mbmv.Movimiento = @Mov AND COndicion = @Condicion AND mbc.Estatus = 'CONCLUIDO' AND @FechaEmision BETWEEN mbc.FechaIni AND mbc.FechaFin AND mbc.NoPuedeAplicarSola = 0 AND Bonificacion LIKE '%Contado Comercial%')
 	SELECT @LineaVentaBonif = ISNULL(A.Linea, @LineaVta)
-	FROM venta
-		,ventad
-		 LEFT OUTER JOIN Art a
+	FROM venta WITH(NOLOCK)
+		,ventad WITH(NOLOCK)
+		 LEFT OUTER JOIN Art a WITH(NOLOCK)
 			 ON a.Articulo = ventad.Articulo
 	WHERE venta.id = ventad.id
 	AND venta.id = @IdVenta
-	AND A.Linea IN (SELECT mbl.Linea FROM MaviBonificacionConf mbc INNER JOIN MaviBonificacionMoV mbmv ON mbc.Id = mbmv.IdBonificacion INNER JOIN MaviBonificacionCondicion mbc2 ON mbc2.IdBonificacion = mbc.ID LEFT JOIN MaviBonificacionLinea mbl ON ID = mbl.IdBonificacion WHERE mbmv.Movimiento = @Mov AND COndicion = @Condicion AND mbc.Estatus = 'CONCLUIDO' AND @FechaEmision BETWEEN mbc.FechaIni AND mbc.FechaFin AND mbc.NoPuedeAplicarSola = 0 AND Bonificacion LIKE '%Contado Comercial%')
+	AND A.Linea IN (SELECT mbl.Linea FROM MaviBonificacionConf mbc WITH(NOLOCK) INNER JOIN MaviBonificacionMoV mbmv WITH(NOLOCK) ON mbc.Id = mbmv.IdBonificacion INNER JOIN MaviBonificacionCondicion mbc2 WITH(NOLOCK) ON mbc2.IdBonificacion = mbc.ID LEFT JOIN MaviBonificacionLinea mbl WITH(NOLOCK) ON ID = mbl.IdBonificacion WHERE mbmv.Movimiento = @Mov AND COndicion = @Condicion AND mbc.Estatus = 'CONCLUIDO' AND @FechaEmision BETWEEN mbc.FechaIni AND mbc.FechaFin AND mbc.NoPuedeAplicarSola = 0 AND Bonificacion LIKE '%Contado Comercial%')
 	SELECT @LineaVentaBonif = ISNULL(@LineaVentaBonif, @LineaVta)
 	SELECT @LineaVta = @LineaVentaBonif
 
-	IF @LineaVentaBonif IN (SELECT mbl.Linea FROM MaviBonificacionConf mbc INNER JOIN MaviBonificacionMoV mbmv ON mbc.Id = mbmv.IdBonificacion INNER JOIN MaviBonificacionCondicion mbc2 ON mbc2.IdBonificacion = mbc.ID LEFT JOIN MaviBonificacionLinea mbl ON ID = mbl.IdBonificacion WHERE mbmv.Movimiento = @Mov AND COndicion = @Condicion AND mbc.Estatus = 'CONCLUIDO' AND @FechaEmision BETWEEN mbc.FechaIni AND mbc.FechaFin AND mbc.NoPuedeAplicarSola = 0 AND Bonificacion LIKE '%Contado Comercial%')
+	IF @LineaVentaBonif IN (SELECT mbl.Linea FROM MaviBonificacionConf mbc WITH(NOLOCK) INNER JOIN MaviBonificacionMoV mbmv WITH(NOLOCK) ON mbc.Id = mbmv.IdBonificacion INNER JOIN MaviBonificacionCondicion mbc2 WITH(NOLOCK) ON mbc2.IdBonificacion = mbc.ID LEFT JOIN MaviBonificacionLinea mbl WITH(NOLOCK) ON ID = mbl.IdBonificacion WHERE mbmv.Movimiento = @Mov AND COndicion = @Condicion AND mbc.Estatus = 'CONCLUIDO' AND @FechaEmision BETWEEN mbc.FechaIni AND mbc.FechaFin AND mbc.NoPuedeAplicarSola = 0 AND Bonificacion LIKE '%Contado Comercial%')
 		AND @Bonificacion LIKE '%Contado Comercial%'
 	BEGIN
 
@@ -463,7 +463,7 @@ BEGIN
 		AND @Bonificacion LIKE '%Contado Comercial%'
 	BEGIN
 
-		IF EXISTS (SELECT Bonificacion FROM dbo.MaviBonificacionTest WHERE Bonificacion = @Bonificacion AND Ok = 0 AND IdCobro = @IdCobro)
+		IF EXISTS (SELECT Bonificacion FROM dbo.MaviBonificacionTest WITH(NOLOCK) WHERE Bonificacion = @Bonificacion AND Ok = 0 AND IdCobro = @IdCobro)
 			SELECT @Ok = 1
 				  ,@OkRef = 'No cumple con el parametro de la linea para esta bonificacion'
 		ELSE
@@ -482,13 +482,13 @@ BEGIN
 	IF @Bonificacion LIKE '%Adelanto%'
 		AND @LineaVta <> @LineaBonif
 		AND @Tipo = 'Total'
-		AND EXISTS (SELECT * FROM MaviBonificacionTest WHERE IdCobro = @IdCobro AND Ok = 0 AND Bonificacion = @Bonificacion)
+		AND EXISTS (SELECT * FROM MaviBonificacionTest WITH(NOLOCK) WHERE IdCobro = @IdCobro AND Ok = 0 AND Bonificacion = @Bonificacion)
 		SELECT @Ok = 1
 			  ,@OkRef = 'No cumple con el parametro de la linea para esta bonificacion'
 
 	IF @Tipo = 'Total'
 		AND @Bonificacion NOT LIKE '%Adelanto%'
-		AND EXISTS (SELECT IdBonificacion FROM MaviBonificacionExcluye WHERE BonificacionNo = @Bonificacion AND IdBonificacion IN (SELECT ID FROM (SELECT mbc.ID, Ok = CASE WHEN @EsOrigenNulo = 0 THEN CASE WHEN dbo.fnFechaSinHora(GETDATE()) >= dbo.fnFechaSinHora((SELECT c.Vencimiento + 1 FROM Cxc c WHERE c.Origen = @Origen AND c.OrigenID = @OrigenId AND c.Referencia LIKE '%' + '(' + RTRIM(mbc.VencimientoAntes) + '/' + RTRIM(@DocumentoTotal) + '%')) THEN 1 ELSE 0 END ELSE CASE WHEN dbo.fnFechaSinHora(GETDATE()) > dbo.fnFechaSinHora(ISNULL((SELECT c.Vencimiento FROM Cxc c WHERE c.Origen = @Origen AND c.OrigenID = @OrigenId AND c.Referencia LIKE '%' + '(' + RTRIM(mbc.VencimientoAntes) + '/' + RTRIM(@DocumentoTotal) + '%'), (CASE WHEN mbc.VencimientoAntes = 1 THEN @Vencimiento WHEN mbc.VencimientoAntes > 1 THEN DATEADD(mm, (mbc.VencimientoAntes - @Documento1de), (SELECT Vencimiento FROM CxC WHERE Origen = @Origen AND OrigenID = @OrigenId AND Referencia = @Referencia)) END))) THEN 1 ELSE 0 END END, DiasAtrazo = CASE WHEN @MaxDiasAtrazo > mbc.DiasAtrazo AND mbc.DiasAtrazo <> 0 THEN 1 ELSE 0 END, DiasMenoresA = CASE WHEN @Condicion LIKE '%PP%' AND mbc.DiasMenoresA <> 0 THEN CASE WHEN mbc.DiasMenoresA < DATEDIFF(DAY, @FechaEmisionFact, GETDATE()) THEN 1 ELSE 0 END WHEN @Condicion LIKE '%DIF%' AND mbc.DiasMenoresA <> 0 THEN CASE WHEN mbc.DiasMenoresA < DATEDIFF(DAY, @FechaEmisionFact, GETDATE()) THEN 1 ELSE 0 END ELSE 0 END, DiasMayoresA = CASE WHEN @Condicion LIKE '%PP%' AND mbc.DiasMayoresA <> 0 THEN CASE WHEN mbc.DiasMayoresA >= DATEDIFF(dd, @FechaEmisionFact, @Vencimiento) THEN 1 ELSE 0 END WHEN @Condicion LIKE '%DIF%' AND mbc.DiasMayoresA <> 0 THEN CASE WHEN mbc.DiasMayoresA <= DATEDIFF(DAY, @FechaEmisionFact, GETDATE()) THEN 1 ELSE 0 END ELSE 0 END FROM MaviBonificacionConf mbc INNER JOIN MaviBonificacionMoV mbmv ON mbc.Id = mbmv.IdBonificacion INNER JOIN MaviBonificacionCondicion mbc2 ON mbc2.IdBonificacion = mbc.ID LEFT JOIN MaviBonificacionLinea mbl ON ID = mbl.IdBonificacion WHERE mbmv.Movimiento = @Mov AND COndicion = @Condicion AND mbc.Estatus = 'CONCLUIDO' AND @FechaEmision BETWEEN mbc.FechaIni AND mbc.FechaFin AND mbc.NoPuedeAplicarSola = 0 AND Bonificacion = 'Bonificacion Contado Comercial') Cont WHERE Ok = 0 AND DiasAtrazo = 0 AND DiasMenoresA = 0 AND DiasMayoresA = 0))
+		AND EXISTS (SELECT IdBonificacion FROM MaviBonificacionExcluye WITH(NOLOCK) WHERE BonificacionNo = @Bonificacion AND IdBonificacion IN (SELECT ID FROM (SELECT mbc.ID, Ok = CASE WHEN @EsOrigenNulo = 0 THEN CASE WHEN dbo.fnFechaSinHora(GETDATE()) >= dbo.fnFechaSinHora((SELECT c.Vencimiento + 1 FROM Cxc c WHERE c.Origen = @Origen AND c.OrigenID = @OrigenId AND c.Referencia LIKE '%' + '(' + RTRIM(mbc.VencimientoAntes) + '/' + RTRIM(@DocumentoTotal) + '%')) THEN 1 ELSE 0 END ELSE CASE WHEN dbo.fnFechaSinHora(GETDATE()) > dbo.fnFechaSinHora(ISNULL((SELECT c.Vencimiento FROM Cxc c WHERE c.Origen = @Origen AND c.OrigenID = @OrigenId AND c.Referencia LIKE '%' + '(' + RTRIM(mbc.VencimientoAntes) + '/' + RTRIM(@DocumentoTotal) + '%'), (CASE WHEN mbc.VencimientoAntes = 1 THEN @Vencimiento WHEN mbc.VencimientoAntes > 1 THEN DATEADD(mm, (mbc.VencimientoAntes - @Documento1de), (SELECT Vencimiento FROM CxC WHERE Origen = @Origen AND OrigenID = @OrigenId AND Referencia = @Referencia)) END))) THEN 1 ELSE 0 END END, DiasAtrazo = CASE WHEN @MaxDiasAtrazo > mbc.DiasAtrazo AND mbc.DiasAtrazo <> 0 THEN 1 ELSE 0 END, DiasMenoresA = CASE WHEN @Condicion LIKE '%PP%' AND mbc.DiasMenoresA <> 0 THEN CASE WHEN mbc.DiasMenoresA < DATEDIFF(DAY, @FechaEmisionFact, GETDATE()) THEN 1 ELSE 0 END WHEN @Condicion LIKE '%DIF%' AND mbc.DiasMenoresA <> 0 THEN CASE WHEN mbc.DiasMenoresA < DATEDIFF(DAY, @FechaEmisionFact, GETDATE()) THEN 1 ELSE 0 END ELSE 0 END, DiasMayoresA = CASE WHEN @Condicion LIKE '%PP%' AND mbc.DiasMayoresA <> 0 THEN CASE WHEN mbc.DiasMayoresA >= DATEDIFF(dd, @FechaEmisionFact, @Vencimiento) THEN 1 ELSE 0 END WHEN @Condicion LIKE '%DIF%' AND mbc.DiasMayoresA <> 0 THEN CASE WHEN mbc.DiasMayoresA <= DATEDIFF(DAY, @FechaEmisionFact, GETDATE()) THEN 1 ELSE 0 END ELSE 0 END FROM MaviBonificacionConf mbc INNER JOIN MaviBonificacionMoV mbmv ON mbc.Id = mbmv.IdBonificacion INNER JOIN MaviBonificacionCondicion mbc2 ON mbc2.IdBonificacion = mbc.ID LEFT JOIN MaviBonificacionLinea mbl ON ID = mbl.IdBonificacion WHERE mbmv.Movimiento = @Mov AND COndicion = @Condicion AND mbc.Estatus = 'CONCLUIDO' AND @FechaEmision BETWEEN mbc.FechaIni AND mbc.FechaFin AND mbc.NoPuedeAplicarSola = 0 AND Bonificacion = 'Bonificacion Contado Comercial') Cont WHERE Ok = 0 AND DiasAtrazo = 0 AND DiasMenoresA = 0 AND DiasMayoresA = 0))
 		SELECT @Ok = 1
 			  ,@OkRef = 'Se excluye esta bonificacion por otra'
 
@@ -503,7 +503,7 @@ BEGIN
 
 			IF dbo.fnFechaSinHora(GETDATE()) >= dbo.fnFechaSinHora((
 					SELECT c.Vencimiento + 1
-					FROM Cxc c
+					FROM Cxc c WITH(NOLOCK)
 					WHERE c.Origen = @Origen
 					AND c.OrigenID = @OrigenId
 					AND c.Referencia LIKE '%' + @CharReferencia + '%'
@@ -518,7 +518,7 @@ BEGIN
 
 			IF (dbo.fnFechaSinHora(GETDATE()) > dbo.fnFechaSinHora(ISNULL((
 					SELECT c.Vencimiento
-					FROM Cxc c
+					FROM Cxc c WITH(NOLOCK)
 					WHERE c.Origen = @Origen
 					AND c.OrigenID = @OrigenId
 					AND c.Referencia LIKE '%' + @CharReferencia + '%'
@@ -528,7 +528,7 @@ BEGIN
 					WHEN @VencimientoAntes = 1 THEN @Vencimiento
 					WHEN @VencimientoAntes > 1 THEN DATEADD(mm, (@VencimientoAntes - @Documento1de), (
 							SELECT Vencimiento
-							FROM CxC
+							FROM CxC WITH(NOLOCK)
 							WHERE Origen = @Origen
 							AND OrigenID = @OrigenId
 							AND Referencia = @Referencia
@@ -550,7 +550,7 @@ BEGIN
 
 		IF dbo.fnFechaSinHora(GETDATE()) >= dbo.fnFechaSinHora((
 				SELECT c.Vencimiento + 1
-				FROM Cxc c
+				FROM Cxc c WITH(NOLOCK)
 				WHERE c.Origen = @Origen
 				AND c.OrigenID = @OrigenId
 				AND c.Referencia LIKE '%' + @CharReferencia + '%'
@@ -570,7 +570,7 @@ BEGIN
 		IF (dbo.fnFechaSinHora(GETDATE()) <=
 			dbo.fnFechaSinHora(ISNULL((
 				SELECT c.Vencimiento
-				FROM Cxc c
+				FROM Cxc c WITH(NOLOCK)
 				WHERE c.Origen = @Origen
 				AND c.OrigenID = @OrigenId
 				AND c.Referencia LIKE '%' + @CharReferencia + '%'
@@ -580,7 +580,7 @@ BEGIN
 				WHEN @VencimientoDesp = 1 THEN @Vencimiento
 				WHEN @VencimientoDesp > 1 THEN DATEADD(mm, (@VencimientoDesp - @Documento1de), (
 						SELECT Vencimiento
-						FROM CxC
+						FROM CxC WITH(NOLOCK)
 						WHERE Origen = @Origen
 						AND OrigenID = @OrigenId
 						AND Referencia = @Referencia
@@ -652,63 +652,63 @@ BEGIN
 
 	IF @Linea < (
 			SELECT ISNULL(PorcLin, 0.00)
-			FROM MaviBonificacionLinea
+			FROM MaviBonificacionLinea WITH(NOLOCK)
 			WHERE IdBonificacion = @id
 			AND Linea = @LineaVta
 		)
 		SELECT @Linea = (
 			 SELECT ISNULL(PorcLin, 0.00)
-			 FROM MaviBonificacionLinea
+			 FROM MaviBonificacionLinea WITH(NOLOCK)
 			 WHERE IdBonificacion = @id
 			 AND Linea = @LineaVta
 		 )
 
 	SELECT @LineaCelulares = ISNULL(PorcLin, 0.00)
-	FROM MaviBonificacionLinea mbl
+	FROM MaviBonificacionLinea mbl WITH(NOLOCK)
 	WHERE Linea LIKE '%Credilana%'
 	AND IdBonificacion = @Id
 	SELECT @LineaCredilanas = ISNULL(PorcLin, 0.00)
-	FROM MaviBonificacionLinea mbl
+	FROM MaviBonificacionLinea mbl WITH(NOLOCK)
 	WHERE Linea LIKE '%Celular%'
 	AND IdBonificacion = @Id
 	SELECT @LineaMotos = ISNULL(PorcLin, 0.00)
-	FROM MaviBonificacionLinea mbl
-	INNER JOIN MaviBonificacionCondicion Mbc
+	FROM MaviBonificacionLinea mbl WITH(NOLOCK)
+	INNER JOIN MaviBonificacionCondicion Mbc WITH(NOLOCK)
 		ON Mbc.IdBonificacion = mbl.IdBonificacion
 	WHERE Mbc.COndicion = @Condicion
 	AND @Bonificacion LIKE '%Contado Comercial%'
 	AND Mbl.IdBonificacion = @Id
 	AND Linea = @LineaBonif
 
-	IF EXISTS (SELECT IdBonificacion FROM MaviBonificacionCanalVta BonCan WHERE BonCan.IdBonificacion = @id)
+	IF EXISTS (SELECT IdBonificacion FROM MaviBonificacionCanalVta BonCan WITH(NOLOCK) WHERE BonCan.IdBonificacion = @id)
 	BEGIN
 
-		IF NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionCanalVta BonCan WHERE CONVERT(VARCHAR(10), BonCan.CanalVenta) = @ClienteEnviarA AND BonCan.IdBonificacion = @id)
+		IF NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionCanalVta BonCan WITH(NOLOCK) WHERE CONVERT(VARCHAR(10), BonCan.CanalVenta) = @ClienteEnviarA AND BonCan.IdBonificacion = @id)
 			SELECT @Ok = 1
 				  ,@OkRef = 'Venta de Canal No Configurada Para esta Bonificación'
 
 	END
 
-	IF EXISTS (SELECT IdBonificacion FROM MaviBonificacionUEN mbu WHERE mbu.idBonificacion = @Id)
+	IF EXISTS (SELECT IdBonificacion FROM MaviBonificacionUEN mbu WITH(NOLOCK) WHERE mbu.idBonificacion = @Id)
 	BEGIN
 
 		IF NOT @UEN IS NULL
-			AND NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionUEN mbu WHERE mbu.UEN = @UEN AND mbu.idBonificacion = @Id)
+			AND NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionUEN mbu WITH(NOLOCK) WHERE mbu.UEN = @UEN AND mbu.idBonificacion = @Id)
 			SELECT @Ok = 1
 				  ,@OkRef = 'UEN No Configurada Para este Caso'
 
 	END
 
-	IF EXISTS (SELECT IdBonificacion FROM MaviBonificacionCondicion WHERE IdBonificacion = @Id)
+	IF EXISTS (SELECT IdBonificacion FROM MaviBonificacionCondicion WITH(NOLOCK) WHERE IdBonificacion = @Id)
 	BEGIN
 
-		IF NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionCondicion WHERE COndicion = @Condicion AND IdBonificacion = @Id)
+		IF NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionCondicion WITH(NOLOCK) WHERE COndicion = @Condicion AND IdBonificacion = @Id)
 			SELECT @Ok = 1
 				  ,@OkRef = 'Condicion No Configurada Para esta Bonificación'
 
 	END
 
-	IF EXISTS (SELECT IdBonificacion FROM MaviBonificacionExcluye Exc WHERE BonificacionNo = @Bonificacion)
+	IF EXISTS (SELECT IdBonificacion FROM MaviBonificacionExcluye Exc WITH(NOLOCK) WHERE BonificacionNo = @Bonificacion)
 	BEGIN
 
 		IF EXISTS (SELECT BonTest.IdBonificacion FROM MaviBonificacionTest BonTest, MaviBonificacionExcluye Exc WHERE Bontest.IdBonificacion = Exc.IdBonificacion AND Bontest.OkRef = '' AND Exc.BonificacionNo = @Bonificacion AND BonTest.IdCobro = @IdCobro AND BonTest.MontoBonif > 0 AND BonTest.Origen = @Mov AND BonTest.OrigenId = @MovId)
@@ -718,11 +718,11 @@ BEGIN
 	END
 
 	IF NOT @TipoSucursal IS NULL
-		AND NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionSucursal WHERE Sucursal = RTRIM(@TipoSucursal) AND idBonificacion = RTRIM(@Id))
+		AND NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionSucursal WITH(NOLOCK) WHERE Sucursal = RTRIM(@TipoSucursal) AND idBonificacion = RTRIM(@Id))
 		SELECT @Ok = 1
 			  ,@OkRef = 'Bonificación No Configurada Para este tipo de Sucursal'
 
-	IF NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionTest WHERE idBonificacion = RTRIM(@Id) AND Docto = @IdCxC)
+	IF NOT EXISTS (SELECT IdBonificacion FROM MaviBonificacionTest WITH(NOLOCK) WHERE idBonificacion = RTRIM(@Id) AND Docto = @IdCxC)
 	BEGIN
 		SELECT @MesesExced = ISNULL(@DocumentoTotal, 0) - ISNULL(@PlazoEjeFin, 0)
 		SELECT @Factor = 1 + (@MesesExced * (ISNULL(@Financiamiento, 0.00) / 100))
@@ -775,16 +775,16 @@ BEGIN
 				SELECT CMov.Mov
 					  ,CMov.MovID
 					  ,Bonif = ISNULL(SUM(cd.Importe), 0)
-				FROM Cxc CMov
-				INNER JOIN Cxc Ccte
+				FROM Cxc CMov WITH(NOLOCK)
+				INNER JOIN Cxc Ccte WITH(NOLOCK)
 					ON Ccte.Cliente = CMov.Cliente
 					AND Ccte.Mov LIKE 'Nota Credito%'
 					AND Ccte.Estatus = 'CONCLUIDO'
-				INNER JOIN Cxc CBonif
+				INNER JOIN Cxc CBonif WITH(NOLOCK)
 					ON Ccte.ID = CBonif.ID
-				INNER JOIN CxcD cd
+				INNER JOIN CxcD cd WITH(NOLOCK)
 					ON CBonif.ID = cd.ID
-				INNER JOIN Cxc CPadre
+				INNER JOIN Cxc CPadre WITH(NOLOCK)
 					ON CPadre.Mov = cd.Aplica
 					AND CPadre.MovID = cd.AplicaID
 					AND CPadre.PadreMAVI = CMov.Mov
@@ -805,14 +805,14 @@ BEGIN
 
 	END
 
-	IF (@Ok IS NULL AND EXISTS (SELECT IdBonificacion FROM MaviBonificacionIncluye Exc WHERE Exc.IdBonificacion = @Id) AND EXISTS (SELECT Movimiento FROM MaviBonificacionMoV WHERE Movimiento = @Mov AND IdBonificacion IN (SELECT id FROM MaviBonificacionConf WHERE Bonificacion LIKE '%Atraso%'))
+	IF (@Ok IS NULL AND EXISTS (SELECT IdBonificacion FROM MaviBonificacionIncluye Exc WITH(NOLOCK) WHERE Exc.IdBonificacion = @Id) AND EXISTS (SELECT Movimiento FROM MaviBonificacionMoV WITH(NOLOCK) WHERE Movimiento = @Mov AND IdBonificacion IN (SELECT id FROM MaviBonificacionConf WITH(NOLOCK) WHERE Bonificacion LIKE '%Atraso%'))
 		)
 		OR (@Ok IS NULL AND @Tipo = 'Total' AND NOT @Bonificacion LIKE '%Contado Comercial%')
 		OR (@Ok IS NULL AND @Tipo = 'Total' AND NOT @Bonificacion LIKE '%Adelanto%')
 		OR (@Ok IS NULL AND @Tipo <> 'Total' AND NOT @Bonificacion LIKE '%Contado Comercial%')
 	BEGIN
 
-		IF (@Ok IS NULL AND EXISTS (SELECT IdBonificacion FROM MaviBonificacionIncluye Exc WHERE Exc.IdBonificacion = @Id) AND EXISTS (SELECT Movimiento FROM MaviBonificacionMoV WHERE Movimiento = @Mov AND IdBonificacion IN (SELECT id FROM MaviBonificacionConf WHERE Bonificacion LIKE '%Atraso%'))
+		IF (@Ok IS NULL AND EXISTS (SELECT IdBonificacion FROM MaviBonificacionIncluye Exc WITH(NOLOCK) WHERE Exc.IdBonificacion = @Id) AND EXISTS (SELECT Movimiento FROM MaviBonificacionMoV WITH(NOLOCK) WHERE Movimiento = @Mov AND IdBonificacion IN (SELECT id FROM MaviBonificacionConf WITH(NOLOCK) WHERE Bonificacion LIKE '%Atraso%'))
 			)
 		BEGIN
 
@@ -823,7 +823,7 @@ BEGIN
 				  ,BonificHijo = BonificacionNo
 				  ,BonificHijoCascad = EnCascada
 			INTO #crVerificaDetalle
-			FROM MaviBonificacionIncluye
+			FROM MaviBonificacionIncluye WITH(NOLOCK)
 			WHERE IdBonificacion = @Id
 			ORDER BY Orden
 			SET @tincluye = 0

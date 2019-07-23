@@ -1,13 +1,11 @@
-USE [IntelisisTmp]
-GO
-
-/****** Object:  View [dbo].[cCompraD]    Script Date: 13/05/2019 03:20:43 p. m. ******/
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
-
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
-
 ALTER VIEW [dbo].[cCompraD]
 
 AS
@@ -99,7 +97,7 @@ MonedaD,
 TipoCambioD,
 MesLanzamiento
 FROM
-CompraD
+CompraD WITH(NOLOCK)
 GO
 
 

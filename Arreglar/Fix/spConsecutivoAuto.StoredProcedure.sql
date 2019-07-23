@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spConsecutivoAuto]
  @Sucursal INT
@@ -72,7 +76,7 @@ BEGIN
 				  ,@SucursalEsp = SucursalEsp
 				  ,@TipoConsecutivo = UPPER(TipoConsecutivo)
 				  ,@ConsecutivoGeneral = ConsecutivoGeneral
-			FROM MovTipo
+			FROM MovTipo WITH(NOLOCK)
 			WHERE Modulo = @Modulo
 			AND Mov = @Mov
 
@@ -105,7 +109,7 @@ BEGIN
 				IF @SubFoliosOrigen = 0
 					SELECT @ConsecutivoSerial = ConsecutivoSerial
 						  ,@ConsecutivoDigitos = ConsecutivoDigitos
-					FROM EmpresaGral
+					FROM EmpresaGral WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 
 				IF @ConsecutivoPorPeriodo = 0
@@ -120,7 +124,7 @@ BEGIN
 
 				IF @ConsecutivoPorEmpresa = 'GRUPO'
 					SELECT @Empresa = Clave
-					FROM EmpresaGrupo
+					FROM EmpresaGrupo WITH(NOLOCK)
 						,Empresa
 					WHERE EmpresaGrupo.Grupo = Empresa.Grupo
 					AND Empresa.Empresa = @Empresa
@@ -130,7 +134,7 @@ BEGIN
 					SELECT @Sucursal = @SucursalEsp
 
 				IF @Modulo = 'CONT'
-					UPDATE ContC
+					UPDATE ContC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -141,7 +145,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'VTAS'
-					UPDATE VentaC
+					UPDATE VentaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -152,7 +156,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'PROD'
-					UPDATE ProdC
+					UPDATE ProdC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -163,7 +167,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'COMS'
-					UPDATE CompraC
+					UPDATE CompraC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -174,7 +178,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'INV'
-					UPDATE InvC
+					UPDATE InvC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -185,7 +189,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CXC'
-					UPDATE CxcC
+					UPDATE CxcC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -196,7 +200,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CXP'
-					UPDATE CxpC
+					UPDATE CxpC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -207,7 +211,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'AGENT'
-					UPDATE AgentC
+					UPDATE AgentC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -218,7 +222,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'GAS'
-					UPDATE GastoC
+					UPDATE GastoC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -229,7 +233,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'DIN'
-					UPDATE DineroC
+					UPDATE DineroC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -240,7 +244,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'EMB'
-					UPDATE EmbarqueC
+					UPDATE EmbarqueC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -251,7 +255,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'NOM'
-					UPDATE NominaC
+					UPDATE NominaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -262,7 +266,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'RH'
-					UPDATE RHC
+					UPDATE RHC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -273,7 +277,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'ASIS'
-					UPDATE AsisteC
+					UPDATE AsisteC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -284,7 +288,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'AF'
-					UPDATE ActivoFijoC
+					UPDATE ActivoFijoC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -295,7 +299,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'PC'
-					UPDATE PCC
+					UPDATE PCC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -306,7 +310,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'OFER'
-					UPDATE OfertaC
+					UPDATE OfertaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -317,7 +321,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'VALE'
-					UPDATE ValeC
+					UPDATE ValeC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -328,7 +332,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CR'
-					UPDATE CRC
+					UPDATE CRC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -339,7 +343,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'ST'
-					UPDATE SoporteC
+					UPDATE SoporteC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -350,7 +354,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CAP'
-					UPDATE CapitalC
+					UPDATE CapitalC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -361,7 +365,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'INC'
-					UPDATE IncidenciaC
+					UPDATE IncidenciaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -372,7 +376,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CONC'
-					UPDATE ConciliacionC
+					UPDATE ConciliacionC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -383,7 +387,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'PPTO'
-					UPDATE PresupC
+					UPDATE PresupC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -394,7 +398,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CREDI'
-					UPDATE CreditoC
+					UPDATE CreditoC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -405,7 +409,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'TMA'
-					UPDATE TMAC
+					UPDATE TMAC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -416,7 +420,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'RSS'
-					UPDATE RSSC
+					UPDATE RSSC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -427,7 +431,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CMP'
-					UPDATE CampanaC
+					UPDATE CampanaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -438,7 +442,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'FIS'
-					UPDATE FiscalC
+					UPDATE FiscalC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -449,7 +453,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CONTP'
-					UPDATE ContParalelaC
+					UPDATE ContParalelaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -460,7 +464,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'OPORT'
-					UPDATE OportunidadC
+					UPDATE OportunidadC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -471,7 +475,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CORTE'
-					UPDATE CorteC
+					UPDATE CorteC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -482,7 +486,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'FRM'
-					UPDATE FormaExtraC
+					UPDATE FormaExtraC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -493,7 +497,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CAPT'
-					UPDATE CapturaC
+					UPDATE CapturaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -504,7 +508,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'GES'
-					UPDATE GestionC
+					UPDATE GestionC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -515,7 +519,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CP'
-					UPDATE CPC
+					UPDATE CPC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -526,7 +530,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'PCP'
-					UPDATE PCPC
+					UPDATE PCPC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -537,7 +541,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'PROY'
-					UPDATE ProyectoC
+					UPDATE ProyectoC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -548,7 +552,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'ORG'
-					UPDATE OrganizaC
+					UPDATE OrganizaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -559,7 +563,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'RE'
-					UPDATE ReclutaC
+					UPDATE ReclutaC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -570,7 +574,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'ISL'
-					UPDATE ISLC
+					UPDATE ISLC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -581,7 +585,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'CAM'
-					UPDATE CambioC
+					UPDATE CambioC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -592,7 +596,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'PACTO'
-					UPDATE ContratoC
+					UPDATE ContratoC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -603,7 +607,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'SAUX'
-					UPDATE SAUXC
+					UPDATE SAUXC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa
@@ -614,7 +618,7 @@ BEGIN
 				ELSE
 
 				IF @Modulo = 'PREV'
-					UPDATE PrevencionLDC
+					UPDATE PrevencionLDC WITH(ROWLOCK)
 					SET Consecutivo = Consecutivo + 1
 					WHERE Sucursal = @Sucursal
 					AND Empresa = @Empresa

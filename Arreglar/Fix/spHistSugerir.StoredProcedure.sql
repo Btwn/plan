@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spHistSugerir]
 @Modulo varchar(5) = NULL,
@@ -139,8 +143,8 @@ BEGIN
 		crTabla
 		CURSOR LOCAL FOR
 		SELECT RTRIM(SysTabla)
-		FROM SysTabla
-		WHERE SysTabla IN (SELECT Tabla FROM HistMov)
+		FROM SysTabla WITH(NOLOCK)
+		WHERE SysTabla IN (SELECT Tabla FROM HistMov WITH(NOLOCK))
 		ORDER BY SysTabla
 	OPEN crTabla
 	FETCH NEXT FROM crTabla INTO @Tabla
@@ -244,8 +248,8 @@ BEGIN
 		crTabla
 		CURSOR LOCAL FOR
 		SELECT RTRIM(SysTabla)
-		FROM SysTabla
-		WHERE SysTabla IN (SELECT Tabla FROM HistMov)
+		FROM SysTabla WITH(NOLOCK)
+		WHERE SysTabla IN (SELECT Tabla FROM HistMov WITH(NOLOCK))
 		ORDER BY SysTabla
 	OPEN crTabla
 	FETCH NEXT FROM crTabla INTO @Tabla
@@ -320,7 +324,7 @@ BEGIN
 		crTabla
 		CURSOR LOCAL FOR
 		SELECT RTRIM(SysTabla)
-		FROM SysTabla
+		FROM SysTabla WITH(NOLOCK)
 		WHERE Modulo = @Modulo
 		AND SysTabla NOT IN ('DimPasoPipe')
 		ORDER BY Orden
@@ -435,7 +439,7 @@ BEGIN
 		crTabla
 		CURSOR LOCAL FOR
 		SELECT RTRIM(SysTabla)
-		FROM SysTabla
+		FROM SysTabla WITH(NOLOCK)
 		WHERE Modulo = @Modulo
 		AND SysTabla NOT IN ('DimPasoPipe')
 		ORDER BY Orden
@@ -658,6 +662,6 @@ END
 
 IF @EnSilencio = 0
 	SELECT [SQL]
-	FROM HistResultado
+	FROM HistResultado WITH(NOLOCK)
 END
 GO

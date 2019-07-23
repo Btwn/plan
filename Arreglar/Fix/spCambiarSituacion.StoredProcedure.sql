@@ -22,7 +22,7 @@ BEGIN
 	BEGIN TRANSACTION
 
 	IF @Modulo = 'CONT'
-		UPDATE Cont
+		UPDATE Cont WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -31,7 +31,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'VTAS'
-		UPDATE Venta
+		UPDATE Venta WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -40,7 +40,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'PROD'
-		UPDATE Prod
+		UPDATE Prod WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -49,7 +49,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'COMS'
-		UPDATE Compra
+		UPDATE Compra WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -58,7 +58,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'INV'
-		UPDATE Inv
+		UPDATE Inv WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -67,7 +67,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CXC'
-		UPDATE Cxc
+		UPDATE Cxc WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -76,7 +76,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CXP'
-		UPDATE Cxp
+		UPDATE Cxp WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -85,7 +85,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'AGENT'
-		UPDATE Agent
+		UPDATE Agent WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -94,7 +94,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'GAS'
-		UPDATE Gasto
+		UPDATE Gasto WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -103,7 +103,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'DIN'
-		UPDATE Dinero
+		UPDATE Dinero WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -112,7 +112,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'EMB'
-		UPDATE Embarque
+		UPDATE Embarque WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -121,7 +121,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'NOM'
-		UPDATE Nomina
+		UPDATE Nomina WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -130,7 +130,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'RH'
-		UPDATE RH
+		UPDATE RH WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -139,7 +139,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'ASIS'
-		UPDATE Asiste
+		UPDATE Asiste WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -148,7 +148,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'AF'
-		UPDATE ActivoFijo
+		UPDATE ActivoFijo WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -157,7 +157,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'PC'
-		UPDATE PC
+		UPDATE PC WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -166,7 +166,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'OFER'
-		UPDATE Oferta
+		UPDATE Oferta WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -175,7 +175,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'VALE'
-		UPDATE Vale
+		UPDATE Vale WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -184,7 +184,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CR'
-		UPDATE CR
+		UPDATE CR WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -193,7 +193,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'ST'
-		UPDATE Soporte
+		UPDATE Soporte WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -202,7 +202,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CAP'
-		UPDATE Capital
+		UPDATE Capital WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -211,7 +211,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'INC'
-		UPDATE Incidencia
+		UPDATE Incidencia WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -220,7 +220,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CONC'
-		UPDATE Conciliacion
+		UPDATE Conciliacion WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -229,7 +229,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'PPTO'
-		UPDATE Presup
+		UPDATE Presup WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -238,7 +238,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CREDI'
-		UPDATE Credito
+		UPDATE Credito WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -247,7 +247,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'WMS'
-		UPDATE WMS
+		UPDATE WMS WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -256,7 +256,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'RSS'
-		UPDATE RSS
+		UPDATE RSS WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -265,7 +265,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CMP'
-		UPDATE Campana
+		UPDATE Campana WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -274,7 +274,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'FIS'
-		UPDATE Fiscal
+		UPDATE Fiscal WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -283,7 +283,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'FRM'
-		UPDATE FormaExtra
+		UPDATE FormaExtra WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -292,7 +292,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'PROY'
-		UPDATE Proyecto
+		UPDATE Proyecto WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -301,7 +301,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CAM'
-		UPDATE Cambio
+		UPDATE Cambio WITH(ROWLOCK)
 		SET Situacion = NULLIF(RTRIM(@Situacion), '')
 		   ,SituacionFecha = @SituacionFecha
 		   ,SituacionUsuario = @SituacionUsuario
@@ -310,13 +310,13 @@ BEGIN
 
 	SELECT @FechaComenzo = NULL
 	SELECT @FechaComenzo = MAX(FechaComenzo)
-	FROM MovTiempo
+	FROM MovTiempo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND ID = @ID
 	AND Situacion = @Situacion
 
 	IF @FechaComenzo IS NOT NULL
-		UPDATE MovTiempo
+		UPDATE MovTiempo WITH(ROWLOCK)
 		SET Usuario = @Usuario
 		WHERE Modulo = @Modulo
 		AND ID = @ID

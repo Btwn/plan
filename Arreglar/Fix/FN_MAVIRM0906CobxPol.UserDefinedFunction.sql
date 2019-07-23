@@ -26,13 +26,13 @@ BEGIN
 		  ,@SECC = ISNULL(CE.SeccionCobranzaMAVI, '')
 		  ,@DVEC = ISNULL(CM.DiasVencActMAVI, 0)
 		  ,@DINAC = ISNULL(CM.DiasInacActMAVI, 0)
-	FROM CxcMavi CM
-	JOIN Cxc C
+	FROM CxcMavi CM WITH(NOLOCK)
+	JOIN Cxc C WITH(NOLOCK)
 		ON C.ID = CM.ID
-	JOIN TablaStD T
+	JOIN TablaStD T WITH(NOLOCK)
 		ON T.TablaSt = 'MOVIMIENTOS COBRO X POLITICA'
 		AND T.Nombre = C.Mov
-	LEFT JOIN CteEnviarA CE
+	LEFT JOIN CteEnviarA CE WITH(NOLOCK)
 		ON CE.ID = C.ClienteEnviarA
 		AND CE.Cliente = C.Cliente
 	WHERE CM.ID = @ID
@@ -65,8 +65,8 @@ BEGIN
 			   END
 		SELECT TOP 1 @DV = ISNULL(CON.DV, 0)
 					,@DI = ISNULL(CON.DI, 0)
-		FROM TcIRM0906_ConfigDivisionYParam CON
-		JOIN MaviRecuperacion MA
+		FROM TcIRM0906_ConfigDivisionYParam CON WITH(NOLOCK)
+		JOIN MaviRecuperacion MA WITH(NOLOCK)
 			ON ISNULL(CON.Division, '') = ISNULL(MA.Division, '')
 			AND MA.Quincena = @Quincena
 			AND MA.Ejercicio = @Year

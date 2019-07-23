@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spEmbarqueManual]
  @Empresa CHAR(5)
@@ -40,7 +44,7 @@ BEGIN
 		IF @DesEmbarcar = 1
 		BEGIN
 
-			IF EXISTS (SELECT Empresa FROM EmbarqueMov WHERE Empresa = @Empresa AND Modulo = @Modulo AND Mov = @Mov AND MovID = @MovID)
+			IF EXISTS (SELECT Empresa FROM EmbarqueMov WITH(NOLOCK) WHERE Empresa = @Empresa AND Modulo = @Modulo AND Mov = @Mov AND MovID = @MovID)
 			BEGIN
 				DELETE EmbarqueMov
 				WHERE Empresa = @Empresa
@@ -56,31 +60,31 @@ BEGIN
 				BEGIN
 
 					IF @Modulo = 'VTAS'
-						UPDATE Venta
+						UPDATE Venta WITH(ROWLOCK)
 						SET EmbarqueEstado = NULL
 						WHERE ID = @ID
 					ELSE
 
 					IF @Modulo = 'COMS'
-						UPDATE Compra
+						UPDATE Compra WITH(ROWLOCK)
 						SET EmbarqueEstado = NULL
 						WHERE ID = @ID
 					ELSE
 
 					IF @Modulo = 'INV'
-						UPDATE Inv
+						UPDATE Inv WITH(ROWLOCK)
 						SET EmbarqueEstado = NULL
 						WHERE ID = @ID
 					ELSE
 
 					IF @Modulo = 'CXC'
-						UPDATE Cxc
+						UPDATE Cxc WITH(ROWLOCK)
 						SET EmbarqueEstado = NULL
 						WHERE ID = @ID
 					ELSE
 
 					IF @Modulo = 'DIN'
-						UPDATE Dinero
+						UPDATE Dinero WITH(ROWLOCK)
 						SET EmbarqueEstado = NULL
 						WHERE ID = @ID
 
@@ -97,11 +101,11 @@ BEGIN
 			IF @Modulo = 'VTAS'
 			BEGIN
 
-				IF EXISTS (SELECT * FROM VentaD d JOIN EmbarqueMov e ON Empresa = @Empresa AND Modulo = @Modulo AND Mov = Aplica AND MovID = AplicaID WHERE d.ID = @ID)
+				IF EXISTS (SELECT * FROM VentaD d WITH(NOLOCK) JOIN EmbarqueMov e WITH(NOLOCK) ON Empresa = @Empresa AND Modulo = @Modulo AND Mov = Aplica AND MovID = AplicaID WHERE d.ID = @ID)
 					SELECT @OKRef = Aplica + ' ' + AplicaID
 						  ,@Ok = 42020
-					FROM VentaD d
-					JOIN EmbarqueMov e
+					FROM VentaD d WITH(NOLOCK)
+					JOIN EmbarqueMov e WITH(NOLOCK)
 						ON Empresa = @Empresa
 						AND Modulo = @Modulo
 						AND Mov = Aplica
@@ -110,7 +114,7 @@ BEGIN
 
 			END
 
-			IF EXISTS (SELECT * FROM EmbarqueMov WHERE Empresa = @Empresa AND Modulo = @Modulo AND Mov = @Mov AND MovID = @MovID)
+			IF EXISTS (SELECT * FROM EmbarqueMov WITH(NOLOCK) WHERE Empresa = @Empresa AND Modulo = @Modulo AND Mov = @Mov AND MovID = @MovID)
 				SELECT @Ok = 42020
 
 			IF @OK IS NULL
@@ -137,7 +141,7 @@ BEGIN
 		ELSE
 			SELECT @OkDesc = Descripcion
 				  ,@OkTipo = Tipo
-			FROM MensajeLista
+			FROM MensajeLista WITH(NOLOCK)
 			WHERE Mensaje = @Ok
 
 		SELECT @Ok

@@ -25,7 +25,7 @@ BEGIN
 		crMovTipoCampoExtra
 		CURSOR FOR
 		SELECT DISTINCT CampoExtra
-		FROM MovTipoCampoExtra
+		FROM MovTipoCampoExtra WITH(NOLOCK)
 		WHERE Modulo = @Modulo
 	OPEN crMovTipoCampoExtra
 	FETCH NEXT FROM crMovTipoCampoExtra INTO @CampoExtra
@@ -37,7 +37,7 @@ BEGIN
 	BEGIN
 		SELECT @a = @a + 1
 		SELECT @c = CONVERT(VARCHAR, @a)
-		SELECT @SELECT = @SELECT + ',"' + @CampoExtra + '"=(SELECT Valor FROM MovCampoExtra ce WHERE ce.Modulo="' + @Modulo + '" AND ce.Mov=m.Mov AND ce.ID=m.ID AND ce.CampoExtra="' + @CampoExtra + '")'
+		SELECT @SELECT = @SELECT + ',"' + @CampoExtra + '"=(SELECT Valor FROM MovCampoExtra ce WITH(NOLOCK) WHERE ce.Modulo="' + @Modulo + '" AND ce.Mov=m.Mov AND ce.ID=m.ID AND ce.CampoExtra="' + @CampoExtra + '")'
 	END
 
 	FETCH NEXT FROM crMovTipoCampoExtra INTO @CampoExtra
@@ -45,7 +45,7 @@ BEGIN
 	CLOSE crMovTipoCampoExtra
 	DEALLOCATE crMovTipoCampoExtra
 	EXEC ('if exists (select * from sysobjects where id = object_id("' + @Vista + '") and type ="V") drop view ' + @Vista)
-	EXEC ('CREATE VIEW ' + @Vista + ' AS SELECT m.*' + @SELECT + ' FROM ' + @Tabla + ' m')
+	EXEC ('CREATE VIEW ' + @Vista + ' AS SELECT m.*' + @SELECT + ' FROM ' + @Tabla + ' m WITH(NOLOCK)')
 	RETURN
 END
 GO

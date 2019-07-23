@@ -62,11 +62,11 @@ BEGIN
 			  ,p.SituacionNota
 			  ,p.Proyecto
 			  ,p.UEN
-		FROM CxcAplica p
-		JOIN MovTipo mt
+		FROM CxcAplica p WITH(NOLOCK)
+		JOIN MovTipo mt WITH(NOLOCK)
 			ON p.Mov = mt.Mov
 			AND mt.Modulo = 'CXC'
-		JOIN Version v
+		JOIN Version v WITH(NOLOCK)
 			ON 1 = 1
 		WHERE ROUND(p.Saldo, v.RedondeoMonetarios) <> 0.0
 		AND p.Estatus = 'PENDIENTE'
@@ -83,10 +83,10 @@ BEGIN
 			   END
 			  ,p.Saldo
 			  ,'PENDIENTE'
-		FROM CxcEfectivo p
-		JOIN Mon m
+		FROM CxcEfectivo p WITH(NOLOCK)
+		JOIN Mon m WITH(NOLOCK)
 			ON m.Moneda = p.Moneda
-		JOIN Version v
+		JOIN Version v WITH(NOLOCK)
 			ON 1 = 1
 		WHERE ROUND(p.Saldo, v.RedondeoMonetarios) <> 0.0
 		AND p.Empresa = @Empresa
@@ -99,10 +99,10 @@ BEGIN
 			  ,'Consumos por Facturar'
 			  ,p.Saldo
 			  ,'PENDIENTE'
-		FROM CxcConsumo p
-		JOIN Mon m
+		FROM CxcConsumo p WITH(NOLOCK)
+		JOIN Mon m WITH(NOLOCK)
 			ON m.Moneda = p.Moneda
-		JOIN Version v
+		JOIN Version v WITH(NOLOCK)
 			ON 1 = 1
 		WHERE ROUND(p.Saldo, v.RedondeoMonetarios) <> 0.0
 		AND p.Empresa = @Empresa
@@ -115,10 +115,10 @@ BEGIN
 			  ,'Vales en Circulacion'
 			  ,p.Saldo
 			  ,'PENDIENTE'
-		FROM CxcVale p
-		JOIN Mon m
+		FROM CxcVale p WITH(NOLOCK)
+		JOIN Mon m WITH(NOLOCK)
 			ON m.Moneda = p.Moneda
-		JOIN Version v
+		JOIN Version v WITH(NOLOCK)
 			ON 1 = 1
 		WHERE ROUND(p.Saldo, v.RedondeoMonetarios) <> 0.0
 		AND p.Empresa = @Empresa
@@ -131,10 +131,10 @@ BEGIN
 			  ,'Redondeo'
 			  ,p.Saldo
 			  ,'PENDIENTE'
-		FROM CxcRedondeo p
-		JOIN Mon m
+		FROM CxcRedondeo p WITH(NOLOCK)
+		JOIN Mon m WITH(NOLOCK)
 			ON m.Moneda = p.Moneda
-		JOIN Version v
+		JOIN Version v WITH(NOLOCK)
 			ON 1 = 1
 		WHERE ROUND(p.Saldo, v.RedondeoMonetarios) <> 0.0
 		AND p.Empresa = @Empresa

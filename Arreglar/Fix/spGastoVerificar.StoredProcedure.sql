@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spGastoVerificar]
  @ID INT
@@ -66,7 +70,7 @@ BEGIN
 	   ,@OrigenID VARCHAR(20)
 	   ,@GasConceptoMultiple BIT
 	SELECT @GasConceptoMultiple = GasConceptoMultiple
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @Autorizar = 0
 	SELECT @AntecedenteID = NULL
@@ -85,7 +89,7 @@ BEGIN
 
 		IF @Conexion = 0
 
-			IF EXISTS (SELECT * FROM MovFlujo WHERE Cancelado = 0 AND Empresa = @Empresa AND DModulo = @Modulo AND DID = @ID AND OModulo <> DModulo)
+			IF EXISTS (SELECT * FROM MovFlujo WITH(NOLOCK) WHERE Cancelado = 0 AND Empresa = @Empresa AND DModulo = @Modulo AND DID = @ID AND OModulo <> DModulo)
 				AND @OrigenMovTipo <> 'PROY.PR'
 				SELECT @Ok = 60070
 
@@ -117,10 +121,10 @@ BEGIN
 		AND @OK IS NULL
 	BEGIN
 
-		IF EXISTS (SELECT * FROM Gasto WHERE Empresa = @Empresa AND Origen = @Mov AND OrigenID = @MovID AND Estatus = 'CONCLUIDO')
+		IF EXISTS (SELECT * FROM Gasto WITH(NOLOCK) WHERE Empresa = @Empresa AND Origen = @Mov AND OrigenID = @MovID AND Estatus = 'CONCLUIDO')
 			SELECT @Ok = 20180
 				  ,@OkRef = 'El movimiento ' + Mov + ' ' + MovID + ' esta relacionado (Cancelar)'
-			FROM Gasto
+			FROM Gasto WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Origen = @Mov
 			AND OrigenID = @MovID
@@ -144,9 +148,9 @@ BEGIN
 					  ,ISNULL(g.Saldo, 0.0)
 					  ,ISNULL(g.Importe, 0.0) - ISNULL(g.Retencion, 0.0) + ISNULL(g.Impuestos, 0.0)
 					  ,mt.Clave
-				FROM GastoAplica ga
-					,Gasto g
-					,MovTipo mt
+				FROM GastoAplica ga WITH(NOLOCK)
+					,Gasto g WITH(NOLOCK)
+					,MovTipo mt WITH(NOLOCK)
 				WHERE ga.ID = @ID
 				AND g.Empresa = @Empresa
 				AND g.Mov = ga.Aplica
@@ -207,7 +211,7 @@ BEGIN
 			IF @Ok IS NULL
 				AND @Cuantos <> (
 					SELECT COUNT(*)
-					FROM GastoAplica
+					FROM GastoAplica WITH(NOLOCK)
 					WHERE ID = @ID
 				)
 				SELECT @Ok = 20180
@@ -223,7 +227,7 @@ BEGIN
 				  ,@AntecedenteEstatus = Estatus
 				  ,@AntecedenteSaldo = ISNULL(Saldo, 0.0)
 				  ,@AntecedenteImporteTotal = ISNULL(Importe, 0.0) - ISNULL(Retencion, 0.0) + ISNULL(Impuestos, 0.0)
-			FROM Gasto
+			FROM Gasto WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Mov = @MovAplica
 			AND MovID = @MovAplicaID
@@ -240,7 +244,7 @@ BEGIN
 							   ,@Ok OUTPUT
 							   ,@OkRef OUTPUT
 				SELECT @AntecedenteMovTipo = UPPER(MovTipo.Clave)
-				FROM MovTipo
+				FROM MovTipo WITH(NOLOCK)
 				WHERE Modulo = @Modulo
 				AND Mov = @MovAplica
 
@@ -294,12 +298,12 @@ BEGIN
 		AND @Ok IS NULL
 	BEGIN
 
-		IF EXISTS (SELECT * FROM GastoD WHERE ID = @ID AND NULLIF(RTRIM(Concepto), '') IS NULL)
+		IF EXISTS (SELECT * FROM GastoD WITH(NOLOCK) WHERE ID = @ID AND NULLIF(RTRIM(Concepto), '') IS NULL)
 			SELECT @Ok = 20480
 
 		IF @Ok IS NULL
 
-			IF EXISTS (SELECT * FROM GastoD WHERE ID = @ID AND ISNULL(Importe, 0.0) = 0.0)
+			IF EXISTS (SELECT * FROM GastoD WITH(NOLOCK) WHERE ID = @ID AND ISNULL(Importe, 0.0) = 0.0)
 				SELECT @Ok = 30100
 
 	END
@@ -326,12 +330,12 @@ BEGIN
 
 	IF @MovTipo NOT IN ('GAS.DA', 'GAS.ASC', 'GAS.SR')
 
-		IF NOT EXISTS (SELECT * FROM GastoD WHERE ID = @ID)
+		IF NOT EXISTS (SELECT * FROM GastoD WITH(NOLOCK) WHERE ID = @ID)
 			SELECT @Ok = 60010
 
 	IF @MovTipo = 'GAS.CTO'
 
-		IF EXISTS (SELECT * FROM Gasto WHERE ID = @ID AND (ConVigencia = 0 OR VigenciaDesde IS NULL OR VigenciaHasta IS NULL OR VigenciaHasta < VigenciaDesde))
+		IF EXISTS (SELECT * FROM Gasto WITH(NOLOCK) WHERE ID = @ID AND (ConVigencia = 0 OR VigenciaDesde IS NULL OR VigenciaHasta IS NULL OR VigenciaHasta < VigenciaDesde))
 			SELECT @Ok = 10095
 
 	IF @Accion IN ('AFECTAR', 'VERIFICAR')
@@ -340,7 +344,7 @@ BEGIN
 		IF @MovTipo <> 'GAS.EST'
 			AND (
 				SELECT SUM(Importe)
-				FROM GastoD
+				FROM GastoD WITH(NOLOCK)
 				WHERE ID = @ID
 			)
 			< 0.0
@@ -349,12 +353,12 @@ BEGIN
 
 		IF @MovTipo IN ('GAS.CCH', 'GAS.GTC')
 
-			IF EXISTS (SELECT * FROM GastoD WHERE ID = @ID AND NULLIF(RTRIM(AcreedorRef), '') IS NULL)
+			IF EXISTS (SELECT * FROM GastoD WITH(NOLOCK) WHERE ID = @ID AND NULLIF(RTRIM(AcreedorRef), '') IS NULL)
 				SELECT @Ok = 25480
 
 		IF @MovTipo = 'GAS.GTC'
 
-			IF EXISTS (SELECT * FROM GastoD WHERE ID = @ID AND NULLIF(RTRIM(EndosarA), '') IS NULL)
+			IF EXISTS (SELECT * FROM GastoD WITH(NOLOCK) WHERE ID = @ID AND NULLIF(RTRIM(EndosarA), '') IS NULL)
 				SELECT @Ok = 25490
 
 	END
@@ -365,24 +369,24 @@ BEGIN
 		AND @Ok IS NULL
 	BEGIN
 		SELECT @ConceptoCxp = MIN(c.ConceptoCxp)
-		FROM GastoD d
-			,Concepto c
+		FROM GastoD d WITH(NOLOCK)
+			,Concepto c WITH(NOLOCK)
 		WHERE d.ID = @ID
 		AND c.Modulo = @Modulo
 		AND c.Concepto = d.Concepto
 
-		IF EXISTS (SELECT * FROM GastoD d, Concepto c WHERE d.ID = @ID AND c.Modulo = @Modulo AND c.Concepto = d.Concepto AND c.ConceptoCxp <> @ConceptoCxp)
+		IF EXISTS (SELECT * FROM GastoD d WITH(NOLOCK), Concepto c WITH(NOLOCK) WHERE d.ID = @ID AND c.Modulo = @Modulo AND c.Concepto = d.Concepto AND c.ConceptoCxp <> @ConceptoCxp)
 			AND @GasConceptoMultiple = 0
 			SELECT @Ok = 30630
 				  ,@OkRef = @ConceptoCxp
 
-		IF EXISTS (SELECT * FROM GastoD d LEFT JOIN Concepto c ON c.Concepto = d.Concepto WHERE d.ID = @ID AND c.Modulo = @Modulo AND c.ConceptoCxp IS NULL)
+		IF EXISTS (SELECT * FROM GastoD d WITH(NOLOCK) LEFT JOIN Concepto c WITH(NOLOCK) ON c.Concepto = d.Concepto WHERE d.ID = @ID AND c.Modulo = @Modulo AND c.ConceptoCxp IS NULL)
 			AND @GasConceptoMultiple = 1
 			SELECT @Ok = 30632
 				  ,@OkRef = @OkRef + (
 					   SELECT TOP 1 d.Concepto
-					   FROM GastoD d
-					   LEFT JOIN Concepto c
+					   FROM GastoD d WITH(NOLOCK)
+					   LEFT JOIN Concepto c WITH(NOLOCK)
 						   ON c.Concepto = d.Concepto
 					   WHERE d.ID = @ID
 					   AND c.Modulo = @Modulo
@@ -399,7 +403,7 @@ BEGIN
 		ELSE
 
 		IF @SubClase IS NULL
-			AND EXISTS (SELECT * FROM SubClase WHERE Modulo = @Modulo AND Clase = @Clase)
+			AND EXISTS (SELECT * FROM SubClase WITH(NOLOCK) WHERE Modulo = @Modulo AND Clase = @Clase)
 			SELECT @Ok = 10090
 
 	IF @Accion IN ('AFECTAR', 'VERIFICAR')
@@ -410,24 +414,24 @@ BEGIN
 
 		IF @ContUso IS NULL
 			SELECT @ContUso = MIN(d.ContUso)
-			FROM GastoD d
+			FROM GastoD d WITH(NOLOCK)
 			WHERE d.ID = @ID
 			AND NULLIF(RTRIM(d.ContUso), '') IS NOT NULL
-			AND d.ContUso NOT IN (SELECT v.CentroCostos FROM CentroCostosEmpresa v WHERE v.Empresa = @Empresa)
+			AND d.ContUso NOT IN (SELECT v.CentroCostos FROM CentroCostosEmpresa v WITH(NOLOCK) WHERE v.Empresa = @Empresa)
 
 		IF @ContUso IS NULL
 			SELECT @ContUso = MIN(d.ContUso)
-			FROM GastoD d
+			FROM GastoD d WITH(NOLOCK)
 			WHERE d.ID = @ID
 			AND NULLIF(RTRIM(d.ContUso), '') IS NOT NULL
-			AND d.ContUso NOT IN (SELECT v.CentroCostos FROM CentroCostosSucursal v WHERE v.Sucursal = @Sucursal)
+			AND d.ContUso NOT IN (SELECT v.CentroCostos FROM CentroCostosSucursal v WITH(NOLOCK) WHERE v.Sucursal = @Sucursal)
 
 		IF @ContUso IS NULL
 			SELECT @ContUso = MIN(d.ContUso)
-			FROM GastoD d
+			FROM GastoD d WITH(NOLOCK)
 			WHERE d.ID = @ID
 			AND NULLIF(RTRIM(d.ContUso), '') IS NOT NULL
-			AND d.ContUso NOT IN (SELECT v.CentroCostos FROM CentroCostosUsuario v WHERE v.Usuario = @Usuario)
+			AND d.ContUso NOT IN (SELECT v.CentroCostos FROM CentroCostosUsuario v WITH(NOLOCK) WHERE v.Usuario = @Usuario)
 
 		IF @ContUso IS NOT NULL
 			SELECT @Ok = 20765
@@ -450,15 +454,15 @@ BEGIN
 		SELECT @ConLimiteAnticipos = ISNULL(ConLimiteAnticipos, 0)
 			  ,@LimiteAnticiposMN = ISNULL(LimiteAnticiposMN, 0)
 			  ,@ChecarLimite = UPPER(ChecarLimite)
-		FROM Prov
+		FROM Prov WITH(NOLOCK)
 		WHERE Proveedor = @Acreedor
 
 		IF @ConLimiteAnticipos = 1
 			AND (@ChecarLimite = 'SOLICITUD' OR @MovTipo = 'GAS.A')
 		BEGIN
 			SELECT @AnticiposPendientesMN = ISNULL(SUM(g.Saldo * g.TipoCambio), 0)
-			FROM Gasto g
-				,MovTipo mt
+			FROM Gasto g WITH(NOLOCK)
+				,MovTipo mt WITH(NOLOCK)
 			WHERE mt.Modulo = @Modulo
 			AND mt.Mov = g.Mov
 			AND mt.Clave = 'GAS.A'
@@ -476,12 +480,12 @@ BEGIN
 				IF @OrigenMovTipo = 'GAS.S'
 					SELECT @Origen = Origen
 						  ,@OrigenID = OrigenID
-					FROM Gasto
+					FROM Gasto WITH(NOLOCK)
 					WHERE ID = @ID
 
 				SELECT @SolicitudesPendientesMN = ISNULL(SUM(g.Saldo * g.TipoCambio), 0)
-				FROM Gasto g
-					,MovTipo mt
+				FROM Gasto g WITH(NOLOCK)
+					,MovTipo mt WITH(NOLOCK)
 				WHERE mt.Modulo = @Modulo
 				AND mt.Mov = g.Mov
 				AND mt.Clave = 'GAS.S'

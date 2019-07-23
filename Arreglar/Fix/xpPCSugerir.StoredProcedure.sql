@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[xpPCSugerir]
 @ID INT
@@ -27,13 +31,13 @@ BEGIN
 		  ,@Moneda = pc.Moneda
 		  ,@TipoCambio = pc.TipoCambio
 		  ,@MovTipo = mt.Clave
-	FROM PC
+	FROM PC WITH(NOLOCK)
 		,MovTipo mt
 	WHERE pc.ID = @ID
 	AND mt.Modulo = 'PC'
 	AND mt.Mov = pc.Mov
 	SELECT @PrecioNivelUnidad = ISNULL(PrecioNivelUnidad, 0)
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	DELETE PCD
 	WHERE ID = @ID
@@ -42,7 +46,7 @@ BEGIN
 	IF @PrecioNivelUnidad = 1
 	BEGIN
 
-		IF EXISTS (SELECT * FROM ListaPreciosSubUnidad WHERE Lista = @Lista AND Moneda = @Moneda)
+		IF EXISTS (SELECT * FROM ListaPreciosSubUnidad WITH(NOLOCK) WHERE Lista = @Lista AND Moneda = @Moneda)
 			DECLARE
 				crPCSugerir
 				CURSOR FOR
@@ -50,7 +54,7 @@ BEGIN
 					  ,SubCuenta
 					  ,Unidad
 					  ,MIN(Precio)
-				FROM ListaPreciosSubUnidad
+				FROM ListaPreciosSubUnidad WITH(NOLOCK)
 				WHERE Lista = @Lista
 				AND Moneda = @Moneda
 				AND ISNULL(Precio, 0.0) > 0.0
@@ -66,7 +70,7 @@ BEGIN
 					  ,CONVERT(VARCHAR, NULL)
 					  ,Unidad
 					  ,MIN(Precio)
-				FROM ListaPreciosDUnidad
+				FROM ListaPreciosDUnidad WITH(NOLOCK)
 				WHERE Lista = @Lista
 				AND Moneda = @Moneda
 				AND ISNULL(Precio, 0.0) > 0.0
@@ -78,7 +82,7 @@ BEGIN
 	ELSE
 	BEGIN
 
-		IF EXISTS (SELECT * FROM ListaPreciosSub WHERE Lista = @Lista AND Moneda = @Moneda)
+		IF EXISTS (SELECT * FROM ListaPreciosSub WITH(NOLOCK) WHERE Lista = @Lista AND Moneda = @Moneda)
 			DECLARE
 				crPCSugerir
 				CURSOR FOR
@@ -86,7 +90,7 @@ BEGIN
 					  ,SubCuenta
 					  ,CONVERT(VARCHAR, NULL)
 					  ,MIN(Precio)
-				FROM ListaPreciosSub
+				FROM ListaPreciosSub WITH(NOLOCK)
 				WHERE Lista = @Lista
 				AND Moneda = @Moneda
 				AND ISNULL(Precio, 0.0) > 0.0
@@ -101,7 +105,7 @@ BEGIN
 					  ,CONVERT(VARCHAR, NULL)
 					  ,CONVERT(VARCHAR, NULL)
 					  ,MIN(Precio)
-				FROM ListaPreciosD
+				FROM ListaPreciosD WITH(NOLOCK)
 				WHERE Lista = @Lista
 				AND Moneda = @Moneda
 				AND ISNULL(Precio, 0.0) > 0.0

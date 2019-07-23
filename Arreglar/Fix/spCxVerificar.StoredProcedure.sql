@@ -119,19 +119,19 @@ BEGIN
 	   ,@SubMovTipo VARCHAR(20)
 	   ,@InterfazEmida BIT
 	SELECT @CFDFlex = CFDFlex
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Mov = @Mov
 	AND Modulo = @Modulo
 	SELECT @LDI = ISNULL(InterfazLDI, 0)
 		  ,@InterfazEmida = ISNULL(InterfazEmida, 0)
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @AplicaPosfechado = 0
 		  ,@Autorizar = 0
 		  ,@AforoImporte = 0.0
 		  ,@DA = 0
 	SELECT @SubMovTipo = ISNULL(SubClave, '')
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Modulo = @Modulo
 	AND Clave = @MovTipo
 
@@ -161,7 +161,7 @@ BEGIN
 		BEGIN
 
 			IF @CfgAC = 1
-				OR EXISTS (SELECT * FROM Condicion WHERE Condicion = @Condicion AND DA = 1)
+				OR EXISTS (SELECT * FROM Condicion WITH(NOLOCK) WHERE Condicion = @Condicion AND DA = 1)
 			BEGIN
 				EXEC spCxCancelarDocAuto @Empresa
 										,@Usuario
@@ -214,12 +214,12 @@ BEGIN
 			BEGIN
 
 				IF @Modulo = 'CXC'
-					AND EXISTS (SELECT * FROM Cxc c, CxcD d WHERE c.ID = @ID AND c.AplicaManual = 1 AND c.ID = d.ID)
+					AND EXISTS (SELECT * FROM Cxc c WITH(NOLOCK), CxcD d WITH(NOLOCK) WHERE c.ID = @ID AND c.AplicaManual = 1 AND c.ID = d.ID)
 					SELECT @Ok = NULL
 				ELSE
 
 				IF @Modulo = 'CXP'
-					AND EXISTS (SELECT * FROM Cxp c, CxpD d WHERE c.ID = @ID AND c.AplicaManual = 1 AND c.ID = d.ID)
+					AND EXISTS (SELECT * FROM Cxp c WITH(NOLOCK), CxpD d WITH(NOLOCK) WHERE c.ID = @ID AND c.AplicaManual = 1 AND c.ID = d.ID)
 					SELECT @Ok = NULL
 
 			END
@@ -238,7 +238,7 @@ BEGIN
 		BEGIN
 			SELECT @CANTSaldo = 0.0
 			SELECT @CANTSaldo = SUM(ISNULL(ROUND(Saldo, @RedondeoMonetarios), 0.0))
-			FROM Saldo
+			FROM Saldo WITH(NOLOCK)
 			WHERE Rama = 'CANT'
 			AND Empresa = @Empresa
 			AND Moneda = @MovMoneda
@@ -257,7 +257,7 @@ BEGIN
 
 				IF @MovTipo IN ('CXC.F', 'CXC.CA', 'CXC.FA', 'CXC.AF', 'CXC.A', 'CXC.AR', 'CXC.NC', 'CXC.NCD', 'CXC.NCF', 'CXC.DV', 'CXC.NCP', 'CXC.AJE', 'CXP.F', 'CXP.AF', 'CXP.A', 'CXP.NC', 'CXP.NCD', 'CXP.NCF', 'CXP.NCP', 'CXP.AJE', 'AGENT.C', 'AGENT.D')
 
-					IF EXISTS (SELECT * FROM MovFlujo WHERE Cancelado = 0 AND Empresa = @Empresa AND DModulo = @Modulo AND DID = @ID AND OModulo <> DModulo)
+					IF EXISTS (SELECT * FROM MovFlujo WITH(NOLOCK) WHERE Cancelado = 0 AND Empresa = @Empresa AND DModulo = @Modulo AND DID = @ID AND OModulo <> DModulo)
 						SELECT @Ok = 60070
 
 				IF @MovTipo IN ('CXC.A', 'CXC.AR', 'CXP.A')
@@ -271,7 +271,7 @@ BEGIN
 		IF @MovTipo IN ('CXC.DC', 'CXC.DE')
 		BEGIN
 			SELECT @FormaCobroTarjetas = CxcFormaCobroTarjetas
-			FROM EmpresaCfg
+			FROM EmpresaCfg WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			SELECT @TarjetasCobradas = 0.0
 			SELECT @ConDesglose = ConDesglose
@@ -286,7 +286,7 @@ BEGIN
 				  ,@FormaCobro4 = FormaCobro4
 				  ,@Importe5 = ISNULL(Importe5, 0)
 				  ,@FormaCobro5 = FormaCobro5
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE ID = @ID
 
 			IF NULLIF(@FormaPago, '') IS NOT NULL
@@ -406,19 +406,19 @@ BEGIN
 
 		IF @Modulo = 'CXC'
 			SELECT @ContactoEstatus = Estatus
-			FROM Cte
+			FROM Cte WITH(NOLOCK)
 			WHERE Cliente = @Contacto
 		ELSE
 
 		IF @Modulo = 'CXP'
 			SELECT @ContactoEstatus = Estatus
-			FROM Prov
+			FROM Prov WITH(NOLOCK)
 			WHERE Proveedor = @Contacto
 		ELSE
 
 		IF @Modulo = 'AGENT'
 			SELECT @ContactoEstatus = Estatus
-			FROM Agente
+			FROM Agente WITH(NOLOCK)
 			WHERE Agente = @Contacto
 
 		IF @Modulo = 'CXP'
@@ -481,7 +481,7 @@ BEGIN
 			IF @Modulo = 'CXC'
 			BEGIN
 				SELECT @Efectivo = ISNULL(Saldo, 0.0)
-				FROM CxcEfectivo
+				FROM CxcEfectivo WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Cliente = @Contacto
 				AND Moneda = @MovMoneda
@@ -505,7 +505,7 @@ BEGIN
 			IF @Modulo = 'CXP'
 			BEGIN
 				SELECT @Efectivo = ISNULL(Saldo, 0.0)
-				FROM CxpEfectivo
+				FROM CxpEfectivo WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Proveedor = @Contacto
 				AND Moneda = @MovMoneda
@@ -560,7 +560,7 @@ BEGIN
 						  ,@AplicaMoneda = ClienteMoneda
 						  ,@AplicaContacto = Cliente
 						  ,@MovAplicaEstatus = Estatus
-					FROM Cxc
+					FROM Cxc WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Mov = @MovAplica
 					AND MovID = @MovAplicaID
@@ -574,7 +574,7 @@ BEGIN
 						  ,@AplicaMoneda = ProveedorMoneda
 						  ,@AplicaContacto = Proveedor
 						  ,@MovAplicaEstatus = Estatus
-					FROM Cxp
+					FROM Cxp WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Mov = @MovAplica
 					AND MovID = @MovAplicaID
@@ -645,7 +645,7 @@ BEGIN
 		BEGIN
 			SELECT @CtaDineroMoneda = Moneda
 				  ,@CtaDineroTipo = Tipo
-			FROM CtaDinero
+			FROM CtaDinero WITH(NOLOCK)
 			WHERE CtaDinero = @CtaDinero
 
 			IF @CtaDineroTipo <> 'Caja'
@@ -665,12 +665,12 @@ BEGIN
 
 			IF @Modulo = 'CxC'
 				SELECT @Proyecto = Proyecto
-				FROM CxC
+				FROM CxC WITH(NOLOCK)
 				WHERE ID = @ID
 
 			IF @Modulo = 'CxP'
 				SELECT @Proyecto = Proyecto
-				FROM CxP
+				FROM CxP WITH(NOLOCK)
 				WHERE ID = @ID
 
 			EXEC spCxAplicar @ID
@@ -747,9 +747,9 @@ BEGIN
 			IF @Ok IS NULL
 				AND @CfgValidarPPMorosos = 1
 
-				IF EXISTS (SELECT * FROM CxcD WHERE ID = @ID AND ISNULL(DescuentoRecargos, 0) < 0.0)
+				IF EXISTS (SELECT * FROM CxcD WITH(NOLOCK) WHERE ID = @ID AND ISNULL(DescuentoRecargos, 0) < 0.0)
 
-					IF EXISTS (SELECT * FROM CxcPendiente p, MovTipo mt WHERE p.Empresa = @Empresa AND p.Cliente = @Contacto AND mt.Modulo = 'CXC' AND mt.Mov = p.Mov AND mt.Clave NOT IN ('CXC.A', 'CXC.AR', 'CXC.NC', 'CXC.NCD', 'CXC.NCF') AND ISNULL(p.DiasMoratorios, 0) > 0)
+					IF EXISTS (SELECT * FROM CxcPendiente p WITH(NOLOCK), MovTipo mt WITH(NOLOCK) WHERE p.Empresa = @Empresa AND p.Cliente = @Contacto AND mt.Modulo = 'CXC' AND mt.Mov = p.Mov AND mt.Clave NOT IN ('CXC.A', 'CXC.AR', 'CXC.NC', 'CXC.NCD', 'CXC.NCF') AND ISNULL(p.DiasMoratorios, 0) > 0)
 						SELECT @Ok = 65090
 
 		END
@@ -768,7 +768,7 @@ BEGIN
 
 					IF (
 							SELECT COUNT(*)
-							FROM CxcD
+							FROM CxcD WITH(NOLOCK)
 							WHERE ID = @ID
 						)
 						> 1
@@ -779,7 +779,7 @@ BEGIN
 
 						IF (
 								SELECT COUNT(*)
-								FROM CxpD
+								FROM CxpD WITH(NOLOCK)
 								WHERE ID = @ID
 							)
 							> 1
@@ -792,7 +792,7 @@ BEGIN
 		END
 
 		SELECT @FormaCobroTarjetas = CxcFormaCobroTarjetas
-		FROM EmpresaCfg
+		FROM EmpresaCfg WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 		SELECT @TarjetasCobradas = 0.0
 		SELECT @ConDesglose = ConDesglose
@@ -806,7 +806,7 @@ BEGIN
 			  ,@FormaCobro4 = FormaCobro4
 			  ,@Importe5 = ISNULL(Importe5, 0)
 			  ,@FormaCobro5 = FormaCobro5
-		FROM Cxc
+		FROM Cxc WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF NULLIF(@FormaPago, '') IS NOT NULL
@@ -919,7 +919,7 @@ BEGIN
 									   ,@Ok OUTPUT
 									   ,@OkRef OUTPUT
 
-				IF EXISTS (SELECT * FROM TarjetaSerieMov t JOIN ValeSerie v ON t.Serie = v.Serie JOIN Art a ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(t.Importe, 0) <> 0 AND ISNULL(a.LDI, 0) = 1)
+				IF EXISTS (SELECT * FROM TarjetaSerieMov t WITH(NOLOCK) JOIN ValeSerie v WITH(NOLOCK) ON t.Serie = v.Serie JOIN Art a WITH(NOLOCK) ON v.Articulo = a.Articulo WHERE t.Empresa = @Empresa AND t.Modulo = @Modulo AND t.ID = @ID AND ISNULL(t.Importe, 0) <> 0 AND ISNULL(a.LDI, 0) = 1)
 					AND @LDI = 1
 					AND ISNULL(@CFDFlex, 0) = 1
 					SELECT @Ok = 73562
@@ -939,16 +939,16 @@ BEGIN
 
 			IF (
 					SELECT CxcDARef
-					FROM EmpresaCfg
+					FROM EmpresaCfg WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 				)
 				= 0
 
-				IF NOT EXISTS (SELECT * FROM Dinero WHERE Empresa = @Empresa AND Estatus = 'PENDIENTE' AND CtaDinero = @CtaDinero AND ROUND(Importe, @RedondeoMonetarios) = ROUND(@ImporteTotal, @RedondeoMonetarios) AND Moneda = @MovMoneda)
+				IF NOT EXISTS (SELECT * FROM Dinero WITH(NOLOCK) WHERE Empresa = @Empresa AND Estatus = 'PENDIENTE' AND CtaDinero = @CtaDinero AND ROUND(Importe, @RedondeoMonetarios) = ROUND(@ImporteTotal, @RedondeoMonetarios) AND Moneda = @MovMoneda)
 				BEGIN
 					SELECT @OkRef = NULL
 					SELECT @OkRef = MIN(CtaDinero)
-					FROM Dinero
+					FROM Dinero WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					AND Estatus = 'PENDIENTE'
 					AND ROUND(Importe, @RedondeoMonetarios) = ROUND(@ImporteTotal, @RedondeoMonetarios)

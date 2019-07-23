@@ -1,7 +1,7 @@
-SET DATEFIRST 7    
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
-SET LOCK_TIMEOUT -1  
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
 SET NOCOUNT ON
 SET IMPLICIT_TRANSACTIONS OFF
@@ -30,15 +30,15 @@ BEGIN
 	   ,@ISDiasResguardoSolicitud INT
 	   ,@FechaDepuracion DATETIME
 	SELECT @ISDiasResguardoSolicitud = ISDiasResguardoSolicitud
-	FROM Version
+	FROM Version WITH(NOLOCK)
 
-	IF NOT EXISTS (SELECT * FROM Usuario WHERE Usuario = @Usuario)
+	IF NOT EXISTS (SELECT * FROM Usuario WITH(NOLOCK) WHERE Usuario = @Usuario)
 	BEGIN
 		SELECT @Ok = 71020
 			  ,@OkRef = @Usuario
 	END
 
-	IF EXISTS (SELECT * FROM Usuario WHERE Usuario = @Usuario AND Contrasena IN (@Contrasena, dbo.fnPassword(UPPER(RTRIM(@Contrasena)))))
+	IF EXISTS (SELECT * FROM Usuario WITH(NOLOCK) WHERE Usuario = @Usuario AND Contrasena IN (@Contrasena, dbo.fnPassword(UPPER(RTRIM(@Contrasena)))))
 	BEGIN
 		EXEC sp_xml_preparedocument @iSolicitud OUTPUT
 								   ,@Solicitud
@@ -60,7 +60,7 @@ BEGIN
 			SELECT @Resultado = Resultado
 				  ,@Ok = Ok
 				  ,@OkRef = OkRef
-			FROM IntelisisService
+			FROM IntelisisService WITH(NOLOCK)
 			WHERE ID = @ID
 
 			IF @EliminarProcesado = 1
@@ -77,7 +77,7 @@ BEGIN
 	ELSE
 
 	IF @Ok IS NULL
-		AND NOT EXISTS (SELECT * FROM Usuario WHERE Usuario = @Usuario AND Contrasena IN (@Contrasena, dbo.fnPassword(UPPER(RTRIM(@Contrasena)))))
+		AND NOT EXISTS (SELECT * FROM Usuario WITH(NOLOCK) WHERE Usuario = @Usuario AND Contrasena IN (@Contrasena, dbo.fnPassword(UPPER(RTRIM(@Contrasena)))))
 		SELECT @Ok = 60230
 			  ,@OkRef = @Usuario
 
@@ -85,7 +85,7 @@ BEGIN
 		AND @Ok IN (71020, 60230)
 	BEGIN
 		SELECT @Descripcion = Descripcion
-		FROM MensajeLista
+		FROM MensajeLista WITH(NOLOCK)
 		WHERE Mensaje = @Ok
 		SELECT @Resultado = '<?xml version="1.0" encoding="windows-1252"?><Intelisis Sistema="Intelisis" Contenido="Resultado" Referencia=' + CHAR(34) + ISNULL(@Referencia, '') + CHAR(34) + ' SubReferencia=' + CHAR(34) + ISNULL(@SubReferencia, '') + CHAR(34) + ' Version=' + CHAR(34) + ISNULL(CONVERT(VARCHAR, @Version), '') + CHAR(34) + '><Resultado IntelisisServiceID=' + CHAR(34) + ISNULL(CONVERT(VARCHAR, @ID), '') + CHAR(34) + ' Ok=' + CHAR(34) + ISNULL(CONVERT(VARCHAR, @Ok), '') + CHAR(34) + ' OkRef=' + CHAR(34) + ISNULL(@OkRef, '') + CHAR(34) + ' Descripcion="' + ISNULL(@Descripcion, '') + '"> </Resultado></Intelisis>'
 	END

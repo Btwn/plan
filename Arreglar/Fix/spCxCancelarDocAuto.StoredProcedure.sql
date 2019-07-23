@@ -36,7 +36,7 @@ BEGIN
 			SELECT @Conteo = COUNT(*)
 				  ,@ImporteTotal = ISNULL(SUM(Importe), 0) + ISNULL(SUM(Impuestos), 0)
 				  ,@SaldoTotal = ISNULL(SUM(Saldo), 0)
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND OrigenTipo = @Modulo
 			AND Origen = @Mov
@@ -48,7 +48,7 @@ BEGIN
 			SELECT @Conteo = COUNT(*)
 				  ,@ImporteTotal = ISNULL(SUM(Importe), 0) + ISNULL(SUM(Impuestos), 0)
 				  ,@SaldoTotal = ISNULL(SUM(Saldo), 0)
-			FROM Cxp
+			FROM Cxp WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND OrigenTipo = @Modulo
 			AND Origen = @Mov
@@ -68,7 +68,7 @@ BEGIN
 				crCancelarDocAuto
 				CURSOR LOCAL FOR
 				SELECT ID
-				FROM Cxc
+				FROM Cxc WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND OrigenTipo = @Modulo
 				AND Origen = @Mov
@@ -81,7 +81,7 @@ BEGIN
 				crCancelarDocAuto
 				CURSOR LOCAL FOR
 				SELECT ID
-				FROM Cxp
+				FROM Cxp WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND OrigenTipo = @Modulo
 				AND Origen = @Mov

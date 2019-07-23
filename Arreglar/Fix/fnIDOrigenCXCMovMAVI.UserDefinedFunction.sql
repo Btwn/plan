@@ -28,7 +28,7 @@ BEGIN
 		  ,@Origen = Origen
 		  ,@OrigenId = OrigenID
 		  ,@concepto = Concepto
-	FROM cxc
+	FROM cxc WITH(NOLOCK)
 	WHERE id = @ID
 
 	IF LEFT(@Mov, 10) = 'NOTA CARGO'
@@ -37,7 +37,7 @@ BEGIN
 	BEGIN
 		SET @MovAux = (
 			SELECT Valor
-			FROM MovCampoExtra
+			FROM MovCampoExtra WITH(NOLOCK)
 			WHERE mov = @Mov
 			AND id = @ID
 			AND CampoExtra IN ('NC_FACTURA', 'NCV_FACTURA', 'NCM_FACTURA')
@@ -53,7 +53,7 @@ BEGIN
 		IF @Origen <> @Mov
 		BEGIN
 			SELECT @clave = clave
-			FROM movtipo
+			FROM movtipo WITH(NOLOCK)
 			WHERE Mov = @Mov
 			AND Modulo = 'CXC'
 			SET @Ciclo = 1
@@ -70,7 +70,7 @@ BEGIN
 			  ,@Movid = @OrigenId
 		SELECT @Origen = Origen
 			  ,@OrigenId = OrigenID
-		FROM cxc
+		FROM cxc WITH(NOLOCK)
 		WHERE mov = @Mov
 		AND MovID = @Movid
 
@@ -79,13 +79,13 @@ BEGIN
 		BEGIN
 			SET @ID = (
 				SELECT ID
-				FROM cxc
+				FROM cxc WITH(NOLOCK)
 				WHERE mov = @Mov
 				AND MovID = @Movid
 			)
 			SET @MovAux = (
 				SELECT Valor
-				FROM MovCampoExtra
+				FROM MovCampoExtra WITH(NOLOCK)
 				WHERE mov = @Mov
 				AND id = @ID
 				AND CampoExtra IN ('NC_FACTURA', 'NCV_FACTURA', 'NCM_FACTURA')
@@ -109,7 +109,7 @@ BEGIN
 	END
 
 	SELECT @ID = ID
-	FROM cxc
+	FROM cxc WITH(NOLOCK)
 	WHERE mov = @Mov
 	AND MovID = @Movid
 	RETURN @id

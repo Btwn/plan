@@ -66,8 +66,8 @@ BEGIN
 	DELETE FROM HistCobroMoratoriosMAVI
 	WHERE IDCobro = @ID
 
-	IF EXISTS (SELECT * FROM TipoCobroMAVI WHERE IDCobro = @ID)
-		UPDATE TipoCobroMAVI
+	IF EXISTS (SELECT * FROM TipoCobroMAVI WITH(NOLOCK) WHERE IDCobro = @ID)
+		UPDATE TipoCobroMAVI WITH(ROWLOCK)
 		SET TipoCobro = 0
 		WHERE IDCobro = @ID
 	ELSE
@@ -81,9 +81,9 @@ BEGIN
 	INSERT INTO #NotaXCanc (Mov, MovID)
 		SELECT DISTINCT d.mov
 					   ,d.movid
-		FROM negociamoratoriosmavi c
-			,cxcpendiente d
-			,cxc n
+		FROM negociamoratoriosmavi c WITH(NOLOCK)
+			,cxcpendiente d WITH(NOLOCK)
+			,cxc n WITH(NOLOCK)
 		WHERE c.mov IN ('Nota Cargo', 'Nota Cargo VIU')
 		AND d.cliente = @Contacto
 		AND d.mov = c.mov
@@ -104,14 +104,14 @@ BEGIN
 		  ,@TipoCambio = TipoCambio
 		  ,@Contacto = Cliente
 		  ,@Mov = Mov
-	FROM Cxc
+	FROM Cxc WITH(NOLOCK)
 	WHERE ID = @ID
 
 	IF @SugerirPago <> 'IMPORTE ESPECIFICO'
 		SELECT @ImporteTotal = 9999999
 
 	SELECT @MontoMinimoMor = ISNULL(MontoMinMoratorioMAVI, 0.0)
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @Modulo = 'CXC'
@@ -122,7 +122,7 @@ BEGIN
 			  ,@Moneda = Moneda
 			  ,@TipoCambio = TipoCambio
 			  ,@Contacto = Cliente
-		FROM Cxc
+		FROM Cxc WITH(NOLOCK)
 		WHERE ID = @ID
 		DELETE CxcD
 		WHERE ID = @ID
@@ -141,23 +141,23 @@ BEGIN
 				  ,ISNULL(p.OrigenID, p.MovId)
 				  ,p.PadreMAVI
 				  ,p.PadreIDMAVI
-			FROM CxcPendiente p
-			JOIN MovTipo mt
+			FROM CxcPendiente p WITH(NOLOCK)
+			JOIN MovTipo mt WITH(NOLOCK)
 				ON mt.Modulo = @Modulo
 				AND mt.Mov = p.Mov
-			LEFT OUTER JOIN CfgAplicaOrden a
+			LEFT OUTER JOIN CfgAplicaOrden a WITH(NOLOCK)
 				ON a.Modulo = @Modulo
 				AND a.Mov = p.Mov
-			LEFT OUTER JOIN Cxc r
+			LEFT OUTER JOIN Cxc r WITH(NOLOCK)
 				ON r.ID = p.RamaID
-			LEFT OUTER JOIN TipoAmortizacion ta
+			LEFT OUTER JOIN TipoAmortizacion ta WITH(NOLOCK)
 				ON ta.TipoAmortizacion = r.TipoAmortizacion
 			WHERE p.Empresa = @Empresa
 			AND p.Cliente = @Contacto
 			AND mt.Clave NOT IN ('CXC.SCH', 'CXC.SD', 'CXC.NC')
 			ORDER BY a.Orden, p.Vencimiento, p.Mov, p.MovID
 		SELECT @DesglosarImpuestos = ISNULL(CxcCobroImpuestos, 0)
-		FROM EmpresaCfg2
+		FROM EmpresaCfg2 WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 	END
 	ELSE
@@ -182,7 +182,7 @@ BEGIN
 			  ,@IDDetalle = 0
 			  ,@MoratorioAPagar = 0
 		SELECT @IDDetalle = ID
-		FROM CXC
+		FROM CXC WITH(NOLOCK)
 		WHERE Mov = @Aplica
 		AND MovId = @AplicaID
 		SELECT @GeneraMoratorioMAVI = dbo.fnGeneraMoratorioMAVI(@IDDetalle)
@@ -197,8 +197,8 @@ BEGIN
 				AND @InteresesMoratorios > 0
 			BEGIN
 
-				IF EXISTS (SELECT * FROM CondonaMorxSistMAVI WHERE IDCobro = @ID AND IDMov = @IDDetalle AND Estatus = 'ALTA')
-					UPDATE CondonaMorxSistMAVI
+				IF EXISTS (SELECT * FROM CondonaMorxSistMAVI WITH(NOLOCK) WHERE IDCobro = @ID AND IDMov = @IDDetalle AND Estatus = 'ALTA')
+					UPDATE CondonaMorxSistMAVI WITH(ROWLOCK)
 					SET MontoOriginal = @InteresesMoratorios
 					   ,MontoCondonado = @InteresesMoratorios
 					WHERE IDCobro = @ID
@@ -235,7 +235,7 @@ BEGIN
 
 						IF @AplicaNota <> 'NA'
 							AND @AplicaIDNota <> 'NA'
-							UPDATE NegociaMoratoriosMAVI
+							UPDATE NegociaMoratoriosMAVI WITH(ROWLOCK)
 							SET NotaCreditoxCanc = '1'
 							WHERE IDCobro = @ID
 							AND Estacion = @Estacion
@@ -269,7 +269,7 @@ BEGIN
 			  ,@Moneda = Moneda
 			  ,@TipoCambio = TipoCambio
 			  ,@Contacto = Cliente
-		FROM Cxc
+		FROM Cxc WITH(NOLOCK)
 		WHERE ID = @ID
 		DECLARE
 			crDocto
@@ -286,16 +286,16 @@ BEGIN
 				  ,ISNULL(p.OrigenID, p.MovID)
 				  ,p.PadreMAVI
 				  ,p.PadreIDMAVI
-			FROM CxcPendiente p
-			JOIN MovTipo mt
+			FROM CxcPendiente p WITH(NOLOCK)
+			JOIN MovTipo mt WITH(NOLOCK)
 				ON mt.Modulo = @Modulo
 				AND mt.Mov = p.Mov
-			LEFT OUTER JOIN CfgAplicaOrden a
+			LEFT OUTER JOIN CfgAplicaOrden a WITH(NOLOCK)
 				ON a.Modulo = @Modulo
 				AND a.Mov = p.Mov
-			LEFT OUTER JOIN Cxc r
+			LEFT OUTER JOIN Cxc r WITH(NOLOCK)
 				ON r.ID = p.RamaID
-			LEFT OUTER JOIN TipoAmortizacion ta
+			LEFT OUTER JOIN TipoAmortizacion ta WITH(NOLOCK)
 				ON ta.TipoAmortizacion = r.TipoAmortizacion
 			WHERE p.Empresa = @Empresa
 			AND p.Cliente = @Contacto
@@ -328,9 +328,9 @@ BEGIN
 		BEGIN
 			SELECT @SumaImporte = @SumaImporte + @Capital
 
-			IF EXISTS (SELECT * FROM NegociaMoratoriosMAVI WHERE IDCobro = @ID AND Estacion = @Estacion AND Mov = @Aplica AND MovID = @AplicaID)
+			IF EXISTS (SELECT * FROM NegociaMoratoriosMAVI WITH(NOLOCK) WHERE IDCobro = @ID AND Estacion = @Estacion AND Mov = @Aplica AND MovID = @AplicaID)
 			BEGIN
-				UPDATE NegociaMoratoriosMAVI
+				UPDATE NegociaMoratoriosMAVI WITH(ROWLOCK)
 				SET ImporteAPagar = @Capital
 				WHERE Estacion = @Estacion
 				AND Mov = @Aplica
@@ -347,7 +347,7 @@ BEGIN
 
 					IF @AplicaNota <> 'NA'
 						AND @AplicaIDNota <> 'NA'
-						UPDATE NegociaMoratoriosMAVI
+						UPDATE NegociaMoratoriosMAVI WITH(ROWLOCK)
 						SET NotaCreditoxCanc = '1'
 						WHERE IDCobro = @ID
 						AND Estacion = @Estacion
@@ -372,7 +372,7 @@ BEGIN
 
 					IF @AplicaNota <> 'NA'
 						AND @AplicaIDNota <> 'NA'
-						UPDATE NegociaMoratoriosMAVI
+						UPDATE NegociaMoratoriosMAVI WITH(ROWLOCK)
 						SET NotaCreditoxCanc = '1'
 						WHERE IDCobro = @ID
 						AND Estacion = @Estacion

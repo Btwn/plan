@@ -1,6 +1,10 @@
+SET DATEFIRST 7    
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROC [dbo].[spContAuxInt] (
 	@Empresa CHAR(5)
@@ -53,7 +57,7 @@ BEGIN
 		  ,ContAux.Estatus
 		  ,ContAux.Mov
 	INTO #TempContAux
-	FROM ContAux
+	FROM ContAux WITH(NOLOCK)
 	WHERE ContAux.Empresa = @Empresa
 	AND ContAux.Estatus = @Estatus
 	AND ContAux.Cuenta >= @CuentaD
@@ -81,7 +85,7 @@ BEGIN
 		  ,Cta.Descripcion
 		  ,Cta.Cuenta AS 'CtaCuenta'
 	INTO #TempResultado
-	FROM Cta
+	FROM Cta WITH(NOLOCK)
 	LEFT OUTER JOIN #TempContAux t
 		ON Cta.Cuenta = t.Cuenta
 	WHERE Cta.Cuenta BETWEEN @CuentaD AND @CuentaA
@@ -120,7 +124,7 @@ BEGIN
 		  ,b.NombreCtaOperativa
 		  ,b.origen
 	FROM #TempResultado A
-	LEFT JOIN SaldosInicialesAuxContDetalle B
+	LEFT JOIN SaldosInicialesAuxContDetalle B WITH(NOLOCK)
 		ON A.ID = B.ID
 		AND A.CUENTA = B.CUENTA
 		AND A.RENGLON = B.RENGLON

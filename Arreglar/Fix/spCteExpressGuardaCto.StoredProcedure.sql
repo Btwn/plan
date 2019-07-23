@@ -61,7 +61,7 @@ BEGIN
 									 ,@EstadoCivil
 									 ,@Lada
 									 ,@telefono
-		UPDATE CteCto
+		UPDATE CteCto WITH(ROWLOCK)
 		SET IDPadreMavi = @NewID
 		WHERE ID = @NewID
 		SELECT @NewID
@@ -74,7 +74,7 @@ BEGIN
 			OR @Tipo = 'BANCARIA'
 			SET @FechaNac = NULL
 
-		UPDATE CteCto
+		UPDATE CteCto WITH(ROWLOCK)
 		SET Nombre = @Nombres
 		   ,ApellidoPaterno = @Apaterno
 		   ,ApellidoMaterno = @Amaterno

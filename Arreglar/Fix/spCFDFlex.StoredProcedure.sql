@@ -1,13 +1,11 @@
-USE [IntelisisTmp]
-GO
-
-/****** Object:  StoredProcedure [dbo].[spCFDFlex]    Script Date: 14/06/2019 11:11:23 a.m. ******/
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
-
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
-
 ALTER PROCEDURE [dbo].[spCFDFlex] @Estacion int,
 @Empresa varchar(5),
 @Modulo varchar(5),
@@ -148,7 +146,7 @@ BEGIN
         @Usuario = Usuario,
         @TipoCambio = TipoCambio,
         @Sucursal = Sucursal
-      FROM Venta
+      FROM Venta WITH(NOLOCK)
       WHERE ID = @ID
     ELSE
     IF @Modulo = 'CXC'
@@ -162,7 +160,7 @@ BEGIN
         @TipoCambio = TipoCambio,
         @Sucursal = Sucursal,
         @MovOrigen = Origen
-      FROM Cxc
+      FROM Cxc WITH(NOLOCK)
       WHERE ID = @ID
     ELSE
     IF @Modulo = 'COMS'
@@ -175,7 +173,7 @@ BEGIN
         @Usuario = Usuario,
         @TipoCambio = TipoCambio,
         @Sucursal = Sucursal
-      FROM Compra
+      FROM Compra WITH(NOLOCK)
       WHERE ID = @ID
     ELSE
     IF @Modulo = 'CXP'
@@ -188,7 +186,7 @@ BEGIN
         @Usuario = Usuario,
         @TipoCambio = TipoCambio,
         @Sucursal = Sucursal
-      FROM Cxp
+      FROM Cxp WITH(NOLOCK)
       WHERE ID = @ID
     ELSE
     IF @Modulo = 'GAS'
@@ -201,7 +199,7 @@ BEGIN
         @Usuario = Usuario,
         @TipoCambio = TipoCambio,
         @Sucursal = Sucursal
-      FROM Gasto
+      FROM Gasto WITH(NOLOCK)
       WHERE ID = @ID
   END
   -----------------------------------------------------------------------------
@@ -210,9 +208,9 @@ BEGIN
 		IF NULLIF(@Contacto,'') IS NULL SET @Contacto = '(Todos)'  
 		  
 		IF @Mov IS NULL AND @Ok IS NULL SELECT @Ok = 10160 ELSE  
-		IF @Mov IS NOT NULL AND NOT EXISTS(SELECT * FROM MovTipo WITH (NOLOCK) WHERE Modulo = @Modulo AND Mov = @Mov) AND @Ok IS NULL SELECT @Ok = 14055 ELSE      
+		IF @Mov IS NOT NULL AND NOT EXISTS(SELECT * FROM MovTipo WITH(NOLOCK) WHERE Modulo = @Modulo AND Mov = @Mov) AND @Ok IS NULL SELECT @Ok = 14055 ELSE      
 		IF @MovID IS NULL AND @Ok IS NULL SELECT @Ok = 20915 ELSE  
-		IF @Contacto IS NOT NULL AND NOT EXISTS(SELECT * FROM MovTipoCFDFlex  WITH (NOLOCK) WHERE Modulo = @Modulo AND Mov = @Mov AND Contacto = @Contacto) AND @Ok IS NULL SELECT @Ok = 28020, @OkRef = @Contacto  
+		IF @Contacto IS NOT NULL AND NOT EXISTS(SELECT * FROM MovTipoCFDFlex WITH(NOLOCK) WHERE Modulo = @Modulo AND Mov = @Mov AND Contacto = @Contacto) AND @Ok IS NULL SELECT @Ok = 28020, @OkRef = @Contacto  
   END  
   -----------------------------------------------------------------------------
   
@@ -244,15 +242,15 @@ BEGIN
   BEGIN
     SELECT
       @CFDI = ISNULL(CFDI, 0)
-    FROM EmpresaGral
+    FROM EmpresaGral WITH(NOLOCK)
     WHERE Empresa = @Empresa
     SELECT
       @NoValidarOrigenDocumento = ISNULL(NoValidarOrigenDocumento, 0)
-    FROM EmpresaCFD
+    FROM EmpresaCFD WITH(NOLOCK)
     WHERE Empresa = @Empresa
     SELECT
       @MovTipo = Clave
-    FROM MovTipo
+    FROM MovTipo WITH(NOLOCK)
     WHERE Modulo = @Modulo
     AND Mov = @Mov
     SELECT
@@ -261,7 +259,7 @@ BEGIN
       @MovTipoCFDFlexEstatus = NULLIF(Estatus, ''),
       @OrigenModulo = NULLIF(OrigenModulo, ''),
       @OrigenMovimiento = NULLIF(OrigenMov, '')
-    FROM MovTipoCFDFlex
+    FROM MovTipoCFDFlex WITH(NOLOCK)
     WHERE Modulo = @Modulo
     AND Mov = @Mov
     AND Contacto = @Contacto
@@ -274,7 +272,7 @@ BEGIN
         @MovTipoCFDFlexEstatus = NULLIF(Estatus, ''),
         @OrigenModulo = NULLIF(OrigenModulo, ''),
         @OrigenMovimiento = NULLIF(OrigenMov, '')
-      FROM MovTipoCFDFlex
+      FROM MovTipoCFDFlex WITH(NOLOCK)
       WHERE Modulo = @Modulo
       AND Mov = @Mov
       AND ISNULL(NULLIF(ISNULL(NULLIF(Contacto, ''), '(Todos)'), '(Todos)'), @Contacto) = @Contacto
@@ -306,14 +304,14 @@ BEGIN
     IF @Modulo = 'CXC'
       AND ('CXC.D' IN (SELECT
         Clave
-      FROM MovTipo
+      FROM MovTipo WITH(NOLOCK)
       WHERE Mov = @MovOrigen
       AND Modulo = @Modulo)
       AND @NoValidarOrigenDocumento = 1)
     BEGIN
       SELECT
         @CFDEsParcialidad = CFDEsParcialidad
-      FROM MovTipo
+      FROM MovTipo WITH(NOLOCK)
       WHERE Modulo = @Modulo
       AND Mov = @Mov
       IF @CFDEsParcialidad = 0
@@ -349,7 +347,7 @@ BEGIN
       @RutaTemporal = RutaTemporal,
       @EnviarAlAfectar = EnviarAlAfectar,
       @RutaTimbrarCFDI = RutaTimbrarCFDI
-    FROM EmpresaCFD
+    FROM EmpresaCFD WITH(NOLOCK)
     WHERE Empresa = @Empresa
     SELECT
       @Temporal = @RutaTemporal + CASE
@@ -361,7 +359,7 @@ BEGIN
       @TipoCFDI = ISNULL(TipoCFDI, 0),
       @TimbrarEnTransaccion = ISNULL(TimbrarEnTransaccion, 0),
       @Sellar = ISNULL(Sellar, 0)
-    FROM eDoc
+    FROM eDoc WITH(NOLOCK)
     WHERE Modulo = @Modulo
     AND eDoc = @Comprobante
     EXEC spEliminarArchivo @RutaError,
@@ -372,7 +370,7 @@ BEGIN
     BEGIN
       SELECT
         @RutaFirmaSAT = RutaFirmaSAT
-      FROM EmpresaCFD
+      FROM EmpresaCFD WITH(NOLOCK)
       WHERE Empresa = @Empresa
       EXEC master.dbo.xp_fileexist @RutaFirmaSAT,
                                    @ExisteFirmaSAT OUTPUT
@@ -563,12 +561,12 @@ BEGIN
         @Timbrado = 0
     IF @Ok IS NULL
       AND @Modulo = 'VTAS'
-      UPDATE Venta
+      UPDATE Venta WITH(ROWLOCK)
       SET CFDTimbrado = @Timbrado
       WHERE ID = @ID
     IF @Ok IS NULL
       AND @Modulo = 'CXC'
-      UPDATE Cxc
+      UPDATE Cxc WITH(ROWLOCK)
       SET CFDTimbrado = @Timbrado
       WHERE ID = @ID
     IF @Ok IS NOT NULL
@@ -587,12 +585,12 @@ BEGIN
     BEGIN
       IF EXISTS (SELECT
           1
-        FROM MoveDoc
+        FROM MoveDoc WITH(NOLOCK)
         WHERE ID = @ID
         AND Modulo = @Modulo
         AND Empresa = @Empresa)
       BEGIN
-        UPDATE MoveDoc
+        UPDATE MoveDoc WITH(ROWLOCK)
         SET eDoc = @XML
         WHERE ID = @ID
         AND Modulo = @Modulo
@@ -734,7 +732,7 @@ BEGIN
             @SelloSAT = SignatureValue
           FROM OPENXML(@iDatos, @RutaCFDI, 2) WITH (SignatureValue varchar(50))
           EXEC sp_xml_removedocument @iDatos
-          UPDATE CFD
+          UPDATE CFD WITH(ROWLOCK)
           SET SelloSAT = @SelloSAT
           WHERE Modulo = @Modulo
           AND ModuloID = @ID
@@ -745,7 +743,7 @@ BEGIN
     BEGIN
       IF EXISTS (SELECT
           1
-        FROM CFD
+        FROM CFD WITH(NOLOCK)
         WHERE ModuloID = @ID
         AND Modulo = @Modulo)
         DELETE FROM CFD
@@ -771,7 +769,7 @@ BEGIN
     BEGIN
       INSERT CFD (Modulo, ModuloID, Fecha, Ejercicio, Periodo, Empresa, MovID, Serie, Folio, RFC, Aprobacion, Importe, Impuesto1, Impuesto2, Retencion1, Retencion2, noCertificado, Sello, CadenaOriginal, Documento, TipoCambio, Timbrado, UUID, FechaTimbrado, TFDVersion, SelloSAT, noCertificadoSAT, OrigenUUID, OrigenSerie, OrigenFolio, ParcialidadNumero)
         VALUES (@Modulo, @ID, @CFDFecha, YEAR(@CFDFecha), MONTH(@CFDFecha), @Empresa, @MovID, @CFDSerie, @CFDFolio, @CFDRFC, @CFDAprobacion, @CFDImporte, @CFDImpuesto1, @CFDImpuesto2, @CFDRetencion1, @CFDRetencion2, @CFDnoCertificado, @CFDSello, @CFDCadenaOriginal, @XML, @TipoCambio, @Timbrado, @CFDUUID, @CFDFechaTimbrado, @TFDVersion, @SelloSAT, @noCertificadoSAT, @OrigenUUID, @OrigenSerie, @OrigenFolio, @ParcialidadNumero)
-      UPDATE CFD
+      UPDATE CFD WITH(ROWLOCK)
       SET TFDCadenaOriginal = dbo.fnCFDFlexCadenaOriginalTFDI(@Modulo, @ID)
       WHERE Modulo = @Modulo
       AND ModuloID = @ID
@@ -801,17 +799,17 @@ BEGIN
       SELECT
         @CFDFlexEstatus = 'ERROR'
     IF @Modulo = 'VTAS'
-      UPDATE Venta
+      UPDATE Venta WITH(ROWLOCK)
       SET CFDFlexEstatus = @CFDFlexEstatus
       WHERE ID = @ID
     ELSE
     IF @Modulo = 'CXC'
-      UPDATE Cxc
+      UPDATE Cxc WITH(ROWLOCK)
       SET CFDFlexEstatus = @CFDFlexEstatus
       WHERE ID = @ID
     ELSE
     IF @Modulo = 'COMS'
-      UPDATE Compra
+      UPDATE Compra WITH(ROWLOCK)
       SET CFDFlexEstatus = @CFDFlexEstatus
       WHERE ID = @ID
     ELSE
@@ -821,7 +819,7 @@ BEGIN
       WHERE ID = @ID
     ELSE
     IF @Modulo = 'GAS'
-      UPDATE Gasto
+      UPDATE Gasto WITH(ROWLOCK)
       SET CFDFlexEstatus = @CFDFlexEstatus
       WHERE ID = @ID
     IF @Ok IS NULL
@@ -851,7 +849,7 @@ BEGIN
         @AlmacenarTipo = NULL
       SELECT
         @AlmacenarTipo = NULLIF(AlmacenarTipo, '')
-      FROM CteCFD
+      FROM CteCFD WITH(NOLOCK)
       WHERE Cliente = @Contacto
       EXEC spCFDFlexGenerarPDF @Empresa,
                                @Modulo,
@@ -872,7 +870,7 @@ BEGIN
                                  @OkRef = @OkRef OUTPUT
       IF @Ok IS NULL
       BEGIN
-        UPDATE CFD
+        UPDATE CFD WITH(ROWLOCK)
         SET GenerarPDF = 1
         WHERE Modulo = @Modulo
         AND ModuloID = @ID
@@ -883,7 +881,7 @@ BEGIN
   END
   IF EXISTS (SELECT
       *
-    FROM CFDFlexTemp
+    FROM CFDFlexTemp WITH(NOLOCK)
     WHERE ID = @ID
     AND Modulo = @Modulo)
     DELETE CFDFlexTemp

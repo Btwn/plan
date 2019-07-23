@@ -144,15 +144,15 @@ SELECT g.ID
 	  ,d.Impuesto2
 	  ,d.Impuesto3
 	  ,d.Impuesto5
-FROM Gasto g
-JOIN MovTipo mt
+FROM Gasto g WITH(NOLOCK)
+JOIN MovTipo mt WITH(NOLOCK)
 	ON g.Mov = mt.Mov
 	AND mt.Modulo = 'GAS'
-JOIN Version v
+JOIN Version v WITH(NOLOCK)
 	ON 1 = 1
-LEFT OUTER JOIN GastoD d
+LEFT OUTER JOIN GastoD d WITH(NOLOCK)
 	ON g.ID = d.ID
-LEFT OUTER JOIN Concepto c
+LEFT OUTER JOIN Concepto c WITH(NOLOCK)
 	ON c.Modulo = 'GAS'
 	AND c.Concepto = d.Concepto
 GO

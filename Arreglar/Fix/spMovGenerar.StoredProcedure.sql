@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spMovGenerar]
  @Sucursal INT
@@ -48,17 +52,17 @@ BEGIN
 				  ,@Moneda OUTPUT
 				  ,@Ok OUTPUT
 	SELECT @TipoCambio = TipoCambio
-	FROM Mon
+	FROM Mon WITH(NOLOCK)
 	WHERE Moneda = @Moneda
 	SELECT @CopiarBitacoraOrigen = ISNULL(CopiarBitacoraOrigen, 0)
 		  ,@ArrastrarTipoCambioGenerarMov = ISNULL(ArrastrarTipoCambioGenerarMov, 0)
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @ArrastrarTipoCambioGenerarMov = 1
 		OR (
 			SELECT ISNULL(ArrastrarTipoCambioGenerarMov, 0)
-			FROM MovTipo
+			FROM MovTipo WITH(NOLOCK)
 			WHERE Modulo = @Modulo
 			AND Mov = @GenerarMov
 		)

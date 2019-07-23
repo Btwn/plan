@@ -97,7 +97,7 @@ BEGIN
 	   ,@EstatusCuenta VARCHAR(10)
 	SELECT @ContX = ISNULL(ContX, 0)
 		  ,@ContXAfectar = ContXAfectar
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @TipoPresupuesto = NULL
 		  ,@SumaDebe = 0.0
@@ -105,7 +105,7 @@ BEGIN
 	IF @AfectarMoneda2 = 0
 	BEGIN
 		SELECT @SucursalPrincipal = Sucursal
-		FROM Version
+		FROM Version WITH(NOLOCK)
 		EXEC spMovConsecutivo @SucursalPrincipal
 							 ,@SucursalPrincipal
 							 ,@SucursalPrincipal
@@ -179,22 +179,22 @@ BEGIN
 
 			IF @CfgMultiSucursal = 0
 			BEGIN
-				UPDATE ContD
+				UPDATE ContD WITH(ROWLOCK)
 				SET SucursalContable = @Sucursal
 				WHERE ID = @ID
 				AND SucursalContable <> @Sucursal
-				UPDATE ContReg
+				UPDATE ContReg WITH(ROWLOCK)
 				SET Sucursal = @Sucursal
 				WHERE ID = @ID
 				AND Sucursal <> @Sucursal
 			END
 			ELSE
 			BEGIN
-				UPDATE ContD
+				UPDATE ContD WITH(ROWLOCK)
 				SET SucursalContable = @Sucursal
 				WHERE ID = @ID
 				AND SucursalContable IS NULL
-				UPDATE ContReg
+				UPDATE ContReg WITH(ROWLOCK)
 				SET Sucursal = @Sucursal
 				WHERE ID = @ID
 				AND Sucursal IS NULL
@@ -202,10 +202,10 @@ BEGIN
 
 			IF (
 					SELECT Sincro
-					FROM Version
+					FROM Version WITH(NOLOCK)
 				)
 				= 1
-				EXEC sp_executesql N'UPDATE ContD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+				EXEC sp_executesql N'UPDATE ContD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 								  ,N'@Sucursal int, @ID int'
 								  ,@Sucursal
 								  ,@ID
@@ -256,7 +256,7 @@ BEGIN
 		BEGIN
 
 			IF @MovTipo = 'CONT.PR'
-				UPDATE ContD
+				UPDATE ContD WITH(ROWLOCK)
 				SET Presupuesto = 1
 				   ,Empresa = @Empresa
 				   ,Ejercicio = ISNULL(Ejercicio, @Ejercicio)
@@ -264,7 +264,7 @@ BEGIN
 				   ,FechaContable = @FechaContable
 				WHERE ID = @ID
 			ELSE
-				UPDATE ContD
+				UPDATE ContD WITH(ROWLOCK)
 				SET Empresa = @Empresa
 				   ,Ejercicio = ISNULL(Ejercicio, @Ejercicio)
 				   ,Periodo = ISNULL(Periodo, @Periodo)
@@ -320,7 +320,7 @@ BEGIN
 				  ,d.Presupuesto
 				  ,d.Renglon
 				  ,d.RenglonSub
-			FROM ContD d
+			FROM ContD d WITH(NOLOCK)
 			JOIN Cta
 				ON Cta.Cuenta = d.Cuenta
 			WHERE d.ID = @ID
@@ -544,7 +544,7 @@ BEGIN
 				SELECT @Cuenta = NULLIF(RTRIM(Rama), '')
 					  ,@TieneMovimientos = TieneMovimientos
 					  ,@EstatusCuenta = Estatus
-				FROM Cta
+				FROM Cta WITH(NOLOCK)
 				WHERE Cuenta = @Cuenta
 
 				IF @@ERROR <> 0
@@ -558,11 +558,11 @@ BEGIN
 
 					IF (
 							SELECT TieneMovimientos
-							FROM Cta
+							FROM Cta WITH(NOLOCK)
 							WHERE Cuenta = @UltCuenta
 						)
 						= 0
-						UPDATE Cta
+						UPDATE Cta WITH(ROWLOCK)
 						SET TieneMovimientos = 1
 						WHERE Cuenta = @UltCuenta
 
@@ -667,7 +667,7 @@ BEGIN
 				SELECT @UltSubCuenta = @SubCuenta
 				SELECT @SubCuenta = NULLIF(RTRIM(Rama), '')
 					  ,@TieneMovimientos = TieneMovimientos
-				FROM CentroCostos
+				FROM CentroCostos WITH(NOLOCK)
 				WHERE CentroCostos = @SubCuenta
 
 				IF @@ERROR <> 0
@@ -678,11 +678,11 @@ BEGIN
 
 					IF (
 							SELECT TieneMovimientos
-							FROM CentroCostos
+							FROM CentroCostos WITH(NOLOCK)
 							WHERE CentroCostos = @UltSubCuenta
 						)
 						= 0
-						UPDATE CentroCostos
+						UPDATE CentroCostos WITH(ROWLOCK)
 						SET TieneMovimientos = 1
 						WHERE CentroCostos = @UltSubCuenta
 
@@ -782,7 +782,7 @@ BEGIN
 				SELECT @UltSubCuenta2 = @SubCuenta2
 				SELECT @SubCuenta2 = NULLIF(RTRIM(Rama), '')
 					  ,@TieneMovimientos = TieneMovimientos
-				FROM CentroCostos2
+				FROM CentroCostos2 WITH(NOLOCK)
 				WHERE CentroCostos2 = @SubCuenta2
 
 				IF @@ERROR <> 0
@@ -793,11 +793,11 @@ BEGIN
 
 					IF (
 							SELECT TieneMovimientos
-							FROM CentroCostos2
+							FROM CentroCostos2 WITH(NOLOCK)
 							WHERE CentroCostos2 = @UltSubCuenta2
 						)
 						= 0
-						UPDATE CentroCostos2
+						UPDATE CentroCostos2 WITH(ROWLOCK)
 						SET TieneMovimientos = 1
 						WHERE CentroCostos2 = @UltSubCuenta2
 
@@ -897,7 +897,7 @@ BEGIN
 				SELECT @UltSubCuenta3 = @SubCuenta3
 				SELECT @SubCuenta3 = NULLIF(RTRIM(Rama), '')
 					  ,@TieneMovimientos = TieneMovimientos
-				FROM CentroCostos3
+				FROM CentroCostos3 WITH(NOLOCK)
 				WHERE CentroCostos3 = @SubCuenta3
 
 				IF @@ERROR <> 0
@@ -908,11 +908,11 @@ BEGIN
 
 					IF (
 							SELECT TieneMovimientos
-							FROM CentroCostos3
+							FROM CentroCostos3 WITH(NOLOCK)
 							WHERE CentroCostos3 = @UltSubCuenta3
 						)
 						= 0
-						UPDATE CentroCostos3
+						UPDATE CentroCostos3 WITH(ROWLOCK)
 						SET TieneMovimientos = 1
 						WHERE CentroCostos3 = @UltSubCuenta3
 
@@ -950,7 +950,7 @@ BEGIN
 		BEGIN
 			DELETE ContReg
 			WHERE ID = @ID
-			UPDATE Cont
+			UPDATE Cont WITH(ROWLOCK)
 			SET OrigenTipo = NULL
 			WHERE ID = @ID
 		END
@@ -972,7 +972,7 @@ BEGIN
 					EXEC spMovReg @Modulo
 								 ,@ID
 
-					IF NOT EXISTS (SELECT * FROM ContReg WHERE ID = @ID)
+					IF NOT EXISTS (SELECT * FROM ContReg WITH(NOLOCK) WHERE ID = @ID)
 						INSERT ContReg (ID, Empresa, Sucursal, Modulo, ModuloID, Cuenta, SubCuenta, SubCuenta2, SubCuenta3, Concepto, ContactoEspecifico, Debe, Haber)
 							SELECT @ID
 								  ,@Empresa
@@ -987,7 +987,7 @@ BEGIN
 								  ,ContactoEspecifico
 								  ,Debe
 								  ,Haber
-							FROM ContD
+							FROM ContD WITH(NOLOCK)
 							WHERE ID = @ID
 
 				END
@@ -1026,7 +1026,7 @@ BEGIN
 								,@EstatusNuevo
 								,@Ok OUTPUT
 								,@OkRef OUTPUT
-			UPDATE Cont
+			UPDATE Cont WITH(ROWLOCK)
 			SET FechaConclusion = @FechaConclusion
 			   ,FechaCancelacion = @FechaCancelacion
 			   ,FechaContable = @FechaContable

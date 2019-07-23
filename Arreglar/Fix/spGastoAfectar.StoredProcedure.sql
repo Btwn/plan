@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spGastoAfectar]
  @ID INT
@@ -211,14 +215,14 @@ BEGIN
 	   ,@OrigenGasto VARCHAR(20)
 	   ,@OrigenIDGasto VARCHAR(20)
 	SELECT @SubClave = SubClave
-	FROM MovTipo
+	FROM MovTipo WITH(NOLOCK)
 	WHERE Mov = @Mov
 	AND Modulo = @Modulo
 	SELECT @RedondeoMonetarios = dbo.fnRedondeoMonetarios()
 	SELECT @CfgImpuesto2Info = ISNULL(Impuesto2Info, 0)
 		  ,@CfgImpuesto3Info = ISNULL(Impuesto2Info, 0)
 		  ,@CfgRetencion2BaseImpuesto1 = ISNULL(Retencion2BaseImpuesto1, 0)
-	FROM Version
+	FROM Version WITH(NOLOCK)
 	SELECT @Generar = 0
 		  ,@GenerarAfectado = 0
 		  ,@IDGenerar = NULL
@@ -229,22 +233,22 @@ BEGIN
 		  ,@Referencia = RTRIM(@Mov) + ' ' + RTRIM(@MovID)
 		  ,@MovImpuesto = 0
 	SELECT @EsEcuador = ISNULL(EsEcuador, 0)
-	FROM Empresa
+	FROM Empresa WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CfgFormaCobroDA = NULLIF(RTRIM(CxcFormaCobroDA), '')
-	FROM EmpresaCfg
+	FROM EmpresaCfg WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @CfgInv = ISNULL(GastoConceptosInventariables, 0)
 		  ,@CfgInvAlmacen = GastoAlmacen
 		  ,@FiscalGenerarRetenciones = ISNULL(FiscalGenerarRetenciones, 0)
 		  ,@GasConceptoMultiple = ISNULL(GasConceptoMultiple, 0)
-	FROM EmpresaCfg2
+	FROM EmpresaCfg2 WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @PPTO = PPTO
 		  ,@CP = CP
 		  ,@SistemaDetallista = SistemaDetallista
 		  ,@Fiscal = ISNULL(Fiscal, 0)
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 
 	IF @MovTipo NOT IN ('GAS.S', 'GAS.SR', 'GAS.PR', 'GAS.PRP', 'GAS.DPR')
@@ -344,7 +348,7 @@ BEGIN
 		RETURN
 	END
 
-	IF NOT EXISTS (SELECT Proveedor FROM Prov WHERE Proveedor = @Acreedor)
+	IF NOT EXISTS (SELECT Proveedor FROM Prov WITH(NOLOCK) WHERE Proveedor = @Acreedor)
 		SELECT @Ok = 26050
 			  ,@OkRef = @Acreedor
 
@@ -389,7 +393,7 @@ BEGIN
 
 		IF @Ok IS NULL
 			SELECT @FechaEmision = FechaEmision
-			FROM Gasto
+			FROM Gasto WITH(NOLOCK)
 			WHERE ID = @IDGenerar
 
 		IF @MovTipo IN ('GAS.S', 'GAS.P', 'GAS.A')
@@ -415,9 +419,9 @@ BEGIN
 				   WHEN @CfgImpuesto3Info = 1 THEN 0.0
 				   ELSE ISNULL(Impuestos3, 0.0)
 			   END + ISNULL(Impuestos5, 0.0))
-		FROM GastoD
+		FROM GastoD WITH(NOLOCK)
 		WHERE ID = @IDGenerar
-		UPDATE Gasto
+		UPDATE Gasto WITH(ROWLOCK)
 		SET MovAplica = @Mov
 		   ,MovAplicaID = @MovID
 		   ,Saldo = NULL
@@ -430,7 +434,7 @@ BEGIN
 		WHERE ID = @IDGenerar
 
 		IF @GenerarMovTipo IN ('GAS.DA', 'GAS.ASC', 'GAS.SR')
-			UPDATE Gasto
+			UPDATE Gasto WITH(ROWLOCK)
 			SET Importe = @Saldo
 			WHERE ID = @IDGenerar
 		ELSE
@@ -445,7 +449,7 @@ BEGIN
 
 		IF @MovTipo = 'GAS.PR'
 		BEGIN
-			UPDATE Gasto
+			UPDATE Gasto WITH(ROWLOCK)
 			SET MovAplica = NULL
 			   ,MovAplicaID = NULL
 			WHERE ID = @IDGenerar
@@ -458,7 +462,7 @@ BEGIN
 					  ,ContUso3
 					  ,Cantidad
 					  ,Precio
-				FROM GastoD
+				FROM GastoD WITH(NOLOCK)
 				WHERE ID = @IDGenerar
 			OPEN crPresupuesto
 			FETCH NEXT FROM crPresupuesto INTO @ConceptoLinea, @ContUso, @ContUso2, @ContUso3, @Cantidad, @Precio
@@ -503,10 +507,10 @@ BEGIN
 						   END
 						  ,@Retencion3 = @Importe * (Retencion3 / 100.0)
 						  ,@ImpuestosLinea = @Importe * (Impuestos / 100.0)
-					FROM Concepto
+					FROM Concepto WITH(NOLOCK)
 					WHERE Modulo = 'GAS'
 					AND Concepto = @ConceptoLinea
-					UPDATE GastoD
+					UPDATE GastoD WITH(ROWLOCK)
 					SET Cantidad = @Cantidad
 					   ,Importe = @Importe
 					   ,Impuestos = @ImpuestosLinea
@@ -531,8 +535,8 @@ BEGIN
 		IF @GenerarMovTipo = 'GAS.CI'
 		BEGIN
 			DELETE GastoD
-				FROM GastoD d
-				JOIN Concepto c
+				FROM GastoD d WITH(NOLOCK)
+				JOIN Concepto c WITH(NOLOCK)
 					ON c.Modulo = @Modulo
 					AND c.Concepto = d.Concepto
 					AND (c.EsInventariable = 0
@@ -546,14 +550,14 @@ BEGIN
 					  ,c.Articulo
 					  ,ISNULL(i.CantidadPendiente, 0.0) - ISNULL(CantidadCancelada, 0)
 					  ,ISNULL(i.CantidadReservada, 0.0)
-				FROM GastoD d
-				JOIN Concepto c
+				FROM GastoD d WITH(NOLOCK)
+				JOIN Concepto c WITH(NOLOCK)
 					ON c.Modulo = @Modulo
 					AND c.Concepto = d.Concepto
 					AND c.EsInventariable = 1
-				JOIN Art a
+				JOIN Art a WITH(NOLOCK)
 					ON a.Articulo = c.Articulo
-				JOIN InvD i
+				JOIN InvD i WITH(NOLOCK)
 					ON i.ID = d.InvID
 					AND i.Renglon = d.Renglon
 					AND i.RenglonSub = d.RenglonSub
@@ -583,7 +587,7 @@ BEGIN
 					IF @CantidadPendiente > 0.0
 					BEGIN
 						SELECT @Disponible = SUM(Disponible)
-						FROM ArtDisponible
+						FROM ArtDisponible WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 						AND Articulo = @Articulo
 						AND Almacen = @CfgInvAlmacen
@@ -603,7 +607,7 @@ BEGIN
 						AND Renglon = @Renglon
 						AND RenglonSub = @RenglonSub
 				ELSE
-					UPDATE GastoD
+					UPDATE GastoD WITH(ROWLOCK)
 					SET Cantidad = @Cantidad
 					   ,Importe = dbo.fnR3(Cantidad, Importe, @Cantidad)
 					WHERE ID = @IDGenerar
@@ -627,7 +631,7 @@ BEGIN
 								,'BORRADOR'
 								,@Ok OUTPUT
 								,@OkRef OUTPUT
-			UPDATE Gasto
+			UPDATE Gasto WITH(ROWLOCK)
 			SET Estatus = 'BORRADOR'
 			WHERE ID = @IDGenerar
 		END
@@ -651,7 +655,7 @@ BEGIN
 							,'BORRADOR'
 							,@Ok OUTPUT
 							,@OkRef OUTPUT
-		UPDATE Gasto
+		UPDATE Gasto WITH(ROWLOCK)
 		SET Estatus = 'BORRADOR'
 		WHERE ID = @ID
 		RETURN
@@ -674,10 +678,10 @@ BEGIN
 
 		IF (
 				SELECT Sincro
-				FROM Version
+				FROM Version WITH(NOLOCK)
 			)
 			= 1
-			EXEC sp_executesql N'UPDATE GastoD SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
+			EXEC sp_executesql N'UPDATE GastoD WITH(ROWLOCK) SET Sucursal = @Sucursal, SincroC = 1 WHERE ID = @ID AND (Sucursal <> @Sucursal OR SincroC <> 1)'
 							  ,N'@Sucursal int, @ID int'
 							  ,@Sucursal
 							  ,@ID
@@ -686,14 +690,14 @@ BEGIN
 
 			IF (
 					SELECT EditarDeptoDetallista
-					FROM MovTipo
+					FROM MovTipo WITH(NOLOCK)
 					WHERE Modulo = @Modulo
 					AND Mov = @Mov
 				)
 				= 0
-				UPDATE GastoD
+				UPDATE GastoD WITH(ROWLOCK)
 				SET DepartamentoDetallista = c.DepartamentoDetallista
-				FROM GastoD d, Concepto c
+				FROM GastoD d, Concepto c WITH(NOLOCK)
 				WHERE d.ID = @ID
 				AND c.Modulo = 'GAS'
 				AND c.Concepto = d.Concepto
@@ -742,7 +746,7 @@ BEGIN
 			SELECT @Vencimiento = ISNULL(CASE
 				 WHEN ConVigencia = 1 THEN VigenciaDesde
 			 END, @FechaEmision)
-			FROM Gasto
+			FROM Gasto WITH(NOLOCK)
 			WHERE ID = @ID
 
 		EXEC spExtraerFecha @Vencimiento OUTPUT
@@ -790,7 +794,7 @@ BEGIN
 				  ,NULLIF(RTRIM(ContUso3), '')
 				  ,NULLIF(RTRIM(ClavePresupuestal), '')
 				  ,ISNULL(Cantidad, 0.0)
-			FROM GastoD
+			FROM GastoD WITH(NOLOCK)
 			WHERE ID = @ID
 		OPEN crGasto
 		FETCH NEXT FROM crGasto INTO @Renglon, @RenglonSub, @ConceptoLinea, @FechaLinea, @ReferenciaLinea, @ImporteLinea, @RetencionLinea, @Retencion2Linea, @Retencion3Linea, @ImpuestosLinea, @Impuestos2Linea, @Impuestos3Linea, @Impuestos5Linea, @ContUso, @VIN, @Espacio, @AFArticulo, @AFSerie, @Lectura, @LecturaAnterior, @Deducible, @ContUso2, @ContUso3, @ClavePresupuestal, @Cantidad
@@ -839,7 +843,7 @@ BEGIN
 				  ,@TipoRetencion2 = TipoRetencion2
 				  ,@TipoRetencion3 = TipoRetencion3
 				  ,@ClavePresupuestalImpuesto1 = ClavePresupuestalImpuesto1
-			FROM Concepto
+			FROM Concepto WITH(NOLOCK)
 			WHERE Modulo = @Modulo
 			AND Concepto = @ConceptoLinea
 
@@ -886,7 +890,7 @@ BEGIN
 				AND (@ImpuestosLinea <> 0.0 OR @Impuestos2Linea <> 0.0 OR @Impuestos3Linea <> 0.0 OR @Impuestos5Linea <> 0.0 OR @RetencionLinea <> 0.0 OR @Retencion2Linea <> 0.0 OR @Retencion3Linea <> 0.0)
 				AND @CfgGastoSolicitudAnticipoImpuesto = 0
 			BEGIN
-				UPDATE GastoD
+				UPDATE GastoD WITH(ROWLOCK)
 				SET Retencion = NULL
 				   ,Retencion2 = NULL
 				   ,Retencion3 = NULL
@@ -905,7 +909,7 @@ BEGIN
 			END
 
 			IF @MovTipo IN ('GAS.G', 'GAS.GTC', 'GAS.C', 'GAS.CCH')
-				UPDATE Concepto
+				UPDATE Concepto WITH(ROWLOCK)
 				SET UltimoCosto = @ImporteLinea
 				   ,UltimoGasto = @FechaEmision
 				   ,MonedaCosto = @MovMoneda
@@ -927,7 +931,7 @@ BEGIN
 									 ,@LecturaAnterior OUTPUT
 
 				IF @Accion <> 'CANCELAR'
-					UPDATE GastoD
+					UPDATE GastoD WITH(ROWLOCK)
 					SET LecturaAnterior = @LecturaAnterior
 					WHERE CURRENT OF crGasto
 
@@ -1303,7 +1307,7 @@ BEGIN
 	IF @MovTipo IN ('GAS.C', 'GAS.ASC', 'GAS.CCH', 'GAS.CP', 'GAS.OI')
 		AND @Accion = 'CANCELAR'
 		SELECT @ImportePendiente = @ImportePendiente - ISNULL(SUM(Importe), 0)
-		FROM Dinero
+		FROM Dinero WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 		AND OrigenTipo = @Modulo
 		AND Origen = @Mov
@@ -1329,9 +1333,9 @@ BEGIN
 				  ,ISNULL(g.Importe, 0.0) - ISNULL(g.Retencion, 0.0) + ISNULL(g.Impuestos, 0.0)
 				  ,ISNULL(ga.Importe, 0.0)
 				  ,mt.Clave
-			FROM GastoAplica ga
-				,Gasto g
-				,MovTipo mt
+			FROM GastoAplica ga WITH(NOLOCK)
+				,Gasto g WITH(NOLOCK)
+				,MovTipo mt WITH(NOLOCK)
 			WHERE ga.ID = @ID
 			AND g.Empresa = @Empresa
 			AND g.Mov = ga.Aplica
@@ -1430,7 +1434,7 @@ BEGIN
 						IF @AntecedenteMovTipo IN ('GAS.S', 'GAS.P')
 							SELECT @AntecedenteSaldo = 0.0
 
-						UPDATE GastoAplica
+						UPDATE GastoAplica WITH(ROWLOCK)
 						SET Importe = @ImporteAplicado
 						WHERE CURRENT OF crGastoAplica
 					END
@@ -1501,11 +1505,11 @@ BEGIN
 		END
 		CLOSE crGastoAplica
 		DEALLOCATE crGastoAplica
-		UPDATE Gasto
+		UPDATE Gasto WITH(ROWLOCK)
 		SET Estatus = ga.Estatus
 		   ,FechaConclusion = ga.FechaConclusion
 		   ,Saldo = NULLIF(ga.Saldo, 0.0)
-		FROM Gasto g, #GastoAplica ga
+		FROM Gasto g WITH(NOLOCK), #GastoAplica ga
 		WHERE g.ID = ga.ID
 	END
 	ELSE
@@ -1624,7 +1628,7 @@ BEGIN
 								,@AntecedenteEstatusNuevo
 								,@Ok OUTPUT
 								,@OkRef OUTPUT
-			UPDATE Gasto
+			UPDATE Gasto WITH(ROWLOCK)
 			SET Estatus = @AntecedenteEstatusNuevo
 			   ,FechaConclusion = @AntecedenteFechaConclusion
 			   ,Saldo = NULLIF(@AntecedenteSaldo, 0.0)
@@ -1710,7 +1714,7 @@ BEGIN
 							,@EstatusNuevo
 							,@Ok OUTPUT
 							,@OkRef OUTPUT
-		UPDATE Gasto
+		UPDATE Gasto WITH(ROWLOCK)
 		SET Importe = @Importe
 		   ,Retencion = @RetencionTotal
 		   ,Impuestos = @ImpuestoTotal
@@ -1742,7 +1746,7 @@ BEGIN
 
 		IF @MovTipo IN ('GAS.DA', 'GAS.SR', 'GAS.ASC')
 			AND @AntecedenteID IS NOT NULL
-			UPDATE Gasto
+			UPDATE Gasto WITH(ROWLOCK)
 			SET IVAFiscal = (
 				SELECT IVAFiscal
 				FROM Gasto
@@ -1754,7 +1758,7 @@ BEGIN
 
 	SELECT @IVAFiscal = IVAFiscal
 		  ,@IEPSFiscal = IEPSFiscal
-	FROM Gasto
+	FROM Gasto WITH(NOLOCK)
 	WHERE ID = @ID
 	SELECT @AfectarOtrosModulos = 0
 
@@ -1976,7 +1980,7 @@ BEGIN
 				   ,@GTImpuesto1Acreedor VARCHAR(10)
 				SELECT @GTImpuesto1Mov = NULLIF(RTRIM(Impuesto1Mov), '')
 					  ,@GTImpuesto1Acreedor = NULLIF(RTRIM(Impuesto1Acreedor), '')
-				FROM EmpresaCfgGT
+				FROM EmpresaCfgGT WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 
 				IF @GTImpuesto1Mov IS NULL
@@ -2040,7 +2044,7 @@ BEGIN
 			IF @MovTipo = 'GAS.ASC'
 			BEGIN
 				SELECT @CxAgente = NULLIF(RTRIM(Agente), '')
-				FROM Prov
+				FROM Prov WITH(NOLOCK)
 				WHERE Proveedor = @Acreedor
 
 				IF @CxAgente IS NULL
@@ -2075,7 +2079,7 @@ BEGIN
 							  ,ISNULL(Impuestos2, 0.0)
 							  ,ISNULL(Impuestos3, 0.0)
 							  ,ISNULL(Impuestos5, 0.0)
-						FROM GastoD
+						FROM GastoD WITH(NOLOCK)
 						WHERE ID = @ID
 					OPEN crGastoD
 					FETCH NEXT FROM crGastoD INTO @EndosarA, @ConceptoLinea, @ReferenciaLinea, @ImporteLinea, @RetencionLinea, @Retencion2Linea, @Retencion3Linea, @ImpuestosLinea, @Impuestos2Linea, @Impuestos3Linea, @Impuestos5Linea
@@ -2172,8 +2176,8 @@ BEGIN
 								  ,SUM(ISNULL(d.Retencion, 0))
 								  ,SUM(ISNULL(d.Retencion2, 0))
 								  ,c.ConceptoCxp
-							FROM GastoD d
-							JOIN Concepto c
+							FROM GastoD d WITH(NOLOCK)
+							JOIN Concepto c WITH(NOLOCK)
 								ON c.Concepto = d.Concepto
 							WHERE d.ID = @ID
 							AND c.Modulo = @Modulo
@@ -2325,7 +2329,7 @@ BEGIN
 				IF @MovTipo IN ('GAS.A', 'GAS.DA')
 					AND (
 						SELECT ISNULL(GastoAnticipoCxp, 0)
-						FROM EmpresaCfg2
+						FROM EmpresaCfg2 WITH(NOLOCK)
 						WHERE Empresa = @Empresa
 					)
 					= 1
@@ -2341,7 +2345,7 @@ BEGIN
 						 WHEN 'GAS.A' THEN CxpGastoAnticipo
 						 WHEN 'GAS.DA' THEN CxpGastoDevAnticipo
 					 END
-					FROM EmpresaCfgMov
+					FROM EmpresaCfgMov WITH(NOLOCK)
 					WHERE Empresa = @Empresa
 					EXEC spGenerarCx @Sucursal
 									,@SucursalOrigen
@@ -2582,27 +2586,27 @@ BEGIN
 
 	IF (
 			SELECT TieneMovimientos
-			FROM Prov
+			FROM Prov WITH(NOLOCK)
 			WHERE Proveedor = @Acreedor
 		)
 		= 0
-		UPDATE Prov
+		UPDATE Prov WITH(ROWLOCK)
 		SET TieneMovimientos = 1
 		WHERE Proveedor = @Acreedor
 
 	SELECT @AcreedorRef = AcreedorRef
-	FROM GastoD
+	FROM GastoD WITH(NOLOCK)
 	WHERE ID = @ID
 
 	IF ISNULL(@AcreedorRef, '') <> ''
 
 		IF (
 				SELECT TieneMovimientos
-				FROM Prov
+				FROM Prov WITH(NOLOCK)
 				WHERE Proveedor = @AcreedorRef
 			)
 			= 0
-			UPDATE Prov
+			UPDATE Prov WITH(ROWLOCK)
 			SET TieneMovimientos = 1
 			WHERE Proveedor = @AcreedorRef
 
@@ -2635,14 +2639,14 @@ BEGIN
 		BEGIN
 			SELECT @OrigenGasto = Origen
 				  ,@OrigenIDGasto = OrigenID
-			FROM Gasto
+			FROM Gasto WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Sucursal = @Sucursal
 			AND Mov = @Origen
 			AND MovID = @OrigenID
 
-			IF NOT EXISTS (SELECT ID FROM Inv WHERE Empresa = @Empresa AND Sucursal = @Sucursal AND OrigenTipo = 'GAS' AND Origen = @OrigenGasto AND OrigenID = @OrigenIDGasto AND Estatus = 'CONCLUIDO')
-				AND EXISTS (SELECT * FROM GastoD d JOIN Concepto c ON d.Concepto = c.Concepto AND c.Modulo = @Modulo AND c.EsInventariable = 1 WHERE d.ID = @ID)
+			IF NOT EXISTS (SELECT ID FROM Inv WITH(NOLOCK) WHERE Empresa = @Empresa AND Sucursal = @Sucursal AND OrigenTipo = 'GAS' AND Origen = @OrigenGasto AND OrigenID = @OrigenIDGasto AND Estatus = 'CONCLUIDO')
+				AND EXISTS (SELECT * FROM GastoD d WITH(NOLOCK) JOIN Concepto c WITH(NOLOCK) ON d.Concepto = c.Concepto AND c.Modulo = @Modulo AND c.EsInventariable = 1 WHERE d.ID = @ID)
 				EXEC spGastoInv @ID
 							   ,@Accion
 							   ,@Empresa
@@ -2665,7 +2669,7 @@ BEGIN
 		ELSE
 
 		IF @MovTipo = 'GAS.SR'
-			OR EXISTS (SELECT * FROM GastoD d JOIN Concepto c ON d.Concepto = c.Concepto AND c.Modulo = @Modulo AND c.EsInventariable = 1 WHERE d.ID = @ID)
+			OR EXISTS (SELECT * FROM GastoD d WITH(NOLOCK) JOIN Concepto c WITH(NOLOCK) ON d.Concepto = c.Concepto AND c.Modulo = @Modulo AND c.EsInventariable = 1 WHERE d.ID = @ID)
 			EXEC spGastoInv @ID
 						   ,@Accion
 						   ,@Empresa
@@ -2770,7 +2774,7 @@ BEGIN
 						  ,@ID
 						  ,CuentaPresupuesto
 						  ,@ImporteTotal * Importe / NULLIF(@AntecedenteImporteTotal, 0.0)
-					FROM MovPresupuesto
+					FROM MovPresupuesto WITH(NOLOCK)
 					WHERE Modulo = @Modulo
 					AND ModuloID = @AntecedenteID
 			END
@@ -2815,7 +2819,7 @@ BEGIN
 	BEGIN
 		SELECT @AnexoMov = Mov
 			  ,@AnexoMovID = MovID
-		FROM Mov
+		FROM Mov WITH(NOLOCK)
 		WHERE Empresa = @Empresa
 		AND Modulo = @AnexoModulo
 		AND ID = @AnexoID
@@ -2850,7 +2854,7 @@ BEGIN
 				   ,SucursalContable INT NULL
 				)
 
-			IF EXISTS (SELECT * FROM PolizaDescuadrada WHERE Modulo = @Modulo AND ID = @ID)
+			IF EXISTS (SELECT * FROM PolizaDescuadrada WITH(NOLOCK) WHERE Modulo = @Modulo AND ID = @ID)
 				INSERT @PolizaDescuadrada (Cuenta, SubCuenta, Concepto, Debe, Haber, SucursalContable)
 					SELECT Cuenta
 						  ,SubCuenta
@@ -2858,7 +2862,7 @@ BEGIN
 						  ,Debe
 						  ,Haber
 						  ,SucursalContable
-					FROM PolizaDescuadrada
+					FROM PolizaDescuadrada WITH(NOLOCK)
 					WHERE Modulo = @Modulo
 					AND ID = @ID
 

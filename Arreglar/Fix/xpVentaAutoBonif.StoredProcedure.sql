@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[xpVentaAutoBonif]
  @Sucursal INT
@@ -64,7 +68,7 @@ BEGIN
 		SELECT @EsCredito = ~@EsCredito
 		SELECT @Aplica = mf.DMov
 			  ,@AplicaID = mf.DMovID
-		FROM MovFlujo mf
+		FROM MovFlujo mf WITH(NOLOCK)
 		WHERE mf.OModulo = 'VTAS'
 		AND mf.OID = @ID
 		AND mf.DModulo = 'CXC'
@@ -75,26 +79,26 @@ BEGIN
 			  ,@AplicaID = NULL
 
 	SELECT @BonificacionTipo = ISNULL(UPPER(RTRIM(BonificacionTipo)), 'NO')
-	FROM Cte
+	FROM Cte WITH(NOLOCK)
 	WHERE Cliente = @Cliente
 	SELECT @MovCargo =
 	 CASE
 		 WHEN @EsCredito = 1 THEN 'Nota Credito Mayoreo'
 		 ELSE CxcNCargo
 	 END
-	FROM EmpresaCfgMov
+	FROM EmpresaCfgMov WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @EnviarA = EnviarA
-	FROM Venta
+	FROM Venta WITH(NOLOCK)
 	WHERE ID = @ID
 	SELECT @CategoriaCanal = Categoria
-	FROM VentasCanalMAVI
+	FROM VentasCanalMAVI WITH(NOLOCK)
 	WHERE ID = @EnviarA
 
 	IF @BonificacionTipo = 'DIRECTA'
 	BEGIN
 		SELECT @Porcentaje = NULLIF(Bonificacion, 0)
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF @Porcentaje < 0
@@ -172,7 +176,7 @@ BEGIN
 			CURSOR FOR
 			SELECT Concepto
 				  ,Porcentaje
-			FROM CteBonificacion
+			FROM CteBonificacion WITH(NOLOCK)
 			WHERE Cliente = @Cliente
 			AND (@FechaEmision BETWEEN FechaD AND FechaA OR (@FechaEmision >= FechaD AND FechaA IS NULL) OR (FechaD IS NULL AND @FechaEmision <= FechaA) OR (FechaD IS NULL AND FechaA IS NULL))
 		OPEN crCteBonificacion
@@ -248,9 +252,9 @@ BEGIN
 				IF @Modulo = 'VTAS'
 				BEGIN
 					SELECT @UEN = UEN
-					FROM Venta
+					FROM Venta WITH(NOLOCK)
 					WHERE ID = @ID
-					UPDATE Cxc
+					UPDATE Cxc WITH(ROWLOCK)
 					SET UEN = @UEN
 					WHERE ID = @IDNCMAVI
 				END

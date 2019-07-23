@@ -86,19 +86,19 @@ BEGIN
 		   ,SucursalAlmacen INT NULL
 		)
 	SELECT @WMS = ISNULL(WMS, 0)
-	FROM Alm
+	FROM Alm WITH(NOLOCK)
 	WHERE Almacen = @Almacen
 	SELECT @ArticuloTarjetasDef = CxcArticuloTarjetasDef
-	FROM EmpresaCfg
+	FROM EmpresaCfg WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @OrigenTipo = OrigenTipo
-	FROM Venta
+	FROM Venta WITH(NOLOCK)
 	WHERE ID = @ID
 	SELECT @LDI = ISNULL(InterfazLDI, 0)
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @LDIArticulo = ISNULL(LDI, 0)
-	FROM Art
+	FROM Art WITH(NOLOCK)
 	WHERE Articulo = @Articulo
 	SELECT @SubCuenta = ISNULL(RTRIM(@SubCuenta), '')
 		  ,@SubCuentaNull = NULLIF(RTRIM(@SubCuenta), '')
@@ -107,7 +107,7 @@ BEGIN
 		  ,@UltimaSalida = NULL
 		  ,@CosteoLotes = 0
 	SELECT @MovSubTipo = NULLIF(RTRIM(mt.SubClave), '')
-	FROM MovTipo mt
+	FROM MovTipo mt WITH(NOLOCK)
 	WHERE mt.Modulo = @Modulo
 	AND mt.Clave = @MovTipo
 	SELECT @AlmacenTarima = dbo.fnAlmacenTarima(@Almacen, @Tarima)
@@ -134,13 +134,13 @@ BEGIN
 		AND @Accion = 'AFECTAR'
 	BEGIN
 		SELECT @PedimentoExtraccion = NULLIF(RTRIM(i.PedimentoExtraccion), '')
-		FROM Inv i
+		FROM Inv i WITH(NOLOCK)
 		WHERE i.ID = @ID
 
 		IF @PedimentoExtraccion IS NOT NULL
 			AND (
 				SELECT COUNT(*)
-				FROM SerieLoteMov
+				FROM SerieLoteMov WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 				AND Modulo = @Modulo
 				AND ID = @ID
@@ -155,7 +155,7 @@ BEGIN
 		IF @PedimentoExtraccion IS NOT NULL
 			AND @Ok IS NULL
 		BEGIN
-			UPDATE SerieLoteMov
+			UPDATE SerieLoteMov WITH(ROWLOCK)
 			SET SerieLote = @PedimentoExtraccion
 			WHERE Empresa = @Empresa
 			AND Modulo = @Modulo
@@ -205,7 +205,7 @@ BEGIN
 				  ,NULLIF(RTRIM(Cliente), '')
 				  ,NULLIF(RTRIM(Localizacion), '')
 				  ,ISNULL(NULLIF(ArtCostoInv, 0), @ArtCostoInv) / @Factor
-			FROM SerieLoteMov
+			FROM SerieLoteMov WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Modulo = @Modulo
 			AND ID = @ID
@@ -223,7 +223,7 @@ BEGIN
 				  ,NULLIF(RTRIM(Cliente), '')
 				  ,NULLIF(RTRIM(Localizacion), '')
 				  ,ISNULL(NULLIF(ArtCostoInv, 0), @ArtCostoInv) / @Factor
-			FROM SerieLoteMov
+			FROM SerieLoteMov WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Modulo = @Modulo
 			AND ID = @ID
@@ -255,7 +255,7 @@ BEGIN
 				   ELSE ISNULL(Existencia, 0.0)
 			   END
 			  ,@SerieLotePropiedades = NULLIF(RTRIM(Propiedades), '')
-		FROM SerieLote
+		FROM SerieLote WITH(NOLOCK)
 		WHERE Sucursal = @SucursalAlmacen
 		AND Empresa = @Empresa
 		AND Articulo = @Articulo
@@ -275,7 +275,7 @@ BEGIN
 				SET Propiedades = @Propiedades
 				WHERE CURRENT OF crSerieLoteMov
 			ELSE
-				UPDATE SerieLoteMov
+				UPDATE SerieLoteMov WITH(ROWLOCK)
 				SET Propiedades = @Propiedades
 				WHERE CURRENT OF crSerieLoteMov
 
@@ -284,7 +284,7 @@ BEGIN
 		IF @CosteoLotes = 1
 		BEGIN
 			SELECT @CostoPromedio = ISNULL(SUM(ISNULL(Existencia, 0.0) * ISNULL(CostoPromedio, 0.0)) / NULLIF(SUM(Existencia), 0.0), 0.0)
-			FROM SerieLote
+			FROM SerieLote WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND Articulo = @Articulo
 			AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '')
@@ -343,8 +343,8 @@ BEGIN
 						  ,slm.Tarima
 						  ,slm.Cantidad
 						  ,a.Sucursal
-					FROM SerieloteMov slm
-					JOIN Alm a
+					FROM SerieloteMov slm WITH(NOLOCK)
+					JOIN Alm a WITH(NOLOCK)
 						ON slm.Sucursal = a.Sucursal
 					WHERE Id = @ID
 					AND Modulo = @Modulo
@@ -360,8 +360,8 @@ BEGIN
 				AND @Ok IS NULL
 				BEGIN
 
-				IF EXISTS (SELECT * FROM SerieLote WHERE Sucursal = @SucursalAlmacen AND Empresa = @Empresa AND Articulo = @Articulo AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '') AND SerieLote = @SerieLote AND Almacen = @Almacen AND ISNULL(Tarima, '') = ISNULL(@TarimaOrigen, ''))
-					UPDATE SerieLote
+				IF EXISTS (SELECT * FROM SerieLote WITH(NOLOCK) WHERE Sucursal = @SucursalAlmacen AND Empresa = @Empresa AND Articulo = @Articulo AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '') AND SerieLote = @SerieLote AND Almacen = @Almacen AND ISNULL(Tarima, '') = ISNULL(@TarimaOrigen, ''))
+					UPDATE SerieLote WITH(ROWLOCK)
 					SET Existencia = 0
 					   ,UltimaEntrada = UltimaEntrada
 					   ,UltimaSalida = UltimaSalida
@@ -374,7 +374,7 @@ BEGIN
 					AND ISNULL(Tarima, '') = ISNULL(@TarimaOrigen, '')
 
 				IF NOT EXISTS (SELECT * FROM @SerieloteMovVal WHERE RenglonID = @RenglonID AND SerieLote = @SerieLote AND TarimaOrigen = @TarimaOrigen AND @Cantidad = @Cantidad AND SucursalAlmacen = @SucursalAlmacen)
-					UPDATE SerieLote
+					UPDATE SerieLote WITH(ROWLOCK)
 					SET @ExistenciaNueva = Existencia = ISNULL(Existencia, 0.0) + @Cantidad
 					   ,ExistenciaAlterna = ISNULL(ExistenciaAlterna, 0.0) + @CantidadAlterna
 					   ,UltimaEntrada =
@@ -409,11 +409,11 @@ BEGIN
 				DEALLOCATE crSerieLote
 			END
 
-			IF EXISTS (SELECT * FROM SerieLote WHERE Sucursal = @SucursalAlmacen AND Empresa = @Empresa AND Articulo = @Articulo AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '') AND SerieLote = @SerieLote AND Almacen = @Almacen AND ISNULL(Tarima, '') = ISNULL(@AlmacenTarima, ''))
+			IF EXISTS (SELECT * FROM SerieLote WITH(NOLOCK) WHERE Sucursal = @SucursalAlmacen AND Empresa = @Empresa AND Articulo = @Articulo AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '') AND SerieLote = @SerieLote AND Almacen = @Almacen AND ISNULL(Tarima, '') = ISNULL(@AlmacenTarima, ''))
 			BEGIN
 
 				IF @AlmacenTipo = 'ACTIVOS FIJOS'
-					UPDATE SerieLote
+					UPDATE SerieLote WITH(ROWLOCK)
 					SET ExistenciaActivoFijo = ISNULL(ExistenciaActivoFijo, 0) + @Cantidad
 					   ,UltimaEntrada = @UltimaEntrada
 					   ,UltimaSalida = @UltimaSalida
@@ -425,7 +425,7 @@ BEGIN
 					AND Almacen = @Almacen
 					AND ISNULL(Tarima, '') = ISNULL(@AlmacenTarima, '')
 				ELSE
-					UPDATE SerieLote
+					UPDATE SerieLote WITH(ROWLOCK)
 					SET Existencia = ISNULL(Existencia, 0) + @Cantidad
 					   ,UltimaEntrada = @UltimaEntrada
 					   ,UltimaSalida = @UltimaSalida
@@ -439,7 +439,7 @@ BEGIN
 
 			END
 
-			IF NOT EXISTS (SELECT * FROM SerieLote WHERE Sucursal = @SucursalAlmacen AND Empresa = @Empresa AND Articulo = @Articulo AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '') AND SerieLote = @SerieLote AND Almacen = @Almacen AND ISNULL(Tarima, '') = ISNULL(@AlmacenTarima, ''))
+			IF NOT EXISTS (SELECT * FROM SerieLote WITH(NOLOCK) WHERE Sucursal = @SucursalAlmacen AND Empresa = @Empresa AND Articulo = @Articulo AND ISNULL(SubCuenta, '') = ISNULL(@SubCuenta, '') AND SerieLote = @SerieLote AND Almacen = @Almacen AND ISNULL(Tarima, '') = ISNULL(@AlmacenTarima, ''))
 			BEGIN
 
 				IF @AlmacenTipo = 'ACTIVOS FIJOS'
@@ -451,7 +451,7 @@ BEGIN
 
 			END
 
-			IF NOT EXISTS (SELECT Sucursal, Empresa, Articulo, SubCuenta, SerieLote, Almacen, Tarima, Propiedades, Cliente, Localizacion, Existencia, ExistenciaAlterna, UltimaEntrada, UltimaSalida FROM SerieLote WHERE SerieLote = @SerieLote AND Articulo = @Articulo AND SubCuenta = @SubCuenta AND Almacen = @Almacen AND Tarima = @AlmacenTarima AND Sucursal = @SucursalAlmacen AND Empresa = @Empresa)
+			IF NOT EXISTS (SELECT Sucursal, Empresa, Articulo, SubCuenta, SerieLote, Almacen, Tarima, Propiedades, Cliente, Localizacion, Existencia, ExistenciaAlterna, UltimaEntrada, UltimaSalida FROM SerieLote WITH(NOLOCK) WHERE SerieLote = @SerieLote AND Articulo = @Articulo AND SubCuenta = @SubCuenta AND Almacen = @Almacen AND Tarima = @AlmacenTarima AND Sucursal = @SucursalAlmacen AND Empresa = @Empresa)
 			BEGIN
 				INSERT SerieLote (Sucursal, Empresa, Articulo, SubCuenta, SerieLote, Almacen, Tarima, Propiedades, Cliente, Localizacion, Existencia, ExistenciaAlterna, UltimaEntrada, UltimaSalida)
 					VALUES (@SucursalAlmacen, @Empresa, @Articulo, @SubCuenta, @SerieLote, @Almacen, @AlmacenTarima, @Propiedades, @Cliente, @Localizacion, @Cantidad, @CantidadAlterna, @UltimaEntrada, @UltimaSalida)
@@ -466,7 +466,7 @@ BEGIN
 
 					IF (
 							SELECT ISNULL(SUM(ExistenciaActivoFijo), 0)
-							FROM SerieLote
+							FROM SerieLote WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 							AND Articulo = @Articulo
 							AND SerieLote = @SerieLote
@@ -482,7 +482,7 @@ BEGIN
 
 					IF (
 							SELECT ISNULL(SUM(Existencia), 0)
-							FROM SerieLote
+							FROM SerieLote WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 							AND Articulo = @Articulo
 							AND SerieLote = @SerieLote
@@ -490,7 +490,7 @@ BEGIN
 						<> 1.0
 						AND (((
 							SELECT NotasBorrador
-							FROM EmpresaCFG
+							FROM EmpresaCFG WITH(NOLOCK)
 							WHERE Empresa = @Empresa
 						)
 						= 0) OR @MovTipo NOT IN ('VTAS.N', 'VTAS.NR', 'VTAS.NO'))
@@ -563,7 +563,7 @@ BEGIN
 		IF @Ok = 20090
 			AND (
 				SELECT NotasBorrador
-				FROM EmpresaCFG
+				FROM EmpresaCFG WITH(NOLOCK)
 				WHERE Empresa = @Empresa
 			)
 			= 1
@@ -620,7 +620,7 @@ BEGIN
 			IF (@EsEntrada = 1 AND @Accion <> 'CANCELAR')
 				OR (@EsSalida = 1 AND @Accion = 'CANCELAR')
 				OR @MovTipo IN ('COMS.B', 'COMS.CA', 'COMS.GX')
-				UPDATE SerieLote
+				UPDATE SerieLote WITH(ROWLOCK)
 				SET CostoPromedio = @CostoPromedio
 				WHERE Empresa = @Empresa
 				AND Articulo = @Articulo
@@ -636,7 +636,7 @@ BEGIN
 
 			IF @EsEntrada = 1
 			BEGIN
-				UPDATE VIN
+				UPDATE VIN WITH(ROWLOCK)
 				SET Costo = @ArtCostoF
 				   ,CostoConGastos = @ArtCostoInvF
 				WHERE VIN = @SerieLote
@@ -646,7 +646,7 @@ BEGIN
 
 					IF ABS(@CostoPromedio - (
 							SELECT ROUND(SUM(PrecioDistribuidor), 0)
-							FROM VINAccesorio
+							FROM VINAccesorio WITH(NOLOCK)
 							WHERE VIN = @SerieLote
 							AND Estatus = 'ALTA'
 						)
@@ -658,7 +658,7 @@ BEGIN
 			ELSE
 
 			IF @MovTipo IN ('VTAS.F', 'VTAS.FAR', 'VTAS.FC')
-				UPDATE VIN
+				UPDATE VIN WITH(ROWLOCK)
 				SET FechaFactura = @FechaEmision
 				WHERE VIN = @SerieLote
 				AND FechaFactura IS NULL
@@ -675,7 +675,7 @@ BEGIN
 				SET ArtCostoInv = @ArtCostoInvF * @Factor
 				WHERE CURRENT OF crSerieLoteMov
 			ELSE
-				UPDATE SerieLoteMov
+				UPDATE SerieLoteMov WITH(ROWLOCK)
 				SET ArtCostoInv = @ArtCostoInvF * @Factor
 				WHERE CURRENT OF crSerieLoteMov
 
@@ -705,7 +705,7 @@ BEGIN
 
 			IF NULLIF(@OrigenTipo, '') IS NULL
 				AND @Modulo = 'VTAS'
-				AND EXISTS (SELECT * FROM ValeSerie WHERE Serie = @SerieLote AND Articulo = @Articulo)
+				AND EXISTS (SELECT * FROM ValeSerie WITH(NOLOCK) WHERE Serie = @SerieLote AND Articulo = @Articulo)
 				AND (@LDIArticulo = 0 OR (@LDIArticulo = 1 AND @MovTipo NOT IN ('VTAS.N')))
 				EXEC spValeSerieTarjeta @Empresa
 									   ,@ID
@@ -727,7 +727,7 @@ BEGIN
 		ELSE
 
 		IF @Modulo = 'VTAS'
-			AND EXISTS (SELECT * FROM ValeSerie WHERE Serie = @SerieLote AND Articulo = @Articulo)
+			AND EXISTS (SELECT * FROM ValeSerie WITH(NOLOCK) WHERE Serie = @SerieLote AND Articulo = @Articulo)
 			EXEC spValeSerieTarjeta @Empresa
 								   ,@ID
 								   ,@RenglonID

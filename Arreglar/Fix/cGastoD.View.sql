@@ -60,5 +60,5 @@ SELECT ID
 	  ,TipoRetencion2
 	  ,TipoRetencion3
 		,AreaMotora
-FROM GastoD
+FROM GastoD WITH(NOLOCK)
 GO

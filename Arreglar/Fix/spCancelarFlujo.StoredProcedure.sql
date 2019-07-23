@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spCancelarFlujo]
  @Empresa CHAR(5)
@@ -22,7 +26,7 @@ BEGIN
 			CURSOR LOCAL STATIC FOR
 			SELECT DModulo
 				  ,DID
-			FROM MovFlujo
+			FROM MovFlujo WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			AND OModulo = @Modulo
 			AND OID = @ID
@@ -49,7 +53,7 @@ BEGIN
 		DEALLOCATE crMovFlujo
 	END
 
-	UPDATE MovFlujo
+	UPDATE MovFlujo WITH(ROWLOCK)
 	SET Cancelado = 1
 	WHERE Empresa = @Empresa
 	AND OModulo = @Modulo
@@ -59,7 +63,7 @@ BEGIN
 	IF @@ERROR <> 0
 		SELECT @Ok = 1
 
-	UPDATE MovFlujo
+	UPDATE MovFlujo WITH(ROWLOCK)
 	SET Cancelado = 1
 	WHERE Empresa = @Empresa
 	AND DModulo = @Modulo

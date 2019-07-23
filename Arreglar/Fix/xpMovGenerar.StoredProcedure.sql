@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[xpMovGenerar]
  @Sucursal INT
@@ -46,14 +50,14 @@ BEGIN
 				  ,@Cliente = NULL
 				  ,@Condicion = NULL
 				  ,@Financia = 0
-			UPDATE MaviRefinaciamientos
+			UPDATE MaviRefinaciamientos WITH(ROWLOCK)
 			SET IDDestino = @GenerarID
 			WHERE ID = @ID
 			SELECT @Importe = (ISNULL(Importe, 0.0) + ISNULL(Impuestos, 0.0))
 				  ,@Cliente = Cliente
 				  ,@Condicion = CondRef
 				  ,@Financia = Financiamiento
-			FROM Cxc
+			FROM Cxc WITH(NOLOCK)
 			WHERE ID = @ID
 			EXEC spCalcularVencimiento 'CXC'
 									  ,@Empresa
@@ -64,10 +68,10 @@ BEGIN
 									  ,@Dias OUTPUT
 									  ,@Ok OUTPUT
 			SELECT @Fin2 = 1.00 + (ISNULL(DefImpuesto, 0) / 100)
-			FROM EmpresaGral
+			FROM EmpresaGral WITH(NOLOCK)
 			WHERE Empresa = @Empresa
 			SET @Fin2 = (@Financia / @Fin2)
-			UPDATE Cxc
+			UPDATE Cxc WITH(ROWLOCK)
 			SET Importe = @Importe + @Fin2
 			   ,Impuestos = @Financia - @Fin2
 			   ,Concepto = 'REFINANCIAMIENTO'
@@ -79,7 +83,7 @@ BEGIN
 
 		IF @GenerarMov = 'Devolucion'
 		BEGIN
-			UPDATE Cxc
+			UPDATE Cxc WITH(ROWLOCK)
 			SET Vencimiento = Fechaemision
 			WHERE ID = @GenerarID
 		END
@@ -90,16 +94,16 @@ BEGIN
 	BEGIN
 		SELECT @OrigenVenta = ISNULL((
 			 SELECT Origen
-			 FROM Venta
+			 FROM Venta WITH(NOLOCK)
 			 WHERE ID = @GenerarID
 		 )
 		 , 'Base')
 		SELECT @Redime = RedimePtos
-		FROM Venta
+		FROM Venta WITH(NOLOCK)
 		WHERE ID = @ID
 
 		IF @Redime IS NOT NULL
-			UPDATE Venta
+			UPDATE Venta WITH(ROWLOCK)
 			SET RedimePtos = @Redime
 			WHERE ID = @GenerarID
 
@@ -107,15 +111,15 @@ BEGIN
 		BEGIN
 			SELECT @DesgloseIVA = (
 				 SELECT FacDesgloseIVA
-				 FROM Venta
+				 FROM Venta WITH(NOLOCK)
 				 WHERE ID = @ID
 			 )
-			UPDATE Venta
+			UPDATE Venta WITH(ROWLOCK)
 			SET FacDesgloseIVA = @DesgloseIVA
 			WHERE ID = @GenerarID
 		END
 
-		IF EXISTS (SELECT * FROM TarjetaSerieMovMAVI WHERE Modulo = 'VTAS' AND ID = @ID)
+		IF EXISTS (SELECT * FROM TarjetaSerieMovMAVI WITH(NOLOCK) WHERE Modulo = 'VTAS' AND ID = @ID)
 			INSERT TarjetaSerieMovMAVI (Empresa, Modulo, ID, Serie, Importe, Sucursal)
 				SELECT Empresa
 					  ,Modulo
@@ -123,11 +127,11 @@ BEGIN
 					  ,Serie
 					  ,Importe
 					  ,Sucursal
-				FROM TarjetaSerieMovMAVI
+				FROM TarjetaSerieMovMAVI WITH(NOLOCK)
 				WHERE Modulo = 'VTAS'
 				AND ID = @ID
 
-		IF EXISTS (SELECT * FROM PoliticasMonederoAplicadasMavi WHERE Modulo = 'VTAS' AND ID = @ID)
+		IF EXISTS (SELECT * FROM PoliticasMonederoAplicadasMavi WITH(NOLOCK) WHERE Modulo = 'VTAS' AND ID = @ID)
 			INSERT PoliticasMonederoAplicadasMavi (Empresa, Modulo, ID, Renglon, Articulo, IDPolitica)
 				SELECT Empresa
 					  ,Modulo
@@ -135,7 +139,7 @@ BEGIN
 					  ,Renglon
 					  ,Articulo
 					  ,IDPolitica
-				FROM PoliticasMonederoAplicadasMavi
+				FROM PoliticasMonederoAplicadasMavi WITH(NOLOCK)
 				WHERE Modulo = 'VTAS'
 				AND ID = @ID
 

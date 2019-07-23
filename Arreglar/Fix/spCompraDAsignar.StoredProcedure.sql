@@ -1,8 +1,11 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
-
 ALTER PROCEDURE [dbo].[spCompraDAsignar]
  @Estacion INT
 ,@ID INT
@@ -48,7 +51,7 @@ BEGIN
 		  ,@MovID = NULL
 	SELECT @Renglon = ISNULL(MAX(Renglon), 0.0)
 		  ,@RenglonID = ISNULL(MAX(RenglonID), 0)
-	FROM VentaD
+	FROM VentaD WITH(NOLOCK)
 	WHERE ID = @ID
 	BEGIN TRANSACTION
 	DECLARE
@@ -58,7 +61,7 @@ BEGIN
 			  ,ID
 			  ,Renglon
 			  ,RenglonSub
-		FROM ListaIDRenglon
+		FROM ListaIDRenglon WITH(NOLOCK)
 		WHERE Estacion = @Estacion
 		ORDER BY IDInterno
 	OPEN crLista
@@ -72,7 +75,7 @@ BEGIN
 		IF @Mov IS NULL
 			SELECT @Mov = Mov
 				  ,@MovID = MovID
-			FROM Compra
+			FROM Compra WITH(NOLOCK)
 			WHERE ID = @LID
 
 		SELECT @DescripcionExtra = NULL
@@ -97,7 +100,7 @@ BEGIN
 			  ,@CantidadInventario = d.CantidadInventario
 			  ,@Paquete = d.Paquete
 			  ,@ContUso = ContUso
-		FROM CompraD d
+		FROM CompraD d WITH(NOLOCK)
 		WHERE d.ID = @LID
 		AND d.Renglon = @LRenglon
 		AND d.RenglonSub = @LRenglonSub
@@ -111,7 +114,7 @@ BEGIN
 	END
 	CLOSE crLista
 	DEALLOCATE crLista
-	UPDATE Compra
+	UPDATE Compra WITH(ROWLOCK)
 	SET Referencia = RTRIM(@Mov) + ' ' + RTRIM(@MovID)
 	WHERE ID = @ID
 	AND NULLIF(RTRIM(Referencia), '') IS NULL

@@ -15,7 +15,7 @@ AS
 BEGIN
 
 	IF @EsNuevo = 0
-		AND EXISTS (SELECT Serie FROM TarjetaMonederoMAVI WHERE Serie = SUBSTRING(@Codigo, 1, 8) AND Estatus = 'ACTIVA')
+		AND EXISTS (SELECT Serie FROM TarjetaMonederoMAVI WITH(NOLOCK) WHERE Serie = SUBSTRING(@Codigo, 1, 8) AND Estatus = 'ACTIVA')
 		SET @EsNuevo = 1
 
 	IF (LEN(@Codigo) = 11 AND ISNUMERIC(@Codigo) = 1)

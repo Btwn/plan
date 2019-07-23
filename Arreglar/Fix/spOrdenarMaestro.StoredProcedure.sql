@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spOrdenarMaestro]
  @Estacion INT
@@ -23,7 +27,7 @@ BEGIN
 		crListaSt
 		CURSOR FOR
 		SELECT Clave
-		FROM ListaSt
+		FROM ListaSt WITH(NOLOCK)
 		WHERE Estacion = @Estacion
 		ORDER BY ID
 	OPEN crListaSt
@@ -36,202 +40,202 @@ BEGIN
 		SELECT @Orden = @Orden + 1
 
 		IF @Tabla = 'ALM'
-			UPDATE Alm
+			UPDATE Alm WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Almacen = @Clave
 		ELSE
 
 		IF @Tabla = 'TiposCoberturaMAVI'
-			UPDATE TiposCoberturaMAVI
+			UPDATE TiposCoberturaMAVI WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Cobertura = @Clave
 		ELSE
 
 		IF @Tabla = 'MON'
-			UPDATE Mon
+			UPDATE Mon WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Moneda = @Clave
 		ELSE
 
 		IF @Tabla = 'UNIDAD'
-			UPDATE Unidad
+			UPDATE Unidad WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Unidad = @Clave
 		ELSE
 
 		IF @Tabla = 'CONDICION'
-			UPDATE Condicion
+			UPDATE Condicion WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Condicion = @Clave
 		ELSE
 
 		IF @Tabla = 'CENTRO'
-			UPDATE Centro
+			UPDATE Centro WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Centro = @Clave
 		ELSE
 
 		IF @Tabla = 'CONDICION'
-			UPDATE Condicion
+			UPDATE Condicion WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Condicion = @Clave
 		ELSE
 
 		IF @Tabla = 'ARTSUSTITUTO'
-			UPDATE ArtSustituto
+			UPDATE ArtSustituto WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Sustituto = @Clave
 		ELSE
 
 		IF @Tabla = 'EMBARQUEESTADO'
-			UPDATE EmbarqueEstado
+			UPDATE EmbarqueEstado WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Estado = @Clave
 		ELSE
 
 		IF @Tabla = 'NACIONALIDAD'
-			UPDATE Nacionalidad
+			UPDATE Nacionalidad WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Nacionalidad = @Clave
 		ELSE
 
 		IF @Tabla = 'IDIOMA'
-			UPDATE Idioma
+			UPDATE Idioma WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Idioma = @Clave
 		ELSE
 
 		IF @Tabla = 'ACTIVIDAD'
-			UPDATE Actividad
+			UPDATE Actividad WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Actividad = @Clave
 		ELSE
 
 		IF @Tabla = 'FORMAPAGO'
-			UPDATE FormaPago
+			UPDATE FormaPago WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE FormaPago = @Clave
 		ELSE
 
 		IF @Tabla = 'PERSONALPROP'
-			UPDATE PersonalProp
+			UPDATE PersonalProp WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Propiedad = @Clave
 		ELSE
 
 		IF @Tabla = 'SOPORTEESTADO'
-			UPDATE SoporteEstado
+			UPDATE SoporteEstado WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Estado = @Clave
 		ELSE
 
 		IF @Tabla = 'ZONA'
-			UPDATE Zona
+			UPDATE Zona WITH(ROWLOCK)
 			SET OrdenEmbarque = @Orden
 			WHERE Zona = @Clave
 		ELSE
 
 		IF @Tabla = 'TAREAESTADO'
-			UPDATE TareaEstado
+			UPDATE TareaEstado WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Estado = @Clave
 		ELSE
 
 		IF @Tabla = 'CMPESTADO'
-			UPDATE CMPEstado
+			UPDATE CMPEstado WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Estado = @Clave
 		ELSE
 
 		IF @Tabla = 'PRECIOCALC'
-			UPDATE PrecioCalc
+			UPDATE PrecioCalc WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE ListaPrecios = @Clave
 		ELSE
 
 		IF @Tabla = 'MOVCTE'
-			UPDATE MovCte
+			UPDATE MovCte WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Nombre = @Clave
 		ELSE
 
 		IF @Tabla = 'MOVPROY'
-			UPDATE MovProy
+			UPDATE MovProy WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Nombre = @Clave
 		ELSE
 
 		IF @Tabla = 'MOVPROV'
-			UPDATE MovProv
+			UPDATE MovProv WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Nombre = @Clave
 		ELSE
 
 		IF @Tabla = 'FORMAVIRTUALCARPETA'
-			UPDATE FormaVirtualCarpeta
+			UPDATE FormaVirtualCarpeta WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Carpeta = @Clave
 			AND FormaVirtual = @Llave
 		ELSE
 
 		IF @Tabla = 'AUTORUTAD'
-			UPDATE AutoRutaD
+			UPDATE AutoRutaD WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Ruta = @Cuenta
 			AND Localidad = @Clave
 		ELSE
 
 		IF @Tabla = 'AUTOCORRIDAPLANTILLA'
-			UPDATE AutoCorridaPlantilla
+			UPDATE AutoCorridaPlantilla WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Corrida = @Cuenta
 			AND ID = CONVERT(INT, @Clave)
 		ELSE
 
 		IF @Tabla = 'SERVICIOTIPOPLANTILLA'
-			UPDATE ServicioTipoPlantilla
+			UPDATE ServicioTipoPlantilla WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Tipo = @Cuenta
 			AND ID = CONVERT(INT, @Clave)
 		ELSE
 
 		IF @Tabla = 'EVALUACIONFORMATO'
-			UPDATE EvaluacionFormato
+			UPDATE EvaluacionFormato WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Evaluacion = @Cuenta
 			AND Punto = @Clave
 		ELSE
 
 		IF @Tabla = 'CAUSA'
-			UPDATE Causa
+			UPDATE Causa WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND Causa = @Clave
 		ELSE
 
 		IF @Tabla = 'CLASE'
-			UPDATE Clase
+			UPDATE Clase WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND Clase = @Clave
 		ELSE
 
 		IF @Tabla = 'CONCEPTO'
-			UPDATE Concepto
+			UPDATE Concepto WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND Concepto = @Clave
 		ELSE
 
 		IF @Tabla = 'MOVTIPO'
-			UPDATE MovTipo
+			UPDATE MovTipo WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND Mov = @Clave
 		ELSE
 
 		IF @Tabla = 'MOVTIPOFORMA'
-			UPDATE MovTipoForma
+			UPDATE MovTipoForma WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND Mov = @Cuenta
@@ -239,7 +243,7 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'MOVTIPOFORMAAYUDA'
-			UPDATE MovTipoFormaAyuda
+			UPDATE MovTipoFormaAyuda WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND Mov = @Cuenta
@@ -248,7 +252,7 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'CFGMOVFLUJO'
-			UPDATE CfgMovFlujo
+			UPDATE CfgMovFlujo WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND OMov = @Cuenta
@@ -256,41 +260,41 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'LISTAGRUPO'
-			UPDATE ListaGrupo
+			UPDATE ListaGrupo WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Rama = @Modulo
 			AND Grupo = @Clave
 		ELSE
 
 		IF @Tabla = 'NOMXFORMULA'
-			UPDATE NomXFormula
+			UPDATE NomXFormula WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE ID = @ID
 			AND Formula = @Clave
 		ELSE
 
 		IF @Tabla = 'NOMXBASE'
-			UPDATE NomXBase
+			UPDATE NomXBase WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Formula = @Clave
 		ELSE
 
 		IF @Tabla = 'NOMXPERSONAL'
-			UPDATE NomXPersonal
+			UPDATE NomXPersonal WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE ID = @ID
 			AND Concepto = @Clave
 		ELSE
 
 		IF @Tabla = 'SERVICIOTAREA'
-			UPDATE ServicioTarea
+			UPDATE ServicioTarea WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE ID = @ID
 			AND Tarea = @Clave
 		ELSE
 
 		IF @Tabla = 'MOVTAREA'
-			UPDATE MovTarea
+			UPDATE MovTarea WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND ID = @ID
@@ -298,7 +302,7 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'ANEXOCTA'
-			UPDATE AnexoCta
+			UPDATE AnexoCta WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Rama = @Modulo
 			AND Cuenta = @Cuenta
@@ -306,7 +310,7 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'ANEXOMOV'
-			UPDATE AnexoMov
+			UPDATE AnexoMov WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Rama = @Modulo
 			AND ID = @ID
@@ -314,7 +318,7 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'ANEXOMOVD'
-			UPDATE AnexoMovD
+			UPDATE AnexoMovD WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Rama = @Modulo
 			AND ID = @ID
@@ -323,20 +327,20 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'CTERUTA'
-			UPDATE Cte
+			UPDATE Cte WITH(ROWLOCK)
 			SET RutaOrden = @Orden
 			WHERE Cliente = @Clave
 		ELSE
 
 		IF @Tabla = 'ARTINFOADICIONAL'
-			UPDATE ArtInfoAdicional
+			UPDATE ArtInfoAdicional WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Articulo = @Cuenta
 			AND Datos = @Clave
 		ELSE
 
 		IF @Tabla = 'MOVTIPOCONTAUTO'
-			UPDATE MovTipoContAuto
+			UPDATE MovTipoContAuto WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Modulo = @Modulo
 			AND Clave = @Cuenta
@@ -345,20 +349,20 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'CAMPOEXTRAAYUDALISTA'
-			UPDATE CampoExtraAyudaLista
+			UPDATE CampoExtraAyudaLista WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE CampoExtra = @Llave
 			AND Opcion = @Clave
 		ELSE
 
 		IF @Tabla = 'COMPETENCIAFORMATO'
-			UPDATE CompetenciaFormato
+			UPDATE CompetenciaFormato WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Punto = @Clave
 		ELSE
 
 		IF @Tabla = 'ACTIVOFTIPOINDICADORLISTA'
-			UPDATE ActivoFTipoIndicadorLista
+			UPDATE ActivoFTipoIndicadorLista WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Valor = @Clave
 			AND Tipo = @Cuenta
@@ -366,14 +370,14 @@ BEGIN
 		ELSE
 
 		IF @Tabla = 'VisorWeb'
-			UPDATE VisorWebConfigD
+			UPDATE VisorWebConfigD WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Formato = @Cuenta
 			AND RID = @Clave
 		ELSE
 
 		IF @Tabla = 'ALMPOS'
-			UPDATE AlmPos
+			UPDATE AlmPos WITH(ROWLOCK)
 			SET Orden = @Orden
 			WHERE Posicion = @Clave
 			AND Almacen = @Llave

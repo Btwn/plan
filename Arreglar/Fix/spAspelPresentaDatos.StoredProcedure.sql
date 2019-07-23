@@ -29,7 +29,7 @@ BEGIN
 	SET ANSI_WARNINGS ON
 	EXEC spAspelBorraPropReg
 	SELECT @SrvOrigenSAE = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Servidor SAE'
 	SELECT @Cuenta = COUNT(*)
 	FROM master.dbo.sysservers
@@ -39,46 +39,46 @@ BEGIN
 		EXEC sp_addlinkedserver @SrvOrigenSAE
 
 	SELECT @BDOrigenSAE = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Base De Datos SAE'
 	SELECT @OrigenSAE = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Tipo Base De Datos SAE'
 	SELECT @RutaSAE = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Ruta SAE'
 	SELECT @EmpresaSAE = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Empresa SAE'
 	SELECT @ImportaCOI =
 	 CASE
 		 WHEN Valor = 'Si' THEN 1
 		 ELSE 0
 	 END
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Importar COI'
 	SELECT @SrvOrigenCOI = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Servidor COI'
 	SELECT @BDOrigenCOI = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Base De Datos COI'
 	SELECT @OrigenCOI = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Tipo Base De Datos COI'
 	SELECT @RutaCOI = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Ruta COI'
 	SELECT @EmpresaCOI = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Empresa COI'
 	SELECT @SrvIntelisis = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Servidor Intelisis'
 	SELECT @BaseDatosIntelisis = Valor
-	FROM AspelCfgOpcion
+	FROM AspelCfgOpcion WITH(NOLOCK)
 	WHERE Descripcion = 'Base De Datos Intelisis'
-	UPDATE Aspel_paso
+	UPDATE Aspel_paso WITH(ROWLOCK)
 	SET IntegracionVisor = 0
 	DELETE FROM AspelLog
 	EXEC spAspelImportarTablas @SrvOrigenSAE
@@ -103,7 +103,7 @@ BEGIN
 										  ,@BaseDatosPaso
 										  ,@BaseDatosIntelisis
 										  ,@ImportaCOI
-	UPDATE Aspel_paso
+	UPDATE Aspel_paso WITH(ROWLOCK)
 	SET IntegracionVisor = 1
 	SET ANSI_WARNINGS OFF
 END

@@ -1,6 +1,10 @@
+SET DATEFIRST 7
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spDineroRelacionar]
  @Empresa CHAR(5)
@@ -20,7 +24,7 @@ BEGIN
 		CURSOR LOCAL STATIC FOR
 		SELECT OModulo
 			  ,OID
-		FROM MovFlujo
+		FROM MovFlujo WITH(NOLOCK)
 		WHERE DID = @ID
 		AND DModulo = @Modulo
 		AND Empresa = @Empresa
@@ -35,7 +39,7 @@ BEGIN
 		IF @OModulo = @Modulo
 			SELECT @OModulo = OModulo
 				  ,@OID = OID
-			FROM MovFlujo
+			FROM MovFlujo WITH(NOLOCK)
 			WHERE Cancelado = 0
 			AND DID = @OID
 			AND DModulo = @OModulo
@@ -44,7 +48,7 @@ BEGIN
 		IF @OModulo = @Modulo
 			SELECT @OModulo = OModulo
 				  ,@OID = OID
-			FROM MovFlujo
+			FROM MovFlujo WITH(NOLOCK)
 			WHERE Cancelado = 0
 			AND DID = @OID
 			AND DModulo = @OModulo
@@ -53,7 +57,7 @@ BEGIN
 		IF @OModulo = @Modulo
 			SELECT @OModulo = OModulo
 				  ,@OID = OID
-			FROM MovFlujo
+			FROM MovFlujo WITH(NOLOCK)
 			WHERE Cancelado = 0
 			AND DID = @OID
 			AND DModulo = @OModulo
@@ -62,7 +66,7 @@ BEGIN
 		IF @OModulo = @Modulo
 			SELECT @OModulo = OModulo
 				  ,@OID = OID
-			FROM MovFlujo
+			FROM MovFlujo WITH(NOLOCK)
 			WHERE Cancelado = 0
 			AND DID = @OID
 			AND DModulo = @OModulo
@@ -71,7 +75,7 @@ BEGIN
 		IF @OModulo = @Modulo
 			SELECT @OModulo = OModulo
 				  ,@OID = OID
-			FROM MovFlujo
+			FROM MovFlujo WITH(NOLOCK)
 			WHERE Cancelado = 0
 			AND DID = @OID
 			AND DModulo = @OModulo
@@ -87,7 +91,7 @@ BEGIN
 					  ,@CtaDinero = NULL
 
 			IF @OModulo = 'CXC'
-				UPDATE Cxc
+				UPDATE Cxc WITH(ROWLOCK)
 				SET GenerarDinero = 0
 				   ,Dinero = @Mov
 				   ,DineroID = @MovID
@@ -98,7 +102,7 @@ BEGIN
 			ELSE
 
 			IF @OModulo = 'CXP'
-				UPDATE Cxp
+				UPDATE Cxp WITH(ROWLOCK)
 				SET GenerarDinero = 0
 				   ,Dinero = @Mov
 				   ,DineroID = @MovID
@@ -109,7 +113,7 @@ BEGIN
 			ELSE
 
 			IF @OModulo = 'GAS'
-				UPDATE Gasto
+				UPDATE Gasto WITH(ROWLOCK)
 				SET GenerarDinero = 0
 				   ,Dinero = @Mov
 				   ,DineroID = @MovID
@@ -120,7 +124,7 @@ BEGIN
 			ELSE
 
 			IF @OModulo = 'VTAS'
-				UPDATE Venta
+				UPDATE Venta WITH(ROWLOCK)
 				SET GenerarDinero = 0
 				   ,Dinero = @Mov
 				   ,DineroID = @MovID

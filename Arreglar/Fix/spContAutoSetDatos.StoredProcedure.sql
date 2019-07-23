@@ -1,6 +1,10 @@
+SET DATEFIRST 7    
 SET ANSI_NULLS OFF
-GO
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET LOCK_TIMEOUT -1  
 SET QUOTED_IDENTIFIER OFF
+SET NOCOUNT ON
+SET IMPLICIT_TRANSACTIONS OFF
 GO
 ALTER PROCEDURE [dbo].[spContAutoSetDatos]
  @Empresa CHAR(5)
@@ -11,7 +15,7 @@ ALTER PROCEDURE [dbo].[spContAutoSetDatos]
 ,@ContMovID VARCHAR(20)
 AS
 BEGIN
-	UPDATE Mov
+	UPDATE Mov WITH(ROWLOCK)
 	SET ContID = @ContID
 	   ,Poliza = @ContMov
 	   ,PolizaID = @ContMovID
@@ -20,7 +24,7 @@ BEGIN
 	AND ID = @ID
 
 	IF @Modulo = 'DIN'
-		UPDATE Dinero
+		UPDATE Dinero WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -29,7 +33,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'COMS'
-		UPDATE Compra
+		UPDATE Compra WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -38,7 +42,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'VALE'
-		UPDATE Vale
+		UPDATE Vale WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -47,7 +51,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CR'
-		UPDATE CR
+		UPDATE CR WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -56,7 +60,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CAP'
-		UPDATE Capital
+		UPDATE Capital WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -65,7 +69,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'INC'
-		UPDATE Incidencia
+		UPDATE Incidencia WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -74,7 +78,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CONC'
-		UPDATE Conciliacion
+		UPDATE Conciliacion WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -83,7 +87,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'PPTO'
-		UPDATE Presup
+		UPDATE Presup WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -92,7 +96,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CP'
-		UPDATE CP
+		UPDATE CP WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -101,7 +105,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CREDI'
-		UPDATE Credito
+		UPDATE Credito WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -110,7 +114,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CAM'
-		UPDATE Cambio
+		UPDATE Cambio WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -119,7 +123,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CXC'
-		UPDATE Cxc
+		UPDATE Cxc WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -128,7 +132,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'CXP'
-		UPDATE Cxp
+		UPDATE Cxp WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -137,7 +141,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'VTAS'
-		UPDATE Venta
+		UPDATE Venta WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -146,7 +150,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'GAS'
-		UPDATE Gasto
+		UPDATE Gasto WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -155,7 +159,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'AF'
-		UPDATE ActivoFijo
+		UPDATE ActivoFijo WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -164,7 +168,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'AGENT'
-		UPDATE Agent
+		UPDATE Agent WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -173,7 +177,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'PROD'
-		UPDATE Prod
+		UPDATE Prod WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -182,7 +186,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'INV'
-		UPDATE Inv
+		UPDATE Inv WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -191,7 +195,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'EMB'
-		UPDATE Embarque
+		UPDATE Embarque WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -200,7 +204,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'NOM'
-		UPDATE Nomina
+		UPDATE Nomina WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -209,7 +213,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'RH'
-		UPDATE RH
+		UPDATE RH WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -218,7 +222,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'ASIS'
-		UPDATE Asiste
+		UPDATE Asiste WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -227,7 +231,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'PC'
-		UPDATE PC
+		UPDATE PC WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID
@@ -236,7 +240,7 @@ BEGIN
 	ELSE
 
 	IF @Modulo = 'ST'
-		UPDATE Soporte
+		UPDATE Soporte WITH(ROWLOCK)
 		SET ContID = @ContID
 		   ,Poliza = @ContMov
 		   ,PolizaID = @ContMovID

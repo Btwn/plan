@@ -27,10 +27,10 @@ BEGIN
 		SELECT @Sucursal = Sucursal
 			  ,@Almacen = Almacen
 			  ,@RenglonID = ISNULL(RenglonID, 0)
-		FROM Inv
+		FROM Inv WITH(NOLOCK)
 		WHERE ID = @ID
 		SELECT @Renglon = ISNULL(MAX(Renglon), 0.0)
-		FROM InvD
+		FROM InvD WITH(NOLOCK)
 		WHERE ID = @ID
 	END
 
@@ -38,7 +38,7 @@ BEGIN
 		crLista
 		CURSOR FOR
 		SELECT Clave
-		FROM ListaSt
+		FROM ListaSt WITH(NOLOCK)
 		WHERE Estacion = @Estacion
 		ORDER BY ID
 	OPEN crLista
@@ -49,13 +49,13 @@ BEGIN
 	IF @@FETCH_STATUS <> -2
 	BEGIN
 
-		IF NOT EXISTS (SELECT * FROM InvD WHERE ID = @ID AND Articulo = @Articulo)
+		IF NOT EXISTS (SELECT * FROM InvD WITH(NOLOCK) WHERE ID = @ID AND Articulo = @Articulo)
 		BEGIN
 			SELECT @Renglon = @Renglon + 2048.0
 				  ,@RenglonID = @RenglonID + 1
 			SELECT @ArtTipo = Tipo
 				  ,@Unidad = Unidad
-			FROM Art
+			FROM Art WITH(NOLOCK)
 			WHERE Articulo = @Articulo
 			EXEC spRenglonTipo @ArtTipo
 							  ,NULL
@@ -75,7 +75,7 @@ BEGIN
 	DEALLOCATE crLista
 
 	IF @Modulo = 'INV'
-		UPDATE Inv
+		UPDATE Inv WITH(ROWLOCK)
 		SET RenglonID = @RenglonID
 		WHERE ID = @ID
 

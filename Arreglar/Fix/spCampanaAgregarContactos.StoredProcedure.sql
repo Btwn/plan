@@ -30,16 +30,16 @@ BEGIN
 	SELECT @SituacionPorOmision = ISNULL(dbo.fnCampanaSituacionPorOmision(@ID), '')
 		  ,@TieneColonias = 0
 	SELECT @Campana = CampanaTipo
-	FROM Campana
+	FROM Campana WITH(NOLOCK)
 	WHERE ID = @ID
 	SELECT @Base = ISNULL(BasePersonalMAVI, '')
-	FROM EmpresaGral
+	FROM EmpresaGral WITH(NOLOCK)
 	WHERE Empresa = @Empresa
 	SELECT @SQL = ''
 
 	IF (
 			SELECT COUNT(Colonia)
-			FROM ColoniasEliminarMAVI
+			FROM ColoniasEliminarMAVI WITH(NOLOCK)
 			WHERE IDCampana = @ID
 		)
 		> 0
@@ -51,9 +51,9 @@ BEGIN
 			crListaFiltro
 			CURSOR LOCAL FOR
 			SELECT DISTINCT Clave
-			FROM ListaFiltro
+			FROM ListaFiltro WITH(NOLOCK)
 			WHERE Estacion = @Estacion
-			AND Clave NOT IN (SELECT Contacto FROM CampanaD WHERE ID = @ID)
+			AND Clave NOT IN (SELECT Contacto FROM CampanaD WITH(NOLOCK) WHERE ID = @ID)
 		OPEN crListaFiltro
 		FETCH NEXT FROM crListaFiltro INTO @Contacto
 		WHILE @@FETCH_STATUS <> -1
@@ -79,8 +79,8 @@ BEGIN
 					  ,c.CodigoPostal
 					  ,dbo.fn_ValidaTelefonosCampanaMAVI(ISNULL(ct.Lada, '') + '' + ISNULL(ct.Telefono, ''))
 					  ,ct.Extencion
-				FROM CTE c
-				LEFT OUTER JOIN CteTel ct
+				FROM CTE c WITH(NOLOCK)
+				LEFT OUTER JOIN CteTel ct WITH(NOLOCK)
 					ON c.Cliente = ct.Cliente
 				WHERE c.Cliente = @Contacto
 		END
@@ -100,7 +100,7 @@ Estado,Pais,CodigoPostal,Telefono)
 SELECT DISTINCT ' + CONVERT(VARCHAR, @ID) + ',RTRIM(ISNULL(ApellidoPaterno, ''''))+'' ''+RTRIM(ISNULL(ApellidoMaterno, ''''))+'' ''+RTRIM(Nombre),Tipo,
 Personal,' + CHAR(39) + @SituacionPorOmision + CHAR(39) + ',Personal,' + CHAR(39) + @Usuario + CHAR(39) + ', Delegacion, Direccion + '' '' + ISNULL(DireccionNumero,'' ''), Colonia, Poblacion,
 Estado,Pais,CodigoPostal,dbo.fn_ValidaTelefonosCampanaMAVI(Telefono)
-FROM ' + @Base + '.dbo.Personal
+FROM ' + @Base + '.dbo.Personal WITH(NOLOCK)
 WHERE Sembrado = 1'
 		EXEC (@SQL)
 	END
@@ -116,7 +116,7 @@ WHERE Sembrado = 1'
 			CURSOR LOCAL FOR
 			SELECT Nombre
 				  ,Telefono
-			FROM CampanaD
+			FROM CampanaD WITH(NOLOCK)
 			WHERE ID = @ID
 		OPEN crCampanaD
 		FETCH NEXT FROM crCampanaD INTO @Nombre, @Telefono
@@ -126,7 +126,7 @@ WHERE Sembrado = 1'
 		IF @@FETCH_STATUS <> -2
 		BEGIN
 
-			IF EXISTS (SELECT Nombre FROM CampanaD WHERE Nombre = @Nombre)
+			IF EXISTS (SELECT Nombre FROM CampanaD WITH(NOLOCK) WHERE Nombre = @Nombre)
 				DELETE FROM CampanaD
 				WHERE Nombre = @Nombre
 					AND Telefono <> @Telefono
@@ -148,7 +148,7 @@ WHERE Sembrado = 1'
 			SELECT Colonia
 				  ,Poblacion
 				  ,Estado
-			FROM ColoniasEliminarMAVI
+			FROM ColoniasEliminarMAVI WITH(NOLOCK)
 			WHERE IDCampana = @ID
 		OPEN crBorraColonias
 		FETCH NEXT FROM crBorraColonias INTO @Colonia, @Poblacion, @Estado
